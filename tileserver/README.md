@@ -67,5 +67,26 @@ $ docker run --rm -it -p 8080:80 terrastories/tileserver
 
 Impressive, right? Meh. Don't worry, it will actually get much better once we add a `docker-compose.yml` to the entire project to start linking multiple containers and data volumes and run them with less inline configuration.
 
+## Running with docker-compose
+This should be run from the project root directory.
 
+To (re)build all containers:
+```
+$ docker-compose build
+```
+
+To start all containers:
+```
+$ docker-compose up -d
+```
+
+To force rebuild and start at the same time:
+```
+$ docker-compose up -d --build
+```
+
+To stop all containers and clean up images
+```
+$ docker-compose down
+```
 

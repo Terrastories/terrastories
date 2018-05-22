@@ -1,0 +1,9 @@
+version: "3"
+services:
+  tileserver:
+    build: 
+      context: ./tileserver
+    image: terrastories/tileserver
+    ports: 
+      - "8080:80"
+

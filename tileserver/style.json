@@ -1,0 +1,93 @@
+{
+  "version": 8,
+  "name": "Basic",
+  "glyphs": "mapbox://fonts/mapbox/{fontstack}/{range}.pbf",
+  "sources": {
+    "geomorph": {
+      "url": "mbtiles://geomorph.mbtiles",
+      "type": "vector"
+    },
+    "roads": {
+      "url": "mbtiles://roads.mbtiles",
+      "type": "vector"
+    },
+    "settlements": {
+      "url": "mbtiles://settlements.mbtiles",
+      "type": "vector"
+    }
+  },
+  "layers": [
+    {
+      "id": "geomorph",
+      "type": "fill",
+      "source": "geomorph",
+      "source-layer": "geomorph",
+      "paint": {
+        "fill-color": "#d2edae",
+        "fill-opacity": 0.75
+      },
+      "interactive": true
+    },
+    {
+      "id": "roads",
+      "type": "line",
+      "source": "roads",
+      "source-layer": "linedelimited",
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "paint": {
+        "line-color": "#9912df",
+        "line-width": {
+          "base": 1.4,
+          "stops": [
+            [
+              6,
+              0.5
+            ],
+            [
+              20,
+              30
+            ]
+          ]
+        }
+      },
+      "interactive": true
+    },
+    {
+      "id": "settlements",
+      "type": "symbol",
+      "source": "settlements",
+      "source-layer": "linedelimitedsettlements",
+      "layout": {
+        "text-field": "Name",
+        "text-offset": [
+          0,
+          0.5
+        ],
+        "text-font": [
+          "Open Sans Semibold",
+          "Arial Unicode MS Bold"
+        ],
+        "text-max-width": 8,
+        "text-anchor": "top",
+        "text-size": 11,
+        "icon-size": 1
+      },
+      "paint": {
+        "text-color": "#00ef7a",
+        "text-halo-width": 1,
+        "text-halo-color": "rgba(255,255,255,0.75)",
+        "text-halo-blur": 1
+      },
+      "interactive": true
+    }
+  ],
+  "draft": false,
+  "id": "cjhi692hz1obq2spjjzgwkp9r",
+  "modified": "2018-05-22T21:08:29.957Z",
+  "owner": "jasonhinebaugh",
+  "visibility": "private",
+  "created": "2018-05-22T21:08:29.957Z"
+}
