@@ -1,0 +1,13 @@
+{
+  "data": {
+    "roads": {
+      "mbtiles": "file.mbtiles"
+    },
+    "geomorph": {
+      "mbtiles": "geomorph.mbtiles"
+    },
+    "settlements": {
+      "mbtiles": "settlements.mbtiles"
+    }
+  }
+}
