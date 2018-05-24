@@ -1,13 +1,7 @@
 {
   "data": {
-    "roads": {
-      "mbtiles": "roads.mbtiles"
-    },
-    "geomorph": {
-      "mbtiles": "geomorph.mbtiles"
-    },
-    "settlements": {
-      "mbtiles": "settlements.mbtiles"
+    "basic": {
+      "mbtiles": "mbtiles/basic.mbtiles"
     }
   },
   "styles": {

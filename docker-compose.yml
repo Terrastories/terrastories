@@ -1,6 +1,22 @@
 version: "3.2"
 services:
+  tilebuilder:
+    image: terrastories/tilebuilder
+    build:
+      context: ./tilebuilder
+    volumes:
+      - type: bind
+        source: ./tilebuilder/script
+        target: /script
+      - type: bind
+        source: mbtiles
+        target: /data/mbtiles
+      - type: bind
+        source: ./tilebuilder/shapefiles
+        target: /data/shapefiles
   tileserver:
+    depends_on:
+      - tilebuilder
     image: klokantech/tileserver-gl
     ports:
       - "8080:80"
@@ -8,3 +24,8 @@ services:
       - type: bind
         source: ./tileserver/data
         target: /data
+      - type: bind
+        source: mbtiles
+        target: /data/mbtiles
+volumes:
+  mbtiles:
