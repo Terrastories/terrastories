@@ -1,9 +1,10 @@
-version: "3"
+version: "3.2"
 services:
   tileserver:
-    build: 
-      context: ./tileserver
-    image: terrastories/tileserver
-    ports: 
+    image: klokantech/tileserver-gl
+    ports:
       - "8080:80"
-
+    volumes:
+      - type: bind
+        source: ./tileserver/data
+        target: /data
