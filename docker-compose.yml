@@ -1,5 +1,24 @@
 version: "3.2"
 services:
+  mariadb:
+    image: 'bitnami/mariadb:latest'
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+
+  rails:
+    tty: true # Enables debugging capabilities when attached to this container.
+    image: 'bitnami/rails:latest'
+    labels:
+      kompose.service.type: nodeport
+    environment:
+      - DATABASE_URL=mysql2://mariadb/my_app_development
+    depends_on:
+      - mariadb
+    ports:
+      - 3000:3000
+    volumes:
+      - ./rails:/app
+
   tilebuilder:
     image: terrastories/tilebuilder
     build:
@@ -14,6 +33,7 @@ services:
       - type: bind
         source: ./tilebuilder/shapefiles
         target: /data/shapefiles
+
   tileserver:
     depends_on:
       - tilebuilder
@@ -27,5 +47,6 @@ services:
       - type: bind
         source: mbtiles
         target: /data/mbtiles
+
 volumes:
   mbtiles:
