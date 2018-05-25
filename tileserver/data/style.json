@@ -49,7 +49,7 @@
       "id": "creeks",
       "type": "line",
       "source": "basic",
-      "source-layer": "Suriname_Creeks",
+      "source-layer": "Saramacca_Creeks",
       "paint": {
         "line-color": "#31a2df",
         "line-width": {
