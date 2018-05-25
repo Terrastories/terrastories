@@ -1,0 +1,10 @@
+<h1>Is this a map?</h1>
+<div id='map' class="ts-MainMap"></div>
+<script>
+var map = new mapboxgl.Map({
+    container: 'map', // container id
+    style: 'http://localhost:8080/styles/basic/style.json',
+    center: [-55.84, 3.77], // starting position [lng, lat]
+    zoom: 6 // starting zoom
+});
+</script>
