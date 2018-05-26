@@ -13,6 +13,7 @@ services:
     environment:
       - DATABASE_URL=mysql2://mariadb/my_app_development
     depends_on:
+      - tileserver
       - mariadb
     ports:
       - 3000:3000
@@ -35,8 +36,6 @@ services:
         target: /data/shapefiles
 
   tileserver:
-    depends_on:
-      - tilebuilder
     image: klokantech/tileserver-gl
     ports:
       - "8080:80"
