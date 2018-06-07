@@ -4,6 +4,25 @@ services:
     image: 'bitnami/mariadb:latest'
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
+    networks:
+      - railroad
+
+  nginx:
+    #command: /bin/bash -c "sed s@NGINX_PORT@$NGINX_PORT@ /etc/nginx/nginx.conf > /etc/nginx/nginx.conf && nginx -g 'daemon off;'"
+    command: /bin/bash -c "sed s@NGINX_PORT@$NGINX_PORT@ /etc/nginx/nginx-template.conf > /etc/nginx/nginx.conf && nginx -g 'daemon off;'"
+    depends_on:
+      - rails
+      - tileserver
+    environment:
+      - NGINX_PORT=$NGINX_PORT
+    image: 'nginx:latest'
+    networks:
+      - tilenet
+      - railroad
+    ports:
+      - $NGINX_PORT:80
+    volumes:
+      - ./nginx:/etc/nginx
 
   rails:
     tty: true # Enables debugging capabilities when attached to this container.
@@ -11,19 +30,21 @@ services:
     labels:
       kompose.service.type: nodeport
     environment:
-      - DATABASE_URL=mysql2://mariadb/my_app_development
+      - DATABASE_URL=mysql2://mariadb/terrastories_development
     depends_on:
       - tileserver
       - mariadb
-    ports:
-      - 3000:3000
+    networks:
+      - railroad
     volumes:
       - ./rails:/app
+      - ./rails/nginx:/etc/nginx
 
   tilebuilder:
-    image: terrastories/tilebuilder
     build:
       context: ./tilebuilder
+    image: terrastories/tilebuilder
+    network_mode: none
     volumes:
       - type: bind
         source: ./tilebuilder/script
@@ -37,8 +58,8 @@ services:
 
   tileserver:
     image: klokantech/tileserver-gl
-    ports:
-      - "8080:80"
+    networks:
+      - tilenet
     volumes:
       - type: bind
         source: ./tileserver/data
@@ -46,6 +67,10 @@ services:
       - type: bind
         source: mbtiles
         target: /data/mbtiles
+
+networks:
+  railroad:
+  tilenet:
 
 volumes:
   mbtiles:
