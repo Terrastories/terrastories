@@ -144,6 +144,9 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
+    rgeo (1.0.0)
+    rgeo-geojson (2.0.0)
+      rgeo (~> 1.0)
     ruby_dep (1.5.0)
     rubyzip (1.2.1)
     sass (3.5.6)
@@ -209,6 +212,7 @@ DEPENDENCIES
   mysql2 (>= 0.4.4, < 0.6.0)
   puma (~> 3.11)
   rails (~> 5.2.0)
+  rgeo-geojson
   sass-rails (~> 5.0)
   selenium-webdriver
   spring
@@ -222,4 +226,4 @@ RUBY VERSION
    ruby 2.5.1p57
 
 BUNDLED WITH
-   1.16.1
+   1.16.2
