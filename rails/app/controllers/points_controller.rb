@@ -4,7 +4,10 @@ class PointsController < ApplicationController
 		collection = RGeo::GeoJSON::FeatureCollection.new(
 			@points.map do |point|
 				RGeo::GeoJSON::Feature.new(
-					RGeo::Cartesian.factory.point(point.long, point.lat), point.id, name: point.name
+          RGeo::Cartesian.factory.point(point.long, point.lat),
+            point.id,
+            name: point.name,
+            metadata: point.metadata
 				)
 			end
     )
