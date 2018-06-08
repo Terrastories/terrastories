@@ -2,11 +2,11 @@
 <div class="ts-Overlay">
   <h1>Is this a …map?</h1>
   <% if current_user %>
-	  <p><%= current_user.email %></p>
-	  <p><%= link_to "log out", destroy_user_session_path, method: :delete %></p>
-	<% else %>
-		  <p><%= link_to "log in", new_user_session_path %></p>
-	<% end %>
+    <p><%= current_user.email %></p>
+    <p><%= link_to "log out", destroy_user_session_path, method: :delete %></p>
+  <% else %>
+      <p><%= link_to "log in", new_user_session_path %></p>
+  <% end %>
 </div>
 
 <div id="modal" class="modal closed">
@@ -82,4 +82,3 @@ closeButton.addEventListener('click', function() {
   modal.classList.toggle('closed');
 });
 </script>
-
