@@ -8,6 +8,12 @@
 		  <p><%= link_to "log in", new_user_session_path %></p>
 	<% end %>
 </div>
+
+<div id="modal" class="modal closed">
+  <button class="close-button" id="close-button">𝗫</button>
+  <div class="modal-guts"></div>
+</div>
+
 <script>
 var map = new mapboxgl.Map({
     container: 'map', // container id
@@ -15,4 +21,24 @@ var map = new mapboxgl.Map({
     center: [-55.63, 4.78], // starting position [lng, lat]
     zoom: 7.6 // starting zoom
 });
+
+var modal = document.querySelector('#modal');
+
+map.on('click', function(event) {
+  Rails.ajax({
+    url: '/point?lat=' + event.lngLat.lat + '&long=' + event.lngLat.lng,
+    type: 'GET',
+    success: function(_, _, xhr) {
+      modal.getElementsByClassName('modal-guts')[0].innerHTML = xhr.response;
+      modal.classList.toggle('closed');
+    }
+  });
+});
+
+var closeButton = document.querySelector('#close-button');
+
+closeButton.addEventListener('click', function() {
+  modal.classList.toggle('closed');
+});
 </script>
+
