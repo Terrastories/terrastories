@@ -46,7 +46,7 @@ dependencies for the rails service. So to start the whole thing up (omitting
 tilebuilder, which only needs to run once) just run the following. Omit the
 `-d` flag if you prefer to see all of the rails server output.
 ```
-$ docker-compose up -d rails
+$ docker-compose up -d nginx
 ```
 
 To spin all the services back down run the following.
