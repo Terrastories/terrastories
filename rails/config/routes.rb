@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   root to: 'home#index'
   get  'point' => 'home#show'
   post 'point' => 'home#create'
+  resources :points
 end

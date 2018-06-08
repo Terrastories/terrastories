@@ -254,6 +254,7 @@ DEPENDENCIES
   puma (~> 3.11)
   pundit
   rails (~> 5.2.0)
+  rgeo
   rgeo-geojson
   rspec-rails
   sass-rails (~> 5.0)
