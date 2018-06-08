@@ -1,0 +1,9 @@
+<h1>Edit Story #<%= @story.id %></h1>
+
+<%= form_for @story, url: {action: "update"} do |f| %>
+  <%= f.text_field :title %>
+  <%= f.text_field :desc %>
+  <%= f.text_field :speaker %>
+  <%= f.file_field :story_files, multiple: true %>
+  <%= f.submit "Update" %>
+<% end %>
