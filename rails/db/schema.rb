@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 2018_06_08_180831) do
     t.string "location_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.decimal "long", precision: 10, scale: 6
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
