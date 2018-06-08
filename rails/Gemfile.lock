@@ -47,6 +47,7 @@ GEM
     archive-zip (0.11.0)
       io-like (~> 0.3.0)
     arel (9.0.0)
+    bcrypt (3.1.12)
     bindex (0.5.0)
     bootsnap (1.3.0)
       msgpack (~> 1.0)
@@ -73,6 +74,12 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
     crass (1.0.4)
+    devise (4.4.3)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0, < 6.0)
+      responders
+      warden (~> 1.2.3)
     erubi (1.7.1)
     execjs (2.7.0)
     ffi (1.9.23)
@@ -111,6 +118,7 @@ GEM
     nio4r (2.3.1)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
+    orm_adapter (0.5.0)
     public_suffix (3.0.2)
     puma (3.11.4)
     rack (2.0.5)
@@ -144,6 +152,9 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
+    responders (2.4.0)
+      actionpack (>= 4.2.0, < 5.3)
+      railties (>= 4.2.0, < 5.3)
     ruby_dep (1.5.0)
     rubyzip (1.2.1)
     sass (3.5.6)
@@ -182,6 +193,8 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.1.10)
       execjs (>= 0.3.0, < 3)
+    warden (1.2.7)
+      rack (>= 1.0)
     web-console (3.6.2)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -202,6 +215,7 @@ DEPENDENCIES
   capybara (>= 2.15, < 4.0)
   chromedriver-helper
   coffee-rails (~> 4.2)
+  devise
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   mapbox-gl-rails
@@ -222,4 +236,4 @@ RUBY VERSION
    ruby 2.5.1p57
 
 BUNDLED WITH
-   1.16.1
+   1.16.2
