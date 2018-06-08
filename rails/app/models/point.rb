@@ -1,2 +1,0 @@
-class Point < ApplicationRecord
-end
