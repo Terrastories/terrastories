@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_09_153434) do
+ActiveRecord::Schema.define(version: 2018_06_09_181953) do
 
   create_table "media", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "story_id"
@@ -42,10 +42,11 @@ ActiveRecord::Schema.define(version: 2018_06_09_153434) do
   create_table "stories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.string "desc"
-    t.string "speaker"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "point_id"
+    t.bigint "speaker_id"
+    t.index ["speaker_id"], name: "index_stories_on_speaker_id"
   end
 
   create_table "taggings", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -91,4 +92,5 @@ ActiveRecord::Schema.define(version: 2018_06_09_153434) do
   end
 
   add_foreign_key "media", "stories"
+  add_foreign_key "stories", "speakers"
 end
