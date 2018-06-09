@@ -22,7 +22,6 @@ services:
     ports:
       - $NGINX_PORT:80
     volumes:
-      - ./media:/media
       - ./nginx:/etc/nginx
 
   rails:
@@ -38,7 +37,7 @@ services:
     networks:
       - railroad
     volumes:
-      - ./media:/media
+      - ./media:/media:rw
       - ./rails:/app
       - ./rails/nginx:/etc/nginx
 

@@ -1,0 +1,9 @@
+<h1>New Story</h1>
+
+<%= form_for @story, url: {action: "create"} do |f| %>
+  <%= f.text_field :title %>
+  <%= f.text_field :desc %>
+  <%= f.text_field :speaker %>
+  <%= f.file_field :story_files, multiple: true %>
+  <%= f.submit "Create" %>
+<% end %>

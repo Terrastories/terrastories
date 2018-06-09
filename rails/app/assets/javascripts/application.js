@@ -14,4 +14,5 @@
 //= require activestorage
 //= require turbolinks
 //= require mapbox-gl
+//= require activestorage
 //= require_tree .
