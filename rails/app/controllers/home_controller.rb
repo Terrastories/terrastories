@@ -13,6 +13,7 @@ class HomeController < ApplicationController
   end
 
   helper_method def stories
-    [Story.new(title: 'Story Title', desc: 'Description')] * 4
+    Story.all
+    # [Story.new(title: 'Story Title', desc: 'Description')] * 4
   end
 end

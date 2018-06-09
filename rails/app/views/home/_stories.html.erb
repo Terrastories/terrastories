@@ -5,6 +5,13 @@
       <div class="container">
         <strong class="title"><%= story.title %></strong>
         <div class="description"><%= story.desc %></div>
+		<% story.story_files.each do |file| %>
+			<% if file.content_type.include?("video") %> 
+				<%= render partial: 'stories/video', locals: { file: file } %>
+			<% else %>
+				<%= render partial: 'stories/audio', locals: { file: file } %>
+			<% end %>
+		<% end %>
       </div>
     </li>
   <% end %>
