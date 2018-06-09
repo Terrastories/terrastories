@@ -44,9 +44,9 @@ ActiveRecord::Schema.define(version: 2018_06_09_181953) do
     t.string "desc"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "point_id"
     t.bigint "speaker_id"
     t.index ["speaker_id"], name: "index_stories_on_speaker_id"
-    t.integer "point_id"
   end
 
   create_table "taggings", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
