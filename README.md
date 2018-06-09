@@ -1,6 +1,8 @@
 # TerraStories
 
-### Note: This is currently a work in progress.
+**TerraStories** helps people collect and access stories and oral history from people in endangered lands and cultures. It is a Dockerized Rails App that uses **Mapbox** https://mapbox.com to help users locate content geographically on an ineractive map. A team is attempting to finish this app at **Ruby for Good 2018**: http://rubyforgood.org/2018
+
+*Note: TerraStories is a work in progress.*
 
 ## Prerequisites
 Install docker. On linux, you may have to install docker-compose separately.
