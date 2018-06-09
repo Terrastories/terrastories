@@ -1,11 +1,13 @@
 version: "3.2"
 services:
-  mariadb:
-    image: 'bitnami/mariadb:latest'
+  postgres:
+    image: 'mdillon/postgis:latest'
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
     networks:
       - railroad
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
 
   nginx:
     #command: /bin/bash -c "sed s@NGINX_PORT@$NGINX_PORT@ /etc/nginx/nginx.conf > /etc/nginx/nginx.conf && nginx -g 'daemon off;'"
@@ -26,14 +28,15 @@ services:
 
   rails:
     tty: true # Enables debugging capabilities when attached to this container.
-    image: 'bitnami/rails:latest'
+    build:
+      context: ./rails
     labels:
       kompose.service.type: nodeport
     environment:
-      - DATABASE_URL=mysql2://mariadb/terrastories_development
+      - DATABASE_URL=postgresql://postgres/terrastories_development
     depends_on:
       - tileserver
-      - mariadb
+      - postgres
     networks:
       - railroad
     volumes:
