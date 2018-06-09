@@ -11,4 +11,8 @@ class HomeController < ApplicationController
   def create
     # save the story to the database
   end
+
+  helper_method def stories
+    [Story.new(title: 'Story Title', desc: 'Description')] * 4
+  end
 end

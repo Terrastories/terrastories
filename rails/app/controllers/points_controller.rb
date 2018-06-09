@@ -7,8 +7,8 @@ class PointsController < ApplicationController
           RGeo::Cartesian.factory.point(point.lng, point.lat),
             point.id,
             title: point.title,
-            story: point.story,
-            location_type: point.location_type,
+            region: point.region,
+            stories: point.stories
 				)
 			end
     )

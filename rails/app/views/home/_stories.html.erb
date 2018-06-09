@@ -1,0 +1,11 @@
+<ul>
+  <% stories.each do |story| %>
+    <li>
+      <div class="thumbnail placeholder"></div>
+      <div class="container">
+        <strong class="title"><%= story.title %></strong>
+        <div class="description"><%= story.desc %></div>
+      </div>
+    </li>
+  <% end %>
+</ul>
