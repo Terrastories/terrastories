@@ -3,11 +3,11 @@
 <br/>
 <p><%= @story.desc %></p>
 
+
 <% @story.story_files.each do |file| %>
-  <%= link_to file.blob.filename, url_for(file) %>
-<% end %>
-<% @story.story_files.each do |file| %>
-	<video id="player" playsinline controls>
-	    <source src="<%= url_for(file) %>" type="video/mp4">
-	</video>
+	<% if file.content_type.include?("video") %> 
+		<%= render partial: 'video', locals: { file: file } %>
+	<% else %>
+		<%= render partial: 'audio', locals: { file: file } %>
+	<% end %>
 <% end %>
