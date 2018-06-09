@@ -1,0 +1,90 @@
+.card {
+  width: 30vw;
+  height: 85vh;
+  border-radius: 20px;
+
+  position: absolute;
+  top: 7vh;
+  left: 5vw;
+
+  background-color: white;
+
+  > * { padding: 20px; }
+
+  .logo {
+    width: 80%;
+    margin: auto;
+    padding-bottom: 10px;
+  }
+
+  .intro {
+    padding: 20px 40px;
+
+    background-color: #a28bb9;
+    color: white;
+
+    h1 {
+      margin: 0;
+    }
+  }
+
+  nav {
+    background-color: #5e5369;
+    color: white;
+
+    ul {
+      list-style-type: none;
+      display: flex;
+      justify-content: space-between;
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      display: inline;
+      width: 25%;
+    }
+    a {
+      text-decoration: none;
+      color: white;
+    }
+  }
+
+  .stories {
+    ul {
+      margin: 0;
+      list-style-type: none;
+      padding-left: inherit;
+    }
+
+    li {
+      padding: 10px 0;
+      border-bottom: 1px solid grey;
+
+      &:last-child { border-bottom: none; }
+
+      > * {
+        display: inline-block;
+        vertical-align: top;
+      }
+    }
+
+    .thumbnail {
+      width: 50px;
+      height: 50px;
+      border-radius: 50px;
+      display: inline-block;
+
+      &.placeholder {
+        background-color: #f1bbbb;
+      }
+    }
+
+    .container > * {
+      display: block;
+    }
+
+    .title {
+      text-transform: uppercase;
+    }
+  }
+}
