@@ -4,7 +4,7 @@
 <p><%= @story.desc %></p>
 
 
-<% @story.story_files.each do |file| %>
+<% @story.media.each do |file| %>
 	<% if file.content_type.include?("video") %> 
 		<%= render partial: 'video', locals: { file: file } %>
 	<% else %>
