@@ -1,7 +1,8 @@
-<h1><%= t('welcome') %></h1>
 <div id='map' class="ts-MainMap"></div>
 <div class="ts-Overlay">
-  <h1>Is this a …map?</h1>
+  <h1><%= t('map')%></h1>
+  <%= I18n.available_locales %>
+  
   <% if current_user %>
     <p><%= current_user.email %></p>
     <p><%= link_to "log out", destroy_user_session_path, method: :delete %></p>
