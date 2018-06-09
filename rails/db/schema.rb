@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_08_234839) do
+ActiveRecord::Schema.define(version: 2018_06_09_005433) do
+
   create_table "media", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "story_id"
     t.string "media_type"
@@ -46,6 +47,7 @@ ActiveRecord::Schema.define(version: 2018_06_08_234839) do
     t.string "speaker"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "point_id"
   end
 
   create_table "taggings", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
