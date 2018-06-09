@@ -10,8 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_08_192025) do
-  
+ActiveRecord::Schema.define(version: 2018_06_09_151942) do
+
   create_table "media", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "story_id"
     t.string "media_type"
@@ -28,6 +28,15 @@ ActiveRecord::Schema.define(version: 2018_06_08_192025) do
     t.decimal "lng", precision: 10
     t.decimal "lat", precision: 10
     t.string "location_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "speakers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "photo"
+    t.string "region"
+    t.string "community"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
