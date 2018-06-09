@@ -241,7 +241,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  acts-as-taggable-on
+  acts-as-taggable-on (~> 5.0)
   bootsnap (>= 1.1.0)
   byebug
   capybara (>= 2.15, < 4.0)
