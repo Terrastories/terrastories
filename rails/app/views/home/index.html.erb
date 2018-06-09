@@ -34,55 +34,31 @@ var map = new mapboxgl.Map({
 
 var modal = document.querySelector('#modal');
 
-map.on('click', function(event) {
-  Rails.ajax({
-    url: '/point?lat=' + event.lngLat.lat + '&long=' + event.lngLat.lng,
-    type: 'GET',
-    success: function(_, _, xhr) {
-      modal.getElementsByClassName('modal-guts')[0].innerHTML = xhr.response;
-      modal.classList.toggle('closed');
-    }
-  });
-});
-
 map.on('load', function () {
-  var geojson = {
-    type: 'FeatureCollection',
-    features: [{
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [-55.370960068932845, 4.412754499901737]
-      },
-      properties: {
-        title: 'Mapbox',
-        description: 'Washington, D.C.'
-      }
-    },
-    {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [-57.38235594732383, 4.517535458793745]
-      },
-      properties: {
-        title: 'Mapbox',
-        description: 'San Francisco, California'
-      }
-    }]
-  };
 
-  // add markers to map
-  geojson.features.forEach(function(marker) {
+  Rails.ajax({
+    url: '/points',
+    type: 'GET',
+    dataType: 'json',
+    success: function(response) {
+      response.features.forEach(function(marker) {
+        console.log(marker.properties);
 
-    // create a HTML element for each feature
-    var el = document.createElement('div');
-    el.className = 'marker';
+        // create a HTML element for each feature
+        var el = document.createElement('div');
+        el.className = 'marker';
 
-    // make a marker for each feature and add to the map
-    new mapboxgl.Marker(el)
-    .setLngLat(marker.geometry.coordinates)
-    .addTo(map);
+        el.addEventListener('click', function() {
+          modal.getElementsByClassName('modal-guts')[0].innerHTML = marker.properties.title;
+          modal.classList.toggle('closed');
+        });
+
+        // make a marker for each feature and add to the map
+        new mapboxgl.Marker(el)
+        .setLngLat(marker.geometry.coordinates)
+        .addTo(map);
+      });
+    }
   });
 });
 
