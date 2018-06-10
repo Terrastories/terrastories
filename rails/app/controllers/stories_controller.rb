@@ -29,6 +29,6 @@ class StoriesController < ApplicationController
   private
 
   def story_params
-    params.require(:story).permit(:title, :desc, :speaker_id, media: [])
+    params.require(:story).permit(:title, :desc, :speaker_id, :point_id, media: [])
   end
 end

@@ -3,7 +3,8 @@
 <%= form_for @story, url: {action: "create"} do |f| %>
   <%= f.text_field :title %>
   <%= f.text_field :desc %>
-  <%= f.select :speaker_id, options_for_select(Speaker.all.map { |speaker|  [speaker.name, speaker.id]}) %>
+  <%= f.select :speaker_id, options_for_select(Speaker.all.map { |speaker| [speaker.name, speaker.id]})%>
+  <%= f.select :point_id, options_for_select(Point.all.map { |point| [point.title, point.id]})%>
   <%= f.file_field :media, multiple: true %>
   <%= f.submit "Create" %>
 <% end %>
