@@ -7,7 +7,7 @@ $(document).ready(function() {
   var map = new mapboxgl.Map({
       container: 'map', // container id
       style: '/tiles/styles/basic/style.json',
-      center: [-55.63, 4.78], // starting position [lng, lat]
+      center: [-56.63, 4.78], // starting position [lng, lat]
       zoom: 7.6, // starting zoom
       maxBounds: bounds
   });
