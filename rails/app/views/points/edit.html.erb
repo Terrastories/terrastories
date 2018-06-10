@@ -3,7 +3,7 @@
 <%= form_for @point, url: {action: "update"} do |f| %>
   <%= f.text_field :title %>
   <%= f.text_field :region %>
-  <%= f.text_field :lat %>
-  <%= f.text_field :lng %>
+  <%= f.number_field :lat, class: :text_field, step: :any %>
+  <%= f.number_field :lng, class: :text_field, step: :any %>
   <%= f.submit "Update" %>
 <% end %>

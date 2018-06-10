@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_09_192407) do
+ActiveRecord::Schema.define(version: 2018_06_10_154604) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -45,8 +45,8 @@ ActiveRecord::Schema.define(version: 2018_06_09_192407) do
 
   create_table "points", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
-    t.decimal "lng", precision: 10
-    t.decimal "lat", precision: 10
+    t.decimal "lng", precision: 15, scale: 13
+    t.decimal "lat", precision: 15, scale: 13
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "region"
