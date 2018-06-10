@@ -22,6 +22,7 @@ $(document).ready(function() {
           // create a HTML element for each feature
           var el = document.createElement('div');
           el.className = 'marker';
+          el.id = 'storypoint' + marker.id;
           var popup = new mapboxgl
             .Popup({ offset: 15 })
             .setHTML('<h1>' + marker.properties.title + '</h1>' + '<h2>' + marker.properties.region + '</h2>')
@@ -30,6 +31,13 @@ $(document).ready(function() {
           .setLngLat(marker.geometry.coordinates)
           .setPopup(popup) // sets a popup on this marker
           .addTo(map);
+
+          el.addEventListener('click', () =>
+            {
+              $(".story").hide();
+              $(".story." + el.id).show();
+            }
+          )
         });
       }
     });

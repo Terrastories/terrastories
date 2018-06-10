@@ -1,6 +1,6 @@
 <ul>
   <% stories.each do |story| %>
-    <li>
+    <li class="story storypoint<%= story.point.id %>">
       <div class="thumbnail placeholder"></div>
       <div class="container">
         <strong class="title"><%= story.title %></strong>
