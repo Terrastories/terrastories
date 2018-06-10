@@ -9,6 +9,8 @@
 
   background-color: white;
 
+  overflow: scroll;
+
   > * { padding: 20px; }
 
   .logo {
@@ -20,28 +22,43 @@
   .intro {
     padding: 20px 40px;
 
-    background-color: #a28bb9;
+    background-color: #0f566b;
     color: white;
 
     h1 {
       margin: 0;
+      color: #45cc9c;
+    }
+
+    h3 {
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 2pt;
     }
   }
 
   nav {
-    background-color: #5e5369;
+    background-color: #1a8b9a;
     color: white;
 
     ul {
       list-style-type: none;
       display: flex;
       justify-content: space-between;
-      margin: 0;
+      margin: -20px;
       padding: 0;
+      height: 50px;
     }
     li {
       display: inline;
       width: 25%;
+      padding: 13px;
+
+      text-align: center;
+
+      &.search {
+        background-color: rgb(206,103,32);
+      }
     }
     a {
       text-decoration: none;
@@ -75,7 +92,7 @@
       display: inline-block;
 
       &.placeholder {
-        background-color: #f1bbbb;
+        background-color: #a19c9c;
       }
     }
 
@@ -85,6 +102,11 @@
 
     .title {
       text-transform: uppercase;
+      color: rgb(206,103,32);
+    }
+
+    .description {
+      color: rgb(15,86,107);
     }
   }
 }
