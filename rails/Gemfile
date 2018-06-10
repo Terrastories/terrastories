@@ -34,6 +34,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'pundit'
 
+# plyr-rails gem is the integration of plyr.io javascript library for your Rails 4 and Rails 5 application.
+gem 'plyr-rails'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
