@@ -1,0 +1,7 @@
+<h1>New Speaker</h1>
+
+<%= form_for @speaker, url: {action: "create"} do |f| %>
+  <%= f.text_field :name %>
+  <%= f.file_field :media, multiple: false %>
+  <%= f.submit "Create" %>
+<% end %>
