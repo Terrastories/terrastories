@@ -13,7 +13,7 @@ $(document).ready(function() {
   });
   map.on('load', function () {
     Rails.ajax({
-      url: '/points',
+      url: '/points.json',
       type: 'GET',
       dataType: 'json',
       success: function(response) {

@@ -1,0 +1,9 @@
+<h1>New Point</h1>
+
+<%= form_for @point, url: {action: "create"} do |f| %>
+  <%= f.text_field :title %>
+  <%= f.text_field :region %>
+  <%= f.text_field :lat %>
+  <%= f.text_field :lng %>
+  <%= f.submit "Create" %>
+<% end %>
