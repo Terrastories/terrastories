@@ -1,0 +1,9 @@
+<h1>Edit Point #<%= @point.id %></h1>
+
+<%= form_for @point, url: {action: "update"} do |f| %>
+  <%= f.text_field :title %>
+  <%= f.text_field :region %>
+  <%= f.number_field :lat, class: :text_field, step: :any %>
+  <%= f.number_field :lng, class: :text_field, step: :any %>
+  <%= f.submit "Update" %>
+<% end %>

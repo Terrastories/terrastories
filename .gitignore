@@ -42,3 +42,8 @@ bower.json
 
 # Ignore node_modules
 node_modules/
+
+# Ignore editor and IDE files
+.idea/
+
+.DS_Store

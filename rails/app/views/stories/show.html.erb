@@ -1,0 +1,13 @@
+<h1><%= @story.title %></h1>
+<p>by <%= @story.speaker.name %></p>
+<br/>
+<p><%= @story.desc %></p>
+
+
+<% @story.media.each do |file| %>
+	<% if file.content_type.include?("video") %> 
+		<%= render partial: 'video', locals: { file: file } %>
+	<% else %>
+		<%= render partial: 'audio', locals: { file: file } %>
+	<% end %>
+<% end %>

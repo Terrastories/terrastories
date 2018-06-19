@@ -1,0 +1,16 @@
+<div id="welcome-page">
+  <div class="welcome-card">
+    <%= image_tag 'logocombo', alt: 'Terrastories' %>
+    <h1>Welcome</h1>
+
+    <%= button_tag(type: 'button', class: "l--75") do %>
+      <% link_to "Enter Site", home_map_path %>
+    <% end %>
+
+    <h4 class="l--75">Are you an Admin?</h4>
+
+    <%= button_tag(type: 'button', class: "l--75 inverse") do %>
+      <% link_to "Sign In", new_user_session_path %>
+    <% end %>
+  </div>
+</div>

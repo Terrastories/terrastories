@@ -11,6 +11,7 @@
  * It is generally better to create a new file per style scope.
  *
  *= require mapbox-gl
+ *= require plyr
  *= require_tree .
  *= require_self
  */
@@ -23,4 +24,5 @@
 
 body {
   font-family: 'OpenSansCondensed';
+  margin: 0;
 }

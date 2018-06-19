@@ -1,0 +1,3 @@
+<video id="video-player<%= file.id%>" class="video-player" playsinline controls>
+	<source src="<%= url_for(file) %>" type="<%= file.blob.content_type %>">
+</video>
