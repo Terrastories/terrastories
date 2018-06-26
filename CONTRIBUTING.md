@@ -1,5 +1,3 @@
-
-
 # Contributing
 We ♥ contributors! By participating in this project, you agree to abide by the Ruby for Good [Code of Conduct](CODE_OF_CONDUCT.md).
 
