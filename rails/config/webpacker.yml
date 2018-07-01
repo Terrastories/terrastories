@@ -15,6 +15,7 @@ default: &default
 
   extensions:
     - .js
+    - .jsx
     - .sass
     - .scss
     - .css
