@@ -1,3 +1,4 @@
+.env
 *.rbc
 capybara-*.html
 .rspec
@@ -5,6 +6,7 @@ capybara-*.html
 /tmp
 /db/*.sqlite3
 /db/*.sqlite3-journal
+/media
 /public/system
 /coverage/
 /spec/tmp

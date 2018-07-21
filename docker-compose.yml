@@ -10,24 +10,17 @@ services:
       - ./data:/bitnami/mariadb/data
 
   nginx:
-    # This command is a bit of hack for getting the local NGINX_PORT value
-    # into ngingx.conf. It uses sed for string replacement, which is altered
-    # by docker-compose first substituting the shell var $NGINX_PORT into the
-    # substitution string. Then, the resulting subsitution from the template
-    # file is copied to the real nginx.conf file before the normal nginx start
-    # command is given.
-    command: /bin/bash -c "sed s@NGINX_PORT@$NGINX_PORT@ /etc/nginx/nginx-template.conf > /etc/nginx/nginx.conf && nginx -g 'daemon off;'"
     depends_on:
       - rails
       - tileserver
     environment:
-      - NGINX_PORT=$NGINX_PORT
+      - NGINX_PORT=${NGINX_PORT:-3000}
     image: 'nginx:latest'
     networks:
       - tilenet
       - railroad
     ports:
-      - $NGINX_PORT:80
+      - ${NGINX_PORT:-3000}:80
     volumes:
       - ./nginx:/etc/nginx
 
