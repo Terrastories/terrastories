@@ -31,7 +31,7 @@ Once you've submitted a pull request, a core contributor will work with you on d
 Try to keep your PRs limited to one particular issue and don't make changes that are out of scope for that issue. If you notice something that needs attention but is out-of-scope, put a TODO, FIXME, or NOTE comment above it.
 
 ## Technical Spike / Investigation Issues
-These issues will have an `investigation` label attached to them. They are unique in that we do not have the full details on how to solve the actual issue. These are issues that require some investigation and digging into the technology to figure out the solution. What we expect to come out of these issues are a quick write up about what you were able to find in your research of the issue. This will help inform and create new issues that are better defined and have specific steps to solve the original problem. 
+These issues will have an `investigation` label attached to them. They are unique in that we do not have the full details on how to solve the actual issue. These are issues that require some investigation and digging into the technology to figure out the solution. What we expect to come out of these issues is a quick write up about what you were able to find in your research. This will help inform and create new issues that are better defined and have specific steps to solve the original problem. 
 
 ## Work In Progress Pull Requests
 Sometimes we want to get a PR up there and going so that other people can review it or provide feedback, but maybe it's incomplete. This is OK, but if you do it, please tag your PR with an  `in-progress`  label so that we know not to review / merge it.
