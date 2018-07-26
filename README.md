@@ -2,6 +2,19 @@
 
 **TerraStories** is an application designed to help communities map and access their own place-based storytelling. The project to develop this application was initiated by the [**Amazon Conservation Team**](http://amazonteam.org) (ACT), an organization who partners with indigenous and other traditional communities in the Amazon rainforest to help them protect their ancestral lands and traditional culture. The application is developed to be entirely open source and offline-compatible, so that it can be used by communities in the most remote locations of the world. It is a Dockerized Rails App that uses [**Mapbox**](https://mapbox.com) to help users locate content geographically on an interactive map. A team is attempting to finish this app at **Ruby for Good 2018**: http://rubyforgood.org/2018
 
+## Table of Contents
+1. [How To Contribute](#contributing)
+
+2. [Prerequisites](#prerequisites)
+
+3. [Setup](#setup)
+
+4. [Building Map Tiles](#build-the-map-tiles)
+
+5. [Running the server](#make-it-go)
+
+6. [Updating the tileserver map](#updating-the-tileserver-map)
+
 ## Contributing
 We would love for you to contribute to terrastories! We welcome all types of contributions, but any pull requests that address open issues, have test coverage, or are tagged with the next milestone will be prioritized. Please visit our [Contributing Guidelines](CONTRIBUTING.md) for more information.
 
