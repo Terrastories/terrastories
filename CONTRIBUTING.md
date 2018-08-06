@@ -5,7 +5,7 @@ We ♥ contributors! By participating in this project, you agree to abide by the
 
 ## How To Contribute To Terrastories
 **Step 1: Find an issue to work on**
-Visit our [issues page](https://github.com/rubyforgood/terrastories/network/members) and find an issue you'd like to work on that hasn't already been claimed (It has been claimed if you see someone else's picture on it and it is assigned to someone else). Assign yourself to that issue to claim it.
+Visit our [issues page](https://github.com/rubyforgood/terrastories/network/members) and find an issue you'd like to work on that hasn't already been claimed (It has been claimed if you see someone else's picture on it and it is assigned to someone else, or if you see someone's comment on the issue page saying they are claiming it). Comment on the issue that you have claimed it and will be working on it. An admin will add you as the assignee. 
 
 **Step 2: Fork the repo**
 Click the "fork" button in the upper right of the Github repo page. A fork is a copy of the repository that allows you to freely explore & experiment without changing the original project. You can learn more about forking a repo in [this article](https://help.github.com/articles/fork-a-repo/).
@@ -29,6 +29,9 @@ Once you've submitted a pull request, a core contributor will work with you on d
 
 ## Stay Scoped
 Try to keep your PRs limited to one particular issue and don't make changes that are out of scope for that issue. If you notice something that needs attention but is out-of-scope, put a TODO, FIXME, or NOTE comment above it.
+
+## Technical Spike / Investigation Issues
+These issues will have an `investigation` label attached to them. They are unique in that we do not have the full details on how to solve the actual issue. These are issues that require some investigation and digging into the technology to figure out the solution. What we expect to come out of these issues is a quick write up about what you were able to find in your research. This will help inform and create new issues that are better defined and have specific steps to solve the original problem. 
 
 ## Work In Progress Pull Requests
 Sometimes we want to get a PR up there and going so that other people can review it or provide feedback, but maybe it's incomplete. This is OK, but if you do it, please tag your PR with an  `in-progress`  label so that we know not to review / merge it.
