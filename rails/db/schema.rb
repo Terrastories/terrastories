@@ -33,6 +33,16 @@ ActiveRecord::Schema.define(version: 2018_06_10_154604) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "media", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|		
+    t.bigint "story_id"		
+    t.string "media_type"		
+    t.string "description"		
+    t.string "name"		
+    t.datetime "created_at", null: false		
+    t.datetime "updated_at", null: false		
+    t.index ["story_id"], name: "index_media_on_story_id"		
+  end
+
   create_table "points", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.decimal "lng", precision: 15, scale: 13
