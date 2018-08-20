@@ -31,6 +31,7 @@ gem 'pundit'
 
 # Enable Webpack for javascript application code
 gem 'webpacker', '~> 3.5'
+gem 'react-rails'
 
 # plyr-rails gem is the integration of plyr.io javascript library for your Rails 4 and Rails 5 application.
 gem 'plyr-rails'

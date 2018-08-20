@@ -1,7 +1,6 @@
 <div id="map" class="ts-MainMap"></div>
 <div class="ts-Overlay">
   <h1>Is this a …map?</h1>
-  <div id="react-root" />
   <% if current_user %>
     <p><%= current_user.email %></p>
     <p><%= link_to "log out", destroy_user_session_path, method: :delete %></p>
@@ -10,6 +9,6 @@
   <% end %>
 </div>
 
-<%= render 'card' %>
+<%= render(partial: "home/stories.json", locals: {stories: stories}) %>
 
-<%= javascript_pack_tag 'application' %>
+<%= react_component('Card', render(partial: "home/stories.json")) %>
