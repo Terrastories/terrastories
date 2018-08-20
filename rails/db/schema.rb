@@ -113,7 +113,8 @@ ActiveRecord::Schema.define(version: 2018_06_10_154604) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
-
+  
+  add_foreign_key "media", "stories"
   add_foreign_key "stories", "points"
   add_foreign_key "stories", "speakers"
 end
