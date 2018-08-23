@@ -1,0 +1,16 @@
+.mapboxgl-popup-content {
+  h1, h2 {
+    padding: 0;
+    margin: 0;
+  }
+}
+.mapboxgl-popup-content h1 {
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 1.25;
+}
+.mapboxgl-popup-content h2 {
+  font-weight: 400;
+  font-size: 0.8rem;
+  line-height: 1.55;
+}
