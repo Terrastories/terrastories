@@ -25,8 +25,9 @@ services:
       - ./nginx:/etc/nginx
 
   rails:
-    tty: true # Enables debugging capabilities when attached to this container.
-    image: 'bitnami/rails:latest'
+    build:
+      context: ./rails
+    image: terrastories/rails
     labels:
       kompose.service.type: nodeport
     environment:
@@ -36,6 +37,7 @@ services:
       - mariadb
     networks:
       - railroad
+    tty: true # Enables debugging capabilities when attached to this container.
     volumes:
       - ./media:/media:rw
       - ./rails:/app
