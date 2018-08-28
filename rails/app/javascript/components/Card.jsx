@@ -6,7 +6,7 @@ class Card extends PureComponent {
     return (
       <div className="card">
         <div className="logo">
-          <img src={this.props.logoImageSrc} alt="Terrstories" />
+          <img src='assets/logocombo.svg' alt="Terrastories" />
         </div>
         <div className="intro">
           <h1>Introduction</h1>

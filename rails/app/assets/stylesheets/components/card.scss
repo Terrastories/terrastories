@@ -2,7 +2,6 @@
   width: 30vw;
   height: 85vh;
   border-radius: 20px;
-
   position: absolute;
   top: 7vh;
   left: 5vw;
@@ -14,14 +13,21 @@
   > * { padding: 20px; }
 
   .logo {
-    width: 80%;
+    width: 100%;
     margin: auto;
     padding-bottom: 10px;
+    height: 2.25rem;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    background: white;
+    img {
+      width: 80%;
+    }
   }
 
   .intro {
     padding: 20px 40px;
-
     background-color: #0f566b;
     color: white;
 
@@ -40,6 +46,9 @@
   nav {
     background-color: #1a8b9a;
     color: white;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 4.15rem;
 
     ul {
       list-style-type: none;
