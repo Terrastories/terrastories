@@ -13,7 +13,7 @@ class HomeController < ApplicationController
   end
 
   helper_method def stories
-    Story.all
+    Story.all.includes(:point, :media_attachments)
     # [Story.new(title: 'Story Title', desc: 'Description')] * 4
   end
 end

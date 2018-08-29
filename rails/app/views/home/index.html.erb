@@ -1,4 +1,4 @@
-<div id='map' class="ts-MainMap"></div>
+<div id="map" class="ts-MainMap"></div>
 <div class="ts-Overlay">
   <h1><%= t('map', locale: :srm)%></h1>
   <!-- to display the available languages uncomment line below -->
@@ -12,4 +12,6 @@
   <% end %>
 </div>
 
-<%= render 'card' %>
+<%= render(partial: "home/stories.json", locals: {stories: stories}) %>
+
+<%= react_component('Card', render(partial: "home/stories.json")) %>

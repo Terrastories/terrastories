@@ -1,4 +1,4 @@
-$(document).ready(function() {
+window.addEventListener('load', function () {
   // @NOTE: MAKE SURE ARRAY IS [LONGITUDE, LATITUDE]
   var bounds = [
     [-60.80409032, 0.3332811], //southwest
