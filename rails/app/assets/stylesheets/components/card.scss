@@ -4,7 +4,6 @@ $el-shadow: 0 1px 4px #bbb;
   position: absolute;
   display: flex;
   flex-direction: column;
-  top: 0;
   width: 25vw;
   height: 100%;
   background: white;
@@ -16,9 +15,11 @@ $el-shadow: 0 1px 4px #bbb;
   box-shadow: 3px 2px 3px transparentize(#666666, 0.9);
   transition: all 0.20s ease-in-out;
   &.onCanvas {
+    top: 0;
     left: 0;
   }
   &.offCanvas {
+    top: 0;
     left: -25vw;
   }
   .tab {
@@ -175,6 +176,30 @@ $el-shadow: 0 1px 4px #bbb;
         margin-top: 1rem;
         @include ui-font;
       }
+    }
+  }
+}
+
+// Responsive patches
+
+@include for-phone-only {
+
+  .card {
+    width: 100vw;
+    &.onCanvas {
+      top: 0;
+      left: -100vw;
+    }
+
+    &.offCanvas {
+      top: 0;
+      left: 0;
+    }
+
+    .tab {
+      background: orange;
+      top: 0;
+      border-radius: 0;
     }
   }
 }
