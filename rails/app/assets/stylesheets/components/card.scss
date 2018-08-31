@@ -14,6 +14,9 @@ $el-shadow: 0 1px 4px #bbb;
   padding: 0.5rem;
   box-shadow: 3px 2px 3px transparentize(#666666, 0.9);
   transition: all 0.20s ease-in-out;
+  .closeMe {
+    display: none;
+  }
   &.onCanvas {
     top: 0;
     left: 0;
@@ -194,6 +197,17 @@ $el-shadow: 0 1px 4px #bbb;
     &.offCanvas {
       top: 0;
       left: 0;
+    }
+
+    .closeMe {
+      display: block;
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      color: #444;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 3rem;
+      cursor: pointer;
     }
 
     .tab {

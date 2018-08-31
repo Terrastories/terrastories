@@ -19,6 +19,9 @@ class Card extends PureComponent {
     return (
         <div className={this.state.isToggleOn ? 'card onCanvas' : 'card offCanvas'} >
         <div className="tab" onClick={this.handleTray.bind('card offCanvas')}>&#9658;</div>
+        <div className="closeMe" onClick={this.handleTray.bind('card offCanvas')}>
+        &times;
+        </div>
         <div className="card--logo">
           <img src="assets/logocombo.svg" alt="Terrastories" />
         </div>
