@@ -9,7 +9,7 @@ class IntroPopup extends PureComponent {
     this.handleIntroPopup = this.handleIntroPopup.bind(this);
   }
 
-  handleIntroPopup(){
+  handleIntroPopup = () => {
     this.setState(prevState =>({
       isPopped: !prevState.isPopped
     }));
@@ -23,7 +23,7 @@ class IntroPopup extends PureComponent {
         <p>Terrastories are audiovisual recordings of place-based storytelling. This offline-compatible application enables local communities to locate and map their own oral storytelling traditions about places of significant meaning or value to them.</p>
 
         <div className="intro-card--actions">
-          <span class="count" onClick={this.handleIntroPopup.bind('intro-card isHidden')}>Close</span>
+          <span className="count" onClick={this.handleIntroPopup.bind('intro-card isHidden')}>Close</span>
         </div>
       </div>
     );
