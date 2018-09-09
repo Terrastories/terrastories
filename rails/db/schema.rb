@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_10_154604) do
+ActiveRecord::Schema.define(version: 2018_09_09_234528) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 2018_06_10_154604) do
     t.datetime "updated_at", null: false
     t.bigint "speaker_id"
     t.bigint "point_id"
+    t.string "permission_level"
     t.index ["point_id"], name: "index_stories_on_point_id"
     t.index ["speaker_id"], name: "index_stories_on_speaker_id"
   end
@@ -110,10 +111,10 @@ ActiveRecord::Schema.define(version: 2018_06_10_154604) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "role"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
-
   add_foreign_key "media", "stories"
   add_foreign_key "stories", "points"
   add_foreign_key "stories", "speakers"
