@@ -40,7 +40,6 @@ services:
     tty: true # Enables debugging capabilities when attached to this container.
     volumes:
       - ./media:/media:rw
-      - ./rails:/app
       - ./rails/nginx:/etc/nginx
 
   tilebuilder:
@@ -77,3 +76,4 @@ networks:
 
 volumes:
   mbtiles:
+

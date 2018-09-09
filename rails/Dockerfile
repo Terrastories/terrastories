@@ -1,4 +1,5 @@
 FROM bitnami/rails:latest
+ENV BUNDLE_PATH /gems
 RUN sudo apt-get update
 RUN sudo apt-get install -y apt-transport-https
 RUN curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | \
@@ -8,3 +9,12 @@ RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | \
 RUN curl -sL https://deb.nodesource.com/setup_8.x | \
   sudo -E bash -
 RUN sudo apt-get install -y nodejs yarn
+RUN sudo mkdir /gems
+
+ADD . /app
+RUN sudo chmod -R a+w /app
+
+WORKDIR /app
+RUN sudo yarn install
+RUN bundle install
+
