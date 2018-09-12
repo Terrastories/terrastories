@@ -13,12 +13,12 @@ RUN sudo mkdir /gems
 RUN sudo chmod -R a+w /gems
 
 RUN sudo mkdir /node_modules
-RUN sudo chmod -R a+w /node_modules
+RUN sudo chmod a+w /node_modules
 
 ADD . /app
 RUN sudo chmod -R a+w /app
 
 WORKDIR /app
 RUN bundle install
-RUN yarn --modules-folder /node_modules install
+RUN rails yarn:install
 
