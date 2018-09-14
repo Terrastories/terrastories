@@ -1,12 +1,11 @@
 import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
 
 class IntroPopup extends PureComponent {
 
   constructor(props){
     super(props);
     this.state = { isPopped: true }
-    this.handleIntroPopup = this.handleIntroPopup.bind(this);
+    this.handleIntroPopup = this.handleIntroPopup;
   }
 
   handleIntroPopup = () => {
