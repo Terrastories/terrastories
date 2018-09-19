@@ -7,4 +7,7 @@ json.stories stories do |story|
     json.url url_for(media)
     json.blob media.blob
   end
+  json.speaker do |speaker|
+    json.extract! story.speaker, :name, :picture_url
+  end
 end
