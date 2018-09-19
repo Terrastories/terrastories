@@ -1,0 +1,52 @@
+
+.intro-card {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 2rem;
+  background: lighten(#0f566b, 10%);
+  width: 20rem;
+  color: white;
+  padding: 1rem;
+  transition: all 0.15s ease-in-out;
+
+  @include for-phone-only {
+    display: none;
+  }
+
+  &.isShown {
+    bottom: 0;
+  }
+  &.isHidden {
+    display: none;
+    bottom: -999px;
+  }
+
+  h2 {
+    flex: 1;
+    font-size: 1.25rem;
+    margin: 0 0 0.5rem;
+    background: #0f566b;
+    padding: 1rem;
+    margin: -1rem -1rem 1rem -1rem;
+  }
+  h3 {
+    flex: 1;
+    font-size: 1rem;
+    margin: 0 0 0.75rem;
+  }
+  p {
+    flex: 3;
+    font-size: 0.8rem;
+    line-height: 1.45;
+    color: transparentize(white, 0.3);
+  }
+
+  &--actions {
+    flex: 1;
+    display: block;
+    align-self: flex-end;
+    margin-top: 0.5rem;
+    cursor: pointer;
+  }
+}

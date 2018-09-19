@@ -11,6 +11,7 @@ window.addEventListener('load', function () {
       zoom: 7.6, // starting zoom
       maxBounds: bounds
   });
+  map.addControl(new mapboxgl.NavigationControl());
   map.on('load', function () {
     Rails.ajax({
       url: '/points.json',

@@ -13,13 +13,11 @@ class StoryList extends PureComponent {
         <ul>
           {this.props.stories.map(story => {
             return (
-              <li
-                className={`story storypoint${story.point && story.point.id}`}
-              >
+              <li className={`story storypoint${story.point && story.point.id}`}>
                 <div className="thumbnail placeholder" />
                 <div className="container">
-                  <strong className="title">{story.title}</strong>
-                  <div className="description">{story.desc}</div>
+                  <h6 className="title">{story.title}</h6>
+                  <p>{story.desc}</p>
                   {story.media &&
                     story.media.map(file => <StoryMedia file={file} />)}
                 </div>

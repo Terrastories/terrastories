@@ -1,13 +1,13 @@
-.ts-Overlay {
-  color: white;
-  font-family: sans-serif;
-  position: relative;
-  text-align: right;
-}
 .ts-MainMap {
+  position: fixed;
   height: 100%;
-  left: 0;
-  position: absolute;
-  top: 0;
   width: 100%;
+  left: 0;
+  top: 0;
 }
+
+html {
+  padding: 0;
+  margin: 0;
+}
+
