@@ -1,29 +1,36 @@
-FROM bitnami/rails:latest
-ENV BUNDLE_PATH /gems
-RUN sudo apt-get update
-RUN sudo apt-get install -y apt-transport-https
-RUN curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | \
-  sudo apt-key add -
-RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | \
-  sudo tee /etc/apt/sources.list.d/yarn.list
-RUN curl -sL https://deb.nodesource.com/setup_8.x | \
-  sudo -E bash -
-RUN sudo apt-get install -y nodejs yarn
+FROM ruby:2.5
+RUN apt-get update
+RUN apt-get install -y apt-transport-https
+RUN curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 
-RUN sudo mkdir /gems
-RUN sudo chmod -R a+w /gems
+RUN apt-get install -y build-essential libpq-dev nodejs yarn
 
-RUN sudo mkdir /node_modules
-RUN sudo chmod a+w /node_modules
+#RUN sudo mkdir /gems
+#RUN sudo chmod -R a+w /gems
 
-RUN sudo chmod -R a+w /app
+#RUN sudo mkdir /node_modules
+#RUN sudo chmod a+w /node_modules
 
+#RUN sudo chmod -R a+w /app
+
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod a+x entrypoint.sh
+
+ENV NODE_ENV=development
+ENV RAILS_ENV=development
+
+RUN mkdir /app
 WORKDIR /app
-COPY Gemfile Gemfile.lock package.json .yarnrc yarn.lock ./
+
+COPY Gemfile Gemfile.lock package.json yarn.lock ./
 RUN bundle install
 RUN yarn install
-RUN mkdir -p $(yarn bin)
-RUN ln -fs /node_modules/webpacker/bin/webpack.js $(yarn bin)/webpack
+RUN rails new .
+RUN mv node_modules /node_modules
+RUN chmod a+r /node_modules
+RUN mv yarn.lock /yarn.lock
 
-COPY . .
+CMD /entrypoint.sh
 
