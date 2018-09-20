@@ -5,6 +5,5 @@ class Story < ApplicationRecord
 
   acts_as_taggable
 
-  PERMISSION_LEVEL = ['anonymous', 'user', 'editor']
-  validates_inclusion_of :permission_level, :in => PERMISSION_LEVEL
+  enum permission_level: [:anonymous, :user_only, :editor_only]
 end
