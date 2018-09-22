@@ -6,8 +6,10 @@ cp -rf /node_modules /app/node_modules
 cp -rf /yarn.lock /app/yarn.lock
 
 echo "Removing artifacts from previous run"
-rm -rf /app/tmp
-rm -rf /app/log
+rm -rf /app/log/*
+rm -rf /app/tmp/*
+touch /app/log/.keep
+touch /app/tmp/.keep
 
 if echo "ActiveRecord::Base.logger = nil; ActiveRecord::Base.connection.tables" | bundle exec rails console | grep schema_migrations 2>&1 > /dev/null \
 ; then

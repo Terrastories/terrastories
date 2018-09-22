@@ -1,13 +1,13 @@
 version: "3.2"
 services:
   mariadb:
-    image: 'bitnami/mariadb:latest'
+    image: 'mariadb:latest'
     environment:
-      - ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     networks:
       - railroad
     volumes:
-      - ./data:/bitnami/mariadb/data
+      - ./data:/mariadb/data
 
   nginx:
     depends_on:
