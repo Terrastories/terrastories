@@ -7,14 +7,6 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 
 RUN apt-get install -y build-essential libpq-dev nodejs yarn
 
-#RUN sudo mkdir /gems
-#RUN sudo chmod -R a+w /gems
-
-#RUN sudo mkdir /node_modules
-#RUN sudo chmod a+w /node_modules
-
-#RUN sudo chmod -R a+w /app
-
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod a+x entrypoint.sh
 
@@ -27,7 +19,7 @@ WORKDIR /app
 COPY Gemfile Gemfile.lock package.json yarn.lock ./
 RUN bundle install
 RUN yarn install
-RUN rails new .
+RUN bundle exec rails new .
 RUN mv node_modules /node_modules
 RUN chmod a+r /node_modules
 RUN mv yarn.lock /yarn.lock

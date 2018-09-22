@@ -1,20 +1,19 @@
-printf "\nRemoving existing yarn modules from host ..."
+echo "Removing existing yarn modules from host"
 rm -rf /app/node_modules /app/yarn.lock
-printf "done\n"
-printf "Copying container yarn modules ..."
+echo "Copying container yarn modules"
 mv /node_modules /app/node_modules
+echo "Removing artifacts from previous run"
 mv /yarn.lock /app/yarn.lock
-printf "done\n"
 rm -f /app/tmp/pids/server.pid
 
 if echo "ActiveRecord::Base.logger = nil; ActiveRecord::Base.connection.tables" | bundle exec rails console | grep schema_migrations 2>&1 > /dev/null \
 ; then
-  printf "Running pending migrations\n"
+  echo "Running pending migrations"
   bundle exec rails db:migrate
 else
-  printf "Performing first-time setup\n"
+  echo "Performing first-time setup"
   bundle exec rails db:setup
 fi
 
-printf "Starting server\n"
+echo "Starting server"
 bundle exec rails server -p 3000 -b '0.0.0.0'
