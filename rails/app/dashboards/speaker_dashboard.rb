@@ -34,7 +34,6 @@ class SpeakerDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :id,
     :name,
-    :photo,
     :region,
     :community,
     :stories,
@@ -47,7 +46,6 @@ class SpeakerDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :name,
-    :photo,
     :region,
     :community,
     :stories
