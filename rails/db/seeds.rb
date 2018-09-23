@@ -41,3 +41,7 @@ Story.create(title: "Fa di Kwinti nengeb bi feti ku Matawai sembe",
              speaker: Speaker.first,
              point: Point.fourth,
              permission_level: 1)
+
+User.create(email: 'admin@terrastories.com',
+            password: 'password',
+            role: 1)
