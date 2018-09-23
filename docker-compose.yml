@@ -7,7 +7,7 @@ services:
     networks:
       - railroad
     volumes:
-      - ./data:/mariadb/data
+      - ./data:/var/lib/mysql
 
   nginx:
     depends_on:

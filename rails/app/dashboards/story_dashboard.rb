@@ -62,4 +62,8 @@ class StoryDashboard < Administrate::BaseDashboard
   # def display_resource(story)
   #   "Story ##{story.id}"
   # end
+
+  def permitted_attributes
+    super + [media: []]
+  end
 end
