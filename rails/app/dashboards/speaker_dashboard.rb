@@ -9,6 +9,7 @@ class SpeakerDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
+    media: Field::ActiveStorage,
     name: Field::String,
     region: Field::String,
     community: Field::String,
@@ -24,6 +25,7 @@ class SpeakerDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :id,
+    :media,
     :name,
     :region,
     :community
@@ -33,6 +35,7 @@ class SpeakerDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :id,
+    :media,
     :name,
     :region,
     :community,
@@ -45,6 +48,7 @@ class SpeakerDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
+    :media,
     :name,
     :region,
     :community,
@@ -57,4 +61,8 @@ class SpeakerDashboard < Administrate::BaseDashboard
   # def display_resource(speaker)
   #   "Speaker ##{speaker.id}"
   # end
+
+  def permitted_attributes
+    super + [media: [], permission_level: [:anonymous, :user_only, :editor_only]]
+  end
 end

@@ -13,9 +13,8 @@ class StoryDashboard < Administrate::BaseDashboard
     desc: Field::Text,
     speaker: Field::BelongsTo,
     point: Field::BelongsTo,
-    permission_level: EnumField.with_options(
-      choices: [:anonymous, :user_only, :editor_only]
-    ),
+    media: Field::ActiveStorage,
+    permission_level: EnumField,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -31,6 +30,7 @@ class StoryDashboard < Administrate::BaseDashboard
     :desc,
     :speaker,
     :point,
+    :media,
     :permission_level
   ].freeze
 
@@ -42,6 +42,7 @@ class StoryDashboard < Administrate::BaseDashboard
     :desc,
     :speaker,
     :point,
+    :media,
     :permission_level,
     :created_at,
     :updated_at,
@@ -55,6 +56,7 @@ class StoryDashboard < Administrate::BaseDashboard
     :desc,
     :speaker,
     :point,
+    :media,
     :permission_level
   ].freeze
 
@@ -66,6 +68,6 @@ class StoryDashboard < Administrate::BaseDashboard
   # end
 
   def permitted_attributes
-    super + [media: []]
+    super + [media: [], permission_level: [:anonymous, :user_only, :editor_only]]
   end
 end
