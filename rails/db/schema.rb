@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 2018_09_09_234528) do
     t.datetime "updated_at", null: false
     t.bigint "speaker_id"
     t.bigint "point_id"
-    t.string "permission_level"
+    t.integer "permission_level"
     t.index ["point_id"], name: "index_stories_on_point_id"
     t.index ["speaker_id"], name: "index_stories_on_speaker_id"
   end
