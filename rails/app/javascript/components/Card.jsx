@@ -1,7 +1,7 @@
-import React, { PureComponent } from "react";
+import React, { Component } from "react";
 import StoryList from "./StoryList";
 
-class Card extends PureComponent {
+class Card extends Component {
 
   constructor(props){
     super(props);
@@ -39,7 +39,7 @@ class Card extends PureComponent {
           </ul>
         </div>
 
-        <StoryList stories={this.props.stories} />
+        <StoryList stories={this.props.stories} onStoryClick={this.props.onCardClick}/>
 
         <div className="card--tasks">
           <ul>
