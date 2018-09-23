@@ -28,6 +28,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'pundit'
 gem 'administrate'
+gem 'administrate-field-active_storage'
 
 # Enable Webpack for javascript application code
 gem 'webpacker', '~> 3.5'

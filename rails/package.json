@@ -7,7 +7,8 @@
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
-    "react_ujs": "^2.4.4"
+    "react_ujs": "^2.4.4",
+    "webpack": "^3.0.0"
   },
   "devDependencies": {
     "webpack-dev-server": "2.11.2"

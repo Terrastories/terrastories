@@ -9,8 +9,7 @@ class SpeakerDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     stories: Field::HasMany,
-    media_attachment: Field::HasOne,
-    media_blob: Field::HasOne,
+    media: Field::ActiveStorage,
     id: Field::Number,
     name: Field::String,
     photo: Field::String,
@@ -27,8 +26,7 @@ class SpeakerDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :stories,
-    :media_attachment,
-    :media_blob,
+    :media,
     :id,
   ].freeze
 
@@ -36,8 +34,7 @@ class SpeakerDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :stories,
-    :media_attachment,
-    :media_blob,
+    :media,
     :id,
     :name,
     :photo,
@@ -52,8 +49,7 @@ class SpeakerDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :stories,
-    :media_attachment,
-    :media_blob,
+    :media,
     :name,
     :photo,
     :region,

@@ -10,12 +10,8 @@ class StoryDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     point: Field::BelongsTo,
     speaker: Field::BelongsTo,
-    media_attachments: Field::HasMany.with_options(class_name: "ActiveStorage::Attachment"),
-    media_blobs: Field::HasMany.with_options(class_name: "ActiveStorage::Blob"),
-    taggings: Field::HasMany.with_options(class_name: "::ActsAsTaggableOn::Tagging"),
-    base_tags: Field::HasMany.with_options(class_name: "::ActsAsTaggableOn::Tag"),
-    tag_taggings: Field::HasMany.with_options(class_name: "ActsAsTaggableOn::Tagging"),
-    tags: Field::HasMany.with_options(class_name: "ActsAsTaggableOn::Tag"),
+    media: Field::ActiveStorage,
+    tag_list: Field::String,
     id: Field::Number,
     title: Field::String,
     desc: Field::Text,
@@ -31,8 +27,7 @@ class StoryDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :point,
     :speaker,
-    :media_attachments,
-    :media_blobs,
+    :media,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -40,12 +35,8 @@ class StoryDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :point,
     :speaker,
-    :media_attachments,
-    :media_blobs,
-    :taggings,
-    :base_tags,
-    :tag_taggings,
-    :tags,
+    :media,
+    :tag_list,
     :id,
     :title,
     :desc,
@@ -59,12 +50,8 @@ class StoryDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :point,
     :speaker,
-    :media_attachments,
-    :media_blobs,
-    :taggings,
-    :base_tags,
-    :tag_taggings,
-    :tags,
+    :media,
+    :tag_list,
     :title,
     :desc,
   ].freeze
@@ -75,4 +62,8 @@ class StoryDashboard < Administrate::BaseDashboard
   # def display_resource(story)
   #   "Story ##{story.id}"
   # end
+
+  def permitted_attributes
+    super + [media: []]
+  end
 end

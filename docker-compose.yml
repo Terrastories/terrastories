@@ -1,13 +1,13 @@
 version: "3.2"
 services:
   mariadb:
-    image: 'bitnami/mariadb:latest'
+    image: 'mariadb:latest'
     environment:
-      - ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     networks:
       - railroad
     volumes:
-      - ./data:/bitnami/mariadb/data
+      - ./data:/var/lib/mysql
 
   nginx:
     depends_on:
@@ -15,6 +15,8 @@ services:
       - tileserver
     environment:
       - NGINX_PORT=${NGINX_PORT:-3000}
+      - NODE_ENV=development
+      - RAILS_ENV=development
     image: 'nginx:latest'
     networks:
       - tilenet
@@ -41,7 +43,7 @@ services:
     volumes:
       - ./media:/media:rw
       - ./rails:/app
-      - ./rails/nginx:/etc/nginx
+      - ./rails/nginx:/etc/nginx:rw
 
   tilebuilder:
     build:
@@ -77,3 +79,4 @@ networks:
 
 volumes:
   mbtiles:
+
