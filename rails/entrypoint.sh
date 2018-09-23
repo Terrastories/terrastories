@@ -19,7 +19,13 @@ if echo "ActiveRecord::Base.logger = nil; ActiveRecord::Base.connection.tables" 
 else
   echo "Performing first-time setup"
   bundle exec rails db:setup
+
 fi
+
+
+echo "Running gem updates tasks"
+bundle exec rails acts_as_taggable_on_engine:install:migrations
+bundle exec rails webpacker:compile
 
 echo "Starting server"
 bundle exec rails server -p 3000 -b '0.0.0.0'

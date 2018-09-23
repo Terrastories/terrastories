@@ -57,6 +57,9 @@ GEM
       momentjs-rails (~> 2.8)
       sass-rails (~> 5.0)
       selectize-rails (~> 0.6)
+    administrate-field-active_storage (0.1.2)
+      administrate (>= 0.2.0.rc1)
+      rails (>= 5.2)
     archive-zip (0.11.0)
       io-like (~> 0.3.0)
     arel (9.0.0)
@@ -124,6 +127,7 @@ GEM
       activerecord
       kaminari-core (= 1.1.1)
     kaminari-core (1.1.1)
+    libv8 (6.7.288.46.1)
     libv8 (6.7.288.46.1-x86_64-linux)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -285,6 +289,7 @@ PLATFORMS
 DEPENDENCIES
   acts-as-taggable-on (~> 5.0)
   administrate
+  administrate-field-active_storage
   bootsnap (>= 1.1.0)
   byebug
   capybara (>= 2.15, < 4.0)
