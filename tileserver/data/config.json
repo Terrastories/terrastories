@@ -11,7 +11,7 @@
   },
   "styles": {
     "basic": {
-      "style": "styles/rudo.json",
+      "style": "styles/style.json",
       "tilejson": {
         "type": "overlay"
       }
