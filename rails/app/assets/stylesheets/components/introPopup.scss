@@ -5,6 +5,8 @@
   position: absolute;
   right: 2rem;
   background: lighten(#0f566b, 10%);
+	border-top-left-radius: 25px;
+	border-top-right-radius: 25px;
   width: 20rem;
   color: white;
   padding: 1rem;
@@ -27,6 +29,8 @@
     font-size: 1.25rem;
     margin: 0 0 0.5rem;
     background: #0f566b;
+	border-top-left-radius: 25px;
+	border-top-right-radius: 25px;
     padding: 1rem;
     margin: -1rem -1rem 1rem -1rem;
   }
@@ -48,5 +52,6 @@
     align-self: flex-end;
     margin-top: 0.5rem;
     cursor: pointer;
+	color: #33aa8b;
   }
 }

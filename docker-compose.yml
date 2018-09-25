@@ -7,7 +7,7 @@ services:
     networks:
       - railroad
     volumes:
-      - ./data:/var/lib/mysql
+      - dbdata:/var/lib/mysql
 
   nginx:
     depends_on:
@@ -79,4 +79,5 @@ networks:
 
 volumes:
   mbtiles:
+  dbdata:
 

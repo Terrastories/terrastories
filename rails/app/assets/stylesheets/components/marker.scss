@@ -1,14 +1,7 @@
 .marker {
   background-size: cover;
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
   cursor: pointer;
-
-  &:nth-of-type(odd) {
-    background-image: image-url('marker1.svg');
-  }
-
-  &:nth-of-type(even) {
-    background-image: image-url('marker2.svg');
-  }
+  background-image: image-url('marker1.svg');
 }
