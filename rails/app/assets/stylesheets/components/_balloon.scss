@@ -1,17 +1,25 @@
 .mapboxgl-popup-content {
-  h1, h2 {
-    padding: 0;
+  h1, h2, h3, h4, h5, p, img {
+    padding: 0.5rem;
     margin: 0;
   }
-  padding: 1rem;
+  padding: 0rem;
 }
 .mapboxgl-popup-content h1 {
   font-weight: 400;
   font-size: 1.2rem;
   line-height: 1.25;
+  background-color: #09697e; /* this should inherit the color of the marker associated with the type of place */
+  color: white;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px; 
 }
 .mapboxgl-popup-content h2 {
   font-weight: 400;
   font-size: 0.8rem;
   line-height: 1.55;
+}
+
+.mapboxgl-popup-close-button { 
+  display: none; 
 }
