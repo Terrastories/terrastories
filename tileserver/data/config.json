@@ -1,7 +1,8 @@
 {
   "options": {
     "paths": {
-      "fonts": "fonts"
+      "fonts": "fonts",
+	  "sprites": "sprites"
     }
   },
   "data": {
@@ -11,7 +12,7 @@
   },
   "styles": {
     "basic": {
-      "style": "styles/rudo.json",
+      "style": "styles/style.json",
       "tilejson": {
         "type": "overlay"
       }

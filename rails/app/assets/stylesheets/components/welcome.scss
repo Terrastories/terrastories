@@ -3,11 +3,12 @@
   background-size: cover;
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-
+  
   .welcome-card {
-    background: rgb(255,255,255);
+    background: rgba(255,255,255,0.5);
     width: 25%;
     padding: 2em;
     border-radius: 5%;
@@ -17,6 +18,17 @@
       width: 80vw;
     }
   }
+  
+  .logo { 
+	width: 25%;
+	margin-top: 50px;
+	
+    @media screen and (max-width: 600px) {
+      width: 80vw;
+	}
+  }
+  
+  .logo img { width: 100%; }
 
   h1 {
     border-top: 3px solid #1a8b9a;
@@ -43,7 +55,7 @@
       display: inline-block;
       text-decoration: none;
       color: rgb(255,255,255);
-      padding: 1em 3em;
+      padding: 1em 1em;
       width: 74%;
     }
 
