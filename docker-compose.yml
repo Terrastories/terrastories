@@ -27,9 +27,10 @@ services:
       - ${NGINX_PORT:-3000}:80
     volumes:
       - ./nginx:/etc/nginx
+      - ./nginx/static:/www/static
 
   rails:
-    restart: always    
+    restart: always
     build:
       context: ./rails
     image: terrastories/rails
@@ -84,4 +85,3 @@ networks:
 volumes:
   mbtiles:
   dbdata:
-
