@@ -146,11 +146,11 @@ $el-shadow: 0 1px 4px #bbb;
 
 .stories {
   flex: 0 5 auto;
-  overflow: hidden;
+  overflow: auto;
 
   ul {
     margin: 0 0 0.5rem;
-    max-height: 460px;
+    max-height: inherit;
     overflow-y: scroll;
     overflow-x: hidden;
     padding: 0 2px;
