@@ -1,0 +1,45 @@
+#!/bin/bash
+
+do_uninstall() {
+  service stop terrastories
+  rm /etc/init/terrastories.conf
+  rm /bin/terrastories-start
+  rm /bin/terrastories-update
+  rm -rf /opt/terrastories
+}
+
+prompt_for_uninstall() {
+  while true; do
+    read -p "This is not a typical development command. It will uninstall \
+terrastories and remove all its related files from a deployed environment.\
+Are you sure you want to proceed? y/N " yn
+    case $yn in
+      [Yy]* ) do_uninstall; break;;
+      * ) exit;;
+    esac
+  done
+}
+
+main() {
+  force_yes=0
+
+  while getopts ":y" opt; do
+    case $opt in
+      y)
+        force_yes=1
+        ;;
+      \?)
+        echo "Invalid option: -$OPTARG" >&2
+        exit 1
+        ;;
+    esac
+  done
+
+  if [ $force_yes == 1 ]; then
+    do_uninstall;
+  else
+    prompt_for_uninstall
+  fi
+}
+
+main
