@@ -1,8 +1,8 @@
-import React, { PureComponent } from "react";
+import React, { Component  } from "react";
 import PropTypes from "prop-types";
 import StoryMedia from "./StoryMedia";
 
-class StoryList extends PureComponent {
+class StoryList extends Component {
   static propTypes = {
     stories: PropTypes.array
   };
@@ -15,6 +15,7 @@ class StoryList extends PureComponent {
             return (
               <li
                 className={`story storypoint${story.point && story.point.id}`}
+                onClick={_ => this.props.onStoryClick([story.point.lng, story.point.lat])}
               >
                 <div className="speakers">
                   <img src={story.speaker.picture_url} alt={story.speaker.name} title={story.speaker.name}/>
