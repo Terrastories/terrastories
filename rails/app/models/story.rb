@@ -5,4 +5,5 @@ class Story < ApplicationRecord
 
   acts_as_taggable
 
+  enum permission_level: [:anonymous, :user_only, :editor_only]
 end

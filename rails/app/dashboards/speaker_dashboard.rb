@@ -8,13 +8,12 @@ class SpeakerDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    stories: Field::HasMany,
-    media: Field::ActiveStorage,
     id: Field::Number,
+    media: Field::ActiveStorage,
     name: Field::String,
-    photo: Field::String,
     region: Field::String,
     community: Field::String,
+    stories: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -25,21 +24,22 @@ class SpeakerDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :stories,
-    :media,
     :id,
+    :media,
+    :name,
+    :region,
+    :community
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :stories,
-    :media,
     :id,
+    :media,
     :name,
-    :photo,
     :region,
     :community,
+    :stories,
     :created_at,
     :updated_at,
   ].freeze
@@ -48,12 +48,11 @@ class SpeakerDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :stories,
     :media,
     :name,
-    :photo,
     :region,
     :community,
+    :stories
   ].freeze
 
   # Overwrite this method to customize how speakers are displayed
@@ -62,4 +61,8 @@ class SpeakerDashboard < Administrate::BaseDashboard
   # def display_resource(speaker)
   #   "Speaker ##{speaker.id}"
   # end
+
+  def permitted_attributes
+    super + [media: [], permission_level: [:anonymous, :user_only, :editor_only]]
+  end
 end
