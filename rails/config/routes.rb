@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
+  resources :places
   namespace :admin do
       resources :users
       resources :points
       resources :speakers
       resources :stories
-      resources :type_of_places
+      resources :places
 
       root to: "users#index"
     end
