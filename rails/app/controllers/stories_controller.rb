@@ -1,6 +1,9 @@
 class StoriesController < ApplicationController
   def index
     @stories = Story.all
+    respond_to do |format|
+      format.json
+    end
   end
 
   def edit
