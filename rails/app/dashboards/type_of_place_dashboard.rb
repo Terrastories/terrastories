@@ -41,14 +41,14 @@ class TypeOfPlaceDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :points,
     :name,
+    :points,
   ].freeze
 
   # Overwrite this method to customize how type of places are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(type_of_place)
-  #   "TypeOfPlace ##{type_of_place.id}"
-  # end
+  def display_resource(type_of_place)
+    "Type Of Place: #{type_of_place.name}"
+  end
 end

@@ -58,9 +58,9 @@ class SpeakerDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how speakers are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(speaker)
-  #   "Speaker ##{speaker.id}"
-  # end
+  def display_resource(speaker)
+    "Speaker #{speaker.name}"
+  end
 
   def permitted_attributes
     super + [media: [], permission_level: [:anonymous, :user_only, :editor_only]]
