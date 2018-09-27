@@ -9,29 +9,49 @@ class App extends Component {
     super(props);
     this.state = {
       coords: [],
-      points: {}
+      points: {},
+      stories: this.props.stories
     }
   }
 
   componentDidMount() {
-    this.getPointsFromStories();
+    this.getPointsFromStories(this.props.stories);
+    console.log(this.props.stories);
+    console.log(this.getPointsFromStories(this.props.stories));
   }
 
   setPointCoords = coords => {
     this.setState({coords});
   }
 
-  getPointsFromStories = () => {
-    const {stories} = this.props;
+  getPointsFromStories = stories => {
     const points = stories.map(story => story.point);
     this.setState({points});
+  }
+
+  handleFilter = (typeOfFilter, value) => {
+    // Test for Region, Kumiade
+    const filter = typeOfFilter.toLowerCase();
+    const filteredStories = this.props.stories.filter(story => {
+      if (story.point[filter] === value) {
+        return story;
+      }
+    });
+    const filteredPoints = this.getPointsFromStories(filteredStories);
+    this.setState({stories: filteredStories, points: filteredPoints});
+    console.log('Filtered Stories!', filteredStories);
   }
 
   render() {
     return (
       <div>
         <Map points={this.state.points} pointCoords={this.state.coords}/>
-        <Card stories={this.props.stories} onCardClick={this.setPointCoords} logo_path={this.props.logo_path}/>
+        <Card 
+          stories={this.props.stories}
+          handleFilter={this.handleFilter}
+          onCardClick={this.setPointCoords}
+          logo_path={this.props.logo_path}
+        />
         <IntroPopup />
       </div>
     );

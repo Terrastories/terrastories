@@ -32,7 +32,7 @@ class Card extends Component {
 
         <div className="card--nav">
           <ul>
-            <li><a href="#">Filter 1 ⌄</a></li>
+            <li><a href="#" onClick={() => this.props.handleFilter('Region', 'Kumiade')}>Filter 1 ⌄</a></li>
             <li><a href="#">Filter 2 ⌄</a></li>
             <li><a href="#">Filter 3 ⌄</a></li>
           </ul>
