@@ -36,18 +36,14 @@ class PointDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :stories,
-    :taggings,
-    :base_tags,
-    :tag_taggings,
-    :tags,
     :id,
     :title,
     :lng,
     :lat,
+    :region,
+    :stories,
     :created_at,
     :updated_at,
-    :region,
   ].freeze
 
   # FORM_ATTRIBUTES
