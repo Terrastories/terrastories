@@ -26,7 +26,10 @@ class App extends Component {
 
   getPointsFromStories = stories => {
     const points = stories.map(story => story.point);
-    this.setState({points});
+    const pointObj = {};
+    pointObj['features'] = points;
+    console.log(pointObj, 'THE POINT OBJ');
+    this.setState({points: pointObj});
   }
 
   handleFilter = (typeOfFilter, value) => {
