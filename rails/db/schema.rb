@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_09_234528) do
+ActiveRecord::Schema.define(version: 2018_09_27_002157) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -40,6 +40,11 @@ ActiveRecord::Schema.define(version: 2018_09_09_234528) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "region"
+  end
+
+  create_table "points_type_of_places", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "point_id", null: false
+    t.bigint "type_of_place_id", null: false
   end
 
   create_table "speakers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -86,6 +91,12 @@ ActiveRecord::Schema.define(version: 2018_09_09_234528) do
     t.string "name", collation: "utf8_bin"
     t.integer "taggings_count", default: 0
     t.index ["name"], name: "index_tags_on_name", unique: true
+  end
+
+  create_table "type_of_places", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
