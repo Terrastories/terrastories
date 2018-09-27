@@ -63,11 +63,11 @@ class StoryDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how stories are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(story)
-  #   "Story ##{story.id}"
-  # end
+  def display_resource(story)
+    "Story: #{story.name}"
+  end
 
   def permitted_attributes
     super + [media: [], permission_level: [:anonymous, :user_only, :editor_only]]
   end
-end
+ends
