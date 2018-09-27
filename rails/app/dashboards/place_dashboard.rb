@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class TypeOfPlaceDashboard < Administrate::BaseDashboard
+class PlaceDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -11,6 +11,7 @@ class TypeOfPlaceDashboard < Administrate::BaseDashboard
     points: Field::HasMany,
     id: Field::Number,
     name: Field::String,
+    type_of_place: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -23,8 +24,8 @@ class TypeOfPlaceDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :id,
     :name,
+    :type_of_place,
     :points,
-    :created_at,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -32,6 +33,7 @@ class TypeOfPlaceDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :id,
     :name,
+    :type_of_place,
     :points,
     :created_at,
     :updated_at,
@@ -42,13 +44,14 @@ class TypeOfPlaceDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :name,
+    :type_of_place,
     :points,
   ].freeze
 
-  # Overwrite this method to customize how type of places are displayed
+  # Overwrite this method to customize how places are displayed
   # across all pages of the admin dashboard.
   #
-  def display_resource(type_of_place)
-    "Type Of Place: #{type_of_place.name}"
+  def display_resource(place)
+    "#{place.name}"
   end
 end

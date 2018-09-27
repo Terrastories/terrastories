@@ -16,7 +16,7 @@ class PointDashboard < Administrate::BaseDashboard
     lat: Field::String.with_options(searchable: false),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    type_of_places: Field::HasMany,
+    place: Field::BelongsTo,
     region: Field::String,
   }.freeze
 
@@ -31,7 +31,7 @@ class PointDashboard < Administrate::BaseDashboard
     :lng,
     :lat,
     :region,
-    :type_of_places,
+    :place,
     :stories
   ].freeze
 
@@ -43,7 +43,7 @@ class PointDashboard < Administrate::BaseDashboard
     :lng,
     :lat,
     :region,
-    :type_of_places,
+    :place,
     :stories,
     :created_at,
     :updated_at,
@@ -58,7 +58,6 @@ class PointDashboard < Administrate::BaseDashboard
     :lng,
     :lat,
     :region,
-    :type_of_places,
   ].freeze
 
   # Overwrite this method to customize how points are displayed
