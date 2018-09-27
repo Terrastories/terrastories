@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       resources :points
       resources :speakers
       resources :stories
+      resources :type_of_places
 
       root to: "users#index"
     end
