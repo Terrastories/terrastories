@@ -64,10 +64,10 @@ class StoryDashboard < Administrate::BaseDashboard
   # across all pages of the admin dashboard.
   #
   def display_resource(story)
-    "Story: #{story.name}"
+    "Story: #{story.title}"
   end
 
   def permitted_attributes
     super + [media: [], permission_level: [:anonymous, :user_only, :editor_only]]
   end
-ends
+end
