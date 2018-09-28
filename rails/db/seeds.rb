@@ -45,8 +45,3 @@ Story.create(title: "Fa di Kwinti nengeb bi feti ku Matawai sembe",
 User.create(email: 'admin@terrastories.com',
             password: 'password',
             role: 1)
-
-TypeOfPlace.create(name: 'kiiki')
-TypeOfPlace.create(name: 'konde')
-TypeOfPlace.create(name: 'kamia')
-TypeOfPlace.create(name: 'kampu')
