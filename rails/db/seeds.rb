@@ -5,11 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Point.create(title: "Ocean", lng: -55.2452415, lat: 3.827618371, region: "Kumiade")
-Point.create(title: "Pond", lng: -55.23122, lat: 5.3351, region: "Kumiade")
-Point.create(title: "Flowing Water", lng: -56.875, lat: 5.8881435, region: "Tukumutu")
-Point.create(title: "Flaming Forest", lng: -56.12357544, lat: 3.1156739, region: "Kwata Ede")
-Point.create(title: "Sacred Forest Tree", lng: -56.87875645, lat: 4.897634332, region: "Tukumutu")
+Place.create(name: 'Afitimamau', type_of_place: 'dang');
+Place.create(name: 'Amenusu', type_of_place: 'kampu');
+Place.create(name: 'Bakaafeeti', type_of_place: 'hila');
+Point.create(title: "Ocean", lng: -55.2452415, lat: 3.827618371, region: "Kumiade", place: Place.first)
+Point.create(title: "Pond", lng: -55.23122, lat: 5.3351, region: "Kumiade", place: Place.second)
+Point.create(title: "Flowing Water", lng: -56.875, lat: 5.8881435, region: "Tukumutu", place: Place.third)
+Point.create(title: "Flaming Forest", lng: -56.12357544, lat: 3.1156739, region: "Kwata Ede", place: Place.fourth)
+Point.create(title: "Sacred Forest Tree", lng: -56.87875645, lat: 4.897634332, region: "Tukumutu", place: Place.first)
 Speaker.create(name: "Speaker Name")
 
 Story.create(title: "Fa di Saamaka sembe bi haba a beligi",
