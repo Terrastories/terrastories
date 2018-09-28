@@ -11,3 +11,4 @@ json.stories stories do |story|
     json.extract! story.speaker, :name, :picture_url
   end
 end
+json.logo_path image_path("logocombo.svg")

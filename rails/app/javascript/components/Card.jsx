@@ -23,9 +23,8 @@ class Card extends Component {
         &times;
         </div>
         <div className="card--logo">
-          <img src="assets/logocombo.svg" alt="Terrastories" />
+          <img src={this.props.logo_path} alt="Terrastories" />
         </div>
- 
 
         <form name="search" className="card--search" method="post">
           <input type="search" placeholder="Search Terrastories" className="search--field"></input>
