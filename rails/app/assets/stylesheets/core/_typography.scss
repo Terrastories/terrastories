@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'OpenSansCondensed';
-  src: url('OpenSansCondensed-Bold.ttf') format('truetype');
+  src: url($open-sans-condensed-path) format('truetype');
   font-weight: normal;
   font-style: normal;
 }
