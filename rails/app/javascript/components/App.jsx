@@ -20,7 +20,7 @@ class App extends Component {
     return (
       <div>
         <Map pointCoords={this.state.coords}/>
-        <Card stories={this.props.stories} onCardClick={this.setPointCoords}/>
+        <Card stories={this.props.stories} onCardClick={this.setPointCoords} logo_path={this.props.logo_path}/>
         <IntroPopup />
       </div>
     );
