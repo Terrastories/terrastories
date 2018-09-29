@@ -17,8 +17,8 @@ class App extends Component {
 
   componentDidMount() {
     this.getPointsFromStories(this.props.stories);
-    console.log(this.props.stories, 'Component Did Mount Stories');
-    console.log(this.getPointsFromStories(this.props.stories), 'Component Did Mount Points');
+    (this.props.stories, 'Component Did Mount Stories');
+    (this.getPointsFromStories(this.props.stories), 'Component Did Mount Points');
   }
 
   setPointCoords = coords => {
@@ -108,7 +108,7 @@ class App extends Component {
       const filteredPoints = this.getPointsFromStories(filteredStories);
       this.setState({stories: filteredStories, points: filteredPoints});
     }
-    console.log(`Filtered Stories of ${category} ${item}:`, filteredStories);
+    (`Filtered Stories of ${category} ${item}:`, filteredStories);
   }
 
   render() {
