@@ -1,15 +1,17 @@
 import React, { Component } from "react";
 import StoryList from "./StoryList";
+import Filter from "./Filter";
 
 class Card extends Component {
 
   constructor(props){
     super(props);
-    this.state = { isToggleOn: true };
-    this.handleTray = this.handleTray.bind(this);
+    this.state = { 
+      isToggleOn: true
+    };
   }
 
-  handleTray() {
+  handleTray = () => {
     this.setState(prevState => ({
       isToggleOn: !prevState.isToggleOn
     }));
@@ -18,8 +20,8 @@ class Card extends Component {
   render() {
     return (
         <div className={this.state.isToggleOn ? 'card onCanvas' : 'card offCanvas'} >
-        <div className="tab" onClick={this.handleTray.bind('card offCanvas')}>&#9658;</div>
-        <div className="closeMe" onClick={this.handleTray.bind('card offCanvas')}>
+        <div className="tab" onClick={this.handleTray}>&#9658;</div>
+        <div className="closeMe" onClick={this.handleTray}>
         &times;
         </div>
         <div className="card--logo">
@@ -31,11 +33,7 @@ class Card extends Component {
         </form> 
 
         <div className="card--nav">
-          <ul>
-            <li><a href="#" onClick={() => this.props.handleFilter('Region', 'Kumiade')}>Filter 1 ⌄</a></li>
-            <li><a href="#">Filter 2 ⌄</a></li>
-            <li><a href="#">Filter 3 ⌄</a></li>
-          </ul>
+          <Filter handleFilter={this.props.handleFilter} />
         </div>
 
         <StoryList stories={this.props.stories} onStoryClick={this.props.onCardClick}/>
