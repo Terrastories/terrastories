@@ -30,7 +30,7 @@ export default class Map extends Component {
       this.map.on('load', () => {
         // just testing the passing in of the coords
         this.props.points.features.forEach(marker => {
-          console.log(marker.properties);
+          (marker.properties);
            // create a HTML element for each feature
            var el = document.createElement('div');
            el.className = 'marker';

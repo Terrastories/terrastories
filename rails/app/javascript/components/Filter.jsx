@@ -31,7 +31,7 @@ class Filter extends Component {
       });
     } else {
       const category = option.value;
-      console.log('Picked category ', category);
+      ('Picked category ', category);
       this.setState({
         categorySelectValue: category,
         itemOptions: this.props.filterMap[category],
@@ -48,7 +48,7 @@ class Filter extends Component {
       })
     } else {
       const item = option.value;
-      console.log(`Filter by ${this.state.categorySelectValue} : ${item}`);
+      (`Filter by ${this.state.categorySelectValue} : ${item}`);
       this.props.handleFilter(this.state.categorySelectValue, item);
       this.setState({
         itemSelectValue: item
