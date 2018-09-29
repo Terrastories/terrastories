@@ -11,6 +11,12 @@ class Card extends Component {
     };
   }
 
+  static defaultProps = {
+    filterMap: {},
+    categories: [],
+    clearFilteredStories: () => {}
+  }
+
   handleTray = () => {
     this.setState(prevState => ({
       isToggleOn: !prevState.isToggleOn
@@ -33,7 +39,12 @@ class Card extends Component {
         </form> 
 
         <div className="card--nav">
-          <Filter handleFilter={this.props.handleFilter} />
+          <Filter 
+            handleFilter={this.props.handleFilter}
+            categories={this.props.categories}
+            filterMap={this.props.filterMap}
+            clearFilteredStories={this.props.clearFilteredStories}
+          />
         </div>
 
         <StoryList stories={this.props.stories} onStoryClick={this.props.onCardClick}/>

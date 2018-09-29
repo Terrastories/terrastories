@@ -1,0 +1,1 @@
+export const FILTER_CATEGORIES = ['Region', 'Type Of Place', 'Speaker'];
