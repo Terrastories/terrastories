@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
-
 class Filter extends Component {
 
   DEFAULT_CATEGORY_PLACEHOLDER = 'Select Category';
@@ -16,11 +15,15 @@ class Filter extends Component {
   }
 
   static defaultProps = {
-    categories: ['Region', 'Type of Place', 'Speaker']
+    categories: [],
+    stories: [],
+    filterMap: {},
+    clearFilteredStories: () => {}
   };
 
   handleCategoryChange = option => {
     if (option === null) {
+      this.props.clearFilteredStories();
       this.setState({
         itemOptions: [],
         categorySelectValue: this.DEFAULT_CATEGORY_PLACEHOLDER,
@@ -28,15 +31,10 @@ class Filter extends Component {
       });
     } else {
       const category = option.value;
-      const filterMap = {
-        'Region': ['Kumiade', 'Tukumutu', 'Kwata Ede'],
-        'Type of Place': ['Place 1', 'Place 2', 'Place 3'],
-        'Speaker': ['Speaker 1', 'Speaker 2', 'Speaker 3', 'Speaker 4']
-      }
       console.log('Picked category ', category);
       this.setState({
         categorySelectValue: category,
-        itemOptions: filterMap[category],
+        itemOptions: this.props.filterMap[category],
         itemSelectValue: this.DEFAULT_ITEM_PLACEHOLDER
       });
     }
@@ -44,6 +42,7 @@ class Filter extends Component {
 
   handleItemChange = option => {
     if (option === null) {
+      this.props.clearFilteredStories();
       this.setState({
         itemSelectValue: this.DEFAULT_ITEM_PLACEHOLDER
       })

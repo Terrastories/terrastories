@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Map from './Map';
 import Card from './Card';
 import IntroPopup from './IntroPopup';
+import {FILTER_CATEGORIES} from '../constants/FilterConstants';
 
 
 class App extends Component {
@@ -31,32 +32,72 @@ class App extends Component {
     this.setState({points: pointObj});
   }
 
+  filterMap = () => {
+    // Build Filter Map for Dropdowns
+    // {category name: array of items}
+    let filterMap = {};
+    FILTER_CATEGORIES.map(category => {
+      switch (category) {
+        case FILTER_CATEGORIES[0]: {
+          // first category: Region
+          const regionSet = new Set(this.props.stories.map(story => {
+            return story.point.properties.region
+          }));
+          filterMap[category] = Array.from(regionSet).sort();
+          break;
+        }
+        case FILTER_CATEGORIES[1]: {
+          // second category: Type of Place
+          const typeOfPlaceSet = new Set(this.props.stories.map(story => {
+            return story.place.type_of_place;
+          }));
+          filterMap[category] = Array.from(typeOfPlaceSet).sort();
+          break;
+        }
+        case FILTER_CATEGORIES[2]: {
+          // third category: Speaker
+          const speakerSet = new Set(this.props.stories.map(story => {
+            return story.speaker.name
+          }));
+          filterMap[category] = Array.from(speakerSet).sort();
+          break;
+        }
+      }
+    });
+    return filterMap;
+  }
+
+  clearFilteredStories = () => {
+    this.setState({
+      stories: this.props.stories
+    });
+  }
+
   handleFilter = (category, item) => {
-    const filterCategory = category.toLowerCase();
     let filteredStories = [];
-    switch (filterCategory) {
-      case 'region': {
+    switch (category) {
+      case FILTER_CATEGORIES[0]: {
+        // first category: region
         filteredStories = this.props.stories.filter(story => {
-          if (story.point.properties[filterCategory] === item) {
+          if (story.point.properties.region.toLowerCase() === item.toLowerCase()) {
             return story;
           }
         });
         break;
       }
-      case 'type of place': {
-        // filteredStories = this.props.stories.filter(story => {
-        //   if (story.point.place['type_of_place'] === item) {
-        //     return story;
-        //   }
-        // });
-        console.log('filter by type of place');
-        // search thru the points places
-        // add places to the json jbuilder
+      case FILTER_CATEGORIES[1]: {
+        // second category: type of place
+        filteredStories = this.props.stories.filter(story => {
+          if (story.place['type_of_place'].toLowerCase() === item.toLowerCase()) {
+            return story;
+          }
+        });
         break;
       }
-      case 'speaker': {
+      case FILTER_CATEGORIES[2]: {
+        // third category: speaker name
         filteredStories = this.props.stories.filter(story => {
-          if (story.speaker.name === item) {
+          if (story.speaker.name.toLowerCase() === item.toLowerCase()) {
             return story;
           }
         });
@@ -75,8 +116,11 @@ class App extends Component {
       <div>
         <Map points={this.state.points} pointCoords={this.state.coords}/>
         <Card 
-          stories={this.props.stories}
+          stories={this.state.stories}
+          categories={FILTER_CATEGORIES}
+          filterMap={this.filterMap()}
           handleFilter={this.handleFilter}
+          clearFilteredStories={this.clearFilteredStories}
           onCardClick={this.setPointCoords}
           logo_path={this.props.logo_path}
         />
