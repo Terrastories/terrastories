@@ -16,8 +16,8 @@ class App extends Component {
 
   componentDidMount() {
     this.getPointsFromStories(this.props.stories);
-    console.log(this.props.stories);
-    console.log(this.getPointsFromStories(this.props.stories));
+    console.log(this.props.stories, 'Component Did Mount Stories');
+    console.log(this.getPointsFromStories(this.props.stories), 'Component Did Mount Points');
   }
 
   setPointCoords = coords => {
@@ -28,21 +28,46 @@ class App extends Component {
     const points = stories.map(story => story.point);
     const pointObj = {};
     pointObj['features'] = points;
-    console.log(pointObj, 'THE POINT OBJ');
     this.setState({points: pointObj});
   }
 
-  handleFilter = (typeOfFilter, value) => {
-    // Test for Region, Kumiade
-    const filter = typeOfFilter.toLowerCase();
-    const filteredStories = this.props.stories.filter(story => {
-      if (story.point[filter] === value) {
-        return story;
+  handleFilter = (category, item) => {
+    const filterCategory = category.toLowerCase();
+    let filteredStories = [];
+    switch (filterCategory) {
+      case 'region': {
+        filteredStories = this.props.stories.filter(story => {
+          if (story.point.properties[filterCategory] === item) {
+            return story;
+          }
+        });
+        break;
       }
-    });
-    const filteredPoints = this.getPointsFromStories(filteredStories);
-    this.setState({stories: filteredStories, points: filteredPoints});
-    console.log('Filtered Stories!', filteredStories);
+      case 'type of place': {
+        // filteredStories = this.props.stories.filter(story => {
+        //   if (story.point.place['type_of_place'] === item) {
+        //     return story;
+        //   }
+        // });
+        console.log('filter by type of place');
+        // search thru the points places
+        // add places to the json jbuilder
+        break;
+      }
+      case 'speaker': {
+        filteredStories = this.props.stories.filter(story => {
+          if (story.speaker.name === item) {
+            return story;
+          }
+        });
+        break;
+      }
+    }
+    if (filteredStories) {
+      const filteredPoints = this.getPointsFromStories(filteredStories);
+      this.setState({stories: filteredStories, points: filteredPoints});
+    }
+    console.log(`Filtered Stories of ${category} ${item}:`, filteredStories);
   }
 
   render() {
