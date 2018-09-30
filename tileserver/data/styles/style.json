@@ -589,7 +589,7 @@
             "type": "line",
             "metadata": {"mapbox:group": "62532b06c8a1509d7896be27f6639e77"},
             "source": "composite",
-            "source-layer": "Suriname_roads",
+            "source-layer": "Suriname_Roads",
             "layout": {"visibility": "visible"},
             "paint": {
                 "line-color": "hsl(0, 76%, 68%)",
