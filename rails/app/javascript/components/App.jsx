@@ -3,8 +3,6 @@ import Map from './Map';
 import Card from './Card';
 import IntroPopup from './IntroPopup';
 import {FILTER_CATEGORIES} from '../constants/FilterConstants';
-
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -123,6 +121,7 @@ class App extends Component {
           clearFilteredStories={this.clearFilteredStories}
           onCardClick={this.setPointCoords}
           logo_path={this.props.logo_path}
+          user={this.props.user}
         />
         <IntroPopup />
       </div>
