@@ -203,7 +203,7 @@ $el-shadow: 0 1px 4px #bbb;
       }
       .tab {
         &:after {
-          content: '▶';
+          content: '\25b6\fe0e';
         }
       }
     }
@@ -226,7 +226,7 @@ $el-shadow: 0 1px 4px #bbb;
       top: 0.5rem;
       color: black;
       font-family: sans-serif;
-      font-size: 1rem;
+      font-size: 1.25rem;
       cursor: pointer;
       z-index: 2;
   
