@@ -23,20 +23,33 @@ class Card extends Component {
     }));
   }
 
+  renderUserInformation = () => {
+    if (this.props.user && this.props.user.role === 'editor') {
+      return (
+        <ul>
+          <li>Hello {this.props.user.email} (<a href="/users/sign_out">Logout</a>)</li>
+          <li><a href="/admin">Admin Page</a></li>
+        </ul>
+      );
+    } else if (this.props.user) {
+      return (
+        <ul>
+          <li>Hello {this.props.user.email} (<a href="/users/sign_out">Logout</a>)</li>
+        </ul>
+      );
+    }
+  }
+
   render() {
     return (
         <div className={this.state.isToggleOn ? 'card onCanvas' : 'card offCanvas'} >
-        <div className="tab" onClick={this.handleTray}>&#9658;</div>
+        <div className="tab" onClick={this.handleTray} />
         <div className="closeMe" onClick={this.handleTray}>
         &times;
         </div>
         <div className="card--logo">
           <img src={this.props.logo_path} alt="Terrastories" />
         </div>
-
-       <form name="search" className="card--search" method="post">
-          <input type="search" placeholder="Search Terrastories" className="search--field"></input>
-        </form> 
 
         <div className="card--nav">
           <Filter 
@@ -50,9 +63,7 @@ class Card extends Component {
         <StoryList stories={this.props.stories} onStoryClick={this.props.onCardClick}/>
 
         <div className="card--tasks">
-          <ul>
-            <li>Hello admin@terrastories.net (<a href="#">Logout</a>)</li>
-          </ul>
+          {this.renderUserInformation()}
         </div>
       </div>
     );
