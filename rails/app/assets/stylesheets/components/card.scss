@@ -1,12 +1,18 @@
 $el-shadow: 0 1px 4px #bbb;
 
+.cardContainer {
+  position: relative;
+  width: 40%;
+  max-width: 20rem;
+  height: 100%;
+}
+
 .card {
   position: absolute;
   display: flex;
   flex-direction: column;
-  width: 40%;
-  max-width: 20rem;
-  height: 100%;
+  height: 100vh;
+  width: 100%;
   background: white;
   border: 1px solid #d7d7d7;
   border-right: 1px solid #a6a6a6;
@@ -16,43 +22,44 @@ $el-shadow: 0 1px 4px #bbb;
   box-shadow: 3px 2px 3px transparentize(#666666, 0.9);
   transition: all 0.20s ease-in-out;
 
-  .closeMe {
-    display: none;
-  }
-
   &.onCanvas {
+    display: block;
     top: 0;
     left: 0;
-    .tab {
-      &:after {
-        content: '◀';
-      }
+  }
+
+  &.offCanvas {
+    display: none;
+  }
+}
+
+
+.tab {
+  cursor: pointer;
+  color: transparentize(white, 0.6);
+  position: absolute;
+  left: 20rem;
+  top: 0.5rem;
+  width: 2rem;
+  height: 4rem;
+  line-height: 3.9rem;
+  text-align: center;
+  border-radius: 0 6px 6px 0;
+  background: #0f566b;
+  box-shadow: 3px 2px 3px transparentize(#666666, 0.9);
+
+
+  &.onCanvas {
+    &:after {
+      content: '◀';
     }
   }
 
   &.offCanvas {
-    top: 0;
-    left: -40vw;
-    .tab {
-      &:after {
-        content: '▶';
-      }
+    &:after {
+      content: '▶';
     }
-  }
-
-  .tab {
-    cursor: pointer;
-    color: transparentize(white, 0.6);
-    position: absolute;
-    right: -2rem;
-    top: 0;
-    width: 2rem;
-    height: 4rem;
-    line-height: 3.9rem;
-    text-align: center;
-    border-radius: 0 6px 6px 0;
-    background: #0f566b;
-    box-shadow: 3px 2px 3px transparentize(#666666, 0.9);
+    left: 0;
   }
 }
 
@@ -183,17 +190,6 @@ $el-shadow: 0 1px 4px #bbb;
     &.offCanvas {
       top: 0;
       left: 0;
-    }
-
-    .closeMe {
-      display: block;
-      position: absolute;
-      top: 0.5rem;
-      right: 0.5rem;
-      color: #444;
-      font-family: 'Courier New', Courier, monospace;
-      font-size: 3rem;
-      cursor: pointer;
     }
 
     .tab {

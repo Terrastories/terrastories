@@ -42,28 +42,29 @@ class Card extends Component {
 
   render() {
     return (
-        <div className={this.state.isToggleOn ? 'card onCanvas' : 'card offCanvas'} >
-        <div className="tab" onClick={this.handleTray} />
-        <div className="closeMe" onClick={this.handleTray}>
-        &times;
-        </div>
-        <div className="card--logo">
-          <img src={this.props.logo_path} alt="Terrastories" />
-        </div>
+      <div className="cardContainer">
+        <div className={this.state.isToggleOn ? 'tab onCanvas' : 'tab offCanvas'} onClick={this.handleTray} />
+        <div className={this.state.isToggleOn ? 'card onCanvas' : 'card offCanvas'}>
+          <div className="bar">
+            <div className="card--logo">
+              <img src={this.props.logo_path} alt="Terrastories" />
+            </div>
 
-        <div className="card--nav">
-          <Filter 
-            handleFilter={this.props.handleFilter}
-            categories={this.props.categories}
-            filterMap={this.props.filterMap}
-            clearFilteredStories={this.props.clearFilteredStories}
-          />
-        </div>
+            <div className="card--nav">
+              <Filter 
+                handleFilter={this.props.handleFilter}
+                categories={this.props.categories}
+                filterMap={this.props.filterMap}
+                clearFilteredStories={this.props.clearFilteredStories}
+              />
+            </div>
 
-        <StoryList stories={this.props.stories} onStoryClick={this.props.onCardClick}/>
+            <StoryList stories={this.props.stories} onStoryClick={this.props.onCardClick}/>
 
-        <div className="card--tasks">
-          {this.renderUserInformation()}
+            <div className="card--tasks">
+              {this.renderUserInformation()}
+            </div>
+          </div>
         </div>
       </div>
     );
