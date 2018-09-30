@@ -1,6 +1,7 @@
 version: "3.2"
 services:
   mariadb:
+    restart: always
     image: 'mariadb:latest'
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
@@ -10,6 +11,7 @@ services:
       - dbdata:/var/lib/mysql
 
   nginx:
+    restart: always
     depends_on:
       - rails
       - tileserver
@@ -27,6 +29,7 @@ services:
       - ./nginx:/etc/nginx
 
   rails:
+    restart: always    
     build:
       context: ./rails
     image: terrastories/rails
@@ -62,6 +65,7 @@ services:
         target: /data/shapefiles
 
   tileserver:
+    restart: always
     image: klokantech/tileserver-gl
     networks:
       - tilenet
