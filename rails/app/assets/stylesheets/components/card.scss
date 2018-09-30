@@ -5,172 +5,178 @@ $el-shadow: 0 1px 4px #bbb;
   width: 40%;
   max-width: 20rem;
   height: 100%;
-}
-
-.card {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  width: 100%;
-  background: white;
-  border: 1px solid #d7d7d7;
-  border-right: 1px solid #a6a6a6;
-  border-bottom: 1px solid #a6a6a6;
-  background: #efefef;
-  padding: 0.5rem;
-  box-shadow: 3px 2px 3px transparentize(#666666, 0.9);
-  transition: all 0.20s ease-in-out;
 
   &.onCanvas {
-    display: block;
-    top: 0;
-    left: 0;
-  }
-
-  &.offCanvas {
-    display: none;
-  }
-}
-
-
-.tab {
-  cursor: pointer;
-  color: transparentize(white, 0.6);
-  position: absolute;
-  left: 20rem;
-  top: 0.5rem;
-  width: 2rem;
-  height: 4rem;
-  line-height: 3.9rem;
-  text-align: center;
-  border-radius: 0 6px 6px 0;
-  background: #0f566b;
-  box-shadow: 3px 2px 3px transparentize(#666666, 0.9);
-
-
-  &.onCanvas {
-    &:after {
-      content: '◀';
+    .card {
+      display: block;
+      top: 0;
+      left: 0;
+    }
+    .tab {
+      &:after {
+        content: '◀';
+      }
     }
   }
 
   &.offCanvas {
-    &:after {
-      content: '▶';
+    .card {
+      left: -100%;
     }
-    left: 0;
+    .tab {
+      &:after {
+        content: '▶';
+      }
+      left: 0;
+    }
   }
-}
 
-.card--logo {
-  flex: 0 1 auto;
-  margin: 0;
-  padding: 1rem;
-  width: 100%;
+  .closeMe {	
+    display: none;	
+  }
 
-  img {
+  .card {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
     width: 100%;
-    height: 100%;
+    background: white;
+    border: 1px solid #d7d7d7;
+    border-right: 1px solid #a6a6a6;
+    border-bottom: 1px solid #a6a6a6;
+    background: #efefef;
+    padding: 0.5rem;
+    box-shadow: 3px 2px 3px transparentize(#666666, 0.9);
+    transition: all 0.20s ease-in-out;
   }
-}
 
-.card--intro {
-  display: none;
-  background-color: #0f566b;
-  padding: 1rem;
-  * {
-    color: white;
-  }
-}
 
-.card--nav {
-  flex: 0 1 auto;
-  margin: 0.5rem 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  height: 25%;
-  font-family: sans-serif;
-
-  &-filter {
-    font-family: 'OpenSansCondensed';
-  }
-}
-
-.card--nav ul {
-  display: flex;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  li {
-    flex: 1;
+  .tab {
+    cursor: pointer;
+    color: transparentize(white, 0.6);
+    position: absolute;
+    left: 20rem;
+    top: 0.5rem;
+    width: 2rem;
+    height: 4rem;
+    line-height: 3.9rem;
     text-align: center;
-    color: white;
-    list-style: none;
+    border-radius: 0 6px 6px 0;
+    background: #0f566b;
+    box-shadow: 3px 2px 3px transparentize(#666666, 0.9);
+    transition: all 0.20s ease-in-out;
+  }
+
+  .card--logo {
+    flex: 0 1 auto;
+    margin: 0;
+    padding: 1rem;
+    width: 100%;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .card--intro {
+    display: none;
+    background-color: #0f566b;
+    padding: 1rem;
+    * {
+      color: white;
+    }
+  }
+
+  .card--nav {
+    flex: 0 1 auto;
+    margin: 0.5rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 25%;
+    font-family: sans-serif;
+
+    &-filter {
+      font-family: 'OpenSansCondensed';
+    }
+  }
+
+  .card--nav ul {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    li {
+      flex: 1;
+      text-align: center;
+      color: white;
+      list-style: none;
+      padding: 0.5rem 0;
+      @include ui-font;
+      font-size: 0.8rem;
+      border-right: 1px solid #efefef;
+      &:last-child {
+        border: 0;
+      }
+      a {
+        color: #444;
+        text-decoration: none;
+        font-size: 80%;
+      }
+      &.search {
+        background: rgb(206, 103, 32);
+      }
+    }
+  }
+
+  .card--tasks {
+    flex: 0 1 auto;
     padding: 0.5rem 0;
     @include ui-font;
-    font-size: 0.8rem;
-    border-right: 1px solid #efefef;
-    &:last-child {
-      border: 0;
-    }
-    a {
-      color: #444;
-      text-decoration: none;
-      font-size: 80%;
-    }
-    &.search {
-      background: rgb(206, 103, 32);
-    }
-  }
-}
 
-.card--tasks {
-  flex: 0 1 auto;
-  padding: 0.5rem 0;
-  @include ui-font;
-
-  ul li {
-    list-style: none;
-    padding: 0 0.5rem;
-    font-size: 0.8rem;
-  }
-}
-
-.stories {
-  flex: 0 5 auto;
-  overflow: auto;
-
-  ul {
-    margin: 0 0 0.5rem;
-    max-height: inherit;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    padding: 0 2px;
-    position: relative;
-
-    li {
+    ul li {
       list-style: none;
-      padding: 0.75rem;
-      background: white;
-      margin-bottom: 0.5rem;
-      box-shadow: $el-shadow;
-      .thumbnail {
-        width: 50px;
-        height: 50px;
-        border-radius: 3px;
-        float: right;
-        margin: 0 0 1rem 1rem;
-        &.placeholder {
-          background-color: #a19c9c;
+      padding: 0 0.5rem;
+      font-size: 0.8rem;
+    }
+  }
+
+  .stories {
+    flex: 0 5 auto;
+    overflow: auto;
+
+    ul {
+      margin: 0 0 0.5rem;
+      max-height: inherit;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      padding: 0 2px;
+      position: relative;
+
+      li {
+        list-style: none;
+        padding: 0.75rem;
+        background: white;
+        margin-bottom: 0.5rem;
+        box-shadow: $el-shadow;
+        .thumbnail {
+          width: 50px;
+          height: 50px;
+          border-radius: 3px;
+          float: right;
+          margin: 0 0 1rem 1rem;
+          &.placeholder {
+            background-color: #a19c9c;
+          }
         }
-      }
-      p {
-        font-size: 0.7rem;
-        line-height: 1.25;
-        margin-top: 1rem;
-        @include ui-font;
+        p {
+          font-size: 0.7rem;
+          line-height: 1.25;
+          margin-top: 1rem;
+          @include ui-font;
+        }
       }
     }
   }
@@ -179,22 +185,58 @@ $el-shadow: 0 1px 4px #bbb;
 // Responsive patches
 
 @include for-phone-only {
-
-  .card {
+  .cardContainer {
     width: 100vw;
+    height: 100vh;
+    max-width: none;
+
+
     &.onCanvas {
-      top: 0;
-      left: -100vw;
+      .closeMe {
+        display: none;
+      }
+      .card {
+        top: 0;
+        left: -100vw;
+      }
+      .tab {
+        &:after {
+          content: '▶';
+        }
+      }
     }
 
     &.offCanvas {
-      top: 0;
-      left: 0;
+      .card {
+        top: 0;
+        left: 0;
+      }
     }
 
+    .closeMe {
+      display: block;
+      position: absolute;
+      right: 0.25rem;
+      top: 0.25rem;
+      color: black;
+      font-family: sans-serif;
+      font-size: 1rem;
+      cursor: pointer;
+      z-index: 2;
+  
+      &:after {
+        content: '✕';
+      }
+    }
+  
+    .card {
+      width: 100vw;
+    }
+  
     .tab {
       background: orange;
-      top: 0;
+      left: 0;
+      top: 0.5rem;
       border-radius: 0;
     }
   }

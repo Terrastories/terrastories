@@ -42,9 +42,10 @@ class Card extends Component {
 
   render() {
     return (
-      <div className="cardContainer">
-        <div className={this.state.isToggleOn ? 'tab onCanvas' : 'tab offCanvas'} onClick={this.handleTray} />
-        <div className={this.state.isToggleOn ? 'card onCanvas' : 'card offCanvas'}>
+      <div className={this.state.isToggleOn ? 'cardContainer onCanvas' : 'cardContainer offCanvas'}>
+        <div className="tab" onClick={this.handleTray} />
+        <div className="closeMe" onClick={this.handleTray} />
+        <div className="card">
           <div className="bar">
             <div className="card--logo">
               <img src={this.props.logo_path} alt="Terrastories" />
