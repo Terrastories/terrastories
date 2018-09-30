@@ -114,8 +114,11 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Map points={this.state.points} pointCoords={this.state.coords}/>
-        <Card 
+        <Map points={this.state.points}
+             pointCoords={this.state.coords}
+             mapStyleUrl={this.props.mapStyleUrl}
+        />
+        <Card
           stories={this.state.stories}
           categories={FILTER_CATEGORIES}
           filterMap={this.filterMap()}

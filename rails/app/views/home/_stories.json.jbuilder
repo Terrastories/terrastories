@@ -11,3 +11,4 @@ json.stories stories do |story|
   end
 end
 json.logo_path image_path("logocombo.svg")
+json.mapStyleUrl map_style_url
