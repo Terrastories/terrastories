@@ -12,3 +12,5 @@ json.stories stories do |story|
 end
 json.logo_path image_path("logocombo.svg")
 json.user current_user
+json.mapbox_access_token ENV["MAPBOX_ACCESS_TOKEN"]
+json.mapbox_style ENV["MAPBOX_STYLE"] || "/tiles/styles/basic/style.json"
