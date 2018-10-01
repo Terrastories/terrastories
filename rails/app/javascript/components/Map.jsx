@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-// mapboxgl.accessToken = 'pk.eyJ1Ijoia2FsaW1hciIsImEiOiJjajdhdmNtMjkwbGZlMzJyc2RvNmhjZXd3In0.tBIY2rRDHYt1VYeGTOH98g';
 
 export default class Map extends Component {
   constructor(props) {
     super(props);
+    mapboxgl.accessToken = this.props.mapboxAccessToken;
   }
 
   // I wonder if component will receive props is how we want to execute the flyTo
@@ -20,7 +20,6 @@ export default class Map extends Component {
     this.map = new mapboxgl.Map({
       container: this.mapContainer,
       style: this.props.mapboxStyle,
-      // style: 'mapbox://styles/kalimar/cjl1ia62y7ye52rn060umypfr',
       center: [-55.63, 4.78],
       zoom: 7.6,
       maxBounds: bounds
