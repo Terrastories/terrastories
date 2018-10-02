@@ -1,4 +1,4 @@
-srm:
+mat:
   devise:
     confirmations:
       confirmed: "Je account is bevestigd, je bent nu ingelogd."

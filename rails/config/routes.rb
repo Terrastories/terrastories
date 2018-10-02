@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     root to: "users#index"
   end
 
-  scope "(:locale)", locale: /en|srm/ do
+  scope "(:locale)", locale: /en|mat/ do
     resources :places
     resources :stories
     devise_for :users, :controllers => { registrations: 'registrations' }
