@@ -30,4 +30,25 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  map: "Is this a …map?"
+  hello: "Hello"
+  welcome: "Welcome"
+  introduction: "Introduction"
+  intro:
+    question: "What's a terrastory?"
+    explanation: "Terrastories are audiovisual recordings of place-based storytelling. This offline-compatible application enables local communities to locate and map their own oral storytelling traditions about places of significant meaning or value to them."
+  enter: "Enter"
+  back_to_welcome: "Back to Welcome Page"
+  login: "Login"
+  password: "Password"
+  remember_me: "Remember me"
+  sign_up: "Sign up"
+  close: "Close"
+  forgot_password: "Forgot your password?"
+  filter_stories: "Filter stories"
+  select_category: "Select category"
+  select_place_type: "Type of place"
+  select_option: "Select option"
+  region: "Region"
+  speaker: "Speaker"
+
