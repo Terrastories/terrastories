@@ -1,7 +1,9 @@
 srm:
+  admin_page: "Admin pagina"
   map: "Dis' na wan kaita?"
   hello: "Denda ko"
   welcome: "Matawai konde"
+  welcome_back: "Matawai konde"
   introduction: "Buta a kama"
   intro:
     question: "Andi na wan terrastory?"
@@ -9,6 +11,7 @@ srm:
   enter: "Ko dendu"
   back_to_welcome: "Go ko na bigi"
   login: "Skiif i ne"
+  logout: "Sooto"
   password: "Paswoord"
   remember_me: "Membe mi"
   sign_up: "Buta i ne"
