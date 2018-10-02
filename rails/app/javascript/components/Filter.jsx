@@ -67,7 +67,7 @@ class Filter extends Component {
       <React.Fragment>
         <span className="card--nav-filter">Filter Stories: </span>
         <Select
-          className="basic-single"
+          className="categoryFilter"
           classNamePrefix="select"
           value={this.optionsHash([this.state.categorySelectValue])}
           onChange={this.handleCategoryChange}
@@ -76,7 +76,7 @@ class Filter extends Component {
           options={this.optionsHash(this.props.categories)}
         />
         <Select
-          className="basic-single"
+          className="itemFilter"
           classNamePrefix="select"
           value={this.optionsHash([this.state.itemSelectValue])}
           onChange={this.handleItemChange}
