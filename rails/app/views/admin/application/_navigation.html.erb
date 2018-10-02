@@ -8,11 +8,11 @@ as defined by the routes in the `admin/` namespace
 %>
 
 <nav class="navigation" role="navigation">
-  <%= link_to '< Back to Map', home_map_path, class: "navigation__link navigation__link" %>
+  <%= link_to "< #{t("back_to_map")}", home_map_path(locale: params[:locale]), class: "navigation__link navigation__link" %>
   <% Administrate::Namespace.new(namespace).resources.each do |resource| %>
     <%= link_to(
       display_resource_name(resource),
-      [namespace, resource_index_route_key(resource)],
+      [namespace, resource_index_route_key(resource), locale: params[:locale]],
       class: "navigation__link navigation__link--#{nav_link_state(resource)}"
     ) %>
   <% end %>

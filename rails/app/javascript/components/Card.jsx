@@ -6,7 +6,7 @@ class Card extends Component {
 
   constructor(props){
     super(props);
-    this.state = { 
+    this.state = {
       isToggleOn: true
     };
   }
@@ -27,14 +27,14 @@ class Card extends Component {
     if (this.props.user && this.props.user.role === 'editor') {
       return (
         <ul>
-          <li>Hello {this.props.user.email} (<a href="/">Back to Welcome Page</a>)</li>
-          <li><a href="/admin">Admin Page</a></li>
+          <li>{I18n.t("hello")} {this.props.user.email} (<a href={`/${I18n.currentLocale()}`}>{I18n.t("back_to_welcome")}</a>)</li>
+          <li><a href={`/admin?locale=${I18n.currentLocale()}`}>{I18n.t("admin_page")}</a></li>
         </ul>
       );
     } else if (this.props.user) {
       return (
         <ul>
-          <li>Hello {this.props.user.email} (<a href="/">Back to Welcome Page</a>)</li>
+          <li>{I18n.t("hello")} {this.props.user.email} (<a href={`/${I18n.currentLocale()}`}>{I18n.t("back_to_welcome")}</a>)</li>
         </ul>
       );
     }
@@ -54,7 +54,7 @@ class Card extends Component {
             </div>
 
             <div className="card--nav">
-              <Filter 
+              <Filter
                 handleFilter={this.props.handleFilter}
                 categories={this.props.categories}
                 filterMap={this.props.filterMap}
