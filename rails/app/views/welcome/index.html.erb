@@ -2,8 +2,7 @@
   <div class="welcome-card">
     <%= image_tag 'logocombo.svg', alt: 'Terrastories' %>
     <% if user_signed_in? %>
-      <h1><%= t("welcome_back") %>,</h1>
-      <div><%= current_user.email %></div>
+      <h1><%= t("welcome_back") %></h1>
     <% else %>
       <h1><%= t("welcome") %></h1>
     <% end %>
