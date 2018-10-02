@@ -112,8 +112,13 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Map points={this.state.points} pointCoords={this.state.coords}/>
-        <Card 
+        <Map
+          points={this.state.points}
+          pointCoords={this.state.coords}
+          mapboxAccessToken={this.props.mapbox_access_token}
+          mapboxStyle={this.props.mapbox_style}
+        />
+        <Card
           stories={this.state.stories}
           categories={FILTER_CATEGORIES}
           filterMap={this.filterMap()}
