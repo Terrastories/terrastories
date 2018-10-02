@@ -34,6 +34,9 @@
       width: 100%;
 
       a {
+        @media screen and (max-width: 600px) {
+          letter-spacing: 0;
+        }
         text-decoration: none;
         color: #5AA68D;
         text-transform: uppercase;
@@ -56,6 +59,10 @@
       text-align: center;
       margin: 0;
     }
+
+    a {
+      text-decoration: none;
+    }
   
     button {
       background-color: #5AA68D;
@@ -64,25 +71,20 @@
       display: block;
       border-radius: 5px;
       border-color: transparent;
-      font-weight: bold;
+      font-weight: 400;
       font-size: 0.85rem;
       cursor: pointer;
-      margin-top: 1rem;
+      padding: 1rem;
+      width: 15rem;
+      margin-top: 0.5rem;
+      color: white;
   
       &:hover {
         background-color: #136A7E;
       }
   
-      a {
-        display: inline-block;
-        text-decoration: none;
-        color: rgb(255,255,255);
-        padding: 1em 3em;
-        width: 100%;
-      }
-  
       &:focus {
-        outline-color: rgb(255,255,255);
+        outline-color: #fff;
       }
     }
   }

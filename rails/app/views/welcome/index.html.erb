@@ -7,8 +7,9 @@
     <% else %>
       <h1>Welcome</h1>
     <% end %>
-    <%= button_tag(type: 'button') do %>
-      <% link_to "Enter Site", home_map_path %>
+
+    <%= link_to home_map_path do %>
+      <button>Enter Site</button>
     <% end %>
 
     <div class="welcome-card-user">
