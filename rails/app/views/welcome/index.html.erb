@@ -22,5 +22,10 @@
         <%= link_to t("login"), new_user_session_path, :class => 'navbar-link'  %>
       <% end %>
     </div>
+
+    <div>
+      <%= t("language") %>: <%= link_to "srm (#{t("default")})", root_path(locale: "srm") %> |
+      <%= link_to "en", root_path(locale: "en") %>
+    </div>
   </div>
 </div>

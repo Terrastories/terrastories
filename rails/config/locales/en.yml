@@ -32,6 +32,8 @@
 en:
   admin_page: "Admin Page"
   back_to_map: "Back to Map"
+  default: "default"
+  language: "Language"
   map: "Is this a …map?"
   hello: "Hello"
   welcome: "Welcome"
