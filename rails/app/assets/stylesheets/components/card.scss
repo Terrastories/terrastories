@@ -3,7 +3,7 @@ $el-shadow: 0 1px 4px #bbb;
 .cardContainer {
   position: relative;
   width: 40%;
-  max-width: 20rem;
+  max-width: 25rem;
   height: 100vh;
 
   &.onCanvas {
@@ -37,8 +37,6 @@ $el-shadow: 0 1px 4px #bbb;
 
   .card {
     position: absolute;
-    display: flex;
-    flex-direction: column;
     height: 100vh;
     width: 100%;
     background: white;
@@ -53,14 +51,17 @@ $el-shadow: 0 1px 4px #bbb;
 
   .bar {
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   .tab {
     cursor: pointer;
     color: transparentize(white, 0.6);
     position: absolute;
-    left: 20rem;
     top: 0.5rem;
+    right: -2rem; // same as width of tab
     width: 2rem;
     height: 4rem;
     line-height: 3.9rem;
@@ -72,14 +73,12 @@ $el-shadow: 0 1px 4px #bbb;
   }
 
   .card--logo {
-    flex: 0 1 auto;
     margin: 0;
     padding: 1rem;
-    width: 100%;
-    height: 10%;
+    align-self: center;
 
     img {
-      width: 100%;
+      width: 90%;
       height: 100%;
     }
   }
@@ -94,52 +93,24 @@ $el-shadow: 0 1px 4px #bbb;
   }
 
   .card--nav {
-    flex: 0 1 auto;
-    margin: 0.5rem 0;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    height: 17%;
     font-family: sans-serif;
+    margin-bottom: 0.75rem;
 
     &-filter {
       font-family: 'OpenSansCondensed';
     }
-  }
 
-  .card--nav ul {
-    display: flex;
-    padding: 0;
-    margin: 0;
-    width: 100%;
-    li {
-      flex: 1;
-      text-align: center;
-      color: white;
-      list-style: none;
-      padding: 0.5rem 0;
-      @include ui-font;
-      font-size: 0.8rem;
-      border-right: 1px solid #efefef;
-      &:last-child {
-        border: 0;
-      }
-      a {
-        color: #444;
-        text-decoration: none;
-        font-size: 80%;
-      }
-      &.search {
-        background: rgb(206, 103, 32);
-      }
+    .categoryFilter {
+      margin: 0.5rem 0;
     }
   }
 
   .card--tasks {
-    flex: 0 1 auto;
     padding: 0.5rem 0;
     @include ui-font;
-    height: 10%;
 
     ul li {
       list-style: none;
@@ -149,10 +120,9 @@ $el-shadow: 0 1px 4px #bbb;
   }
 
   .stories {
-    flex: 0 5 auto;
     overflow-y: scroll;
     overflow-x: hidden;
-    height: 63%;
+    flex: 5 0 0;
 
     ul {
       margin: 0 0 0.5rem;
