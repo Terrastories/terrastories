@@ -173,7 +173,7 @@ $el-shadow: 0 1px 4px #bbb;
       }
       .tab {
         &:after {
-          content: '\25b6\fe0e';
+          content: '';
         }
       }
     }
@@ -210,6 +210,27 @@ $el-shadow: 0 1px 4px #bbb;
     }
   
     .tab {
+      &:focus {
+        outline: none;
+      }
+
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
+      -webkit-tap-highlight-color: transparent;
+
+      &:after {
+        content: '';
+      }
+
+      .arrow {
+        width: 0;
+        height: 0;
+        border-top: 12px solid transparent;
+        border-left: 15px solid rgba(255, 255, 255, 0.9);
+        border-bottom: 12px solid transparent;
+        margin-top: 1.1rem;
+        margin-left: 0.5rem;
+      }
+
       background: orange;
       left: 0;
       top: 0.5rem;
