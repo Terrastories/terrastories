@@ -78,7 +78,7 @@ $el-shadow: 0 1px 4px #bbb;
     align-self: center;
 
     img {
-      width: 90%;
+      width: 100%;
       height: 100%;
     }
   }
@@ -146,11 +146,19 @@ $el-shadow: 0 1px 4px #bbb;
           }
         }
         p {
-          font-size: 0.7rem;
+          font-size: 0.85rem;
           line-height: 1.25;
           margin-top: 1rem;
           @include ui-font;
         }
+		.speakers {
+			img { 
+				width: 100px; 
+				height: 100px; 
+				border-radius: 50px;
+				border: 2px solid black;
+			}
+		}
       }
     }
   }

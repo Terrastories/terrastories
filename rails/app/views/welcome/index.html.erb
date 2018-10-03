@@ -22,9 +22,12 @@
       <% end %>
     </div>
 
-    <div>
+    <div class="language-picker">
       <%= t("language") %>: <%= link_to "mat (#{t("default")})", root_path(locale: "mat") %> |
       <%= link_to "en", root_path(locale: "en") %>
     </div>
+  </div>
+  <div class="logo">
+	<%= image_tag 'act-matawai.png', alt: 'Amazon Conservation Team and Stichting voor Dorpsontwikkeling Matawai' %>
   </div>
 </div>
