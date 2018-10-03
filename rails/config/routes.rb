@@ -10,13 +10,25 @@ Rails.application.routes.draw do
   end
 
   scope "(:locale)", locale: /en|mat/ do
-    resources :places
-    resources :stories
+    resources :places do
+      collection do
+        post :import_csv
+      end
+    end
+    resources :stories do
+      collection do
+        post :import_csv
+      end
+    end
     devise_for :users, :controllers => { registrations: 'registrations' }
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
     root to: 'welcome#index'
     get 'home', to: 'home#index', as: "home_map"
     resources :points
-    resources :speakers
+    resources :speakers do
+      collection do
+        post :import_csv
+      end
+    end
   end
 end

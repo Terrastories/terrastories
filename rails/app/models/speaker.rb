@@ -9,4 +9,11 @@ class Speaker < ApplicationRecord
       ActionController::Base.helpers.image_path('speaker.png', only_path: true)
     end
   end
+
+  def self.import_csv(filename)
+    CSV.parse(filename, headers: true) do |row|
+      Speaker.where(name: row[0], community: row[2]).first_or_create
+    end
+  end
+
 end
