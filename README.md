@@ -112,3 +112,6 @@ In the future, we will create an automatic script that will take care of this pr
 3) copy the style into your `styles` directory (tileserver\data\styles])
 
 4) make sure that config.json in \tileserver\data\ is pointing to the right style file.
+
+### Instructions for setting up your offline computer
+https://gist.github.com/kalimar/ed14b5d026220ee5cd81d416b4f67b7b#file-matawai-nuc-md
