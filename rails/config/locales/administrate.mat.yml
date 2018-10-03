@@ -1,0 +1,28 @@
+---
+mat:
+  administrate:
+    actions:
+      confirm: Weet u het zeker?
+      destroy: Verwijder
+      edit: Bewerk
+      edit_resource: Bewerk %{name}
+      show_resource: Toon %{name}
+      new_resource: Nieuw %{name}
+      back: Terug
+    controller:
+      create:
+        success: "%{resource} was succesvol aangemaakt."
+      destroy:
+        success: "%{resource} was succesvol verwijderd."
+      update:
+        success: "%{resource} was succesvol geupdated."
+    fields:
+      has_many:
+        more: Resultaat %{count} van %{total_count}
+        none: Geen
+    form:
+      error: error
+      errors: "%{pluralized_errors} prohibited this %{resource_name} from being saved:"
+    search:
+      clear: CDuidelijke zoek
+      label: Zoeken %{resource}
