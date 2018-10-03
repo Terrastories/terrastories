@@ -9,6 +9,18 @@ module Admin
     before_action :authenticate_user!
     before_action :authenticate_admin
 
+    before_action :set_locale
+
+    def default_url_options
+      { locale: I18n.locale }
+    end
+
+    private
+
+    def set_locale
+      I18n.locale = params[:locale] || I18n.default_locale
+    end
+
     def authenticate_admin
       redirect_to '/', alert: 'Not authorized.' unless current_user && current_user.editor?
     end
