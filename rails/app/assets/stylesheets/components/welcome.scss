@@ -9,15 +9,9 @@
   text-align: center;
   
   .logo {
-  
-		 justify-content: center;
-		align-items: center;
-		text-align: center;
-	
-		img {
-			height: 50%;
-			width: 50%;
-		}
+  	  img {
+		width: 50%;
+	  }
 	}
   
   &-card {
@@ -105,4 +99,38 @@
       }
     }
   }
+
+  @include for-phone-only {
+	.logo { 
+	  height: 25%; 
+	}
+  }
+
+  @media screen and (max-width: 370px) {
+    h1 { 
+	  font-size: 1.5rem; 
+	}
+    
+	button { 
+	  width: 10rem; 
+	}
+	
+	.navbar-link {
+	  margin-left: 5px;
+	  margin-right: 5px;
+	  font-size: 0.6em;
+	}
+  }
+  
+  @media screen and (max-height: 370px) {
+	.logo { 
+	  display: none; 
+	}
+
+	.welcome-card {
+	  margin-bottom: 0;
+	}
+  }  
+  
 }
+
