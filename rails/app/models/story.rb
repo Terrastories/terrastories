@@ -10,7 +10,12 @@ class Story < ApplicationRecord
       pointid = Point.where(title: row[3])&.first&.id
       speakerid = Speaker.where(name: row[2])&.first&.id
       perm = row[9].blank? ? "anonymous" : "user_only"
-      Story.create(title:row[0], point_id: pointid, speaker_id: speakerid, permission_level: perm)
+      story = Story.create(title:row[0], point_id: pointid, speaker_id: speakerid, permission_level: perm)
+      if row[8] && File.exist?(Rails.root.join('media', row[8]))
+        file = File.open(Rails.root.join('media',row[8]))
+        story.media.attach(io: file, filename: row[8])
+        story.save
+      end
     end
   end
 
