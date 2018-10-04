@@ -7,26 +7,25 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  
+
   .logo {
-  	  img {
-		width: 50%;
-	  }
-	}
-  
+    img {
+      width: 50%;
+    }
+  }
+
   &-card {
-    background: rgba(255,255,255,0.70);
+    background: $card-background;
     width: 55%;
     padding: 2em;
     border-radius: 5%;
-    color: #136A7E;
+    color: $blue;
     max-width: 25rem;
     height: 20rem;
     display: flex;
     flex-direction: column;
-	margin-bottom: 40px;
-	flex-shrink: 0;
-
+    margin-bottom: 40px;
+    flex-shrink: 0;
     @media screen and (max-width: 600px) {
       width: 80vw;
     }
@@ -37,9 +36,9 @@
     }
 
     &-user {
-      color: #5AA68D;
+      color: $teal;
       margin-top: 1rem;
-	  margin-bottom: 1rem;
+      margin-bottom: 1rem;
       width: 100%;
 
       a {
@@ -47,9 +46,9 @@
           letter-spacing: 0;
         }
         text-decoration: none;
-        color: #5AA68D;
+        color: $teal;
         text-transform: uppercase;
-        letter-spacing: .09rem;
+        letter-spacing: 0.09rem;
         font-family: sans-serif;
         font-weight: bold;
         font-size: 0.85rem;
@@ -57,29 +56,29 @@
         margin-left: 1rem;
 
         &:hover {
-          color: #136A7E;
+          color: $blue;
         }
       }
     }
 
     h1 {
-      border-top: 3px solid #D77A34;
-      padding-top: 0.3em; 
-	  padding-bottom: 0.2em;
+      border-top: 3px solid $orange;
+      padding-top: 0.3em;
+      padding-bottom: 0.2em;
       text-align: center;
       margin: 0;
     }
 
     a {
-      color: #5AA68D;
+      color: $teal;
       text-decoration: none;
       align-self: center;
     }
-  
+
     button {
-      background-color: #5AA68D;
+      background-color: $teal;
       text-transform: uppercase;
-      letter-spacing: .09rem;
+      letter-spacing: 0.09rem;
       display: block;
       border-radius: 5px;
       border-color: transparent;
@@ -89,53 +88,49 @@
       padding: 1rem;
       width: 15rem;
       margin-top: 0.5rem;
-      color: white;
-  
+      color: $white;
+
       &:hover {
-        background-color: #136A7E;
+        background-color: $blue;
       }
-  
+
       &:focus {
-        outline-color: #fff;
+        outline-color: $white;
       }
     }
   }
 
   @include for-phone-only {
-	.logo { 
-	  height: 25%; 
-	}
+    .logo {
+      height: 25%;
+    }
   }
-
   @media screen and (max-width: 370px) {
-    h1 { 
-	  font-size: 1.5rem; 
-	}
-    
-	button { 
-	  width: 10rem; 
-	}
-	
-	.navbar-link {
-	  margin-left: 5px;
-	  margin-right: 5px;
-	  font-size: 0.6em;
-	}
-	
-	.language-picker { 
-	  font-size: 0.7em;
-	}
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    button {
+      width: 10rem;
+    }
+
+    .navbar-link {
+      margin-left: 5px;
+      margin-right: 5px;
+      font-size: 0.6em;
+    }
+
+    .language-picker {
+      font-size: 0.7em;
+    }
   }
-  
   @media screen and (max-height: 450px) {
-	.logo { 
-	  display: none; 
-	}
+    .logo {
+      display: none;
+    }
 
-	.welcome-card {
-	  margin-bottom: 0;
-	}
-  }  
-  
+    .welcome-card {
+      margin-bottom: 0;
+    }
+  }
 }
-
