@@ -30,7 +30,6 @@ class StoryDashboard < Administrate::BaseDashboard
     :desc,
     :speaker,
     :point,
-    :media,
     :permission_level
   ].freeze
 

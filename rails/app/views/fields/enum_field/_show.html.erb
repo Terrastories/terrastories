@@ -1,1 +1,5 @@
-<%= field.to_s.titleize %>
+<% if field %>
+  <%= field.to_s.titleize %>
+<% else %>
+  Not Set
+<% end %>
