@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { featureCollection } from '@turf/helpers'
+import { featureCollection } from '@turf/helpers';
+// import OralHistoryIcon from 'images/marker2.svg';
 
 
 let pointSource = featureCollection([]);
@@ -50,8 +51,14 @@ export default class Map extends Component {
           "type": "circle",
           "source": "pointSource",
           "paint": {
+            "circle-opacity": 0.7,
             "circle-color": "pink",
-            "circle-radius": 10
+            "circle-stroke-width": 1,
+            "circle-stroke-color": "black",
+            'circle-radius': {
+              'base': 1.75,
+              'stops': [[12, 5], [22, 180]]
+          },
           }
         });
         // When a click event occurs on a feature in the places layer, open a popup at the
