@@ -1,6 +1,7 @@
 import React, { Component  } from "react";
 import PropTypes from "prop-types";
 import StoryMedia from "./StoryMedia";
+import Filter from "./Filter";
 import { List, AutoSizer, CellMeasurer, CellMeasurerCache } from "react-virtualized";
 
 class StoryList extends Component {
@@ -10,18 +11,44 @@ class StoryList extends Component {
       fixedWidth: true,
       defaultHeight: 100
     });
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this._grid.forceUpdateGrid();
+    this.state = {
+      activeStoryIndex: null
+    };
   }
 
   static propTypes = {
-    stories: PropTypes.array
+    stories: PropTypes.array,
+    handleFilter: PropTypes.func,
+    clearFilteredStories: PropTypes.func,
+    onStoryClick: PropTypes.func
   };
+
+  handleClickStory = (story, index) => {
+    this.setState({
+      activeStoryIndex: index
+    }, this._list.forceUpdateGrid());
+    this.props.onStoryClick(story.point.geometry.coordinates);
+  }
+
+  handleFilter = (category, item) => {
+    this.resetActiveStory();
+    this.props.handleFilter(category, item);
+  }
+
+  clearFilteredStories = () => {
+    this.resetActiveStory();
+    this.props.clearFilteredStories();
+  }
+
+  resetActiveStory = () => {
+    this.setState({
+      activeStoryIndex: null
+    }, this._list.forceUpdateGrid());
+  }
 
   renderStory = ({key, index, style, parent}) => {
     const story = this.props.stories[index];
+    const storyClass = this.state.activeStoryIndex === index ? `story${index} isActive` : `story${index}`;
     return (
       <CellMeasurer 
         key={key}
@@ -30,8 +57,8 @@ class StoryList extends Component {
         columnIndex={0}
         rowIndex={index}>
           <li
-            className={`story storypoint${story.point && story.point.id}`}
-            onClick={_ => this.props.onStoryClick([story.point.lng, story.point.lat])}
+            className={storyClass}
+            onClick={_ => this.handleClickStory(story, index)}
             key={key}
             style={style}
           >
@@ -51,24 +78,35 @@ class StoryList extends Component {
 
   render() {
     return (
-      <div className="stories">
-        <AutoSizer>
-          {({height, width}) => {
-            return (
-              <List
-                height={height}
-                width={width}
-                rowCount={this.props.stories.length}
-                deferredMeasurementCache={this.cache}
-                rowHeight={this.cache.rowHeight}
-                rowRenderer={this.renderStory}
-                overscanRowCount={3}
-                ref={grid => (this._grid = grid)}
-              />
-            );
-          }}
-        </AutoSizer>
+    <React.Fragment>
+      <div className="card--nav">
+        <Filter
+          handleFilter={this.handleFilter}
+          categories={this.props.categories}
+          filterMap={this.props.filterMap}
+          clearFilteredStories={this.clearFilteredStories}
+        />
       </div>
+        <div className="stories">
+          <AutoSizer>
+            {({height, width}) => {
+              return (
+                <List
+                  height={height}
+                  width={width}
+                  rowCount={this.props.stories.length}
+                  deferredMeasurementCache={this.cache}
+                  rowHeight={this.cache.rowHeight}
+                  rowRenderer={this.renderStory}
+                  overscanRowCount={2}
+                  scrollToIndex={this.state.activeStoryIndex || 0}
+                  ref={list => (this._list = list)}
+                />
+              );
+            }}
+          </AutoSizer>
+        </div>
+      </React.Fragment>
     );
   }
 }

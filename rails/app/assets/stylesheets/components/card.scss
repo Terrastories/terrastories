@@ -2,7 +2,7 @@ $el-shadow: 0 1px 4px #bbb;
 
 .cardContainer {
   position: relative;
-  width: 40%;
+  width: 45%;
   max-width: 25rem;
   height: 100vh;
 
@@ -122,6 +122,9 @@ $el-shadow: 0 1px 4px #bbb;
   .stories {
     overflow-x: hidden;
     flex: 5 0 0;
+    .container {
+      padding-bottom: 3rem;
+    }
     .speakers {
       img { 
         width: 50px; 
@@ -129,8 +132,13 @@ $el-shadow: 0 1px 4px #bbb;
         border-radius: 50px;
         border: 2px solid black;
       }
+      padding-bottom: 0.25rem;
     }
     li {
+      &.isActive {
+        border: 3px solid #0f566b;
+      }
+
       list-style: none;
       padding: 0.75rem;
       background: white;
@@ -151,6 +159,7 @@ $el-shadow: 0 1px 4px #bbb;
         line-height: 1.25;
         margin-top: 1rem;
         @include ui-font;
+        padding-bottom: 1rem;
       }
     }
   }
