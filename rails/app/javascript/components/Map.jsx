@@ -7,8 +7,17 @@ export default class Map extends Component {
     mapboxgl.accessToken = this.props.mapboxAccessToken;
   }
 
-  // I wonder if component will receive props is how we want to execute the flyTo
-  // if new coords are received then execute the flyTo.
+  state = {
+    points: this.props.points, // Used for points on map
+  }
+
+  componentDidUpdate() {
+    if (this.props.pointCoords.length  > 0) {
+      if (this.map) {
+        this.map.flyTo({center: this.props.pointCoords, zoom: 14});
+      }
+    }
+  }
 
   componentDidMount() {
     // @NOTE: MAKE SURE ARRAY IS [LONGITUDE, LATITUDE]

@@ -7,7 +7,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      coords: [],
+      pointCoords: [],
       points: {},
       stories: this.props.stories
     }
@@ -19,8 +19,8 @@ class App extends Component {
     (this.getPointsFromStories(this.props.stories), 'Component Did Mount Points');
   }
 
-  setPointCoords = coords => {
-    this.setState({coords});
+  setPointCoords = pointCoords => {
+    this.setState({pointCoords});
   }
 
   getPointsFromStories = stories => {
@@ -114,7 +114,7 @@ class App extends Component {
       <div>
         <Map
           points={this.state.points}
-          pointCoords={this.state.coords}
+          pointCoords={this.state.pointCoords}
           mapboxAccessToken={this.props.mapbox_access_token}
           mapboxStyle={this.props.mapbox_style}
         />
