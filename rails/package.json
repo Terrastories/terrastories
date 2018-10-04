@@ -9,6 +9,7 @@
     "react-dom": "^16.4.2",
     "react-select": "^2.0.0",
     "react_ujs": "^2.4.4",
+    "react-virtualized": "9.20.1",
     "webpack": "^3.0.0"
   },
   "devDependencies": {
