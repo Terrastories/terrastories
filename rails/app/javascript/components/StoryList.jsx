@@ -7,15 +7,17 @@ class StoryList extends Component {
     stories: PropTypes.array
   };
 
+
   render() {
     return (
       <div className="stories">
         <ul>
           {this.props.stories.map(story => {
+            const {coordinates} = story.point.geometry;
             return (
               <li
                 className={`story storypoint${story.point && story.point.id}`}
-                onClick={_ => this.props.onStoryClick([story.point.lng, story.point.lat])}
+                onClick={_ => this.props.onStoryClick(coordinates)}
               >
                 <div className="speakers">
                   <img src={story.speaker.picture_url} alt={story.speaker.name} title={story.speaker.name}/>
