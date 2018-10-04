@@ -1,4 +1,4 @@
-.welcome {
+.devise {
   background: image-url('welcome-bg.jpg') no-repeat center center fixed;
   background-size: cover;
   height: 100vh;
@@ -21,7 +21,6 @@
     border-radius: 5%;
     color: $blue;
     max-width: 25rem;
-    height: 20rem;
     display: flex;
     flex-direction: column;
     margin-bottom: 40px;
@@ -33,32 +32,6 @@
     img {
       margin-bottom: 0.5rem;
       width: 100%;
-    }
-
-    &-user {
-      color: $teal;
-      margin-top: 1rem;
-      margin-bottom: 1rem;
-      width: 100%;
-
-      a {
-        @media screen and (max-width: 600px) {
-          letter-spacing: 0;
-        }
-        text-decoration: none;
-        color: $teal;
-        text-transform: uppercase;
-        letter-spacing: 0.09rem;
-        font-family: sans-serif;
-        font-weight: bold;
-        font-size: 0.85rem;
-        margin-right: 1rem;
-        margin-left: 1rem;
-
-        &:hover {
-          color: $blue;
-        }
-      }
     }
 
     h1 {
@@ -75,11 +48,21 @@
       align-self: center;
     }
 
-    button {
+    input[type=text],
+    input[type=email],
+    input[type=password] {
+      padding: 0.5rem;
+      width: 100%;
+    }
+
+    label {
+      margin-top: 1rem;
+    }
+
+    input[type=submit] {
       background-color: $teal;
       text-transform: uppercase;
       letter-spacing: 0.09rem;
-      display: block;
       border-radius: 5px;
       border-color: transparent;
       font-weight: 400;
@@ -99,7 +82,6 @@
       }
     }
   }
-
   @include for-phone-only {
     .logo {
       height: 25%;
@@ -110,7 +92,7 @@
       font-size: 1.5rem;
     }
 
-    button {
+    input[type=submit] {
       width: 10rem;
     }
 
@@ -119,18 +101,18 @@
       margin-right: 5px;
       font-size: 0.6em;
     }
-
-    .language-picker {
-      font-size: 0.7em;
-    }
   }
   @media screen and (max-height: 450px) {
     .logo {
       display: none;
     }
 
-    .welcome-card {
+    .devise-card {
       margin-bottom: 0;
     }
+  }
+
+  &-links {
+    margin-top: 1rem;
   }
 }
