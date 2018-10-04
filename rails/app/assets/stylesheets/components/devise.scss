@@ -1,0 +1,140 @@
+.devise {
+  background: image-url('welcome-bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  .logo {
+  	  img {
+		width: 50%;
+	  }
+	}
+
+  &-card {
+    background: rgba(255,255,255,0.70);
+    width: 55%;
+    padding: 2em;
+    border-radius: 5%;
+    color: #136A7E;
+    max-width: 25rem;
+    height: 20rem;
+    display: flex;
+    flex-direction: column;
+	margin-bottom: 40px;
+	flex-shrink: 0;
+
+    @media screen and (max-width: 600px) {
+      width: 80vw;
+    }
+
+    img {
+      margin-bottom: 0.5rem;
+      width: 100%;
+    }
+
+    &-user {
+      color: #5AA68D;
+      margin-top: 1rem;
+	  margin-bottom: 1rem;
+      width: 100%;
+
+      a {
+        @media screen and (max-width: 600px) {
+          letter-spacing: 0;
+        }
+        text-decoration: none;
+        color: #5AA68D;
+        text-transform: uppercase;
+        letter-spacing: .09rem;
+        font-family: sans-serif;
+        font-weight: bold;
+        font-size: 0.85rem;
+        margin-right: 1rem;
+        margin-left: 1rem;
+
+        &:hover {
+          color: #136A7E;
+        }
+      }
+    }
+
+    h1 {
+      border-top: 3px solid #D77A34;
+      padding-top: 0.3em;
+	  padding-bottom: 0.2em;
+      text-align: center;
+      margin: 0;
+    }
+
+    a {
+      color: #5AA68D;
+      text-decoration: none;
+      align-self: center;
+    }
+
+    button {
+      background-color: #5AA68D;
+      text-transform: uppercase;
+      letter-spacing: .09rem;
+      display: block;
+      border-radius: 5px;
+      border-color: transparent;
+      font-weight: 400;
+      font-size: 0.85rem;
+      cursor: pointer;
+      padding: 1rem;
+      width: 15rem;
+      margin-top: 0.5rem;
+      color: white;
+
+      &:hover {
+        background-color: #136A7E;
+      }
+
+      &:focus {
+        outline-color: #fff;
+      }
+    }
+  }
+
+  @include for-phone-only {
+	.logo {
+	  height: 25%;
+	}
+  }
+
+  @media screen and (max-width: 370px) {
+    h1 {
+	  font-size: 1.5rem;
+	}
+
+	button {
+	  width: 10rem;
+	}
+
+	.navbar-link {
+	  margin-left: 5px;
+	  margin-right: 5px;
+	  font-size: 0.6em;
+	}
+
+	.language-picker {
+	  font-size: 0.7em;
+	}
+  }
+
+  @media screen and (max-height: 450px) {
+	.logo {
+	  display: none;
+	}
+
+	.welcome-card {
+	  margin-bottom: 0;
+	}
+  }
+
+}
