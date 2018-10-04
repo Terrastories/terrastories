@@ -15,8 +15,6 @@ class App extends Component {
 
   componentDidMount() {
     this.getPointsFromStories(this.props.stories);
-    (this.props.stories, 'Component Did Mount Stories');
-    (this.getPointsFromStories(this.props.stories), 'Component Did Mount Points');
   }
 
   setPointCoords = pointCoords => {

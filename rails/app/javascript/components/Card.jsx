@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import StoryList from "./StoryList";
-import Filter from "./Filter";
 
 class Card extends Component {
 
@@ -14,7 +13,8 @@ class Card extends Component {
   static defaultProps = {
     filterMap: {},
     categories: [],
-    clearFilteredStories: () => {}
+    clearFilteredStories: () => {},
+    handleFilter: () => {}
   }
 
   handleTray = () => {
@@ -53,16 +53,14 @@ class Card extends Component {
               <img src={this.props.logo_path} alt="Terrastories" />
             </div>
 
-            <div className="card--nav">
-              <Filter
-                handleFilter={this.props.handleFilter}
-                categories={this.props.categories}
-                filterMap={this.props.filterMap}
-                clearFilteredStories={this.props.clearFilteredStories}
-              />
-            </div>
-
-            <StoryList stories={this.props.stories} onStoryClick={this.props.onCardClick}/>
+            <StoryList
+              stories={this.props.stories}
+              onStoryClick={this.props.onCardClick}
+              handleFilter={this.props.handleFilter}
+              clearFilteredStories={this.props.clearFilteredStories}
+              filterMap={this.props.filterMap}
+              categories={this.props.categories}
+            />
 
             <div className="card--tasks">
               {this.renderUserInformation()}
