@@ -19,7 +19,7 @@ class StoryMedia extends PureComponent {
         playsinline
         controls
       >
-        <source src={file.url} type={file.blob.content_type} />
+        <source src={`/assets/${file.temporary_filename}`} type={file.blob.content_type} />
       </video>
     );
   }

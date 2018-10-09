@@ -4,6 +4,7 @@ json.stories @stories do |story|
   json.place story.point.place
   json.media story.media do |media|
     json.url url_for(media)
+    json.temporary_filename media.filename
     json.blob media.blob
   end
   json.speaker do |speaker|
