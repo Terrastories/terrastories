@@ -37,12 +37,6 @@ class Card extends Component {
           <li>{I18n.t("hello")} {this.props.user.email} (<a href={`/${I18n.currentLocale()}`}>{I18n.t("back_to_welcome")}</a>)</li>
         </ul>
       );
-    } else { 
-      return (
-        <ul>
-          <li><a href={`/${I18n.currentLocale()}`}>{I18n.t("back_to_welcome")}</a></li>
-        </ul>
-      );
     }
   }
 

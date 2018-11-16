@@ -18,6 +18,7 @@ class StoryMedia extends PureComponent {
         className="video-player"
         playsinline
         controls
+        controlsList='nodownload'
       >
         <source src={file.url} type={file.blob.content_type} />
       </video>
