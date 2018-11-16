@@ -1,4 +1,4 @@
-FROM ruby:2.5
+FROM ruby:2.5.1
 RUN apt-get update
 RUN apt-get install -y apt-transport-https
 RUN curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
