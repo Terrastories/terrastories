@@ -147,7 +147,7 @@ GEM
     mimemagic (0.3.2)
     mini_mime (1.0.1)
     mini_portile2 (2.3.0)
-    mini_racer (0.2.0)
+    mini_racer (0.2.4)
       libv8 (>= 6.3)
     minitest (5.11.3)
     momentjs-rails (2.20.1)
@@ -323,4 +323,4 @@ RUBY VERSION
    ruby 2.5.1p57
 
 BUNDLED WITH
-   1.16.5
+   1.17.1
