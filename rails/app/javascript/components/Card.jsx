@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import StoryList from "./StoryList";
+var axios = require("axios");
 
 class Card extends Component {
 
@@ -23,11 +24,23 @@ class Card extends Component {
     }));
   }
 
+//h/t Jane Willborn https://medium.com/@iamjane/devise-with-react-webpacker-and-rails-dacbf9ae0233
+  handleLogout(e){
+    e.preventDefault();
+    axios.delete('/users/sign_out/en', {})
+    .then(function(response){
+      that.props.changePage("sign_in")
+    })
+    .catch(function(error){
+      console.log(error)
+    })
+  }
+
   renderUserInformation = () => {
     if (this.props.user && this.props.user.role === 'editor') {
       return (
         <ul>
-          <li>{I18n.t("hello")} {this.props.user.email} (<a href={`/${I18n.currentLocale()}`}>{I18n.t("back_to_welcome")}</a>)</li>
+          <li>{I18n.t("hello")} {this.props.user.email} (<a onClick={this.handleLogout}>{I18n.t("logout")}</a>)</li>
           <li><a href={`/admin?locale=${I18n.currentLocale()}`}>{I18n.t("admin_page")}</a></li>
         </ul>
       );
