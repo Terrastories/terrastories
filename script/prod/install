@@ -1,0 +1,62 @@
+#!/bin/bash
+
+do_uninstall() {
+  service stop terrastories
+  rm /etc/init/terrastories.conf
+  rm /bin/terrastories-start
+  rm /bin/terrastories-update
+  rm -rf /opt/terrastories
+}
+
+do_install() {
+  # Clone the terrastories repository to a known location in /opt/terrastories
+  git clone https://github.com/rubyforgood/terrastories.git /opt/terrastories
+  cd /opt/terrastories && bin/bootstrap && bin/setup
+
+  # Create a symbolic link to the executable scripts in /bin
+  cd /bin && ln -s /opt/terrastories/bin/start terrastories-start
+  cd /bin && ln -s /opt/terrastories/bin/update terrastories-update
+
+  # Create a symbolic link to the upstart service configuration
+  cd /etc/init && ln -s /opt/terrastories/conf/terrastories.conf
+
+  # Stat the terrastories service
+  initctl reload-configuration
+  service terrastories start
+}
+
+prompt_for_install() {
+  while true; do
+      read -p "This is not a typical development command. It will install \
+terrastories as a service intended for a deployed production environment. Are \
+you sure you want to proceed? y/N " yn
+      case $yn in
+          [Yy]* ) do_uninstall && do_install; break;;
+          * ) exit;;
+      esac
+  done
+}
+
+main() {
+  force_yes=0
+
+  while getopts ":y" opt; do
+    case $opt in
+      y)
+        force_yes=1
+        ;;
+      \?)
+        echo "Invalid option: -$OPTARG" >&2
+        exit 1
+        ;;
+    esac
+  done
+
+  if [ $force_yes == 1 ]; then
+    do_uninstall && do_install;
+  else
+    prompt_for_install
+  fi
+}
+
+main
