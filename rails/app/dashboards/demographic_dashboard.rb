@@ -22,10 +22,9 @@ class DemographicDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :user,
-    :story,
-    :id,
     :name,
+    :user,
+    :story
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -50,8 +49,7 @@ class DemographicDashboard < Administrate::BaseDashboard
 
   # Overwrite this method to customize how demographics are displayed
   # across all pages of the admin dashboard.
-  #
-  # def display_resource(demographic)
-  #   "Demographic ##{demographic.id}"
-  # end
+  def display_resource(demographic)
+    "#{demographic.name}"
+  end
 end

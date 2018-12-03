@@ -15,6 +15,8 @@ class StoryDashboard < Administrate::BaseDashboard
     point: Field::BelongsTo,
     media: Field::ActiveStorage,
     permission_level: EnumField,
+    demographic: Field::HasMany,
+    user: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -25,7 +27,7 @@ class StoryDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :id, 
+    :id,
     :title,
     :desc,
     :speaker,
@@ -42,6 +44,8 @@ class StoryDashboard < Administrate::BaseDashboard
     :speaker,
     :point,
     :media,
+    :demographic,
+    :user,
     :permission_level,
     :created_at,
     :updated_at,

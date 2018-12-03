@@ -8,14 +8,17 @@ class StoryPolicy
         end
 
         def resolve
-            stories = Story.where(permission_level: :anonymous)
-            if user.present?
-                stories = Story.where(permission_level: [:anonymous, :user_only])
+            Rails.logger.debug "User: #{user}"
+            if user&.admin?
+                Rails.logger.debug 'Admin user gets all stories'
+                Story.all
+            elif user
+                Rails.logger.debug 'Known user gets stories limited to demographics'
+                Story.joins(:demographic).where('demographics_stories.demographic_id': user.demographic)
+            else
+                Rails.logger.debug 'Anonymous user gets only public stories'
+                Story.where(permission_level: :anonymous)
             end
-            if user && user.editor?
-                stories = Story.all
-            end
-            stories
         end
     end
 end

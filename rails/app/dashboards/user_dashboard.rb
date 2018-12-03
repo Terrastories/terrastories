@@ -12,6 +12,8 @@ class UserDashboard < Administrate::BaseDashboard
     email: Field::String,
     role: EnumField,
     password: Field::String,
+    demographic: Field::HasMany,
+    story: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -44,13 +46,13 @@ class UserDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :email,
     :password,
-    :role
+    :role,
+    :demographic
   ].freeze
 
   # Overwrite this method to customize how users are displayed
   # across all pages of the admin dashboard.
-  #
-  # def display_resource(user)
-  #   "User ##{user.id}"
-  # end
+  def display_resource(user)
+    "User: #{user.email}"
+  end
 end

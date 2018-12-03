@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_02_151208) do
+ActiveRecord::Schema.define(version: 2018_12_02_162125) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -37,6 +37,16 @@ ActiveRecord::Schema.define(version: 2018_12_02_151208) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "demographics_stories", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "demographic_id", null: false
+    t.bigint "story_id", null: false
+  end
+
+  create_table "demographics_users", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "demographic_id", null: false
+    t.bigint "user_id", null: false
   end
 
   create_table "places", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -76,6 +86,11 @@ ActiveRecord::Schema.define(version: 2018_12_02_151208) do
     t.integer "permission_level"
     t.index ["point_id"], name: "index_stories_on_point_id"
     t.index ["speaker_id"], name: "index_stories_on_speaker_id"
+  end
+
+  create_table "stories_users", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "story_id", null: false
+    t.bigint "user_id", null: false
   end
 
   create_table "taggings", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
