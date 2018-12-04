@@ -12,9 +12,14 @@ class StoryPolicy
             if user&.admin?
                 Rails.logger.debug 'Admin user gets all stories'
                 Story.all
-            elif user
+            elsif user
                 Rails.logger.debug 'Known user gets stories limited to demographics'
-                Story.joins(:demographic).where('demographics_stories.demographic_id': user.demographic)
+                demographics_ids = user.demographic.map(&:id)
+                Story.joins(:demographic).where([
+                  "`demographics`.`id` = :demo OR `permission_level` = :anon",
+                  {demo: demographics_ids, anon: :anonymous}
+                ])
+                # Story.joins(:demographic).where('demographics.id': demographics_ids)
             else
                 Rails.logger.debug 'Anonymous user gets only public stories'
                 Story.where(permission_level: :anonymous)
