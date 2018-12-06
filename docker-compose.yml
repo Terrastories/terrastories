@@ -28,6 +28,7 @@ services:
     volumes:
       - ./nginx:/etc/nginx
       - ./nginx/static:/www/static
+      - ./rails/app/assets:/www/static/assets
 
   rails:
     restart: always

@@ -4,7 +4,32 @@
   <title>Terrastories</title>
 </head>
 <body>
-  <img src="/nas/logocombo-2.svg" />
-  <h1>Any Minute Now</h1>
+  <img src="/nas/images/logocombo.svg" />
+  <h1 id="message">Currently unavailable.</h1>
+  <script type="text/javascript">
+    (function() {
+      var timeout;
+      var message = document.getElementById('message');
+      function poll() {
+        timeout = setTimeout(function () {
+          message.innerText = "Loading…";
+        }, 5000);
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function(err, res) {
+          if (xhr.readyState === 4) {
+            if (xhr.status < 400) {
+              window.location.pathname = '/';
+            } else {
+              clearTimeout(timeout);
+              timeout = setTimeout(poll, 4000);
+            }
+          }
+        }
+        xhr.open('HEAD', '/');
+        xhr.send();
+      }
+      poll();
+    })();
+  </script>
 </body>
 </html>
