@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-  has_and_belongs_to_many :story
   has_and_belongs_to_many :demographic
 
   # Include default devise modules. Others available are:
