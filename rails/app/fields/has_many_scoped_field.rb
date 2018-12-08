@@ -4,7 +4,9 @@ class HasManyScopedField < Administrate::Field::HasMany
   end
 
   def scoped_associations
-    resources = @resource.send("#{self.name}_candidates", @user)
+    scope_name = "#{self.name.camelize}Policy::Scope"
+    scope_const = Object.const_get scope_name
+    scope_const.new(@user, @resource.user).resolve
   end
 
   def candidate_resources
