@@ -12,7 +12,7 @@ class UserDashboard < Administrate::BaseDashboard
     email: Field::String,
     role: EnumField,
     password: Field::String,
-    demographic: Field::HasMany,
+    demographic: HasManyScopedField,
     story: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,

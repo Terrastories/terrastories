@@ -4,9 +4,11 @@ class HasManyScopedField < Administrate::Field::HasMany
   end
 
   def scoped_associations
-    scope_name = "#{self.name.camelize}Policy::Scope"
+    model_name = "#{self.name.camelize}"
+    model_const = Object.const_get model_name
+    scope_name = "#{model_name}Policy::Scope"
     scope_const = Object.const_get scope_name
-    scope_const.new(@user, @resource.user).resolve
+    scope_const.new(@user, model_const).resolve
   end
 
   def candidate_resources

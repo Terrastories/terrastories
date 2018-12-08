@@ -15,7 +15,7 @@ class StoryDashboard < Administrate::BaseDashboard
     point: Field::BelongsTo,
     media: Field::ActiveStorage,
     is_public: Field::Boolean,
-    demographic: Field::HasMany,
+    demographic: HasManyScopedField,
     user: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -60,6 +60,7 @@ class StoryDashboard < Administrate::BaseDashboard
     :speaker,
     :point,
     :media,
+    :demographic,
     :is_public
   ].freeze
 
