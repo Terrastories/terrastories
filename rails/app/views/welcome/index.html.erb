@@ -13,7 +13,7 @@
 
     <div class="welcome-card-user">
       <% if user_signed_in? %>
-        <% if current_user.admin? %>
+        <% if current_user.editor? %>
           <%= link_to t("admin_page"), admin_root_path, :class => 'navbar-link' %> |
         <% end %>
         <%= link_to t("logout"), destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>

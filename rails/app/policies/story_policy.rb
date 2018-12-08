@@ -8,15 +8,13 @@ class StoryPolicy < EditorOnlyPolicy
     end
 
     def resolve
-      Rails.logger.debug "User: #{user}"
       if user&.admin?
         Story.all
       elsif user
-        demographics_ids = user.demographic.map(&:id)
-        Story.joins(:demographic).where([
-          "`demographics`.`id` = :demo OR `is_public` IS TRUE",
-          {demo: demographics_ids, anon: :anonymous}
-        ])
+        demographics_ids = user.demographic.pluck(:id)
+        Story.where('demographics.id': demographics_ids)
+          .or(Story.where('stories.is_public': true))
+          .left_joins(:demographic)
       else
         Story.where(is_public: true)
       end

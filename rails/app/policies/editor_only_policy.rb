@@ -9,6 +9,7 @@ class EditorOnlyPolicy
     user.editor?
   end
 
+  alias_method :create?, :editor?
   alias_method :destroy?, :editor?
   alias_method :edit?, :editor?
   alias_method :new?, :editor?

@@ -14,7 +14,6 @@ class User < ApplicationRecord
   end
 
   def editor?
-    Rails.logger.debug "User role comparison #{User.roles[self.role]} >= #{User.roles[:editor]}"
     User.roles[self.role] >= User.roles[:editor]
   end
 
