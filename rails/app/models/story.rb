@@ -23,6 +23,4 @@ class Story < ApplicationRecord
       end
     end
   end
-
-  enum permission_level: [:anonymous, :user_only, :editor_only]
 end

@@ -14,11 +14,11 @@ class StoryPolicy
             elsif user
                 demographics_ids = user.demographic.map(&:id)
                 Story.joins(:demographic).where([
-                  "`demographics`.`id` = :demo OR `permission_level` = :anon",
+                  "`demographics`.`id` = :demo OR `is_public` IS TRUE",
                   {demo: demographics_ids, anon: :anonymous}
                 ])
             else
-                Story.where(permission_level: :anonymous)
+                Story.where(is_public: true)
             end
         end
     end

@@ -63,6 +63,6 @@ class SpeakerDashboard < Administrate::BaseDashboard
   end
 
   def permitted_attributes
-    super + [media: [], permission_level: [:anonymous, :user_only, :editor_only]]
+    super + [media: []]
   end
 end

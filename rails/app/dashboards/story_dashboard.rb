@@ -14,7 +14,7 @@ class StoryDashboard < Administrate::BaseDashboard
     speaker: Field::BelongsTo,
     point: Field::BelongsTo,
     media: Field::ActiveStorage,
-    permission_level: EnumField,
+    is_public: Field::Boolean,
     demographic: Field::HasMany,
     user: Field::HasMany,
     created_at: Field::DateTime,
@@ -32,7 +32,7 @@ class StoryDashboard < Administrate::BaseDashboard
     :desc,
     :speaker,
     :point,
-    :permission_level
+    :is_public
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -46,7 +46,7 @@ class StoryDashboard < Administrate::BaseDashboard
     :media,
     :demographic,
     :user,
-    :permission_level,
+    :is_public,
     :created_at,
     :updated_at,
   ].freeze
@@ -60,7 +60,7 @@ class StoryDashboard < Administrate::BaseDashboard
     :speaker,
     :point,
     :media,
-    :permission_level
+    :is_public
   ].freeze
 
   # Overwrite this method to customize how stories are displayed
@@ -71,6 +71,6 @@ class StoryDashboard < Administrate::BaseDashboard
   end
 
   def permitted_attributes
-    super + [media: [], permission_level: [:anonymous, :user_only, :editor_only]]
+    super + [media: []]
   end
 end
