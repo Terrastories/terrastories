@@ -1,0 +1,2 @@
+class PointPolicy < EditorOnlyPolicy
+end

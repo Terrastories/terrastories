@@ -8,8 +8,8 @@ class DemographicDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    user: Field::HasMany,
-    story: Field::HasMany,
+    user: HasManyScopedField,
+    story: HasManyScopedField,
     id: Field::Number,
     name: Field::String,
     created_at: Field::DateTime,
@@ -35,16 +35,16 @@ class DemographicDashboard < Administrate::BaseDashboard
     :id,
     :name,
     :created_at,
-    :updated_at,
+    :updated_at
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :user,
-    :story,
     :name,
+    :user,
+    :story
   ].freeze
 
   # Overwrite this method to customize how demographics are displayed
