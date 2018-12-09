@@ -16,4 +16,3 @@
 //= require rails-ujs
 //= require i18n/translations
 //= require_tree .
-//= require administrate/components/has_many_scoped_field.js

@@ -1,3 +1,4 @@
+<% field.associate_user current_user %>
 <% if field.resources.any? %>
   <% order = field.order_from_params(params.fetch(field.name, {})) %>
   <% page_number = params.fetch(field.name, {}).fetch(:page, nil) %>

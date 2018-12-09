@@ -1,23 +1,30 @@
 class HasManyScopedField < Administrate::Field::HasMany
+  def self.html_class
+    "has-many"
+  end
+
   def associate_user(user)
     @user = user
   end
 
-  def scoped_associations
-    model_name = "#{self.name.camelize}"
-    model_const = Object.const_get model_name
-    scope_name = "#{model_name}Policy::Scope"
-    scope_const = Object.const_get scope_name
-    scope_const.new(@user, model_const).resolve
+  def data
+    full_data = super
+    @user ? scope_class.new(@user, full_data).resolve : full_data
   end
 
-  def candidate_resources
-    associations = scoped_associations || associated_class
-    if options.key?(:includes)
-      includes = options.fetch(:includes)
-      associations.includes(*includes).all
-    else
-      associations.all
-    end
+  def model_name
+    "#{self.name.camelize}"
+  end
+
+  def model_class
+    Object.const_get model_name
+  end
+
+  def scope_name
+    "#{model_name}Policy::Scope"
+  end
+
+  def scope_class
+    Object.const_get scope_name
   end
 end
