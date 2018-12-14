@@ -75,7 +75,7 @@ class App extends Component {
       case FILTER_CATEGORIES[0]: {
         // first category: region
         filteredStories = this.props.stories.filter(story => {
-          if (story.point.properties.region.toLowerCase() === item.toLowerCase()) {
+          if (story.point.properties.region && story.point.properties.region.toLowerCase() === item.toLowerCase()) {
             return story;
           }
         });
