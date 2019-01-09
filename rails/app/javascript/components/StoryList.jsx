@@ -63,7 +63,7 @@ class StoryList extends Component {
             style={style}
           >
             <div className="speakers">
-              <img src={story.speaker.picture_url}/>
+              <img src={story.speaker.picture_url} alt={story.speaker.name} title={story.speaker.name}/>
               <p style={{ fontWeight: 'bold' }}>{story.speaker.name}</p>
             </div>
             <div className="container">
