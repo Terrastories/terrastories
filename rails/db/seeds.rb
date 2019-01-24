@@ -45,8 +45,8 @@ Story.find_or_create_by(title: "Fa di Kwinti nengeb bi feti ku Matawai sembe",
                      point: flaming_forest,
                      permission_level: 1)
 
-User.where(email: 'admin@terrastories.com').first_or_create do |admin|
-  admin.password = 'password',
-  admin.password_confirmation = 'password',
+User.find_or_create_by!(email: 'admin@terrastories.com') do |admin|  
+  admin.password = 'terrastories'
+  admin.password_confirmation = 'terrastories'
   admin.role = 1
 end
