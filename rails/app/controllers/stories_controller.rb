@@ -38,7 +38,7 @@ class StoriesController < ApplicationController
       redirect_back(fallback_location: root_path)
       flash[:error] = "No file was attached!"
     else
-      filepath = params[:file].read
+      filepath = params[:file].path
       Story.import_csv(filepath)
       flash[:notice] = "Stories were imported successfully!"
       redirect_back(fallback_location: root_path)
