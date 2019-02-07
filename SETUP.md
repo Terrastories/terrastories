@@ -14,10 +14,6 @@
 
 6.  [Updating the Tileserver Map](#updating-the-tileserver-map)
 
-## How to Contribute
-
-We would love for you to contribute to terrastories! We welcome all types of contributions, but any pull requests that address open issues, have test coverage, or are tagged with the next milestone will be prioritized. Please visit our [Contributing Guidelines](CONTRIBUTING.md) for more information.
-
 ## Prerequisites
 
 Install docker. On linux, you may have to install docker-compose separately.
