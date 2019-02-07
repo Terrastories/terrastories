@@ -2,143 +2,43 @@
 
 **TerraStories** is an application designed to help communities map and access their own place-based storytelling. The project to develop this application was initiated by the [**Amazon Conservation Team**](http://amazonteam.org) (ACT), an organization who partners with indigenous and other traditional communities in the Amazon rainforest to help them protect their ancestral lands and traditional culture. The application is developed to be entirely open source and offline-compatible, so that it can be used by communities in the most remote locations of the world. It is a Dockerized Rails App that uses [**Mapbox**](https://mapbox.com) to help users locate content geographically on an interactive map. A team is attempting to finish this app at **Ruby for Good 2018**: http://rubyforgood.org/2018
 
-## Table of Contents
-
-1.  [How to Contribute](#contributing)
-
-2.  [Prerequisites](#prerequisites)
-
-3.  [Setup](#setup)
-
-4.  [Running the Server](#make-it-go)
-
-5.  [Updating the App](#make-it-go)
-
-6.  [Development](#development)
-
-7.  [Updating the Tileserver Map](#updating-the-tileserver-map)
-
 ## How to Contribute
+We ♥ contributors! By participating in this project, you agree to abide by the Ruby for Good [Code of Conduct](CODE_OF_CONDUCT.md). We welcome all types of contributions, but any pull requests that address open issues, have test coverage, or are tagged with the next milestone will be prioritized.
 
-We would love for you to contribute to terrastories! We welcome all types of contributions, but any pull requests that address open issues, have test coverage, or are tagged with the next milestone will be prioritized. Please visit our [Contributing Guidelines](CONTRIBUTING.md) for more information.
+**First:** if you're unsure or afraid of *anything*, just ask or submit the issue or pull request anyways. You won't be yelled at for giving your best effort. The worst that can happen is that you'll be politely asked to change something. We appreciate any sort of contributions, and don't want a wall of rules to get in the way of that.
 
-## Prerequisites
+## Steps to Contribute to Terrastories
+**Step 1: Find an issue to work on**
+Visit our [issues page](https://github.com/rubyforgood/terrastories/network/members) and find an issue you'd like to work on that hasn't already been claimed (It has been claimed if you see someone else's picture on it and it is assigned to someone else, or if you see someone's comment on the issue page saying they are claiming it). Comment on the issue that you have claimed it and will be working on it. An admin will add you as the assignee. 
 
-Install docker. On linux, you may have to install docker-compose separately.
+**Step 2: Fork the repo**
+Click the "fork" button in the upper right of the Github repo page. A fork is a copy of the repository that allows you to freely explore & experiment without changing the original project. You can learn more about forking a repo in [this article](https://help.github.com/articles/fork-a-repo/).
 
-- https://docs.docker.com/install/
-- https://docs.docker.com/compose/install/
+**Step 3: Create a branch**
+Checkout a new branch for your issue - this branch can be named anything, but we encourage the format  `XXX-brief-description-of-feature`  where  `XXX`  is the issue number.
 
-## Setup
+**Step 4: Happy Hacking!**
+Follow the instructions in the [SETUP.md](SETUP.md) to set up your local environment. Feel free to discuss any questions on the issues as needed, and we will get back to you! Don't forget to write some tests to verify your code. Commit your changes locally, using descriptive messages and please be sure to note the parts of the app that are affected by this commit.
 
-This project uses these [GitHub conventions](https://github.com/github/scripts-to-rule-them-all)
-to provide convenient scripts for developers.
+**Step 5: Pushing your branch and creating a pull request**
+Make sure the tests pass! Run the current test suite with `docker-compose exec rails bundle exec rake test` If any tests break, be sure to fix them. Make a final commit if you've made more changes to fix the tests. Then, push your branch up and create a pull request. Please indicate which issue your PR addresses in the title.
 
-On a fresh clone of this repo, run:
+## Squashing Commits
+Squashing your own commits before pushing is totally fine. Please don't squash other people's commits. (Everyone who contributes here deserves credit for their work! :) ). Also, consider the balance of "polluting the git log with commit messages" vs. "providing useful detail about the history of changes in the git log". If you have several (or many) smaller commits that all serve one purpose, and these can be squashed into a single commit whose message describes the thing, you're encouraged to squash.
 
-```
-$ script/setup
-```
+There's no hard and fast rule here about this (for now), just use your best judgement.
 
-This will download and build all the docker images used in this project. It will
-also build the map tile data supporting the tileserver service. This step can
-take a long time complete. Its output should end with something like the
-following, which will eventually get to 100%, I promise.
+## Code Reviews & Pull Request Merging
+Once you've submitted a pull request, a core contributor will work with you on doing a code review (typically pretty minor unless it's a very significant PR). If the reviewer gives a ✅ to the PR merging, then huzzah! Merge into master! If your feature branch was in this main repository (and not forked), please delete your branch after it has been merged.
 
-```
-...
-> wwww features, xxxx bytes of geometry, yyyy bytes of separate metadata,
-zzzz bytes of string pool
-> 99.9% 11/2222/3333
-```
+## Stay Scoped
+Try to keep your PRs limited to one particular issue and don't make changes that are out of scope for that issue. If you notice something that needs attention but is out-of-scope, put a TODO, FIXME, or NOTE comment above it.
 
-## Make It Go
+## Technical Spike / Investigation Issues
+These issues will have an `investigation` label attached to them. They are unique in that we do not have the full details on how to solve the actual issue. These are issues that require some investigation and digging into the technology to figure out the solution. What we expect to come out of these issues is a quick write up about what you were able to find in your research. This will help inform and create new issues that are better defined and have specific steps to solve the original problem. 
 
-Just run:
+## Work In Progress Pull Requests
+Sometimes we want to get a PR up there and going so that other people can review it or provide feedback, but maybe it's incomplete. This is OK, but if you do it, please tag your PR with an  `in-progress`  label so that we know not to review / merge it.
 
-```
-$ script/server
-```
-
-Use `ctrl-c` to stop.
-
-(Alternatively, the server can be started in detached mode with `script/start`.
-In that case, stop it with `script/stop`.)
-
-Once rails fully starts up, you can view the running app at `localhost:3000`
-or an alternative port specified in `.env` if one exists. See `.env.example` for
-available options and reasonable starting values.
-
-To monitor the console output from just the rails app and not the other docker
-containers, run:
-
-```
-$ script/logs
-```
-
-## Updating the App
-
-After a `git pull` or any time ruby gems or node modules may have changed, run:
-
-```
-$ script/update
-```
-
-Then restart the app with `script/server` (or `script/start`).
-
-## Development
-
-Most developer contributions will be focused on the rails app. Because this project uses
-docker, we already have a uniform ruby/rails development environment in our rails docker
-image. Any time you need to run a rails command you should do so from a running docker
-container to take advantage of this consistent environment. Use the following command to
-open a bash console on the rails container:
-
-```
-$ script/console
-```
-
-Now you can treat this console like any other development environment, running rails or
-bundler commands as needed. **Please refrain from running such commands in your local
-environment. Always use the rails container instead.**
-
-Any changes to source files should be made directly in your local filesystem under the
-`/rails` directory using your preferred editing tools.
-
-## Updating the Tileserver Map
-
-### Step 1: preparing content in Mapbox Studio
-
-Terrastories is designed to render a basemap as designed and styled in Mapbox Studio. There are two different components: shapefiles (the spatial data without any styling properties) and styles (the look and feel of the map, as designed in Mapbox Studio, exported in json format). The basic workflow is as follows:
-
-1.  upload their shapefile content to [Mapbox Studio](https://www.mapbox.com/mapbox-studio/), and use the Studio interface to lay out the map. You have to have a Mapbox account to use Mapbox Studio (creating and designing maps using Mapbox Studio is free up to certain file size limitations.) To learn how to use Mapbox Studio, you can refer to the manuals and tutorials made available by Mapbox [here](https://www.mapbox.com/help/studio-manual-tutorials/) or other resources on the web.
-
-2.  download the style.json from Mapbox Studio via the Mapbox Studio styles interface [here](https://www.mapbox.com/studio/styles/)
-
-3.  copy both the shapefiles and style.json into the respective directories on Terrastories.
-    Note: the user must provide their own shapefile content. It is not possible to use any of the standard OpenStreetMap (OSM) content used in the standard styles made available by Mapbox, unless the user first downloads that OSM content and converts it to shapefile first.
-
-### Step 2: adding new or updating shapefiles to Terrastories
-
-To add new shapefiles or update existing shapefiles, there are two steps:
-
-1.  Include the new files in your `shapefile` directory (\tilebuilder\shapefiles])
-
-2.  You will need to re-run the tilebuilder, following the instructions here: https://github.com/rubyforgood/terrastories/blob/master/tilebuilder/README.md
-
-### Step 3: adding or updating style to the Map
-
-To add or update the map style,
-
-1.  download the style.json from Mapbox Studio via the Mapbox Studio styles interface [here](https://www.mapbox.com/studio/styles/)
-
-2.  at this point, we have to edit the style.json a little. When you upload shapefiles to Mapbox Studio, it actually adds on an additional six alphanumeric characters preceded by a dash (-), which is called "hash." For example, a shapefile called "South_America" might be called "South_America-a2027z" in Mapbox Studio. And then in style.json file, all of the names for this layer will have "–a2027z" added to it. This is a problem because there is a discrepancy between the names of the shapefile you added in Step 2, which does no include "-a2027z." So, you have to go into the json and look for "source-layer": "South_America-a2027z", and take out the "-a2027z", and do the same for each layer.
-    In the future, we will create an automatic script that will take care of this process.
-
-3.  copy the style into your `styles` directory (tileserver\data\styles])
-
-4.  make sure that config.json in \tileserver\data\ is pointing to the right style file.
-
-### Instructions for setting up your offline computer
-
-https://gist.github.com/kalimar/ed14b5d026220ee5cd81d416b4f67b7b#file-matawai-nuc-md
+## Becoming a Core Contributor
+Users that are frequent contributors and are involved in discussion may be given direct Contributor access to the Repo so they can submit Pull Requests directly, instead of Forking first. You can join us in Slack [here](https://t.co/kUtI3lnpW1), and find us in the channel #terrastories! :)
