@@ -8,4 +8,4 @@ find /data/shapefiles | grep ".shp$" | while read filepath; do
   ogr2ogr -f "GeoJSON" /tmp/geo/$file.json $filepath
   jq -rc '.features[]' /tmp/geo/$file.json > /tmp/line/$file.geojson
 done
-tippecanoe --read-parallel -z 13 -o /data/mbtiles/basic.mbtiles $(find /tmp/line -type f | grep .json$)
+tippecanoe --read-parallel -pf -pk -z 13 -o /data/mbtiles/basic.mbtiles $(find /tmp/line -type f | grep .json$)
