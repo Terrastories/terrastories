@@ -6,7 +6,7 @@ http {
   server {
     location /tiles/ {
       proxy_pass http://tileserver/;
-      proxy_set_header Host            $host:NGINX_PORT/tiles;
+      proxy_set_header Host            $host:{{ .Env.NGINX_PORT}}/tiles;
       proxy_set_header X-Forwarded-For $remote_addr;
     }
     location /media/ {
@@ -15,7 +15,7 @@ http {
     location / {
       client_max_body_size 500M;
       proxy_pass http://rails:3000/;
-      proxy_set_header Host            $host:NGINX_PORT;
+      proxy_set_header Host            $host:{{ .Env.NGINX_PORT}};
       proxy_set_header X-Forwarded-For $remote_addr;
     }
   }
