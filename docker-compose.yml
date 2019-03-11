@@ -17,19 +17,17 @@ services:
       - tileserver
     environment:
       - NGINX_PORT=${NGINX_PORT:-3000}
-      - NODE_ENV=development
-      - RAILS_ENV=development
+    build:
+      context: ./nginx
     image: 'nginx:latest'
     networks:
       - tilenet
       - railroad
     ports:
       - ${NGINX_PORT:-3000}:80
-    volumes:
-      - ./nginx:/etc/nginx
 
   rails:
-    restart: always    
+    restart: always
     build:
       context: ./rails
     image: terrastories/rails
