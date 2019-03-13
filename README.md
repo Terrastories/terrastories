@@ -7,7 +7,7 @@ The Terrastories interface is principally composed of an interactive map and a s
 ![](terrastories.gif)
 ###### *Terrastories: Matawai Konde 1.0 (October 2018)*
 
-The project to develop this application was initiated by the [**Amazon Conservation Team**](http://amazonteam.org) (ACT), an organization who partners with indigenous and other traditional communities in the Amazon rainforest to help them protect their ancestral lands and traditional culture. The first version of the application was built for a Surinamese community called the Matawai, and is in a near-finalized state. In 2019, a team is planning to finish a public SaaS version at **Ruby by the Bay 2019**: https://rubybythebay.org/ and **Ruby for Good 2019**: http://rubyforgood.org/2019
+The project to develop this application was initiated by the [**Amazon Conservation Team**](http://amazonteam.org) (ACT), an organization who partners with indigenous and other traditional communities in the Amazon rainforest to help them protect their ancestral lands and traditional culture. The first version of the application was built for a Surinamese community called the Matawai, and is in a near-finalized state. In 2019, a team is planning to finish a public SaaS version at **Ruby by the Bay 2019**: https://rubybythebay.org/ and **Ruby for Good 2019**: http://rubyforgood.org/
 
 ## Vision
 
