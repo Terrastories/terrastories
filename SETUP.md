@@ -6,7 +6,7 @@
 
 2. [Creating (and updating) the Map](#creating-and-updating-the-map)
 
-3. [Setup and running the server: Linux/Mac](#setup-and-running-the-server-linux-mac)
+3. [Setup and running the server: Linux or Mac](#setup-and-running-the-server-linux-or-mac)
 
 4. [Setup and running the server: Windows](#setup-and-running-the-server-windows)
 
@@ -58,7 +58,7 @@ To add or update the map style,
 
 4) make sure that config.json in \tileserver\data\ is pointing to the right style file.
 
-## Setup and running the server: Linux/Mac
+## Setup and running the server: Linux or Mac
 
 This project uses these [GitHub conventions](https://github.com/github/scripts-to-rule-them-all)
 to provide convenient scripts for developers.
