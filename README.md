@@ -4,7 +4,7 @@
 
 1. [About Terrastories](#about-terrastories)
 
-2. [Our Vision](#our-vision)
+2. [Our vision](#our-vision)
 
 3. [How to set up Terrastories](#how-to-set-up-terrastories)
 
@@ -21,7 +21,7 @@ The Terrastories interface is principally composed of an interactive map and a s
 
 The project to develop this application was initiated by the [**Amazon Conservation Team**](http://amazonteam.org) (ACT), an organization who partners with indigenous and other traditional communities in the Amazon rainforest to help them protect their ancestral lands and traditional culture. The first version of the application was built for a Surinamese community called the Matawai, and is in a near-finalized state. In 2019, a team is planning to finish a public SaaS version at **Ruby by the Bay 2019**: https://rubybythebay.org/ and **Ruby for Good 2019**: http://rubyforgood.org/
 
-## Our Vision
+## Our vision
 
 Somewhere, in a remote part of the world, stories are being shared in a village in the traditional way they always have; by the elders, sitting by the fire at night, duly passing along oral histories about their homelands that they learned from their ancestors, for the benefit of the younger community members sitting nearby. But something has changed. There are less youth around. Many have left the village to go work in nearby mining and logging concessions that are destroying the homelands. The few that remain are only passively listening, more engrossed in their phones. Without a proper listener, the words of the elders are ineffective, and they vanish in the air. Soon, the elders will pass along too, and with them their vast and ancient ancestral wisdom.
 
