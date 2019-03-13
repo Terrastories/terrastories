@@ -1,5 +1,17 @@
 ![Terrastories](https://www.amazonteam.org/wp-content/uploads/2018/09/logo-1170x164.png)
 
+## Table of Contents
+
+1. [About Terrastories](#about-terrastories)
+
+2. [Our Vision](#our-vision)
+
+3. [How to set up Terrastories](#how-to-set-up-terrastories)
+
+4. [How to contribute](#how-to-contribute)
+
+## About Terrastories
+
 **Terrastories** is a geostorytelling application built to enable local communities to locate and map their own oral storytelling traditions about places of significant meaning or value to them. Community members can add places and stories through a user-friendly interface, and make decisions about designating certain stories as private or restricted. It is a dockerized Rails app that uses [**Mapbox**](https://mapbox.com) to help users locate content geographically on an interactive map. Terrastories is designed to be entirely offline-compatible, so that remote communities can access the application entirely without needing internet connectivity. 
 
 The Terrastories interface is principally composed of an interactive map and a sidebar with media content. Users can explore the map and click on activated points to see the stories associated with those points. Alternatively, users can interact with the sidebar and click on stories to see where in the landscape these narratives took place. Through an administrative back end, users can also add, edit, and remove stories, or set them as restricted so that they are viewable only with a special login. Users can design and customize the content of the interactive map entirely, and the interface itself is customizable with a color scheme and design reflecting the style of the community.
@@ -9,7 +21,7 @@ The Terrastories interface is principally composed of an interactive map and a s
 
 The project to develop this application was initiated by the [**Amazon Conservation Team**](http://amazonteam.org) (ACT), an organization who partners with indigenous and other traditional communities in the Amazon rainforest to help them protect their ancestral lands and traditional culture. The first version of the application was built for a Surinamese community called the Matawai, and is in a near-finalized state. In 2019, a team is planning to finish a public SaaS version at **Ruby by the Bay 2019**: https://rubybythebay.org/ and **Ruby for Good 2019**: http://rubyforgood.org/
 
-## Vision
+## Our Vision
 
 Somewhere, in a remote part of the world, stories are being shared in a village in the traditional way they always have; by the elders, sitting by the fire at night, duly passing along oral histories about their homelands that they learned from their ancestors, for the benefit of the younger community members sitting nearby. But something has changed. There are less youth around. Many have left the village to go work in nearby mining and logging concessions that are destroying the homelands. The few that remain are only passively listening, more engrossed in their phones. Without a proper listener, the words of the elders are ineffective, and they vanish in the air. Soon, the elders will pass along too, and with them their vast and ancient ancestral wisdom.
 
