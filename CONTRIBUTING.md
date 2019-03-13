@@ -1,9 +1,8 @@
-# Contributing
-We ♥ contributors! By participating in this project, you agree to abide by the Ruby for Good [Code of Conduct](CODE_OF_CONDUCT.md).
+We ♥ contributors! By participating in this project, you agree to abide by the Ruby for Good [Code of Conduct](CODE_OF_CONDUCT.md). We welcome all types of contributions, but any pull requests that address open issues, have test coverage, or are tagged with the next milestone will be prioritized.
 
 **First:** if you're unsure or afraid of *anything*, just ask or submit the issue or pull request anyways. You won't be yelled at for giving your best effort. The worst that can happen is that you'll be politely asked to change something. We appreciate any sort of contributions, and don't want a wall of rules to get in the way of that.
 
-## How To Contribute To Terrastories
+## Steps to Contribute to Terrastories
 **Step 1: Find an issue to work on**
 Visit our [issues page](https://github.com/rubyforgood/terrastories/network/members) and find an issue you'd like to work on that hasn't already been claimed (It has been claimed if you see someone else's picture on it and it is assigned to someone else, or if you see someone's comment on the issue page saying they are claiming it). Comment on the issue that you have claimed it and will be working on it. An admin will add you as the assignee. 
 
@@ -14,7 +13,7 @@ Click the "fork" button in the upper right of the Github repo page. A fork is a 
 Checkout a new branch for your issue - this branch can be named anything, but we encourage the format  `XXX-brief-description-of-feature`  where  `XXX`  is the issue number.
 
 **Step 4: Happy Hacking!**
-Follow the instructions in the [README](README.md) to set up your local environment. Feel free to discuss any questions on the issues as needed, and we will get back to you! Don't forget to write some tests to verify your code. Commit your changes locally, using descriptive messages and please be sure to note the parts of the app that are affected by this commit.
+Follow the instructions in the [SETUP.md](SETUP.md) to set up your local environment. Feel free to discuss any questions on the issues as needed, and we will get back to you! Don't forget to write some tests to verify your code. Commit your changes locally, using descriptive messages and please be sure to note the parts of the app that are affected by this commit.
 
 **Step 5: Pushing your branch and creating a pull request**
 Make sure the tests pass! Run the current test suite with `docker-compose exec rails bundle exec rake test` If any tests break, be sure to fix them. Make a final commit if you've made more changes to fix the tests. Then, push your branch up and create a pull request. Please indicate which issue your PR addresses in the title.
