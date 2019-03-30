@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Speaker, type: :model do
-  it 'works' do
-    expect(true).to eq(true)
+  it 'can be initialized' do
+    expect(create(:speaker)).to be_a(Speaker)
   end
 end
