@@ -1,6 +1,0 @@
-<h1><%= @speaker.name %></h1>
-<% if @speaker&.media&.attached? %>
-  <img src="<%= url_for(@speaker.media) %>" type="<%= @media&.file&.blob&.content_type %>" >
-<% else %>
-No photo attached.
-<% end %>

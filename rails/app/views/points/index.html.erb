@@ -1,7 +1,0 @@
-<h1>Points</h1>
-
-<ul>
-  <% @points.each do |point| %>
-    <li><%= link_to point.title, point_path(point) %> (<%= link_to 'Edit', edit_point_path(point) %>)</li>
-  <% end %>
-</ul>
