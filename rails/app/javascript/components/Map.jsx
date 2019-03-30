@@ -54,7 +54,8 @@ export default class Map extends Component {
 
            el.addEventListener('click', () =>
            {
-            this.props.onMapPointClick(marker.properties.stories);
+             this.props.onMapPointClick(marker.properties.stories);
+             this.map.panTo(marker.geometry.coordinates);
            }
          )
         });
