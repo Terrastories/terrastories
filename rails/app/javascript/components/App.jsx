@@ -107,6 +107,21 @@ class App extends Component {
     (`Filtered Stories of ${category} ${item}:`, filteredStories);
   }
 
+  showMapPointStories = stories => {
+    this.clearFilteredStories();
+    let storyPointIds = stories.map(story => story.point_id);
+    let filteredStories = [];
+    filteredStories = this.props.stories.filter(story => {
+      if (storyPointIds.includes(story.point.id)) {
+        return story;
+      }
+    });
+    if (filteredStories) {
+      const filteredPoints = this.getPointsFromStories(filteredStories);
+      this.setState({stories: filteredStories, points: filteredPoints});
+    }
+  }
+
   render() {
     return (
       <div>
@@ -115,6 +130,7 @@ class App extends Component {
           pointCoords={this.state.pointCoords}
           mapboxAccessToken={this.props.mapbox_access_token}
           mapboxStyle={this.props.mapbox_style}
+          onMapPointClick={this.showMapPointStories}
         />
         <Card
           stories={this.state.stories}
