@@ -7,19 +7,7 @@ export default class Map extends Component {
     mapboxgl.accessToken = this.props.mapboxAccessToken;
   }
 
-  state = {
-    points: this.props.points, // Used for points on map
-  }
-
   componentDidUpdate() {
-    if (this.props.pointCoords.length  > 0) {
-      if (this.map) {
-        this.map.flyTo({center: this.props.pointCoords, zoom: 14});
-      }
-    }
-  }
-
-  componentDidMount() {
     // @NOTE: MAKE SURE ARRAY IS [LONGITUDE, LATITUDE]
     const bounds = [
       [-60.80409032, 0.3332811], //southwest
@@ -33,6 +21,7 @@ export default class Map extends Component {
       zoom: 7.6,
       maxBounds: bounds
     });
+
     this.map.addControl(new mapboxgl.NavigationControl());
     if(this.props.points) {
       this.map.on('load', () => {
@@ -55,13 +44,21 @@ export default class Map extends Component {
            el.addEventListener('click', () =>
            {
              this.props.onMapPointClick(marker.properties.stories);
+             // this.map.setZoom({zoom: 1})
              this.map.panTo(marker.geometry.coordinates);
            }
          )
         });
       });
     }
+
+    if (this.props.pointCoords.length  > 0) {
+      if (this.map) {
+        this.map.flyTo({center: this.props.pointCoords, zoom: 14});
+      }
+    }
   }
+
   render() {
     return (
       <div ref={
