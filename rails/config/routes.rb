@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
 
     delete '/admin/places' => 'places#delete'
+    delete '/admin/stories' => 'stories#delete'
 
   scope "(:locale)", locale: Regexp.union(I18n.available_locales.map(&:to_s)) do
     resources :places do
