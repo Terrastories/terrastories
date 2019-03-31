@@ -13,7 +13,7 @@ class StoryDashboard < Administrate::BaseDashboard
     desc: Field::Text,
     speaker: Field::BelongsTo,
     point: Field::BelongsTo,
-    media: Field::ActiveStorage,
+    media: Field::ActiveStorage.with_options({destroy_path: :admin_stories_path}),
     permission_level: EnumField,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -25,7 +25,7 @@ class StoryDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :id, 
+    :id,
     :title,
     :desc,
     :speaker,
