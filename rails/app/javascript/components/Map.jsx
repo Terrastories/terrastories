@@ -56,8 +56,12 @@ export default class Map extends Component {
 
   componentDidUpdate() {
     [...document.querySelectorAll('.marker')].forEach(function(marker) {
-      marker.remove()
+      marker.remove();
     });
+
+    [...document.querySelectorAll('.mapboxgl-popup')].forEach(function(popup) {
+      popup.remove();
+    })
 
     this.updateMarkers();
 
