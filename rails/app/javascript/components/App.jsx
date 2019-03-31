@@ -14,7 +14,8 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.getPointsFromStories(this.props.stories);
+    const points = this.getPointsFromStories(this.state.stories);
+    this.setState({points: points});
   }
 
   setPointCoords = pointCoords => {
@@ -25,7 +26,7 @@ class App extends Component {
     const points = stories.map(story => story.point);
     const pointObj = {};
     pointObj['features'] = points;
-    this.setState({points: pointObj});
+    return pointObj;
   }
 
   filterMap = () => {
@@ -64,8 +65,11 @@ class App extends Component {
   }
 
   clearFilteredStories = () => {
+    const points = this.getPointsFromStories(this.props.stories);
+
     this.setState({
-      stories: this.props.stories
+      stories: this.props.stories,
+      points: points
     });
   }
 
