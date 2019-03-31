@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Filter> component renders correctly with no props 1`] = `
+<span
+  class="card--nav-filter"
+>
+  : 
+</span>
+`;

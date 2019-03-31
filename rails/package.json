@@ -1,18 +1,44 @@
 {
   "name": "app",
   "private": true,
+  "scripts": {
+    "jest": "jest"
+  },
   "dependencies": {
+    "@babel/preset-react": "^7.0.0",
     "@rails/webpacker": "3.5",
-    "babel-preset-react": "^6.24.1",
+    "babel-jest": "^24.5.0",
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-select": "^2.0.0",
-    "react_ujs": "^2.4.4",
     "react-virtualized": "9.20.1",
+    "react_ujs": "^2.4.4",
     "webpack": "^3.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "jest": "^24.5.0",
+    "react-testing-library": "^6.0.3",
     "webpack-dev-server": "2.11.2"
+  },
+  "jest": {
+    "setupFiles": [
+      "<rootDir>/spec/javascript/i18n-mock.js"
+    ],
+    "roots": [
+      "spec/javascript"
+    ],
+    "collectCoverage": true,
+    "coverageDirectory": "spec/javascript/coverage",
+    "collectCoverageFrom": [
+      "**/*.{js,jsx}",
+      "!**/node_modules/**",
+      "!**/spec/javascript/coverage/**"
+    ],
+    "moduleDirectories": [
+      "node_modules"
+    ]
   }
 }

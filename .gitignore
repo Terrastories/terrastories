@@ -49,3 +49,6 @@ node_modules/
 .idea/
 
 .DS_Store
+
+# Ignore coverage reports
+rails/spec/javascript/coverage/*
