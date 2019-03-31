@@ -49,6 +49,9 @@ class StoryList extends Component {
   renderStory = ({key, index, style, parent}) => {
     const story = this.props.stories[index];
     const storyClass = this.state.activeStoryIndex === index ? `story${index} isActive` : `story${index}`;
+    const bustCache = () => {
+      this.cache.clear(index, 0);
+    }
     return (
       <CellMeasurer 
         key={key}
@@ -70,7 +73,7 @@ class StoryList extends Component {
               <h6 className="title">{story.title}</h6>
               <p>{story.desc}</p>
               {story.media &&
-                story.media.map(file => <StoryMedia file={file} />)}
+                story.media.map(file => <StoryMedia file={file} doBustCache={bustCache} />)}
             </div>
           </li>
       </CellMeasurer>
