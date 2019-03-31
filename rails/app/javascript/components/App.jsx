@@ -112,13 +112,11 @@ class App extends Component {
   }
 
   showMapPointStories = stories => {
-    this.clearFilteredStories();
     let storyPointIds = stories.map(story => story.point_id);
     let filteredStories = [];
     filteredStories = this.props.stories.filter(story => storyPointIds.includes(story.point.id));
     if (filteredStories) {
-      const filteredPoints = this.getPointsFromStories(filteredStories);
-      this.setState({stories: filteredStories, points: filteredPoints});
+      this.setState({ stories: filteredStories });
     }
   }
 
