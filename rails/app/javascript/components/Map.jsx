@@ -24,9 +24,38 @@ export default class Map extends Component {
 
     this.map.on('load', () => {
       this.updateMarkers();
+      this.addHomeButton(bounds);
     });
 
     this.map.addControl(new mapboxgl.NavigationControl());
+  }
+
+  createHomeButton() {
+    const homeButton = document.createElement('button');
+    homeButton.setAttribute('aria-label', 'Map Home');
+    homeButton.setAttribute('type', 'button');
+    const buttonText = document.createTextNode(":)");
+    homeButton.appendChild(buttonText);
+    return homeButton;
+  }
+
+  addHomeButton(bounds) {
+    // clear out any filtered stories
+    this.props.clearFilteredStories();
+
+    // create the home button
+    const homeButton = this.createHomeButton();
+
+    // add to nav control
+    const navControl = document.getElementsByClassName('mapboxgl-ctrl-zoom-in')[0];
+    if (navControl) {
+      navControl.parentNode.insertBefore(homeButton, navControl);
+    }
+
+    // add event listener
+    homeButton.addEventListener('click', () =>{
+      this.map.fitBounds(bounds);
+    });
   }
 
   updateMarkers() {

@@ -129,6 +129,7 @@ class App extends Component {
           mapboxAccessToken={this.props.mapbox_access_token}
           mapboxStyle={this.props.mapbox_style}
           onMapPointClick={this.showMapPointStories}
+          clearFilteredStories={this.clearFilteredStories}
         />
         <Card
           stories={this.state.stories}
