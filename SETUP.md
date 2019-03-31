@@ -12,7 +12,9 @@
 
 5. [Instructions for setting up an offline computer](#instructions-for-setting-up-an-offline-computer)
 
-6. [Importing data into Terrastories](#importing-data-into-Terrastories)
+6. [Importing data into Terrastories](#importing-data-into-terrastories)
+
+7. [Adding languages to Terrastories](#adding-languages-to-terrastories)
 
 ## Docker Prerequisites
 
@@ -215,3 +217,23 @@ To prepare CSVs for importing, use the following workflow to ensure that charact
 -Otherwise create the file directly in Google Sheets. Make sure the file has a row for headers.
 -Go to File -> Download As-> Comma Separated Values, and save the file to your machine.
 -This CSV should be properly encoded as UTF-8. It's best to verify this with Notepad++ instead of Excel if you are on a Windows machine.
+
+## Adding languages to Terrastories
+
+Terrastories uses internationalization to translate the application's core text, like the welcome page, sidebar, and administrative back end content. We have made it easy to add new languages to Terrastories without needing to touch any of the code.
+
+To add a language to Terrastories, navigate to the `rails/config/locales/` directory. Within this directory, each language has it's own subdirectory, like `en` (English) or `pt` (Portuguese). Currently, there are three files in each (using Portuguese as an example):
+
+ 1. `pt.yml`
+ 2. `devise.pt.yml`
+ 3. `administrate.pt.yml`
+
+`pt.yml` contains the custom text used in the Terrastories application. `devise.pt.yml` and `administrative.pt.yml` are used by the administrative back end.
+
+To set up a new language, create a new subdirectory in the `locales` folder. Let's assume you want to set up Papiamentu. Create a subdirectory called `pap` and copy over `en.yml` from the `en` folder. Rename it to `pap.yml`, change line 32 to `pap`, and translate each line of text in what follows.
+
+For the `devise` and `administrate` files, there might be available translations already available online for common Western languages. If so, you can download these and place them in the directory, and make sure that the language code is consistent (for languages like Spanish and Portuguese, the language code might sometimes have a country-specific suffix like `pt-BR`). If translations are not available, do the same thing with these two files as translating `en.yml`.
+
+If you want to change the default language for Terrastories, set the language on line 21 in `rails/config/application.rb`. To set it to Papiamentu, change this line to `config.i18n.default_locale = :pap`
+
+Once you are done, the language should be available the next time you start Terrastories.
