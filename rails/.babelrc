@@ -1,16 +1,33 @@
 {
   "presets": [
     [
-      "@babel/preset-env",
+      "env",
       {
+        "modules": false,
         "targets": {
-          "browsers": "> 1%"
+          "browsers": "> 1%",
+          "uglify": true
         },
-        "forceAllTransforms": true
+        "useBuiltIns": true
       }
     ],
-    "@babel/react"
+    "react"
   ],
+  "env": {
+    "test": {
+      "presets": ["env", "react"],
+      "plugins": [
+        "syntax-dynamic-import",
+        "transform-object-rest-spread",
+        [
+          "transform-class-properties",
+          {
+            "spec": true
+          }
+        ]
+      ]
+    }
+  },
   "plugins": [
     "syntax-dynamic-import",
     "transform-object-rest-spread",
