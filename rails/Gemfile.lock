@@ -57,7 +57,7 @@ GEM
       momentjs-rails (~> 2.8)
       sass-rails (~> 5.0)
       selectize-rails (~> 0.6)
-    administrate-field-active_storage (0.1.2)
+    administrate-field-active_storage (0.1.5)
       administrate (>= 0.2.0.rc1)
       rails (>= 5.2)
     archive-zip (0.11.0)
