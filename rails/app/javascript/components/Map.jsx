@@ -45,12 +45,10 @@ export default class Map extends Component {
        .setPopup(popup) // sets a popup on this marker
        .addTo(this.map);
 
-       el.addEventListener('click', () =>
-         {
-           this.props.onMapPointClick(marker.properties.stories);
-           this.map.panTo(marker.geometry.coordinates);
-         }
-       )
+       el.addEventListener('click', () => {
+        this.props.onMapPointClick(marker.properties.stories);
+        this.map.panTo(marker.geometry.coordinates);
+      });
     });
   }
 
