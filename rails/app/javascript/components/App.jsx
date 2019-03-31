@@ -65,8 +65,11 @@ class App extends Component {
   }
 
   clearFilteredStories = () => {
+    const points = this.getPointsFromStories(this.props.stories);
+
     this.setState({
-      stories: this.props.stories
+      stories: this.props.stories,
+      points: points
     });
   }
 
