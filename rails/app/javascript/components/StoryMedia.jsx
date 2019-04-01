@@ -25,7 +25,7 @@ class StoryMedia extends PureComponent {
         id={`video-player${file.blob.id}`}
         className="video-player"
         height={explicitVideoHeight}
-        playsinline
+        playsInline
         controls
         controlsList='nodownload'
         key={file.url}

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 // @NOTE: MAKE SURE ARRAY IS [LONGITUDE, LATITUDE]
-const defaultCenterOfMap = [-55.63, 4.78];
+const defaultCenter = [-55.63, 4.78];
 const defaultBounds = [
   [-60.80409032, 0.3332811], //southwest
   [-52.41053563, 6.90258397] //northeast
@@ -18,7 +18,7 @@ export default class Map extends Component {
     this.map = new mapboxgl.Map({
       container: this.mapContainer,
       style: this.props.mapboxStyle,
-      center: defaultCenterOfMap,
+      center: defaultCenter,
       zoom: defaultZoom,
       maxBounds: defaultBounds
     });
@@ -33,7 +33,7 @@ export default class Map extends Component {
 
   resetMapToCenter() {
     this.map.flyTo({
-      center: defaultCenterOfMap,
+      center: defaultCenter,
       zoom: defaultZoom,
       maxBounds: defaultBounds
      });
@@ -97,6 +97,11 @@ export default class Map extends Component {
       if (this.map) {
         this.map.flyTo({center: this.props.pointCoords, zoom: 14});
       }
+      return;
+    }
+
+    if (this.map) {
+      this.map.flyTo({center: defaultCenter, zoom: defaultZoom})
     }
   }
 
