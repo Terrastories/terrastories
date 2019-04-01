@@ -1,3 +1,4 @@
 .home-icon {
-  background: image-url('home-icon.svg') no-repeat center center fixed;  
+  background-image: image-url('home-icon.svg');
+  background-size: contain;
 }
