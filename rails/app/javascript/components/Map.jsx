@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
 
+// @NOTE: MAKE SURE ARRAY IS [LONGITUDE, LATITUDE]
+const defaultCenterOfMap = [-55.63, 4.78];
+const defaultBounds = [
+  [-60.80409032, 0.3332811], //southwest
+  [-52.41053563, 6.90258397] //northeast
+]
+const defaultZoom = 7.6;
 
 export default class Map extends Component {
   constructor(props) {
@@ -8,53 +15,47 @@ export default class Map extends Component {
   }
 
   componentDidMount() {
-    // @NOTE: MAKE SURE ARRAY IS [LONGITUDE, LATITUDE]
-    const bounds = [
-      [-60.80409032, 0.3332811], //southwest
-      [-52.41053563, 6.90258397] //northeast
-    ]
-
     this.map = new mapboxgl.Map({
       container: this.mapContainer,
       style: this.props.mapboxStyle,
-      center: [-55.63, 4.78],
-      zoom: 7.6,
-      maxBounds: bounds
+      center: defaultCenterOfMap,
+      zoom: defaultZoom,
+      maxBounds: defaultBounds
     });
 
     this.map.on('load', () => {
       this.updateMarkers();
-      this.addHomeButton(bounds);
+      this.addHomeButton();
     });
 
     this.map.addControl(new mapboxgl.NavigationControl());
+  }
+
+  resetMapToCenter() {
+    this.map.flyTo({
+      center: defaultCenterOfMap,
+      zoom: defaultZoom,
+      maxBounds: defaultBounds
+     });
   }
 
   createHomeButton() {
     const homeButton = document.createElement('button');
     homeButton.setAttribute('aria-label', 'Map Home');
     homeButton.setAttribute('type', 'button');
-    const buttonText = document.createTextNode(":)");
-    homeButton.appendChild(buttonText);
+    homeButton.setAttribute('class', 'home-icon');
     return homeButton;
   }
 
-  addHomeButton(bounds) {
-    // clear out any filtered stories
+  addHomeButton() {
     this.props.clearFilteredStories();
-
-    // create the home button
     const homeButton = this.createHomeButton();
-
-    // add to nav control
     const navControl = document.getElementsByClassName('mapboxgl-ctrl-zoom-in')[0];
     if (navControl) {
       navControl.parentNode.insertBefore(homeButton, navControl);
     }
-
-    // add event listener
-    homeButton.addEventListener('click', () =>{
-      this.map.fitBounds(bounds);
+    homeButton.addEventListener('click', () => {
+      this.resetMapToCenter();
     });
   }
 
