@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
 
+// @NOTE: MAKE SURE ARRAY IS [LONGITUDE, LATITUDE]
+const defaultCenter = [-55.63, 4.78];
+const defaultBounds = [
+  [-60.80409032, 0.3332811], //southwest
+  [-52.41053563, 6.90258397] //northeast
+]
+const defaultZoom = 7.6;
 
 export default class Map extends Component {
   constructor(props) {
@@ -7,34 +14,49 @@ export default class Map extends Component {
     mapboxgl.accessToken = this.props.mapboxAccessToken;
   }
 
-  defaultCenter() {
-    return [-55.63, 4.78];
-  }
-
-  defaultZoom() {
-    return 7.6;
-  }
-
   componentDidMount() {
-    // @NOTE: MAKE SURE ARRAY IS [LONGITUDE, LATITUDE]
-    const bounds = [
-      [-60.80409032, 0.3332811], //southwest
-      [-52.41053563, 6.90258397] //northeast
-    ]
-
     this.map = new mapboxgl.Map({
       container: this.mapContainer,
       style: this.props.mapboxStyle,
-      center: this.defaultCenter(),
-      zoom: this.defaultZoom(),
-      maxBounds: bounds
+      center: defaultCenter,
+      zoom: defaultZoom,
+      maxBounds: defaultBounds
     });
 
     this.map.on('load', () => {
       this.updateMarkers();
+      this.addHomeButton();
     });
 
     this.map.addControl(new mapboxgl.NavigationControl());
+  }
+
+  resetMapToCenter() {
+    this.map.flyTo({
+      center: defaultCenter,
+      zoom: defaultZoom,
+      maxBounds: defaultBounds
+     });
+  }
+
+  createHomeButton() {
+    const homeButton = document.createElement('button');
+    homeButton.setAttribute('aria-label', 'Map Home');
+    homeButton.setAttribute('type', 'button');
+    homeButton.setAttribute('class', 'home-icon');
+    return homeButton;
+  }
+
+  addHomeButton() {
+    this.props.clearFilteredStories();
+    const homeButton = this.createHomeButton();
+    const navControl = document.getElementsByClassName('mapboxgl-ctrl-zoom-in')[0];
+    if (navControl) {
+      navControl.parentNode.insertBefore(homeButton, navControl);
+    }
+    homeButton.addEventListener('click', () => {
+      this.resetMapToCenter();
+    });
   }
 
   updateMarkers() {
@@ -79,7 +101,7 @@ export default class Map extends Component {
     }
 
     if (this.map) {
-      this.map.flyTo({center: this.defaultCenter(), zoom: this.defaultZoom()})
+      this.map.flyTo({center: defaultCenter, zoom: defaultZoom})
     }
   }
 
