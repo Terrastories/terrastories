@@ -48,7 +48,6 @@ export default class Map extends Component {
   }
 
   addHomeButton() {
-    this.props.clearFilteredStories();
     const homeButton = this.createHomeButton();
     const navControl = document.getElementsByClassName('mapboxgl-ctrl-zoom-in')[0];
     if (navControl) {
