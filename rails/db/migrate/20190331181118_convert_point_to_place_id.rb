@@ -6,7 +6,7 @@ class ConvertPointToPlaceId < ActiveRecord::Migration[5.2]
       point = points[place.id]
       place.update!(
         lat: point.lat,
-        lng: point.lng
+        long: point.lng
       )
     end
   end
