@@ -69,7 +69,8 @@ class App extends Component {
 
     this.setState({
       stories: this.props.stories,
-      points: points
+      points: points,
+      pointCoords: []
     });
   }
 
@@ -106,7 +107,7 @@ class App extends Component {
     }
     if (filteredStories) {
       const filteredPoints = this.getPointsFromStories(filteredStories);
-      this.setState({stories: filteredStories, points: filteredPoints});
+      this.setState({stories: filteredStories, points: filteredPoints, pointCoords: []});
     }
     (`Filtered Stories of ${category} ${item}:`, filteredStories);
   }
@@ -116,7 +117,7 @@ class App extends Component {
     let filteredStories = [];
     filteredStories = this.props.stories.filter(story => storyPointIds.includes(story.point.id));
     if (filteredStories) {
-      this.setState({ stories: filteredStories });
+      this.setState({ stories: filteredStories, pointCoords: [] });
     }
   }
 

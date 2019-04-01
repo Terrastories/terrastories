@@ -7,6 +7,14 @@ export default class Map extends Component {
     mapboxgl.accessToken = this.props.mapboxAccessToken;
   }
 
+  defaultCenter() {
+    return [-55.63, 4.78];
+  }
+
+  defaultZoom() {
+    return 7.6;
+  }
+
   componentDidMount() {
     // @NOTE: MAKE SURE ARRAY IS [LONGITUDE, LATITUDE]
     const bounds = [
@@ -17,8 +25,8 @@ export default class Map extends Component {
     this.map = new mapboxgl.Map({
       container: this.mapContainer,
       style: this.props.mapboxStyle,
-      center: [-55.63, 4.78],
-      zoom: 7.6,
+      center: this.defaultCenter(),
+      zoom: this.defaultZoom(),
       maxBounds: bounds
     });
 
@@ -67,6 +75,11 @@ export default class Map extends Component {
       if (this.map) {
         this.map.flyTo({center: this.props.pointCoords, zoom: 14});
       }
+      return;
+    }
+
+    if (this.map) {
+      this.map.flyTo({center: this.defaultCenter(), zoom: this.defaultZoom()})
     }
   }
 
