@@ -17,7 +17,8 @@ module App
     # the framework and any gems in your application.
 
     # Setup i18n Module
-    config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '*', '*.{rb,yml}').to_s]
+    config.i18n.available_locales = Dir[Rails.root.join('config','locales', '*')].map {|f| File.basename(f).to_sym }
     config.i18n.default_locale = :mat
   end
 end

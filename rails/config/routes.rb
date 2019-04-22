@@ -9,7 +9,10 @@ Rails.application.routes.draw do
     root to: "users#index"
   end
 
-  scope "(:locale)", locale: /en|mat/ do
+    delete '/admin/places' => 'places#delete'
+    delete '/admin/stories' => 'stories#delete'
+
+  scope "(:locale)", locale: Regexp.union(I18n.available_locales.map(&:to_s)) do
     resources :places do
       collection do
         post :import_csv

@@ -1,7 +1,0 @@
-<h1>Speakers</h1>
-
-<ul>
-  <% @speakers.each do |speaker| %>
-    <li><%= link_to speaker.name, speaker_path(speaker) %> (<%= link_to 'Edit', edit_speaker_path(speaker) %>)</li>
-  <% end %>
-</ul>

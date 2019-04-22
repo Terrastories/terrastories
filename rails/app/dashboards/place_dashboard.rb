@@ -11,6 +11,7 @@ class PlaceDashboard < Administrate::BaseDashboard
     points: Field::HasMany,
     id: Field::Number,
     name: Field::String,
+    photo: Field::ActiveStorage.with_options({destroy_path: :admin_places_path}),
     type_of_place: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -26,6 +27,7 @@ class PlaceDashboard < Administrate::BaseDashboard
     :name,
     :type_of_place,
     :points,
+    :photo,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -35,6 +37,7 @@ class PlaceDashboard < Administrate::BaseDashboard
     :name,
     :type_of_place,
     :points,
+    :photo,
     :created_at,
     :updated_at,
   ].freeze
@@ -46,6 +49,7 @@ class PlaceDashboard < Administrate::BaseDashboard
     :name,
     :type_of_place,
     :points,
+    :photo,
   ].freeze
 
   # Overwrite this method to customize how places are displayed

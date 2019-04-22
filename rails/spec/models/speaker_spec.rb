@@ -1,5 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Speaker, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'can be initialized' do
+    expect(create(:speaker)).to be_a(Speaker)
+  end
 end
