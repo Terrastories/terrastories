@@ -1112,42 +1112,6 @@
             }
         },
         {
-            "id": "south america label",
-            "type": "symbol",
-            "metadata": {"mapbox:group": "ed598a781d972673f94190b55bc67f7a"},
-            "source": "composite",
-            "source-layer": "country_label",
-            "filter": [
-                "in",
-                "name_en",
-                "Argentina",
-                "Bolivia",
-                "Brazil",
-                "Chile",
-                "Colombia",
-                "Ecuador",
-                "French Guiana",
-                "Guyana",
-                "Paraguay",
-                "Peru",
-                "Suriname",
-                "Uruguay",
-                "Venezuela"
-            ],
-            "layout": {
-                "text-field": "{name_en}",
-                "text-size": {"base": 1, "stops": [[5.5, 13], [7.5, 20]]},
-                "text-allow-overlap": true,
-                "text-font": ["Open Sans SemiBold", "Arial Unicode MS Regular"]
-            },
-            "paint": {
-                "text-opacity": {
-                    "base": 1,
-                    "stops": [[2, 0], [2.5, 1], [7.7, 1], [8.4, 0]]
-                }
-            }
-        },
-        {
             "id": "Brokopondo-label",
             "type": "symbol",
             "metadata": {"mapbox:group": "ed598a781d972673f94190b55bc67f7a"},

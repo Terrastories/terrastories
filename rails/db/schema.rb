@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_08_051200) do
+ActiveRecord::Schema.define(version: 2019_03_31_181118) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(version: 2019_03_08_051200) do
     t.string "type_of_place"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "lat"
+    t.float "long"
   end
 
   create_table "points", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -68,6 +70,9 @@ ActiveRecord::Schema.define(version: 2019_03_08_051200) do
     t.bigint "speaker_id"
     t.bigint "point_id"
     t.integer "permission_level"
+    t.datetime "date_interviewed"
+    t.string "interviewer"
+    t.string "language"
     t.index ["point_id"], name: "index_stories_on_point_id"
     t.index ["speaker_id"], name: "index_stories_on_speaker_id"
   end

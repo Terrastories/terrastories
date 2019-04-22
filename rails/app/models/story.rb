@@ -2,6 +2,7 @@ class Story < ApplicationRecord
   belongs_to :point
   belongs_to :speaker
   has_many_attached :media
+  has_many :interview_locations, through: :places
 
   acts_as_taggable
 

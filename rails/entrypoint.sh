@@ -11,6 +11,9 @@ rm -rf /app/tmp/*
 touch /app/log/.keep
 touch /app/tmp/.keep
 
+echo "Installing bundled gems"
+bundle install
+
 if echo "ActiveRecord::Base.logger = nil; ActiveRecord::Base.connection.tables" | bundle exec rails console | grep schema_migrations 2>&1 > /dev/null \
 ; then
   echo "Running pending migrations"

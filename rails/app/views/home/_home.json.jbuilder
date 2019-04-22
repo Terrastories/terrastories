@@ -3,6 +3,7 @@ json.stories stories do |story|
   json.point story.point.point_geojson
   json.place story.point.place
   json.media story.media do |media|
+    json.id media.id
     json.url url_for(media)
     json.blob media.blob
   end

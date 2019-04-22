@@ -1,7 +1,0 @@
-<h1>Edit Speaker #<%= @speaker.id %></h1>
-
-<%= form_for @speaker, url: {action: "update"} do |f| %>
-  <%= f.text_field :name %>
-  <%= f.file_field :media, multiple: false %>
-  <%= f.submit "Update" %>
-<% end %>

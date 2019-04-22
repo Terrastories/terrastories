@@ -1,10 +1,17 @@
 import React, { PureComponent } from "react";
 
 class StoryMedia extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      explicitVideoHeight: null
+    }
+  }
+
   renderAudio() {
     const { file } = this.props;
     return (
-      <audio id={`audio-player${file.id}`} controls>
+      <audio id={`audio-player${file.blob.id}`} controls>
         <source src={file.url} type={file.blob.content_type} />
       </audio>
     );
@@ -12,13 +19,17 @@ class StoryMedia extends PureComponent {
 
   renderVideo() {
     const { file } = this.props;
+    const { explicitVideoHeight } = this.state;
     return (
       <video
-        id={`video-player${file.id}`}
+        id={`video-player${file.blob.id}`}
         className="video-player"
-        playsinline
+        height={explicitVideoHeight}
+        playsInline
         controls
         controlsList='nodownload'
+        key={file.url}
+        ref="video"
       >
         <source src={file.url} type={file.blob.content_type} />
       </video>
@@ -29,6 +40,20 @@ class StoryMedia extends PureComponent {
     return this.props.file.blob.content_type.indexOf("video") !== -1
       ? this.renderVideo()
       : this.renderAudio();
+  }
+
+  componentDidMount() {
+    const { doBustCache } = this.props;
+    const video = this.refs.video;
+
+    if (!!video === true) {
+      video.addEventListener('loadeddata', (event) => {
+        const aspectRatio = video.videoWidth / video.videoHeight;
+        const newExplicitVideoHeight = video.offsetWidth / aspectRatio;
+        this.setState({ explicitVideoHeight: newExplicitVideoHeight });
+        doBustCache();
+      });
+    }
   }
 }
 
