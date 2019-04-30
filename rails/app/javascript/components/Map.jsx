@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
 // @NOTE: MAKE SURE ARRAY IS [LONGITUDE, LATITUDE]
-const defaultCenter = [-55.63, 4.78];
+const defaultCenter = [-108, 38.5];
 const defaultBounds = [
-  [-60.80409032, 0.3332811], //southwest
-  [-52.41053563, 6.90258397] //northeast
+  [-180, -85], //southwest
+  [180, 85] //northeast
 ]
-const defaultZoom = 7.6;
+const defaultZoom = 3.5;
 
 export default class Map extends Component {
   constructor(props) {

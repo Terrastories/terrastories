@@ -5,46 +5,39 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-afitimamau = Place.find_or_create_by(name: 'Afitimamau', type_of_place: 'dang');
-amenusu = Place.find_or_create_by(name: 'Amenusu', type_of_place: 'kampu');
-bakaafeeti = Place.find_or_create_by(name: 'Bakaafeeti', type_of_place: 'hila');
-ocean = Point.find_or_create_by(title: "Ocean", lng: -55.2452415, lat: 3.827618371, region: "Kumiade", place: afitimamau)
-pond = Point.find_or_create_by(title: "Pond", lng: -55.23122, lat: 5.3351, region: "Kumiade", place: amenusu)
-water = Point.find_or_create_by(title: "Flowing Water", lng: -56.875, lat: 5.8881435, region: "Tukumutu", place: bakaafeeti)
-flaming_forest = Point.find_or_create_by(title: "Flaming Forest", lng: -56.12357544, lat: 3.1156739, region: "Kwata Ede", place: bakaafeeti)
-sacred_tree = Point.find_or_create_by(title: "Sacred Forest Tree", lng: -56.87875645, lat: 4.897634332, region: "Tukumutu", place: afitimamau)
-speaker = Speaker.find_or_create_by(name: "Speaker Name")
+georgetown = Place.find_or_create_by(name: 'Georgetown University', type_of_place: 'college campus');
+naturebridge = Place.find_or_create_by(name: 'NatureBridge Campus', type_of_place: 'nonprofit campus');
+rfg2018 = Point.find_or_create_by(title: "Ruby For Good 2018", lng: -77.073168, lat: 38.906302, region: "Washington DC", place: georgetown)
+rbtb2019 = Point.find_or_create_by(title: "Ruby By The Bay 2019", lng: -122.537419, lat: 37.832257, region: "California", place: naturebridge)
+miranda = Speaker.find_or_create_by(name: "Miranda Wang")
+kalimar = Speaker.find_or_create_by(name: "Kalimar Maia")
+rudo = Speaker.find_or_create_by(name: "Rudo Kemper")
+corinne = Speaker.find_or_create_by(name: "Corinne Henk")
 
-Story.find_or_create_by(title: "Fa di Saamaka sembe bi haba a beligi",
-                     desc: "Het is al geruime tijd een bekend gegeven dat een lezer, tijdens het bekijken van de layout van een pagina, afgeleid wordt door de tekstuele inhoud. Het belangrijke punt van het gebruik van Lorem Ipsum is dat het uit een min of meer normale verdeling van letters bestaat, in tegenstelling tot 'Hier uw tekst, hier uw tekst' wat het tot min of meer leesbaar nederlands maakt.",
-                     speaker: speaker,
-                     point: ocean,
+Story.find_or_create_by(title: "Miranda's testimonial",
+                     desc: "Ruby for Good 2018 team lead Miranda Wang about why she values working on Terrastories.",
+                     speaker: miranda,
+                     point: rfg2018,
                      permission_level: 0)
 
-Story.find_or_create_by(title: "Di twaalfu lampeesi fu Toido",
-                     desc: "Veel desktop publishing pakketten en web pagina editors gebruiken tegenwoordig Lorem Ipsum als hun standaard model tekst, en een zoekopdracht naar 'lorem ipsum' ontsluit veel websites die nog in aanbouw zijn. Verscheidene versies hebben zich ontwikkeld in de loop van de jaren, soms per ongeluk soms expres (ingevoegde humor en dergelijke).",
-                     speaker: speaker,
-                     point: ocean,
+Story.find_or_create_by(title: "Rudo's testimonial",
+                     desc: "ACT program manager Rudo Kemper discusses why the organization decided to start building Terrastories to support local communities retain their oral history traditions.",
+                     speaker: rudo,
+                     point: rbtb2019,
                      permission_level: 0)
 
-Story.find_or_create_by(title: "Fa di gaan sembe veloisi go aki",
-                     desc: "r zijn vele variaties van passages van Lorem Ipsum beschikbaar maar het merendeel heeft te lijden gehad van wijzigingen in een of andere vorm, door ingevoegde humor of willekeurig gekozen woorden die nog niet half geloofwaardig ogen.",
-                     speaker: speaker,
-                     point: pond,
+Story.find_or_create_by(title: "Kalimar's testimonial",
+                     desc: "Mapbox sales engineer Kalimar Maia on why it is important for a company like Mapbox to support open source projects like Terrastories.",
+                     speaker: kalimar,
+                     point: rfg2018,
                      permission_level: 1)
-
-Story.find_or_create_by(title: "Mama Tjowa",
-                     desc: "Als u een passage uit Lorum Ipsum gaat gebruiken dient u zich ervan te verzekeren dat er niets beschamends midden in de tekst verborgen zit. Alle Lorum Ipsum generators op Internet hebben de eigenschap voorgedefinieerde stukken te herhalen waar nodig zodat dit de eerste echte generator is op internet.",
-                     speaker: speaker,
-                     point: water,
-                     permission_level: 1)
-
-Story.find_or_create_by(title: "Fa di Kwinti nengeb bi feti ku Matawai sembe",
-                     desc: "In tegenstelling tot wat algemeen aangenomen wordt is Lorem Ipsum niet zomaar willekeurige tekst. het heeft zijn wortels in een stuk klassieke latijnse literatuur uit 45 v.Chr. en is dus meer dan 2000 jaar oud.",
-                     speaker: speaker,
-                     point: flaming_forest,
-                     permission_level: 1)
-
+					 
+Story.find_or_create_by(title: "Corinne's testimonial",
+                     desc: "Corinne Henk, Ruby by the Bay 2019 team lead, describes some of the challenges her team faced and what they managed to accomplish.",
+                     speaker: corinne,
+                     point: rbtb2019,
+                     permission_level: 0)					 
+                     
 User.find_or_create_by!(email: 'admin@terrastories.com') do |admin|  
   admin.password = 'terrastories'
   admin.password_confirmation = 'terrastories'
