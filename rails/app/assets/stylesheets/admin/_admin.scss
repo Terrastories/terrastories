@@ -1,6 +1,14 @@
 @import 'story_dashboard';
 @import 'core/colors';
 
+.import-spinner {
+  display: none !important;
+}
+
 button.btn-import:disabled {
   background-color: $orange !important;
+
+  + .import-spinner {
+    display: inline-block !important;
+  }
 }

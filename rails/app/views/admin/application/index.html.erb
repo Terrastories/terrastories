@@ -72,9 +72,13 @@ It renders the `_table` partial to display details about the resources.
     </div>
     <br>
     <div class="form-group">
-        <%= button_tag :class => "btn btn-lg btn-primary btn-import", :data => { :disable_with => 'Uploading your file...' } do %>
+        <%= button_tag :class => "btn-import",
+              :data => {
+                :disable_with => 'Uploading your file...',
+              } do %>
         <i class="fa fa-upload"></i> Import <%= page.resource_name.pluralize.capitalize %>
       <% end %>
+      <i class="fa fa-spinner fa-spin fa-lg import-spinner"></i>
     </div>
   <% end %>
 <% end %>
