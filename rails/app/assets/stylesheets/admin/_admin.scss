@@ -1,1 +1,6 @@
 @import 'story_dashboard';
+@import 'core/colors';
+
+button.btn-import:disabled {
+  background-color: $orange !important;
+}
