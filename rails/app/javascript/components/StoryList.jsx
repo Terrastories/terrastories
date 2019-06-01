@@ -32,7 +32,11 @@ class StoryList extends Component {
 
   handleFilter = (category, item) => {
     this.resetActiveStory();
-    this.props.handleFilter(category, item);
+    this.props.handleFilter(category, item, forceUpdateGrid);
+  }
+
+  forceUpdateGrid = () => {
+    this._list.forceUpdateGrid();
   }
 
   clearFilteredStories = () => {
@@ -54,7 +58,7 @@ class StoryList extends Component {
     }
 
     return (
-      <CellMeasurer 
+      <CellMeasurer
         key={key}
         cache={this.cache}
         parent={parent}

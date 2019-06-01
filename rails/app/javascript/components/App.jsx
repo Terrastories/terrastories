@@ -74,7 +74,7 @@ class App extends Component {
     });
   }
 
-  handleFilter = (category, item) => {
+  handleFilter = (category, item, callback) => {
     let filteredStories = [];
     switch (category) {
       case FILTER_CATEGORIES[0]: {
@@ -107,7 +107,9 @@ class App extends Component {
     }
     if (filteredStories) {
       const filteredPoints = this.getPointsFromStories(filteredStories);
-      this.setState({stories: filteredStories, points: filteredPoints, pointCoords: []});
+      this.setState({
+        stories: filteredStories, points: filteredPoints, pointCoords: []
+      }, callback());
     }
     (`Filtered Stories of ${category} ${item}:`, filteredStories);
   }
