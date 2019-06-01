@@ -1,4 +1,5 @@
 class Speaker < ApplicationRecord
+  has_many :speaker_stories
   has_many :stories, through: :speaker_stories
   has_one_attached :media
 

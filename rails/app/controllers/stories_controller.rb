@@ -38,7 +38,7 @@ class StoriesController < ApplicationController
       redirect_back(fallback_location: root_path)
       flash[:error] = "No file was attached!"
     else
-      filepath = params[:file].path
+      filepath = params[:file].read
       Story.import_csv(filepath)
       flash[:notice] = "Stories were imported successfully!"
       redirect_back(fallback_location: root_path)
@@ -48,7 +48,7 @@ class StoriesController < ApplicationController
   private
 
   def story_params
-    params.require(:story).permit(:title, :desc, :speaker_id, :point_id, media: [])
+    params.require(:story).permit(:title, :desc, :point_id, speakers: [], media: [])
   end
 
   def remove_attachment
