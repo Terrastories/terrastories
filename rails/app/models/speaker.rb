@@ -1,4 +1,3 @@
-require 'pry'
 # == Schema Information ==
 #
 # Table name: speakers
