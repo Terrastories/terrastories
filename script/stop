@@ -1,2 +1,6 @@
-#!/bin/bash
+#!/bin/sh
 docker-compose down
+
+echo "Cleaning old anonymous volumes"
+docker volume ls -qf dangling=true | egrep '^[a-z0-9]{64}$' | \
+  xargs --no-run-if-empty docker volume rm
