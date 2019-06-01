@@ -8,6 +8,7 @@
     "@rails/webpacker": "3.5",
     "babel-jest": "^23.6.0",
     "babel-preset-react": "^6.24.1",
+    "fstream": "1.0.12",
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
