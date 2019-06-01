@@ -7,8 +7,10 @@ json.stories stories do |story|
     json.url url_for(media)
     json.blob media.blob
   end
-  json.speaker do |speaker|
-    json.extract! story.speaker, :name, :picture_url
+  json.speakers story.speakers do |speaker|
+    json.id speaker.id
+    json.name speaker.name
+    json.picture_url speaker.picture_url
   end
 end
 json.logo_path image_path("logocombo.svg")

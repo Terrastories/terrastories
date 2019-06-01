@@ -11,7 +11,7 @@ class StoryDashboard < Administrate::BaseDashboard
     id: Field::Number,
     title: Field::String,
     desc: Field::Text,
-    speaker: Field::BelongsTo,
+    speakers: Field::HasMany,
     point: Field::BelongsTo,
     media: Field::ActiveStorage.with_options({destroy_path: :admin_stories_path}),
     permission_level: EnumField,
@@ -28,7 +28,7 @@ class StoryDashboard < Administrate::BaseDashboard
     :id,
     :title,
     :desc,
-    :speaker,
+    :speakers,
     :point,
     :permission_level
   ].freeze
@@ -39,7 +39,7 @@ class StoryDashboard < Administrate::BaseDashboard
     :id,
     :title,
     :desc,
-    :speaker,
+    :speakers,
     :point,
     :media,
     :permission_level,
@@ -53,7 +53,7 @@ class StoryDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :title,
     :desc,
-    :speaker,
+    :speakers,
     :point,
     :media,
     :permission_level

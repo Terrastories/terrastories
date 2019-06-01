@@ -52,6 +52,7 @@ class StoryList extends Component {
     const bustCache = () => {
       this.cache.clear(index, 0);
     }
+
     return (
       <CellMeasurer 
         key={key}
@@ -66,8 +67,13 @@ class StoryList extends Component {
             style={style}
           >
             <div className="speakers">
-              <img src={story.speaker.picture_url} alt={story.speaker.name} title={story.speaker.name}/>
-              <p style={{ fontWeight: 'bold' }}>{story.speaker.name}</p>
+              { story.speakers.map(speaker => (
+                  <div key={speaker.id}>
+                    <img src={speaker.picture_url} alt={speaker.name} title={speaker.name}/>
+                     <p style={{ fontWeight: 'bold' }}>{speaker.name}</p>
+                  </div>
+                )
+              )}
             </div>
             <div className="container">
               <h6 className="title">{story.title}</h6>
