@@ -1,9 +1,19 @@
-echo "Removing existing yarn modules from host"
-rm -rf /app/node_modules /app/yarn.lock
+#!/bin/sh
 
-echo "Copying container yarn modules"
-cp -rf /node_modules /app/node_modules
+# echo "Removing existing yarn modules from host"
+# rm -rf /app/node_modules /app/yarn.lock
+# cp -rf /node_modules /app/node_modules
+
+echo "Copying container yarn lock"
 cp -rf /yarn.lock /app/yarn.lock
+
+if [ ! -L node_modules ]; then
+  echo "Creating node_modules link in container"
+  rm -rf node_modules
+  ln -sf /node_modules node_modules
+fi
+
+# rm -rf /app/node_modules /app/yarn.lock
 
 echo "Removing artifacts from previous run"
 rm -rf /app/log/*
@@ -31,4 +41,4 @@ bundle exec rails acts_as_taggable_on_engine:install:migrations
 bundle exec rails webpacker:compile
 
 echo "Starting server"
-bundle exec rails server -p 3000 -b '0.0.0.0'
+exec bundle exec rails server -p 3000 -b '0.0.0.0'
