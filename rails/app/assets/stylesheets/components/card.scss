@@ -20,10 +20,10 @@ $el-shadow: 0 1px 4px #bbb;
   }
 
   &.offCanvas {
-    max-width: 2rem;
+    pointer-events: none;
 
     .card {
-      display: none;
+      left: -100%;
     }
     .tab {
       &:after {
