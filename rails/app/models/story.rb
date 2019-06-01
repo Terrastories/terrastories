@@ -1,6 +1,6 @@
 class Story < ApplicationRecord
   belongs_to :point
-  belongs_to :speaker
+  has_many :speakers, through: :speaker_stories
   has_many_attached :media
   has_many :interview_locations, through: :places
 

@@ -1,5 +1,5 @@
 class Speaker < ApplicationRecord
-  has_many :stories
+  has_many :stories, through: :speaker_stories
   has_one_attached :media
 
   def picture_url
