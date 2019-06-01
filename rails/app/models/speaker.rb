@@ -47,6 +47,6 @@ class Speaker < ApplicationRecord
     if name.nil? || name.downcase == 'unknown'
       return nil
     end
-    return Place.find_or_create_by(name: name)
+    Place.find_or_create_by(name: name)
   end
 end
