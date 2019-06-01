@@ -14,29 +14,41 @@ kalimar = Speaker.find_or_create_by(name: "Kalimar Maia")
 rudo = Speaker.find_or_create_by(name: "Rudo Kemper")
 corinne = Speaker.find_or_create_by(name: "Corinne Henk")
 
-Story.find_or_create_by(title: "Miranda's testimonial",
+miranda_story = Story.find_or_create_by(title: "Miranda's testimonial",
                      desc: "Ruby for Good 2018 team lead Miranda Wang about why she values working on Terrastories.",
-                     speaker: miranda,
                      point: rfg2018,
                      permission_level: 0)
 
-Story.find_or_create_by(title: "Rudo's testimonial",
+
+rudo_story = Story.find_or_create_by(title: "Rudo's testimonial",
                      desc: "ACT program manager Rudo Kemper discusses why the organization decided to start building Terrastories to support local communities retain their oral history traditions.",
-                     speaker: rudo,
                      point: rbtb2019,
                      permission_level: 0)
 
-Story.find_or_create_by(title: "Kalimar's testimonial",
+kalimar_story = Story.find_or_create_by(title: "Kalimar's testimonial",
                      desc: "Mapbox sales engineer Kalimar Maia on why it is important for a company like Mapbox to support open source projects like Terrastories.",
-                     speaker: kalimar,
                      point: rfg2018,
                      permission_level: 1)
-					 
-Story.find_or_create_by(title: "Corinne's testimonial",
+
+corinne_story = Story.find_or_create_by(title: "Corinne's testimonial",
                      desc: "Corinne Henk, Ruby by the Bay 2019 team lead, describes some of the challenges her team faced and what they managed to accomplish.",
-                     speaker: corinne,
                      point: rbtb2019,
-                     permission_level: 0)					 
+                     permission_level: 0)
+
+shared_story = Story.find_or_create_by(title: "Terrastories Team testimonial",
+                    desc: "The team tells all",
+                    point: rfg2018,
+                    permission_level: 1)
+
+SpeakerStory.find_or_create_by(speaker_id: miranda.id, story_id: miranda_story.id)
+SpeakerStory.find_or_create_by(speaker_id: rudo.id, story_id: rudo_story.id)
+SpeakerStory.find_or_create_by(speaker_id: kalimar.id, story_id: kalimar_story.id)
+SpeakerStory.find_or_create_by(speaker_id: corinne.id, story_id: corinne_story.id)
+
+SpeakerStory.find_or_create_by(speaker_id: miranda.id, story_id: shared_story.id)
+SpeakerStory.find_or_create_by(speaker_id: rudo.id,    story_id: shared_story.id)
+SpeakerStory.find_or_create_by(speaker_id: kalimar.id, story_id: shared_story.id)
+SpeakerStory.find_or_create_by(speaker_id: corinne.id, story_id: shared_story.id)
                      
 User.find_or_create_by!(email: 'admin@terrastories.com') do |admin|  
   admin.password = 'terrastories'
