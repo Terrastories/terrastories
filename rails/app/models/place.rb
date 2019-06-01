@@ -1,6 +1,7 @@
 class Place < ApplicationRecord
   require 'csv'
   has_many :points
+  has_many :speakers
 
   has_one_attached :photo
   validate :photo_format
