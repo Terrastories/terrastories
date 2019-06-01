@@ -44,19 +44,11 @@ services:
       - railroad
     tty: true # Enables debugging capabilities when attached to this container.
     volumes:
-      - type: bind
-        source: ./media
-        target: /media
-      - type: bind
-        source: ./rails
-        target: /app
-      - type: bind
-        source: ./rails/nginx
-        target: /etc/nginx
-      - type: volume
-        target: /app/log
-      - type: volume
-        target: /app/tmp
+      - ./media:/media
+      - ./rails:/app
+      - ./rails/nginx:/etc/nginx
+      - /app/log
+      - /app/tmp
 
   tilebuilder:
     build:
