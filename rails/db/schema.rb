@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_01_184401) do
+ActiveRecord::Schema.define(version: 2019_06_01_202823) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -38,8 +38,15 @@ ActiveRecord::Schema.define(version: 2019_06_01_184401) do
     t.string "type_of_place"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.float "lat"
-    t.float "long"
+    t.decimal "lat", precision: 10, scale: 6
+    t.decimal "long", precision: 10, scale: 6
+    t.string "region"
+  end
+
+  create_table "places_stories", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "place_id", null: false
+    t.bigint "story_id", null: false
+    t.index ["place_id", "story_id"], name: "index_places_stories_on_place_id_and_story_id"
   end
 
   create_table "points", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
