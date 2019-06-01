@@ -54,8 +54,8 @@ class App extends Component {
         case FILTER_CATEGORIES[2]: {
           // third category: Speaker
           const speakerSet = new Set(this.props.stories.map(story => {
-            return story.speaker.name
-          }));
+            return story.speakers.map(speaker => speaker.name)
+          }).flat());
           filterMap[category] = Array.from(speakerSet).sort();
           break;
         }
@@ -98,7 +98,7 @@ class App extends Component {
       case FILTER_CATEGORIES[2]: {
         // third category: speaker name
         filteredStories = this.props.stories.filter(story => {
-          if (story.speaker.name.toLowerCase() === item.toLowerCase()) {
+          if (story.speakers.map(speaker => speaker.name.toLowerCase()).includes(item.toLowerCase())) {
             return story;
           }
         });

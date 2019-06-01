@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_31_181118) do
+ActiveRecord::Schema.define(version: 2019_06_01_184401) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -53,6 +53,11 @@ ActiveRecord::Schema.define(version: 2019_03_31_181118) do
     t.index ["place_id"], name: "index_points_on_place_id"
   end
 
+  create_table "speaker_stories", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "speaker_id", null: false
+    t.bigint "story_id", null: false
+  end
+
   create_table "speakers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "photo"
@@ -60,6 +65,9 @@ ActiveRecord::Schema.define(version: 2019_03_31_181118) do
     t.string "community"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "birth_year"
+    t.integer "birthplace_id"
+    t.index ["birthplace_id"], name: "index_speakers_on_birthplace_id"
   end
 
   create_table "stories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -67,14 +75,12 @@ ActiveRecord::Schema.define(version: 2019_03_31_181118) do
     t.text "desc"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "speaker_id"
     t.bigint "point_id"
     t.integer "permission_level"
     t.datetime "date_interviewed"
     t.string "interviewer"
     t.string "language"
     t.index ["point_id"], name: "index_stories_on_point_id"
-    t.index ["speaker_id"], name: "index_stories_on_speaker_id"
   end
 
   create_table "taggings", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -121,5 +127,4 @@ ActiveRecord::Schema.define(version: 2019_03_31_181118) do
   end
 
   add_foreign_key "stories", "points"
-  add_foreign_key "stories", "speakers"
 end
