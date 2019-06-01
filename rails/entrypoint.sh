@@ -7,6 +7,14 @@
 echo "Copying container yarn lock"
 cp -rf /yarn.lock /app/yarn.lock
 
+if [ ! -L node_modules ]; then
+  echo "Creating node_modules link in container"
+  rm -rf node_modules
+  ln -sf /node_modules node_modules
+fi
+
+# rm -rf /app/node_modules /app/yarn.lock
+
 echo "Removing artifacts from previous run"
 rm -rf /app/log/*
 rm -rf /app/tmp/*

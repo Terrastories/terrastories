@@ -37,7 +37,7 @@
       "!**/spec/javascript/coverage/**"
     ],
     "moduleDirectories": [
-      "node_modules"
+      "../node_modules"
     ]
   }
 }
