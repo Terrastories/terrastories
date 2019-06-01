@@ -9,7 +9,7 @@ class Story < ApplicationRecord
 
   def self.import_csv(filename)
     arr_rows = CSV.parse(filename)
-    # headers = arr_rows.shift
+
     arr_rows.each do |raw_row|
       row = raw_row.map { |value| value && value.include?(";") ? value.split(";").map(&:strip) : value }
       point_id = Point.where(title: row[3])&.first&.id
