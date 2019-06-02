@@ -17,9 +17,11 @@ ENV RAILS_ENV=development
 RUN mkdir /app
 WORKDIR /app
 
-COPY Gemfile Gemfile.lock package.json yarn.lock .yarnrc ./
+COPY Gemfile Gemfile.lock package.json yarn.lock ./
 RUN bundle install
-RUN yarn install
+RUN mkdir -p /node_modules \
+ && ln -sf ../node_modules \
+ && yarn install --modules-folder ../node_modules
 RUN bundle exec rails new .
 RUN mv yarn.lock /yarn.lock
 
