@@ -1,10 +1,8 @@
-#!/bin/sh
+echo "Removing existing yarn modules from host"
+rm -rf /app/node_modules /app/yarn.lock
 
-# echo "Removing existing yarn modules from host"
-# rm -rf /app/node_modules /app/yarn.lock
-# cp -rf /node_modules /app/node_modules
-
-echo "Copying container yarn lock"
+echo "Copying container yarn modules"
+cp -rf /node_modules /app/node_modules
 cp -rf /yarn.lock /app/yarn.lock
 
 echo "Removing artifacts from previous run"
@@ -33,4 +31,4 @@ bundle exec rails acts_as_taggable_on_engine:install:migrations
 bundle exec rails webpacker:compile
 
 echo "Starting server"
-exec bundle exec rails server -p 3000 -b '0.0.0.0'
+bundle exec rails server -p 3000 -b '0.0.0.0'
