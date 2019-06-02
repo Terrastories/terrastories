@@ -16,7 +16,7 @@ services:
       - rails
       - tileserver
     environment:
-      - NGINX_PORT=${NGINX_PORT:-3000}
+      - NGINX_PORT=${NGINX_PORT:-80}
       - NODE_ENV=development
       - RAILS_ENV=development
     image: 'nginx:latest'
@@ -24,16 +24,16 @@ services:
       - tilenet
       - railroad
     ports:
-      - ${NGINX_PORT:-3000}:80
+      - ${NGINX_PORT:-80}:80
     volumes:
-      - ./nginx:/etc/nginx
+      - ./nginx/nginx.prod.conf:/etc/nginx/nginx.conf:ro
 
   rails:
     restart: always    
     build:
       context: ./rails
-      target: dev
-    image: terrastories/rails
+      target: prod
+    image: terrastories/rails:prod
     labels:
       kompose.service.type: nodeport
     environment:
@@ -46,7 +46,7 @@ services:
     tty: true # Enables debugging capabilities when attached to this container.
     volumes:
       - ./media:/media
-      - ./rails:/app
+      # - ./rails:/app
       - ./rails/nginx:/etc/nginx
       - yarn_cache:/usr/local/share/.cache
       - type: tmpfs

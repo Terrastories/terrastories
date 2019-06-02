@@ -1,5 +1,7 @@
 #!/bin/bash
-service docker start
+set -x
 cd $(dirname $(readlink -f $0))
+export COMPOSE_FILE=../../docker-compose.prod.yml
 docker-compose build
-docker-compose run tileserver
+docker-compose run --rm tilebuilder
+docker-compose run -d nginx

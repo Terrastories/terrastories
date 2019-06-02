@@ -17,6 +17,9 @@ if [ "$(which docker)" == "" ]; then
   sudo apt-get install -y docker-ce
 fi
 
+# start docker service
+service docker start
+
 if [ "$(which docker-compose)" == "" ]; then
   sudo curl -L "https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m)" -o /bin/docker-compose
   chmod a+x /bin/docker-compose
