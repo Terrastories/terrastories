@@ -3,7 +3,7 @@ import StoryList from "./StoryList";
 
 class Card extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       isToggleOn: true
@@ -13,8 +13,8 @@ class Card extends Component {
   static defaultProps = {
     filterMap: {},
     categories: [],
-    clearFilteredStories: () => {},
-    handleFilter: () => {}
+    clearFilteredStories: () => { },
+    handleFilter: () => { }
   }
 
   handleTray = () => {
@@ -37,7 +37,7 @@ class Card extends Component {
           <li>{I18n.t("hello")} {this.props.user.email} (<a href={`/${I18n.currentLocale()}`}>{I18n.t("back_to_welcome")}</a>)</li>
         </ul>
       );
-    } else { 
+    } else {
       return (
         <ul>
           <li><a href={`/${I18n.currentLocale()}`}>{I18n.t("back_to_welcome")}</a></li>
