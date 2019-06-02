@@ -53,6 +53,9 @@ class StoryMedia extends PureComponent {
         this.setState({ explicitVideoHeight: newExplicitVideoHeight });
         doBustCache();
       });
+      video.addEventListener('play', (event) => {
+        window.pauseAllVideos(event.target);
+      }, true);
     }
   }
 }
