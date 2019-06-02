@@ -101,6 +101,10 @@ export default class Map extends Component {
         this.map.panTo(this.props.pointCoords);
       }
       return;
+    } else {
+      if (this.map) {
+        this.resetMapToCenter();
+      }
     }
   }
 
