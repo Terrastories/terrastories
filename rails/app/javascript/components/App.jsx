@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Map from './Map';
 import Card from './Card';
 import IntroPopup from './IntroPopup';
-import {FILTER_CATEGORIES} from '../constants/FilterConstants';
+import { FILTER_CATEGORIES } from '../constants/FilterConstants';
 class App extends Component {
   constructor(props) {
     super(props);
@@ -15,11 +15,11 @@ class App extends Component {
 
   componentDidMount() {
     const points = this.getPointsFromStories(this.state.stories);
-    this.setState({points: points});
+    this.setState({ points: points });
   }
 
   setPointCoords = pointCoords => {
-    this.setState({pointCoords});
+    this.setState({ pointCoords });
   }
 
   getPointsFromStories = stories => {
@@ -69,8 +69,7 @@ class App extends Component {
 
     this.setState({
       stories: this.props.stories,
-      points: points,
-      pointCoords: []
+      points: points
     });
   }
 
@@ -107,7 +106,7 @@ class App extends Component {
     }
     if (filteredStories) {
       const filteredPoints = this.getPointsFromStories(filteredStories);
-      this.setState({stories: filteredStories, points: filteredPoints, pointCoords: []});
+      this.setState({ stories: filteredStories, points: filteredPoints, pointCoords: [] });
     }
     (`Filtered Stories of ${category} ${item}:`, filteredStories);
   }
@@ -121,6 +120,11 @@ class App extends Component {
     }
   }
 
+  resetStoriesAndMap = () => {
+    this.clearFilteredStories();
+    this.setPointCoords([]);
+  }
+
   render() {
     return (
       <div>
@@ -130,13 +134,14 @@ class App extends Component {
           mapboxAccessToken={this.props.mapbox_access_token}
           mapboxStyle={this.props.mapbox_style}
           onMapPointClick={this.showMapPointStories}
+          clearFilteredStories={this.clearFilteredStories}
         />
         <Card
           stories={this.state.stories}
           categories={FILTER_CATEGORIES}
           filterMap={this.filterMap()}
           handleFilter={this.handleFilter}
-          clearFilteredStories={this.clearFilteredStories}
+          clearFilteredStories={this.resetStoriesAndMap}
           onCardClick={this.setPointCoords}
           logo_path={this.props.logo_path}
           user={this.props.user}
