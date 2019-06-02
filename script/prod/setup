@@ -1,5 +1,6 @@
 #!/bin/bash
 service docker start
 cd $(dirname $(readlink -f $0))
-docker-compose build
-docker-compose run tileserver
+docker-compose -f docker-compose.prod.yml build
+docker-compose -f docker-compose.prod.yml run --rm tilebuilder
+docker-compose -f docker-compose.prod.yml run nginx
