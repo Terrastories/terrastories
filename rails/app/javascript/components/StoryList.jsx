@@ -23,6 +23,13 @@ class StoryList extends Component {
     onStoryClick: PropTypes.func
   };
 
+  componentWillReceiveProps() {
+    this.cache.clearAll();
+    if(this._list){
+      this._list.recomputeRowHeights();
+    }
+  }
+
   handleClickStory = (story, index) => {
     this.setState({
       activeStoryIndex: index
@@ -100,6 +107,7 @@ class StoryList extends Component {
         <div className="stories">
           <AutoSizer>
             {({height, width}) => {
+
               return (
                 <List
                   height={height}
