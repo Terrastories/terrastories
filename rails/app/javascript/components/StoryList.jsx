@@ -29,7 +29,6 @@ class StoryList extends Component {
   // In React 16.3.0, update method to getSnapshotBeforeUpdate
   componentWillReceiveProps(nextProps) {
     this.cache.clearAll();
-    console.log(nextProps);
     if(this._list){
       this._list.recomputeRowHeights();
       this._list.forceUpdateGrid();
