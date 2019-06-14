@@ -16,10 +16,11 @@ export default class Map extends Component {
   }
 
   static propTypes = {
-    points: PropTypes.array,
-    pointCoords: PropTypes.object,
+    activePoint: PropTypes.object,
+    points: PropTypes.object,
+    pointCoords: PropTypes.array,
     onMapPointClick: PropTypes.func,
-    mapboxStyle: PropTypes.object,
+    mapboxStyle: PropTypes.string,
     mapboxAccessToken: PropTypes.string
   };
 
@@ -40,6 +41,25 @@ export default class Map extends Component {
     this.map.addControl(new mapboxgl.NavigationControl());
   }
 
+  // In React 16.3.0, update method to getSnapshotBeforeUpdate
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.activePoint !== this.props.activePoint) {
+      // only display one at a time, remove all other popups
+      const popupNodes = document.getElementsByClassName('mapboxgl-popup');
+      Array.from(popupNodes).forEach(node => node.remove());
+      if (nextProps.activePoint) {
+        const marker = nextProps.activePoint;
+        var popup = new mapboxgl.Popup({offset: 15, className: 'ts-markerPopup', closeButton: true, closeOnClick: false})
+          .setLngLat(marker.geometry.coordinates)
+          .setHTML('<h1>' + marker.properties.title + '</h1>' + '<h2>' + marker.properties.region + '</h2>')
+          .addTo(this.map);
+        popup.on('close', () => {
+          this.props.clearFilteredStories();
+        });
+      }
+    }
+ }
+
   resetMapToCenter() {
     this.map.flyTo({
       center: defaultCenter,
@@ -48,6 +68,7 @@ export default class Map extends Component {
     });
   }
 
+  // TODO: update this to JSX
   createHomeButton() {
     const homeButton = document.createElement('button');
     homeButton.setAttribute('aria-label', 'Map Home');
@@ -73,37 +94,20 @@ export default class Map extends Component {
       var el = document.createElement('div');
       el.className = 'marker';
       el.id = 'storypoint' + marker.id;
-      var popup = new mapboxgl
-        .Popup({ offset: 15 })
-        .setHTML('<h1>' + marker.properties.name + '</h1>' + '<h2>' + marker.properties.region + '</h2>')
       // make a marker for each feature and add to the map
       new mapboxgl.Marker(el)
         .setLngLat(marker.geometry.coordinates)
-        .setPopup(popup) // sets a popup on this marker
         .addTo(this.map);
 
       el.addEventListener('click', () => {
-        this.props.onMapPointClick(marker.properties.stories);
+        this.props.onMapPointClick(marker, marker.properties.stories);
         this.map.panTo(marker.geometry.coordinates);
       });
-
-      popup.on('close', () => {
-        this.props.clearFilteredStories();
-      })
     });
   }
 
   componentDidUpdate() {
-    [...document.querySelectorAll('.marker')].forEach(function (marker) {
-      marker.remove();
-    });
-
-    [...document.querySelectorAll('.mapboxgl-popup')].forEach(function (popup) {
-      popup.remove();
-    })
-
     this.updateMarkers();
-
     if (this.props.pointCoords.length > 0) {
       if (this.map) {
         this.map.panTo(this.props.pointCoords);

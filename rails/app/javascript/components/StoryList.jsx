@@ -25,6 +25,7 @@ class StoryList extends Component {
     categories: PropTypes.array
   };
 
+  // In React 16.3.0, update method to getSnapshotBeforeUpdate
   componentWillReceiveProps() {
     this.cache.clearAll();
     if(this._list){
@@ -36,7 +37,7 @@ class StoryList extends Component {
     this.setState({
       activeStoryIndex: index
     }, this._list.forceUpdateGrid());
-    this.props.onStoryClick(story.point.geometry.coordinates);
+    this.props.onStoryClick(story.point, story.point.geometry.coordinates);
   }
 
   handleFilter = (category, item) => {
