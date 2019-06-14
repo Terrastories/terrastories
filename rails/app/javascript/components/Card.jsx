@@ -19,7 +19,8 @@ class Card extends Component {
     user: PropTypes.object,
     stories: PropTypes.array,
     onStoryClick: PropTypes.func,
-    logo_path: PropTypes.string
+    logo_path: PropTypes.string,
+    activeStory: PropTypes.object
   };
 
   static defaultProps = {
@@ -72,6 +73,7 @@ class Card extends Component {
             </div>
 
             <StoryList
+              activeStory={this.props.activeStory}
               stories={this.props.stories}
               onStoryClick={this.props.onStoryClick}
               handleFilter={this.props.handleFilter}

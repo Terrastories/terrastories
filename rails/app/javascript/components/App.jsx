@@ -12,7 +12,8 @@ class App extends Component {
       pointCoords: [],
       points: {},
       stories: this.props.stories,
-      activePoint: null
+      activePoint: null,
+      activeStory: null
     }
   }
 
@@ -28,10 +29,6 @@ class App extends Component {
     const points = this.getPointsFromStories(this.state.stories);
     console.log(points);
     this.setState({ points: points });
-  }
-
-  setPointCoords = pointCoords => {
-    this.setState({ pointCoords });
   }
 
   getPointsFromStories = stories => {
@@ -74,16 +71,6 @@ class App extends Component {
       }
     });
     return filterMap;
-  }
-
-  clearFilteredStories = () => {
-    const points = this.getPointsFromStories(this.props.stories);
-
-    this.setState({
-      stories: this.props.stories,
-      points: points,
-      activePoint: null
-    });
   }
 
   handleFilter = (category, item) => {
@@ -129,28 +116,30 @@ class App extends Component {
     let filteredStories = [];
     filteredStories = this.props.stories.filter(story => storyTitles.includes(story.title));
     if (filteredStories) {
-      this.setState({ stories: filteredStories });
+      this.setState({ stories: filteredStories, activeStory: filteredStories[0] });
     }
   }
 
-  handleStoryClick = (point, pointCoords) => {
-    this.setState({activePoint: point});
-    this.setPointCoords(pointCoords);
+  handleStoryClick = story => {
+    const point = story.point;
+    const pointCoords = story.point.geometry.coordinates;
+    this.setState({activePoint: point, activeStory: story, pointCoords: pointCoords});
   }
 
   resetStoriesAndMap = () => {
-    this.clearFilteredStories();
-    this.setPointCoords([]);
+    const points = this.getPointsFromStories(this.props.stories);
+    this.setState({
+      stories: this.props.stories,
+      points: points,
+      pointCoords: [],
+      activePoint: null,
+      activeStory: null
+    });
   }
 
   handleMapPointClick = (point, stories) => {
-    // update displayed stories
-    console.log(point);
     this.showMapPointStories(stories);
-    this.setState({activePoint: point});
-    // update point coords to first point
-    // set active point to the first point
-    // set the active story to the first story
+    this.setState({activePoint: point, pointCoords: point.geometry.coordinates});
   }
 
   render() {
@@ -161,11 +150,12 @@ class App extends Component {
           pointCoords={this.state.pointCoords}
           mapboxAccessToken={this.props.mapbox_access_token}
           mapboxStyle={this.props.mapbox_style}
-          clearFilteredStories={this.clearFilteredStories}
+          clearFilteredStories={this.resetStoriesAndMap}
           onMapPointClick={this.handleMapPointClick}
           activePoint={this.state.activePoint}
         />
         <Card
+          activeStory={this.state.activeStory}
           stories={this.state.stories}
           categories={FILTER_CATEGORIES}
           filterMap={this.filterMap()}
