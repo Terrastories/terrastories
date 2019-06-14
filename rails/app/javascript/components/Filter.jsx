@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
+import PropTypes from 'prop-types';
+
 class Filter extends Component {
 
   DEFAULT_CATEGORY_PLACEHOLDER = I18n.t("select_category");
@@ -14,9 +16,15 @@ class Filter extends Component {
     };
   }
 
+  static propTypes = {
+    categories: PropTypes.array,
+    filterMap: PropTypes.object,
+    clearFilteredStories: PropTypes.func,
+    handleFilter: PropTypes.func
+  };
+
   static defaultProps = {
     categories: [],
-    stories: [],
     filterMap: {},
     clearFilteredStories: () => {}
   };
