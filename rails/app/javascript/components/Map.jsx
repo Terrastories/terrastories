@@ -41,24 +41,39 @@ export default class Map extends Component {
     this.map.addControl(new mapboxgl.NavigationControl());
   }
 
-  // In React 16.3.0, update method to getSnapshotBeforeUpdate
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.activePoint !== this.props.activePoint) {
-      // only display one at a time, remove all other popups
-      const popupNodes = document.getElementsByClassName('mapboxgl-popup');
+  componentDidUpdate() {
+    // update popups
+    // only display one at a time, remove all other popups
+    const popupNodes = document.getElementsByClassName('mapboxgl-popup');
+    Array.from(popupNodes).forEach(node => node.remove());
+    if (this.props.activePoint) {
+      const marker = this.props.activePoint;
+      var popup = new mapboxgl.Popup({offset: 15, className: 'ts-markerPopup', closeButton: true, closeOnClick: false})
+        .setLngLat(marker.geometry.coordinates)
+        .setHTML('<h1>' + marker.properties.title + '</h1>' + '<h2>' + marker.properties.region + '</h2>')
+        .addTo(this.map);
+      popup.on('close', () => {
+        this.props.clearFilteredStories();
+      });
+    }
+    // update points/markers
+    if (this.props.points) {
+      const popupNodes = document.getElementsByClassName('mapboxgl-marker');
       Array.from(popupNodes).forEach(node => node.remove());
-      if (nextProps.activePoint) {
-        const marker = nextProps.activePoint;
-        var popup = new mapboxgl.Popup({offset: 15, className: 'ts-markerPopup', closeButton: true, closeOnClick: false})
-          .setLngLat(marker.geometry.coordinates)
-          .setHTML('<h1>' + marker.properties.title + '</h1>' + '<h2>' + marker.properties.region + '</h2>')
-          .addTo(this.map);
-        popup.on('close', () => {
-          this.props.clearFilteredStories();
-        });
+      this.updateMarkers();
+    }
+
+    if (this.props.pointCoords.length > 0) {
+      if (this.map) {
+        this.map.panTo(this.props.pointCoords);
+      }
+      return;
+    } else {
+      if (this.map) {
+        this.resetMapToCenter();
       }
     }
- }
+  }
 
   resetMapToCenter() {
     this.map.flyTo({
@@ -104,20 +119,6 @@ export default class Map extends Component {
         this.map.panTo(marker.geometry.coordinates);
       });
     });
-  }
-
-  componentDidUpdate() {
-    this.updateMarkers();
-    if (this.props.pointCoords.length > 0) {
-      if (this.map) {
-        this.map.panTo(this.props.pointCoords);
-      }
-      return;
-    } else {
-      if (this.map) {
-        this.resetMapToCenter();
-      }
-    }
   }
 
   render() {
