@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Map from './Map';
 import Card from './Card';
 import IntroPopup from './IntroPopup';
-import { FILTER_CATEGORIES } from '../constants/FilterConstants';
+import {FILTER_CATEGORIES} from '../constants/FilterConstants';
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -12,6 +14,14 @@ class App extends Component {
       stories: this.props.stories
     }
   }
+
+  static propTypes = {
+    stories: PropTypes.array,
+    mapbox_access_token: PropTypes.string,
+    mapbox_style: PropTypes.object,
+    logo_path: PropTypes.string,
+    user: PropTypes.object
+  };
 
   componentDidMount() {
     const points = this.getPointsFromStories(this.state.stories);
@@ -143,7 +153,7 @@ class App extends Component {
           filterMap={this.filterMap()}
           handleFilter={this.handleFilter}
           clearFilteredStories={this.resetStoriesAndMap}
-          onCardClick={this.setPointCoords}
+          onStoryClick={this.setPointCoords}
           logo_path={this.props.logo_path}
           user={this.props.user}
         />
