@@ -11,14 +11,15 @@ class App extends Component {
     this.state = {
       pointCoords: [],
       points: {},
-      stories: this.props.stories
+      stories: this.props.stories,
+      activePoint: null
     }
   }
 
   static propTypes = {
     stories: PropTypes.array,
     mapbox_access_token: PropTypes.string,
-    mapbox_style: PropTypes.object,
+    mapbox_style: PropTypes.string,
     logo_path: PropTypes.string,
     user: PropTypes.object
   };
@@ -80,7 +81,8 @@ class App extends Component {
 
     this.setState({
       stories: this.props.stories,
-      points: points
+      points: points,
+      activePoint: null
     });
   }
 
@@ -127,13 +129,28 @@ class App extends Component {
     let filteredStories = [];
     filteredStories = this.props.stories.filter(story => storyTitles.includes(story.title));
     if (filteredStories) {
-      this.setState({ stories: filteredStories, pointCoords: [] });
+      this.setState({ stories: filteredStories });
     }
+  }
+
+  handleStoryClick = (point, pointCoords) => {
+    this.setState({activePoint: point});
+    this.setPointCoords(pointCoords);
   }
 
   resetStoriesAndMap = () => {
     this.clearFilteredStories();
     this.setPointCoords([]);
+  }
+
+  handleMapPointClick = (point, stories) => {
+    // update displayed stories
+    console.log(point);
+    this.showMapPointStories(stories);
+    this.setState({activePoint: point});
+    // update point coords to first point
+    // set active point to the first point
+    // set the active story to the first story
   }
 
   render() {
@@ -144,8 +161,9 @@ class App extends Component {
           pointCoords={this.state.pointCoords}
           mapboxAccessToken={this.props.mapbox_access_token}
           mapboxStyle={this.props.mapbox_style}
-          onMapPointClick={this.showMapPointStories}
           clearFilteredStories={this.clearFilteredStories}
+          onMapPointClick={this.handleMapPointClick}
+          activePoint={this.state.activePoint}
         />
         <Card
           stories={this.state.stories}
@@ -153,7 +171,7 @@ class App extends Component {
           filterMap={this.filterMap()}
           handleFilter={this.handleFilter}
           clearFilteredStories={this.resetStoriesAndMap}
-          onStoryClick={this.setPointCoords}
+          onStoryClick={this.handleStoryClick}
           logo_path={this.props.logo_path}
           user={this.props.user}
         />
