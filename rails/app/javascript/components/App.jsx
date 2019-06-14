@@ -108,7 +108,6 @@ class App extends Component {
       const filteredPoints = this.getPointsFromStories(filteredStories);
       this.setState({ stories: filteredStories, points: filteredPoints, pointCoords: [] });
     }
-    (`Filtered Stories of ${category} ${item}:`, filteredStories);
   }
 
   showMapPointStories = stories => {

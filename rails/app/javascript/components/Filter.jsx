@@ -56,7 +56,6 @@ class Filter extends Component {
       })
     } else {
       const item = option.value;
-      (`Filter by ${this.state.categorySelectValue} : ${item}`);
       this.props.handleFilter(this.state.categorySelectValue, item);
       this.setState({
         itemSelectValue: item
