@@ -22,43 +22,27 @@ class StoryList extends Component {
     clearFilteredStories: PropTypes.func,
     onStoryClick: PropTypes.func,
     filterMap: PropTypes.object,
-    categories: PropTypes.array
+    categories: PropTypes.array,
+    activeStory: PropTypes.object
   };
 
   // In React 16.3.0, update method to getSnapshotBeforeUpdate
-  componentWillReceiveProps() {
+  componentWillReceiveProps(nextProps) {
     this.cache.clearAll();
+    console.log(nextProps);
     if(this._list){
       this._list.recomputeRowHeights();
+      this._list.forceUpdateGrid();
     }
   }
 
-  handleClickStory = (story, index) => {
-    this.setState({
-      activeStoryIndex: index
-    }, this._list.forceUpdateGrid());
-    this.props.onStoryClick(story.point, story.point.geometry.coordinates);
-  }
-
   handleFilter = (category, item) => {
-    this.resetActiveStory();
     this.props.handleFilter(category, item);
-  }
-
-  clearFilteredStories = () => {
-    this.resetActiveStory();
-    this.props.clearFilteredStories();
-  }
-
-  resetActiveStory = () => {
-    this.setState({
-      activeStoryIndex: null
-    }, this._list.forceUpdateGrid());
   }
 
   renderStory = ({ key, index, style, parent }) => {
     const story = this.props.stories[index];
-    const storyClass = this.state.activeStoryIndex === index ? `story${index} isActive` : `story${index}`;
+    const storyClass = this.props.activeStory && this.props.activeStory.id === story.id ? `story${index} isActive` : `story${index}`;
     const bustCache = () => {
       this.cache.clear(index, 0);
     }
@@ -72,7 +56,7 @@ class StoryList extends Component {
         rowIndex={index}>
         <li
           className={storyClass}
-          onClick={_ => this.handleClickStory(story, index)}
+          onClick={_ => this.props.onStoryClick(story)}
           key={key}
           style={style}
         >
@@ -104,7 +88,7 @@ class StoryList extends Component {
             handleFilter={this.handleFilter}
             categories={this.props.categories}
             filterMap={this.props.filterMap}
-            clearFilteredStories={this.clearFilteredStories}
+            clearFilteredStories={this.props.clearFilteredStories}
           />
         </div>
         <div className="stories">
