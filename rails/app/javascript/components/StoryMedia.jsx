@@ -1,4 +1,5 @@
 import React, { PureComponent } from "react";
+import PropTypes from 'prop-types';
 
 class StoryMedia extends PureComponent {
   constructor(props) {
@@ -7,6 +8,11 @@ class StoryMedia extends PureComponent {
       explicitVideoHeight: null
     }
   }
+
+  static propTypes = {
+    file: PropTypes.object,
+    doBustCache: PropTypes.func
+  };
 
   renderAudio() {
     const { file } = this.props;

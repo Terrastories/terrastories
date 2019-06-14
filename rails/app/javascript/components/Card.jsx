@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 import StoryList from "./StoryList";
 
 class Card extends Component {
@@ -9,6 +10,17 @@ class Card extends Component {
       isToggleOn: true
     };
   }
+
+  static propTypes = {
+    filterMap: PropTypes.object,
+    categories: PropTypes.array,
+    clearFilteredStories: PropTypes.func,
+    handleFilter: PropTypes.func,
+    user: PropTypes.object,
+    stories: PropTypes.array,
+    onStoryClick: PropTypes.func,
+    logo_path: PropTypes.string
+  };
 
   static defaultProps = {
     filterMap: {},
@@ -61,7 +73,7 @@ class Card extends Component {
 
             <StoryList
               stories={this.props.stories}
-              onStoryClick={this.props.onCardClick}
+              onStoryClick={this.props.onStoryClick}
               handleFilter={this.props.handleFilter}
               clearFilteredStories={this.props.clearFilteredStories}
               filterMap={this.props.filterMap}

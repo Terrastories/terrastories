@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 // @NOTE: MAKE SURE ARRAY IS [LONGITUDE, LATITUDE]
 const defaultCenter = [-108, 38.5];
@@ -13,6 +14,14 @@ export default class Map extends Component {
     super(props);
     mapboxgl.accessToken = this.props.mapboxAccessToken;
   }
+
+  static propTypes = {
+    points: PropTypes.array,
+    pointCoords: PropTypes.object,
+    onMapPointClick: PropTypes.func,
+    mapboxStyle: PropTypes.object,
+    mapboxAccessToken: PropTypes.string
+  };
 
   componentDidMount() {
     this.map = new mapboxgl.Map({

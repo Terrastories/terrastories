@@ -20,7 +20,9 @@ class StoryList extends Component {
     stories: PropTypes.array,
     handleFilter: PropTypes.func,
     clearFilteredStories: PropTypes.func,
-    onStoryClick: PropTypes.func
+    onStoryClick: PropTypes.func,
+    filterMap: PropTypes.object,
+    categories: PropTypes.array
   };
 
   componentWillReceiveProps() {
