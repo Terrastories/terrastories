@@ -5,7 +5,6 @@ class Story < ApplicationRecord
   has_many_attached :media
   has_many :places_stories
   has_many :places, through: :places_stories
-  acts_as_taggable
 
   def self.import_csv(filename)
     CSV.parse(filename, headers: true) do |row|
