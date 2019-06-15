@@ -20,7 +20,8 @@ corinne = Speaker.find_or_create_by(name: "Corinne Henk")
 miranda_story = Story.find_or_create_by(title: "Miranda's testimonial",
                     desc: "Ruby for Good 2018 team lead Miranda Wang about why she values working on Terrastories.",
                     places: [rfg2018],
-                    permission_level: 0)
+                    permission_level: 0,
+                    place_id: rfg2018.id)
 
 
 rudo_story = Story.find_or_create_by(title: "Rudo's testimonial",
