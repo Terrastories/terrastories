@@ -9,9 +9,12 @@ class Place < ApplicationRecord
   def self.import_csv(filename)
     CSV.parse(filename, headers: true) do |row|
       place = Place.create(name: row[0], type_of_place: row[1], region: row[3], lat: row[5].to_f, long: row[4].to_f)
-      # keep existing points creation in case of a rollback
-      loc = Place.find_by(name: row[0], type_of_place: row[1])
-      loc.points.create(title:row[0], lat: row[5].to_f, lng: row[4].to_f, region: row[3])
+      if row[6] && File.exist?(Rails.root.join('media', row[6]))
+        file = File.open(Rails.root.join('media',row[6]))
+        place.photo.attach(io: file, filename: row[6])
+        place.save
+      end
+      place.save
     end
   end
 

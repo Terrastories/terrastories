@@ -31,7 +31,8 @@ class Speaker < ApplicationRecord
     CSV.parse(filename, headers: true) do |row|
       speaker = Speaker.find_or_create_by(
         name: row[0], 
-        birth_year: row[1].nil? ? nil : Date.strptime(row[1], "%Y"), 
+        # Assumes birth date field is always just a year
+        birthdate: row[1].nil? ? nil : Date.strptime(row[1], "%Y"), 
         birthplace: get_birthplace(row[2])
       )
       if row[3] && File.exist?(Rails.root.join('media', row[3]))
