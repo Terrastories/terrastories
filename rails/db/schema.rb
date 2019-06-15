@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_15_182008) do
+ActiveRecord::Schema.define(version: 2019_06_15_193548) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -43,21 +43,10 @@ ActiveRecord::Schema.define(version: 2019_06_15_182008) do
     t.string "region"
   end
 
-  create_table "places_stories", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "place_id", null: false
+  create_table "places_stories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "story_id", null: false
-    t.index ["place_id", "story_id"], name: "index_places_stories_on_place_id_and_story_id"
-  end
-
-  create_table "points", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "title"
-    t.decimal "lng", precision: 10, scale: 6
-    t.decimal "lat", precision: 10, scale: 6
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "region"
-    t.integer "place_id"
-    t.index ["place_id"], name: "index_points_on_place_id"
+    t.bigint "place_id", null: false
+    t.index ["story_id", "place_id"], name: "index_places_stories_on_story_id_and_place_id"
   end
 
   create_table "speaker_stories", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -82,12 +71,10 @@ ActiveRecord::Schema.define(version: 2019_06_15_182008) do
     t.text "desc"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "point_id"
     t.integer "permission_level"
     t.datetime "date_interviewed"
     t.string "interviewer"
     t.string "language"
-    t.index ["point_id"], name: "index_stories_on_point_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -108,5 +95,4 @@ ActiveRecord::Schema.define(version: 2019_06_15_182008) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "stories", "points"
 end
