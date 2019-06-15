@@ -9,12 +9,11 @@ class SpeakerDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    media: Field::ActiveStorage,
+    photo: Field::ActiveStorage,
     name: Field::String,
     region: Field::String,
-    community: Field::String,
     stories: Field::HasMany,
-    birth_year: Field::DateTime.with_options(format: "%Y"),
+    birthdate: Field::DateTime.with_options(format: "%d/%m/%Y"),
     birthplace: Field::BelongsTo.with_options(class_name: "Place"),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -27,22 +26,22 @@ class SpeakerDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :id,
-    :media,
+    :photo,
     :name,
     :region,
-    :community
+    :birthdate,
+    :birthplace
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :id,
-    :media,
+    :photo,
     :name,
     :region,
-    :community,
     :stories,
-    :birth_year,
+    :birthdate,
     :birthplace,
     :created_at,
     :updated_at,
@@ -52,12 +51,11 @@ class SpeakerDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :media,
+    :photo,
     :name,
     :region,
-    :community,
     :stories,
-    :birth_year,
+    :birthdate,
     :birthplace,
   ].freeze
 
@@ -69,6 +67,6 @@ class SpeakerDashboard < Administrate::BaseDashboard
   end
 
   def permitted_attributes
-    super + [media: [], permission_level: [:anonymous, :user_only, :editor_only]]
+    super + [photo: [], permission_level: [:anonymous, :user_only, :editor_only]]
   end
 end
