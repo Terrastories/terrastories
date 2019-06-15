@@ -13,6 +13,7 @@ class StoryDashboard < Administrate::BaseDashboard
     desc: Field::Text,
     speakers: Field::HasMany,
     places: Field::HasMany,
+    place: Field::BelongsTo,
     media: Field::ActiveStorage.with_options({destroy_path: :admin_stories_path}),
     permission_level: EnumField,
     created_at: Field::DateTime,
@@ -29,6 +30,7 @@ class StoryDashboard < Administrate::BaseDashboard
     :title,
     :desc,
     :speakers,
+    :place,
     :places,
     :permission_level
   ].freeze
@@ -40,6 +42,7 @@ class StoryDashboard < Administrate::BaseDashboard
     :title,
     :desc,
     :speakers,
+    :place,
     :places,
     :media,
     :permission_level,
@@ -54,6 +57,7 @@ class StoryDashboard < Administrate::BaseDashboard
     :title,
     :desc,
     :speakers,
+    :place,
     :places,
     :media,
     :permission_level
