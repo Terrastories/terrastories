@@ -60,14 +60,13 @@ export default class Map extends Component {
 
   updateMarkers() {
     this.props.points.features.forEach(marker => {
-      (marker.properties);
       // create a HTML element for each feature
       var el = document.createElement('div');
       el.className = 'marker';
       el.id = 'storypoint' + marker.id;
       var popup = new mapboxgl
         .Popup({ offset: 15 })
-        .setHTML('<h1>' + marker.properties.title + '</h1>' + '<h2>' + marker.properties.region + '</h2>')
+        .setHTML('<h1>' + marker.properties.name + '</h1>' + '<h2>' + marker.properties.region + '</h2>')
       // make a marker for each feature and add to the map
       new mapboxgl.Marker(el)
         .setLngLat(marker.geometry.coordinates)

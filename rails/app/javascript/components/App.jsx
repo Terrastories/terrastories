@@ -15,6 +15,7 @@ class App extends Component {
 
   componentDidMount() {
     const points = this.getPointsFromStories(this.state.stories);
+    console.log(points);
     this.setState({ points: points });
   }
 
@@ -112,9 +113,9 @@ class App extends Component {
   }
 
   showMapPointStories = stories => {
-    let storyPointIds = stories.map(story => story.point_id);
+    let storyTitles = stories.map(story => story.title);
     let filteredStories = [];
-    filteredStories = this.props.stories.filter(story => storyPointIds.includes(story.point.id));
+    filteredStories = this.props.stories.filter(story => storyTitles.includes(story.title));
     if (filteredStories) {
       this.setState({ stories: filteredStories, pointCoords: [] });
     }
