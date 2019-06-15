@@ -1,8 +1,6 @@
 class Place < ApplicationRecord
   require 'csv'
-  has_many :points
-  has_many :places_stories
-  has_many :stories, through: :places_stories
+  has_and_belongs_to_many :stories
   has_one_attached :photo
   validate :photo_format
 
@@ -31,6 +29,7 @@ class Place < ApplicationRecord
   private
 
   def geojson
+    # todo: add extra data here to pass to map about points
     RGeo::GeoJSON::Feature.new(
       RGeo::Cartesian.factory.point(long, lat),
       id,

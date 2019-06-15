@@ -1,10 +1,8 @@
 class Story < ApplicationRecord
-  belongs_to :point
   has_many :speaker_stories
   has_many :speakers, through: :speaker_stories
   has_many_attached :media
-  has_many :places_stories
-  has_many :places, through: :places_stories
+  has_and_belongs_to_many :places
 
   def self.import_csv(filename)
     CSV.parse(filename, headers: true) do |row|

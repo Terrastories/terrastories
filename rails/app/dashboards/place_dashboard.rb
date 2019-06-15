@@ -8,9 +8,12 @@ class PlaceDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    points: Field::HasMany,
     id: Field::Number,
     name: Field::String,
+    stories: Field::HasMany,
+    long: Field::String.with_options(searchable: false),
+    lat: Field::String.with_options(searchable: false),
+    region: Field::String,
     photo: Field::ActiveStorage.with_options({destroy_path: :admin_places_path}),
     type_of_place: Field::String,
     created_at: Field::DateTime,
@@ -26,7 +29,10 @@ class PlaceDashboard < Administrate::BaseDashboard
     :id,
     :name,
     :type_of_place,
-    :points,
+    :region,
+    :long,
+    :lat,
+    :stories,
     :photo,
   ].freeze
 
@@ -36,7 +42,10 @@ class PlaceDashboard < Administrate::BaseDashboard
     :id,
     :name,
     :type_of_place,
-    :points,
+    :region,
+    :long,
+    :lat,
+    :stories,
     :photo,
     :created_at,
     :updated_at,
@@ -48,7 +57,10 @@ class PlaceDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :name,
     :type_of_place,
-    :points,
+    :region,
+    :long,
+    :lat,
+    :stories,
     :photo,
   ].freeze
 
