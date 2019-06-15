@@ -13,7 +13,8 @@
 # updated_at  ... datetime, not null
 
 class Speaker < ApplicationRecord
-  has_many :speaker_stories, dependent: :destroy
+  has_many :speaker_stories
+  has_many :stories, through: :speaker_stories, dependent: :destroy
   belongs_to :birthplace, class_name: "Place",  optional: true
   has_one_attached :media
 
@@ -36,7 +37,6 @@ class Speaker < ApplicationRecord
       if row[3] && File.exist?(Rails.root.join('media', row[3]))
         file = File.open(Rails.root.join('media',row[3]))
         speaker.media.attach(io: file, filename: row[3])
-      
         speaker.save
       end
     end
