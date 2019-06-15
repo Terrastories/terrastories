@@ -6,8 +6,6 @@ class Place < ApplicationRecord
   has_one_attached :photo
   validate :photo_format
 
-  acts_as_taggable
-
   attr_reader :point_geojson
 
   def self.import_csv(filename)

@@ -1,7 +1,6 @@
 class Point < ApplicationRecord
   has_many :stories
   belongs_to :place
-  acts_as_taggable
   attr_reader :point_geojson
 
   def point_geojson
