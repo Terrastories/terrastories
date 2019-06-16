@@ -20,8 +20,8 @@ class Speaker < ApplicationRecord
 
   # photo
   def picture_url
-    if media.attached?
-      Rails.application.routes.url_helpers.rails_blob_path(media, only_path: true)
+    if photo.attached?
+      Rails.application.routes.url_helpers.rails_blob_path(photo, only_path: true)
     else
       ActionController::Base.helpers.image_path('speaker.png', only_path: true)
     end

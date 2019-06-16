@@ -50,7 +50,7 @@ export default class Map extends Component {
       const marker = this.props.activePoint;
       var popup = new mapboxgl.Popup({offset: 15, className: 'ts-markerPopup', closeButton: true, closeOnClick: false})
         .setLngLat(marker.geometry.coordinates)
-        .setHTML('<h1>' + marker.properties.title + '</h1>' + '<h2>' + marker.properties.region + '</h2>')
+        .setHTML(this.buildPopupHTML(marker))
         .addTo(this.map);
       popup.on('close', () => {
         this.props.clearFilteredStories();
@@ -73,6 +73,60 @@ export default class Map extends Component {
         this.resetMapToCenter();
       }
     }
+  }
+
+  buildPopupHTML (marker) {
+    if (marker.properties.photo_url) {
+      if (marker.properties.region) {
+        if (marker.properties.type_of_place) {
+          return `<h1>${marker.properties.name}</h1>
+          <div class="ts-markerPopup-content">
+            <img src=${marker.properties.photo_url} />
+            <div>
+              <div>Region: ${marker.properties.region}</div>
+              <div>Type of Place: ${marker.properties.type_of_place}</div>
+            </div>
+          </div>`;
+        } else {
+          return `<h1>${marker.properties.name}</h1>
+          <div class="ts-markerPopup-content">
+            <img src=${marker.properties.photo_url} />
+            <div>
+              <div>Region: ${marker.properties.region}</div>
+            </div>
+          </div>`;
+        }
+      } else {
+        return `<h1>${marker.properties.name}</h1>
+          <div class="ts-markerPopup-content">
+            <img src=${marker.properties.photo_url} />
+          </div>`;
+      }
+    } else {
+      if (marker.properties.region) {
+        if (marker.properties.type_of_place) {
+          return `<h1>${marker.properties.name}</h1>
+          <div class="ts-markerPopup-content">
+            <div>
+              <div>Region: ${marker.properties.region}</div>
+              <div>Type of Place: ${marker.properties.type_of_place}</div>
+            </div>
+          </div>`;
+        } else {
+          return `<h1>${marker.properties.name}</h1>
+          <div class="ts-markerPopup-content">
+            <div>
+              <div>Region: ${marker.properties.region}</div>
+            </div>
+          </div>`;
+        }
+      } else {
+        return `<h1>${marker.properties.name}</h1>
+          <div class="ts-markerPopup-content">
+          </div>`;
+      }
+    }
+    
   }
 
   resetMapToCenter() {

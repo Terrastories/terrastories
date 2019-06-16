@@ -30,6 +30,12 @@ class Place < ApplicationRecord
     errors.add(:photo, 'needs to be an image')
   end
 
+  def photo_url
+    if photo.attached?
+      Rails.application.routes.url_helpers.rails_blob_path(photo, only_path: true)
+    end
+  end
+
   def point_geojson
     RGeo::GeoJSON.encode geojson
   end
@@ -43,6 +49,8 @@ class Place < ApplicationRecord
       id,
       name: name,
       region: region,
+      type_of_place: type_of_place,
+      photo_url: photo_url,
       stories: stories
     )
   end
