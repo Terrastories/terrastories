@@ -10,6 +10,7 @@ class PlaceDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     name: Field::String,
+    description: Field::String,
     stories: Field::HasMany,
     long: Field::String.with_options(searchable: false),
     lat: Field::String.with_options(searchable: false),
@@ -28,6 +29,7 @@ class PlaceDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :id,
     :name,
+    :description,
     :type_of_place,
     :region,
     :long,
@@ -41,6 +43,7 @@ class PlaceDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :id,
     :name,
+    :description,
     :type_of_place,
     :region,
     :long,
@@ -56,6 +59,7 @@ class PlaceDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :name,
+    :description,
     :type_of_place,
     :region,
     :long,
