@@ -3,6 +3,7 @@ class Place < ApplicationRecord
   has_and_belongs_to_many :stories
   has_one_attached :photo
   validate :photo_format
+  has_many :interview_stories, class_name: "Story", foreign_key: "interview_location_id"
 
   attr_reader :point_geojson
 
