@@ -27,22 +27,26 @@ miranda_story = Story.find_or_create_by(title: "Miranda's testimonial",
 rudo_story = Story.find_or_create_by(title: "Rudo's testimonial",
                     desc: "ACT program manager Rudo Kemper discusses why the organization decided to start building Terrastories to support local communities retain their oral history traditions.",
                     places: [rbtb2019],
-                    permission_level: 0)
+                    permission_level: 0,
+                    place_id: rbtb2019.id)
 
 kalimar_story = Story.find_or_create_by(title: "Kalimar's testimonial",
                     desc: "Mapbox sales engineer Kalimar Maia on why it is important for a company like Mapbox to support open source projects like Terrastories.",
                     places: [rfg2018],
-                    permission_level: 1)
+                    permission_level: 1,
+                    place_id: rfg2018.id)
 
 corinne_story = Story.find_or_create_by(title: "Corinne's testimonial",
                     desc: "Corinne Henk, Ruby by the Bay 2019 team lead, describes some of the challenges her team faced and what they managed to accomplish.",
                     places: [rbtb2019],
-                    permission_level: 0)
+                    permission_level: 0,
+                    place_id: rbtb2019.id)
 
 shared_story = Story.find_or_create_by(title: "Terrastories Team testimonial",
                     desc: "The team tells all",
                     places: [rfg2018],
-                    permission_level: 1)
+                    permission_level: 1,
+                    place_id: rfg2018.id)
 
 # Associate speakers with their stories
 SpeakerStory.find_or_create_by(speaker_id: miranda.id, story_id: miranda_story.id)
