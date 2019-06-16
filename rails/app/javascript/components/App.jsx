@@ -27,12 +27,11 @@ class App extends Component {
 
   componentDidMount() {
     const points = this.getPointsFromStories(this.state.stories);
-    console.log(points);
     this.setState({ points: points });
   }
 
   getPointsFromStories = stories => {
-    const points = stories.map(story => story.point);
+    const points = stories.map(story => story.points).flat();
     const pointObj = {};
     pointObj['features'] = points;
     return pointObj;
@@ -47,16 +46,16 @@ class App extends Component {
         case FILTER_CATEGORIES[0]: {
           // first category: Region
           const regionSet = new Set(this.props.stories.map(story => {
-            return story.point.properties.region
-          }));
+            return story.points.map(point => point.properties.region);
+          }).flat());
           filterMap[category] = Array.from(regionSet).sort();
           break;
         }
         case FILTER_CATEGORIES[1]: {
           // second category: Type of Place
           const typeOfPlaceSet = new Set(this.props.stories.map(story => {
-            return story.place.type_of_place;
-          }));
+            return story.points.map(point => point.properties.type_of_place);
+          }).flat());
           filterMap[category] = Array.from(typeOfPlaceSet).sort();
           break;
         }
@@ -70,6 +69,7 @@ class App extends Component {
         }
       }
     });
+    console.log(filterMap);
     return filterMap;
   }
 
@@ -79,16 +79,16 @@ class App extends Component {
       case FILTER_CATEGORIES[0]: {
         // first category: region
         filteredStories = this.props.stories.filter(story => {
-          if (story.point.properties.region && story.point.properties.region.toLowerCase() === item.toLowerCase()) {
+          if (story.points.some(point => {return point.properties.region && point.properties.region.toLowerCase() === item.toLowerCase();})) {
             return story;
           }
         });
         break;
       }
       case FILTER_CATEGORIES[1]: {
-        // second category: type of place
+        // second category: type of places
         filteredStories = this.props.stories.filter(story => {
-          if (story.place['type_of_place'].toLowerCase() === item.toLowerCase()) {
+          if (story.points.some(point => {return point.properties['type_of_place'].toLowerCase() === item.toLowerCase();})) {
             return story;
           }
         });
@@ -97,7 +97,7 @@ class App extends Component {
       case FILTER_CATEGORIES[2]: {
         // third category: speaker name
         filteredStories = this.props.stories.filter(story => {
-          if (story.speakers.map(speaker => speaker.name.toLowerCase()).includes(item.toLowerCase())) {
+          if (story.speakers.some(speaker => {return speaker.name.toLowerCase() === item.toLowerCase()})) {
             return story;
           }
         });
@@ -120,8 +120,9 @@ class App extends Component {
   }
 
   handleStoryClick = story => {
-    const point = story.point;
-    const pointCoords = story.point.geometry.coordinates;
+    // set active to first point in story
+    const point = story.points[0];
+    const pointCoords = point.geometry.coordinates;
     this.setState({activePoint: point, activeStory: story, pointCoords: pointCoords});
   }
 
@@ -137,6 +138,7 @@ class App extends Component {
   }
 
   handleMapPointClick = (point, stories) => {
+    console.log(point);
     this.showMapPointStories(stories);
     this.setState({activePoint: point, pointCoords: point.geometry.coordinates});
   }

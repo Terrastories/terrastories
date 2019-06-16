@@ -20,12 +20,15 @@ $el-shadow: 0 1px 4px #bbb;
   }
 
   &.offCanvas {
-    pointer-events: none;
+    @media screen and (min-width: 600px) {
+      pointer-events: none;
+    }
 
     .card {
       left: -100%;
     }
     .tab {
+      pointer-events: all;
       &:after {
         content: '▶';
       }
@@ -48,7 +51,7 @@ $el-shadow: 0 1px 4px #bbb;
     background: #efefef;
     padding: 0.5rem;
     box-shadow: 3px 2px 3px transparentize(#666666, 0.9);
-    transition: all 0.20s ease-in-out;
+    transition: left 0.20s ease-in-out;
   }
 
   .bar {

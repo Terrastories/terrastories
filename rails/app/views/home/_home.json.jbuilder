@@ -1,7 +1,7 @@
 json.stories stories do |story|
   json.extract! story, :title, :desc, :id
-  json.point story.places[0].point_geojson
-  json.place story.places[0]
+  json.points story.places.map(&:point_geojson)
+  json.places story.places
   json.media story.media do |media|
     json.id media.id
     json.url url_for(media)
