@@ -88,7 +88,7 @@ class App extends Component {
       case FILTER_CATEGORIES[1]: {
         // second category: type of places
         filteredStories = this.props.stories.filter(story => {
-          if (story.points.some(point => {return point.properties['type_of_place'].toLowerCase() === item.toLowerCase();})) {
+          if (story.points.some(point => {return point.properties['type_of_place'] && point.properties['type_of_place'].toLowerCase() === item.toLowerCase();})) {
             return story;
           }
         });
@@ -97,7 +97,7 @@ class App extends Component {
       case FILTER_CATEGORIES[2]: {
         // third category: speaker name
         filteredStories = this.props.stories.filter(story => {
-          if (story.speakers.some(speaker => {return speaker.name.toLowerCase() === item.toLowerCase()})) {
+          if (story.speakers.some(speaker => {return speaker.name && speaker.name.toLowerCase() === item.toLowerCase()})) {
             return story;
           }
         });
