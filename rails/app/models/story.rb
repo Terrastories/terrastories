@@ -4,6 +4,7 @@ class Story < ApplicationRecord
   has_many_attached :media
   has_and_belongs_to_many :places
   belongs_to :interview_location, class_name: "Place", foreign_key: "interview_location_id"
+  belongs_to :interviewer, class_name: "Speaker", foreign_key: "interviewer_id"
 
   def self.import_csv(filename)
     CSV.parse(filename, headers: true) do |row|

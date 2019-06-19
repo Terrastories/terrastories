@@ -63,7 +63,7 @@ class SpeakerDashboard < Administrate::BaseDashboard
   # across all pages of the admin dashboard.
   #
   def display_resource(speaker)
-    "Speaker #{speaker.name}"
+    speaker.name
   end
 
   def permitted_attributes
