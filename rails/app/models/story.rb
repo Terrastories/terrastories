@@ -20,6 +20,10 @@ class Story < ApplicationRecord
       place_names.split(',').each do |place|
         story.places << Place.find_or_create_by(name: place.strip)
       end
+      # Add interviewer
+      story.interviewer = Speaker.find_or_create_by(name: row[6])
+      # Add Language
+      story.language = row[7]
       # Add interview location
       story.interview_location = Place.find_or_create_by(name: row[4])
       if row[8] && File.exist?(Rails.root.join('media', row[8]))
