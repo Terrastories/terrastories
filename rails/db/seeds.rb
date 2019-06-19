@@ -20,31 +20,40 @@ corinne = Speaker.find_or_create_by(name: "Corinne Henk")
 miranda_story = Story.find_or_create_by(title: "Miranda's testimonial",
                     desc: "Ruby for Good 2018 team lead Miranda Wang about why she values working on Terrastories.",
                     places: [rfg2018],
+                    language: 'English',
                     permission_level: 0,
-                    interview_location_id: rfg2018.id)
+                    interview_location_id: rfg2018.id,
+                    interviewer_id: corinne.id)
 
 
 rudo_story = Story.find_or_create_by(title: "Rudo's testimonial",
                     desc: "ACT program manager Rudo Kemper discusses why the organization decided to start building Terrastories to support local communities retain their oral history traditions.",
                     places: [rbtb2019],
+                    language: 'English',
                     permission_level: 0,
+                    interviewer_id: kalimar.id,
                     interview_location_id: rbtb2019.id)
 
 kalimar_story = Story.find_or_create_by(title: "Kalimar's testimonial",
                     desc: "Mapbox sales engineer Kalimar Maia on why it is important for a company like Mapbox to support open source projects like Terrastories.",
                     places: [rfg2018],
+                    language: 'English',
                     permission_level: 1,
+                    interviewer_id: miranda.id,
                     interview_location_id: rfg2018.id)
 
 corinne_story = Story.find_or_create_by(title: "Corinne's testimonial",
                     desc: "Corinne Henk, Ruby by the Bay 2019 team lead, describes some of the challenges her team faced and what they managed to accomplish.",
                     places: [rbtb2019],
+                    language: 'English',
                     permission_level: 0,
+                    interviewer_id: rudo.id,
                     interview_location_id: rbtb2019.id)
 
 shared_story = Story.find_or_create_by(title: "Terrastories Team testimonial",
                     desc: "The team tells all",
                     places: [rfg2018],
+                    language: 'English',
                     permission_level: 1,
                     interview_location_id: rfg2018.id)
 
