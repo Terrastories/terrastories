@@ -11,7 +11,6 @@ class SpeakerDashboard < Administrate::BaseDashboard
     id: Field::Number,
     photo: Field::ActiveStorage,
     name: Field::String,
-    region: Field::String,
     stories: Field::HasMany,
     birthdate: Field::DateTime.with_options(format: "%d/%m/%Y"),
     birthplace: Field::BelongsTo.with_options(class_name: "Place"),
@@ -28,7 +27,6 @@ class SpeakerDashboard < Administrate::BaseDashboard
     :id,
     :photo,
     :name,
-    :region,
     :birthdate,
     :birthplace
   ].freeze
@@ -39,7 +37,6 @@ class SpeakerDashboard < Administrate::BaseDashboard
     :id,
     :photo,
     :name,
-    :region,
     :stories,
     :birthdate,
     :birthplace,
@@ -53,7 +50,6 @@ class SpeakerDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :photo,
     :name,
-    :region,
     :stories,
     :birthdate,
     :birthplace,
