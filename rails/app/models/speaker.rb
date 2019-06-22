@@ -14,7 +14,7 @@
 
 class Speaker < ApplicationRecord
   has_many :speaker_stories
-  has_many :stories, through: :speaker_stories, dependent: :destroy
+  has_many :stories, through: :speaker_stories
   belongs_to :birthplace, class_name: "Place",  optional: true
   has_one_attached :photo
 
@@ -29,17 +29,15 @@ class Speaker < ApplicationRecord
 
   def self.import_csv(filename)
     CSV.parse(filename, headers: true) do |row|
-      speaker = Speaker.find_or_create_by(
-        name: row[0], 
-        # Assumes birth date field is always just a year
-        birthdate: row[1].nil? ? nil : Date.strptime(row[1], "%Y"), 
-        birthplace: get_birthplace(row[2])
-      )
+      speaker = Speaker.find_or_create_by(name: row[0])
+      speaker.birthplace = get_birthplace(row[2])
+      # Assumes birth date field is always just a year
+      speaker.birthdate = row[1].nil? || row[1].downcase == 'unknown' ? nil : Date.strptime(row[1], "%Y")
       if row[3] && File.exist?(Rails.root.join('media', row[3]))
         file = File.open(Rails.root.join('media',row[3]))
         speaker.photo.attach(io: file, filename: row[3])
-        speaker.save
       end
+      speaker.save
     end
   end
 
