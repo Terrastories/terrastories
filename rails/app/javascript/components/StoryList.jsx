@@ -11,9 +11,6 @@ class StoryList extends Component {
       fixedWidth: true,
       defaultHeight: 100
     });
-    this.state = {
-      activeStoryIndex: null
-    };
   }
 
   static propTypes = {
@@ -28,17 +25,12 @@ class StoryList extends Component {
 
   // In React 16.3.0, update method to getSnapshotBeforeUpdate
   componentWillReceiveProps(nextProps) {
-    this.cache.clearAll();
     if(this._list){
-      this._list.recomputeRowHeights();
       this._list.forceUpdateGrid();
     }
   }
 
   handleClickStory = (story, index) => {
-    this.setState({
-      activeStoryIndex: index
-    }, this._list.forceUpdateGrid());
     this.props.onStoryClick(story);
   }
 
@@ -46,13 +38,21 @@ class StoryList extends Component {
     this.props.handleFilter(category, item);
   }
 
+  getStorySpeakerNames = story => {
+    return story.speakers.map(function(speaker) { return speaker.name }).join(',');
+  }
+
   renderStory = ({ key, index, style, parent }) => {
     const story = this.props.stories[index];
-    const storyClass = this.props.activeStory && this.props.activeStory.id === story.id ? `story${index} isActive` : `story${index}`;
+    let storyClass = '';
+    if (this.props.activeStory && this.props.activeStory.id === story.id) {
+      storyClass = `story${index} isActive`
+    } else {
+      storyClass = `story${index}`;
+    }
     const bustCache = () => {
       this.cache.clear(index, 0);
     }
-
     return (
       <CellMeasurer
         key={key}
@@ -63,17 +63,22 @@ class StoryList extends Component {
         <li
           className={storyClass}
           onClick={_ => this.props.onStoryClick(story)}
-          key={key}
           style={style}
         >
           <div className="speakers">
-            {story.speakers.map(speaker => (
-              <div key={speaker.id}>
-                <img src={speaker.picture_url} alt={speaker.name} title={speaker.name} />
-                <p style={{ fontWeight: 'bold' }}>{speaker.name}</p>
-              </div>
-            )
-            )}
+            {(story.speakers.length === 1) &&
+                <div>
+                  <img src={story.speakers[0].picture_url} alt={story.speakers[0].name} title={story.speakers[0].name} />
+                  <p style={{ fontWeight: 'bold' }}>{story.speakers[0].name}</p>
+                </div>}
+            {(story.speakers.length > 1) &&
+              story.speakers.map(speaker => (
+                  <img src={speaker.picture_url} alt={speaker.name} title={speaker.name} />
+              ))
+            }
+            {(story.speakers.length > 1) &&
+              <p style={{ fontWeight: 'bold' }}> {this.getStorySpeakerNames(story)} </p>
+            }
           </div>
           <div className="container">
             <h6 className="title">{story.title}</h6>
@@ -108,9 +113,10 @@ class StoryList extends Component {
                   deferredMeasurementCache={this.cache}
                   rowHeight={this.cache.rowHeight}
                   rowRenderer={this.renderStory}
-                  overscanRowCount={2}
-                  scrollToIndex={this.state.activeStoryIndex || 0}
+                  overscanRowCount={4}
                   ref={list => (this._list = list)}
+                  scrollToIndex={this.props.activeStory ? this.props.stories.indexOf(this.props.activeStory) : 0}
+                  scrollToAlignment={"start"}
                 />
               );
             }}
