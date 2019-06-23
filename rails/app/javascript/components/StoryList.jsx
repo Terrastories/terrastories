@@ -35,6 +35,13 @@ class StoryList extends Component {
     }
   }
 
+  handleClickStory = (story, index) => {
+    this.setState({
+      activeStoryIndex: index
+    }, this._list.forceUpdateGrid());
+    this.props.onStoryClick(story);
+  }
+
   handleFilter = (category, item) => {
     this.props.handleFilter(category, item);
   }
