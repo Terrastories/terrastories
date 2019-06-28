@@ -9,8 +9,9 @@ class StoryList extends Component {
     super(props)
     this.cache = new CellMeasurerCache({
       fixedWidth: true,
-      defaultHeight: 100
+      defaultHeight: 200
     });
+    this._isMounted = false;
   }
 
   static propTypes = {
@@ -28,6 +29,19 @@ class StoryList extends Component {
     if(this._list){
       this._list.forceUpdateGrid();
     }
+    if (nextProps.stories !== this.props.stories) {
+      this._list.recomputeRowHeights();
+      this._list.recomputeGridSize();
+      this._list.forceUpdateGrid();
+    }
+  }
+
+  componentDidMount() {
+    this._isMounted = true;
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   handleClickStory = (story, index) => {
@@ -84,7 +98,7 @@ class StoryList extends Component {
             <h6 className="title">{story.title}</h6>
             <p>{story.desc}</p>
             {story.media &&
-              story.media.map(file => <StoryMedia file={file} doBustCache={bustCache} />)}
+              story.media.map(file => <StoryMedia file={file} doBustCache={bustCache} key={story.media.id} />)}
           </div>
         </li>
       </CellMeasurer>
@@ -115,8 +129,6 @@ class StoryList extends Component {
                   rowRenderer={this.renderStory}
                   overscanRowCount={4}
                   ref={list => (this._list = list)}
-                  scrollToIndex={this.props.activeStory ? this.props.stories.indexOf(this.props.activeStory) : 0}
-                  scrollToAlignment={"start"}
                 />
               );
             }}
