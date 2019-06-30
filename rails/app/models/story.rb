@@ -30,7 +30,6 @@ class Story < ApplicationRecord
       story.language = row[7].blank? ? nil : row[7]
       if row[8] && File.exist?(Rails.root.join('media', row[8]))
         file = File.open(Rails.root.join('media',row[8]))
-        story = Story.new
         story.media.attach(io: file, filename: row[8])
       end
       story.permission_level = row[9].blank? ? "anonymous" : "user_only"
