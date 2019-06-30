@@ -16,6 +16,7 @@ class StoryDashboard < Administrate::BaseDashboard
     places: Field::HasMany,
     interview_location: Field::BelongsTo.with_options({class_name: "Place"}),
     interviewer: Field::BelongsTo.with_options({class_name: "Speaker"}),
+    date_interviewed: Field::DateTime,
     media: Field::ActiveStorage.with_options({destroy_path: :admin_stories_path}),
     permission_level: EnumField,
     created_at: Field::DateTime,
@@ -35,6 +36,7 @@ class StoryDashboard < Administrate::BaseDashboard
     :speakers,
     :interview_location,
     :interviewer,
+    :date_interviewed,
     :places,
     :permission_level
   ].freeze
@@ -49,6 +51,7 @@ class StoryDashboard < Administrate::BaseDashboard
     :speakers,
     :interview_location,
     :interviewer,
+    :date_interviewed,
     :places,
     :media,
     :permission_level,
@@ -66,6 +69,7 @@ class StoryDashboard < Administrate::BaseDashboard
     :speakers,
     :interview_location,
     :interviewer,
+    :date_interviewed,
     :places,
     :media,
     :permission_level
