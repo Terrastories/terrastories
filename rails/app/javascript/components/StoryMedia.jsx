@@ -33,6 +33,7 @@ class StoryMedia extends PureComponent {
         height={explicitVideoHeight}
         playsInline
         controls
+        disablepictureinpicture='true'       
         controlsList='nodownload'
         key={file.url}
         ref="video"
