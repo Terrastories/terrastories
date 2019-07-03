@@ -8,6 +8,8 @@ const defaultBounds = [
   [180, 85] //northeast
 ]
 const defaultZoom = 3.5;
+const defaultPitch = 0;
+const defaultBearing = 0;
 
 export default class Map extends Component {
   constructor(props) {
@@ -30,7 +32,9 @@ export default class Map extends Component {
       style: this.props.mapboxStyle,
       center: defaultCenter,
       zoom: defaultZoom,
-      maxBounds: defaultBounds
+      maxBounds: defaultBounds,
+      pitch: defaultPitch,
+      bearing: defaultBearing
     });
 
     this.map.on('load', () => {
@@ -133,6 +137,8 @@ export default class Map extends Component {
     this.map.flyTo({
       center: defaultCenter,
       zoom: defaultZoom,
+      pitch: defaultPitch,
+      bearing: defaultBearing,
       maxBounds: defaultBounds
     });
   }
