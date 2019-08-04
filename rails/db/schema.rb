@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_19_012355) do
+ActiveRecord::Schema.define(version: 2019_08_04_172937) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 2019_06_19_012355) do
     t.datetime "updated_at", null: false
     t.datetime "birthdate"
     t.integer "birthplace_id"
+    t.string "community"
     t.index ["birthplace_id"], name: "index_speakers_on_birthplace_id"
   end
 
