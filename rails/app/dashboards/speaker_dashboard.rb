@@ -14,7 +14,7 @@ class SpeakerDashboard < Administrate::BaseDashboard
     stories: Field::HasMany,
     birthdate: Field::DateTime.with_options(format: "%d/%m/%Y"),
     birthplace: Field::BelongsTo.with_options(class_name: "Place"),
-    community: Filed::String,
+    community: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
