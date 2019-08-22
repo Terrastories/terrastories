@@ -79,7 +79,7 @@ class StoryList extends Component {
           onClick={_ => this.props.onStoryClick(story)}
           style={style}
         >
-          <div className="speakers">
+          <div className="speakers" ref={index === 0 ? this.props.passRefs : ""}>
             {(story.speakers.length === 1) &&
                 <div>
                   <img src={story.speakers[0].picture_url} alt={story.speakers[0].name} title={story.speakers[0].name} />

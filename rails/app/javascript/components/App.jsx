@@ -15,6 +15,7 @@ class App extends Component {
       activePoint: null,
       activeStory: null
     }
+    this.scrollRef = React.createRef();
   }
 
   static propTypes = {
@@ -124,6 +125,10 @@ class App extends Component {
     const point = story.points[0];
     const pointCoords = point.geometry.coordinates;
     this.setState({activePoint: point, activeStory: story, pointCoords: pointCoords});
+    this.scrollRef.current.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    })
   }
 
   resetStoriesAndMap = () => {
@@ -165,6 +170,7 @@ class App extends Component {
           onStoryClick={this.handleStoryClick}
           logo_path={this.props.logo_path}
           user={this.props.user}
+          passRef={this.scrollRef}
         />
         <IntroPopup />
       </div>

@@ -80,6 +80,7 @@ class Card extends Component {
               clearFilteredStories={this.props.clearFilteredStories}
               filterMap={this.props.filterMap}
               categories={this.props.categories}
+              passRefs={this.props.passRef}
             />
 
             <div className="card--tasks">
