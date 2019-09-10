@@ -1,5 +1,0 @@
-#!/bin/bash
-service docker start
-cd $(dirname $(readlink -f $0))
-docker-compose build
-docker-compose run tileserver
