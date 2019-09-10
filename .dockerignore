@@ -1,0 +1,14 @@
+.git
+.gitignore
+*.md
+.dockerignore
+.gitlab-ci.yml
+docker-compose.*
+Dockerfile
+log/*
+node_modules/*
+public/assets/*
+storage/*
+public/packs/*
+public/packs-test/*
+tmp/*
