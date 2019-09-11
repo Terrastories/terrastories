@@ -1,0 +1,40 @@
+version: "3.2"
+services:
+  mariadb:
+    restart: always
+    image: 'mariadb:latest'
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    networks:
+      - railroad
+    volumes:
+      - dbdata:/var/lib/mysql
+
+  webpacker:
+    image: ${DOCKER_IMAGE_NAME-terrastories}
+    command: ["./scripts/start_webpack_dev.sh"]
+    volumes:
+      - .:/opt/terrastories:cached
+    ports:
+      - 3035:3035
+
+  web:
+    image: ${DOCKER_IMAGE_NAME-terrastories}
+    build:
+      context: .
+      args:
+        precompileassets: "not"
+    links:
+      - mariadb
+      - webpacker
+    ports:
+      - 3000:3000
+    command: ["./scripts/wait-for-it.sh", "db:5432", "--", "./scripts/start_rails.sh"]
+    volumes:
+      - .:/opt/terrastories:cached
+
+networks:
+  railroad:
+
+volumes:
+  dbdata:
