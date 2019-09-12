@@ -8,15 +8,15 @@ services:
       POSTGRES_PASSWORD: ${DB_USER_PASSWORD}
 
   webpacker:
-    image: ${DOCKER_IMAGE_NAME-dockerrailsdemo}
+    image: ${DOCKER_IMAGE_NAME-terrastories}
     command: ["./scripts/start_webpack_dev.sh"]
     volumes:
-      - .:/opt/dockerrailsdemo:cached
+      - .:/opt/terrastories:cached
     ports:
       - 3035:3035
 
   web:
-    image: ${DOCKER_IMAGE_NAME-dockerrailsdemo}
+    image: ${DOCKER_IMAGE_NAME-terrastories}
     build:
       context: .
       args:
@@ -28,4 +28,4 @@ services:
       - 3000:3000
     command: ["./scripts/wait-for-it.sh", "db:5432", "--", "./scripts/start_rails.sh"]
     volumes:
-      - .:/opt/dockerrailsdemo:cached
+      - .:/opt/terrastories:cached
