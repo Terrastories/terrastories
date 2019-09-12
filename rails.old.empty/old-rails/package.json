@@ -6,7 +6,9 @@
   },
   "dependencies": {
     "@rails/webpacker": "4.O.2",
+    "caniuse-lite": "1.0.30000697",
     "babel-jest": "^23.6.0",
+    "babel-core": "^6.0.0",
     "babel-preset-react": "^6.24.1",
     "fstream": "1.0.12",
     "prop-types": "^15.6.2",
@@ -15,12 +17,13 @@
     "react-select": "^2.0.0",
     "react-virtualized": "9.21.0",
     "react_ujs": "^2.4.4",
-    "webpack": "^3.0.0"
+    "webpack": "^4.0.0"
   },
   "devDependencies": {
     "jest": "^23.6.0",
     "react-testing-library": "^6.0.3",
-    "webpack-dev-server": ">=3.1.11"
+    "webpack-dev-server": ">=3.1.11",
+    "webpack-cli": "^2.0.9"
   },
   "jest": {
     "setupFiles": [

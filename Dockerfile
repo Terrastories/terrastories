@@ -2,6 +2,9 @@ FROM ruby:2.5.1-slim
 ARG precompileassets
 
 RUN apt-get update && apt-get install -y curl gnupg
+RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main" > /etc/apt/sources.list.d/pgdg.list
+RUN curl -q https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
+
 
 RUN apt-get -y update && \
   # apt-get install --fix-missing --no-install-recommends -qq -y \
@@ -12,7 +15,8 @@ RUN apt-get -y update && \
   wget gnupg \
   git-all \
   curl \
-  ssh && \
+  ssh \
+  postgresql-client-11 libpq5 libpq-dev -y && \
   wget -qO- https://deb.nodesource.com/setup_12.x  | bash - && \
   apt-get install -y nodejs && \
   wget -qO- https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
@@ -26,9 +30,9 @@ RUN gem install bundler
 #Install gems
 RUN mkdir /gems
 WORKDIR /gems
-COPY Gemfile .
-COPY Gemfile.lock .
+COPY Gemfile Gemfile.lock package.json yarn.lock ./
 RUN bundle install
+RUN yarn install
 
 ARG INSTALL_PATH=/opt/terrastories
 ENV INSTALL_PATH $INSTALL_PATH
@@ -37,6 +41,9 @@ COPY . .
 
 # Permission update required for MacOS
 # Update all scripts in the folder
-RUN chmod -R a+x scripts
+RUN chmod a+x scripts/wait-for-it.sh
+RUN chmod a+x scripts/potential_asset_precompile.sh
+RUN chmod a+x scripts/start_rails.sh
+RUN chmod a+x scripts/start_webpack_dev.sh
 # RUN find scripts -type f -exec chmod a+X {} \
 RUN scripts/potential_asset_precompile.sh $precompileassets

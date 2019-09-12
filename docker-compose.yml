@@ -1,40 +1,31 @@
-version: "3.2"
+version: "3.0"
 services:
-  mariadb:
-    restart: always
-    image: 'mariadb:latest'
+  db:
+    image: postgres:11
+    ports:
+      - 5432:5432
     environment:
-      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
-    networks:
-      - railroad
-    volumes:
-      - dbdata:/var/lib/mysql
+      POSTGRES_PASSWORD: ${DB_USER_PASSWORD}
 
   webpacker:
-    image: ${DOCKER_IMAGE_NAME-terrastories}
+    image: ${DOCKER_IMAGE_NAME-dockerrailsdemo}
     command: ["./scripts/start_webpack_dev.sh"]
     volumes:
-      - .:/opt/terrastories:cached
+      - .:/opt/dockerrailsdemo:cached
     ports:
       - 3035:3035
 
   web:
-    image: ${DOCKER_IMAGE_NAME-terrastories}
+    image: ${DOCKER_IMAGE_NAME-dockerrailsdemo}
     build:
       context: .
       args:
         precompileassets: "not"
     links:
-      - mariadb
+      - db
       - webpacker
     ports:
       - 3000:3000
     command: ["./scripts/wait-for-it.sh", "db:5432", "--", "./scripts/start_rails.sh"]
     volumes:
-      - .:/opt/terrastories:cached
-
-networks:
-  railroad:
-
-volumes:
-  dbdata:
+      - .:/opt/dockerrailsdemo:cached

@@ -1,21 +1,29 @@
-# MySQL. Versions 5.1.10 and up are supported.
+# PostgreSQL. Versions 9.1 and up are supported.
 #
-# Install the MySQL driver
-#   gem install mysql2
+# Install the pg driver:
+#   gem install pg
+# On OS X with Homebrew:
+#   gem install pg -- --with-pg-config=/usr/local/bin/pg_config
+# On OS X with MacPorts:
+#   gem install pg -- --with-pg-config=/opt/local/lib/postgresql84/bin/pg_config
+# On Windows:
+#   gem install pg
+#       Choose the win32 build.
+#       Install PostgreSQL and put its /bin directory on your path.
 #
-# Ensure the MySQL gem is defined in your Gemfile
-#   gem 'mysql2'
-#
-# And be sure to use new-style password hashing:
-#   https://dev.mysql.com/doc/refman/5.7/en/password-hashing.html
+# Configure Using Gemfile
+# gem 'pg'
 #
 default: &default
-  adapter: mysql2
-  encoding: utf8
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password:
-  host: mariadb
+  username: postgres
+  host: <%= ENV['DB_HOST'] %>
+  password: <%= ENV['DB_USER_PASSWORD'] %>
+
 
 development:
   <<: *default
