@@ -41,9 +41,6 @@ COPY . .
 
 # Permission update required for MacOS
 # Update all scripts in the folder
-RUN chmod a+x scripts/wait-for-it.sh
-RUN chmod a+x scripts/potential_asset_precompile.sh
-RUN chmod a+x scripts/start_rails.sh
-RUN chmod a+x scripts/start_webpack_dev.sh
+RUN chmod a+x scripts/*
 # RUN find scripts -type f -exec chmod a+X {} \
 RUN scripts/potential_asset_precompile.sh $precompileassets

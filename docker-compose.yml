@@ -21,6 +21,8 @@ services:
       context: .
       args:
         precompileassets: "not"
+    env_file:
+      - .env
     links:
       - db
       - webpacker
