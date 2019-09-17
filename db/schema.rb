@@ -10,9 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_19_012355) do
+ActiveRecord::Schema.define(version: 2019_09_17_020408) do
 
-  create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
     t.bigint "record_id", null: false
@@ -22,7 +25,7 @@ ActiveRecord::Schema.define(version: 2019_06_19_012355) do
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
-  create_table "active_storage_blobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "active_storage_blobs", force: :cascade do |t|
     t.string "key", null: false
     t.string "filename", null: false
     t.string "content_type"
@@ -33,7 +36,7 @@ ActiveRecord::Schema.define(version: 2019_06_19_012355) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "places", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "places", force: :cascade do |t|
     t.string "name"
     t.string "type_of_place"
     t.datetime "created_at", null: false
@@ -44,18 +47,18 @@ ActiveRecord::Schema.define(version: 2019_06_19_012355) do
     t.string "description"
   end
 
-  create_table "places_stories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "places_stories", force: :cascade do |t|
     t.bigint "story_id", null: false
     t.bigint "place_id", null: false
     t.index ["story_id", "place_id"], name: "index_places_stories_on_story_id_and_place_id"
   end
 
-  create_table "speaker_stories", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "speaker_stories", force: :cascade do |t|
     t.bigint "speaker_id", null: false
     t.bigint "story_id", null: false
   end
 
-  create_table "speakers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "speakers", force: :cascade do |t|
     t.string "name"
     t.string "photo"
     t.datetime "created_at", null: false
@@ -65,7 +68,7 @@ ActiveRecord::Schema.define(version: 2019_06_19_012355) do
     t.index ["birthplace_id"], name: "index_speakers_on_birthplace_id"
   end
 
-  create_table "stories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "stories", force: :cascade do |t|
     t.string "title"
     t.text "desc"
     t.datetime "created_at", null: false
@@ -77,7 +80,7 @@ ActiveRecord::Schema.define(version: 2019_06_19_012355) do
     t.integer "interviewer_id"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
