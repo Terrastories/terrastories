@@ -1,5 +1,5 @@
-# Setup for Hacktoberfest and Mapbox Community Days
-This runs through last day of October. The instructions here are only for setting up your development environment. Please contact the stewards of this repo if you need assistance setting up an offline production environment.
+# Setup
+This setup is for use in a production environment which is completely offline. A very small number of people will need to use this. Generally you can just follow [SETUP.md](SETUP.md)
 
 ## Table of Contents
 
@@ -29,34 +29,39 @@ PowerShell comes with Windows.
 
 ## Setup and running the server: Linux or Mac
 
-First update your `.env` file using `.env.example` as a reference. You will need a Mapbox token. You can obtain one for free by signing up [on Mapbox](https://mapbox.com/signup)
+This project uses these [GitHub conventions](https://github.com/github/scripts-to-rule-them-all)
+to provide convenient scripts for developers.
 
 On a fresh clone of this repo, run:
 
 ```
-$ docker-compose build 
+$ script/setup
 ```
 
-This will download and build all the docker images used in this project.  Upon completion you should see output similar to:.
+This will download and build all the docker images used in this project. It will
+also build the map tile data supporting the tileserver service. This step can
+take a long time complete. Its output should end with something like the
+following, which will eventually get to 100%, I promise.
 
 ```
 ...
-Successfully tagged terrastories:latest
-```
-
-The first time, run the following command to create your database and run the necessary migrations:
-
-```
-$ docker-compose run web scripts/wait-for-it.sh db:5432 -- "rails db:create db:migrate"
+> wwww features, xxxx bytes of geometry, yyyy bytes of separate metadata,
+zzzz bytes of string pool
+> 99.9% 11/2222/3333
 ```
 
 ### Make It Go
-Run the following:
+
+Just run:
+
 ```
-$ docker-compose up
+$ script/server
 ```
 
 Use `ctrl-c` to stop.
+
+(Alternatively, the server can be started in detached mode with `script/start`.
+In that case, stop it with `script/stop`.)
 
 Once rails fully starts up, you can view the running app at `localhost:3000`
 or an alternative port specified in `.env` if one exists. See `.env.example` for
