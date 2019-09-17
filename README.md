@@ -47,7 +47,7 @@ The project to develop this application was initiated by the [**Amazon Conservat
 
 ## Setup
 
-To install, build, and run Terrastories, please visit the (Setup guide here)[SETUP.md].
+To install, build, and run Terrastories, please visit the [Setup guide here](SETUP.md).
 
 ## Contributing
 
