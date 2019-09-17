@@ -1,5 +1,5 @@
 # Setup for Hacktoberfest and Mapbox Community Days
-This runs through last day of October. The instructions here are only for setting up your development environment. Please contact the stewards of this repo if you need assistance setting up an offline production environment.
+This instructions are for Mapbox Community Days and Hacktoberfest, which everyone is invited to participate in. It runs through last day of October. The instructions here are only for setting up your development environment. Please contact the stewards of this repo if you need assistance setting up an offline production environment.
 
 ## Table of Contents
 
@@ -160,8 +160,6 @@ To spin all the services back down run the following.
 ```
 $ docker-compose down
 ```
-
-## Creating (and updating) the Map
 
 ### Step 1: preparing content in Mapbox Studio
 
