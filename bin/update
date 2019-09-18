@@ -14,7 +14,7 @@ chdir APP_ROOT do
   # Add necessary update steps to this file.
 
   puts '== Installing dependencies =='
-  system! 'gem install bundler --conservative'
+  system! 'gem install bundler --conservative --without postgres'
   system('bundle check') || system!('bundle install')
 
   # Install JavaScript dependencies if using Yarn

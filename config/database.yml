@@ -1,62 +1,43 @@
-# PostgreSQL. Versions 9.1 and up are supported.
+# This app can be run with multiple database adapters. It will use sqlite by default.
 #
-# Install the pg driver:
-#   gem install pg
-# On OS X with Homebrew:
-#   gem install pg -- --with-pg-config=/usr/local/bin/pg_config
-# On OS X with MacPorts:
-#   gem install pg -- --with-pg-config=/opt/local/lib/postgresql84/bin/pg_config
-# On Windows:
-#   gem install pg
-#       Choose the win32 build.
-#       Install PostgreSQL and put its /bin directory on your path.
+<% if ENV['DATABASE_ADAPTER'] == 'postgres' %>
 #
-# Configure Using Gemfile
-# gem 'pg'
+# Postgres
 #
 default: &default
   adapter: postgresql
   encoding: unicode
-  # For details on connection pooling, see Rails configuration guide
-  # http://guides.rubyonrails.org/configuring.html#database-pooling
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: postgres
-  host: <%= ENV['DB_HOST'] %>
-  password: <%= ENV['DB_USER_PASSWORD'] %>
-
-
+  pool: <%= [Integer(ENV['RAILS_MAX_THREADS'] || 5), 5].max %>
 development:
   <<: *default
-  database: app_development
-
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
+  database: terrastories_development
 test:
   <<: *default
-  database: app_test
-
-# As with config/secrets.yml, you never want to store sensitive information,
-# like your database password, in your source code. If your source code is
-# ever seen by anyone, they now have access to your database.
-#
-# Instead, provide the password as a unix environment variable when you boot
-# the app. Read http://guides.rubyonrails.org/configuring.html#configuring-a-database
-# for a full rundown on how to provide these environment variables in a
-# production deployment.
-#
-# On Heroku and other platform providers, you may have a full connection URL
-# available as an environment variable. For example:
-#
-#   DATABASE_URL="mysql2://myuser:mypass@localhost/somedatabase"
-#
-# You can use this database configuration with:
-#
-#   production:
-#     url: <%= ENV['DATABASE_URL'] %>
-#
+  database: terrastories_test
+# Use the DATABASE_URL environment variable when in production. This is simalar
+# to how Heroku will reconfigure the database to connect to Postgres.
 production:
   <<: *default
-  database: app_production
-  username: app
-  password: <%= ENV['APP_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
+
+<% else %>
+
+#
+# sqlite
+#
+default: &default
+  adapter: sqlite3
+  pool: 5
+  timeout: 5000
+development:
+  <<: *default
+  database: db/development.sqlite3
+test:
+  <<: *default
+  database: db/test.sqlite3
+production:
+  <<: *default
+  database: db/production.sqlite3
+
+<% end %>
+

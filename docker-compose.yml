@@ -1,32 +1,20 @@
-version: "3.0"
+version: '3.2'
 services:
-  db:
-    image: postgres:11
-    ports:
-      - 5432:5432
-    environment:
-      POSTGRES_PASSWORD: ${DB_USER_PASSWORD}
-
-  # webpacker:
-  #   image: ${DOCKER_IMAGE_NAME-terrastories}
-  #   command: ["./scripts/start_webpack_dev.sh"]
-  #   volumes:
-  #     - .:/opt/terrastories:cached
-  #   ports:
-  #     - 3035:3035
-
   web:
     image: ${DOCKER_IMAGE_NAME-terrastories}
     build:
       context: .
       args:
         precompileassets: "not"
+    environment:
+      - SECRET_KEY_BASE=456
     env_file:
       - .env
-    links:
-      - db
     ports:
       - 3000:3000
-    command: ["./scripts/wait-for-it.sh", "db:5432", "--", "./scripts/start_rails.sh"]
+      - 3035:3035
     volumes:
-      - .:/opt/terrastories:cached
+      - .:/app:cached
+      - type: tmpfs
+        target: /app/tmp/pids/
+    command: "bundle exec foreman start -f Procfile.development"

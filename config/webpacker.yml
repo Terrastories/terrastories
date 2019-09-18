@@ -3,6 +3,7 @@
 default: &default
   source_path: app/javascript
   source_entry_path: packs
+  public_root_path: public
   public_output_path: packs
   cache_path: tmp/cache/webpacker
   check_yarn_integrity: false
@@ -34,11 +35,15 @@ development:
   <<: *default
   compile: true
 
+  # Verifies that correct packages and versions are installed by inspecting package.json, yarn.lock, and node_modules
+  check_yarn_integrity: true
+
   # Reference: https://webpack.js.org/configuration/dev-server/
   dev_server:
     https: false
     host: localhost
     port: 3035
+    #public: webpack.domain.test
     public: localhost:3035
     hmr: false
     # Inline should be set to true if using HMR
@@ -51,7 +56,8 @@ development:
     headers:
       'Access-Control-Allow-Origin': '*'
     watch_options:
-      ignored: /node_modules/
+      ignored: '**/node_modules/**'
+
 
 
 test:

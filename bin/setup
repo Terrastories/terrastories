@@ -14,8 +14,11 @@ chdir APP_ROOT do
   # Add necessary setup steps to this file.
 
   puts '== Installing dependencies =='
-  system! 'gem install bundler --conservative'
+  system! 'gem install bundler --conservative --without postgres'
   system('bundle check') || system!('bundle install')
+
+  # Copy over example env settings
+  FileUtils.cp(".env.example", ".env") unless File.exist?(".env")
 
   # Install JavaScript dependencies if using Yarn
   # system('bin/yarn')
