@@ -56,19 +56,23 @@ We ♥ contributors! By participating in this project, you agree to abide by the
 **First:** if you're unsure or afraid of *anything*, just ask or submit the issue or pull request anyways. You won't be yelled at for giving your best effort. The worst that can happen is that you'll be politely asked to change something. We appreciate any sort of contributions, and don't want a wall of rules to get in the way of that.
 
 ### How To Contribute To Terrastories
-**Step 1: Find an issue to work on**
+
+**Step 1: Learn a little about the app**
+One of our core contributors @mirandawang wrote a really nice [outline of the app](https://docs.google.com/document/d/1azfvU7tXLv2EHGrc3Hs5SPmB32MkyYuhXTB4JjymlV4/edit). Unless you are working on something related to Docker containers or to map cartography then you will benefit from taking a couple minutes to get acquainted with the app. 
+
+**Step 2: Find an issue to work on**
 For Hacktoberfest and Mapbox Community Days, which runs through the end of October, we have outlined issues that we would like to focus on in [this milestone](https://github.com/Terrastories/terrastories/milestone/6). Please find an issue there that you would like to take on and comment to assign yourself if no one else has done so already. Feel free to ask questions in the issues, and we will get back to you ASAP!
 
-**Step 2: Fork the repo**
+**Step 3: Fork the repo**
 Click the "fork" button in the upper right of the Github repo page. A fork is a copy of the repository that allows you to freely explore & experiment without changing the original project. You can learn more about forking a repo in [this article](https://help.github.com/articles/fork-a-repo/).
 
-**Step 3: Create a branch**
+**Step 4: Create a branch**
 Checkout a new branch for your issue - this branch can be named anything, but we encourage the format  `XXX-brief-description-of-feature`  where  `XXX`  is the issue number.
 
-**Step 4: Happy Hacking!**
+**Step 5: Happy Hacking!**
 Follow the instructions in the [Setup Document](SETUP.md) to set up your local environment. Feel free to discuss any questions on the issues as needed, and we will get back to you! Don't forget to write some tests to verify your code. Commit your changes locally, using descriptive messages and please be sure to note the parts of the app that are affected by this commit.
 
-**Step 5: Pushing your branch and creating a pull request**
+**Step 6: Pushing your branch and creating a pull request**
 Push your branch up and create a pull request! Please indicate which issue your PR addresses in the title.
 
 ### Code Reviews & Pull Request Merging
