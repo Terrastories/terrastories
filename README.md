@@ -23,6 +23,7 @@ If you are able to help, this year we are offering the following rewards:
 2 pull requests - A Terrastories enameled pin 
 
 3 or more pull requests - A hand drawn thank you note from one of these children in Suriname
+<img src="matawai-children.jpg" alt="matawai-children" width="600">
 
 You have an entire month to get involved so there’s plenty of time to make 4 pull requests! ❤ 
 
