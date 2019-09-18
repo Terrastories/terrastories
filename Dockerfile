@@ -7,11 +7,9 @@ RUN curl -q https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
 
 
 RUN apt-get -y update && \
-  # apt-get install --fix-missing --no-install-recommends -qq -y \
   apt-get install --fix-missing --no-install-recommends -qq -y \
   build-essential \
   vim \ 
-  mysql-client default-libmysqlclient-dev \
   wget gnupg \
   git-all \
   curl \
