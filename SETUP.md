@@ -5,17 +5,15 @@ This instructions are for Mapbox Community Days and Hacktoberfest, which everyon
 
 1. [Docker prerequisites](#docker-prerequisites)
 
-2. [Setup and running the server: Linux or Mac](#setup-and-running-the-server-linux-or-mac)
+2. [Setup and running the server](#Setup-and-running-the-server)
 
-3. [Setup and running the server: Windows](#setup-and-running-the-server-windows)
+3. [Make it Go] (#Make-It-Go)
 
-4. [Creating (and updating) the Map](#creating-and-updating-the-map)
+4. [Development] (#development)
 
-5. [Instructions for setting up an offline computer](#instructions-for-setting-up-an-offline-computer)
+5. [Importing data into Terrastories](#importing-data-into-terrastories)
 
-6. [Importing data into Terrastories](#importing-data-into-terrastories)
-
-7. [Adding languages to Terrastories](#adding-languages-to-terrastories)
+6. [Adding languages to Terrastories](#adding-languages-to-terrastories)
 
 ## Docker Prerequisites
 
@@ -78,26 +76,6 @@ environment. Always use the rails container instead.**
 
 Any changes to source files should be made directly in your local filesystem under the
 `/rails` directory using your preferred editing tools.
-
-### Step 1: preparing content in Mapbox Studio
-
-Terrastories is designed to render a basemap as designed and styled in Mapbox Studio. There are two different components: shapefiles (the spatial data without any styling properties) and styles (the look and feel of the map, as designed in Mapbox Studio, exported in json format). The basic workflow is as follows:
-
-1) upload the shapefile content to [Mapbox Studio](https://www.mapbox.com/mapbox-studio/), and use the Studio interface to lay out the map. You have to have a Mapbox account to use Mapbox Studio (creating and designing maps using Mapbox Studio is free up to certain file size limitations). To learn how to use Mapbox Studio, you can refer to the manuals and tutorials made available by Mapbox [here](https://www.mapbox.com/help/studio-manual-tutorials/) or other resources on the web.
-
-2) download the style.json from Mapbox Studio via the Mapbox Studio styles interface [here](https://www.mapbox.com/studio/styles/)
-
-3) copy both the shapefiles and style.json into the respective directories on Terrastories. Do not rename shapefiles or feature names in Mapbox Studio throughout this process -- the naming conventions must be consistent (aside from the additional -###### hash added by Mapbox Studio; more on that later).
-
-Note: the user must provide their own shapefile content. It is not possible to use any of the standard OpenStreetMap (OSM) content used in the standard styles made available by Mapbox, unless the user first downloads that OSM content and converts it to shapefile first.
-
-### Step 2: adding new or updating shapefiles to Terrastories
-
-To add new shapefiles or update existing shapefiles, there are two steps:
-
-1) Include the new files in your `shapefile` directory (\tilebuilder\shapefiles])
-
-2) You will need to re-run the tilebuilder, following the instructions here: https://github.com/rubyforgood/terrastories/blob/master/tilebuilder/README.md
 
 ## Importing data into Terrastories
 
