@@ -3,11 +3,11 @@ require 'rails_helper'
 RSpec.describe Speaker, type: :model do
 
   let(:place) { Place.create!(name: "Place", type_of_place: "placetype")}
-  let(:speaker) { Speaker.create!(name: 'Speaker Name', birth_year: Date.ordinal(1992), birthplace: place ) }
+  let(:speaker) { Speaker.create!(name: 'Speaker Name', birthdate: Date.ordinal(1992), birthplace: place, community: 'Speaker Community') }
     
     describe "attributes" do
-      it "responds to name birthplace and birthyear" do
-        expect(speaker).to have_attributes(name: 'Speaker Name', birth_year: Date.ordinal(1992), birthplace: place)
+      it "responds to name birthplace birthyear and community" do
+        expect(speaker).to have_attributes(name: 'Speaker Name', birthdate: Date.ordinal(1992), birthplace: place, community: 'Speaker Community')
       end
     end
 

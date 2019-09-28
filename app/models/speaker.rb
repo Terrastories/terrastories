@@ -8,7 +8,7 @@
 # birthplace_id  ... integer, classname: place
 # photo       ... string, url to attached media
 # region ------ removed
-# community --- removed
+# community ... string
 # created_at  ... datetime, not null
 # updated_at  ... datetime, not null
 
