@@ -7,9 +7,9 @@ This instructions are for Mapbox Community Days and Hacktoberfest, which everyon
 
 2. [Setup and running the server](#Setup-and-running-the-server)
 
-3. [Make it Go] (#Make-It-Go)
+3. [Make it Go](#Make-It-Go)
 
-4. [Development] (#development)
+4. [Development](#development)
 
 5. [Importing data into Terrastories](#importing-data-into-terrastories)
 
