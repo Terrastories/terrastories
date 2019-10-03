@@ -53,8 +53,7 @@ en:
   forgot_password: "Forgot your password?"
   filter_stories: "Filter stories"
   select_category: "Select category"
-  select_place_type: "Type of place"
+  place_type: "Type of place"
   select_option: "Select option"
   region: "Region"
   speaker: "Speaker"
-

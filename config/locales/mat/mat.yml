@@ -22,7 +22,7 @@ mat:
   forgot_password: "I lasi yu paswoord?"
   filter_stories: "Luku fini"
   select_category: "Kies wan sooti sondi"
-  select_place_type: "Sooti kamia"
+  place_type: "Sooti kamia"
   select_option: "Kies a sondi"
   region: "Pisiwata"
   speaker: "Takima"
