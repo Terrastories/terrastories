@@ -1,0 +1,64 @@
+---
+pt:
+  administrate:
+    actions:
+      confirm: Você tem certeza?
+      destroy: Apagar
+      edit: Editar
+      edit_resource: Editar %{name}
+      show_resource: Mostrar %{name}
+      new_resource: Novo %{name}
+      back: Voltar
+    controller:
+      create:
+        success: "%{resource} foi criado com sucesso."
+      destroy:
+        success: "%{resource} foi deletado com sucesso."
+      update:
+        success: "%{resource} foi atualizado com sucesso."
+    fields:
+      has_many:
+        more: Resultado %{count} de %{total_count}
+        none: Nenhuma
+    form:
+      error: erro
+      errors: "%{pluralized_errors} proíbe esse %{resource_name} de ser salvo:"
+    places: Lugares
+    search:
+      clear: Limpar pesquisa
+      label: Pesquisar %{resource}
+    speakers: Oradores
+    stories: Histórias
+    table_columns:
+      user:
+        id: Id
+        email: Email
+        role: Cargo
+      speaker:
+        id: Id
+        photo: Foto
+        name: Nome
+        birthdate: Data de nascimento
+        birthplace: Local de nascimento
+      story:
+        id: Id
+        title: Título
+        desc: Descrição
+        language: Linguagem
+        speakers: Oradores
+        interview_location: Local da entrevista
+        interviewer: Entrevistador
+        date_interviewed: Data da entrevista
+        places: Lugares
+        permission_level: Nível de permissão
+      place:
+        id: Id
+        name: Nome
+        description: Descrição
+        type_of_place: Tipo do lugar
+        region: Região
+        long: Longitude
+        lat: Latitute
+        stories: Histórias
+        photo: Foto
+    users: Usuários

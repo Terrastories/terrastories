@@ -23,6 +23,42 @@ mat:
     form:
       error: error
       errors: "%{pluralized_errors} prohibited this %{resource_name} from being saved:"
+    places: Plaatsen
     search:
       clear: CDuidelijke zoek
       label: Zoeken %{resource}
+    speakers: Speakers
+    stories: Verhalen
+    table_columns:
+      user:
+        id: Id
+        email: Email
+        role: Rol
+      speaker:
+        id: Id
+        photo: Foto
+        name: Naam
+        birthdate: Geboortedatum
+        birthplace: Geboorteplaats
+      story:
+        id: Id
+        title: Titel
+        desc: Omschrijving
+        language: Taal
+        speakers: Speakers
+        interview_location: Interview locatie
+        interviewer: Interviewer
+        date_interviewed: Datum geïnterviewd
+        places: Plaatsen
+        permission_level: Machtigingsniveau
+      place:
+        id: Id
+        name: Naam
+        description: Omschrijving
+        type_of_place: Soort plaats
+        region: Regio
+        long: Lengtegraad
+        lat: Breedtegraad
+        stories: Verhalen
+        photo: Foto
+    users: Gebruikers
