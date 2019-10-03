@@ -1,0 +1,64 @@
+---
+en:
+  administrate:
+    actions:
+      confirm: Are you sure?
+      destroy: Delete
+      edit: Edit
+      edit_resource: Edit %{name}
+      show_resource: Show %{name}
+      new_resource: New %{name}
+      back: Back
+    controller:
+      create:
+        success: "%{resource} was successfully created."
+      destroy:
+        success: "%{resource} was successfully destroyed."
+      update:
+        success: "%{resource} was successfully updated."
+    fields:
+      has_many:
+        more: Result %{count} for the total of %{total_count}
+        none: None
+    form:
+      error: error
+      errors: "%{pluralized_errors} prohibited this %{resource_name} from being saved:"
+    places: Places
+    search:
+      clear: Clear search
+      label: Search %{resource}
+    speakers: Speakers
+    stories: Stories
+    table_columns:
+      user:
+        id: Id
+        email: Email
+        role: Role
+      speaker:
+        id: Id
+        photo: Photo
+        name: Name
+        birthdate: Birthdate
+        birthplace: Birthplace
+      story:
+        id: Id
+        title: Title
+        desc: Description
+        language: Language
+        speakers: Speakers
+        interview_location: Interview location
+        interviewer: Interviewer
+        date_interviewed: Date interviewed
+        places: Places
+        permission_level: Permission level
+      place:
+        id: Id
+        name: Name
+        description: Description
+        type_of_place: Type of place
+        region: Region
+        long: Longitude
+        lat: Latitude
+        stories: Stories
+        photo: Photo
+    users: Users
