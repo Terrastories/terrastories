@@ -22,8 +22,7 @@ pt:
   forgot_password: "Esqueceu sua senha?"
   filter_stories: "Filtrar histórias"
   select_category: "Escolher categoria"
-  select_place_type: "Tipo de lugar"
+  place_type: "Tipo de lugar"
   select_option: "Escolher a opção"
   region: "Região"
   speaker: "O Orador"
-
