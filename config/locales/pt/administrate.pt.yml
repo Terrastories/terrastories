@@ -20,15 +20,20 @@ pt:
       has_many:
         more: Resultado %{count} de %{total_count}
         none: Nenhuma
+    file_to_update: Arquivo para update
     form:
       error: erro
       errors: "%{pluralized_errors} proíbe esse %{resource_name} de ser salvo:"
+    import_button: Importar %{resource}
     places: Lugares
+    place: Lugar
     search:
       clear: Limpar pesquisa
       label: Pesquisar %{resource}
     speakers: Oradores
+    speaker: Orador
     stories: Histórias
+    story: História
     table_columns:
       user:
         id: Id
@@ -62,3 +67,4 @@ pt:
         stories: Histórias
         photo: Foto
     users: Usuários
+    user: Usuário

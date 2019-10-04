@@ -20,15 +20,20 @@ en:
       has_many:
         more: Result %{count} for the total of %{total_count}
         none: None
+    file_to_update: File to update
     form:
       error: error
       errors: "%{pluralized_errors} prohibited this %{resource_name} from being saved:"
+    import_button: Import %{resource}
     places: Places
+    place: Place
     search:
       clear: Clear search
       label: Search %{resource}
     speakers: Speakers
+    speaker: Speaker
     stories: Stories
+    story: Story
     table_columns:
       user:
         id: Id
@@ -62,3 +67,4 @@ en:
         stories: Stories
         photo: Photo
     users: Users
+    user: User
