@@ -80,7 +80,6 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
-
   # Factories for creating database entities for testing
   gem 'factory_bot_rails'
 end
