@@ -41,6 +41,6 @@ class SpeakersController < ApplicationController
   private
 
   def speaker_params
-    params.require(:speaker).permit(:name, :media)
+    params.require(:speaker).permit(:name, :media, :community)
   end
 end
