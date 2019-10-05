@@ -82,6 +82,7 @@ group :test do
   gem 'chromedriver-helper'
   # Factories for creating database entities for testing
   gem 'factory_bot_rails'
+  gem 'simplecov', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
