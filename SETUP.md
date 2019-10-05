@@ -1,4 +1,5 @@
 # Setup for Hacktoberfest and Mapbox Community Days
+
 This instructions are for Mapbox Community Days and Hacktoberfest, which everyone is invited to participate in. It runs through last day of October. The instructions here are only for setting up your development environment. Please contact the stewards of this repo if you need assistance setting up an offline production environment.
 
 ## Table of Contents
@@ -19,8 +20,8 @@ This instructions are for Mapbox Community Days and Hacktoberfest, which everyon
 
 Install docker. On linux, you may have to install docker-compose separately.
 
- - https://docs.docker.com/install/
- - https://docs.docker.com/compose/install/
+- https://docs.docker.com/install/
+- https://docs.docker.com/compose/install/
 
 On Windows, all terminal docker commands need to be run using Windows PowerShell, not Command Prompt.
 PowerShell comes with Windows.
@@ -32,10 +33,10 @@ First update your `.env` file using `.env.example` as a reference. You will need
 On a fresh clone of this repo, run:
 
 ```
-$ docker-compose build 
+$ docker-compose build
 ```
 
-This will download and build all the docker images used in this project.  Upon completion you should see output similar to:.
+This will download and build all the docker images used in this project. Upon completion you should see output similar to:.
 
 ```
 ...
@@ -49,7 +50,9 @@ $ docker-compose run web scripts/wait-for-it.sh db:5432 -- "rails db:create db:m
 ```
 
 ### Make It Go
+
 Run the following:
+
 ```
 $ docker-compose up
 ```
@@ -68,6 +71,12 @@ open a bash console on the rails container:
 
 ```
 $ docker exec terrastories_web_1 /bin/bash
+```
+
+or
+
+```
+$ docker exec -it terrastories_web_1 /bin/bash
 ```
 
 Now you can treat this console like any other development environment, running rails or
@@ -96,9 +105,9 @@ Terrastories uses internationalization to translate the application's core text,
 
 To add a language to Terrastories, navigate to the `rails/config/locales/` directory. Within this directory, each language has it's own subdirectory, like `en` (English) or `pt` (Portuguese). Currently, there are three files in each (using Portuguese as an example):
 
- 1. `pt.yml`
- 2. `devise.pt.yml`
- 3. `administrate.pt.yml`
+1.  `pt.yml`
+2.  `devise.pt.yml`
+3.  `administrate.pt.yml`
 
 `pt.yml` contains the custom text used in the Terrastories application. `devise.pt.yml` and `administrative.pt.yml` are used by the administrative back end.
 
