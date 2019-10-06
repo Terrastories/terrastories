@@ -15,12 +15,14 @@ This instructions are for Mapbox Community Days and Hacktoberfest, which everyon
 
 6. [Adding languages to Terrastories](#adding-languages-to-terrastories)
 
+7. [Running and Writing Tests](#testing)
+
 ## Docker Prerequisites
 
 Install docker. On linux, you may have to install docker-compose separately.
 
- - https://docs.docker.com/install/
- - https://docs.docker.com/compose/install/
+- https://docs.docker.com/install/
+- https://docs.docker.com/compose/install/
 
 On Windows, all terminal docker commands need to be run using Windows PowerShell, not Command Prompt.
 PowerShell comes with Windows.
@@ -109,3 +111,32 @@ For the `devise` and `administrate` files, there might be available translations
 If you want to change the default language for Terrastories, set the language on line 21 in `rails/config/application.rb`. To set it to Papiamentu, change this line to `config.i18n.default_locale = :pap`
 
 Once you are done, the language should be available the next time you start Terrastories.
+
+## Testing
+
+The terrastories application is currently using rspec for testing, to run existing tests make sure you are within
+the docker container (run `$ docker exec terrastories_web_1 /bin/bash`) then run
+
+```
+$ docker-compose run web scripts/wait-for-it.sh db:5432 -- "rspec spec"
+```
+
+When writing tests all tests should live in the /spec directory under the appropriate sub-directory (ie. controllers for controller tests, models for model tests). To generate a new test file you can create it manually or run
+
+```
+rails generate rspec:model <model name>
+```
+
+or
+
+```
+rails generate rspec:controller <controller name>
+```
+
+and rails will create the test file for you. If you generate the file yourself, make sure to add `require rails_helper` to the top of your file.
+
+Model tests generally test the model's attributes (ex. does the speaker model have a name attribute) and validation concerns.
+
+Controller tests generally cover the functions defined in the controller.
+
+Do not hesitate to reach out in the terrastories channel on the rubyforgood slack if you are stuck or new to writing tests.
