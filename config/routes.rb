@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  concern :import do
+    collection do
+      post :import
+    end
+  end
+
   namespace :admin do
     resources :users
     resources :speakers
@@ -8,8 +14,8 @@ Rails.application.routes.draw do
     root to: "users#index"
   end
 
-    delete '/admin/places' => 'places#delete'
-    delete '/admin/stories' => 'stories#delete'
+  delete '/admin/places' => 'places#delete'
+  delete '/admin/stories' => 'stories#delete'
 
   scope "(:locale)", locale: Regexp.union(I18n.available_locales.map(&:to_s)) do
     resources :places do
