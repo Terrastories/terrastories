@@ -1,0 +1,3 @@
+Speaker_name (text field),Birth_year (text field),Born_where (tag field),Photo (file upload field)
+Mary Frank,1930,Suki,Mary.jpg
+Chris Beth,1950,,ChrisBeth.jpg
