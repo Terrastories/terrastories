@@ -57,7 +57,7 @@ export default class Map extends Component {
         .setHTML(this.buildPopupHTML(marker))
         .addTo(this.map);
       popup.on('close', () => {
-        this.props.clearFilteredStories();
+        this.props.onPopupClose();
       });
     }
     // update points/markers

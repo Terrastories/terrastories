@@ -126,6 +126,13 @@ class App extends Component {
     this.setState({activePoint: point, activeStory: story, pointCoords: pointCoords});
   }
 
+  handlePopupClose = () => {
+    this.setState({
+      activePoint: null,
+      activeStory: null
+    });
+  }
+
   resetStoriesAndMap = () => {
     const points = this.getPointsFromStories(this.props.stories);
     this.setState({
@@ -151,8 +158,8 @@ class App extends Component {
           pointCoords={this.state.pointCoords}
           mapboxAccessToken={this.props.mapbox_access_token}
           mapboxStyle={this.props.mapbox_style}
-          clearFilteredStories={this.resetStoriesAndMap}
           onMapPointClick={this.handleMapPointClick}
+          onPopupClose={this.handlePopupClose}
           activePoint={this.state.activePoint}
         />
         <Card
