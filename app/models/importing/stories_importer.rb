@@ -3,23 +3,12 @@ module Importing
     def import_row(row)
       story = Story.new(title: row[0])
       story.desc = row[1]
-      # add each spaker to the story, split by comma
-      speaker_names = row[2]
-      speaker_names.split(',').each do |speaker|
-        story.speakers << Speaker.find_or_create_by(name: speaker.strip)
-      end
-      # add each place to the story, split by comma
-      place_names = row[3]
-      place_names.split(',').each do |place|
-        story.places << Place.find_or_create_by(name: place.strip)
-      end
-      # Add interview location
-      story.interview_location = row[4].blank? ? nil : Place.find_or_create_by(name: row[4])
-      # Add interview date
-      story.date_interviewed = row[5].blank? ? nil : Date.strptime(row[5], "%m/%d/%y")
-      # Add interviewer
-      story.interviewer = row[6].blank? ? nil : Speaker.find_or_create_by(name: row[6])
-      # Add Language
+
+      import_speakers(story, row[2])
+      import_places(story, row[3])
+      import_interview_location(story, row[4])
+      story.date_interviewed = row[5].blank? ? nil : Date.strptime(row[5], "%m/%d/%Y")
+      import_interviewer(story, row[6])
       story.language = row[7].blank? ? nil : row[7]
 
       if row[8] && File.exist?(Rails.root.join('media', row[8]))

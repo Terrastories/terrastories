@@ -5,8 +5,8 @@ module Importing
       place.type_of_place = row[1]
       place.description = row[2]
       place.region = row[3]
-      place.long = row[4].to_f
-      place.lat = row[5].to_f
+      place.lat = row[4].to_f
+      place.long = row[5].to_f
 
       if row[6] && File.exist?(Rails.root.join('media', row[6]))
         file = File.open(Rails.root.join('media',row[6]))
