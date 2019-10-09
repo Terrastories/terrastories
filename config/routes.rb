@@ -7,9 +7,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users
-    resources :speakers
-    resources :stories
-    resources :places
+    resources :speakers, concerns: :import
+    resources :stories, concerns: :import
+    resources :places, concerns: :import
 
     root to: "users#index"
   end

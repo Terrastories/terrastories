@@ -26,18 +26,6 @@ class SpeakersController < ApplicationController
     redirect_to speaker_path(@speaker)
   end
 
-  def import_csv
-    if params[:file].nil?
-      redirect_back(fallback_location: root_path)
-      flash[:error] = "No file was attached!"
-    else
-      filepath = params[:file].read
-      Speaker.import_csv(filepath)
-      flash[:notice] = "Speakers were imported successfully!"
-      redirect_back(fallback_location: root_path)
-    end
-  end
-
   private
 
   def speaker_params

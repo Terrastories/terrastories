@@ -61,19 +61,6 @@ class PlacesController < ApplicationController
     end
   end
 
-
-  def import_csv
-    if params[:file].nil?
-      redirect_back(fallback_location: root_path)
-      flash[:error] = "No file was attached!"
-    else
-      filepath = params[:file].read
-      Place.import_csv(filepath)
-      flash[:notice] = "Points were imported successfully!"
-      redirect_back(fallback_location: root_path)
-    end
-  end
-
 # delete photo attachment 
   def delete
     remove_attachment
