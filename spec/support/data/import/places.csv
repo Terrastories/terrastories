@@ -1,0 +1,3 @@
+Place_name (text field),Type_of_place (tag field),Description,Region (tag field),lat,long
+LoremIpsum,dang,"Lorem ipsum dolor sit amet, consectetur adipiscing elit.",Iiba,-55.7879123,4.3409234
+IpsumLorem,foisten konde,,Dendu,-55.7105555,4.5541234

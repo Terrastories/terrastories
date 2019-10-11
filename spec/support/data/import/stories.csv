@@ -1,0 +1,3 @@
+Title_of_story (text field),Description (text field),Speaker_name (tag field) - linked to Speaker name,Place_name (tag field) - linked to Place name,Where_interviewed (tag field),Date_interview (date field),Interviewer (tag field),Language (tag field),Video (file upload),Restricted_to_user (tag field)
+The Story of Mary Frank,lorem ipsum,Mary Frank,Lorem,Suki,4/12/2017,R. Sallon,Matawai,video1.mp4,Matawai
+Turk Story,,Chris Beth,"LoremIpsum, Lorem",Turk,2/20/2015,R. Sallon,Matawai,video2.mp4,Matawai

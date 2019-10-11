@@ -1,0 +1,1 @@
+class ImportError < StandardError; end
