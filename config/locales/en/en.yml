@@ -1,32 +1,32 @@
-en:
+en: 
   admin_page: "Admin Page"
+  alphabetical: A-Z
   back_to_map: "Back to Map"
-  default: "default"
-  language: "Language"
-  map: "Is this a …map?"
-  hello: "Hello"
-  welcome: "Welcome"
-  welcome_back: "Welcome back"
-  introduction: "Introduction"
-  intro:
-    question: "What's a terrastory?"
-    explanation: "Terrastories are audiovisual recordings of place-based storytelling. This offline-compatible application enables local communities to locate and map their own oral storytelling traditions about places of significant meaning or value to them."
-  enter: "Enter Site"
   back_to_welcome: "Back to Welcome Page"
-  login: "Login"
-  logout: "Logout"
-  password: "Password"
-  remember_me: "Remember me"
-  sign_up: "Sign up"
-  close: "Close"
-  forgot_password: "Forgot your password?"
+  close: Close
+  default: default
+  enter: "Enter Site"
   filter_stories: "Filter stories"
-  select_category: "Select category"
-  place_type: "Type of place"
-  select_option: "Select option"
-  sort_stories: "Sort stories"
+  forgot_password: "Forgot your password?"
+  hello: Hello
+  intro: 
+    explanation: "Terrastories are audiovisual recordings of place-based storytelling. This offline-compatible application enables local communities to locate and map their own oral storytelling traditions about places of significant meaning or value to them."
+    question: "What's a terrastory?"
+  introduction: Introduction
+  language: Language
+  login: Login
+  logout: Logout
+  map: "Is this a …map?"
   most_recent: "Most recent"
-  alphabetical: "A-Z"
-  reversed_alphabetical: "Z-A"
-  region: "Region"
-  speaker: "Speaker"
+  password: Password
+  place_type: "Type of place"
+  region: Region
+  remember_me: "Remember me"
+  reversed_alphabetical: Z-A
+  select_category: "Select category"
+  select_option: "Select option"
+  sign_up: "Sign up"
+  sort_stories: "Sort stories"
+  speaker: Speaker
+  welcome: Welcome
+  welcome_back: "Welcome back"
