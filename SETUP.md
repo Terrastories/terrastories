@@ -26,6 +26,8 @@ Install docker. On linux, you may have to install docker-compose separately.
 On Windows, all terminal docker commands need to be run using Windows PowerShell, not Command Prompt.
 PowerShell comes with Windows.
 
+On Linux, users should run all docker commands with `sudo` or check the [official documentation](https://docs.docker.com/install/linux/linux-postinstall/) to manage Docker as a non-root user.
+
 ## Setup and running the server
 
 First update your `.env` file using `.env.example` as a reference. You will need a Mapbox token. You can obtain one for free by signing up [on Mapbox](https://mapbox.com/signup)
@@ -42,6 +44,14 @@ This will download and build all the docker images used in this project. Upon co
 ...
 Successfully tagged terrastories:latest
 ```
+
+**Linux** users should also run:
+
+```
+$ sudo docker-compose run web yarn install
+```
+
+for webpack to be loaded.
 
 The first time, run the following command to create your database and run the necessary migrations:
 
