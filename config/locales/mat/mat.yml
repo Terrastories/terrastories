@@ -1,3 +1,5 @@
+---
+
 mat:
   admin_page: "Admin pagina"
   back_to_map: "Go ko na kaita"
@@ -26,3 +28,10 @@ mat:
   select_option: "Kies a sondi"
   region: "Pisiwata"
   speaker: "Takima"
+  activerecord:
+    errors:
+      models:
+        place:
+          attributes:
+            photo:
+              invalid_type: "must be %{valid_type}"

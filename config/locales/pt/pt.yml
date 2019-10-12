@@ -1,3 +1,5 @@
+---
+
 pt:
   admin_page: "Página de administração"
   back_to_map: "Volta ao mapa"
@@ -26,3 +28,10 @@ pt:
   select_option: "Escolher a opção"
   region: "Região"
   speaker: "O Orador"
+  activerecord:
+    errors:
+      models:
+        place:
+          attributes:
+            photo:
+              invalid_type: "must be %{valid_type}"

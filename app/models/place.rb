@@ -1,11 +1,12 @@
-class Place < ApplicationRecord
-  require 'csv'
-  has_and_belongs_to_many :stories
-  has_one_attached :photo
-  validate :photo_format
-  has_many :interview_stories, class_name: "Story", foreign_key: "interview_location_id"
+require 'csv'
 
-  attr_reader :point_geojson
+class Place < ApplicationRecord
+  has_many :interview_stories, class_name: 'Story', foreign_key: 'interview_location_id'
+  has_and_belongs_to_many :stories
+
+  has_one_attached :photo
+
+  validate :photo, attached_file: { is: :image, allow_nil: true }
 
   def self.import_csv(filename)
     CSV.parse(filename, headers: true) do |row|
@@ -23,17 +24,8 @@ class Place < ApplicationRecord
     end
   end
 
-  def photo_format
-    return unless photo.attached?
-    return if photo.blob.content_type.start_with? 'image/'
-    photo.purge_later
-    errors.add(:photo, 'needs to be an image')
-  end
-
   def photo_url
-    if photo.attached?
-      Rails.application.routes.url_helpers.rails_blob_path(photo, only_path: true)
-    end
+    Rails.application.routes.url_helpers.rails_blob_path(photo, only_path: true) if photo.attached?
   end
 
   def point_geojson
