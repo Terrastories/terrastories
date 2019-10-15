@@ -2,7 +2,8 @@
   "name": "app",
   "private": true,
   "scripts": {
-    "jest": "jest"
+    "jest": "jest",
+    "test": "nyc jest"
   },
   "dependencies": {
     "@rails/webpacker": "3.5",
@@ -19,6 +20,7 @@
   },
   "devDependencies": {
     "jest": "^23.6.0",
+    "nyc": "^14.1.1",
     "react-testing-library": "^6.0.3",
     "webpack-dev-server": "2.11.2"
   },
