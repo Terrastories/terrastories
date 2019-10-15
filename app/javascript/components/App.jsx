@@ -126,21 +126,20 @@ class App extends Component {
     this.setState({activePoint: point, activeStory: story, pointCoords: pointCoords});
   }
 
-  handlePopupClose = () => {
+  resetStories = () => {
+    const points = this.getPointsFromStories(this.props.stories);
     this.setState({
+      stories: this.props.stories,
+      points: points,
       activePoint: null,
       activeStory: null
     });
   }
 
   resetStoriesAndMap = () => {
-    const points = this.getPointsFromStories(this.props.stories);
+    this.resetStories;
     this.setState({
-      stories: this.props.stories,
-      points: points,
       pointCoords: [],
-      activePoint: null,
-      activeStory: null
     });
   }
 
@@ -159,7 +158,7 @@ class App extends Component {
           mapboxAccessToken={this.props.mapbox_access_token}
           mapboxStyle={this.props.mapbox_style}
           onMapPointClick={this.handleMapPointClick}
-          onPopupClose={this.handlePopupClose}
+          onPopupClose={this.resetStories}
           activePoint={this.state.activePoint}
         />
         <Card
