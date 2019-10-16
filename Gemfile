@@ -59,6 +59,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'pry-rails'
   gem 'guard-rspec'
+  gem 'shoulda-matchers'
 end
 
 group :development do
