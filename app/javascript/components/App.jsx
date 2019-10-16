@@ -119,6 +119,10 @@ class App extends Component {
     }
   }
 
+  handleStoriesChanged = (stories) => {
+    this.setState({ stories: stories })
+  }
+
   handleStoryClick = story => {
     // set active to first point in story
     const point = story.points[0];
@@ -158,6 +162,7 @@ class App extends Component {
         <Card
           activeStory={this.state.activeStory}
           stories={this.state.stories}
+          handleStoriesChanged={this.handleStoriesChanged}
           categories={FILTER_CATEGORIES}
           filterMap={this.filterMap()}
           handleFilter={this.handleFilter}

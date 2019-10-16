@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import StoryMedia from "./StoryMedia";
 import Filter from "./Filter";
+import Sort from "./Sort";
 import { List, AutoSizer, CellMeasurer, CellMeasurerCache } from "react-virtualized";
 
 class StoryList extends Component {
@@ -16,6 +17,7 @@ class StoryList extends Component {
 
   static propTypes = {
     stories: PropTypes.array,
+    handleStoriesChanged: PropTypes.func,
     handleFilter: PropTypes.func,
     clearFilteredStories: PropTypes.func,
     onStoryClick: PropTypes.func,
@@ -114,6 +116,10 @@ class StoryList extends Component {
             categories={this.props.categories}
             filterMap={this.props.filterMap}
             clearFilteredStories={this.props.clearFilteredStories}
+          />
+          <Sort
+            stories={this.props.stories}
+            handleStoriesChanged={this.props.handleStoriesChanged}
           />
         </div>
         <div className="stories">
