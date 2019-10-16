@@ -59,6 +59,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'pry-rails'
   gem 'guard-rspec'
+  gem 'shoulda-matchers'
 end
 
 group :development do
@@ -83,6 +84,8 @@ group :test do
   # Factories for creating database entities for testing
   gem 'factory_bot_rails'
   gem 'simplecov', require: false
+  # Gem with utilities to test controllers
+  gem 'rails-controller-testing'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

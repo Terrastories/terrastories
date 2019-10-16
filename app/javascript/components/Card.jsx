@@ -18,6 +18,7 @@ class Card extends Component {
     handleFilter: PropTypes.func,
     user: PropTypes.object,
     stories: PropTypes.array,
+    handleStoriesChanged: PropTypes.func,
     onStoryClick: PropTypes.func,
     logo_path: PropTypes.string,
     activeStory: PropTypes.object
@@ -75,6 +76,7 @@ class Card extends Component {
             <StoryList
               activeStory={this.props.activeStory}
               stories={this.props.stories}
+              handleStoriesChanged={this.props.handleStoriesChanged}
               onStoryClick={this.props.onStoryClick}
               handleFilter={this.props.handleFilter}
               clearFilteredStories={this.props.clearFilteredStories}

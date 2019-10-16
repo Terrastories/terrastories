@@ -10,11 +10,13 @@ This instructions are for Mapbox Community Days and Hacktoberfest, which everyon
 
 3. [Make it Go](#Make-It-Go)
 
-4. [Development](#development)
+6. [Common environment errors & gotchas](#having-troubles-check-our-common-errors--gotchas)
 
-5. [Importing data into Terrastories](#importing-data-into-terrastories)
+5. [Development](#development)
 
-6. [Adding languages to Terrastories](#adding-languages-to-terrastories)
+6. [Importing data into Terrastories](#importing-data-into-terrastories)
+
+7. [Adding languages to Terrastories](#adding-languages-to-terrastories)
 
 ## Docker Prerequisites
 
@@ -25,6 +27,8 @@ Install docker. On linux, you may have to install docker-compose separately.
 
 On Windows, all terminal docker commands need to be run using Windows PowerShell, not Command Prompt.
 PowerShell comes with Windows.
+
+On Linux, users should run all docker commands with `sudo` or check the [official documentation](https://docs.docker.com/install/linux/linux-postinstall/) to manage Docker as a non-root user.
 
 ## Setup and running the server
 
@@ -43,13 +47,21 @@ This will download and build all the docker images used in this project. Upon co
 Successfully tagged terrastories:latest
 ```
 
+**Linux** users should also run:
+
+```
+$ sudo docker-compose run web yarn install
+```
+
+for webpack to be loaded.
+
 The first time, run the following command to create your database and run the necessary migrations:
 
 ```
 $ docker-compose run web scripts/wait-for-it.sh db:5432 -- "rails db:create db:migrate db:seed"
 ```
 
-### Make It Go
+## Make It Go
 
 Run the following:
 
@@ -61,7 +73,13 @@ Use `ctrl-c` to stop.
 
 Once rails fully starts up, you can view the running app at `localhost:3000`
 
-### Development
+## Having troubles? Check our common errors & gotchas
+
+If you run into any problems getting the application to start, please check out a list of common errors & gotchas that we have put together [here](https://docs.google.com/document/d/1uSbQl56rAh3AA8Xm7IRZ8qepAMVN55ZOkAqQ8Kh423E/edit)!
+
+Additionally, feel free to join us in Slack [here](https://t.co/kUtI3lnpW1) and find us in the channel #terrastories :) You can also post an issue and label it with `question`. We will get back to you ASAP!
+
+## Development
 
 Most developer contributions will be focused on the rails app. Because this project uses
 docker, we already have a uniform ruby/rails development environment in our rails docker

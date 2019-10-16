@@ -1,4 +1,6 @@
 class Place < ApplicationRecord
+  MEDIA_PATH = Rails.env.test? ? 'spec/fixtures/media' : 'media'
+
   require 'csv'
   has_and_belongs_to_many :stories
   has_one_attached :photo
