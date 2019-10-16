@@ -18,7 +18,7 @@ Minimap.prototype = Object.assign({}, mapboxgl.NavigationControl.prototype, {
         id: "mapboxgl-minimap",
         width: "320px",
         height: "180px",
-        style: "mapbox://styles/mapbox/streets-v8",
+        style: "mapbox://styles/mapbox/light-v10",
         center: [0, 0],
         zoom: 6,
 
@@ -31,7 +31,12 @@ Minimap.prototype = Object.assign({}, mapboxgl.NavigationControl.prototype, {
             [16, 12, 14],
             [14, 10, 12],
             [12, 8, 10],
-            [10, 6, 8]
+            [10, 6, 8],
+            [8, 4, 6],
+            [6, 2, 4],
+            [3, 0, 2],
+            [1, 0, 0]
+
         ],
 
         lineColor: "#08F",
