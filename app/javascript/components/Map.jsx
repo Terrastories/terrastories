@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import MiniMap from './mapboxgl-control-minimap'
 
 // @NOTE: MAKE SURE ARRAY IS [LONGITUDE, LATITUDE]
 const defaultCenter = [-108, 38.5];
@@ -43,6 +44,7 @@ export default class Map extends Component {
     });
 
     this.map.addControl(new mapboxgl.NavigationControl());
+    this.map.addControl(new mapboxgl.Minimap(), 'top-right');
   }
 
   componentDidUpdate() {
