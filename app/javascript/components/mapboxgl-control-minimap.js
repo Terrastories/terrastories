@@ -43,7 +43,7 @@ Minimap.prototype = Object.assign({}, mapboxgl.NavigationControl.prototype, {
         lineWidth: 1,
         lineOpacity: 1,
 
-        fillColor: "#F80",
+        fillColor: "#d77a34",
         fillOpacity: 0.25,
 
         dragPan: false,
