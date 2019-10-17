@@ -6,6 +6,12 @@
   top: 0;
 }
 
+@media (max-width: 1200px) {
+  .mapboxgl-ctrl-minimap {
+    display: none;
+  }
+}
+
 html {
   padding: 0;
   margin: 0;
