@@ -1,3 +1,5 @@
+// Mapbox GL Minimap Control (https://github.com/aesqe/mapboxgl-minimap) by aesque
+
 function Minimap ( options )
 {
     Object.assign(this.options, options);
