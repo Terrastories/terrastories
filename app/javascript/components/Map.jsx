@@ -43,8 +43,8 @@ export default class Map extends Component {
       this.addHomeButton();
     });
 
-    this.map.addControl(new mapboxgl.NavigationControl());
     this.map.addControl(new mapboxgl.Minimap(), 'top-right');
+    this.map.addControl(new mapboxgl.NavigationControl());
   }
 
   componentDidUpdate() {
