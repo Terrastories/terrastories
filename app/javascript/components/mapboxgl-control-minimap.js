@@ -39,7 +39,7 @@ Minimap.prototype = Object.assign({}, mapboxgl.NavigationControl.prototype, {
 
         ],
 
-        lineColor: "#08F",
+        lineColor: "#136a7e",
         lineWidth: 1,
         lineOpacity: 1,
 
@@ -308,7 +308,8 @@ Minimap.prototype = Object.assign({}, mapboxgl.NavigationControl.prototype, {
         var container = document.createElement("div");
 
         container.className = "mapboxgl-ctrl-minimap mapboxgl-ctrl";
-        container.setAttribute('style', 'width: ' + opts.width + '; height: ' + opts.height + ';');
+        var containerBorder = "border: 3px solid #136a7e";
+        container.setAttribute('style', `width: ${opts.width}; height: ${opts.height}; ${containerBorder}`);
         container.addEventListener("contextmenu", this._preventDefault);
 
         parentMap.getContainer().appendChild(container);
