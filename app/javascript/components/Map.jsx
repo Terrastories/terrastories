@@ -20,7 +20,7 @@ export default class Map extends Component {
   static propTypes = {
     activePoint: PropTypes.object,
     points: PropTypes.object,
-    pointCoords: PropTypes.array,
+    framedView: PropTypes.object,
     onMapPointClick: PropTypes.func,
     mapboxStyle: PropTypes.string,
     mapboxAccessToken: PropTypes.string
@@ -68,15 +68,7 @@ export default class Map extends Component {
     }
 
     if (this.props.framedView) {
-      console.log("framed view: ", this.props.framedView)
       this.map.easeTo({ ...this.props.framedView, duration: 2000.0 });
-      return;
-    }
-
-    if (this.props.pointCoords.length > 0) {
-      if (this.map) {
-        this.map.panTo(this.props.pointCoords);
-      }
       return;
     } else {
       if (this.map) {

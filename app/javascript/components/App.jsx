@@ -10,7 +10,6 @@ class App extends Component {
     super(props);
     this.state = {
       framedView: null, // store information about how view should be laid out
-      pointCoords: [], // TODO: replace usage with framedView
       points: {},
       stories: this.props.stories,
       activePoint: null,
@@ -134,8 +133,8 @@ class App extends Component {
   handleStoryClick = story => {
     // set active to first point in story
     const point = story.points[0];
-    const pointCoords = point.geometry.coordinates;
-    this.setState({activePoint: point, activeStory: story, pointCoords: pointCoords});
+    const framedView = { center: point.geometry.coordinates };
+    this.setState({activePoint: point, activeStory: story, framedView});
   }
 
   resetStoriesAndMap = () => {
@@ -143,7 +142,7 @@ class App extends Component {
     this.setState({
       stories: this.props.stories,
       points: points,
-      pointCoords: [],
+      framedView: null,
       activePoint: null,
       activeStory: null
     });
@@ -152,7 +151,8 @@ class App extends Component {
   handleMapPointClick = (point, stories) => {
     console.log(point);
     this.showMapPointStories(stories);
-    this.setState({activePoint: point, pointCoords: point.geometry.coordinates, framedView: null});
+    const framedView = { center: point.geometry.coordinates };
+    this.setState({activePoint: point, framedView});
   }
 
   render() {
@@ -160,7 +160,6 @@ class App extends Component {
       <div>
         <Map
           points={this.state.points}
-          pointCoords={this.state.pointCoords}
           mapboxAccessToken={this.props.mapbox_access_token}
           mapboxStyle={this.props.mapbox_style}
           clearFilteredStories={this.resetStoriesAndMap}
