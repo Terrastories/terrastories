@@ -69,7 +69,7 @@ export default class Map extends Component {
       this.updateMarkers();
     }
 
-    if (this.props.framedView) {
+    if (this.props.framedView && this.props.framedView !== prevProps.framedView) {
       const {bounds, ...frameOptions} = this.props.framedView;
       if (bounds) {
         this.map.fitBounds(bounds, { duration: 2000.0, ...frameOptions })
