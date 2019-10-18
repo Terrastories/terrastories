@@ -70,7 +70,12 @@ export default class Map extends Component {
     }
 
     if (this.props.framedView) {
-      this.map.easeTo({ ...this.props.framedView, duration: 2000.0 });
+      const {bounds, ...frameOptions} = this.props.framedView;
+      if (bounds) {
+        this.map.fitBounds(bounds, { duration: 2000.0, ...frameOptions })
+      } else {
+        this.map.easeTo({ duration: 2000.0, ...frameOptions });
+      }
       return;
     } else {
       if (this.map) {
@@ -181,7 +186,6 @@ export default class Map extends Component {
   }
 
   render() {
-    console.log("map");
     return (
       <div ref={
         el => this.mapContainer = el

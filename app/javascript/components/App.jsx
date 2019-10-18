@@ -4,6 +4,7 @@ import Map from './Map';
 import Card from './Card';
 import IntroPopup from './IntroPopup';
 import {FILTER_CATEGORIES} from '../constants/FilterConstants';
+import bbox from "@turf/bbox";
 
 class App extends Component {
   constructor(props) {
@@ -32,8 +33,10 @@ class App extends Component {
 
   getPointsFromStories = stories => {
     const points = stories.map(story => story.points).flat();
-    const pointObj = {};
-    pointObj['features'] = points;
+    const pointObj = {
+      type: "FeatureCollection",
+      features: points
+    };
     return pointObj;
   }
 
@@ -106,12 +109,10 @@ class App extends Component {
     }
     if (filteredStories) {
       const filteredPoints = this.getPointsFromStories(filteredStories);
-
+      const bounds = bbox(filteredPoints);
       const framedView = {
-        center: [-108, 38.5],
-        zoom: 8.5,
-        pitch: 0,
-        bearing: 0
+        bounds,
+        maxZoom: 12
       };
       this.setState({ stories: filteredStories, points: filteredPoints, framedView });
     }
