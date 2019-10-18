@@ -9,7 +9,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pointCoords: [],
+      framedView: null, // store information about how view should be laid out
+      pointCoords: [], // TODO: replace usage with framedView
       points: {},
       stories: this.props.stories,
       activePoint: null,
@@ -106,7 +107,14 @@ class App extends Component {
     }
     if (filteredStories) {
       const filteredPoints = this.getPointsFromStories(filteredStories);
-      this.setState({ stories: filteredStories, points: filteredPoints, pointCoords: [] });
+
+      const framedView = {
+        center: [-108, 38.5],
+        zoom: 8.5,
+        pitch: 0,
+        bearing: 0
+      };
+      this.setState({ stories: filteredStories, points: filteredPoints, framedView });
     }
   }
 
@@ -144,7 +152,7 @@ class App extends Component {
   handleMapPointClick = (point, stories) => {
     console.log(point);
     this.showMapPointStories(stories);
-    this.setState({activePoint: point, pointCoords: point.geometry.coordinates});
+    this.setState({activePoint: point, pointCoords: point.geometry.coordinates, framedView: null});
   }
 
   render() {
@@ -158,6 +166,7 @@ class App extends Component {
           clearFilteredStories={this.resetStoriesAndMap}
           onMapPointClick={this.handleMapPointClick}
           activePoint={this.state.activePoint}
+          framedView={this.state.framedView}
         />
         <Card
           activeStory={this.state.activeStory}

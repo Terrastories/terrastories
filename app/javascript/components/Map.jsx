@@ -45,7 +45,7 @@ export default class Map extends Component {
     this.map.addControl(new mapboxgl.NavigationControl());
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     // update popups
     // only display one at a time, remove all other popups
     const popupNodes = document.getElementsByClassName('mapboxgl-popup');
@@ -65,6 +65,12 @@ export default class Map extends Component {
       const popupNodes = document.getElementsByClassName('mapboxgl-marker');
       Array.from(popupNodes).forEach(node => node.remove());
       this.updateMarkers();
+    }
+
+    if (this.props.framedView) {
+      console.log("framed view: ", this.props.framedView)
+      this.map.easeTo({ ...this.props.framedView, duration: 2000.0 });
+      return;
     }
 
     if (this.props.pointCoords.length > 0) {
@@ -181,6 +187,7 @@ export default class Map extends Component {
   }
 
   render() {
+    console.log("map");
     return (
       <div ref={
         el => this.mapContainer = el
