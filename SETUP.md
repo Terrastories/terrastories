@@ -118,3 +118,12 @@ For the `devise` and `administrate` files, there might be available translations
 If you want to change the default language for Terrastories, set the language on line 21 in `rails/config/application.rb`. To set it to Papiamentu, change this line to `config.i18n.default_locale = :pap`
 
 Once you are done, the language should be available the next time you start Terrastories.
+
+## Tools that we use for development
+
+* Rubocop: linting and styleguide
+
+Please check https://rubocop.readthedocs.io/en/latest/integration_with_other_tools/#editor-integration to read about how to integrate Rubocop with your favourite editor. 
+
+* Jest: js test runner
+* SimpleCov: code coverage metric
