@@ -11,7 +11,7 @@ class UserDashboard < Administrate::BaseDashboard
     id: Field::Number,
     email: Field::String,
     role: EnumField,
-    password: Field::String,
+    password: Field::String.with_options(searchable: false),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
