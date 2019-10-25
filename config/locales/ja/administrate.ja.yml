@@ -1,0 +1,69 @@
+ja:
+  administrate:
+    actions:
+      confirm: "よろしいですか？"
+      destroy: "削除"
+      edit: "編集"
+      edit_resource: "%{name}編集"
+      show_resource: "%{name}"
+      new_resource: "%{name}新規作成"
+      back: "戻る"
+    controller:
+      create:
+        success: "%{resource}が作成されました。"
+      destroy:
+        success: "%{resource}が削除されました。"
+      update:
+        success: "%{resource}が更新されました。"
+    fields:
+      has_many:
+        more: "全%{total_count}中%{count}件"
+        none: None
+    file_to_update: "アップロードファイル"
+    form:
+      error: "エラー"
+      errors: "%{pluralized_errors}件のエラーが発生しました。%{resource_name}は保存されません。"
+    import_button: "%{resource}インポート"
+    places: "プレース"
+    place: "プレース"
+    search:
+      clear: "クリア"
+      label: "%{resource}検索"
+    speakers: "スピーカー"
+    speaker: "スピーカー"
+    stories: "ストーリー"
+    story: "ストーリー"
+    table_columns:
+      user:
+        id: ID
+        email: Email
+        role: "ロール"
+      speaker:
+        id: ID
+        photo: "フォト"
+        name: "名前"
+        birthdate: "誕生日"
+        birthplace: "出生地"
+      story:
+        id: ID
+        title: "タイトル"
+        desc: "説明文"
+        language: "言語"
+        speakers: "スピーカー"
+        interview_location: "インタビュー場所"
+        interviewer: "インタビュアー"
+        date_interviewed: "インタビュー日"
+        places: "プレース"
+        permission_level: "パーミッションレベル"
+      place:
+        id: ID
+        name: "名前"
+        description: "説明文"
+        type_of_place: "プレースタイプ"
+        region: "リージョン"
+        long: "経度"
+        lat: "緯度"
+        stories: "ストーリー"
+        photo: "フォト"
+    users: "ユーザー"
+    user: "ユーザー"
