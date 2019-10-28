@@ -1,4 +1,5 @@
 # Setup for Hacktoberfest and Mapbox Community Days
+
 This instructions are for Mapbox Community Days and Hacktoberfest, which everyone is invited to participate in. It runs through last day of October. The instructions here are only for setting up your development environment. Please contact the stewards of this repo if you need assistance setting up an offline production environment.
 
 ## Table of Contents
@@ -9,21 +10,25 @@ This instructions are for Mapbox Community Days and Hacktoberfest, which everyon
 
 3. [Make it Go](#Make-It-Go)
 
-4. [Development](#development)
+6. [Common environment errors & gotchas](#having-troubles-check-our-common-errors--gotchas)
 
-5. [Importing data into Terrastories](#importing-data-into-terrastories)
+5. [Development](#development)
 
-6. [Adding languages to Terrastories](#adding-languages-to-terrastories)
+6. [Importing data into Terrastories](#importing-data-into-terrastories)
+
+7. [Adding languages to Terrastories](#adding-languages-to-terrastories)
 
 ## Docker Prerequisites
 
 Install docker. On linux, you may have to install docker-compose separately.
 
- - https://docs.docker.com/install/
- - https://docs.docker.com/compose/install/
+- https://docs.docker.com/install/
+- https://docs.docker.com/compose/install/
 
 On Windows, all terminal docker commands need to be run using Windows PowerShell, not Command Prompt.
 PowerShell comes with Windows.
+
+On Linux, users should run all docker commands with `sudo` or check the [official documentation](https://docs.docker.com/install/linux/linux-postinstall/) to manage Docker as a non-root user.
 
 ## Setup and running the server
 
@@ -32,15 +37,23 @@ First update your `.env` file using `.env.example` as a reference. You will need
 On a fresh clone of this repo, run:
 
 ```
-$ docker-compose build 
+$ docker-compose build
 ```
 
-This will download and build all the docker images used in this project.  Upon completion you should see output similar to:.
+This will download and build all the docker images used in this project. Upon completion you should see output similar to:.
 
 ```
 ...
 Successfully tagged terrastories:latest
 ```
+
+**Linux** users should also run:
+
+```
+$ sudo docker-compose run web yarn install
+```
+
+for webpack to be loaded.
 
 The first time, run the following command to create your database and run the necessary migrations:
 
@@ -48,8 +61,10 @@ The first time, run the following command to create your database and run the ne
 $ docker-compose run web scripts/wait-for-it.sh db:5432 -- "rails db:create db:migrate db:seed"
 ```
 
-### Make It Go
+## Make It Go
+
 Run the following:
+
 ```
 $ docker-compose up
 ```
@@ -58,7 +73,13 @@ Use `ctrl-c` to stop.
 
 Once rails fully starts up, you can view the running app at `localhost:3000`
 
-### Development
+## Having troubles? Check our common errors & gotchas
+
+If you run into any problems getting the application to start, please check out a list of common errors & gotchas that we have put together [here](https://docs.google.com/document/d/1uSbQl56rAh3AA8Xm7IRZ8qepAMVN55ZOkAqQ8Kh423E/edit)!
+
+Additionally, feel free to join us in Slack [here](https://t.co/kUtI3lnpW1) and find us in the channel #terrastories :) You can also post an issue and label it with `question`. We will get back to you ASAP!
+
+## Development
 
 Most developer contributions will be focused on the rails app. Because this project uses
 docker, we already have a uniform ruby/rails development environment in our rails docker
@@ -68,6 +89,12 @@ open a bash console on the rails container:
 
 ```
 $ docker exec terrastories_web_1 /bin/bash
+```
+
+or
+
+```
+$ docker exec -it terrastories_web_1 /bin/bash
 ```
 
 Now you can treat this console like any other development environment, running rails or
@@ -96,9 +123,9 @@ Terrastories uses internationalization to translate the application's core text,
 
 To add a language to Terrastories, navigate to the `rails/config/locales/` directory. Within this directory, each language has it's own subdirectory, like `en` (English) or `pt` (Portuguese). Currently, there are three files in each (using Portuguese as an example):
 
- 1. `pt.yml`
- 2. `devise.pt.yml`
- 3. `administrate.pt.yml`
+1.  `pt.yml`
+2.  `devise.pt.yml`
+3.  `administrate.pt.yml`
 
 `pt.yml` contains the custom text used in the Terrastories application. `devise.pt.yml` and `administrative.pt.yml` are used by the administrative back end.
 

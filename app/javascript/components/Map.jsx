@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import MiniMap from './mapboxgl-control-minimap'
 
 // @NOTE: MAKE SURE ARRAY IS [LONGITUDE, LATITUDE]
 const defaultCenter = [-108, 38.5];
@@ -20,7 +21,7 @@ export default class Map extends Component {
   static propTypes = {
     activePoint: PropTypes.object,
     points: PropTypes.object,
-    pointCoords: PropTypes.array,
+    framedView: PropTypes.object,
     onMapPointClick: PropTypes.func,
     mapboxStyle: PropTypes.string,
     mapboxAccessToken: PropTypes.string
@@ -42,10 +43,11 @@ export default class Map extends Component {
       this.addHomeButton();
     });
 
+    this.map.addControl(new mapboxgl.Minimap(), 'top-right');
     this.map.addControl(new mapboxgl.NavigationControl());
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     // update popups
     // only display one at a time, remove all other popups
     const popupNodes = document.getElementsByClassName('mapboxgl-popup');
@@ -67,9 +69,12 @@ export default class Map extends Component {
       this.updateMarkers();
     }
 
-    if (this.props.pointCoords.length > 0) {
-      if (this.map) {
-        this.map.panTo(this.props.pointCoords);
+    if (this.props.framedView && this.props.framedView !== prevProps.framedView) {
+      const {bounds, ...frameOptions} = this.props.framedView;
+      if (bounds) {
+        this.map.fitBounds(bounds, { duration: 2000.0, ...frameOptions })
+      } else {
+        this.map.easeTo({ duration: 2000.0, ...frameOptions });
       }
       return;
     } else {

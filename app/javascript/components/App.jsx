@@ -4,12 +4,13 @@ import Map from './Map';
 import Card from './Card';
 import IntroPopup from './IntroPopup';
 import {FILTER_CATEGORIES} from '../constants/FilterConstants';
+import bbox from "@turf/bbox";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pointCoords: [],
+      framedView: null, // store information about how view should be laid out
       points: {},
       stories: this.props.stories,
       activePoint: null,
@@ -32,8 +33,10 @@ class App extends Component {
 
   getPointsFromStories = stories => {
     const points = stories.map(story => story.points).flat();
-    const pointObj = {};
-    pointObj['features'] = points;
+    const pointObj = {
+      type: "FeatureCollection",
+      features: points
+    };
     return pointObj;
   }
 
@@ -106,7 +109,12 @@ class App extends Component {
     }
     if (filteredStories) {
       const filteredPoints = this.getPointsFromStories(filteredStories);
-      this.setState({ stories: filteredStories, points: filteredPoints, pointCoords: [] });
+      const bounds = bbox(filteredPoints);
+      const framedView = {
+        bounds,
+        maxZoom: 12
+      };
+      this.setState({ stories: filteredStories, points: filteredPoints, framedView });
     }
   }
 
@@ -119,11 +127,15 @@ class App extends Component {
     }
   }
 
+  handleStoriesChanged = (stories) => {
+    this.setState({ stories: stories })
+  }
+
   handleStoryClick = story => {
     // set active to first point in story
     const point = story.points[0];
-    const pointCoords = point.geometry.coordinates;
-    this.setState({activePoint: point, activeStory: story, pointCoords: pointCoords});
+    const framedView = { center: point.geometry.coordinates };
+    this.setState({activePoint: point, activeStory: story, framedView});
   }
 
   resetStories = () => {
@@ -131,6 +143,10 @@ class App extends Component {
     this.setState({
       stories: this.props.stories,
       points: points,
+<<<<<<< HEAD
+=======
+      framedView: null,
+>>>>>>> 49d8ed7b05774929493f20eddf48a22cf4bb9781
       activePoint: null,
       activeStory: null
     });
@@ -146,7 +162,8 @@ class App extends Component {
   handleMapPointClick = (point, stories) => {
     console.log(point);
     this.showMapPointStories(stories);
-    this.setState({activePoint: point, pointCoords: point.geometry.coordinates});
+    const framedView = { center: point.geometry.coordinates };
+    this.setState({activePoint: point, framedView});
   }
 
   render() {
@@ -154,16 +171,17 @@ class App extends Component {
       <div>
         <Map
           points={this.state.points}
-          pointCoords={this.state.pointCoords}
           mapboxAccessToken={this.props.mapbox_access_token}
           mapboxStyle={this.props.mapbox_style}
           onMapPointClick={this.handleMapPointClick}
           onPopupClose={this.resetStories}
           activePoint={this.state.activePoint}
+          framedView={this.state.framedView}
         />
         <Card
           activeStory={this.state.activeStory}
           stories={this.state.stories}
+          handleStoriesChanged={this.handleStoriesChanged}
           categories={FILTER_CATEGORIES}
           filterMap={this.filterMap()}
           handleFilter={this.handleFilter}

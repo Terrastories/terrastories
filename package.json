@@ -6,6 +6,8 @@
   },
   "dependencies": {
     "@rails/webpacker": "3.5",
+    "@turf/bbox": "^6.0.1",
+    "@turf/helpers": "^6.1.4",
     "babel-jest": "^23.6.0",
     "babel-preset-react": "^6.24.1",
     "fstream": "1.0.12",

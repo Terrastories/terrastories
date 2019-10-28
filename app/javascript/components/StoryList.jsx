@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import StoryMedia from "./StoryMedia";
 import Filter from "./Filter";
+import Sort from "./Sort";
 import { List, AutoSizer, CellMeasurer, CellMeasurerCache } from "react-virtualized";
 
 class StoryList extends Component {
@@ -16,6 +17,7 @@ class StoryList extends Component {
 
   static propTypes = {
     stories: PropTypes.array,
+    handleStoriesChanged: PropTypes.func,
     handleFilter: PropTypes.func,
     clearFilteredStories: PropTypes.func,
     onStoryClick: PropTypes.func,
@@ -50,10 +52,16 @@ class StoryList extends Component {
 
   handleFilter = (category, item) => {
     this.props.handleFilter(category, item);
+    this._list.scrollToPosition(0);
   }
 
   getStorySpeakerNames = story => {
     return story.speakers.map(function(speaker) { return speaker.name }).join(',');
+  }
+
+  handleClearFilteredStories = () => {
+    this.props.clearFilteredStories();
+    this._list.scrollToPosition(0);
   }
 
   renderStory = ({ key, index, style, parent }) => {
@@ -113,7 +121,11 @@ class StoryList extends Component {
             handleFilter={this.handleFilter}
             categories={this.props.categories}
             filterMap={this.props.filterMap}
-            clearFilteredStories={this.props.clearFilteredStories}
+            clearFilteredStories={this.handleClearFilteredStories}
+          />
+          <Sort
+            stories={this.props.stories}
+            handleStoriesChanged={this.props.handleStoriesChanged}
           />
         </div>
         <div className="stories">

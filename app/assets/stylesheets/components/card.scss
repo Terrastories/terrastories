@@ -103,11 +103,11 @@ $el-shadow: 0 1px 4px #bbb;
     font-family: sans-serif;
     margin-bottom: 0.75rem;
 
-    &-filter {
+    &-filter, &-sort {
       font-family: 'OpenSansCondensed';
     }
 
-    .categoryFilter {
+    .categoryFilter .storiesSort {
       margin: 0.5rem 0;
     }
   }
