@@ -1,100 +1,87 @@
-import React, { Component } from 'react';
-import Select from 'react-select';
-import PropTypes from 'prop-types';
+import React, { useState } from "react";
+import Select from "react-select";
+import PropTypes from "prop-types";
 
-class Filter extends Component {
+const Filter = props => {
+  let DEFAULT_CATEGORY_PLACEHOLDER = I18n.t("select_category");
+  let DEFAULT_ITEM_PLACEHOLDER = I18n.t("select_option");
 
-  DEFAULT_CATEGORY_PLACEHOLDER = I18n.t("select_category");
-  DEFAULT_ITEM_PLACEHOLDER = I18n.t("select_option");
+  const [itemOptions, setItemOptions] = useState([]);
+  const [categorySelectValue, setCategorySelectValue] = useState(
+    DEFAULT_CATEGORY_PLACEHOLDER
+  );
+  const [itemSelectValue, setItemSelectValue] = useState(
+    DEFAULT_ITEM_PLACEHOLDER
+  );
 
-  constructor(props){
-    super(props);
-    this.state = {
-      itemOptions: [],
-      categorySelectValue: this.DEFAULT_CATEGORY_PLACEHOLDER,
-      itemSelectValue: this.DEFAULT_ITEM_PLACEHOLDER
-    };
-  }
-
-  static propTypes = {
-    categories: PropTypes.array,
-    filterMap: PropTypes.object,
-    clearFilteredStories: PropTypes.func,
-    handleFilter: PropTypes.func
-  };
-
-  static defaultProps = {
-    categories: [],
-    filterMap: {},
-    clearFilteredStories: () => {}
-  };
-
-  handleCategoryChange = option => {
+  const handleCategoryChange = option => {
     if (option === null) {
-      this.props.clearFilteredStories();
-      this.setState({
-        itemOptions: [],
-        categorySelectValue: this.DEFAULT_CATEGORY_PLACEHOLDER,
-        itemSelectValue: this.DEFAULT_ITEM_PLACEHOLDER
-      });
+      props.clearFilteredStories();
+      setCategorySelectValue(DEFAULT_ITEM_PLACEHOLDER);
+      setItemSelectValue(DEFAULT_ITEM_PLACEHOLDER);
     } else {
       const category = option.value;
-      ('Picked category ', category);
-      this.setState({
-        categorySelectValue: category,
-        itemOptions: this.props.filterMap[category],
-        itemSelectValue: this.DEFAULT_ITEM_PLACEHOLDER
-      });
+      "Picked category ", category;
+      setCategorySelectValue(category);
+      setItemOptions(props.filterMap[category]);
+      setItemSelectValue(DEFAULT_ITEM_PLACEHOLDER);
     }
-  }
+  };
 
-  handleItemChange = option => {
+  const handleItemChange = option => {
     if (option === null) {
-      this.props.clearFilteredStories();
-      this.setState({
-        itemSelectValue: this.DEFAULT_ITEM_PLACEHOLDER
-      })
+      props.clearFilteredStories();
+      setItemSelectValue(DEFAULT_ITEM_PLACEHOLDER);
     } else {
       const item = option.value;
-      this.props.handleFilter(this.state.categorySelectValue, item);
-      this.setState({
-        itemSelectValue: item
-      });
+      props.handleFilter(categorySelectValue, item);
+      setItemSelectValue(item);
     }
-  }
+  };
 
-  optionsHash = options => {
+  const optionsHash = options => {
     return options.map(option => {
-      return {value: option, label: option};
+      return { value: option, label: option };
     });
-  }
+  };
 
-  render() {
-    return (
-      <React.Fragment>
-        <span className="card--nav-filter">{I18n.t("filter_stories")}: </span>
-        <Select
-          className="categoryFilter"
-          classNamePrefix="select"
-          value={this.optionsHash([this.state.categorySelectValue])}
-          onChange={this.handleCategoryChange}
-          isClearable={this.state.categorySelectValue !== this.DEFAULT_CATEGORY_PLACEHOLDER}
-          name="filter-categories"
-          options={this.optionsHash(this.props.categories)}
-        />
-        <Select
-          className="itemFilter"
-          classNamePrefix="select"
-          value={this.optionsHash([this.state.itemSelectValue])}
-          onChange={this.handleItemChange}
-          isClearable={this.state.itemSelectValue !== this.DEFAULT_ITEM_PLACEHOLDER}
-          isSearchable={true}
-          name="filter-items"
-          options={this.optionsHash(this.state.itemOptions)}
-        />
-      </React.Fragment>
-    );
-  }
-}
+  return (
+    <React.Fragment>
+      <span className="card--nav-filter">{I18n.t("filter_stories")}: </span>
+      <Select
+        className="categoryFilter"
+        classNamePrefix="select"
+        value={optionsHash([categorySelectValue])}
+        onChange={handleCategoryChange}
+        isClearable={categorySelectValue !== DEFAULT_CATEGORY_PLACEHOLDER}
+        name="filter-categories"
+        options={optionsHash(props.categories)}
+      />
+      <Select
+        className="itemFilter"
+        classNamePrefix="select"
+        value={optionsHash([itemSelectValue])}
+        onChange={handleItemChange}
+        isClearable={itemSelectValue !== DEFAULT_ITEM_PLACEHOLDER}
+        isSearchable={true}
+        name="filter-items"
+        options={optionsHash(itemOptions)}
+      />
+    </React.Fragment>
+  );
+};
+
+Filter.propTypes = {
+  categories: PropTypes.array,
+  filterMap: PropTypes.object,
+  clearFilteredStories: PropTypes.func,
+  handleFilter: PropTypes.func
+};
+
+Filter.defaultProps = {
+  categories: [],
+  filterMap: {},
+  clearFilteredStories: () => {}
+};
 
 export default Filter;
