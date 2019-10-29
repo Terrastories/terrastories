@@ -23,7 +23,12 @@ class StoryList extends Component {
     onStoryClick: PropTypes.func,
     filterMap: PropTypes.object,
     categories: PropTypes.array,
-    activeStory: PropTypes.object
+    activeStory: PropTypes.object,
+    filterCategory: PropTypes.string,
+    filterItem: PropTypes.string,
+    handleFilterCategoryChange: PropTypes.func,
+    handleFilterItemChange: PropTypes.func,
+    itemOptions: PropTypes.array
   };
 
   // In React 16.3.0, update method to getSnapshotBeforeUpdate
@@ -122,6 +127,11 @@ class StoryList extends Component {
             categories={this.props.categories}
             filterMap={this.props.filterMap}
             clearFilteredStories={this.handleClearFilteredStories}
+            filterCategory={this.props.filterCategory}
+            filterItem={this.props.filterItem}
+            handleFilterCategoryChange={this.props.handleFilterCategoryChange}
+            handleFilterItemChange={this.props.handleFilterItemChange}
+            itemOptions={this.props.itemOptions}
           />
           <Sort
             stories={this.props.stories}
