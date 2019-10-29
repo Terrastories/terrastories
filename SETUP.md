@@ -47,7 +47,7 @@ This will download and build all the docker images used in this project. Upon co
 Successfully tagged terrastories:latest
 ```
 
-**Linux** users should also run:
+**Linux** and **Windows** users should also run:
 
 ```
 $ sudo docker-compose run web yarn install
