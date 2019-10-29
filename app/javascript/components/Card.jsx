@@ -21,7 +21,12 @@ class Card extends Component {
     handleStoriesChanged: PropTypes.func,
     onStoryClick: PropTypes.func,
     logo_path: PropTypes.string,
-    activeStory: PropTypes.object
+    activeStory: PropTypes.object,
+    filterCategory: PropTypes.string,
+    filterItem: PropTypes.string,
+    handleFilterCategoryChange: PropTypes.func,
+    handleFilterItemChange: PropTypes.func,
+    itemOptions: PropTypes.array
   };
 
   static defaultProps = {
@@ -82,6 +87,11 @@ class Card extends Component {
               clearFilteredStories={this.props.clearFilteredStories}
               filterMap={this.props.filterMap}
               categories={this.props.categories}
+              filterCategory={this.props.filterCategory}
+              filterItem={this.props.filterItem}
+              handleFilterCategoryChange={this.props.handleFilterCategoryChange}
+              handleFilterItemChange={this.props.handleFilterItemChange}
+              itemOptions={this.props.itemOptions}
             />
 
             <div className="card--tasks">

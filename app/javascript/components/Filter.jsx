@@ -6,38 +6,9 @@ const Filter = props => {
   let DEFAULT_CATEGORY_PLACEHOLDER = I18n.t("select_category");
   let DEFAULT_ITEM_PLACEHOLDER = I18n.t("select_option");
 
-  const [itemOptions, setItemOptions] = useState([]);
-  const [categorySelectValue, setCategorySelectValue] = useState(
-    DEFAULT_CATEGORY_PLACEHOLDER
-  );
-  const [itemSelectValue, setItemSelectValue] = useState(
-    DEFAULT_ITEM_PLACEHOLDER
-  );
+  const handleCategoryChange = option => props.handleFilterCategoryChange(option);
 
-  const handleCategoryChange = option => {
-    if (option === null) {
-      props.clearFilteredStories();
-      setCategorySelectValue(DEFAULT_ITEM_PLACEHOLDER);
-      setItemSelectValue(DEFAULT_ITEM_PLACEHOLDER);
-    } else {
-      const category = option.value;
-      "Picked category ", category;
-      setCategorySelectValue(category);
-      setItemOptions(props.filterMap[category]);
-      setItemSelectValue(DEFAULT_ITEM_PLACEHOLDER);
-    }
-  };
-
-  const handleItemChange = option => {
-    if (option === null) {
-      props.clearFilteredStories();
-      setItemSelectValue(DEFAULT_ITEM_PLACEHOLDER);
-    } else {
-      const item = option.value;
-      props.handleFilter(categorySelectValue, item);
-      setItemSelectValue(item);
-    }
-  };
+  const handleItemChange = option => props.handleFilterItemChange(option);
 
   const optionsHash = options => {
     return options.map(option => {
@@ -51,21 +22,21 @@ const Filter = props => {
       <Select
         className="categoryFilter"
         classNamePrefix="select"
-        value={optionsHash([categorySelectValue])}
+        value={optionsHash([props.filterCategory])}
         onChange={handleCategoryChange}
-        isClearable={categorySelectValue !== DEFAULT_CATEGORY_PLACEHOLDER}
+        isClearable={props.filterCategory !== DEFAULT_CATEGORY_PLACEHOLDER}
         name="filter-categories"
         options={optionsHash(props.categories)}
       />
       <Select
         className="itemFilter"
         classNamePrefix="select"
-        value={optionsHash([itemSelectValue])}
+        value={optionsHash([props.filterItem])}
         onChange={handleItemChange}
-        isClearable={itemSelectValue !== DEFAULT_ITEM_PLACEHOLDER}
+        isClearable={props.filterItem !== DEFAULT_ITEM_PLACEHOLDER}
         isSearchable={true}
         name="filter-items"
-        options={optionsHash(itemOptions)}
+        options={optionsHash(props.itemOptions)}
       />
     </React.Fragment>
   );
@@ -75,7 +46,10 @@ Filter.propTypes = {
   categories: PropTypes.array,
   filterMap: PropTypes.object,
   clearFilteredStories: PropTypes.func,
-  handleFilter: PropTypes.func
+  handleFilter: PropTypes.func,
+  handleFilterCategoryChange: PropTypes.func,
+  handleFilterItemChange: PropTypes.func,
+  itemOptions: PropTypes.array
 };
 
 Filter.defaultProps = {

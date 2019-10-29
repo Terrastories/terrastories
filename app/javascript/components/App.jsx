@@ -6,6 +6,9 @@ import IntroPopup from "./IntroPopup";
 import FILTER_CATEGORIES from "../constants/FilterConstants";
 import bbox from "@turf/bbox";
 
+let DEFAULT_CATEGORY_PLACEHOLDER = I18n.t("select_category");
+let DEFAULT_ITEM_PLACEHOLDER = I18n.t("select_option");
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -14,8 +17,11 @@ class App extends Component {
       points: {},
       stories: this.props.stories,
       activePoint: null,
-      activeStory: null
-    };
+      activeStory: null,
+      filterCategory: DEFAULT_CATEGORY_PLACEHOLDER,
+      filterItem: DEFAULT_ITEM_PLACEHOLDER,
+      itemOptions: []
+    }
   }
 
   static propTypes = {
@@ -158,6 +164,26 @@ class App extends Component {
     }
   };
 
+  handleFilterCategoryChange = option => {
+    if (option === null) {
+      this.resetStoriesAndMap();
+    } else {
+      const category = option.value;
+      "Picked category ", category;
+      this.setState({ filterCategory: category, itemOptions: this.filterMap()[category] })
+    }
+  }
+
+  handleFilterItemChange = option => {
+    if (option === null) {
+      this.resetStoriesAndMap();
+    } else {
+      const item = option.value;
+      this.handleFilter(this.state.filterCategory, item);
+      this.setState({ filterItem: item });
+    }
+  }
+
   showMapPointStories = stories => {
     let storyTitles = stories.map(story => story.title);
     let filteredStories = [];
@@ -190,7 +216,9 @@ class App extends Component {
       points: points,
       framedView: null,
       activePoint: null,
-      activeStory: null
+      activeStory: null,
+      filterCategory: DEFAULT_CATEGORY_PLACEHOLDER,
+      filterItem: DEFAULT_ITEM_PLACEHOLDER
     });
   };
 
@@ -224,6 +252,11 @@ class App extends Component {
           onStoryClick={this.handleStoryClick}
           logo_path={this.props.logo_path}
           user={this.props.user}
+          filterCategory={this.state.filterCategory}
+          filterItem={this.state.filterItem}
+          handleFilterCategoryChange={this.handleFilterCategoryChange}
+          handleFilterItemChange={this.handleFilterItemChange}
+          itemOptions={this.state.itemOptions}
         />
         <IntroPopup />
       </div>
