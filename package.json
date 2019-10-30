@@ -2,7 +2,8 @@
   "name": "app",
   "private": true,
   "scripts": {
-    "jest": "jest"
+    "jest": "jest",
+    "lint": "eslint ."
   },
   "dependencies": {
     "@rails/webpacker": "3.5",
