@@ -1,2 +1,12 @@
 # vendor files
 app/javascript/vendor/*
+
+# FIXME: Can be split out later into refactoring tickets
+app/javascript/components/App.jsx
+app/javascript/components/Card.jsx
+app/javascript/components/Filter.jsx
+app/javascript/components/IntroPopup.jsx
+app/javascript/components/Map.jsx
+app/javascript/components/Sort.jsx
+app/javascript/components/StoryList.jsx
+app/javascript/components/StoryMedia.jsx
