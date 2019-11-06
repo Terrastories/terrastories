@@ -18,6 +18,8 @@ This instructions are for Mapbox Community Days and Hacktoberfest, which everyon
 
 7. [Adding languages to Terrastories](#adding-languages-to-terrastories)
 
+8. [Setting up your Development Environment](#setting-up-your-development-environment)
+
 ## Docker Prerequisites
 
 Install docker. On linux, you may have to install docker-compose separately.
@@ -47,7 +49,7 @@ This will download and build all the docker images used in this project. Upon co
 Successfully tagged terrastories:latest
 ```
 
-**Linux** users should also run:
+**Linux** and **Windows** users should also run:
 
 ```
 $ sudo docker-compose run web yarn install
@@ -136,3 +138,12 @@ For the `devise` and `administrate` files, there might be available translations
 If you want to change the default language for Terrastories, set the language on line 21 in `rails/config/application.rb`. To set it to Papiamentu, change this line to `config.i18n.default_locale = :pap`
 
 Once you are done, the language should be available the next time you start Terrastories.
+
+
+## Setting up your Development Environment
+
+### ESLint
+
+We use ESLint with Airbnb community style-guide for linting JavaScript and JSX for files under app/javascript.
+
+Please check [ESLint editor-integrations page](https://eslint.org/docs/user-guide/integrations#editors) to read about how to integrate ESLint with your IDE/editor

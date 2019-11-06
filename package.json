@@ -2,7 +2,14 @@
   "name": "app",
   "private": true,
   "scripts": {
-    "jest": "jest"
+    "jest": "jest",
+    "eslint": "eslint",
+    "lint": "eslint \"app/javascript/**\""
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint"
+    }
   },
   "dependencies": {
     "@rails/webpacker": "3.5",
@@ -20,6 +27,15 @@
     "webpack": "^3.0.0"
   },
   "devDependencies": {
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.5.1",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.4.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.16.0",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "husky": "^3.0.9",
     "jest": "^23.6.0",
     "react-testing-library": "^6.0.3",
     "webpack-dev-server": "2.11.2"
