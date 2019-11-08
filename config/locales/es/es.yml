@@ -1,5 +1,6 @@
 es:
   admin_page: "Página de administración"
+  alphabetical: A-Z
   back_to_map: "Volver al Mapa"
   default: "default"
   language: "Idioma"
@@ -17,11 +18,14 @@ es:
   logout: "Logout"
   password: "Contraseña"
   remember_me: "Recordarme"
+  reversed_alphabetical: Z-A
+  sort_stories: "Ordenar las historias"
   sign_up: "Registrarse"
   close: "Cerrar"
   forgot_password: "¿Olvidaste tu contraseña?"
   filter_stories: "Filtrar historias"
-  select_category: "Selecccionar categoría"
+  most_recent: "Más reciente"
+  select_category: "Seleccionar categoría"
   place_type: "Tipo de lugar"
   select_option: "Seleccionar opción"
   region: "Región"
