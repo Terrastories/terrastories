@@ -36,8 +36,8 @@ $el-shadow: 0 1px 4px #bbb;
     }
   }
 
-  .closeMe {	
-    display: none;	
+  .closeMe {
+    display: none;
   }
 
   .card {
@@ -105,6 +105,7 @@ $el-shadow: 0 1px 4px #bbb;
 
     &-filter, &-sort {
       font-family: 'OpenSansCondensed';
+      color: $default-text;
     }
 
     .categoryFilter .storiesSort {
@@ -130,9 +131,9 @@ $el-shadow: 0 1px 4px #bbb;
       padding-bottom: 3rem;
     }
     .speakers {
-      img { 
-        width: 50px; 
-        height: 50px; 
+      img {
+        width: 50px;
+        height: 50px;
         border-radius: 50px;
         border: 2px solid black;
         margin-right: 5px;
@@ -196,7 +197,7 @@ $el-shadow: 0 1px 4px #bbb;
       width: 100vw;
       height: 100vh;
       max-width: none;
-  
+
       .card {
         top: 0;
         left: 0;
@@ -213,16 +214,16 @@ $el-shadow: 0 1px 4px #bbb;
       font-size: 1.25rem;
       cursor: pointer;
       z-index: 2;
-  
+
       &:after {
         content: '✕';
       }
     }
-  
+
     .card {
       width: 100vw;
     }
-  
+
     .tab {
       &:focus {
         outline: none;
