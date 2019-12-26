@@ -97,7 +97,7 @@ GEM
     coderay (1.1.2)
     concurrent-ruby (1.1.5)
     connection_pool (2.2.2)
-    crass (1.0.4)
+    crass (1.0.5)
     datetime_picker_rails (0.0.7)
       momentjs-rails (>= 2.8.1)
     debug_inspector (0.0.3)
@@ -107,6 +107,8 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-i18n (1.8.2)
+      devise (>= 4.6)
     diff-lcs (1.3)
     docile (1.3.2)
     dotenv (2.7.5)
@@ -169,7 +171,7 @@ GEM
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
       ruby_dep (~> 1.2)
-    loofah (2.2.3)
+    loofah (2.3.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     lumberjack (1.0.13)
@@ -191,7 +193,7 @@ GEM
     msgpack (1.3.1)
     nenv (0.3.0)
     nio4r (2.5.1)
-    nokogiri (1.10.4)
+    nokogiri (1.10.5)
       mini_portile2 (~> 2.4.0)
     notiffany (0.1.3)
       nenv (~> 0.1)
@@ -235,6 +237,9 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.2.0)
       loofah (~> 2.2, >= 2.2.2)
+    rails-i18n (5.1.3)
+      i18n (>= 0.7, < 2)
+      railties (>= 5.0, < 6)
     railties (5.2.3)
       actionpack (= 5.2.3)
       activesupport (= 5.2.3)
@@ -361,6 +366,7 @@ DEPENDENCIES
   capybara (>= 2.15, < 4.0)
   chromedriver-helper
   devise
+  devise-i18n
   dotenv-rails
   factory_bot_rails
   font-awesome-rails (~> 4.7)
@@ -377,6 +383,7 @@ DEPENDENCIES
   pundit
   rails (~> 5.2.0)
   rails-controller-testing
+  rails-i18n
   react-rails
   rgeo-geojson
   rspec-rails

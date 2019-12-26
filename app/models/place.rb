@@ -1,4 +1,6 @@
 class Place < ApplicationRecord
+  MEDIA_PATH = Rails.env.test? ? 'spec/fixtures/media' : 'media'
+
   require 'csv'
   has_and_belongs_to_many :stories
   has_one_attached :photo
@@ -9,16 +11,10 @@ class Place < ApplicationRecord
 
   def self.import_csv(filename)
     CSV.parse(filename, headers: true) do |row|
-      place = Place.find_or_create_by(name: row[0])
-      place.lat = row[5].to_f
-      place.long = row[4].to_f
-      place.type_of_place = row[1]
-      place.description = row[2]
-      place.region = row[3]
-      if row[6] && File.exist?(Rails.root.join('media', row[6]))
-        file = File.open(Rails.root.join('media',row[6]))
-        place.photo.attach(io: file, filename: row[6])
-      end
+      decorator = FileImport::PlaceRowDecorator.new(row)
+      place = Place.find_or_create_by(decorator.to_h)
+      place.photo.attach(decorator.media.blob_data) if decorator.media.attachable?
+
       place.save
     end
   end

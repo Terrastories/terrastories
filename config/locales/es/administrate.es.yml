@@ -1,0 +1,70 @@
+---
+es:
+  administrate:
+    actions:
+      confirm: ¿Estás seguro?
+      destroy: Borrar
+      edit: Editar
+      edit_resource: Editar %{name}
+      show_resource: Mostrar %{name}
+      new_resource: Nuevo %{name}
+      back: Atrás
+    controller:
+      create:
+        success: "%{resource} fue creado correctamente."
+      destroy:
+        success: "%{resource} fue creado correctamente."
+      update:
+        success: "%{resource} fue creado correctamente."
+    fields:
+      has_many:
+        more: Resultado %{count} de %{total_count}
+        none: Ninguno
+    file_to_update: Archivo a actualizar
+    form:
+      error: error
+      errors: "%{pluralized_errors} ha prohibido este %{resource_name} de ser guardado:"
+    import_button: Importar %{resource}
+    places: Lugares
+    place: Lugar
+    search:
+      clear: Limpiar busqueda
+      label: Buscar %{resource}
+    speakers: Oradores
+    speaker: Orador
+    stories: Historias
+    story: Historia
+    table_columns:
+      user:
+        id: Id
+        email: Email
+        role: Rol
+      speaker:
+        id: Id
+        photo: Foto
+        name: Nombre
+        birthdate: Fecha de nacimiento
+        birthplace: Lugar de nacimiento
+      story:
+        id: Id
+        title: Título
+        desc: Descripción
+        language: Idioma
+        speakers: Oradores
+        interview_location: Lugar de la entrevista
+        interviewer: Entrevistador
+        date_interviewed: Fecha de la entrevista
+        places: Lugares
+        permission_level: Nivel de permisos
+      place:
+        id: Id
+        name: Nombre
+        description: Descripción
+        type_of_place: Tipo de lugar
+        region: Región
+        long: Longitud
+        lat: Latitud
+        stories: Historias
+        photo: Foto
+    users: Usuarios
+    user: Usuario

@@ -27,7 +27,9 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+gem 'rails-i18n'
 gem 'devise'
+gem 'devise-i18n'
 gem 'pundit'
 gem 'administrate'
 gem 'administrate-field-active_storage'
