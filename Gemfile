@@ -62,6 +62,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'guard-rspec'
   gem 'shoulda-matchers'
+  gem 'bundler-audit'
 end
 
 group :development do
