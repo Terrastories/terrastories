@@ -14,11 +14,13 @@ This instructions are for Mapbox Community Days and Hacktoberfest, which everyon
 
 5. [Development](#development)
 
-6. [Importing data into Terrastories](#importing-data-into-terrastories)
+6. [Backup and Restore Postgres Database](#backup-and-restore-postgres-database)
 
-7. [Adding languages to Terrastories](#adding-languages-to-terrastories)
+7. [Importing data into Terrastories](#importing-data-into-terrastories)
 
-8. [Setting up your Development Environment](#setting-up-your-development-environment)
+8. [Adding languages to Terrastories](#adding-languages-to-terrastories)
+
+9. [Setting up your Development Environment](#setting-up-your-development-environment)
 
 ## Docker Prerequisites
 
@@ -105,6 +107,21 @@ environment. Always use the rails container instead.**
 
 Any changes to source files should be made directly in your local filesystem under the
 `/rails` directory using your preferred editing tools.
+
+## Backup and Restore Postgres Database
+
+Backup the DB with:
+
+```
+docker run --rm -v "terrastories_postgres_data:/pgdata" busybox tar -cvzf - -C /pgdata . >db-backup.tgz 
+```
+
+Restore a backup with:
+
+```
+docker volume rm terrastories_postgres_data
+docker run --rm -i -v "terrastories_postgres_data:/pgdata" busybox tar -xvzf - -C /pgdata <db-backup.tgz
+```
 
 ## Importing data into Terrastories
 
