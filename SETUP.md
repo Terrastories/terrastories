@@ -130,7 +130,7 @@ docker run --rm -i -v "terrastories_postgres_data:/pgdata" busybox tar -xvzf - -
 Backup the DB in PS with:
 
 ```
-docker run --rm -v "terrastories_postgres_data:/pgdata" -v "$(pwd):/host" busybox tar -cvzf /host/db-backup-test.tgz -C //pgdata .
+docker run --rm -v "terrastories_postgres_data:/pgdata" -v "$(pwd):/host" busybox tar -cvzf /host/db-backup-test.tgz -C /pgdata .
 ```
 
 Restore a backup in PS with:
