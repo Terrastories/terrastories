@@ -6,6 +6,8 @@ services:
       - 5432:5432
     environment:
       POSTGRES_PASSWORD: ${DB_USER_PASSWORD}
+    volumes:
+      - "postgres_data:/var/lib/postgresql/data"
 
   # webpacker:
   #   image: ${DOCKER_IMAGE_NAME-terrastories}
@@ -30,3 +32,7 @@ services:
     command: ["./scripts/wait-for-it.sh", "db:5432", "--", "./scripts/start_rails.sh"]
     volumes:
       - .:/opt/terrastories:cached
+
+volumes:
+  postgres_data:
+
