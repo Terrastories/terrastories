@@ -1,6 +1,4 @@
-# Setup for Hacktoberfest and Mapbox Community Days
-
-This instructions are for Mapbox Community Days and Hacktoberfest, which everyone is invited to participate in. It runs through last day of October. The instructions here are only for setting up your development environment. Please contact the stewards of this repo if you need assistance setting up an offline production environment.
+# Setup
 
 ## Table of Contents
 
