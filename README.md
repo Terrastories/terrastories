@@ -2,36 +2,11 @@
 
 ## Table of Contents
 
-1. [Community Days and Hacktoberfest](#Mapbox-Community-Days-and-Hacktoberfest)
+1. [About Terrastories](#about-terrastories)
 
-2. [About Terrastories](#about-terrastories)
+2. [How to set up Terrastories](#setup)
 
-3. [How to set up Terrastories](#setup)
-
-4. [Contributing Guidelines](#contributing)
-
-## Mapbox Community Days and Hacktoberfest
-
-This year we want to ~~lure you~~ motivate you a little more to get involved with https://Terrastories.io 
-
-We mostly need help right now from developers and have a number of open issues for getting involved. https://github.com/terrastories/terrastories/milestone/6
-
-If you are able to help, this year we are offering the following rewards:
-
-1 pull request - A Terrastories sticker
-
-2 pull requests - A Terrastories enameled pin 
-
-3 or more pull requests - A hand drawn thank you note from one of these children in Suriname
-<img src="matawai-children.jpg" alt="matawai-children" width="600">
-
-You have an entire month to get involved so there’s plenty of time to make 4 pull requests! ❤ 
-
-We have issues related to a number of different topics but if you want to focus on maps check out https://github.com/Terrastories/terrastories/issues?q=is%3Aopen+is%3Aissue+label%3A%22type%3A+map%22+milestone%3A%22Hacktoberfest%2FMapbox+Community+Days%22
-
-This is a really meaningful project and is 100% volunteer driven so your help is critical to it’s success. 
-
-Thanks!
+3. [Contributing Guidelines](#contributing)
 
 ## About Terrastories
 
@@ -62,7 +37,7 @@ We ♥ contributors! By participating in this project, you agree to abide by the
 One of our core contributors @mirandawang wrote a really nice [outline of the app](https://docs.google.com/document/d/1azfvU7tXLv2EHGrc3Hs5SPmB32MkyYuhXTB4JjymlV4/edit). Unless you are working on something related to Docker containers or to map cartography then you will benefit from taking a couple minutes to get acquainted with the app. 
 
 **Step 2: Find an issue to work on**
-For Hacktoberfest and Mapbox Community Days, which runs through the end of October, we have outlined issues that we would like to focus on in [this milestone](https://github.com/Terrastories/terrastories/issues?q=is%3Aopen+is%3Aissue+milestone%3A%22Hacktoberfest%2FMapbox+Community+Days%22+label%3A%22status%3A+help+wanted%22). Please find an issue there that you would like to take on and comment to assign yourself if no one else has done so already. We will add the `status: claimed` label to the issue to mark it as assigned to you. Also, feel free to ask questions in the issues, and we will get back to you ASAP!
+Please find an [issue](https://github.com/Terrastories/terrastories/issues) that you would like to take on and comment to assign yourself if no one else has done so already. All issues with the label `status: help wanted` are up for grabs! We will add the `status: claimed` label to the issue to mark it as assigned to you. Also, feel free to ask questions in the issues, and we will get back to you ASAP!
 
 **Step 3: Fork the repo**
 Click the "fork" button in the upper right of the Github repo page. A fork is a copy of the repository that allows you to freely explore & experiment without changing the original project. You can learn more about forking a repo in [this article](https://help.github.com/articles/fork-a-repo/).
