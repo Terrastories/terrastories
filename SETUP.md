@@ -1,6 +1,4 @@
-# Setup for Hacktoberfest and Mapbox Community Days
-
-This instructions are for Mapbox Community Days and Hacktoberfest, which everyone is invited to participate in. It runs through last day of October. The instructions here are only for setting up your development environment. Please contact the stewards of this repo if you need assistance setting up an offline production environment.
+# Setup
 
 ## Table of Contents
 
@@ -14,9 +12,13 @@ This instructions are for Mapbox Community Days and Hacktoberfest, which everyon
 
 5. [Development](#development)
 
-6. [Importing data into Terrastories](#importing-data-into-terrastories)
+6. [Backup and restore the Terrastories database](#backup-and-restore-the-terrastories-database)
 
-7. [Adding languages to Terrastories](#adding-languages-to-terrastories)
+7. [Importing data into Terrastories](#importing-data-into-terrastories)
+
+8. [Adding languages to Terrastories](#adding-languages-to-terrastories)
+
+9. [Setting up your Development Environment](#setting-up-your-development-environment)
 
 ## Docker Prerequisites
 
@@ -46,7 +48,6 @@ This will download and build all the docker images used in this project. Upon co
 ...
 Successfully tagged terrastories:latest
 ```
-
 
 ## Make It Go
 
@@ -100,6 +101,39 @@ environment. Always use the rails container instead.**
 Any changes to source files should be made directly in your local filesystem under the
 `/opt/terrastories` directory using your preferred editing tools.
 
+## Backup and restore the Terrastories database
+
+Terrastories stores Places, Speakers, and Stories in a database (Postgres DB). it is possible to back these data up and restore them by running lines of code in a bash terminal.
+
+Backup the DB with:
+
+```
+docker run --rm -v "terrastories_postgres_data:/pgdata" busybox tar -cvzf - -C /pgdata . >db-backup.tgz 
+```
+
+Restore a backup with:
+
+```
+docker volume rm terrastories_postgres_data
+docker run --rm -i -v "terrastories_postgres_data:/pgdata" busybox tar -xvzf - -C /pgdata <db-backup.tgz
+```
+
+**For Windows** applications like PowerShell (PS), a slightly different syntax is needed. 
+
+Backup the DB in PS with:
+
+```
+docker run --rm -v "terrastories_postgres_data:/pgdata" -v "$(pwd):/host" busybox tar -cvzf /host/db-backup-test.tgz -C /pgdata .
+```
+
+Restore a backup in PS with:
+
+```
+docker run --rm -i -v "terrastories_postgres_data:/pgdata" -v "$(pwd):/source/" busybox tar -xvzf /source/db-backup.tgz -C /pgdata
+```
+
+Note: the above code is assuming your build is called `terrastories`. It may be necessary to run `docker volume ls` to get the right Docker container name ending with `_postgres_data`.
+
 ## Importing data into Terrastories
 
 In the Terrastories back end, it is possible to import data in bulk using a CSV importer.
@@ -132,3 +166,12 @@ For the `devise` and `administrate` files, there might be available translations
 If you want to change the default language for Terrastories, set the language on line 21 in `rails/config/application.rb`. To set it to Papiamentu, change this line to `config.i18n.default_locale = :pap`
 
 Once you are done, the language should be available the next time you start Terrastories.
+
+
+## Setting up your Development Environment
+
+### ESLint
+
+We use ESLint with Airbnb community style-guide for linting JavaScript and JSX for files under app/javascript.
+
+Please check [ESLint editor-integrations page](https://eslint.org/docs/user-guide/integrations#editors) to read about how to integrate ESLint with your IDE/editor

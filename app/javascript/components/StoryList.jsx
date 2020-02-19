@@ -103,7 +103,7 @@ class StoryList extends Component {
             }
           </div>
           <div className="container">
-            <h6 className="title">{story.title}</h6>
+            <h6 className="title">{ story.permission_level === "restricted" && "🔒" }{story.title}</h6>
             <p>{story.desc}</p>
             {story.media &&
               story.media.map(file => <StoryMedia file={file} doBustCache={bustCache} key={story.media.id} />)}

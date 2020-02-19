@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import MiniMap from './mapboxgl-control-minimap'
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import MiniMap from "../vendor/mapboxgl-control-minimap";
 
 // @NOTE: MAKE SURE ARRAY IS [LONGITUDE, LATITUDE]
 const defaultCenter = [-108, 38.5];
 const defaultBounds = [
   [-180, -85], //southwest
   [180, 85] //northeast
-]
+];
 const defaultZoom = 3.5;
 const defaultPitch = 0;
 const defaultBearing = 0;
@@ -38,41 +38,49 @@ export default class Map extends Component {
       bearing: defaultBearing
     });
 
-    this.map.on('load', () => {
+    this.map.on("load", () => {
       this.updateMarkers();
       this.addHomeButton();
     });
 
-    this.map.addControl(new mapboxgl.Minimap(), 'top-right');
+    this.map.addControl(new mapboxgl.Minimap(), "top-right");
     this.map.addControl(new mapboxgl.NavigationControl());
   }
 
   componentDidUpdate(prevProps) {
     // update popups
     // only display one at a time, remove all other popups
-    const popupNodes = document.getElementsByClassName('mapboxgl-popup');
+    const popupNodes = document.getElementsByClassName("mapboxgl-popup");
     Array.from(popupNodes).forEach(node => node.remove());
     if (this.props.activePoint) {
       const marker = this.props.activePoint;
-      var popup = new mapboxgl.Popup({offset: 15, className: 'ts-markerPopup', closeButton: true, closeOnClick: false})
+      var popup = new mapboxgl.Popup({
+        offset: 15,
+        className: "ts-markerPopup",
+        closeButton: true,
+        closeOnClick: false
+      })
         .setLngLat(marker.geometry.coordinates)
         .setHTML(this.buildPopupHTML(marker))
         .addTo(this.map);
-      popup.on('close', () => {
+      popup.on("close", () => {
         this.props.clearFilteredStories();
       });
     }
     // update points/markers
     if (this.props.points) {
-      const popupNodes = document.getElementsByClassName('mapboxgl-marker');
+      const popupNodes = document.getElementsByClassName("mapboxgl-marker");
       Array.from(popupNodes).forEach(node => node.remove());
       this.updateMarkers();
     }
 
-    if (this.props.framedView && this.props.framedView !== prevProps.framedView) {
-      const {bounds, ...frameOptions} = this.props.framedView;
+    if (
+      this.props.framedView &&
+      this.props.framedView !== prevProps.framedView
+    ) {
+      const { bounds, ...frameOptions } = this.props.framedView;
       if (bounds) {
-        this.map.fitBounds(bounds, { duration: 2000.0, ...frameOptions })
+        this.map.fitBounds(bounds, { duration: 2000.0, ...frameOptions });
       } else {
         this.map.easeTo({ duration: 2000.0, ...frameOptions });
       }
@@ -84,7 +92,7 @@ export default class Map extends Component {
     }
   }
 
-  buildPopupHTML (marker) {
+  buildPopupHTML(marker) {
     if (marker.properties.photo_url) {
       if (marker.properties.region) {
         if (marker.properties.type_of_place) {
@@ -93,7 +101,9 @@ export default class Map extends Component {
             <img src=${marker.properties.photo_url} />
             <div>
               <div>${I18n.t("region")}: ${marker.properties.region}</div>
-              <div>${I18n.t("place_type")}: ${marker.properties.type_of_place}</div>
+              <div>${I18n.t("place_type")}: ${
+            marker.properties.type_of_place
+          }</div>
             </div>
           </div>`;
         } else {
@@ -118,7 +128,9 @@ export default class Map extends Component {
           <div class="ts-markerPopup-content">
             <div>
               <div>${I18n.t("region")}: ${marker.properties.region}</div>
-              <div>${I18n.t("place_type")}: ${marker.properties.type_of_place}</div>
+              <div>${I18n.t("place_type")}: ${
+            marker.properties.type_of_place
+          }</div>
             </div>
           </div>`;
         } else {
@@ -149,20 +161,22 @@ export default class Map extends Component {
 
   // TODO: update this to JSX
   createHomeButton() {
-    const homeButton = document.createElement('button');
-    homeButton.setAttribute('aria-label', 'Map Home');
-    homeButton.setAttribute('type', 'button');
-    homeButton.setAttribute('class', 'home-icon');
+    const homeButton = document.createElement("button");
+    homeButton.setAttribute("aria-label", "Map Home");
+    homeButton.setAttribute("type", "button");
+    homeButton.setAttribute("class", "home-icon");
     return homeButton;
   }
 
   addHomeButton() {
     const homeButton = this.createHomeButton();
-    const navControl = document.getElementsByClassName('mapboxgl-ctrl-zoom-in')[0];
+    const navControl = document.getElementsByClassName(
+      "mapboxgl-ctrl-zoom-in"
+    )[0];
     if (navControl) {
       navControl.parentNode.insertBefore(homeButton, navControl);
     }
-    homeButton.addEventListener('click', () => {
+    homeButton.addEventListener("click", () => {
       this.resetMapToCenter();
     });
   }
@@ -170,15 +184,15 @@ export default class Map extends Component {
   updateMarkers() {
     this.props.points.features.forEach(marker => {
       // create a HTML element for each feature
-      var el = document.createElement('div');
-      el.className = 'marker';
-      el.id = 'storypoint' + marker.id;
+      var el = document.createElement("div");
+      el.className = "marker";
+      el.id = "storypoint" + marker.id;
       // make a marker for each feature and add to the map
       new mapboxgl.Marker(el)
         .setLngLat(marker.geometry.coordinates)
         .addTo(this.map);
 
-      el.addEventListener('click', () => {
+      el.addEventListener("click", () => {
         this.props.onMapPointClick(marker, marker.properties.stories);
         this.map.panTo(marker.geometry.coordinates);
       });
@@ -186,11 +200,6 @@ export default class Map extends Component {
   }
 
   render() {
-    return (
-      <div ref={
-        el => this.mapContainer = el
-      }
-        className="ts-MainMap" />
-    );
+    return <div ref={el => (this.mapContainer = el)} className="ts-MainMap" />;
   }
 }

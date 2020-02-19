@@ -1,0 +1,70 @@
+---
+nl:
+  administrate:
+    actions:
+      confirm: Weet u het zeker?
+      destroy: Verwijder
+      edit: Bewerk
+      edit_resource: Bewerk %{name}
+      show_resource: Toon %{name}
+      new_resource: Nieuw %{name}
+      back: Terug
+    controller:
+      create:
+        success: "%{resource} was succesvol aangemaakt."
+      destroy:
+        success: "%{resource} was succesvol verwijderd."
+      update:
+        success: "%{resource} was succesvol geupdated."
+    fields:
+      has_many:
+        more: Resultaat %{count} van %{total_count}
+        none: Geen
+    file_to_update: Bestand om bij te werken
+    form:
+      error: error
+      errors: "%{pluralized_errors} prohibited this %{resource_name} from being saved:"
+    import_button: Importeren %{resource}
+    places: Plaatsen
+    place: Plaats
+    search:
+      clear: CDuidelijke zoek
+      label: Zoeken %{resource}
+    speakers: Speakers
+    speaker: Spreker
+    stories: Verhalen
+    story: Verhaal
+    table_columns:
+      user:
+        id: Id
+        email: Email
+        role: Rol
+      speaker:
+        id: Id
+        photo: Foto
+        name: Naam
+        birthdate: Geboortedatum
+        birthplace: Geboorteplaats
+      story:
+        id: Id
+        title: Titel
+        desc: Omschrijving
+        language: Taal
+        speakers: Speakers
+        interview_location: Interview locatie
+        interviewer: Interviewer
+        date_interviewed: Datum geïnterviewd
+        places: Plaatsen
+        permission_level: Machtigingsniveau
+      place:
+        id: Id
+        name: Naam
+        description: Omschrijving
+        type_of_place: Soort plaats
+        region: Regio
+        long: Lengtegraad
+        lat: Breedtegraad
+        stories: Verhalen
+        photo: Foto
+    users: Gebruikers
+    user: Gebruiker

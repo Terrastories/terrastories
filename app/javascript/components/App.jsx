@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import Map from './Map';
-import Card from './Card';
-import IntroPopup from './IntroPopup';
-import {FILTER_CATEGORIES} from '../constants/FilterConstants';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import Map from "./Map";
+import Card from "./Card";
+import IntroPopup from "./IntroPopup";
+import FILTER_CATEGORIES from "../constants/FilterConstants";
 import bbox from "@turf/bbox";
 
 class App extends Component {
@@ -15,7 +15,7 @@ class App extends Component {
       stories: this.props.stories,
       activePoint: null,
       activeStory: null
-    }
+    };
   }
 
   static propTypes = {
@@ -38,7 +38,7 @@ class App extends Component {
       features: points
     };
     return pointObj;
-  }
+  };
 
   filterMap = () => {
     // Build Filter Map for Dropdowns
@@ -48,25 +48,39 @@ class App extends Component {
       switch (category) {
         case FILTER_CATEGORIES[0]: {
           // first category: Region
-          const regionSet = new Set(this.props.stories.map(story => {
-            return story.points.map(point => point.properties.region);
-          }).flat());
+          const regionSet = new Set(
+            this.props.stories
+              .map(story => {
+                return story.points.map(point => point.properties.region);
+              })
+              .flat()
+          );
           filterMap[category] = Array.from(regionSet).sort();
           break;
         }
         case FILTER_CATEGORIES[1]: {
           // second category: Type of Place
-          const typeOfPlaceSet = new Set(this.props.stories.map(story => {
-            return story.points.map(point => point.properties.type_of_place);
-          }).flat());
+          const typeOfPlaceSet = new Set(
+            this.props.stories
+              .map(story => {
+                return story.points.map(
+                  point => point.properties.type_of_place
+                );
+              })
+              .flat()
+          );
           filterMap[category] = Array.from(typeOfPlaceSet).sort();
           break;
         }
         case FILTER_CATEGORIES[2]: {
           // third category: Speaker
-          const speakerSet = new Set(this.props.stories.map(story => {
-            return story.speakers.map(speaker => speaker.name)
-          }).flat());
+          const speakerSet = new Set(
+            this.props.stories
+              .map(story => {
+                return story.speakers.map(speaker => speaker.name);
+              })
+              .flat()
+          );
           filterMap[category] = Array.from(speakerSet).sort();
           break;
         }
@@ -74,7 +88,7 @@ class App extends Component {
     });
     console.log(filterMap);
     return filterMap;
-  }
+  };
 
   handleFilter = (category, item) => {
     let filteredStories = [];
@@ -82,7 +96,14 @@ class App extends Component {
       case FILTER_CATEGORIES[0]: {
         // first category: region
         filteredStories = this.props.stories.filter(story => {
-          if (story.points.some(point => {return point.properties.region && point.properties.region.toLowerCase() === item.toLowerCase();})) {
+          if (
+            story.points.some(point => {
+              return (
+                point.properties.region &&
+                point.properties.region.toLowerCase() === item.toLowerCase()
+              );
+            })
+          ) {
             return story;
           }
         });
@@ -91,7 +112,15 @@ class App extends Component {
       case FILTER_CATEGORIES[1]: {
         // second category: type of places
         filteredStories = this.props.stories.filter(story => {
-          if (story.points.some(point => {return point.properties['type_of_place'] && point.properties['type_of_place'].toLowerCase() === item.toLowerCase();})) {
+          if (
+            story.points.some(point => {
+              return (
+                point.properties["type_of_place"] &&
+                point.properties["type_of_place"].toLowerCase() ===
+                  item.toLowerCase()
+              );
+            })
+          ) {
             return story;
           }
         });
@@ -100,7 +129,14 @@ class App extends Component {
       case FILTER_CATEGORIES[2]: {
         // third category: speaker name
         filteredStories = this.props.stories.filter(story => {
-          if (story.speakers.some(speaker => {return speaker.name && speaker.name.toLowerCase() === item.toLowerCase()})) {
+          if (
+            story.speakers.some(speaker => {
+              return (
+                speaker.name &&
+                speaker.name.toLowerCase() === item.toLowerCase()
+              );
+            })
+          ) {
             return story;
           }
         });
@@ -114,29 +150,38 @@ class App extends Component {
         bounds,
         maxZoom: 12
       };
-      this.setState({ stories: filteredStories, points: filteredPoints, framedView });
+      this.setState({
+        stories: filteredStories,
+        points: filteredPoints,
+        framedView
+      });
     }
-  }
+  };
 
   showMapPointStories = stories => {
     let storyTitles = stories.map(story => story.title);
     let filteredStories = [];
-    filteredStories = this.props.stories.filter(story => storyTitles.includes(story.title));
+    filteredStories = this.props.stories.filter(story =>
+      storyTitles.includes(story.title)
+    );
     if (filteredStories) {
-      this.setState({ stories: filteredStories, activeStory: filteredStories[0] });
+      this.setState({
+        stories: filteredStories,
+        activeStory: filteredStories[0]
+      });
     }
-  }
+  };
 
-  handleStoriesChanged = (stories) => {
-    this.setState({ stories: stories })
-  }
+  handleStoriesChanged = stories => {
+    this.setState({ stories: stories });
+  };
 
   handleStoryClick = story => {
     // set active to first point in story
     const point = story.points[0];
     const framedView = { center: point.geometry.coordinates };
-    this.setState({activePoint: point, activeStory: story, framedView});
-  }
+    this.setState({ activePoint: point, activeStory: story, framedView });
+  };
 
   resetStoriesAndMap = () => {
     const points = this.getPointsFromStories(this.props.stories);
@@ -147,14 +192,14 @@ class App extends Component {
       activePoint: null,
       activeStory: null
     });
-  }
+  };
 
   handleMapPointClick = (point, stories) => {
     console.log(point);
     this.showMapPointStories(stories);
     const framedView = { center: point.geometry.coordinates };
-    this.setState({activePoint: point, framedView});
-  }
+    this.setState({ activePoint: point, framedView });
+  };
 
   render() {
     return (
