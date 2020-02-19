@@ -65,7 +65,7 @@ The first time, open another terminal and run the following command to setup:
 $ docker-compose exec web bin/setup
 ```
 
-This command runs a setup script lives in `bin/setup`, which does:
+This command runs a setup script that lives in `bin/setup`, which does:
 
 - install ruby gems
 - install javascript packages
