@@ -49,20 +49,6 @@ This will download and build all the docker images used in this project. Upon co
 Successfully tagged terrastories:latest
 ```
 
-**Linux** and **Windows** users should also run:
-
-```
-$ sudo docker-compose run web yarn install
-```
-
-for webpack to be loaded.
-
-The first time, run the following command to create your database and run the necessary migrations:
-
-```
-$ docker-compose run web scripts/wait-for-it.sh db:5432 -- "rails db:create db:migrate db:seed"
-```
-
 ## Make It Go
 
 Run the following:
@@ -72,6 +58,21 @@ $ docker-compose up
 ```
 
 Use `ctrl-c` to stop.
+
+
+The first time, open another terminal and run the following command to setup:
+
+```
+$ docker-compose exec web bin/setup
+```
+
+This command runs a setup script that lives in `bin/setup`, which does:
+
+- install ruby gems
+- install javascript packages
+- setup database
+
+See the script file for the details.
 
 Once rails fully starts up, you can view the running app at `localhost:3000`
 
@@ -90,13 +91,7 @@ container to take advantage of this consistent environment. Use the following co
 open a bash console on the rails container:
 
 ```
-$ docker exec terrastories_web_1 /bin/bash
-```
-
-or
-
-```
-$ docker exec -it terrastories_web_1 /bin/bash
+$ docker-compose exec web /bin/bash
 ```
 
 Now you can treat this console like any other development environment, running rails or
@@ -104,7 +99,7 @@ bundler commands as needed. **Please refrain from running such commands in your 
 environment. Always use the rails container instead.**
 
 Any changes to source files should be made directly in your local filesystem under the
-`/rails` directory using your preferred editing tools.
+`/opt/terrastories` directory using your preferred editing tools.
 
 ## Backup and restore the Terrastories database
 
