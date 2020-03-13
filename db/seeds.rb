@@ -7,14 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # Create Places
-rfg2018 = Place.find_or_create_by(name: "Georgetown University", type_of_place: 'college campus', long: -77.073168, lat: 38.906302, region: "Washington DC") do |place|
-  file = File.open(Rails.root.join('app', 'assets', 'images', 'georgetown.png'))
-  place.photo.attach(io: file, filename: 'georgetown')
-end
-rbtb2019 = Place.find_or_create_by(name: "NatureBridge Campus", type_of_place: 'nonprofit campus', long: -122.537419, lat: 37.832257, region: "California") do |place|
-  file = File.open(Rails.root.join('app', 'assets', 'images', 'nature_bridge.png'))
-  place.photo.attach(io: file, filename: 'nature_bridge')
-end
+rfg2018 = Place.find_or_create_by(name: "Georgetown University", type_of_place: 'college campus', long: -77.073168, lat: 38.906302, region: "Washington DC")
+rbtb2019 = Place.find_or_create_by(name: "NatureBridge Campus", type_of_place: 'nonprofit campus', long: -122.537419, lat: 37.832257, region: "California")
 
 # Create Speakers
 miranda = Speaker.find_or_create_by(name: "Miranda Wang")
