@@ -17,22 +17,10 @@ rbtb2019 = Place.find_or_create_by(name: "NatureBridge Campus", type_of_place: '
 end
 
 # Create Speakers
-miranda = Speaker.find_or_create_by(name: "Miranda Wang") do |speaker|
-  file = File.open(Rails.root.join('app', 'assets', 'images', 'baby_face.png'))
-  speaker.photo.attach(io: file, filename: 'baby_face')
-end
-kalimar = Speaker.find_or_create_by(name: "Kalimar Maia") do |speaker|
-  file = File.open(Rails.root.join('app', 'assets', 'images', 'cool_hair.png'))
-  speaker.photo.attach(io: file, filename: 'cool_hair')
-end
-rudo = Speaker.find_or_create_by(name: "Rudo Kemper") do |speaker|
-  file = File.open(Rails.root.join('app', 'assets', 'images', 'ya_hoy_pirate.png'))
-  speaker.photo.attach(io: file, filename: 'ya_hoy_pirate')
-end
-corinne = Speaker.find_or_create_by(name: "Corinne Henk") do |speaker|
-  file = File.open(Rails.root.join('app', 'assets', 'images', 'cat_with_glasses.png'))
-  speaker.photo.attach(io: file, filename: 'cat_with_glasses')
-end
+miranda = Speaker.find_or_create_by(name: "Miranda Wang")
+kalimar = Speaker.find_or_create_by(name: "Kalimar Maia")
+rudo = Speaker.find_or_create_by(name: "Rudo Kemper")
+corinne = Speaker.find_or_create_by(name: "Corinne Henk")
 
 # Create Stories
 miranda_story = Story.find_or_create_by(title: "Miranda's testimonial",
@@ -103,7 +91,7 @@ SpeakerStory.find_or_create_by(speaker_id: kalimar.id, story_id: shared_story.id
 SpeakerStory.find_or_create_by(speaker_id: corinne.id, story_id: shared_story.id)
 
 # Create a default admin user
-User.find_or_create_by!(email: 'admin@terrastories.com') do |admin|
+User.find_or_create_by!(email: 'admin@terrastories.com') do |admin|  
   admin.password = 'terrastories'
   admin.password_confirmation = 'terrastories'
   admin.role = 1
