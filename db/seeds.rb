@@ -23,10 +23,7 @@ miranda_story = Story.find_or_create_by(title: "Miranda's testimonial",
                     language: 'English',
                     permission_level: 0,
                     interview_location_id: rfg2018.id,
-                    interviewer_id: corinne.id) do |story|
-                      file = File.open(Rails.root.join('app', 'assets', 'videos', 'school_story.mp4'))
-                      story.media.attach(io: file, filename: 'school_story')
-                    end
+                    interviewer_id: corinne.id)
 
 
 rudo_story = Story.find_or_create_by(title: "Rudo's testimonial",
@@ -35,10 +32,7 @@ rudo_story = Story.find_or_create_by(title: "Rudo's testimonial",
                     language: 'English',
                     permission_level: 0,
                     interviewer_id: kalimar.id,
-                    interview_location_id: rbtb2019.id) do |story|
-                      file = File.open(Rails.root.join('app', 'assets', 'videos', 'tanzania.mp4'))
-                      story.media.attach(io: file, filename: 'tanzania')
-                    end
+                    interview_location_id: rbtb2019.id)
 
 kalimar_story = Story.find_or_create_by(title: "Kalimar's testimonial",
                     desc: "Mapbox sales engineer Kalimar Maia on why it is important for a company like Mapbox to support open source projects like Terrastories.",
@@ -46,10 +40,7 @@ kalimar_story = Story.find_or_create_by(title: "Kalimar's testimonial",
                     language: 'English',
                     permission_level: 1,
                     interviewer_id: miranda.id,
-                    interview_location_id: rfg2018.id) do |story|
-                      file = File.open(Rails.root.join('app', 'assets', 'videos', 'fisherman_story.mp4'))
-                      story.media.attach(io: file, filename: 'fisherman')
-                    end
+                    interview_location_id: rfg2018.id)
 
 corinne_story = Story.find_or_create_by(title: "Corinne's testimonial",
                     desc: "Corinne Henk, Ruby by the Bay 2019 team lead, describes some of the challenges her team faced and what they managed to accomplish.",
@@ -57,20 +48,14 @@ corinne_story = Story.find_or_create_by(title: "Corinne's testimonial",
                     language: 'English',
                     permission_level: 0,
                     interviewer_id: rudo.id,
-                    interview_location_id: rbtb2019.id) do |story|
-                      file = File.open(Rails.root.join('app', 'assets', 'videos', 'samba.mp4'))
-                      story.media.attach(io: file, filename: 'samba')
-                    end
+                    interview_location_id: rbtb2019.id)
 
 shared_story = Story.find_or_create_by(title: "Terrastories Team testimonial",
                     desc: "The team tells all",
                     places: [rfg2018],
                     language: 'English',
                     permission_level: 1,
-                    interview_location_id: rfg2018.id) do |story|
-                      file = File.open(Rails.root.join('app', 'assets', 'videos', 'salt.mp4'))
-                      story.media.attach(io: file, filename: 'salt')
-                    end
+                    interview_location_id: rfg2018.id)
 
 # Associate speakers with their stories
 SpeakerStory.find_or_create_by(speaker_id: miranda.id, story_id: miranda_story.id)
