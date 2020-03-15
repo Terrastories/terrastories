@@ -64,3 +64,6 @@ yarn-debug.log*
 /node_modules
 yarn-debug.log*
 .yarn-integrity
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
