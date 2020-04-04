@@ -13,14 +13,14 @@ services:
   #   image: ${DOCKER_IMAGE_NAME-terrastories}
   #   command: ["./scripts/start_webpack_dev.sh"]
   #   volumes:
-  #     - .:/opt/terrastories:cached
+  #     - ./rails:/opt/terrastories:cached
   #   ports:
   #     - 3035:3035
 
   web:
     image: ${DOCKER_IMAGE_NAME-terrastories}
     build:
-      context: .
+      context: ./rails
       args:
         precompileassets: "not"
     env_file:
@@ -31,7 +31,7 @@ services:
       - 3000:3000
     command: ["./scripts/wait-for-it.sh", "db:5432", "--", "./scripts/start_rails.sh"]
     volumes:
-      - .:/opt/terrastories:cached
+      - ./rails:/opt/terrastories:cached
 
 volumes:
   postgres_data:
