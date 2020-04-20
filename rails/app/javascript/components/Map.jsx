@@ -85,10 +85,6 @@ export default class Map extends Component {
         this.map.easeTo({ duration: 2000.0, ...frameOptions });
       }
       return;
-    } else {
-      if (this.map) {
-        this.resetMapToCenter();
-      }
     }
   }
 
