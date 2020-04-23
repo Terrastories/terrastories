@@ -1,0 +1,1356 @@
+Started GET "/" for 172.18.0.1 at 2020-04-18 20:36:10 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (3.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (29244.6ms)
+[Webpacker] Compiling…
+[Webpacker] Compiled all packs in /opt/terrastories/public/packs
+[Webpacker] Hash: 64a224a102e80a38b057
+Version: webpack 3.12.0
+Time: 22047ms
+                                         Asset       Size  Chunks                    Chunk Names
+      server_rendering-a3bc452c6f35d6111263.js    2.27 MB       0  [emitted]  [big]  server_rendering
+           application-e768fdba1a693d333f2d.js    2.27 MB       1  [emitted]  [big]  application
+                 admin-e678a715bf4be1169cea.js    17.1 kB       2  [emitted]         admin
+    admin-09b1baaa93d7b5b11a46c4c3e14dd5ed.css    2.43 kB       2  [emitted]         admin
+  server_rendering-a3bc452c6f35d6111263.js.map    2.45 MB       0  [emitted]         server_rendering
+       application-e768fdba1a693d333f2d.js.map    2.45 MB       1  [emitted]         application
+             admin-e678a715bf4be1169cea.js.map    20.6 kB       2  [emitted]         admin
+admin-09b1baaa93d7b5b11a46c4c3e14dd5ed.css.map    5.33 kB       2  [emitted]         admin
+                                 manifest.json  562 bytes          [emitted]         
+  [50] (webpack)/buildin/global.js 509 bytes {0} {1} [built]
+ [119] ./app/javascript/components ^\.\/.*$ 402 bytes {0} {1} [built]
+ [123] ./app/javascript/vendor/mapboxgl-control-minimap.js 9.32 kB {0} {1} [built]
+ [249] ./app/javascript/constants/FilterConstants.js 94 bytes {0} {1} [built]
+ [264] ./app/javascript/packs/admin.js 74 bytes {2} [built]
+ [267] ./app/javascript/packs/application.js 634 bytes {1} [built]
+ [268] ./app/javascript/packs/server_rendering.js 301 bytes {0} [built]
+    + 266 hidden modules
+Child extract-text-webpack-plugin node_modules/extract-text-webpack-plugin/dist node_modules/css-loader/index.js??ref--1-2!node_modules/postcss-loader/lib/index.js??ref--1-3!node_modules/awesomplete/awesomplete.css:
+       2 modules
+
+Completed 200 OK in 56954ms (Views: 56938.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/en/users/sign_in" for 172.18.0.1 at 2020-04-18 20:37:28 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"locale"=>"en"}
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (6.9ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (114.3ms)
+Completed 200 OK in 551ms (Views: 469.4ms | ActiveRecord: 19.3ms)
+
+
+Started POST "/en/users/sign_in" for 172.18.0.1 at 2020-04-18 20:37:42 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7oyhRG3EcCoZRdm4NVwn/WmeP/qzu+MvjrFulggNCh2voVI1tLmGAidIzjlXgUmzgZkqziPitobUX8qa0ppJEQ==", "user"=>{"email"=>"sarah.laloggia@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Login", "locale"=>"en"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "sarah.laloggia@gmail.com"], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Completed 401 Unauthorized in 22ms (ActiveRecord: 1.2ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7oyhRG3EcCoZRdm4NVwn/WmeP/qzu+MvjrFulggNCh2voVI1tLmGAidIzjlXgUmzgZkqziPitobUX8qa0ppJEQ==", "user"=>{"email"=>"sarah.laloggia@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Login", "locale"=>"en"}
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (3.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (28.7ms)
+Completed 200 OK in 674ms (Views: 461.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/en/users/sign_in" for 172.18.0.1 at 2020-04-18 20:37:58 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"axhm9fqS63nqcaBEFlAl/RVDeKkbEfPPOdtbMx0Nj/MqNZWEI+8dUdR8t8V0jUuz/URtnYtIpmZjNf8/x5rM/w==", "user"=>{"email"=>"admin@terrastories.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Login", "locale"=>"en"}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "admin@terrastories.com"], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.9ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "current_sign_in_ip" = $3, "last_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["current_sign_in_at", "2020-04-18 20:37:58.241708"], ["last_sign_in_at", "2020-04-18 20:37:58.241708"], ["current_sign_in_ip", "172.18.0.1"], ["last_sign_in_ip", "172.18.0.1"], ["sign_in_count", 1], ["updated_at", "2020-04-18 20:37:58.254748"], ["id", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (2.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/en
+Completed 302 Found in 246ms (ActiveRecord: 5.9ms)
+
+
+Started GET "/en" for 172.18.0.1 at 2020-04-18 20:37:58 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by WelcomeController#index as HTML
+  Parameters: {"locale"=>"en"}
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/welcome/index.html.erb:4
+  Rendered welcome/index.html.erb within layouts/application (20.7ms)
+Completed 200 OK in 452ms (Views: 439.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/admin?locale=en" for 172.18.0.1 at 2020-04-18 20:38:01 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::UsersController#index as HTML
+  Parameters: {"locale"=>"en"}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering admin/application/index.html.erb within layouts/admin/application
+Unpermitted parameter: :locale
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_search.html.erb (4.6ms)
+Unpermitted parameter: :locale
+Unpermitted parameter: :locale
+Unpermitted parameter: :locale
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT $1 OFFSET $2[0m  [["LIMIT", 20], ["OFFSET", 0]]
+  ↳ app/views/admin/application/_collection.html.erb:53
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/number/_index.html.erb (0.6ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_index.html.erb (0.6ms)
+  Rendered fields/enum_field/_index.html.erb (0.7ms)
+  Rendered admin/application/_collection.html.erb (51.2ms)
+  Rendered admin/application/index.html.erb within layouts/admin/application (128.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_stylesheet.html.erb (147.4ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_icons.html.erb (0.7ms)
+  Rendered admin/application/_navigation.html.erb (80.9ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_flashes.html.erb (0.7ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_javascript.html.erb (253.8ms)
+Completed 200 OK in 1065ms (Views: 900.2ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/admin/speakers?locale=en" for 172.18.0.1 at 2020-04-18 20:38:14 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::SpeakersController#index as HTML
+  Parameters: {"locale"=>"en"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering admin/application/index.html.erb within layouts/admin/application
+Unpermitted parameter: :locale
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_search.html.erb (4.6ms)
+Unpermitted parameter: :locale
+Unpermitted parameter: :locale
+Unpermitted parameter: :locale
+Unpermitted parameter: :locale
+Unpermitted parameter: :locale
+Unpermitted parameter: :locale
+  [1m[36mSpeaker Load (1.1ms)[0m  [1m[34mSELECT  "speakers".* FROM "speakers" LIMIT $1 OFFSET $2[0m  [["LIMIT", 20], ["OFFSET", 0]]
+  ↳ app/views/admin/application/_collection.html.erb:53
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/number/_index.html.erb (0.4ms)
+  [1m[36mActiveStorage::Attachment Load (1.2ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Speaker"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/admin/application/_collection.html.erb:66
+  Rendered /usr/local/bundle/gems/administrate-field-active_storage-0.1.8/app/views/fields/active_storage/_index.html.erb (38.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_index.html.erb (0.9ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/date_time/_index.html.erb (0.6ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/belongs_to/_index.html.erb (1.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_index.html.erb (0.1ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/number/_index.html.erb (0.1ms)
+  [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Speaker"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/admin/application/_collection.html.erb:66
+  Rendered /usr/local/bundle/gems/administrate-field-active_storage-0.1.8/app/views/fields/active_storage/_index.html.erb (8.5ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_index.html.erb (0.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/date_time/_index.html.erb (0.3ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/belongs_to/_index.html.erb (0.1ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_index.html.erb (0.1ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/number/_index.html.erb (0.1ms)
+  [1m[36mActiveStorage::Attachment Load (1.6ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Speaker"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/admin/application/_collection.html.erb:66
+  Rendered /usr/local/bundle/gems/administrate-field-active_storage-0.1.8/app/views/fields/active_storage/_index.html.erb (25.8ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_index.html.erb (0.1ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/date_time/_index.html.erb (0.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/belongs_to/_index.html.erb (0.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_index.html.erb (0.1ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/number/_index.html.erb (0.3ms)
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Speaker"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/admin/application/_collection.html.erb:66
+  Rendered /usr/local/bundle/gems/administrate-field-active_storage-0.1.8/app/views/fields/active_storage/_index.html.erb (6.2ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_index.html.erb (0.2ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/date_time/_index.html.erb (0.1ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/belongs_to/_index.html.erb (0.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_index.html.erb (0.1ms)
+  Rendered admin/application/_collection.html.erb (369.0ms)
+  Rendered admin/application/index.html.erb within layouts/admin/application (451.9ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_stylesheet.html.erb (108.7ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_icons.html.erb (0.4ms)
+  Rendered admin/application/_navigation.html.erb (8.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_flashes.html.erb (1.7ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_javascript.html.erb (157.9ms)
+Completed 200 OK in 1254ms (Views: 1179.5ms | ActiveRecord: 29.0ms)
+
+
+Started GET "/admin/speakers?locale=en" for 172.18.0.1 at 2020-04-18 20:42:43 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::SpeakersController#index as HTML
+  Parameters: {"locale"=>"en"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering admin/application/index.html.erb within layouts/admin/application
+Unpermitted parameter: :locale
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_search.html.erb (3.8ms)
+Unpermitted parameter: :locale
+Unpermitted parameter: :locale
+Unpermitted parameter: :locale
+Unpermitted parameter: :locale
+Unpermitted parameter: :locale
+Unpermitted parameter: :locale
+  [1m[36mSpeaker Load (0.6ms)[0m  [1m[34mSELECT  "speakers".* FROM "speakers" LIMIT $1 OFFSET $2[0m  [["LIMIT", 20], ["OFFSET", 0]]
+  ↳ app/views/admin/application/_collection.html.erb:53
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/number/_index.html.erb (0.6ms)
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Speaker"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/admin/application/_collection.html.erb:66
+  Rendered /usr/local/bundle/gems/administrate-field-active_storage-0.1.8/app/views/fields/active_storage/_index.html.erb (24.7ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_index.html.erb (0.7ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/date_time/_index.html.erb (0.3ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/belongs_to/_index.html.erb (0.4ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_index.html.erb (0.1ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/number/_index.html.erb (0.1ms)
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Speaker"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/admin/application/_collection.html.erb:66
+  Rendered /usr/local/bundle/gems/administrate-field-active_storage-0.1.8/app/views/fields/active_storage/_index.html.erb (4.7ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_index.html.erb (0.1ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/date_time/_index.html.erb (0.2ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/belongs_to/_index.html.erb (0.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_index.html.erb (0.1ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/number/_index.html.erb (0.1ms)
+  [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Speaker"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/admin/application/_collection.html.erb:66
+  Rendered /usr/local/bundle/gems/administrate-field-active_storage-0.1.8/app/views/fields/active_storage/_index.html.erb (4.5ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_index.html.erb (0.1ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/date_time/_index.html.erb (0.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/belongs_to/_index.html.erb (0.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_index.html.erb (0.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/number/_index.html.erb (0.1ms)
+  [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Speaker"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/admin/application/_collection.html.erb:66
+  Rendered /usr/local/bundle/gems/administrate-field-active_storage-0.1.8/app/views/fields/active_storage/_index.html.erb (5.2ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_index.html.erb (0.1ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/date_time/_index.html.erb (0.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/belongs_to/_index.html.erb (0.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_index.html.erb (0.0ms)
+  Rendered admin/application/_collection.html.erb (201.5ms)
+  Rendered admin/application/index.html.erb within layouts/admin/application (270.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_stylesheet.html.erb (92.1ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_icons.html.erb (0.3ms)
+  Rendered admin/application/_navigation.html.erb (997.0ms)
+Completed 500 Internal Server Error in 1748ms (ActiveRecord: 34.1ms)
+
+
+
+NoMethodError - undefined method `admin_curriculums_path' for #<#<Class:0x0000560d9e34a5b0>:0x0000560d9e3b0400>
+Did you mean?  admin_curriculum_path
+               admin_curriculum_index_path
+               admin_curriculum_url:
+  app/views/admin/application/_navigation.html.erb:13:in `block in _app_views_admin_application__navigation_html_erb___4445419821272811563_47308294468520'
+  app/views/admin/application/_navigation.html.erb:12:in `_app_views_admin_application__navigation_html_erb___4445419821272811563_47308294468520'
+  app/views/layouts/admin/application.html.erb:32:in `_app_views_layouts_admin_application_html_erb__2280166313216906434_47308263483000'
+
+Started POST "/__better_errors/508a6011f1e02ce4/variables" for 172.18.0.1 at 2020-04-18 20:42:46 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/admin/speakers?locale=en" for 172.18.0.1 at 2020-04-18 20:44:20 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::SpeakersController#index as HTML
+  Parameters: {"locale"=>"en"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering admin/application/index.html.erb within layouts/admin/application
+Unpermitted parameter: :locale
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_search.html.erb (5.4ms)
+Unpermitted parameter: :locale
+Unpermitted parameter: :locale
+Unpermitted parameter: :locale
+Unpermitted parameter: :locale
+Unpermitted parameter: :locale
+Unpermitted parameter: :locale
+  [1m[36mSpeaker Load (0.5ms)[0m  [1m[34mSELECT  "speakers".* FROM "speakers" LIMIT $1 OFFSET $2[0m  [["LIMIT", 20], ["OFFSET", 0]]
+  ↳ app/views/admin/application/_collection.html.erb:53
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/number/_index.html.erb (0.5ms)
+  [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Speaker"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/admin/application/_collection.html.erb:66
+  Rendered /usr/local/bundle/gems/administrate-field-active_storage-0.1.8/app/views/fields/active_storage/_index.html.erb (20.5ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_index.html.erb (0.7ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/date_time/_index.html.erb (0.3ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/belongs_to/_index.html.erb (0.7ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_index.html.erb (0.1ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/number/_index.html.erb (0.1ms)
+  [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Speaker"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/admin/application/_collection.html.erb:66
+  Rendered /usr/local/bundle/gems/administrate-field-active_storage-0.1.8/app/views/fields/active_storage/_index.html.erb (5.8ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_index.html.erb (0.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/date_time/_index.html.erb (0.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/belongs_to/_index.html.erb (0.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_index.html.erb (0.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/number/_index.html.erb (0.1ms)
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Speaker"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/admin/application/_collection.html.erb:66
+  Rendered /usr/local/bundle/gems/administrate-field-active_storage-0.1.8/app/views/fields/active_storage/_index.html.erb (6.5ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_index.html.erb (0.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/date_time/_index.html.erb (0.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/belongs_to/_index.html.erb (0.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_index.html.erb (0.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/number/_index.html.erb (0.1ms)
+  [1m[36mActiveStorage::Attachment Load (1.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Speaker"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ app/views/admin/application/_collection.html.erb:66
+  Rendered /usr/local/bundle/gems/administrate-field-active_storage-0.1.8/app/views/fields/active_storage/_index.html.erb (5.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_index.html.erb (0.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/date_time/_index.html.erb (0.1ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/belongs_to/_index.html.erb (0.3ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_index.html.erb (0.0ms)
+  Rendered admin/application/_collection.html.erb (180.8ms)
+  Rendered admin/application/index.html.erb within layouts/admin/application (270.6ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_stylesheet.html.erb (99.8ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_icons.html.erb (0.3ms)
+  Rendered admin/application/_navigation.html.erb (50.9ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_flashes.html.erb (0.4ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_javascript.html.erb (104.4ms)
+Completed 200 OK in 974ms (Views: 851.3ms | ActiveRecord: 17.3ms)
+
+
+Started GET "/admin/curriculums?locale=en" for 172.18.0.1 at 2020-04-18 20:44:24 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CurriculumsController#index as HTML
+  Parameters: {"locale"=>"en"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering admin/application/index.html.erb within layouts/admin/application
+Unpermitted parameter: :locale
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_search.html.erb (3.7ms)
+Unpermitted parameter: :locale
+Unpermitted parameter: :locale
+Unpermitted parameter: :locale
+Unpermitted parameter: :locale
+  [1m[36mCurriculum Load (0.6ms)[0m  [1m[34mSELECT  "curriculums".* FROM "curriculums" LIMIT $1 OFFSET $2[0m  [["LIMIT", 20], ["OFFSET", 0]]
+  ↳ app/views/admin/application/_collection.html.erb:53
+  Rendered admin/application/_collection.html.erb (17.9ms)
+  Rendered admin/application/index.html.erb within layouts/admin/application (76.1ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_stylesheet.html.erb (65.1ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_icons.html.erb (0.4ms)
+  Rendered admin/application/_navigation.html.erb (4.5ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_flashes.html.erb (0.6ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_javascript.html.erb (59.1ms)
+Completed 200 OK in 670ms (Views: 510.9ms | ActiveRecord: 5.5ms)
+
+
+Started GET "/admin/curriculums?locale=en" for 172.18.0.1 at 2020-04-18 20:49:52 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CurriculumsController#index as HTML
+  Parameters: {"locale"=>"en"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering admin/application/index.html.erb within layouts/admin/application
+Unpermitted parameter: :locale
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_search.html.erb (14.4ms)
+Unpermitted parameter: :locale
+Unpermitted parameter: :locale
+Unpermitted parameter: :locale
+Unpermitted parameter: :locale
+  [1m[36mCurriculum Load (0.7ms)[0m  [1m[34mSELECT  "curriculums".* FROM "curriculums" LIMIT $1 OFFSET $2[0m  [["LIMIT", 20], ["OFFSET", 0]]
+  ↳ app/views/admin/application/_collection.html.erb:53
+  Rendered admin/application/_collection.html.erb (50.6ms)
+  Rendered admin/application/index.html.erb within layouts/admin/application (451.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_stylesheet.html.erb (109.8ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_icons.html.erb (0.6ms)
+  Rendered admin/application/_navigation.html.erb (57.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_flashes.html.erb (1.2ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_javascript.html.erb (95.6ms)
+Completed 200 OK in 1408ms (Views: 1167.5ms | ActiveRecord: 14.4ms)
+
+
+Started GET "/admin/curriculums/new?locale=en" for 172.18.0.1 at 2020-04-18 20:51:07 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CurriculumsController#new as HTML
+  Parameters: {"locale"=>"en"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/belongs_to/_form.html.erb (20.0ms)
+  [1m[36mCurriculumStory Load (0.9ms)[0m  [1m[34mSELECT "curriculum_stories".* FROM "curriculum_stories"[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/has_many/_form.html.erb (12.8ms)
+  [1m[36mStory Load (0.7ms)[0m  [1m[34mSELECT "stories".* FROM "stories"[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/has_many/_form.html.erb (22.6ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_form.html.erb (1.3ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/text/_form.html.erb (2.6ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_form.html.erb (192.4ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application (256.5ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_stylesheet.html.erb (124.8ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_icons.html.erb (0.5ms)
+  Rendered admin/application/_navigation.html.erb (7.4ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_flashes.html.erb (0.6ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_javascript.html.erb (114.3ms)
+Completed 200 OK in 947ms (Views: 923.0ms | ActiveRecord: 15.3ms)
+
+
+Started GET "/admin/curriculums/new?locale=en" for 172.18.0.1 at 2020-04-18 20:52:20 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CurriculumsController#new as HTML
+  Parameters: {"locale"=>"en"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_form.html.erb (4.1ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application (35.0ms)
+Completed 500 Internal Server Error in 269ms (ActiveRecord: 22.9ms)
+
+
+
+RuntimeError - Attribute # could not be found in CurriculumDashboard::ATTRIBUTE_TYPES:
+
+Started POST "/__better_errors/b87b806164bad2f2/variables" for 172.18.0.1 at 2020-04-18 20:52:21 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/admin/curriculums/new?locale=en" for 172.18.0.1 at 2020-04-18 20:52:41 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CurriculumsController#new as HTML
+  Parameters: {"locale"=>"en"}
+  [1m[36mUser Load (10.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_form.html.erb (0.9ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/text/_form.html.erb (11.6ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_form.html.erb (26.9ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application (64.9ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_stylesheet.html.erb (157.1ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_icons.html.erb (0.5ms)
+  Rendered admin/application/_navigation.html.erb (54.8ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_flashes.html.erb (1.6ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_javascript.html.erb (149.8ms)
+Completed 200 OK in 1177ms (Views: 970.9ms | ActiveRecord: 27.1ms)
+
+
+Started POST "/admin/curriculums?locale=en" for 172.18.0.1 at 2020-04-18 20:53:06 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CurriculumsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3mD/DM8MzOXc8E1HsZ02OUoE5J2TrOGS+Ke1sTKd6sdQb5cxbe2D18V4qT9Hnmt75cnWsNAfxcj0Ac3wzhwMTA==", "curriculum"=>{"title"=>"Test Curriculum", "description"=>"This is only a test"}, "commit"=>"Create Curriculum", "locale"=>"en"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (1.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_form.html.erb (1.3ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/text/_form.html.erb (1.2ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_form.html.erb (19.7ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application (52.5ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_stylesheet.html.erb (101.5ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_icons.html.erb (0.5ms)
+  Rendered admin/application/_navigation.html.erb (4.3ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_flashes.html.erb (0.6ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_javascript.html.erb (83.4ms)
+Completed 200 OK in 694ms (Views: 618.5ms | ActiveRecord: 2.2ms)
+
+
+Started POST "/admin/curriculums?locale=en" for 172.18.0.1 at 2020-04-18 21:02:58 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CurriculumsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3mD/DM8MzOXc8E1HsZ02OUoE5J2TrOGS+Ke1sTKd6sdQb5cxbe2D18V4qT9Hnmt75cnWsNAfxcj0Ac3wzhwMTA==", "curriculum"=>{"title"=>"Test Curriculum", "description"=>"This is only a test"}, "commit"=>"Create Curriculum", "locale"=>"en"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Unpermitted parameter: :user
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/admin/curriculums_controller.rb:33
+  [1m[35m (0.6ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/admin/curriculums_controller.rb:33
+  Rendering /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_form.html.erb (1.4ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/text/_form.html.erb (1.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_form.html.erb (12.5ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application (45.5ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_stylesheet.html.erb (88.7ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_icons.html.erb (0.6ms)
+  Rendered admin/application/_navigation.html.erb (56.3ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_flashes.html.erb (1.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_javascript.html.erb (90.2ms)
+Completed 200 OK in 740ms (Views: 620.1ms | ActiveRecord: 23.3ms)
+
+
+Started POST "/admin/curriculums?locale=en" for 172.18.0.1 at 2020-04-18 21:03:22 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CurriculumsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3mD/DM8MzOXc8E1HsZ02OUoE5J2TrOGS+Ke1sTKd6sdQb5cxbe2D18V4qT9Hnmt75cnWsNAfxcj0Ac3wzhwMTA==", "curriculum"=>{"title"=>"Test Curriculum", "description"=>"This is only a test"}, "commit"=>"Create Curriculum", "locale"=>"en"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Unpermitted parameter: :user_id
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/admin/curriculums_controller.rb:33
+  [1m[35m (1.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/admin/curriculums_controller.rb:33
+  Rendering /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_form.html.erb (1.3ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/text/_form.html.erb (1.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_form.html.erb (17.6ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application (54.8ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_stylesheet.html.erb (86.6ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_icons.html.erb (0.3ms)
+  Rendered admin/application/_navigation.html.erb (67.6ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_flashes.html.erb (0.6ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_javascript.html.erb (74.0ms)
+Completed 200 OK in 752ms (Views: 641.1ms | ActiveRecord: 14.9ms)
+
+
+Started GET "/admin/curriculums/new?locale=en" for 172.18.0.1 at 2020-04-18 21:03:29 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CurriculumsController#new as HTML
+  Parameters: {"locale"=>"en"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_form.html.erb (1.2ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/text/_form.html.erb (1.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_form.html.erb (19.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application (37.9ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_stylesheet.html.erb (82.1ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_icons.html.erb (0.3ms)
+  Rendered admin/application/_navigation.html.erb (12.9ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_flashes.html.erb (0.9ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_javascript.html.erb (259.2ms)
+Completed 200 OK in 756ms (Views: 741.3ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/admin/curriculums?locale=en" for 172.18.0.1 at 2020-04-18 21:03:37 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CurriculumsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"AfmGaDsDzUfWg/lJE7NNv11YxJN+90mhjRuVlUpYXWaP9u5VmeKCdc8LHTHlsBD98pX2vj1EbfuBve3Uttm77Q==", "curriculum"=>{"title"=>"Test Curriculum", "description"=>"TEsting"}, "commit"=>"Create Curriculum", "locale"=>"en"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Unpermitted parameter: :user_id
+  [1m[35m (5.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/admin/curriculums_controller.rb:33
+  [1m[35m (1.4ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/admin/curriculums_controller.rb:33
+  Rendering /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_form.html.erb (1.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/text/_form.html.erb (2.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_form.html.erb (25.1ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application (67.9ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_stylesheet.html.erb (103.5ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_icons.html.erb (0.5ms)
+  Rendered admin/application/_navigation.html.erb (8.9ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_flashes.html.erb (0.6ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_javascript.html.erb (66.1ms)
+Completed 200 OK in 724ms (Views: 687.2ms | ActiveRecord: 7.2ms)
+
+
+Started POST "/admin/curriculums?locale=en" for 172.18.0.1 at 2020-04-18 21:04:32 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CurriculumsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"AfmGaDsDzUfWg/lJE7NNv11YxJN+90mhjRuVlUpYXWaP9u5VmeKCdc8LHTHlsBD98pX2vj1EbfuBve3Uttm77Q==", "curriculum"=>{"title"=>"Test Curriculum", "description"=>"TEsting"}, "commit"=>"Create Curriculum", "locale"=>"en"}
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Completed 500 Internal Server Error in 50ms (ActiveRecord: 7.1ms)
+
+
+
+RuntimeError - Oh no!:
+  app/controllers/admin/curriculums_controller.rb:33:in `create'
+
+Started POST "/__better_errors/f2439a988bffcb78/variables" for 172.18.0.1 at 2020-04-18 21:04:33 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started POST "/__better_errors/f2439a988bffcb78/eval" for 172.18.0.1 at 2020-04-18 21:05:07 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/admin/curriculums" for 172.18.0.1 at 2020-04-18 21:06:16 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CurriculumsController#index as HTML
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering admin/application/index.html.erb within layouts/admin/application
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_search.html.erb (2.4ms)
+  [1m[36mCurriculum Load (0.5ms)[0m  [1m[34mSELECT  "curriculums".* FROM "curriculums" LIMIT $1 OFFSET $2[0m  [["LIMIT", 20], ["OFFSET", 0]]
+  ↳ app/views/admin/application/_collection.html.erb:53
+  Rendered admin/application/_collection.html.erb (77.7ms)
+  Rendered admin/application/index.html.erb within layouts/admin/application (165.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_stylesheet.html.erb (96.8ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_icons.html.erb (0.4ms)
+  Rendered admin/application/_navigation.html.erb (62.2ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_flashes.html.erb (0.6ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_javascript.html.erb (96.2ms)
+Completed 200 OK in 1090ms (Views: 914.7ms | ActiveRecord: 7.0ms)
+
+
+Started GET "/admin/curriculums/new?locale=en" for 172.18.0.1 at 2020-04-18 21:06:26 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CurriculumsController#new as HTML
+  Parameters: {"locale"=>"en"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_form.html.erb (0.8ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/text/_form.html.erb (20.1ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_form.html.erb (35.8ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application (80.3ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_stylesheet.html.erb (116.9ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_icons.html.erb (0.5ms)
+  Rendered admin/application/_navigation.html.erb (3.1ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_flashes.html.erb (0.7ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_javascript.html.erb (70.1ms)
+Completed 200 OK in 610ms (Views: 597.9ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/admin/curriculums?locale=en" for 172.18.0.1 at 2020-04-18 21:06:49 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CurriculumsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nykLVWWF0NcCKlyCFCpCGhoZ7SaVkVLsf9AhVwBp5jwRJmNox2Sf5RuiuPriKR9YtdTfC9YidrZzdlkW/OgAtw==", "curriculum"=>{"title"=>"Test Curriculum", "description"=>"testingtesting"}, "commit"=>"Create Curriculum", "locale"=>"en"}
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 1.9ms)
+
+
+
+RuntimeError - Oh no!:
+  app/controllers/admin/curriculums_controller.rb:33:in `create'
+
+Started POST "/__better_errors/f862d344677aa7e4/variables" for 172.18.0.1 at 2020-04-18 21:06:49 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started POST "/__better_errors/f862d344677aa7e4/eval" for 172.18.0.1 at 2020-04-18 21:07:00 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Unpermitted parameter: :user_id
+Started POST "/admin/curriculums?locale=en" for 172.18.0.1 at 2020-04-18 21:24:53 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CurriculumsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nykLVWWF0NcCKlyCFCpCGhoZ7SaVkVLsf9AhVwBp5jwRJmNox2Sf5RuiuPriKR9YtdTfC9YidrZzdlkW/OgAtw==", "curriculum"=>{"title"=>"Test Curriculum", "description"=>"testingtesting"}, "commit"=>"Create Curriculum", "locale"=>"en"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Completed 500 Internal Server Error in 105ms (ActiveRecord: 16.9ms)
+
+
+
+RuntimeError - Oh no!:
+  app/controllers/admin/curriculums_controller.rb:33:in `create'
+
+Started POST "/__better_errors/31782a06d4b4ebbb/variables" for 172.18.0.1 at 2020-04-18 21:24:54 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started POST "/admin/curriculums?locale=en" for 172.18.0.1 at 2020-04-18 21:25:16 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CurriculumsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nykLVWWF0NcCKlyCFCpCGhoZ7SaVkVLsf9AhVwBp5jwRJmNox2Sf5RuiuPriKR9YtdTfC9YidrZzdlkW/OgAtw==", "curriculum"=>{"title"=>"Test Curriculum", "description"=>"testingtesting"}, "commit"=>"Create Curriculum", "locale"=>"en"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Completed 500 Internal Server Error in 95ms (ActiveRecord: 9.9ms)
+
+
+
+NameError - undefined local variable or method `config' for #<Curriculum:0x0000560da4d5f8d8>:
+  app/models/curriculum.rb:7:in `block in <class:Curriculum>'
+
+Started POST "/__better_errors/33372c53821532ef/variables" for 172.18.0.1 at 2020-04-18 21:25:17 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started POST "/admin/curriculums?locale=en" for 172.18.0.1 at 2020-04-18 21:32:02 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by Admin::CurriculumsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nykLVWWF0NcCKlyCFCpCGhoZ7SaVkVLsf9AhVwBp5jwRJmNox2Sf5RuiuPriKR9YtdTfC9YidrZzdlkW/OgAtw==", "curriculum"=>{"title"=>"Test Curriculum", "description"=>"testingtesting"}, "commit"=>"Create Curriculum", "locale"=>"en"}
+  [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.9ms)[0m  [1m[31mROLLBACK[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/belongs_to/_form.html.erb (23.9ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_form.html.erb (2.3ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/text/_form.html.erb (1.1ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_form.html.erb (44.1ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application (70.4ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_stylesheet.html.erb (55376.4ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_icons.html.erb (0.3ms)
+  Rendered admin/application/_navigation.html.erb (145.5ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_flashes.html.erb (1.5ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_javascript.html.erb (241.0ms)
+Completed 200 OK in 56801ms (Views: 56317.8ms | ActiveRecord: 22.0ms)
+
+
+Started GET "/admin/curriculums/new?locale=en" for 172.18.0.1 at 2020-04-18 21:34:01 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CurriculumsController#new as HTML
+  Parameters: {"locale"=>"en"}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Completed 500 Internal Server Error in 253ms (ActiveRecord: 23.5ms)
+
+
+
+SyntaxError - syntax error, unexpected ',', expecting =>
+  title,
+       ^:
+  app/dashboards/curriculum_dashboard.rb:51:in `'
+
+Started POST "/__better_errors/75173e82d7a508c3/variables" for 172.18.0.1 at 2020-04-18 21:34:02 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/admin/curriculums/new?locale=en" for 172.18.0.1 at 2020-04-18 21:34:30 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CurriculumsController#new as HTML
+  Parameters: {"locale"=>"en"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Completed 500 Internal Server Error in 85ms (ActiveRecord: 9.0ms)
+
+
+
+NameError - undefined local variable or method `title' for CurriculumDashboard:Class:
+  app/dashboards/curriculum_dashboard.rb:50:in `<class:CurriculumDashboard>'
+  app/dashboards/curriculum_dashboard.rb:3:in `<top (required)>'
+
+Started POST "/__better_errors/55eb2620150c2cc0/variables" for 172.18.0.1 at 2020-04-18 21:34:31 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/admin/curriculums/new?locale=en" for 172.18.0.1 at 2020-04-18 21:34:46 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CurriculumsController#new as HTML
+  Parameters: {"locale"=>"en"}
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_form.html.erb (6.4ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application (45.2ms)
+Completed 500 Internal Server Error in 270ms (ActiveRecord: 19.6ms)
+
+
+
+TypeError - {:user=>1} is not a symbol nor a string:
+
+Started POST "/__better_errors/658b1d95f34f9fe2/variables" for 172.18.0.1 at 2020-04-18 21:34:47 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/admin/curriculums/new?locale=en" for 172.18.0.1 at 2020-04-18 21:39:38 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CurriculumsController#new as HTML
+  Parameters: {"locale"=>"en"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_form.html.erb (9.7ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application (75.9ms)
+Completed 500 Internal Server Error in 443ms (ActiveRecord: 26.7ms)
+
+
+
+TypeError - {:user=>1} is not a symbol nor a string:
+
+Started POST "/__better_errors/c1f9a5d6656d7e25/variables" for 172.18.0.1 at 2020-04-18 21:39:40 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/admin/curriculums/new?locale=en" for 172.18.0.1 at 2020-04-18 21:39:59 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CurriculumsController#new as HTML
+  Parameters: {"locale"=>"en"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/belongs_to/_form.html.erb (25.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_form.html.erb (1.3ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/text/_form.html.erb (0.9ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_form.html.erb (41.2ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application (68.5ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_stylesheet.html.erb (187.7ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_icons.html.erb (0.6ms)
+  Rendered admin/application/_navigation.html.erb (57.6ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_flashes.html.erb (9.3ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_javascript.html.erb (113.2ms)
+Completed 200 OK in 1039ms (Views: 867.7ms | ActiveRecord: 46.6ms)
+
+
+Started POST "/admin/curriculums?locale=en" for 172.18.0.1 at 2020-04-18 21:40:12 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CurriculumsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/Hjgqt5CksRAyvskQ8AdO8+K5QxHuMu3qEb6fsrBvm1yd4iXfKPd9llCH1y1w0B5YEfXIQQL7+2k4II/NkBY5g==", "curriculum"=>{"user_id"=>"", "title"=>"Test Curriculum", "description"=>"testing"}, "commit"=>"Create Curriculum", "locale"=>"en"}
+  [1m[36mUser Load (10.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (5.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mCurriculum Create (9.9ms)[0m  [1m[32mINSERT INTO "curriculums" ("title", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Test Curriculum"], ["description", "testing"], ["created_at", "2020-04-18 21:40:12.093249"], ["updated_at", "2020-04-18 21:40:12.093249"]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (3.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/admin/curriculums/1?locale=en
+Completed 302 Found in 84ms (ActiveRecord: 29.2ms)
+
+
+Started GET "/admin/curriculums/1?locale=en" for 172.18.0.1 at 2020-04-18 21:40:12 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CurriculumsController#show as HTML
+  Parameters: {"locale"=>"en", "id"=>"1"}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mCurriculum Load (0.8ms)[0m  [1m[34mSELECT  "curriculums".* FROM "curriculums" WHERE "curriculums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/show.html.erb within layouts/admin/application
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/belongs_to/_show.html.erb (0.6ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/has_many/_show.html.erb (29.6ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/show.html.erb within layouts/admin/application (109.9ms)
+Completed 500 Internal Server Error in 212ms (ActiveRecord: 4.8ms)
+
+
+
+NameError - uninitialized constant CurriculumStoryDashboard:
+
+Started POST "/__better_errors/ca25eb74a117960f/variables" for 172.18.0.1 at 2020-04-18 21:40:12 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/admin/curriculums/1?locale=en" for 172.18.0.1 at 2020-04-18 21:41:25 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CurriculumsController#show as HTML
+  Parameters: {"locale"=>"en", "id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mCurriculum Load (2.4ms)[0m  [1m[34mSELECT  "curriculums".* FROM "curriculums" WHERE "curriculums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/show.html.erb within layouts/admin/application
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/belongs_to/_show.html.erb (1.4ms)
+  [1m[36mStory Exists (2.1ms)[0m  [1m[34mSELECT  1 AS one FROM "stories" INNER JOIN "curriculum_stories" ON "stories"."id" = "curriculum_stories"."story_id" WHERE "curriculum_stories"."curriculum_id" = $1 LIMIT $2 OFFSET $3[0m  [["curriculum_id", 1], ["LIMIT", 1], ["OFFSET", 0]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/has_many/_show.html.erb (179.2ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/number/_show.html.erb (0.9ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_show.html.erb (0.7ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/text/_show.html.erb (0.4ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/date_time/_show.html.erb (1.5ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/date_time/_show.html.erb (2.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/show.html.erb within layouts/admin/application (282.3ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_stylesheet.html.erb (118.1ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_icons.html.erb (0.4ms)
+  Rendered admin/application/_navigation.html.erb (24.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_flashes.html.erb (0.6ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_javascript.html.erb (240.0ms)
+Completed 200 OK in 1274ms (Views: 1151.6ms | ActiveRecord: 22.4ms)
+
+
+Started GET "/admin/curriculums?locale=en" for 172.18.0.1 at 2020-04-18 21:46:05 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CurriculumsController#index as HTML
+  Parameters: {"locale"=>"en"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering admin/application/index.html.erb within layouts/admin/application
+Unpermitted parameter: :locale
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_search.html.erb (3.6ms)
+Unpermitted parameter: :locale
+Unpermitted parameter: :locale
+Unpermitted parameter: :locale
+  [1m[36mCurriculum Load (0.6ms)[0m  [1m[34mSELECT  "curriculums".* FROM "curriculums" LIMIT $1 OFFSET $2[0m  [["LIMIT", 20], ["OFFSET", 0]]
+  ↳ app/views/admin/application/_collection.html.erb:53
+  [1m[36mCurriculumStory Load (0.3ms)[0m  [1m[34mSELECT "curriculum_stories".* FROM "curriculum_stories" WHERE "curriculum_stories"."curriculum_id" = $1[0m  [["curriculum_id", 1]]
+  ↳ app/views/admin/application/_collection.html.erb:53
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/belongs_to/_index.html.erb (0.4ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/has_many/_index.html.erb (0.9ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/number/_index.html.erb (0.3ms)
+  Rendered admin/application/_collection.html.erb (88.0ms)
+  Rendered admin/application/index.html.erb within layouts/admin/application (157.3ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_stylesheet.html.erb (97.7ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_icons.html.erb (0.6ms)
+  Rendered admin/application/_navigation.html.erb (28.7ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_flashes.html.erb (0.7ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_javascript.html.erb (88.5ms)
+Completed 200 OK in 884ms (Views: 754.9ms | ActiveRecord: 11.4ms)
+
+
+Started DELETE "/admin/curriculums/1?locale=en" for 172.18.0.1 at 2020-04-18 21:46:11 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CurriculumsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"5p2nl8mulc+5/A8Aos9YPngNEQPyFQezjEmLZBocjUVoks+qa0/a/aB063hUzAV818AjLrGmI+mA7/Ml5p1rzg==", "locale"=>"en", "id"=>"1"}
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mCurriculum Load (0.5ms)[0m  [1m[34mSELECT  "curriculums".* FROM "curriculums" WHERE "curriculums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mCurriculum Destroy (4.4ms)[0m  [1m[31mDELETE FROM "curriculums" WHERE "curriculums"."id" = $1[0m  [["id", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (4.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/admin/curriculums?locale=en
+Completed 302 Found in 48ms (ActiveRecord: 11.3ms)
+
+
+Started GET "/admin/curriculums?locale=en" for 172.18.0.1 at 2020-04-18 21:46:11 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CurriculumsController#index as HTML
+  Parameters: {"locale"=>"en"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering admin/application/index.html.erb within layouts/admin/application
+Unpermitted parameter: :locale
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_search.html.erb (6.3ms)
+Unpermitted parameter: :locale
+Unpermitted parameter: :locale
+Unpermitted parameter: :locale
+  [1m[36mCurriculum Load (0.6ms)[0m  [1m[34mSELECT  "curriculums".* FROM "curriculums" LIMIT $1 OFFSET $2[0m  [["LIMIT", 20], ["OFFSET", 0]]
+  ↳ app/views/admin/application/_collection.html.erb:53
+  Rendered admin/application/_collection.html.erb (35.9ms)
+  Rendered admin/application/index.html.erb within layouts/admin/application (133.1ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_stylesheet.html.erb (148.3ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_icons.html.erb (0.3ms)
+  Rendered admin/application/_navigation.html.erb (5.2ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_flashes.html.erb (0.6ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_javascript.html.erb (107.4ms)
+Completed 200 OK in 1272ms (Views: 1195.2ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/admin/curriculums/new?locale=en" for 172.18.0.1 at 2020-04-18 21:46:14 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CurriculumsController#new as HTML
+  Parameters: {"locale"=>"en"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/admin/curriculums_controller.rb:31
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/belongs_to/_form.html.erb (20.6ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_form.html.erb (1.5ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/text/_form.html.erb (0.8ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_form.html.erb (36.6ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application (88.5ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_stylesheet.html.erb (211.4ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_icons.html.erb (0.5ms)
+  Rendered admin/application/_navigation.html.erb (15.3ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_flashes.html.erb (1.3ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_javascript.html.erb (131.6ms)
+Completed 500 Internal Server Error in 1101ms (Views: 1087.2ms | ActiveRecord: 0.9ms)
+
+
+
+NoMethodError - undefined method `user_id=' for nil:NilClass:
+  app/controllers/admin/curriculums_controller.rb:32:in `new'
+
+Started POST "/__better_errors/2e63e0c456c7dfa6/variables" for 172.18.0.1 at 2020-04-18 21:46:15 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/admin/curriculums/new?locale=en" for 172.18.0.1 at 2020-04-18 21:46:40 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CurriculumsController#new as HTML
+  Parameters: {"locale"=>"en"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/admin/curriculums_controller.rb:31
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/belongs_to/_form.html.erb (33.5ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_form.html.erb (2.2ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/text/_form.html.erb (3.9ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_form.html.erb (116.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application (221.6ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_stylesheet.html.erb (188.2ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_icons.html.erb (0.5ms)
+  Rendered admin/application/_navigation.html.erb (49.3ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_flashes.html.erb (0.9ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_javascript.html.erb (93.6ms)
+Completed 500 Internal Server Error in 1017ms (Views: 899.1ms | ActiveRecord: 9.5ms)
+
+
+
+NoMethodError - undefined method `user_id=' for nil:NilClass:
+  app/controllers/admin/curriculums_controller.rb:32:in `new'
+
+Started POST "/__better_errors/d471b23d92ae9170/variables" for 172.18.0.1 at 2020-04-18 21:46:42 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/admin/curriculums/new?locale=en" for 172.18.0.1 at 2020-04-18 21:47:25 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CurriculumsController#new as HTML
+  Parameters: {"locale"=>"en"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/admin/curriculums_controller.rb:31
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/belongs_to/_form.html.erb (27.3ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_form.html.erb (1.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/text/_form.html.erb (2.1ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_form.html.erb (65.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application (102.5ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_stylesheet.html.erb (103.1ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_icons.html.erb (0.3ms)
+  Rendered admin/application/_navigation.html.erb (46.7ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_flashes.html.erb (0.4ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_javascript.html.erb (122.4ms)
+Completed 500 Internal Server Error in 1380ms (Views: 742.1ms | ActiveRecord: 11.9ms)
+
+
+
+NoMethodError - undefined method `user_id=' for nil:NilClass:
+  app/controllers/admin/curriculums_controller.rb:33:in `new'
+
+Started POST "/__better_errors/7fb4217bcc3ff991/variables" for 172.18.0.1 at 2020-04-18 21:47:27 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/admin/curriculums/new?locale=en" for 172.18.0.1 at 2020-04-18 21:47:57 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CurriculumsController#new as HTML
+  Parameters: {"locale"=>"en"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/admin/curriculums_controller.rb:32
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/belongs_to/_form.html.erb (27.3ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_form.html.erb (1.1ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/text/_form.html.erb (4.3ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_form.html.erb (49.7ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application (84.8ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_stylesheet.html.erb (93.3ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_icons.html.erb (0.4ms)
+  Rendered admin/application/_navigation.html.erb (64.3ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_flashes.html.erb (6.2ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_javascript.html.erb (98.4ms)
+Completed 500 Internal Server Error in 962ms (Views: 730.8ms | ActiveRecord: 10.5ms)
+
+
+
+NoMethodError - undefined method `user_id=' for nil:NilClass:
+  app/controllers/admin/curriculums_controller.rb:34:in `new'
+
+Started POST "/__better_errors/9dd439a342e91a1f/variables" for 172.18.0.1 at 2020-04-18 21:47:59 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/admin/curriculums/new?locale=en" for 172.18.0.1 at 2020-04-18 21:49:26 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CurriculumsController#new as HTML
+  Parameters: {"locale"=>"en"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application
+  [1m[36mUser Load (14.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/admin/curriculums_controller.rb:31
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/belongs_to/_form.html.erb (32.2ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_form.html.erb (2.5ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/text/_form.html.erb (1.3ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_form.html.erb (68.6ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application (104.6ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_stylesheet.html.erb (95.5ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_icons.html.erb (0.4ms)
+  Rendered admin/application/_navigation.html.erb (39.1ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_flashes.html.erb (5.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_javascript.html.erb (83.2ms)
+Completed 500 Internal Server Error in 1112ms (Views: 672.1ms | ActiveRecord: 34.0ms)
+
+
+
+NameError - undefined local variable or method `resource' for #<Admin::CurriculumsController:0x00007f1d9fa70aa8>:
+  app/controllers/admin/curriculums_controller.rb:32:in `new'
+
+Started POST "/__better_errors/f7dc98dc3429c57b/variables" for 172.18.0.1 at 2020-04-18 21:49:28 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/admin/curriculums/new?locale=en" for 172.18.0.1 at 2020-04-18 21:49:41 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CurriculumsController#new as HTML
+  Parameters: {"locale"=>"en"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/admin/curriculums_controller.rb:31
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/belongs_to/_form.html.erb (69.5ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_form.html.erb (1.2ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/text/_form.html.erb (1.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_form.html.erb (111.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application (170.4ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_stylesheet.html.erb (121.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_icons.html.erb (0.3ms)
+  Rendered admin/application/_navigation.html.erb (48.1ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_flashes.html.erb (1.7ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_javascript.html.erb (166.8ms)
+Completed 500 Internal Server Error in 1373ms (Views: 915.0ms | ActiveRecord: 10.2ms)
+
+
+
+NameError - undefined local variable or method `curriculum' for #<Admin::CurriculumsController:0x00007f1d9fe60578>:
+  app/controllers/admin/curriculums_controller.rb:32:in `new'
+
+Started POST "/__better_errors/1a0c687f323208b5/variables" for 172.18.0.1 at 2020-04-18 21:49:43 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/admin/curriculums/new?locale=en" for 172.18.0.1 at 2020-04-18 21:50:13 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CurriculumsController#new as HTML
+  Parameters: {"locale"=>"en"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/admin/curriculums_controller.rb:31
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/belongs_to/_form.html.erb (51.5ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_form.html.erb (7.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/text/_form.html.erb (1.1ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_form.html.erb (92.1ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application (163.5ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_stylesheet.html.erb (177.6ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_icons.html.erb (0.6ms)
+  Rendered admin/application/_navigation.html.erb (37.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_flashes.html.erb (0.7ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_javascript.html.erb (185.2ms)
+Completed 200 OK in 1165ms (Views: 986.2ms | ActiveRecord: 15.9ms)
+
+
+Started GET "/admin/curriculums/new?locale=en" for 172.18.0.1 at 2020-04-18 21:50:31 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CurriculumsController#new as HTML
+  Parameters: {"locale"=>"en"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application
+  [1m[36mUser Load (8.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/admin/curriculums_controller.rb:31
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/belongs_to/_form.html.erb (28.9ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_form.html.erb (1.6ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/text/_form.html.erb (5.3ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_form.html.erb (200.3ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application (255.2ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_stylesheet.html.erb (119.1ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_icons.html.erb (0.9ms)
+  Rendered admin/application/_navigation.html.erb (52.7ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_flashes.html.erb (0.6ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_javascript.html.erb (122.5ms)
+Completed 200 OK in 1078ms (Views: 959.8ms | ActiveRecord: 20.4ms)
+
+
+Started GET "/admin/curriculums/new?locale=en" for 172.18.0.1 at 2020-04-18 21:51:23 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CurriculumsController#new as HTML
+  Parameters: {"locale"=>"en"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/admin/curriculums_controller.rb:31
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/belongs_to/_form.html.erb (14.3ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_form.html.erb (2.4ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/text/_form.html.erb (0.8ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_form.html.erb (36.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application (64.7ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_stylesheet.html.erb (87.1ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_icons.html.erb (0.5ms)
+  Rendered admin/application/_navigation.html.erb (44.2ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_flashes.html.erb (0.5ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_javascript.html.erb (110.9ms)
+Completed 500 Internal Server Error in 1151ms (Views: 657.1ms | ActiveRecord: 13.8ms)
+
+
+
+NameError - undefined local variable or method `admin_curriculum' for #<Admin::CurriculumsController:0x00007f1d9fe4b0d8>:
+  app/controllers/admin/curriculums_controller.rb:34:in `new'
+
+Started POST "/__better_errors/79edf6a1d0fe9539/variables" for 172.18.0.1 at 2020-04-18 21:51:25 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/admin/curriculums/new?locale=en" for 172.18.0.1 at 2020-04-18 21:52:29 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CurriculumsController#new as HTML
+  Parameters: {"locale"=>"en"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/admin/curriculums_controller.rb:31
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/belongs_to/_form.html.erb (26.1ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_form.html.erb (0.9ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/text/_form.html.erb (1.8ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_form.html.erb (72.9ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application (105.7ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_stylesheet.html.erb (125.3ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_icons.html.erb (0.6ms)
+  Rendered admin/application/_navigation.html.erb (68.6ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_flashes.html.erb (2.6ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_javascript.html.erb (146.6ms)
+Completed 500 Internal Server Error in 1348ms (Views: 868.9ms | ActiveRecord: 27.0ms)
+
+
+
+NameError - undefined local variable or method `admin_curriculum' for #<Admin::CurriculumsController:0x00007f1d9fb2d568>:
+  app/controllers/admin/curriculums_controller.rb:34:in `new'
+
+Started POST "/__better_errors/9216fa22d6afc1b0/variables" for 172.18.0.1 at 2020-04-18 21:52:31 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/admin/curriculums/new?locale=en" for 172.18.0.1 at 2020-04-18 21:57:21 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CurriculumsController#new as HTML
+  Parameters: {"locale"=>"en"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/admin/curriculums_controller.rb:33
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/belongs_to/_form.html.erb (17.5ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_form.html.erb (12.3ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/text/_form.html.erb (0.9ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_form.html.erb (57.1ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application (83.2ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_stylesheet.html.erb (255.4ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_icons.html.erb (0.7ms)
+  Rendered admin/application/_navigation.html.erb (53.4ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_flashes.html.erb (0.5ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_javascript.html.erb (97.7ms)
+Completed 200 OK in 1030ms (Views: 898.3ms | ActiveRecord: 11.6ms)
+
+
+Started GET "/admin/curriculums/new?locale=en" for 172.18.0.1 at 2020-04-18 21:57:49 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CurriculumsController#new as HTML
+  Parameters: {"locale"=>"en"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/admin/curriculums_controller.rb:34
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/admin/curriculums_controller.rb:34
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/belongs_to/_form.html.erb (18.6ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_form.html.erb (0.9ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/text/_form.html.erb (0.9ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_form.html.erb (47.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application (75.4ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_stylesheet.html.erb (135.8ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_icons.html.erb (0.7ms)
+  Rendered admin/application/_navigation.html.erb (57.8ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_flashes.html.erb (0.6ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_javascript.html.erb (78.9ms)
+Completed 200 OK in 722ms (Views: 613.7ms | ActiveRecord: 12.1ms)
+
+
+Started GET "/admin/curriculums/new?locale=en" for 172.18.0.1 at 2020-04-18 21:58:19 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CurriculumsController#new as HTML
+  Parameters: {"locale"=>"en"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_form.html.erb (1.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/text/_form.html.erb (3.2ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_form.html.erb (27.8ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application (59.3ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_stylesheet.html.erb (144.2ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_icons.html.erb (0.8ms)
+  Rendered admin/application/_navigation.html.erb (64.2ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_flashes.html.erb (0.9ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_javascript.html.erb (88.3ms)
+Completed 200 OK in 831ms (Views: 691.1ms | ActiveRecord: 29.0ms)
+
+
+Started POST "/admin/curriculums?locale=en" for 172.18.0.1 at 2020-04-18 21:58:29 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CurriculumsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nhdeTx/HQrYuZD2k59NLL0Wl0LoLHXFmRE45C6gZ5C8QGDZyvSYNhDfs2dwR0BZt6mjil0iuVTxI6EFKVJgCpA==", "curriculum"=>{"title"=>"Test Curriculum", "description"=>"testingtesting"}, "commit"=>"Create Curriculum", "locale"=>"en"}
+  [1m[36mUser Load (13.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mCurriculum Create (1.4ms)[0m  [1m[32mINSERT INTO "curriculums" ("title", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Test Curriculum"], ["description", "testingtesting"], ["created_at", "2020-04-18 21:58:29.191595"], ["updated_at", "2020-04-18 21:58:29.191595"]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (3.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/admin/curriculums/2?locale=en
+Completed 302 Found in 75ms (ActiveRecord: 18.1ms)
+
+
+Started GET "/admin/curriculums/2?locale=en" for 172.18.0.1 at 2020-04-18 21:58:29 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CurriculumsController#show as HTML
+  Parameters: {"locale"=>"en", "id"=>"2"}
+  [1m[36mUser Load (4.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mCurriculum Load (0.6ms)[0m  [1m[34mSELECT  "curriculums".* FROM "curriculums" WHERE "curriculums"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/show.html.erb within layouts/admin/application
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/belongs_to/_show.html.erb (0.8ms)
+  [1m[36mStory Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "stories" INNER JOIN "curriculum_stories" ON "stories"."id" = "curriculum_stories"."story_id" WHERE "curriculum_stories"."curriculum_id" = $1 LIMIT $2 OFFSET $3[0m  [["curriculum_id", 2], ["LIMIT", 1], ["OFFSET", 0]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/has_many/_show.html.erb (125.6ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/number/_show.html.erb (0.4ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_show.html.erb (1.1ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/text/_show.html.erb (0.5ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/date_time/_show.html.erb (1.3ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/date_time/_show.html.erb (1.1ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/show.html.erb within layouts/admin/application (185.6ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_stylesheet.html.erb (100.5ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_icons.html.erb (0.4ms)
+  Rendered admin/application/_navigation.html.erb (5.4ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_flashes.html.erb (1.3ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_javascript.html.erb (75.6ms)
+Completed 200 OK in 692ms (Views: 664.0ms | ActiveRecord: 9.3ms)
+
+
+Started GET "/admin/curriculums?locale=en" for 172.18.0.1 at 2020-04-18 22:01:15 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CurriculumsController#index as HTML
+  Parameters: {"locale"=>"en"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering admin/application/index.html.erb within layouts/admin/application
+Unpermitted parameter: :locale
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_search.html.erb (9.9ms)
+Unpermitted parameter: :locale
+Unpermitted parameter: :locale
+Unpermitted parameter: :locale
+  [1m[36mCurriculum Load (2.3ms)[0m  [1m[34mSELECT  "curriculums".* FROM "curriculums" LIMIT $1 OFFSET $2[0m  [["LIMIT", 20], ["OFFSET", 0]]
+  ↳ app/views/admin/application/_collection.html.erb:53
+  [1m[36mCurriculumStory Load (0.4ms)[0m  [1m[34mSELECT "curriculum_stories".* FROM "curriculum_stories" WHERE "curriculum_stories"."curriculum_id" = $1[0m  [["curriculum_id", 2]]
+  ↳ app/views/admin/application/_collection.html.erb:53
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/belongs_to/_index.html.erb (0.5ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/has_many/_index.html.erb (0.9ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/number/_index.html.erb (0.3ms)
+  Rendered admin/application/_collection.html.erb (79.6ms)
+  Rendered admin/application/index.html.erb within layouts/admin/application (171.9ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_stylesheet.html.erb (104.5ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_icons.html.erb (0.6ms)
+  Rendered admin/application/_navigation.html.erb (19.8ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_flashes.html.erb (1.1ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_javascript.html.erb (159.4ms)
+Completed 200 OK in 896ms (Views: 745.2ms | ActiveRecord: 19.3ms)
+
+
+Started DELETE "/admin/curriculums/2?locale=en" for 172.18.0.1 at 2020-04-18 22:01:22 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CurriculumsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"9DhGkX5sYTM0QHOhHjfS3i/Td5Di8p0U3i/yKmwObXZ6Ny6s3I0uAS3Il9noNI+cgB5FvaFBuU7SiYprkI+L/Q==", "locale"=>"en", "id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mCurriculum Load (0.4ms)[0m  [1m[34mSELECT  "curriculums".* FROM "curriculums" WHERE "curriculums"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mCurriculum Destroy (0.6ms)[0m  [1m[31mDELETE FROM "curriculums" WHERE "curriculums"."id" = $1[0m  [["id", 2]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (2.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/admin/curriculums?locale=en
+Completed 302 Found in 37ms (ActiveRecord: 4.3ms)
+
+
+Started GET "/admin/curriculums?locale=en" for 172.18.0.1 at 2020-04-18 22:01:22 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CurriculumsController#index as HTML
+  Parameters: {"locale"=>"en"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering admin/application/index.html.erb within layouts/admin/application
+Unpermitted parameter: :locale
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_search.html.erb (5.1ms)
+Unpermitted parameter: :locale
+Unpermitted parameter: :locale
+Unpermitted parameter: :locale
+  [1m[36mCurriculum Load (0.5ms)[0m  [1m[34mSELECT  "curriculums".* FROM "curriculums" LIMIT $1 OFFSET $2[0m  [["LIMIT", 20], ["OFFSET", 0]]
+  ↳ app/views/admin/application/_collection.html.erb:53
+  Rendered admin/application/_collection.html.erb (29.8ms)
+  Rendered admin/application/index.html.erb within layouts/admin/application (87.5ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_stylesheet.html.erb (110.6ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_icons.html.erb (0.5ms)
+  Rendered admin/application/_navigation.html.erb (5.6ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_flashes.html.erb (0.7ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_javascript.html.erb (91.7ms)
+Completed 200 OK in 949ms (Views: 685.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/admin/curriculums/new?locale=en" for 172.18.0.1 at 2020-04-18 22:01:52 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::CurriculumsController#new as HTML
+  Parameters: {"locale"=>"en"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /usr/local/bundle/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/admin/curriculums_controller.rb:34
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/admin/curriculums_controller.rb:34
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/belongs_to/_form.html.erb (24.7ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/string/_form.html.erb (1.2ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/fields/text/_form.html.erb (2.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_form.html.erb (56.0ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/new.html.erb within layouts/admin/application (77.3ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_stylesheet.html.erb (74.2ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_icons.html.erb (0.4ms)
+  Rendered admin/application/_navigation.html.erb (3.1ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_flashes.html.erb (0.5ms)
+  Rendered /usr/local/bundle/gems/administrate-0.12.0/app/views/administrate/application/_javascript.html.erb (63.9ms)
+Completed 200 OK in 529ms (Views: 519.3ms | ActiveRecord: 1.7ms)
+
+
