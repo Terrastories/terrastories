@@ -33,6 +33,7 @@ gem 'devise-i18n'
 gem 'pundit'
 gem 'administrate'
 gem 'administrate-field-active_storage'
+gem "administrate-field-nested_has_many"
 
 # Enable Webpack for javascript application code
 gem 'webpacker', '~> 3.5'
