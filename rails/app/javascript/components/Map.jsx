@@ -24,7 +24,8 @@ export default class Map extends Component {
     framedView: PropTypes.object,
     onMapPointClick: PropTypes.func,
     mapboxStyle: PropTypes.string,
-    mapboxAccessToken: PropTypes.string
+    mapboxAccessToken: PropTypes.string,
+    useLocalMapServer: PropTypes.bool,
   };
 
   componentDidMount() {
@@ -43,8 +44,10 @@ export default class Map extends Component {
       this.addHomeButton();
     });
 
-    this.map.addControl(new mapboxgl.Minimap(), "top-right");
-    this.map.addControl(new mapboxgl.NavigationControl());
+    if(!this.props.useLocalMapServer) {
+      this.map.addControl(new mapboxgl.Minimap(), "top-right");
+      this.map.addControl(new mapboxgl.NavigationControl());
+    }
   }
 
   componentDidUpdate(prevProps) {

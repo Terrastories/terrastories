@@ -20,12 +20,13 @@ class App extends Component {
       activeStory: null,
       filterCategory: DEFAULT_CATEGORY_PLACEHOLDER,
       filterItem: DEFAULT_ITEM_PLACEHOLDER,
-      itemOptions: []
+      itemOptions: [],
     }
   }
 
   static propTypes = {
     stories: PropTypes.array,
+    use_local_map_server: PropTypes.bool,
     mapbox_access_token: PropTypes.string,
     mapbox_style: PropTypes.string,
     logo_path: PropTypes.string,
@@ -235,6 +236,7 @@ class App extends Component {
         <Map
           points={this.state.points}
           mapboxAccessToken={this.props.mapbox_access_token}
+          useLocalMapServer={this.props.use_local_map_server}
           mapboxStyle={this.props.mapbox_style}
           clearFilteredStories={this.resetStoriesAndMap}
           onMapPointClick={this.handleMapPointClick}
