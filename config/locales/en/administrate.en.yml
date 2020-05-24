@@ -22,6 +22,9 @@ en:
       has_many:
         more: Result %{count} for the total of %{total_count}
         none: None
+      nested_has_many:
+        add: Add
+        remove: Remove
     file_to_update: File to update
     form:
       error: error
