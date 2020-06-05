@@ -60,7 +60,11 @@ $ docker-compose up
 Use `ctrl-c` to stop.
 
 
-The first time, open another terminal and run the following command to setup:
+The first time, open another terminal and run the following commands to setup. The first command is only necessary for Windows.
+
+```
+$ docker exec terrastories_web_1 /bin/bash
+```
 
 ```
 $ docker-compose exec web bin/setup
