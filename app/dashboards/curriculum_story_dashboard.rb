@@ -9,7 +9,7 @@ class CurriculumStoryDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     curriculum: Field::BelongsTo,
-    story: Field::BelongsTo,
+    story: Field::BelongsTo.with_options(searchable: true),
     id: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
