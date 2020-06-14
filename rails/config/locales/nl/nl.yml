@@ -26,6 +26,7 @@ nl:
   forgot_password: "Paswoord vergeten?"
   filter_stories: "Verhalen filteren"
   select_category: "Kies een categorie"
+  selected_language: "(selected)"
   place_type: "Soort plek"
   select_option: "Selecteer optie"
   region: "Regio"
