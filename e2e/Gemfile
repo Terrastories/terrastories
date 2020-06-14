@@ -1,0 +1,11 @@
+source 'https://rubygems.org'
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+
+ruby '2.5.1'
+
+gem 'cucumber'
+gem 'site_prism'
+gem 'selenium-webdriver'
+gem 'rspec'
+gem 'capybara-screenshot'
+gem 'byebug'

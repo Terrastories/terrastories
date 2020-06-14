@@ -1,4 +1,4 @@
-version: "3.0"
+version: "3.7"
 services:
   db:
     image: postgres:11
@@ -13,14 +13,14 @@ services:
   #   image: ${DOCKER_IMAGE_NAME-terrastories}
   #   command: ["./scripts/start_webpack_dev.sh"]
   #   volumes:
-  #     - .:/opt/terrastories:cached
+  #     - ./rails:/opt/terrastories:cached
   #   ports:
   #     - 3035:3035
 
   web:
     image: ${DOCKER_IMAGE_NAME-terrastories}
     build:
-      context: .
+      context: ./rails
       args:
         precompileassets: "not"
     env_file:
@@ -31,7 +31,50 @@ services:
       - 3000:3000
     command: ["./scripts/wait-for-it.sh", "db:5432", "--", "./scripts/start_rails.sh"]
     volumes:
-      - .:/opt/terrastories:cached
+      - ./rails:/opt/terrastories:cached
+
+  web-test:
+    image: ${DOCKER_IMAGE_NAME-terrastories}
+    build:
+      context: ./rails
+      args:
+        precompileassets: "not"
+    env_file:
+      - .env
+    environment:
+      RAILS_ENV: test
+    links:
+      - db
+    ports:
+      - 3001:3000
+    command: ["./scripts/wait-for-it.sh", "db:5432", "--", "./scripts/start_test_server.sh"]
+    volumes:
+      - ./rails:/opt/terrastories:cached
+
+  selenium:
+    # Debug version enables VNC ability
+    image: selenium/standalone-chrome-debug:3.0.1-germanium
+    # Bind selenium port & VNC port
+    ports: ['4444:4444', '5900:5900']
+    logging:
+      # Disable noisy logs.
+      driver: none
+    # bump this number up if pages are crashing
+    shm_size: '256mb'
+
+  e2e:
+    build:
+      context: ./e2e
+    volumes:
+      - ./e2e:/opt/terrastories_e2e:cached
+    environment:
+      TEST_APP_HOST: web-test
+      TEST_APP_PORT: 3000
+      SELENIUM_HOST: selenium
+      SELENIUM_PORT: 4444
+    depends_on:
+      - web-test
+      - selenium
 
 volumes:
   postgres_data:
