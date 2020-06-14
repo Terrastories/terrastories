@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker-compose run e2e ./scripts/run_e2e_tests.sh

@@ -26,6 +26,9 @@ By default, it renders:
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <%- if Rails.env.test? %>
+    <div style="background-color: red; color: white; text-size: 3rem; text-align: center">I AM A TEST ENV</div>
+  <% end %>
   <%= render "icons" %>
 
   <div class="app-container">

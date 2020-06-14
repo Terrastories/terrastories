@@ -6,8 +6,18 @@ RSpec.describe Story, type: :model do
     it { should have_many :speakers }
     it { should have_and_belong_to_many :places }
 
-    it { should belong_to :interview_location }
-    it { should belong_to :interviewer }
+    # Issue 406 requested that interviewer and interview location be made optional for story creation
+    it { should belong_to(:interview_location).optional }
+    it { should belong_to(:interviewer).optional }
+  end
+
+  describe 'validation' do
+    let(:story_1) {build(:story)}
+    let(:story_2) {create(:story, :with_speakers)}
+    it 'must have at least one speaker' do
+      expect(story_1).to_not be_valid
+      expect(story_2).to be_valid
+    end
   end
 
   describe '.import_csv' do

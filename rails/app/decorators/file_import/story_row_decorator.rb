@@ -61,4 +61,3 @@ class FileImport::StoryRowDecorator
     @row[index]
   end
 end
-
