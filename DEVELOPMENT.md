@@ -1,86 +1,14 @@
-# Setup
+# Developing with Terrastories
 
 ## Table of Contents
 
-1. [Docker prerequisites](#docker-prerequisites)
+1. [Development](#development)
 
-2. [Setup and running the server](#Setup-and-running-the-server)
+2. [Importing data into Terrastories](#importing-data-into-terrastories)
 
-3. [Make it Go](#Make-It-Go)
+3. [Adding languages to Terrastories](#adding-languages-to-terrastories)
 
-6. [Common environment errors & gotchas](#having-troubles-check-our-common-errors--gotchas)
-
-5. [Development](#development)
-
-6. [Backup and restore the Terrastories database](#backup-and-restore-the-terrastories-database)
-
-7. [Importing data into Terrastories](#importing-data-into-terrastories)
-
-8. [Adding languages to Terrastories](#adding-languages-to-terrastories)
-
-9. [Setting up your Development Environment](#setting-up-your-development-environment)
-
-## Docker Prerequisites
-
-Install docker. On linux, you may have to install docker-compose separately.
-
-- https://docs.docker.com/install/
-- https://docs.docker.com/compose/install/
-
-On Windows, all terminal docker commands need to be run using Windows PowerShell, not Command Prompt.
-PowerShell comes with Windows.
-
-On Linux, users should run all docker commands with `sudo` or check the [official documentation](https://docs.docker.com/install/linux/linux-postinstall/) to manage Docker as a non-root user.
-
-## Setup and running the server
-
-First update your `.env` file using `.env.example` as a reference. You will need a Mapbox token. You can obtain one for free by signing up [on Mapbox](https://mapbox.com/signup)
-
-On a fresh clone of this repo, run:
-
-```
-$ docker-compose build
-```
-
-This will download and build all the docker images used in this project. Upon completion you should see output similar to:.
-
-```
-...
-Successfully tagged terrastories:latest
-```
-
-## Make It Go
-
-Run the following:
-
-```
-$ docker-compose up
-```
-
-Use `ctrl-c` to stop.
-
-
-The first time, open another terminal and run the following command to setup:
-
-```
-$ docker-compose exec web bin/setup
-```
-
-This command runs a setup script that lives in `bin/setup`, which does:
-
-- install ruby gems
-- install javascript packages
-- setup database
-
-See the script file for the details.
-
-Once rails fully starts up, you can view the running app at `localhost:3000`
-
-## Having troubles? Check our common errors & gotchas
-
-If you run into any problems getting the application to start, please check out a list of common errors & gotchas that we have put together [here](https://docs.google.com/document/d/1uSbQl56rAh3AA8Xm7IRZ8qepAMVN55ZOkAqQ8Kh423E/edit)!
-
-Additionally, feel free to join us in Slack [here](https://t.co/kUtI3lnpW1) and find us in the channel #terrastories :) You can also post an issue and label it with `question`. We will get back to you ASAP!
+4. [Setting up your Development Environment](#setting-up-your-development-environment)
 
 ## Development
 
@@ -100,39 +28,6 @@ environment. Always use the rails container instead.**
 
 Any changes to source files should be made directly in your local filesystem under the
 `/opt/terrastories` directory using your preferred editing tools.
-
-## Backup and restore the Terrastories database
-
-Terrastories stores Places, Speakers, and Stories in a database (Postgres DB). it is possible to back these data up and restore them by running lines of code in a bash terminal.
-
-Backup the DB with:
-
-```
-docker run --rm -v "terrastories_postgres_data:/pgdata" busybox tar -cvzf - -C /pgdata . >db-backup.tgz 
-```
-
-Restore a backup with:
-
-```
-docker volume rm terrastories_postgres_data
-docker run --rm -i -v "terrastories_postgres_data:/pgdata" busybox tar -xvzf - -C /pgdata <db-backup.tgz
-```
-
-**For Windows** applications like PowerShell (PS), a slightly different syntax is needed. 
-
-Backup the DB in PS with:
-
-```
-docker run --rm -v "terrastories_postgres_data:/pgdata" -v "$(pwd):/host" busybox tar -cvzf /host/db-backup-test.tgz -C /pgdata .
-```
-
-Restore a backup in PS with:
-
-```
-docker run --rm -i -v "terrastories_postgres_data:/pgdata" -v "$(pwd):/source/" busybox tar -xvzf /source/db-backup.tgz -C /pgdata
-```
-
-Note: the above code is assuming your build is called `terrastories`. It may be necessary to run `docker volume ls` to get the right Docker container name ending with `_postgres_data`.
 
 ## Importing data into Terrastories
 
