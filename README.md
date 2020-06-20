@@ -4,9 +4,11 @@
 
 1. [About Terrastories](#about-terrastories)
 
-2. [How to set up Terrastories](#setup)
+2. [Setup Terrastories](#setup)
 
-3. [Contributing Guidelines](#contributing)
+3. [Developing with Terrastories](#developing-with-terrastories)
+
+4. [Contributing Guidelines](#contributing)
 
 ## About Terrastories
 
@@ -23,7 +25,14 @@ The project to develop this application was initiated by the [**Amazon Conservat
 
 ## Setup
 
-To install, build, and run Terrastories, please visit the [Setup guide here](SETUP.md).
+To install and run Terrastories, visit one of these links:
+1. [Setup for Mac](MAC.md)
+2. [Setup for Windows](WINDOWS.md)
+3. [Setup for Linux](Linux.md)
+
+## Developing with Terrastories
+
+To find out how to develop with the Terrastories app, click [here](DEVELOPMENT.md)
 
 ## Contributing
 
