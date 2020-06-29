@@ -18,7 +18,7 @@ class StoriesController < ApplicationController
     @story = Story.find_by(id: params[:id])
   end
 
-  def create 
+  def create
     @story = Story.create(story_params)
     redirect_to story_path(@story)
   end
