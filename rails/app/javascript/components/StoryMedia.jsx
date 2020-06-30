@@ -23,6 +23,22 @@ class StoryMedia extends PureComponent {
     );
   }
 
+  renderImage() {
+    const { file } = this.props;
+    const { explicitVideoHeight } = this.state;
+    return (
+      <img
+        id = {`img${file.blob.id}`}
+        className="img-player"
+        width="80%"
+        key={file.url}
+        ref="img"
+        src={file.url}
+        >
+        </img>
+    )
+  }
+
   renderVideo() {
     const { file } = this.props;
     const { explicitVideoHeight } = this.state;
@@ -33,7 +49,7 @@ class StoryMedia extends PureComponent {
         height={explicitVideoHeight}
         playsInline
         controls
-        disablepictureinpicture='true'       
+        disablePictureInPicture='true'       
         controlsList='nodownload'
         key={file.url}
         ref="video"
@@ -44,9 +60,17 @@ class StoryMedia extends PureComponent {
   }
 
   render() {
-    return this.props.file.blob.content_type.indexOf("video") !== -1
-      ? this.renderVideo()
-      : this.renderAudio();
+    if (this.props.file.blob.content_type.indexOf("video") !== -1)
+    {
+      return this.renderVideo();
+    }
+    else if (this.props.file.blob.content_type.indexOf("audio") !== -1)
+    {
+      return this.renderAudio();
+    }
+    else{
+      return this.renderImage();
+    }
   }
 
   componentDidMount() {
