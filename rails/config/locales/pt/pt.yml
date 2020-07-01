@@ -23,7 +23,7 @@ pt:
   filter_stories: "Filtrar histórias"
   select_category: "Escolher categoria"
   place_type: "Tipo de lugar"
-  selected_language: "(selected)"
+  selected_language: "selecionado"
   select_option: "Escolher a opção"
   sort_stories: "Classificar histórias"
   most_recent: "Mais recente"
