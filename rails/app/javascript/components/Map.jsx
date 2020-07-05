@@ -80,7 +80,7 @@ export default class Map extends Component {
     ) {
       const { bounds, ...frameOptions } = this.props.framedView;
       if (bounds) {
-        this.map.fitBounds(bounds, { duration: 2000.0, ...frameOptions });
+        this.map.fitBounds(bounds, { padding: 50, duration: 2000.0, ...frameOptions });
       } else {
         this.map.easeTo({ duration: 2000.0, ...frameOptions });
       }
