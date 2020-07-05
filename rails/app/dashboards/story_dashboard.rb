@@ -12,7 +12,7 @@ class StoryDashboard < Administrate::BaseDashboard
     title: Field::String,
     desc: Field::Text,
     language: Field::String,
-    speakers: Field::HasMany, 
+    speakers: Field::HasMany,
     places: Field::HasMany,
     interview_location: Field::BelongsTo.with_options({class_name: "Place"}),
     interviewer: Field::BelongsTo.with_options({class_name: "Speaker"}),
