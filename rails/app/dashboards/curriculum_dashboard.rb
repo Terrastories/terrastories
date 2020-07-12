@@ -9,7 +9,6 @@ class CurriculumDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     user: Field::BelongsTo,
-    curriculum_stories: Field::NestedHasMany.with_options(skip: :curriculum),
     stories: Field::HasMany,
     id: Field::Number,
     title: Field::String,
@@ -35,7 +34,6 @@ class CurriculumDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
   title
   description
-  curriculum_stories
   user
   created_at
   updated_at
@@ -49,7 +47,6 @@ class CurriculumDashboard < Administrate::BaseDashboard
   title
   description
   stories
-  curriculum_stories
   ].freeze
 
   # COLLECTION_FILTERS
