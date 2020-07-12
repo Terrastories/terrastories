@@ -103,7 +103,7 @@ Any changes to source files should be made directly in your local filesystem und
 
 ## Running Terrastories in Offline Mode
 
-Sometimes, usually only for a production version of the app that requires it be hosted in a remote location off a labtop, there may not be a reliable connection to mapbox.
+Terrastories offline mode is generally used in the field, when there is no access to the internet.
  
 In those cases, before starting the server, add `USE_LOCAL_MAP_SERVER=true` to your .env file. Remove this variable to go back to using mapbox.
 
