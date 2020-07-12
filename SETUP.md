@@ -101,6 +101,20 @@ environment. Always use the rails container instead.**
 Any changes to source files should be made directly in your local filesystem under the
 `/opt/terrastories` directory using your preferred editing tools.
 
+## Running Terrastories in Offline Mode
+
+Terrastories offline mode is generally used in the field, when there is no access to the internet.
+ 
+In those cases, before starting the server, add `USE_LOCAL_MAP_SERVER=true` to your .env file. Remove this variable to go back to using mapbox.
+
+In order to get the local tileserver map running, you will also need to download [this mbtiles](https://drive.google.com/open?id=1rWEyCosde507dlPcDwbmDA6jxqc0KAuk) and place it in `tileserver/data/mbtiles/basic.mbtiles` 
+
+And instead of running docker-compose up, run 
+
+```bash
+script/run_offline_maps.sh
+```
+
 ## Backup and restore the Terrastories database
 
 Terrastories stores Places, Speakers, and Stories in a database (Postgres DB). it is possible to back these data up and restore them by running lines of code in a bash terminal.
