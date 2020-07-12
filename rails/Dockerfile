@@ -14,6 +14,7 @@ RUN apt-get -y update && \
   git-all \
   curl \
   ssh \
+  imagemagick \
   postgresql-client-11 libpq5 libpq-dev -y && \
   wget -qO- https://deb.nodesource.com/setup_12.x  | bash - && \
   apt-get install -y nodejs && \
