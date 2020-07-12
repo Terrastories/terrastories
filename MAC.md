@@ -12,10 +12,6 @@
 
 5. [Common setup errors](#having-troubles-check-our-common-errors--gotchas)
 
-6. [Development](#development)
-
-7. [Backup and restore the Terrastories database](#backup-and-restore-the-terrastories-database)
-
 ## Setup Docker
 
 Docker is a platform that serves to deliver software in packages called containers. Terrastories makes use of this to deliver the 
@@ -109,39 +105,3 @@ It will take a moment to load when first opening the application
 If you run into any problems getting the application to start, please check out a list of common errors & gotchas that we have put together [here](https://docs.google.com/document/d/1uSbQl56rAh3AA8Xm7IRZ8qepAMVN55ZOkAqQ8Kh423E/edit)!
 
 Additionally, feel free to join us in Slack [here](https://t.co/kUtI3lnpW1) and find us in the channel #terrastories :) You can also post an issue and label it with `question`. We will get back to you ASAP!
-
-## Development
-
-Most developer contributions will be focused on the rails app. Because this project uses
-docker, we already have a uniform ruby/rails development environment in our rails docker
-image. Any time you need to run a rails command you should do so from a running docker
-container to take advantage of this consistent environment. Use the following command to
-open a bash console on the rails container:
-
-```
-docker-compose exec web /bin/bash
-```
-
-Now you can treat this console like any other development environment, running rails or
-bundler commands as needed. **Please refrain from running such commands in your local
-environment. Always use the rails container instead.**
-
-Any changes to source files should be made directly in your local filesystem under the
-`/opt/terrastories` directory using your preferred editing tools.
-
-## Backup and restore the Terrastories database
-
-Terrastories stores Places, Speakers, and Stories in a database (Postgres DB). it is possible to back these data up and restore them by running lines of code in a bash terminal.
-
-Backup the DB with:
-
-```
-docker run --rm -v "terrastories_postgres_data:/pgdata" busybox tar -cvzf - -C /pgdata . >db-backup.tgz 
-```
-
-Restore a backup with:
-
-```
-docker volume rm terrastories_postgres_data
-docker run --rm -i -v "terrastories_postgres_data:/pgdata" busybox tar -xvzf - -C /pgdata <db-backup.tgz
-```
