@@ -60,6 +60,9 @@ GEM
     administrate-field-active_storage (0.1.8)
       administrate (>= 0.2.0.rc1)
       rails (>= 5.2)
+    administrate-field-nested_has_many (1.2.0)
+      administrate (> 0.8, < 1)
+      cocoon (~> 1.2, >= 1.2.11)
     archive-zip (0.12.0)
       io-like (~> 0.3.0)
     arel (9.0.0)
@@ -97,6 +100,7 @@ GEM
     chromedriver-helper (2.1.1)
       archive-zip (~> 0.10)
       nokogiri (~> 1.8)
+    cocoon (1.2.14)
     coderay (1.1.2)
     concurrent-ruby (1.1.6)
     connection_pool (2.2.2)
@@ -362,6 +366,7 @@ DEPENDENCIES
   acts-as-taggable-on (~> 5.0)
   administrate
   administrate-field-active_storage
+  administrate-field-nested_has_many
   better_errors
   binding_of_caller
   bootsnap (>= 1.1.0)

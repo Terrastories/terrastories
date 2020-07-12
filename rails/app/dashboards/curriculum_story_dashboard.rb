@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class UserDashboard < Administrate::BaseDashboard
+class CurriculumStoryDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -8,12 +8,12 @@ class UserDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
+    curriculum: Field::BelongsTo,
+    story: Field::BelongsTo.with_options(searchable: true),
     id: Field::Number,
-    email: Field::String,
-    role: EnumField,
-    password: Field::Password,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    display_order: Field::Number,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -21,36 +21,44 @@ class UserDashboard < Administrate::BaseDashboard
   #
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
-  COLLECTION_ATTRIBUTES = [
-    :id,
-    :email,
-    :role
+  COLLECTION_ATTRIBUTES = %i[
+  story
+  display_order
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
-  SHOW_PAGE_ATTRIBUTES = [
-    :id,
-    :email,
-    :password,
-    :role,
-    :created_at,
-    :updated_at,
+  SHOW_PAGE_ATTRIBUTES = %i[
+  curriculum
+  story
+  display_order
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
-  FORM_ATTRIBUTES = [
-    :email,
-    :password,
-    :role
+  FORM_ATTRIBUTES = %i[
+  curriculum
+  story
+  display_order
   ].freeze
 
-  # Overwrite this method to customize how users are displayed
+  # COLLECTION_FILTERS
+  # a hash that defines filters that can be used while searching via the search
+  # field of the dashboard.
+  #
+  # For example to add an option to search for open resources by typing "open:"
+  # in the search field:
+  #
+  #   COLLECTION_FILTERS = {
+  #     open: ->(resources) { where(open: true) }
+  #   }.freeze
+  COLLECTION_FILTERS = {}.freeze
+
+  # Overwrite this method to customize how curriculum stories are displayed
   # across all pages of the admin dashboard.
   #
-  def display_resource(user)
-    user.email
-  end
+  # def display_resource(curriculum_story)
+  #   "CurriculumStory ##{curriculum_story.id}"
+  # end
 end
