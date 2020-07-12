@@ -6,9 +6,11 @@
 
 2. [Importing data into Terrastories](#importing-data-into-terrastories)
 
+3. [Back up and restore Terrastories database](#backup-and-restore-the-Terrastories-database)
+
 3. [Adding languages to Terrastories](#adding-languages-to-terrastories)
 
-4. [Setting up your Development Environment](#setting-up-your-development-environment)
+4. [Setting up your development environment](#setting-up-your-development-environment)
 
 ## Development
 
@@ -41,6 +43,26 @@ To prepare CSVs for importing, use the following workflow to ensure that charact
 -Otherwise create the file directly in Google Sheets. Make sure the file has a row for headers.
 -Go to File -> Download As-> Comma Separated Values, and save the file to your machine.
 -This CSV should be properly encoded as UTF-8. It's best to verify this with Notepad++ instead of Excel if you are on a Windows machine.
+
+## Backup and restore the Terrastories database
+
+Terrastories stores Places, Speakers, and Stories in a database (Postgres DB). it is possible to back these data up and restore them by running lines of code in a bash terminal. 
+
+Using Powershell:
+
+Backup the DB in PS with:
+
+```
+docker run --rm -v "terrastories_postgres_data:/pgdata" -v "$(pwd):/host" busybox tar -cvzf /host/db-backup-test.tgz -C /pgdata .
+```
+
+Restore a backup in PS with:
+
+```
+docker run --rm -i -v "terrastories_postgres_data:/pgdata" -v "$(pwd):/source/" busybox tar -xvzf /source/db-backup.tgz -C /pgdata
+```
+
+Note: the above code is assuming your build is called `terrastories`. It may be necessary to run `docker volume ls` to get the right Docker container name ending with `_postgres_data`.
 
 ## Adding languages to Terrastories
 

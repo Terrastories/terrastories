@@ -12,10 +12,6 @@
 
 5. [Common setup errors](#having-troubles-check-our-common-errors--gotchas)
 
-6. [Development](#development)
-
-7. [Backup and restore the Terrastories database](#backup-and-restore-the-terrastories-database)
-
 ## Setup Docker
 
 Docker is a platform that serves to deliver software in packages called containers. Terrastories makes use of this to deliver the 
@@ -25,29 +21,16 @@ Download Docker:
 
 - https://hub.docker.com/editions/community/docker-ce-desktop-windows/
 
-System prerequisites for Windows 10 Pro: 
-- 64 bit processor 
-- 4GB system RAM 
-- [virtualization must be enabled](https://mashtips.com/enable-virtualization-windows-10/). 
-
-Setup instructions for Docker on Windows 10 Pro:
-
-- https://docs.docker.com/docker-for-windows/install/
-
-System prerequisites for Windows 10 Home: 
-- Ensure that you are running on version 2004 or higher, you will need to update your system if it is running on an older version
-- Enable the WSL 2 feature on Windows, follow the instructions on this link to complete this step, this includes installing a Linux distribution such as Ubuntu
-- To complete the previous steps, you must have a 64 bit processor, 4GB system RAM, and [virtualization must be enabled](https://mashtips.com/enable-virtualization-windows-10/). 
-
-Setup instructions for Docker on Windows 10 Home:
-
-- https://docs.docker.com/docker-for-windows/install-windows-home/
+| | Windows 10 Pro |  Windows 10 Home |
+| --- | --- | --- |
+| System Requirements | - 64 bit processor<br>- 4GB system RAM<br>- [virtualization must be enabled](https://mashtips.com/enable-virtualization-windows-10/) | Same as Windows 10 Pro, plus: <br>- OS Version 2004 or higher (update your system if version is older)<br>- Enable [WSL 2 feature](https://docs.docker.com/docker-for-windows/wsl/) |
+| Setup Instructions | https://docs.docker.com/docker-for-windows/install/ | https://docs.docker.com/docker-for-windows/install-windows-home/ |
 
 There is no need to import any repositories at this point through docker. 
 To verify that your docker is up and running, click on the app or check the menu bar. Docker should show that it is running: 
 <br>
 <div style="text-align:center">
-    <img src="dockerMac.png" alt="dockerImg" width="200"/>
+    <img src="dockerWindows.png" alt="dockerImg" width="200"/>
 </div>
 
 ## Setup the application
@@ -125,41 +108,4 @@ If you run into any problems getting the application to start, please check out 
 
 Additionally, feel free to join us in Slack [here](https://t.co/kUtI3lnpW1) and find us in the channel #terrastories :) You can also post an issue and label it with `question`. We will get back to you ASAP!
 
-## Development
 
-Most developer contributions will be focused on the rails app. Because this project uses
-docker, we already have a uniform ruby/rails development environment in our rails docker
-image. Any time you need to run a rails command you should do so from a running docker
-container to take advantage of this consistent environment. Use the following command to
-open a bash console on the rails container:
-
-```
-docker-compose exec web /bin/bash
-```
-
-Now you can treat this console like any other development environment, running rails or
-bundler commands as needed. **Please refrain from running such commands in your local
-environment. Always use the rails container instead.**
-
-Any changes to source files should be made directly in your local filesystem under the
-`/opt/terrastories` directory using your preferred editing tools.
-
-## Backup and restore the Terrastories database
-
-Terrastories stores Places, Speakers, and Stories in a database (Postgres DB). it is possible to back these data up and restore them by running lines of code in a bash terminal. 
-
-Using Powershell:
-
-Backup the DB in PS with:
-
-```
-docker run --rm -v "terrastories_postgres_data:/pgdata" -v "$(pwd):/host" busybox tar -cvzf /host/db-backup-test.tgz -C /pgdata .
-```
-
-Restore a backup in PS with:
-
-```
-docker run --rm -i -v "terrastories_postgres_data:/pgdata" -v "$(pwd):/source/" busybox tar -xvzf /source/db-backup.tgz -C /pgdata
-```
-
-Note: the above code is assuming your build is called `terrastories`. It may be necessary to run `docker volume ls` to get the right Docker container name ending with `_postgres_data`.
