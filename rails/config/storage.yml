@@ -11,8 +11,8 @@ amazon:
   service: S3
   access_key_id: <%= Rails.application.credentials.dig(:aws, :access_key_id) %>
   secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
-  region: ENV.fetch("AWS_REGION", "us-east-2")
-  bucket: ENV.fetch("AWS_BUCKET_NAME", "terrastories-demo")
+  region: <%= ENV.fetch("AWS_REGION", "us-east-2") %>
+  bucket: <%= ENV.fetch("AWS_BUCKET_NAME", "terrastories-demo") %>
 
 # Remember not to checkin your GCS keyfile to a repository
 # google:
