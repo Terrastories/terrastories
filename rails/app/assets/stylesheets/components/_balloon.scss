@@ -1,19 +1,17 @@
 .ts-markerPopup {
   &-content {
-    display: flex;
     justify-content: center;
     padding: 0.5rem;
     color: $default-text;
 
     img {
-      width: 100px;
-      height: 100px;
+      width: 100%;
+      height: auto;
     }
   }
 
   .mapboxgl-popup-content {
     h1, h2, h3, h4, h5, p, img {
-      padding: 0.5rem;
       margin: 0;
     }
     padding: 0rem;
