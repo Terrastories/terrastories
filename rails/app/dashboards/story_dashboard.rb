@@ -79,7 +79,7 @@ class StoryDashboard < Administrate::BaseDashboard
   # across all pages of the admin dashboard.
 
   def display_resource(story)
-    story.title
+    "#{story.title}: #{story.desc}"
   end
 
   def permitted_attributes

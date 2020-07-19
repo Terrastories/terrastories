@@ -10,6 +10,7 @@ class CurriculumStoryDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     curriculum: Field::BelongsTo,
     story: Field::BelongsTo.with_options(searchable: true),
+    story_desc: Field::Text,
     id: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -23,6 +24,8 @@ class CurriculumStoryDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
   story
+  story_desc
+  curriculum
   display_order
   ].freeze
 
