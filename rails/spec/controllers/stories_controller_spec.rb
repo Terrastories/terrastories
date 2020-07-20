@@ -4,7 +4,7 @@ RSpec.describe StoriesController, type: :controller do
   before :each do
     @rfg2018 = create(:place)
     @miranda = create(:speaker)
-    @rudo_story = create(:story)
+    @rudo_story = create(:story, :with_speakers)
   end
 
   describe "GET index" do
@@ -41,8 +41,10 @@ RSpec.describe StoriesController, type: :controller do
              story: {
                title: "Story title",
                desc: "Story description",
+               permission_level: "anonymous",
                interview_location_id: @rfg2018,
-               interviewer_id: @miranda
+               interviewer_id: @miranda,
+               speaker_ids: [ @miranda ]
              }
            }
     }
