@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :places
     resources :curriculums
     resources :curriculum_stories
+    resources :themes
 
     root to: "users#index"
   end
