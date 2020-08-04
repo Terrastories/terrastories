@@ -28,7 +28,7 @@ The project to develop this application was initiated by the [**Amazon Conservat
 To install and run Terrastories, visit one of these links:
 1. [Setup for Mac](MAC.md)
 2. [Setup for Windows](WINDOWS.md)
-3. [Setup for Linux](Linux.md)
+3. [Setup for Linux](LINUX.md)
 
 ## Developing with Terrastories
 
