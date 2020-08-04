@@ -4,7 +4,7 @@ class PlacePhotoDecorator
   end
 
   def attachable?
-    File.exist?(path)
+    @filename != "" && File.exist?(path)
   end
 
   def blob_data
