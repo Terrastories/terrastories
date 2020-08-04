@@ -107,10 +107,10 @@ We use ESLint with Airbnb community style-guide for linting JavaScript and JSX f
 
 Please check [ESLint editor-integrations page](https://eslint.org/docs/user-guide/integrations#editors) to read about how to integrate ESLint with your IDE/editor
 
-### e2e Tests
+### Tests
 
-You can run e2e tests with
+You can run RSpec and e2e tests with
 
 ```
-script/test
+script/test.sh
 ```
