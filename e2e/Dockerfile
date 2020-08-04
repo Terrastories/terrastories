@@ -15,7 +15,3 @@ ARG INSTALL_PATH=/opt/terrastories_e2e
 ENV INSTALL_PATH $INSTALL_PATH
 WORKDIR $INSTALL_PATH
 COPY . .
-
-# Permission update required for MacOS
-# Update all scripts in the folder
-RUN chmod a+x scripts/*

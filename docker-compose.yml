@@ -17,7 +17,7 @@ services:
   #   ports:
   #     - 3035:3035
 
-  web:
+  x-web-common: &x-web-common
     image: ${DOCKER_IMAGE_NAME-terrastories}
     build:
       context: ./rails
@@ -25,31 +25,26 @@ services:
         precompileassets: "not"
     env_file:
       - .env
-    links:
-      - db
-    ports:
-      - 3000:3000
-    command: ["./scripts/wait-for-it.sh", "db:5432", "--", "./scripts/start_rails.sh"]
     volumes:
       - ./rails:/opt/terrastories:cached
 
+  web:
+    <<: *x-web-common
+    command: scripts/server
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+
   web-test:
-    image: ${DOCKER_IMAGE_NAME-terrastories}
-    build:
-      context: ./rails
-      args:
-        precompileassets: "not"
-    env_file:
-      - .env
+    <<: *x-web-common
     environment:
       RAILS_ENV: test
-    links:
-      - db
+    command: scripts/test-server
     ports:
       - 3001:3000
-    command: ["./scripts/wait-for-it.sh", "db:5432", "--", "./scripts/start_test_server.sh"]
-    volumes:
-      - ./rails:/opt/terrastories:cached
+    depends_on:
+      - db
 
   selenium:
     # Debug version enables VNC ability
@@ -79,4 +74,3 @@ services:
 volumes:
   postgres_data:
   mbtiles:
-
