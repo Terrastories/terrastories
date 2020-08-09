@@ -34,6 +34,8 @@ mat:
     speaker: Spreker
     stories: Verhalen
     story: Verhaal
+    media_link: Media Link 
+    media_links: Media Links 
     table_columns:
       user:
         id: Id

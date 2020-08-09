@@ -5,6 +5,8 @@ import Filter from "./Filter";
 import Sort from "./Sort";
 import { List, AutoSizer, CellMeasurer, CellMeasurerCache } from "react-virtualized";
 
+// import ReactPlayer from "react-player"
+
 class StoryList extends Component {
   constructor(props) {
     super(props)
@@ -80,6 +82,25 @@ class StoryList extends Component {
     const bustCache = () => {
       this.cache.clear(index, 0);
     }
+    const mediaLinkList = 
+      story.media_links.map( function (media_link, linkNum) {
+        return(
+          <li>
+            <h6>
+              video {linkNum + 1}
+            </h6>
+            <iframe width="100%" height="auto" src={media_link.url} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+
+            </iframe>
+          </li>
+          // <li>
+          //   <ReactPlayer
+          //     url= {media_link.url}
+          //   />
+          // </li>
+        )
+      }
+    )
     return (
       <CellMeasurer
         key={key}
@@ -112,6 +133,22 @@ class StoryList extends Component {
             <p>{story.desc}</p>
             {story.media &&
               story.media.map(file => <StoryMedia file={file} doBustCache={bustCache} key={story.media.id} />)}
+          </div>
+          <div className="container">
+            <h6>
+              Media Links
+            </h6>
+            <ol>
+              {/* {story.media_links.map(media_link => 
+                <li>
+                  <a href={media_link.url}>
+                    link 1
+                  </a>
+                </li>)
+              } */
+              mediaLinkList
+              }
+            </ol>
           </div>
         </li>
       </CellMeasurer>

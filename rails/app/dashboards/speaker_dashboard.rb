@@ -17,6 +17,7 @@ class SpeakerDashboard < Administrate::BaseDashboard
     community: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    # media_links: Field::HasMany,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -30,7 +31,8 @@ class SpeakerDashboard < Administrate::BaseDashboard
     :name,
     :birthdate,
     :birthplace,
-    :community
+    :community,
+    # :media_links,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -56,7 +58,8 @@ class SpeakerDashboard < Administrate::BaseDashboard
     :stories,
     :birthdate,
     :birthplace,
-    :community
+    :community,
+    # :media_links
   ].freeze
 
   # Overwrite this method to customize how speakers are displayed

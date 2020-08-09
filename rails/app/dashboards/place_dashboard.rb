@@ -19,6 +19,7 @@ class PlaceDashboard < Administrate::BaseDashboard
     type_of_place: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    # media_links: Field::HasMany,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -36,6 +37,7 @@ class PlaceDashboard < Administrate::BaseDashboard
     :lat,
     :stories,
     :photo,
+    # :media_links
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -66,6 +68,7 @@ class PlaceDashboard < Administrate::BaseDashboard
     :lat,
     :stories,
     :photo,
+    # :media_links,
   ].freeze
 
   # Overwrite this method to customize how places are displayed

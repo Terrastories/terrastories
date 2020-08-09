@@ -12,6 +12,13 @@ json.stories stories do |story|
     json.name speaker.name
     json.picture_url speaker.picture_url
   end
+
+  json.media_links story.media_links do |media_link|
+    json.id media_link.id
+    json.url media_link.url
+  end
+
+
   json.permission_level story.permission_level == "anonymous" ? "anonymous" : "restricted"
 end
 json.logo_path image_path("logocombo.svg")
