@@ -37,7 +37,6 @@ class PlaceDashboard < Administrate::BaseDashboard
     :lat,
     :stories,
     :photo,
-    # :media_links
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -68,7 +67,6 @@ class PlaceDashboard < Administrate::BaseDashboard
     :lat,
     :stories,
     :photo,
-    # :media_links,
   ].freeze
 
   # Overwrite this method to customize how places are displayed

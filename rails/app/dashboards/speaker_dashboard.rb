@@ -32,7 +32,6 @@ class SpeakerDashboard < Administrate::BaseDashboard
     :birthdate,
     :birthplace,
     :community,
-    # :media_links,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -59,7 +58,6 @@ class SpeakerDashboard < Administrate::BaseDashboard
     :birthdate,
     :birthplace,
     :community,
-    # :media_links
   ].freeze
 
   # Overwrite this method to customize how speakers are displayed

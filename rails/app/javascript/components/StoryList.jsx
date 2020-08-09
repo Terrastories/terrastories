@@ -82,25 +82,7 @@ class StoryList extends Component {
     const bustCache = () => {
       this.cache.clear(index, 0);
     }
-    const mediaLinkList = 
-      story.media_links.map( function (media_link, linkNum) {
-        return(
-          <li>
-            <h6>
-              video {linkNum + 1}
-            </h6>
-            <iframe width="100%" height="auto" src={media_link.url} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-
-            </iframe>
-          </li>
-          // <li>
-          //   <ReactPlayer
-          //     url= {media_link.url}
-          //   />
-          // </li>
-        )
-      }
-    )
+    
     return (
       <CellMeasurer
         key={key}
@@ -139,14 +121,20 @@ class StoryList extends Component {
               Media Links
             </h6>
             <ol>
-              {/* {story.media_links.map(media_link => 
-                <li>
-                  <a href={media_link.url}>
-                    link 1
-                  </a>
-                </li>)
-              } */
-              mediaLinkList
+              {
+                story.media_links.map( function (media_link, linkNum) {
+                    return(
+                      <li>
+                        <h6>
+                          video {linkNum + 1}
+                        </h6>
+                        <iframe width="100%" height="auto" src={media_link.url} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            
+                        </iframe>
+                      </li>
+                    )
+                  }
+                )
               }
             </ol>
           </div>

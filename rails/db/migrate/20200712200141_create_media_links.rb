@@ -6,8 +6,4 @@ class CreateMediaLinks < ActiveRecord::Migration[5.2]
       t.timestamps
     end
   end
-  # def update_url(url)
-  #   url["watch?v="]="embed/"
-  #   # "watch?v=" ==> "embed/"
-  # end
 end
