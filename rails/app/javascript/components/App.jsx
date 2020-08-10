@@ -93,7 +93,6 @@ class App extends Component {
         }
       }
     });
-    console.log(filterMap);
     return filterMap;
   };
 
@@ -178,7 +177,7 @@ class App extends Component {
   handleFilterItemChange = option => {
     if (option === null) {
       this.resetStoriesAndMap();
-    } else {
+    } else if (this.state.filterCategory !== null) {
       const item = option.value;
       this.handleFilter(this.state.filterCategory, item);
       this.setState({ filterItem: item });
@@ -224,7 +223,6 @@ class App extends Component {
   };
 
   handleMapPointClick = (point, stories) => {
-    console.log(point);
     this.showMapPointStories(stories);
     const framedView = { center: point.geometry.coordinates };
     this.setState({ activePoint: point, framedView });

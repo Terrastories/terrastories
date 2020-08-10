@@ -54,9 +54,9 @@ class StoryList extends Component {
     this.props.onStoryClick(story);
   }
 
-  handleFilter = (category, item) => {
-    this.props.handleFilter(category, item);
-    this._list.scrollToPosition(0);
+  handleFilterItemChange = (item) => {
+    this.props.handleFilterItemChange(item);
+    // this.resetList();
   }
 
   handleClearFilteredStories = () => {
@@ -99,14 +99,13 @@ class StoryList extends Component {
       <React.Fragment>
         <div className="card--nav">
           <Filter
-            handleFilter={this.handleFilter}
             categories={this.props.categories}
             filterMap={this.props.filterMap}
             clearFilteredStories={this.handleClearFilteredStories}
             filterCategory={this.props.filterCategory}
             filterItem={this.props.filterItem}
             handleFilterCategoryChange={this.props.handleFilterCategoryChange}
-            handleFilterItemChange={this.props.handleFilterItemChange}
+            handleFilterItemChange={this.handleFilterItemChange}
             itemOptions={this.props.itemOptions}
           />
           <Sort

@@ -18,7 +18,7 @@ class StoryMedia extends PureComponent {
     const { file } = this.props;
     return (
       <audio id={`audio-player${file.blob.id}`} controls>
-        <source src={file.url} type={file.blob.content_type} />
+        <source src={file.url} type={file.blob.content_type} key={this.props.key} />
       </audio>
     );
   }
@@ -31,7 +31,7 @@ class StoryMedia extends PureComponent {
         id = {`img${file.blob.id}`}
         className="img-player"
         width="80%"
-        key={file.url}
+        key={this.props.key}
         ref="img"
         src={file.url}
         >
@@ -49,9 +49,9 @@ class StoryMedia extends PureComponent {
         height={explicitVideoHeight}
         playsInline
         controls
-        disablePictureInPicture='true'       
+        disablePictureInPicture={true}
         controlsList='nodownload'
-        key={file.url}
+        key={this.props.key}
         ref="video"
       >
         <source src={file.url} type={file.blob.content_type} />

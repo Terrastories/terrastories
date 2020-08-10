@@ -7,7 +7,7 @@ const Story = props => {
 
   const renderSpeakers = speakers => {
     return (
-      <div>
+      <div key={`${story.id}-speakers`}>
         {
           speakers.map(speaker => {
             return (
@@ -36,7 +36,7 @@ const Story = props => {
       <li
         className={props.storyClass}
         onClick={_ => props.onStoryClick(story)}
-        style={props.style}
+        key={story.id}
       >
         <div className="speakers">
           {renderSpeakers(story.speakers)}
