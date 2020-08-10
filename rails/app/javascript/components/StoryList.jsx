@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import StoryMedia from "./StoryMedia";
+import Story from "./Story";
 import Filter from "./Filter";
 import Sort from "./Sort";
 import { List, AutoSizer, CellMeasurer, CellMeasurerCache } from "react-virtualized";
@@ -32,7 +32,7 @@ class StoryList extends Component {
   };
 
   componentWillReceiveProps(nextProps) {
-    if(this._list){
+    if (this._list) {
       this._list.forceUpdateGrid();
     }
     if (nextProps.stories !== this.props.stories) {
@@ -59,10 +59,6 @@ class StoryList extends Component {
     this._list.scrollToPosition(0);
   }
 
-  getStorySpeakerNames = story => {
-    return story.speakers.map(function(speaker) { return speaker.name }).join(',');
-  }
-
   handleClearFilteredStories = () => {
     this.props.clearFilteredStories();
     this._list.scrollToPosition(0);
@@ -87,33 +83,13 @@ class StoryList extends Component {
         parent={parent}
         columnIndex={0}
         rowIndex={index}>
-        <li
-          className={storyClass}
-          onClick={_ => this.props.onStoryClick(story)}
-          style={style}
-        >
-          <div className="speakers">
-            {(story.speakers.length === 1) &&
-                <div>
-                  <img src={story.speakers[0].picture_url} alt={story.speakers[0].name} title={story.speakers[0].name} />
-                  <p style={{ fontWeight: 'bold' }}>{story.speakers[0].name}</p>
-                </div>}
-            {(story.speakers.length > 1) &&
-              story.speakers.map(speaker => (
-                  <img src={speaker.picture_url} alt={speaker.name} title={speaker.name} />
-              ))
-            }
-            {(story.speakers.length > 1) &&
-              <p style={{ fontWeight: 'bold' }}> {this.getStorySpeakerNames(story)} </p>
-            }
-          </div>
-          <div className="container">
-            <h6 className="title">{ story.permission_level === "restricted" && "🔒" }{story.title}</h6>
-            <p>{story.desc}</p>
-            {story.media &&
-              story.media.map(file => <StoryMedia file={file} doBustCache={bustCache} key={story.media.id} />)}
-          </div>
-        </li>
+          <Story
+            story={story}
+            onStoryClick={this.props.onStoryClick}
+            storyClass={storyClass}
+            doBustCache={bustCache}
+            style={style}
+          />
       </CellMeasurer>
     );
   };
