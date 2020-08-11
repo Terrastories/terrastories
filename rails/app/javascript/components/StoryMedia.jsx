@@ -10,8 +10,7 @@ class StoryMedia extends PureComponent {
   }
 
   static propTypes = {
-    file: PropTypes.object,
-    doBustCache: PropTypes.func
+    file: PropTypes.object
   };
 
   renderAudio() {
@@ -74,7 +73,6 @@ class StoryMedia extends PureComponent {
   }
 
   componentDidMount() {
-    const { doBustCache } = this.props;
     const video = this.refs.video;
 
     if (!!video === true) {
@@ -82,7 +80,6 @@ class StoryMedia extends PureComponent {
         const aspectRatio = video.videoWidth / video.videoHeight;
         const newExplicitVideoHeight = video.offsetWidth / aspectRatio;
         this.setState({ explicitVideoHeight: newExplicitVideoHeight });
-        doBustCache();
       });
       video.addEventListener('play', (event) => {
         window.pauseAllVideos(event.target);

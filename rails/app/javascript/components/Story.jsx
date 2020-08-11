@@ -52,7 +52,6 @@ const Story = props => {
               <StoryMedia
                 file={file}
                 key={story.media.id}
-                doBustCache={props.doBustCache}
               />
             )
           }
@@ -66,16 +65,12 @@ Story.propTypes = {
   story: PropTypes.object,
   onStoryClick: PropTypes.func,
   storyClass: PropTypes.string,
-  doBustCache: PropTypes.func,
-  style: PropTypes.object,
 };
 
 Story.defaultProps = {
   story: {},
   onStoryClick: () => { },
   storyClass: "",
-  doBustCache: () => { },
-  style: {}
 };
 
 export default Story;
