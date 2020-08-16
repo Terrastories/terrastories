@@ -9,6 +9,4 @@ RSpec.describe Speaker, type: :model do
       expect(speaker).to have_attributes(name: "Oliver Twist", birthdate: DateTime.new(1992))
     end
   end
-
-
 end

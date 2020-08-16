@@ -5,8 +5,6 @@ RSpec.describe Story, type: :model do
     it { should have_many :speaker_stories }
     it { should have_many :speakers }
     it { should have_and_belong_to_many :places }
-
-    # Issue 406 requested that interviewer and interview location be made optional for story creation
     it { should belong_to(:interview_location).optional }
     it { should belong_to(:interviewer).optional }
   end
@@ -31,8 +29,6 @@ RSpec.describe Story, type: :model do
         described_class.import_csv(@fixture_data)
       end
       let!(:story) {described_class.last}
-      # puts story.title
-      # puts story.desc
       let!(:csv) {CSV.parse(@fixture_data, headers: true).first}
 
 
