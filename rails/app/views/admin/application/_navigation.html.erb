@@ -7,15 +7,18 @@ for all resources in the admin dashboard,
 as defined by the routes in the `admin/` namespace
 %>
 
-<nav class="navigation" role="navigation">
-  <%= link_to "< #{t("back_to_map")}", home_map_path(locale: params[:locale]), class: "navigation__link navigation__link" %>
+<nav class="navigation nav_background" role="navigation">
+  <div class="nav_title"><%= image_tag 'logomark.svg', alt: 'Terrastories' , class:"img_title"%></div>
+  <%= link_to '<i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Map'.html_safe, home_map_path(locale: params[:locale]), 
+    class: "navigation__link navigation__link nav_link" %>
+    <%#%"< #{t("back_to_map")}"%>
   <% excluded_resources = ['curriculum_stories'] %>
   <% Administrate::Namespace.new(namespace).resources.sort_by(&:resource).each do |resource| %>
     <% unless excluded_resources.include?(resource.resource) %>
       <%= link_to(
         t("administrate.#{resource}"),
         [namespace, resource_index_route_key(resource), locale: params[:locale]],
-        class: "navigation__link navigation__link--#{nav_link_state(resource)}"
+        class: "nav_link navigation__link nav_link--#{nav_link_state(resource)}"
       ) %>
     <% end %>
   <% end %>
