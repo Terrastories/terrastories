@@ -48,7 +48,7 @@ class StoriesController < ApplicationController
   private
 
   def story_params
-    params.require(:story).permit(:title, :desc, :point_id, :interview_location_id, :interviewer_id, speakers: [], media: [])
+    params.require(:story).permit(:title, :desc, :point_id, :permission_level, :interview_location_id, :interviewer_id, speaker_ids: [], speakers: [], media: [])
   end
 
   def remove_attachment

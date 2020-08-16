@@ -4,7 +4,7 @@ RSpec.describe "Stories", type: :request do
   before :each do
     @rfg2018 = create(:place)
     @miranda = create(:speaker)
-    @rudo_story = create(:story)
+    @rudo_story = create(:story, :with_speakers)
   end
 
   describe "GET edit" do
@@ -48,7 +48,8 @@ RSpec.describe "Stories", type: :request do
           title: "Story title",
           desc: "Story description",
           interview_location_id: create(:place).id,
-          interviewer_id: create(:speaker).id
+          interviewer_id: create(:speaker).id,
+          speaker_ids: [ create(:speaker).id ]
         }
       }
 

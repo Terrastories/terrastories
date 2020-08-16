@@ -8,7 +8,7 @@ class Story < ApplicationRecord
   belongs_to :interview_location, class_name: "Place", foreign_key: "interview_location_id", optional: true
   belongs_to :interviewer, class_name: "Speaker", foreign_key: "interviewer_id", optional: true
 
-  validates_presence_of :speaker_stories, message: ': Your story must have at least one Speaker'
+  validates_presence_of :speakers, message: ': Your story must have at least one Speaker'
 
   def self.import_csv(file_contents)
     CSV.parse(file_contents, headers: true) do |row|
