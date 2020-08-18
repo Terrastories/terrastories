@@ -17,7 +17,6 @@ class SpeakerDashboard < Administrate::BaseDashboard
     community: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    # media_links: Field::HasMany,
   }.freeze
 
   # COLLECTION_ATTRIBUTES

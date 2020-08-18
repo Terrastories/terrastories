@@ -5,8 +5,6 @@ import Filter from "./Filter";
 import Sort from "./Sort";
 import { List, AutoSizer, CellMeasurer, CellMeasurerCache } from "react-virtualized";
 
-// import ReactPlayer from "react-player"
-
 class StoryList extends Component {
   constructor(props) {
     super(props)
@@ -33,7 +31,6 @@ class StoryList extends Component {
     itemOptions: PropTypes.array
   };
 
-  // In React 16.3.0, update method to getSnapshotBeforeUpdate
   componentWillReceiveProps(nextProps) {
     if(this._list){
       this._list.forceUpdateGrid();
