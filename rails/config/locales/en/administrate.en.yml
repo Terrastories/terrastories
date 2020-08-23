@@ -39,6 +39,8 @@ en:
     speaker: Speaker
     stories: Stories
     story: Story
+    theme: Theme
+    themes: Themes
     users: Users
     user: User
     media_link: Media Link 
@@ -75,3 +77,4 @@ en:
         lat: Latitude
         stories: Stories
         photo: Photo  
+    
