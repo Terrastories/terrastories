@@ -43,6 +43,8 @@ en:
     themes: Themes
     users: Users
     user: User
+    media_link: Media Link 
+    media_links: Media Links 
     table_columns:
       user:
         id: Id

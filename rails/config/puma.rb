@@ -32,3 +32,9 @@ environment ENV.fetch("RAILS_ENV") { "development" }
 
 # Allow puma to be restarted by `rails restart` command.
 plugin :tmp_restart
+
+if Rails.env.development?
+  Rails.application.config.after_initialize do
+    print "Initialized\n" # this forces stdout to flush for Docker boot
+  end
+end

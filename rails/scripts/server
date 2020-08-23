@@ -1,0 +1,6 @@
+#!/bin/bash
+
+rm -f tmp/pids/server.pid
+
+echo "Starting Rails Server..."
+bundle exec rails server --binding 0.0.0.0

@@ -5,8 +5,8 @@ class Place < ApplicationRecord
   has_and_belongs_to_many :stories
   has_one_attached :photo
   validate :photo_format
-  validates :lat, numericality: { greater_than_or_equal_to:  -90, less_than_or_equal_to:  90 }
-  validates :long, numericality: { greater_than_or_equal_to: -180, less_than_or_equal_to: 180 }
+  validates :lat, numericality: { greater_than_or_equal_to:  -90, less_than_or_equal_to:  90 }, allow_blank: true
+  validates :long, numericality: { greater_than_or_equal_to: -180, less_than_or_equal_to: 180 }, allow_blank: true
   has_many :interview_stories, class_name: "Story", foreign_key: "interview_location_id"
 
   attr_reader :point_geojson

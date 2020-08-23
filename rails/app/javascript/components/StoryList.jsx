@@ -31,7 +31,6 @@ class StoryList extends Component {
     itemOptions: PropTypes.array
   };
 
-  // In React 16.3.0, update method to getSnapshotBeforeUpdate
   componentWillReceiveProps(nextProps) {
     if(this._list){
       this._list.forceUpdateGrid();
@@ -80,6 +79,7 @@ class StoryList extends Component {
     const bustCache = () => {
       this.cache.clear(index, 0);
     }
+    
     return (
       <CellMeasurer
         key={key}
@@ -112,6 +112,28 @@ class StoryList extends Component {
             <p>{story.desc}</p>
             {story.media &&
               story.media.map(file => <StoryMedia file={file} doBustCache={bustCache} key={story.media.id} />)}
+          </div>
+          <div className="container">
+            <h6>
+              Media Links
+            </h6>
+            <ol>
+              {
+                story.media_links.map( function (media_link, linkNum) {
+                    return(
+                      <li>
+                        <h6>
+                          video {linkNum + 1}
+                        </h6>
+                        <iframe width="100%" height="auto" src={media_link.url} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            
+                        </iframe>
+                      </li>
+                    )
+                  }
+                )
+              }
+            </ol>
           </div>
         </li>
       </CellMeasurer>

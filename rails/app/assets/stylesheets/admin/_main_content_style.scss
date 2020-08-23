@@ -1,0 +1,59 @@
+.title-underline {
+    border-bottom: 3px solid #d77a34;
+}
+
+.table-underline {
+    border-bottom: 3px solid #d77a34;
+    margin: 1rem 2rem;
+}
+
+.color-fix {
+    color: #474747;
+}
+
+.word-hover:hover {
+    color: #0f566b;
+}
+
+.border {
+    border-radius: 0 4px 4px 0;
+}
+  
+.padding-fix {
+    padding-top: 10px;
+    padding-bottom: 0;
+}
+
+.new-button {
+    background-color: #0f566b;
+}
+
+.new-button:hover {
+    background-color: #0c4455;
+}
+
+.form {
+    margin-left: 2rem;
+    border: 4px  #0f566b solid;
+    width: 300px;
+    padding: .5rem 1rem;
+    border-radius: 8px;
+}
+
+.form-title {
+    border-bottom: 1px solid #474747;
+    margin-bottom: 10px;
+}
+
+.file-update {
+    margin-bottom: 10px;
+}
+
+.import-icon {
+    margin-right: 5px;
+}
+
+.import-file-btn:first-child {
+    border-radius: 10px;
+    background-color: red;
+}

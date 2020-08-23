@@ -4,9 +4,11 @@
 
 1. [About Terrastories](#about-terrastories)
 
-2. [How to set up Terrastories](#setup)
+2. [Setup Terrastories](#setup)
 
-3. [Contributing Guidelines](#contributing)
+3. [Developing with Terrastories](#developing-with-terrastories)
+
+4. [Contributing Guidelines](#contributing)
 
 ## About Terrastories
 
@@ -23,7 +25,14 @@ The project to develop this application was initiated by the [**Amazon Conservat
 
 ## Setup
 
-To install, build, and run Terrastories, please visit the [Setup guide here](SETUP.md).
+To install and run Terrastories, visit one of these links:
+1. [Setup for Mac](MAC.md)
+2. [Setup for Windows](WINDOWS.md)
+3. [Setup for Linux](LINUX.md)
+
+## Developing with Terrastories
+
+To find out how to develop with the Terrastories app, click [here](DEVELOPMENT.md)
 
 ## Contributing
 
@@ -46,7 +55,7 @@ Click the "fork" button in the upper right of the Github repo page. A fork is a 
 Checkout a new branch for your issue - this branch can be named anything, but we encourage the format  `XXX-brief-description-of-feature`  where  `XXX`  is the issue number.
 
 **Step 5: Happy Hacking!**
-Follow the instructions in the [Setup Document](SETUP.md) to set up your local environment. Feel free to discuss any questions on the issues as needed, and we will get back to you! Don't forget to write some tests to verify your code. Commit your changes locally, using descriptive messages and please be sure to note the parts of the app that are affected by this commit.
+Follow the instructions in the [Setup Document](https://github.com/Terrastories/terrastories#setup) to set up your local environment. Feel free to discuss any questions on the issues as needed, and we will get back to you! Don't forget to write some tests to verify your code. Commit your changes locally, using descriptive messages and please be sure to note the parts of the app that are affected by this commit.
 
 **Step 6: Pushing your branch and creating a pull request**
 Push your branch up and create a pull request! Please indicate which issue your PR addresses in the title.
