@@ -34,6 +34,8 @@ pt:
     speaker: Orador
     stories: Histórias
     story: História
+    media_link: Link de Mídia
+    media_links: Links de Mídia
     table_columns:
       user:
         id: Id

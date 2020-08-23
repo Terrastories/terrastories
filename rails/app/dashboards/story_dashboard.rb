@@ -21,6 +21,7 @@ class StoryDashboard < Administrate::BaseDashboard
     permission_level: EnumField,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    media_links: Field::HasMany, 
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -29,7 +30,6 @@ class StoryDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :id,
     :title,
     :desc,
     :language,
@@ -38,7 +38,8 @@ class StoryDashboard < Administrate::BaseDashboard
     :interviewer,
     :date_interviewed,
     :places,
-    :permission_level
+    :permission_level,
+    :media_links,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -72,7 +73,8 @@ class StoryDashboard < Administrate::BaseDashboard
     :date_interviewed,
     :places,
     :media,
-    :permission_level
+    :permission_level,
+    :media_links
   ].freeze
 
   # Overwrite this method to customize how stories are displayed

@@ -26,6 +26,8 @@ ja:
     import_button: "%{resource}インポート"
     places: "プレース"
     place: "プレース"
+    media_link: "メディアリンク"
+    media_links: "メディアリンク"  
     search:
       clear: "クリア"
       label: "%{resource}検索"
