@@ -37,6 +37,7 @@ services:
       - db
     volumes:
       - ./data/media:/media
+      - ./data/import/media:/opt/terrastories/import/media
 
   web-test:
     <<: *x-web-common
