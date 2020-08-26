@@ -37,19 +37,30 @@ ActiveRecord::Schema.define(version: 2020_07_26_232543) do
   end
 
   create_table "curriculum_stories", force: :cascade do |t|
-    t.integer "curriculum_id"
-    t.integer "story_id"
+    t.bigint "curriculum_id", null: false
+    t.bigint "story_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "display_order"
+    t.index ["curriculum_id"], name: "index_curriculum_stories_on_curriculum_id"
+    t.index ["story_id"], name: "index_curriculum_stories_on_story_id"
   end
 
   create_table "curriculums", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.integer "user_id"
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_curriculums_on_user_id"
+  end
+
+  create_table "media_links", force: :cascade do |t|
+    t.string "url"
+    t.bigint "story_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["story_id"], name: "index_media_links_on_story_id"
   end
 
   create_table "places", force: :cascade do |t|
@@ -122,4 +133,7 @@ ActiveRecord::Schema.define(version: 2020_07_26_232543) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "curriculum_stories", "curriculums"
+  add_foreign_key "curriculum_stories", "stories"
+  add_foreign_key "curriculums", "users"
 end
