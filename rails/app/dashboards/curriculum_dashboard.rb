@@ -49,6 +49,7 @@ class CurriculumDashboard < Administrate::BaseDashboard
   title
   description
   stories
+  curriculum_stories
   ].freeze
 
   # COLLECTION_FILTERS
