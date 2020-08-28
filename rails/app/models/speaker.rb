@@ -34,7 +34,7 @@ class Speaker < ApplicationRecord
       # Assumes birth date field is always just a year
       speaker.birthdate = row[1].nil? || row[1].downcase == 'unknown' ? nil : Date.strptime(row[1], "%Y")
       if row[3] && File.exist?(Rails.root.join('import/media', row[3]))
-        file = File.open(Rails.root.join('media',row[3]))
+        file = File.open(Rails.root.join('import/media',row[3]))
         speaker.photo.attach(io: file, filename: row[3])
       end
       speaker.save
