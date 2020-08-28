@@ -1,5 +1,5 @@
 class Story < ApplicationRecord
-  MEDIA_PATH = Rails.env.test? ? 'spec/fixtures/media' : 'media'
+  MEDIA_PATH = Rails.env.test? ? 'spec/fixtures/media' : 'import/media'
 
   has_many :speaker_stories, inverse_of: :story
   has_many :speakers, through: :speaker_stories
