@@ -25,10 +25,13 @@ For a general overview of the application as well as a Vision statement and Road
 
 ## Setup
 
-To install and run Terrastories, visit one of these links:
-1. [Setup for Mac](MAC.md)
-2. [Setup for Windows](WINDOWS.md)
-3. [Setup for Linux](LINUX.md)
+To install and run Terrastories for the online environment, visit one of these links:
+1. [Setup for Mac](SETUP-MAC.md)
+2. [Setup for Windows](SETUP-WINDOWS.md)
+3. [Setup for Linux](SETUP-LINUX.md)
+
+To install and run Terrastories for offline usage, visit:
+4. [Setup for offline](SETUP-OFFLINE.md)
 
 ## Developing with Terrastories
 
