@@ -31,6 +31,7 @@ To install and run Terrastories for the online environment, visit one of these l
 3. [Setup for Linux](SETUP-LINUX.md)
 
 To install and run Terrastories for offline usage, visit:
+
 4. [Setup for offline](SETUP-OFFLINE.md)
 
 ## Developing with Terrastories
