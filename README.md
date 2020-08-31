@@ -26,21 +26,21 @@ For a general overview of the application as well as a Vision statement and Road
 ## Setup
 
 To install and run Terrastories for the online environment, visit one of these links:
-1. [Setup for Mac](SETUP-MAC.md)
-2. [Setup for Windows](SETUP-WINDOWS.md)
-3. [Setup for Linux](SETUP-LINUX.md)
+1. [Setup for Mac](documentation/SETUP-MAC.md)
+2. [Setup for Windows](documentation/SETUP-WINDOWS.md)
+3. [Setup for Linux](documentation/SETUP-LINUX.md)
 
 To install and run Terrastories for offline usage, visit:
 
-4. [Setup for offline](SETUP-OFFLINE.md)
+4. [Setup for offline](documentation/SETUP-OFFLINE.md)
 
 ## Developing with Terrastories
 
-To find out how to develop with the Terrastories app, read our [developer guide](DEVELOPMENT.md) and check out our [Developer Community](https://terrastories.io/community/) pages on the Terrastories website.
+To find out how to develop with the Terrastories app, read our [developer guide](documentation/DEVELOPMENT.md) and check out our [Developer Community](https://terrastories.io/community/) pages on the Terrastories website.
 
 ## Contributing
 
-We ♥ contributors! By participating in this project, you agree to abide by the Ruby for Good [Code of Conduct](CODE_OF_CONDUCT.md).
+We ♥ contributors! By participating in this project, you agree to abide by the Ruby for Good [Code of Conduct](documentation/CODE_OF_CONDUCT.md).
 
 **First:** if you're unsure or afraid of *anything*, just ask or submit the issue or pull request anyways. You won't be yelled at for giving your best effort. The worst that can happen is that you'll be politely asked to change something. We appreciate any sort of contributions, and don't want a wall of rules to get in the way of that.
 
