@@ -18,7 +18,7 @@ You may also opt to design your own custom map style using Mapbox Studio. For ex
 
 To set the map style used by Terrastories, modify the `MAPBOX_STYLE` variable in the `.env` file in the main Terrastories directory. You can copy and paste your map style URL from Mapbox Studio if using an online map.
 
-For offline "Field Kit" usage of Terrastories, it is necessary to create your own custom map using your own GIS data, as above. There are several additional steps to generate and style the `mbtiles`, described in the [SETUP-OFFLINE.md](documentation/SETUP-OFFLINE.md) file.
+For offline "Field Kit" usage of Terrastories, it is necessary to create your own custom map using your own GIS data, as above. There are several additional steps to generate and style the `mbtiles`, described in the [SETUP-OFFLINE.md](SETUP-OFFLINE.md) file.
 
 ### Map extent and zoom
 
@@ -58,7 +58,7 @@ In the Terrastories administrative back end, it is possible to import data in bu
 
 ### Step 1: Prepare the CSVs
 
-First, download [https://drive.google.com/file/d/1Ir6TC5THEoQKk-98JZ5KpTjXd-R6yMmA/view?usp=sharing](test) which has three different tabs, for Places, Speakers, and Stories. The idea is to populate the spreadsheet with your data, and to then save each tab in a CSV format (`Places.csv`, `Speakers,csv`, and `Stories.csv`).
+First, download [https://drive.google.com/file/d/1Ir6TC5THEoQKk-98JZ5KpTjXd-R6yMmA/view?usp=sharing](this Terrastories data structure template) which has three different tabs, for Places, Speakers, and Stories. The idea is to populate the spreadsheet with your data, and to then save each tab in a CSV format (`Places.csv`, `Speakers,csv`, and `Stories.csv`).
 
 Note the sample data, and the order of the columns in the spreadsheet. For the CSV importer to work, you have to stick with the same column order. 
 
