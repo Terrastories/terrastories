@@ -6,37 +6,45 @@
 
 2. [Setup Terrastories](#setup)
 
-3. [Developing with Terrastories](#developing-with-terrastories)
+3. [Customize Terrastories](#customize-terrastories)
 
-4. [Contributing Guidelines](#contributing)
+4. [Developing with Terrastories](#developing-with-terrastories)
+
+5. [Contributing Guidelines](#contributing)
 
 ## About Terrastories
 
-**Terrastories** is a geostorytelling application built to enable local communities to locate and map their own oral storytelling traditions about places of significant meaning or value to them. Community members can add places and stories through a user-friendly interface, and make decisions about designating certain stories as private or restricted. It is a dockerized Rails app that uses [**Mapbox**](https://mapbox.com) to help users locate content geographically on an interactive map. Terrastories is designed to be entirely offline-compatible, so that remote communities can access the application entirely without needing internet connectivity. 
+**Terrastories** is a geostorytelling application built to enable indigenous and other local communities to locate and map their own oral storytelling traditions about places of significant meaning or value to them. Community members can add places and stories through a user-friendly interface, and make decisions about designating certain stories as private or restricted. It is a dockerized Rails app that uses [**Mapbox**](https://mapbox.com) to help users locate content geographically on an interactive map. Terrastories is designed to be entirely offline-compatible, so that remote communities can access the application entirely without needing internet connectivity. 
 
 The Terrastories interface is principally composed of an interactive map and a sidebar with media content. Users can explore the map and click on activated points to see the stories associated with those points. Alternatively, users can interact with the sidebar and click on stories to see where in the landscape these narratives took place. Through an administrative back end, users can also add, edit, and remove stories, or set them as restricted so that they are viewable only with a special login. Users can design and customize the content of the interactive map entirely, and the interface itself is customizable with a color scheme and design reflecting the style of the community.
 
-![](documentation/terrastories.gif)
+Learn more about Terrastories at [https://terrastories.io/](https://terrastories.io/).
+
+![](terrastories.gif)
 ###### *Terrastories: Matawai Konde 1.0 (October 2018)*
-
-The project to develop this application was initiated by the [**Amazon Conservation Team**](http://amazonteam.org) (ACT), an organization who partners with indigenous and other traditional communities in the Amazon rainforest to help them protect their ancestral lands and traditional culture. The first version of the application was built for a Surinamese community called the Matawai, and is in a near-finalized state.
-
-For a general overview of the application as well as a Vision statement and Roadmap, please see our [Wiki](https://github.com/Terrastories/terrastories/wiki).
 
 ## Setup
 
-To install and run Terrastories for the online environment, visit one of these links:
+Before you install Terrastories, you should consider the hosting environment for the application. Will it be hosted on an online server? If so, you are likely going to need to set up Terrastories on a Linux server. Are you installing Terrastories on your local machine, either for development or for demoing the app? Depending on what operating system you use, there are different setup guides, below. Lastly, if you are installing Terrastories to work fully offline (i.e. no online maps), there is a special guide for that use case as well.
+
+To install and run a streamlined version of Terrastories with access to an online map on Mapbox.com, visit one of these links:
 1. [Setup for Mac](documentation/SETUP-MAC.md)
 2. [Setup for Windows](documentation/SETUP-WINDOWS.md)
 3. [Setup for Linux](documentation/SETUP-LINUX.md)
 
-To install and run Terrastories for offline usage, visit:
+To install and run Terrastories for offline "Field Kit" usage, visit:
 
 4. [Setup for offline](documentation/SETUP-OFFLINE.md)
+
+## Customize Terrastories
+
+To set up Terrastories with a custom map, languages, visual assets, and to import data, see our [customization guide](documentation/CUSTOMIZATION.md).
 
 ## Developing with Terrastories
 
 To find out how to develop with the Terrastories app, read our [developer guide](documentation/DEVELOPMENT.md) and check out our [Developer Community](https://terrastories.io/community/) pages on the Terrastories website.
+
+For a general overview of the application as well as a Vision statement and Roadmap, please see our [Wiki](https://github.com/Terrastories/terrastories/wiki).
 
 ## Contributing
 

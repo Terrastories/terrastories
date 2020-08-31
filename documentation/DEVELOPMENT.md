@@ -2,17 +2,13 @@
 
 ## Table of Contents
 
-1. [Development](#development)
+1. [Setting up your development environment](#setting-up-your-development-environment)
 
-2. [Importing data into Terrastories](#importing-data-into-terrastories)
+2. [Back up and restore Terrastories database](#backup-and-restore-the-Terrastories-database)
 
-3. [Back up and restore Terrastories database](#backup-and-restore-the-Terrastories-database)
+3. [Running Terrastories in offline mode](#running-terrastories-in-offline-mode)
 
-3. [Adding languages to Terrastories](#adding-languages-to-terrastories)
-
-4. [Setting up your development environment](#setting-up-your-development-environment)
-
-## Development
+## Setting up your Development Environment
 
 Most developer contributions will be focused on the rails app. Because this project uses
 docker, we already have a uniform ruby/rails development environment in our rails docker
@@ -31,32 +27,19 @@ environment. Always use the rails container instead.**
 Any changes to source files should be made directly in your local filesystem under the
 `/opt/terrastories` directory using your preferred editing tools.
 
-## Running Terrastories in Offline Mode
+### ESLint
 
-Terrastories offline mode is generally used in the field, when there is no access to the internet.
- 
-In those cases, before starting the server, add `USE_LOCAL_MAP_SERVER=true` to your .env file. Remove this variable to go back to using mapbox.
+We use ESLint with Airbnb community style-guide for linting JavaScript and JSX for files under app/javascript.
 
-In order to get the local tileserver map running, you will also need to download [this mbtiles](https://drive.google.com/open?id=1rWEyCosde507dlPcDwbmDA6jxqc0KAuk) and place it in `tileserver/data/mbtiles/basic.mbtiles` 
+Please check [ESLint editor-integrations page](https://eslint.org/docs/user-guide/integrations#editors) to read about how to integrate ESLint with your IDE/editor
 
-And instead of running docker-compose up, run 
+### Tests
 
-```bash
-script/run_offline_maps.sh
+You can run RSpec and e2e tests with
+
 ```
-
-## Importing data into Terrastories
-
-In the Terrastories back end, it is possible to import data in bulk using a CSV importer.
-
-The data should be imported in the following order: Places, Speakers, and then Stories.
-
-To prepare CSVs for importing, use the following workflow to ensure that character diacritics are properly imported:
-
--If the file is already an .xlsx, go to Google Sheets and File->Import from the menu. Then import the file.
--Otherwise create the file directly in Google Sheets. Make sure the file has a row for headers.
--Go to File -> Download As-> Comma Separated Values, and save the file to your machine.
--This CSV should be properly encoded as UTF-8. It's best to verify this with Notepad++ instead of Excel if you are on a Windows machine.
+script/test.sh
+```
 
 ## Backup and restore the Terrastories database
 
@@ -91,39 +74,18 @@ docker run --rm -i -v "terrastories_postgres_data:/pgdata" -v "$(pwd):/source/" 
 
 Note: the above code is assuming your build is called `terrastories`. It may be necessary to run `docker volume ls` to get the right Docker container name ending with `_postgres_data`.
 
-## Adding languages to Terrastories
+## Running Terrastories in Offline Mode
 
-Terrastories uses internationalization to translate the application's core text, like the welcome page, sidebar, and administrative back end content. We have made it easy to add new languages to Terrastories without needing to touch any of the code.
+Terrastories offline mode is generally used in the field, when there is no access to the internet.
+ 
+In those cases, before starting the server, add `USE_LOCAL_MAP_SERVER=true` to your .env file. Remove this variable to go back to using mapbox.
 
-To add a language to Terrastories, navigate to the `rails/config/locales/` directory. Within this directory, each language has it's own subdirectory, like `en` (English) or `pt` (Portuguese). Currently, there are three files in each (using Portuguese as an example):
+In order to get the local tileserver map running, you will also need to download an mbtiles dataset [like this one](https://drive.google.com/open?id=1rWEyCosde507dlPcDwbmDA6jxqc0KAuk) and place it in `tileserver/data/mbtiles/basic.mbtiles` 
 
-1.  `pt.yml`
-2.  `devise.pt.yml`
-3.  `administrate.pt.yml`
+And instead of running docker-compose up, run 
 
-`pt.yml` contains the custom text used in the Terrastories application. `devise.pt.yml` and `administrative.pt.yml` are used by the administrative back end.
-
-To set up a new language, create a new subdirectory in the `locales` folder. Let's assume you want to set up Papiamentu. Create a subdirectory called `pap` and copy over `en.yml` from the `en` folder. Rename it to `pap.yml`, change line 32 to `pap`, and translate each line of text in what follows.
-
-For the `devise` and `administrate` files, there might be available translations already available online for common Western languages. If so, you can download these and place them in the directory, and make sure that the language code is consistent (for languages like Spanish and Portuguese, the language code might sometimes have a country-specific suffix like `pt-BR`). If translations are not available, do the same thing with these two files as translating `en.yml`.
-
-If you want to change the default language for Terrastories, set the language on line 21 in `rails/config/application.rb`. To set it to Papiamentu, change this line to `config.i18n.default_locale = :pap`
-
-Once you are done, the language should be available the next time you start Terrastories.
-
-
-## Setting up your Development Environment
-
-### ESLint
-
-We use ESLint with Airbnb community style-guide for linting JavaScript and JSX for files under app/javascript.
-
-Please check [ESLint editor-integrations page](https://eslint.org/docs/user-guide/integrations#editors) to read about how to integrate ESLint with your IDE/editor
-
-### Tests
-
-You can run RSpec and e2e tests with
-
+```bash
+script/run_offline_maps.sh
 ```
-script/test.sh
-```
+
+For more information on running Terrastories in an offline environment, see [documentation/SETUP-OFFLINE.md](documentation/SETUP-OFFLINE.md)
