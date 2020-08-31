@@ -1,5 +1,5 @@
 # Setup Terrastories as an Offline "Field Kit"
-This setup is for use in the "Field Kit" environment which is completely offline. If you are setting up Terrastories for an online environment, please follow the instructions for your operating system (Windows, Mac, Linux) [here](README.md#setup)
+This setup is for use in the "Field Kit" environment which is completely offline. If you are setting up Terrastories for an online environment, please follow the instructions for your operating system (Windows, Mac, Linux) [here](../README.md#setup).
 
 ## Table of Contents
 
@@ -13,7 +13,7 @@ This setup is for use in the "Field Kit" environment which is completely offline
 
 ## Docker Prerequisites
 
-Install docker. Please refer to operating system-specific guidelines about Docker [here](README.md#setup).
+Install docker. Please refer to operating system-specific guidelines about Docker [here](../README.md#setup).
 
 ## Setting up offline environment and map 
 
@@ -32,7 +32,7 @@ Terrastories in the "Field Kit" environment works by integrating map `styles` an
 
 `Styles` can be downloaded from Mapbox Studio and processed in the following way:
 
-* Follow the map design process described [here](documentation/CUSTOMIZATION.md#setting-up-a-custom-map)
+* Follow the map design process described [here](CUSTOMIZATION.md#setting-up-a-custom-map)
 * In the Mapbox Studio environment, click "Share" and then download the Map style ZIP file.
 * Unzip the file, and extract the `style.json` and place it in `tileserver/data/styles`.
 * In `style.json`, the tiles are referenced in `sources` > `composite` > `url` in the following format: `"url": "mbtiles://mbtiles/name.mbtiles"`. (Here, `name` is just an example; it can be called whatever you want, so long as the filename is the same.)

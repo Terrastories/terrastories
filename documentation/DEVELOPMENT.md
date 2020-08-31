@@ -88,4 +88,4 @@ And instead of running docker-compose up, run
 script/run_offline_maps.sh
 ```
 
-For more information on running Terrastories in an offline environment, see [documentation/SETUP-OFFLINE.md](documentation/SETUP-OFFLINE.md)
+For more information on running Terrastories in an offline environment, see [documentation/SETUP-OFFLINE.md](SETUP-OFFLINE.md)
