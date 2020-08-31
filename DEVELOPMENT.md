@@ -62,7 +62,20 @@ To prepare CSVs for importing, use the following workflow to ensure that charact
 
 Terrastories stores Places, Speakers, and Stories in a database (Postgres DB). it is possible to back these data up and restore them by running lines of code in a bash terminal. 
 
-Using Powershell:
+Backup the DB with:
+
+```
+docker run --rm -v "terrastories_postgres_data:/pgdata" busybox tar -cvzf - -C /pgdata . >db-backup.tgz 
+```
+
+Restore a backup with:
+
+```
+docker volume rm terrastories_postgres_data
+docker run --rm -i -v "terrastories_postgres_data:/pgdata" busybox tar -xvzf - -C /pgdata <db-backup.tgz
+```
+
+Or using Powershell (Windows):
 
 Backup the DB in PS with:
 
