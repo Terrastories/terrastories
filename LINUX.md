@@ -12,10 +12,6 @@
 
 5. [Common setup errors](#having-troubles-check-our-common-errors--gotchas)
 
-6. [Development](#development)
-
-7. [Backup and restore the Terrastories database](#backup-and-restore-the-terrastories-database)
-
 ## Setup Docker
 
 Docker is a platform that serves to deliver software in packages called containers. Terrastories makes use of this to deliver the 
