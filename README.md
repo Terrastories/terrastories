@@ -14,14 +14,14 @@
 
 **Terrastories** is a geostorytelling application built to enable local communities to locate and map their own oral storytelling traditions about places of significant meaning or value to them. Community members can add places and stories through a user-friendly interface, and make decisions about designating certain stories as private or restricted. It is a dockerized Rails app that uses [**Mapbox**](https://mapbox.com) to help users locate content geographically on an interactive map. Terrastories is designed to be entirely offline-compatible, so that remote communities can access the application entirely without needing internet connectivity. 
 
-If you'd like to learn more about the mission of Terrastories, read our [vision](VISION.md).
-
 The Terrastories interface is principally composed of an interactive map and a sidebar with media content. Users can explore the map and click on activated points to see the stories associated with those points. Alternatively, users can interact with the sidebar and click on stories to see where in the landscape these narratives took place. Through an administrative back end, users can also add, edit, and remove stories, or set them as restricted so that they are viewable only with a special login. Users can design and customize the content of the interactive map entirely, and the interface itself is customizable with a color scheme and design reflecting the style of the community.
 
 ![](terrastories.gif)
 ###### *Terrastories: Matawai Konde 1.0 (October 2018)*
 
 The project to develop this application was initiated by the [**Amazon Conservation Team**](http://amazonteam.org) (ACT), an organization who partners with indigenous and other traditional communities in the Amazon rainforest to help them protect their ancestral lands and traditional culture. The first version of the application was built for a Surinamese community called the Matawai, and is in a near-finalized state.
+
+For a general overview of the application as well as a Vision statement and Roadmap, please see our [Wiki](https://github.com/Terrastories/terrastories/wiki).
 
 ## Setup
 
@@ -32,7 +32,7 @@ To install and run Terrastories, visit one of these links:
 
 ## Developing with Terrastories
 
-To find out how to develop with the Terrastories app, click [here](DEVELOPMENT.md)
+To find out how to develop with the Terrastories app, read our [developer guide](DEVELOPMENT.md) and check out our [Developer Community](https://terrastories.io/community/) pages on the Terrastories website.
 
 ## Contributing
 
