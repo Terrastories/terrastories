@@ -58,7 +58,7 @@ In the Terrastories administrative back end, it is possible to import data in bu
 
 ### Step 1: Prepare the CSVs
 
-First, download (this Terrastories data structure template)[https://drive.google.com/file/d/1Ir6TC5THEoQKk-98JZ5KpTjXd-R6yMmA/view?usp=sharing] which has three different tabs, for Places, Speakers, and Stories. The idea is to populate the spreadsheet with your data, and to then save each tab in a CSV format (`Places.csv`, `Speakers,csv`, and `Stories.csv`).
+First, download [this Terrastories data structure template](https://drive.google.com/file/d/1Ir6TC5THEoQKk-98JZ5KpTjXd-R6yMmA/view?usp=sharing) which has three different tabs, for Places, Speakers, and Stories. The idea is to populate the spreadsheet with your data, and to then save each tab in a CSV format (`Places.csv`, `Speakers,csv`, and `Stories.csv`).
 
 Note the sample data, and the order of the columns in the spreadsheet. For the CSV importer to work, you have to stick with the same column order. 
 
