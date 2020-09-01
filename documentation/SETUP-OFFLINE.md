@@ -19,7 +19,7 @@ Install docker. Please refer to operating system-specific guidelines about Docke
 
 ### Step 1: setting the Terrastories environment to work offline
 
-Create a fork of the Terrastories/terrastories repository. Now clone the repository locally to your computer. 
+Create a fork of the Terrastories/terrastories repository. Now clone the repository locally to your computer. (Or, you can download Terrastories as a ZIP file from Github to get the application.)
 
 Using the source-code editor of your choice, open the terrastories repository. There, a file can be found called `.env.example`. 
 Copy the contents of this file into a newly created file called `.env` (Do not change .env.example!).
