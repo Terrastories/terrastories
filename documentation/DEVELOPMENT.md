@@ -44,7 +44,7 @@ script/test.sh
 We also support Javascript unit testing, with Enzyme for snapshots. 
 
 ```
-    docker-compose exec web jest 
+    docker-compose exec web yarn test 
 ```
 
 ## Backup and restore the Terrastories database
