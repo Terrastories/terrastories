@@ -2,7 +2,7 @@
   "name": "app",
   "private": true,
   "scripts": {
-    "jest": "jest",
+    "test": "jest",
     "eslint": "eslint",
     "lint": "eslint \"app/javascript/**\""
   },
@@ -18,6 +18,9 @@
     "awesomplete": "^1.1.5",
     "babel-jest": "^23.6.0",
     "babel-preset-react": "^6.24.1",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.4",
+    "enzyme-to-json": "^3.5.0",
     "fstream": "1.0.12",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
@@ -42,21 +45,15 @@
     "webpack-dev-server": "3.1.11"
   },
   "jest": {
-    "setupFiles": [
-      "<rootDir>/spec/javascript/i18n-mock.js"
-    ],
+    "setupFiles": ["./spec/javascript/setupTests.js"],
     "roots": [
       "spec/javascript"
     ],
-    "collectCoverage": true,
-    "coverageDirectory": "spec/javascript/coverage",
-    "collectCoverageFrom": [
-      "**/*.{js,jsx}",
-      "!**/node_modules/**",
-      "!**/spec/javascript/coverage/**"
-    ],
+    "snapshotSerializers": ["enzyme-to-json/serializer"],
+    "collectCoverage": false,
     "moduleDirectories": [
-      "node_modules"
+      "node_modules",
+      "app/javascript"
     ]
   }
 }

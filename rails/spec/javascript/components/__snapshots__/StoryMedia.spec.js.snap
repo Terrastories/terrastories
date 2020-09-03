@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly in "image" mode 1`] = `
+<img
+  className="img-player"
+  id="img2"
+  key=""
+  src=""
+  width="80%"
+/>
+`;

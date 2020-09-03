@@ -41,6 +41,12 @@ You can run RSpec and e2e tests with
 script/test.sh
 ```
 
+We also support Javascript unit testing, with Enzyme for snapshots. 
+
+```
+    docker-compose exec web jest 
+```
+
 ## Backup and restore the Terrastories database
 
 Terrastories stores Places, Speakers, and Stories in a database (Postgres DB). it is possible to back these data up and restore them by running lines of code in a bash terminal. 
