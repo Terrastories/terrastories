@@ -25,8 +25,6 @@ services:
         precompileassets: "not"
     env_file:
       - .env
-    volumes:
-      - ./rails:/opt/terrastories:cached
 
   web:
     <<: *x-web-common
@@ -36,7 +34,9 @@ services:
     depends_on:
       - db
     volumes:
+      - ./rails:/opt/terrastories:cached
       - ./data/media:/media
+      - ./data/import/media:/opt/terrastories/import/media
 
   web-test:
     <<: *x-web-common
@@ -47,6 +47,8 @@ services:
       - 3001:3000
     depends_on:
       - db
+    volumes:
+      - ./rails:/opt/terrastories:cached
 
   selenium:
     # Debug version enables VNC ability
