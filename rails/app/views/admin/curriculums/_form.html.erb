@@ -9,7 +9,6 @@ and renders all form fields for a resource's editable attributes.
   and knows which attributes should be displayed in the resource's form.
 [1]: http://www.rubydoc.info/gems/administrate/Administrate/Page/Form
 %>
-<h1>CUSTOM FORM</h1>
 <%= form_for([namespace, page.resource], html: { class: "form" }) do |f| %>
   <% if page.resource.errors.any? %>
     <div id="error_explanation">
