@@ -30,9 +30,17 @@ and renders all form fields for a resource's editable attributes.
   <% end %>
 
   <% page.attributes.each do |attribute| -%>
-    <div class="field-unit field-unit--<%= attribute.html_class %> field-unit--<%= requireness(attribute) %>">
-      <%= render_field attribute, f: f %>
-    </div>
+    <% unless excluded_resources.include?(attribute.name) %>
+      <% if attribute.name == 'curriculum_stories' %>
+        <h2>
+        Add Stories
+        </h2>
+      <% end %>
+
+      <div class="field-unit field-unit--<%= attribute.html_class %> field-unit--<%= requireness(attribute) %>">
+        <%= render_field attribute, f: f %>
+      </div>
+    <% end %>
   <% end -%>
 
   <div class="form-actions">

@@ -10,7 +10,7 @@ to do the heavy lifting.
   and knows which attributes should be displayed in the resource's form.
 [1]: http://www.rubydoc.info/gems/administrate/Administrate/Page/Form
 %>
-<h1>CUSTOM VIEW</h1>
+<% excluded_resources = ['curriculum_stories'] %>
 <% content_for(:title) do %>
   <%= t(
     "administrate.actions.new_resource",
@@ -29,5 +29,5 @@ to do the heavy lifting.
 </header>
 
 <section class="main-content__body">
-  <%= render "form", page: page %>
+  <%= render "form", page: page, excluded_resources: excluded_resources%>
 </section>

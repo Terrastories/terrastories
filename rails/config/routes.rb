@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   namespace :admin do
     resources :users
+    resources :curriculums
     resources :speakers
     resources :stories
     resources :places
-    resources :curriculums
     resources :curriculum_stories
     resources :themes
     resources :media_links
