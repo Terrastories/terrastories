@@ -25,7 +25,6 @@ class CurriculumStoryDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
   story
   story_desc
-  curriculum
   display_order
   ].freeze
 
