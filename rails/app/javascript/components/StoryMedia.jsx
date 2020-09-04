@@ -10,15 +10,14 @@ class StoryMedia extends PureComponent {
   }
 
   static propTypes = {
-    file: PropTypes.object,
-    doBustCache: PropTypes.func
+    file: PropTypes.object
   };
 
   renderAudio() {
     const { file } = this.props;
     return (
       <audio id={`audio-player${file.blob.id}`} controls>
-        <source src={file.url} type={file.blob.content_type} />
+        <source src={file.url} type={file.blob.content_type} key={this.props.key} />
       </audio>
     );
   }
@@ -31,7 +30,7 @@ class StoryMedia extends PureComponent {
         id = {`img${file.blob.id}`}
         className="img-player"
         width="80%"
-        key={file.url}
+        key={this.props.key}
         ref="img"
         src={file.url}
         >
@@ -49,9 +48,9 @@ class StoryMedia extends PureComponent {
         height={explicitVideoHeight}
         playsInline
         controls
-        disablePictureInPicture='true'       
+        disablePictureInPicture={true}
         controlsList='nodownload'
-        key={file.url}
+        key={this.props.key}
         ref="video"
       >
         <source src={file.url} type={file.blob.content_type} />
@@ -74,7 +73,6 @@ class StoryMedia extends PureComponent {
   }
 
   componentDidMount() {
-    const { doBustCache } = this.props;
     const video = this.refs.video;
 
     if (!!video === true) {
@@ -82,7 +80,6 @@ class StoryMedia extends PureComponent {
         const aspectRatio = video.videoWidth / video.videoHeight;
         const newExplicitVideoHeight = video.offsetWidth / aspectRatio;
         this.setState({ explicitVideoHeight: newExplicitVideoHeight });
-        doBustCache();
       });
       video.addEventListener('play', (event) => {
         window.pauseAllVideos(event.target);

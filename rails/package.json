@@ -22,8 +22,8 @@
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "react-list": "^0.8.15",
     "react-select": "^2.0.0",
-    "react-virtualized": "9.21.0",
     "react_ujs": "^2.4.4",
     "webpack": "^3.0.0"
   },

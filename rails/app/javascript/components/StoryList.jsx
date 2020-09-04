@@ -1,20 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import StoryMedia from "./StoryMedia";
+import Story from "./Story";
 import Filter from "./Filter";
 import Sort from "./Sort";
-import { List, AutoSizer, CellMeasurer, CellMeasurerCache } from "react-virtualized";
+import ReactList from 'react-list';
 
 class StoryList extends Component {
-  constructor(props) {
-    super(props)
-    this.cache = new CellMeasurerCache({
-      fixedWidth: true,
-      defaultHeight: 200
-    });
-    this._isMounted = false;
-  }
-
   static propTypes = {
     stories: PropTypes.array,
     handleStoriesChanged: PropTypes.func,
@@ -31,44 +22,26 @@ class StoryList extends Component {
     itemOptions: PropTypes.array
   };
 
-  componentWillReceiveProps(nextProps) {
-    if(this._list){
-      this._list.forceUpdateGrid();
-    }
-    if (nextProps.stories !== this.props.stories) {
-      this._list.recomputeRowHeights();
-      this._list.recomputeGridSize();
-      this._list.forceUpdateGrid();
-    }
-  }
-
-  componentDidMount() {
-    this._isMounted = true;
-  }
-
-  componentWillUnmount() {
-    this._isMounted = false;
-  }
-
   handleClickStory = (story, index) => {
     this.props.onStoryClick(story);
   }
 
-  handleFilter = (category, item) => {
-    this.props.handleFilter(category, item);
-    this._list.scrollToPosition(0);
-  }
-
-  getStorySpeakerNames = story => {
-    return story.speakers.map(function(speaker) { return speaker.name }).join(',');
+  handleFilterItemChange = (item) => {
+    this.props.handleFilterItemChange(item);
+    this._list.scrollTo(0);
   }
 
   handleClearFilteredStories = () => {
     this.props.clearFilteredStories();
-    this._list.scrollToPosition(0);
+    this._list.scrollTo(0);
   }
 
-  renderStory = ({ key, index, style, parent }) => {
+  handleSort = (option) => {
+    this.props.handleStoriesChanged(option);
+    this._list.scrollTo(0);
+  }
+
+  renderStory = (index, key) => {
     const story = this.props.stories[index];
     let storyClass = '';
     if (this.props.activeStory && this.props.activeStory.id === story.id) {
@@ -76,45 +49,13 @@ class StoryList extends Component {
     } else {
       storyClass = `story${index}`;
     }
-    const bustCache = () => {
-      this.cache.clear(index, 0);
-    }
-    
     return (
-      <CellMeasurer
-        key={key}
-        cache={this.cache}
-        parent={parent}
-        columnIndex={0}
-        rowIndex={index}>
-        <li
-          className={storyClass}
-          onClick={_ => this.props.onStoryClick(story)}
-          style={style}
-        >
-          <div className="speakers">
-            {(story.speakers.length === 1) &&
-                <div>
-                  <img src={story.speakers[0].picture_url} alt={story.speakers[0].name} title={story.speakers[0].name} />
-                  <p style={{ fontWeight: 'bold' }}>{story.speakers[0].name}</p>
-                </div>}
-            {(story.speakers.length > 1) &&
-              story.speakers.map(speaker => (
-                  <img src={speaker.picture_url} alt={speaker.name} title={speaker.name} />
-              ))
-            }
-            {(story.speakers.length > 1) &&
-              <p style={{ fontWeight: 'bold' }}> {this.getStorySpeakerNames(story)} </p>
-            }
-          </div>
-          <div className="container">
-            <h6 className="title">{ story.permission_level === "restricted" && "🔒" }{story.title}</h6>
-            <p>{story.desc}</p>
-            {story.media &&
-              story.media.map(file => <StoryMedia file={file} doBustCache={bustCache} key={story.media.id} />)}
-          </div>
-        </li>
-      </CellMeasurer>
+        <Story
+          story={story}
+          onStoryClick={this.props.onStoryClick}
+          storyClass={storyClass}
+          key={key}
+        />
     );
   };
 
@@ -123,14 +64,13 @@ class StoryList extends Component {
       <React.Fragment>
         <div className="card--nav">
           <Filter
-            handleFilter={this.handleFilter}
             categories={this.props.categories}
             filterMap={this.props.filterMap}
             clearFilteredStories={this.handleClearFilteredStories}
             filterCategory={this.props.filterCategory}
             filterItem={this.props.filterItem}
             handleFilterCategoryChange={this.props.handleFilterCategoryChange}
-            handleFilterItemChange={this.props.handleFilterItemChange}
+            handleFilterItemChange={this.handleFilterItemChange}
             itemOptions={this.props.itemOptions}
           />
           <Sort
@@ -139,22 +79,12 @@ class StoryList extends Component {
           />
         </div>
         <div className="stories">
-          <AutoSizer>
-            {({ height, width }) => {
-              return (
-                <List
-                  height={height}
-                  width={width}
-                  rowCount={this.props.stories.length}
-                  deferredMeasurementCache={this.cache}
-                  rowHeight={this.cache.rowHeight}
-                  rowRenderer={this.renderStory}
-                  overscanRowCount={4}
-                  ref={list => (this._list = list)}
-                />
-              );
-            }}
-          </AutoSizer>
+          <ReactList
+            ref={list => this._list = list }
+            itemRenderer={this.renderStory}
+            length={this.props.stories.length}
+            type='variable'
+          />
         </div>
       </React.Fragment>
     );

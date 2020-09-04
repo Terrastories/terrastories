@@ -46,7 +46,6 @@ Filter.propTypes = {
   categories: PropTypes.array,
   filterMap: PropTypes.object,
   clearFilteredStories: PropTypes.func,
-  handleFilter: PropTypes.func,
   handleFilterCategoryChange: PropTypes.func,
   handleFilterItemChange: PropTypes.func,
   itemOptions: PropTypes.array
