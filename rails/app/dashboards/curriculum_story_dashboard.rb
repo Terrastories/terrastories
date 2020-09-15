@@ -62,4 +62,8 @@ class CurriculumStoryDashboard < Administrate::BaseDashboard
   # def display_resource(curriculum_story)
   #   "CurriculumStory ##{curriculum_story.id}"
   # end
+  def default_sorting_attribute
+    :display_order
+  end
+
 end

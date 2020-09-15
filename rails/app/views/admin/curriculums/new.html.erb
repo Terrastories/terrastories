@@ -14,7 +14,7 @@ to do the heavy lifting.
 <% content_for(:title) do %>
   <%= t(
     "administrate.actions.new_resource",
-    name: display_resource_name(page.resource_name).titleize
+    name: t("administrate.#{page.resource_name}")
   ) %>
 <% end %>
 

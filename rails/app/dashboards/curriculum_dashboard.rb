@@ -9,7 +9,7 @@ class CurriculumDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     user: Field::BelongsTo,
-    curriculum_stories: Field::NestedHasMany.with_options(skip: :curriculum),
+    curriculum_stories: Field::NestedHasMany.with_options(skip: :curriculum, sort_by: :display_order),
     stories: Field::HasMany,
     id: Field::Number,
     title: Field::String,
