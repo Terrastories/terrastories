@@ -99,7 +99,6 @@ You can view the running application at `localhost:3000`
 
 It will take a moment to load when first opening the application 
 
-
 ## Having troubles? Check our common errors & gotchas
 
 If you run into any problems getting the application to start, please check out a list of common errors & gotchas that we have put together [here](https://docs.google.com/document/d/1uSbQl56rAh3AA8Xm7IRZ8qepAMVN55ZOkAqQ8Kh423E/edit)!
