@@ -1,2 +1,2 @@
-import "awesomplete/awesomplete.js";
+import "awesomplete/awesomplete";
 import "awesomplete/awesomplete.css";
