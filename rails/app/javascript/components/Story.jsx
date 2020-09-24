@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import StoryMedia from "./StoryMedia";
 
 const Story = props => {
-  const story = props.story;
+  const { story, storyClass } = props;
 
   const renderSpeakers = speakers => {
     return (
@@ -32,37 +32,40 @@ const Story = props => {
   }
 
   return (
-    <React.Fragment>
+    <>
       <li
-        className={props.storyClass}
-        onClick={_ => props.onStoryClick(story)}
+        className={storyClass}
+        onClick={() => props.onStoryClick(story)} 
+        onKeyDown={() => props.onStoryClick(story)}
         key={story.id}
+        role="presentation"
       >
         <div className="speakers">
           {renderSpeakers(story.speakers)}
         </div>
         <div className="container">
           <h6 className="title">
-            {story.permission_level === "restricted" && "🔒"} {story.title}
+            {story.permission_level === "restricted" && "🔒"}
+            {story.title}
           </h6>
           <p>{story.desc}</p>
           {
             story.media &&
-            story.media.map(file =>
+            story.media.map(file => (
               <StoryMedia
                 file={file}
                 key={story.media.id}
               />
-            )
+            ))
           }
         </div>
       </li>
-    </React.Fragment>
+    </>
   );
 }
 
 Story.propTypes = {
-  story: PropTypes.object,
+  story: PropTypes.shape,
   onStoryClick: PropTypes.func,
   storyClass: PropTypes.string,
 };
