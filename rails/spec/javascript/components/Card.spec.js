@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import Card from '../../../app/javascript/components/Card';
 
 describe('Card component', () => {
@@ -26,6 +26,7 @@ describe('Card component', () => {
           <Card user={{ role: 'editor' }} />,
         );
 
+        expect(wrapper.find('.card--tasks').childAt(0)).toHaveLength(1);
         expect(global.I18n.currentLocale).toHaveBeenCalledTimes(2);
         expect(global.I18n.t).toHaveBeenCalledWith('hello');
         expect(global.I18n.t).toHaveBeenCalledWith('back_to_welcome');
@@ -39,7 +40,7 @@ describe('Card component', () => {
           <Card user={{ role: null }} />,
         );
 
-        expect(wrapper).toMatchSnapshot();
+        expect(wrapper.find('.card--tasks').childAt(0)).toHaveLength(1);
         expect(global.I18n.currentLocale).toHaveBeenCalledTimes(1);
         expect(global.I18n.t).toHaveBeenCalledWith('hello');
         expect(global.I18n.t).toHaveBeenCalledWith('back_to_welcome');
@@ -53,6 +54,7 @@ describe('Card component', () => {
           <Card />,
         );
 
+        expect(wrapper.find('.card--tasks').childAt(0)).toHaveLength(1);
         expect(global.I18n.currentLocale).toHaveBeenCalledTimes(1);
         expect(global.I18n.t).not.toHaveBeenCalledWith('hello');
         expect(global.I18n.t).toHaveBeenCalledWith('back_to_welcome');
@@ -71,5 +73,8 @@ describe('Card component', () => {
     wrapper.find('.tab').simulate('click');
     expect(wrapper.find('.cardContainer').hasClass('onCanvas')).toBe(false);
     expect(wrapper.find('.cardContainer').hasClass('offCanvas')).toBe(true);
+    wrapper.find('.tab').simulate('click');
+    expect(wrapper.find('.cardContainer').hasClass('onCanvas')).toBe(true);
+    expect(wrapper.find('.cardContainer').hasClass('offCanvas')).toBe(false);
   })
 });
