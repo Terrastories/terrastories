@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card component Displays correctly 1`] = `
+<div
+  className="cardContainer onCanvas"
+>
+  <div
+    className="tab"
+    onClick={[Function]}
+  >
+    <div
+      className="arrow"
+    />
+  </div>
+  <div
+    className="closeMe"
+    onClick={[Function]}
+  />
+  <div
+    className="card"
+  >
+    <div
+      className="bar"
+    >
+      <div
+        className="card--logo"
+      >
+        <img
+          alt="Terrastories"
+        />
+      </div>
+      <StoryList
+        categories={Array []}
+        clearFilteredStories={[Function]}
+        filterMap={Object {}}
+        handleFilter={[Function]}
+      />
+      <div
+        className="card--tasks"
+      >
+        <ul>
+          <li>
+            <a
+              href="/undefined"
+            />
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+`;
