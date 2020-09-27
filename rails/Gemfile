@@ -31,7 +31,7 @@ gem 'rails-i18n'
 gem 'devise'
 gem 'devise-i18n'
 gem 'pundit'
-gem 'administrate'
+gem 'administrate', '~> 0.14'
 gem 'administrate-field-active_storage'
 gem "administrate-field-nested_has_many"
 

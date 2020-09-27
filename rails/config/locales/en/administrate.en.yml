@@ -18,6 +18,8 @@ en:
         success: "%{resource} was successfully updated."
     curriculum: Curriculum
     curriculums: Curricula
+    curriculum_story: Curriculum Story
+    curriculum_stories: Curriculum Stories
     fields:
       has_many:
         more: Result %{count} for the total of %{total_count}

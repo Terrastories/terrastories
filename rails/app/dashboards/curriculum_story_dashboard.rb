@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class CurriculumDashboard < Administrate::BaseDashboard
+class CurriculumStoryDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -8,14 +8,13 @@ class CurriculumDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    user: Field::BelongsTo,
-    curriculum_stories: Field::NestedHasMany.with_options(skip: :curriculum, sort_by: :display_order),
-    stories: Field::HasMany,
+    curriculum: Field::BelongsTo,
+    story: Field::BelongsTo.with_options(searchable: true),
+    story_desc: Field::Text,
     id: Field::Number,
-    title: Field::String,
-    description: Field::Text,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    display_order: Field::Number,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -24,32 +23,25 @@ class CurriculumDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
-  title
-  description
-  stories
-  user
+  story
+  story_desc
+  display_order
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
-  title
-  description
-  curriculum_stories
-  user
-  created_at
-  updated_at
+  curriculum
+  story
+  display_order
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-  user
-  title
-  description
-  stories
-  curriculum_stories
+  story
+  display_order
   ].freeze
 
   # COLLECTION_FILTERS
@@ -64,10 +56,14 @@ class CurriculumDashboard < Administrate::BaseDashboard
   #   }.freeze
   COLLECTION_FILTERS = {}.freeze
 
-  # Overwrite this method to customize how curriculums are displayed
+  # Overwrite this method to customize how curriculum stories are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(curriculum)
-  #   "Curriculum ##{curriculum.id}"
+  # def display_resource(curriculum_story)
+  #   "CurriculumStory ##{curriculum_story.id}"
   # end
+  def default_sorting_attribute
+    :display_order
+  end
+
 end
