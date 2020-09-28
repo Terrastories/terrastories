@@ -32,10 +32,10 @@ const Story = props => {
   }
 
   return (
-    <>
+    <React.Fragment>
       <li
         className={storyClass}
-        onClick={() => props.onStoryClick(story)} 
+        onClick={() => props.onStoryClick(story)}
         onKeyDown={() => props.onStoryClick(story)}
         key={story.id}
         role="presentation"
@@ -60,7 +60,7 @@ const Story = props => {
           }
         </div>
       </li>
-    </>
+    </React.Fragment>
   );
 }
 
