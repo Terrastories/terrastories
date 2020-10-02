@@ -1,4 +1,4 @@
-<div class="welcome" style="background-image: url(<%= @theme ? @theme.background_img : 'assets/welcome-bg.jpg' %>) " >
+<div class="welcome" style="background-image: url(<%= @theme ? @theme.background_img : asset_path('welcome-bg.jpg') %>) " >
   <div class="welcome-card">
     <%= image_tag 'logocombo.svg', alt: 'Terrastories' %>
     <% if user_signed_in? %>
