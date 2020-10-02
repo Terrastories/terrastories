@@ -1,4 +1,3 @@
-require 'pry'
 module Admin  
   class ThemesController < Admin::ApplicationController
     def create
