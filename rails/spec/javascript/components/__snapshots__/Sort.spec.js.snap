@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sort component Displays correctly 1`] = `
+<Fragment>
+  <span
+    className="card--nav-sort"
+  >
+    : 
+  </span>
+  <StateManager
+    className="storiesSort"
+    classNamePrefix="select"
+    defaultInputValue=""
+    defaultMenuIsOpen={false}
+    defaultValue={null}
+    name="sort-stories"
+    onChange={[Function]}
+    options={
+      Array [
+        Object {
+          "label": undefined,
+          "value": "most_recent",
+        },
+        Object {
+          "label": undefined,
+          "value": "alphabetical",
+        },
+        Object {
+          "label": undefined,
+          "value": "reversed_alphabetical",
+        },
+      ]
+    }
+    value={
+      Object {
+        "label": undefined,
+        "value": "most_recent",
+      }
+    }
+  />
+</Fragment>
+`;
