@@ -14,6 +14,7 @@
 
 class Speaker < ApplicationRecord
   MEDIA_PATH = Rails.env.test? ? 'spec/fixtures/media' : 'import/media'
+  require 'csv'
 
   has_many :speaker_stories
   has_many :stories, through: :speaker_stories
