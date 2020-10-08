@@ -13,6 +13,7 @@ class ThemeDashboard < Administrate::BaseDashboard
     active: Field::Boolean,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    logos: Field::ActiveStorage.with_options({destroy_path: :admin_themes_path}),
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -35,6 +36,7 @@ class ThemeDashboard < Administrate::BaseDashboard
   active
   created_at
   updated_at
+  logos
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -43,6 +45,7 @@ class ThemeDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = %i[
   background_img
   active
+  logos
   ].freeze
 
   # COLLECTION_FILTERS
@@ -63,4 +66,8 @@ class ThemeDashboard < Administrate::BaseDashboard
   # def display_resource(theme)
   #   "Theme ##{theme.id}"
   # end
+
+  def permitted_attributes
+    super + [:logos => []]
+  end
 end
