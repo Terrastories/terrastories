@@ -19,7 +19,7 @@ module Admin
     end
 
     def theme_params
-      params.require(:theme).permit(:active)
+      params.require(:theme).permit(:active, logos: [])
     end
   end
 end
