@@ -19,15 +19,21 @@ describe('Sort component', () => {
     title: "Rudo's testimonial",
   };
 
+  const sortValues = [
+    'sort_stories',
+    'most_recent',
+    'alphabetical',
+    'reversed_alphabetical',
+  ];
+
   it('Displays correctly', () => {
     const wrapper = shallow(<Sort stories={[corinneStory, rudoStory]} />);
 
     expect(wrapper).toMatchSnapshot();
 
-    expect(global.I18n.t).toHaveBeenCalledWith('sort_stories');
-    expect(global.I18n.t).toHaveBeenCalledWith('most_recent');
-    expect(global.I18n.t).toHaveBeenCalledWith('alphabetical');
-    expect(global.I18n.t).toHaveBeenCalledWith('reversed_alphabetical');
+    sortValues.forEach((sortValue) => {
+      expect(global.I18n.t).toHaveBeenCalledWith(sortValue);
+    });
   });
 
   it('Calls handleStoriesChanged on change with expected sort', () => {
