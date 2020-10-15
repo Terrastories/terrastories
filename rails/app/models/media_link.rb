@@ -1,3 +1,3 @@
 class MediaLink < ApplicationRecord
-    belongs_to :story
+  belongs_to :story
 end
