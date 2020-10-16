@@ -182,16 +182,21 @@ export default class Map extends Component {
 
   updateMarkers() {
     this.props.points.features.forEach(marker => {
-      // create a HTML element for each feature
-      var el = document.createElement("div");
-      el.className = "marker";
-      el.id = "storypoint" + marker.id;
-      // make a marker for each feature and add to the map
-      new mapboxgl.Marker(el)
+      // create popup
+      const popup = new mapboxgl.Popup({
+        offset: 15,
+        className: "ts-markerPopup",
+        closeButton: true,
+        closeOnClick: false
+      }).setHTML(this.buildPopupHTML(marker));
+      popup.on("close", () => {
+        this.props.clearFilteredStories();
+      });
+      const mapboxMarker = new mapboxgl.Marker()
         .setLngLat(marker.geometry.coordinates)
+        .setPopup(popup)
         .addTo(this.map);
-
-      el.addEventListener("click", () => {
+      mapboxMarker.getElement().addEventListener('click', () => {
         this.props.onMapPointClick(marker, marker.properties.stories);
         this.map.panTo(marker.geometry.coordinates);
       });
