@@ -11,6 +11,22 @@ RSpec.describe Place, type: :model do
       expect(file_fixture('place_with_media.csv').read).not_to be_empty
     end
 
+    describe "does not create same places multiple times" do
+      it "creates a single place" do
+        header, place = file_fixture('place_with_media.csv').read.split("\n")
+
+        @fixture_data = [
+          header,
+          place,
+          place,
+        ].join("\n")
+
+        expect {
+          described_class.import_csv(@fixture_data)
+        }.to change { Place.count }.by(1)
+      end
+    end
+
     describe 'imports csv with media' do
       before do
         @fixture_data = file_fixture('place_with_media.csv').read
