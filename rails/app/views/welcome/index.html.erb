@@ -27,6 +27,13 @@
       <%= application_locales %>
     </div>
   </div>
+  <div class="logo">
+    <% if @theme %>
+      <% @theme.community_logos.each do |logo| %>
+        <%= image_tag logo %>
+      <% end %>
+    <% end %>
+  </div>
   Built with ❤️ by
   <div class="logo">
     <%= image_tag "rubyforgood.png" %>
