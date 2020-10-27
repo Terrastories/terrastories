@@ -12,7 +12,7 @@ RSpec.describe Place, type: :model do
     end
 
     describe "does not create duplicated places" do
-      it "creates a single place for same file twice" do
+      it "creates a single place when importing the same csv twice" do
         @fixture_data = file_fixture('place_with_media.csv').read
 
         expect {
