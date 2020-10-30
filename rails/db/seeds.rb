@@ -64,10 +64,11 @@ shared_story = Story.find_or_create_by(title: "Terrastories Team testimonial",
 
 
 # Create a default admin user
-User.find_or_create_by!(email: 'admin@terrastories.com') do |admin|  
+User.find_or_create_by!(email: 'admin@terrastories.com') do |admin|
   admin.password = 'terrastories'
   admin.password_confirmation = 'terrastories'
   admin.role = 1
+  admin.community = default_community
 end
 
 # Create a default theme
