@@ -2,6 +2,7 @@ class Place < ApplicationRecord
   MEDIA_PATH = Rails.env.test? ? 'spec/fixtures/media' : 'import/media'
 
   require 'csv'
+  belongs_to :community
   has_and_belongs_to_many :stories
   has_one_attached :photo
   validate :photo_format

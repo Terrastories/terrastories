@@ -6,9 +6,15 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# Create a default Community
+default_community = Community.find_or_create_by!(name: "Terrastories") do |community|
+  community.country = "United States of America"
+  community.locale = "en"
+end
+
 # Create Places
-rfg2018 = Place.find_or_create_by(name: "Georgetown University", type_of_place: 'college campus', long: -77.073168, lat: 38.906302, region: "Washington DC")
-rbtb2019 = Place.find_or_create_by(name: "NatureBridge Campus", type_of_place: 'nonprofit campus', long: -122.537419, lat: 37.832257, region: "California")
+rfg2018 = Place.find_or_create_by(name: "Georgetown University", type_of_place: 'college campus', long: -77.073168, lat: 38.906302, region: "Washington DC", community: default_community)
+rbtb2019 = Place.find_or_create_by(name: "NatureBridge Campus", type_of_place: 'nonprofit campus', long: -122.537419, lat: 37.832257, region: "California", community: default_community)
 
 # Create Speakers
 miranda = Speaker.find_or_create_by(name: "Miranda Wang")
@@ -61,7 +67,6 @@ shared_story = Story.find_or_create_by(title: "Terrastories Team testimonial",
                     permission_level: 1,
                     interview_location_id: rfg2018.id,
                     speakers: [miranda, corinne, kalimar, rudo])
-
 
 # Create a default admin user
 User.find_or_create_by!(email: 'admin@terrastories.com') do |admin|
