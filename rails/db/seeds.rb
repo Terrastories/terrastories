@@ -69,3 +69,9 @@ User.find_or_create_by!(email: 'admin@terrastories.com') do |admin|
   admin.password_confirmation = 'terrastories'
   admin.role = 1
 end
+
+# Create a default theme
+User.find_or_create_by!(background_img: 'welcome-bg.jpg') do |theme|
+  theme.active = true
+  theme.logos.attach(io: File.open('app/assets/images/rubyforgood.png'), filename: 'rubyforgood.png')
+end
