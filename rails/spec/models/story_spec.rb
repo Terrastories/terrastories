@@ -56,5 +56,21 @@ RSpec.describe Story, type: :model do
       it {expect(story.media.all.count).to eq 0}
       it {expect(csv[8]).not_to be_nil}
     end
+
+    describe 'displays error messages for failed imports' do
+      before do
+        @fixture_data = file_fixture('invalid stories.csv').read
+      end
+      it { expect(described_class.import_csv(@fixture_data)).not_to be_empty }
+    end
+
+    describe 'upload valid rows when invalid rows exist in import' do
+      before do
+        @fixture_data = file_fixture('invalid stories.csv').read
+        @count = described_class.count
+        described_class.import_csv(@fixture_data)
+      end
+      it { expect(described_class.count).not_to eq @count}
+    end
   end
 end
