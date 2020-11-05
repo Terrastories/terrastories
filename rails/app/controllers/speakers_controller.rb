@@ -32,8 +32,8 @@ class SpeakersController < ApplicationController
       flash[:error] = "No file was attached!"
     else
       filepath = params[:file].read
-      Speaker.import_csv(filepath)
-      flash[:notice] = "Speakers were imported successfully!"
+      errors = Speaker.import_csv(filepath)
+      errors.empty? ? flash[:notice] = "Speakers were imported successfully!" : flash[:error] = errors
       redirect_back(fallback_location: root_path)
     end
   end
