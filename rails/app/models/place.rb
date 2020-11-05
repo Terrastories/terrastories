@@ -12,13 +12,7 @@ class Place < ApplicationRecord
   attr_reader :point_geojson
 
   def self.import_csv(filename)
-    CSV.parse(filename, headers: true) do |row|
-      decorator = FileImport::PlaceRowDecorator.new(row)
-      place = Place.find_or_create_by(decorator.to_h)
-      place.photo.attach(decorator.media.blob_data) if decorator.media.attachable?
-
-      place.save
-    end
+    ApplicationController.helpers.csv_importer(filename, self)
   end
 
   def photo_format
