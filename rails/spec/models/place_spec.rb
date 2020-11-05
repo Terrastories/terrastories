@@ -43,6 +43,22 @@ RSpec.describe Place, type: :model do
       it { expect(place.photo.filename.to_s).to eq csv[6] }
     end
 
+    describe 'displays error messages for failed imports' do
+      before do
+        @fixture_data = file_fixture('invalid places.csv').read
+      end
+      it { expect(described_class.import_csv(@fixture_data)).not_to be_empty }
+    end
+
+    describe 'upload valid rows when invalid rows exist in import' do
+      before do
+        @fixture_data = file_fixture('invalid places.csv').read
+        @count = described_class.count
+        described_class.import_csv(@fixture_data)
+      end
+      it { expect(described_class.count).not_to eq @count}
+    end
+
     describe 'does not fail when media is not present' do
       before do
         @fixture_data = file_fixture('place_without_media.csv').read
