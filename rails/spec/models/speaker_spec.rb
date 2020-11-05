@@ -83,6 +83,23 @@ RSpec.describe Speaker, type: :model do
       it { expect(speaker.photo.attached?).to be_falsey }
       it { expect(csv[3]).not_to be_nil }
     end
+
+    describe 'displays error messages for failed imports' do
+      before do
+        @fixture_data = file_fixture('invalid speakers.csv').read
+      end
+      it { expect(described_class.import_csv(@fixture_data)).not_to be_empty }
+    end
+
+    describe 'upload valid rows when invalid rows exist in import' do
+      before do
+        @fixture_data = file_fixture('invalid speakers.csv').read
+        @count = described_class.count
+        described_class.import_csv(@fixture_data)
+      end
+      it { expect(described_class.count).not_to eq @count}
+    end
+
   end
 
   describe '.get_birthplace' do
