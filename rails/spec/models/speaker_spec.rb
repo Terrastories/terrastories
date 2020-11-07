@@ -98,13 +98,14 @@ RSpec.describe Speaker, type: :model do
       end
     end
 
-    describe 'upload valid rows when invalid rows exist in import' do
-      before do
+    describe "does not fail when some rows in import are invalid" do
+      it "creates valid speakers when importing a csv with invalid lines" do
         @fixture_data = file_fixture('invalid speakers.csv').read
-        @count = described_class.count
-        described_class.import_csv(@fixture_data)
+        pending("validations on speaker model")
+        expect {
+          described_class.import_csv(@fixture_data)
+        }.to change { Speaker.count }.by(1)
       end
-      it { expect(described_class.count).not_to eq @count}
     end
 
   end

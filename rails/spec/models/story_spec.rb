@@ -64,13 +64,14 @@ RSpec.describe Story, type: :model do
       it { expect(described_class.import_csv(@fixture_data)).not_to be_empty }
     end
 
-    describe 'upload valid rows when invalid rows exist in import' do
-      before do
+    describe "does not fail when some rows in import are invalid" do
+      it "creates valid speakers when importing a csv with invalid lines" do
         @fixture_data = file_fixture('invalid stories.csv').read
-        @count = described_class.count
-        described_class.import_csv(@fixture_data)
+        expect {
+          described_class.import_csv(@fixture_data)
+        }.to change { Story.count }.by(1)
       end
-      it { expect(described_class.count).not_to eq @count}
     end
+
   end
 end
