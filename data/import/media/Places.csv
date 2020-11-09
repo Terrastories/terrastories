@@ -1,0 +1,9 @@
+Place_name (text field),Type_of_place (tag field),Description,Region (tag field),lat,long,Photo (file upload),"NOTE: places should only show on the map if there are stories attached, that the user has permission to view"
+University of Victoria,University,This is where IMW2014 Victoria took place.,British Columbia (Canada),-123.3151913,48.4642749,Victoria.jpg,
+Google Waterloo,Office,This is where IMW2015 Waterloo took place.,Ontario (Canada),-80.501385,43.4543455,Waterloo.jpg,
+Musqueam Community Center,Community Center,This is where IMW2016 Vancouver took place.,British Columbia (Canada),-123.2014835,49.2232439,Vancouver.jpg,
+Radisson Hotel,Hotel,This is where IMW2017 Winnipeg took place.,Manitoba (Canada),-97.1447041,49.8936229,Winnipeg.jpg,
+Le Westin,Hotel,This is where IMW2018 Montreal took place.,Quebec (Canada),-73.5617601,45.5036061,Montreal.jpg,
+University of Technology Sydney,University,This is where IMW2018 Sydney took place.,New South Wales (Australia),151.1983002,-33.8832376,Sydney.jpg,
+Midnight Sun Complex,Community Center,This is where IMW2019 Inuvik took place.,Northwest Territories (Canada),-133.7165643,68.3582115,Inuvik.jpg,
+FLUX,Coworking Space,This is where IMW2019 Perth took place.,Western Australia (Australia),115.8510453,-31.9539836,Perth.jpg,
