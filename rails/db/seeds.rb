@@ -13,7 +13,7 @@ imw2020 = Place.find_or_create_by(name: "Saskatchewan", type_of_place: 'online',
 imwcanada = Speaker.find_or_create_by(name: "IMW Canada")
 
 # Create Stories
-imw2020_story = Story.find_or_create_by(title: "The story of #20202020.",
+imw2020_story = Story.find_or_create_by(title: "The story of #2020IMW.",
                     desc: "Introducing the very first Virtual Indigenous Mapping Workshop. For the first time ever, IMW participants can develop their skills, with cutting edge geospatial technologies, from anywhere around the globe. Learn to redefine Indigenous landscapes from Indigenous mapping experts. Develop hands-on skills from leading industry professionals including Esri, Google, NASA, Mapbox and more. Join the Indigenous Mapping Collective and have unprecedented access to all IMW course materials and exclusive new content posted throughout the year.",
                     places: [imw2020],
                     language: 'English',
