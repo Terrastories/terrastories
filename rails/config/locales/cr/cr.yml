@@ -1,0 +1,33 @@
+cr: 
+  admin_page: "Admin Page"
+  alphabetical: A-Z
+  back_to_map: "Back to Map"
+  back_to_welcome: "Back to Welcome Page"
+  close: Close
+  default: default
+  enter: "Enter Site"
+  filter_stories: "Filter stories"
+  forgot_password: "Forgot your password?"
+  hello: "ᒥᔪᑌᐦ ᑲ ᐃᐧᓴᒥᐦᐟ ᐊᐄᐧᔭᐠ"
+  intro: 
+    explanation: "Terrastories are audiovisual recordings of place-based storytelling. This offline-compatible application enables local communities to locate and map their own oral storytelling traditions about places of significant meaning or value to them."
+    question: "What's a terrastory?"
+  introduction: Introduction
+  language: Language
+  login: Login
+  logout: Logout
+  map: "Is this a …map?"
+  most_recent: "Most recent"
+  password: Password
+  place_type: "Type of place"
+  region: Region
+  remember_me: "Remember me"
+  reversed_alphabetical: Z-A
+  select_category: "Select category"
+  selected_language: "selected"
+  select_option: "Select option"
+  sign_up: "Sign up"
+  sort_stories: "Sort stories"
+  speaker: Speaker
+  welcome: "ᒥᔪᑌᐦ ᑲ ᐃᐧᓴᒥᐦᐟ ᐊᐄᐧᔭᐠ"
+  welcome_back: ᒥᔪᑌᐦ ᑲ ᐃᐧᓴᒥᐦᐟ ᐊᐄᐧᔭᐠ"
