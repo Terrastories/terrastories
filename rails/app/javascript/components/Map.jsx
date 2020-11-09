@@ -3,12 +3,12 @@ import PropTypes from "prop-types";
 import MiniMap from "../vendor/mapboxgl-control-minimap";
 
 // @NOTE: MAKE SURE ARRAY IS [LONGITUDE, LATITUDE]
-const defaultCenter = [-108, 38.5];
+const defaultCenter = [-105.834685, 53.623210];
 const defaultBounds = [
   [-180, -85], //southwest
   [180, 85] //northeast
 ];
-const defaultZoom = 3.5;
+const defaultZoom = 3.75;
 const defaultPitch = 0;
 const defaultBearing = 0;
 
