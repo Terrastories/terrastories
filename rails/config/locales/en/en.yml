@@ -1,15 +1,18 @@
-en: 
+en:
   admin_page: "Admin Page"
   alphabetical: A-Z
   back_to_map: "Back to Map"
   back_to_welcome: "Back to Welcome Page"
   close: Close
+  community_search:
+    title: "Search for a Community to Explore"
+    coming_soon: "This feature is coming soon. For now, please request an invite to a specific community."
   default: default
   enter: "Enter Site"
   filter_stories: "Filter stories"
   forgot_password: "Forgot your password?"
   hello: Hello
-  intro: 
+  intro:
     explanation: "Terrastories are audiovisual recordings of place-based storytelling. This offline-compatible application enables local communities to locate and map their own oral storytelling traditions about places of significant meaning or value to them."
     question: "What's a terrastory?"
   introduction: Introduction
