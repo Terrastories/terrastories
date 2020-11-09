@@ -17,6 +17,7 @@ class Speaker < ApplicationRecord
 
   has_many :speaker_stories
   has_many :stories, through: :speaker_stories
+  belongs_to :community
   belongs_to :birthplace, class_name: "Place",  optional: true
   has_one_attached :photo
 
@@ -33,10 +34,10 @@ class Speaker < ApplicationRecord
     ApplicationController.helpers.csv_importer(filename, self)
   end
 
-  def self.get_birthplace(name)
+  def self.get_birthplace(name, community)
     if name.nil? || name.downcase == 'unknown'
       return nil
     end
-    Place.find_or_create_by(name: name)
+    Place.find_or_create_by(name: name, community: community)
   end
 end

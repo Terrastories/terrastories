@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_09_142524) do
+ActiveRecord::Schema.define(version: 2020_11_09_213458) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,7 +101,8 @@ ActiveRecord::Schema.define(version: 2020_11_09_142524) do
     t.datetime "updated_at", null: false
     t.datetime "birthdate"
     t.integer "birthplace_id"
-    t.string "community"
+    t.string "speaker_community"
+    t.integer "community_id"
     t.index ["birthplace_id"], name: "index_speakers_on_birthplace_id"
   end
 
@@ -115,6 +116,7 @@ ActiveRecord::Schema.define(version: 2020_11_09_142524) do
     t.string "language"
     t.integer "interview_location_id"
     t.integer "interviewer_id"
+    t.integer "community_id"
   end
 
   create_table "themes", force: :cascade do |t|

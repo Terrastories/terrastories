@@ -52,6 +52,8 @@ RSpec.describe Speaker, type: :model do
   end
 
   context '.import_csv' do
+    let(:community) { FactoryBot.create(:community) }
+
     describe 'is tested against fixture file' do
       it { expect(file_fixture('speaker_with_photo.csv').read).not_to be_empty }
     end
@@ -62,12 +64,12 @@ RSpec.describe Speaker, type: :model do
 
       before do
         @fixture_data = file_fixture('speaker_with_photo.csv').read
-        described_class.import_csv(@fixture_data)
+        described_class.import_csv(@fixture_data, community)
       end
 
       it { expect(speaker.name).to eq csv[0] }
       it { expect(speaker.birthdate).to eq Date.strptime(csv[1], '%Y') }
-      it { expect(speaker.birthplace).to eq described_class.get_birthplace(csv[2]) }
+      it { expect(speaker.birthplace).to eq described_class.get_birthplace(csv[2], community) }
       it { expect(speaker.photo.filename.to_s).to eq csv[3] }
     end
 
@@ -77,7 +79,7 @@ RSpec.describe Speaker, type: :model do
 
       before do
         @fixture_data = file_fixture('speaker_without_photo.csv').read
-        described_class.import_csv(@fixture_data)
+        described_class.import_csv(@fixture_data, community)
       end
 
       it { expect(speaker.photo.attached?).to be_falsey }
@@ -111,9 +113,10 @@ RSpec.describe Speaker, type: :model do
   end
 
   describe '.get_birthplace' do
-    let!(:birthplace) { create(:place, name: 'Anapolis') }
+    let(:community) { FactoryBot.create(:community) }
+    let!(:birthplace) { create(:place, name: 'Anapolis', community: community) }
 
-    subject { described_class.get_birthplace(birthplace_name) }
+    subject { described_class.get_birthplace(birthplace_name, community) }
 
     context 'when found birthplace_name' do
       let(:birthplace_name) { 'Anapolis' }
