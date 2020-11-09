@@ -7,65 +7,25 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # Create Places
-rfg2018 = Place.find_or_create_by(name: "Georgetown University", type_of_place: 'college campus', long: -77.073168, lat: 38.906302, region: "Washington DC")
-rbtb2019 = Place.find_or_create_by(name: "NatureBridge Campus", type_of_place: 'nonprofit campus', long: -122.537419, lat: 37.832257, region: "California")
+imw2020 = Place.find_or_create_by(name: "Saskatchewan", type_of_place: 'online', long: -106.037998, lat: 54.170027, region: "Saskatchewan (Canada)")
 
 # Create Speakers
-miranda = Speaker.find_or_create_by(name: "Miranda Wang")
-kalimar = Speaker.find_or_create_by(name: "Kalimar Maia")
-rudo = Speaker.find_or_create_by(name: "Rudo Kemper")
-corinne = Speaker.find_or_create_by(name: "Corinne Henk")
+imwcanada = Speaker.find_or_create_by(name: "IMW Canada")
 
 # Create Stories
-miranda_story = Story.find_or_create_by(title: "Miranda's testimonial",
-                    desc: "Ruby for Good 2018 team lead Miranda Wang about why she values working on Terrastories.",
-                    places: [rfg2018],
+imw2020_story = Story.find_or_create_by(title: "The story of #20202020.",
+                    desc: "Introducing the very first Virtual Indigenous Mapping Workshop. For the first time ever, IMW participants can develop their skills, with cutting edge geospatial technologies, from anywhere around the globe. Learn to redefine Indigenous landscapes from Indigenous mapping experts. Develop hands-on skills from leading industry professionals including Esri, Google, NASA, Mapbox and more. Join the Indigenous Mapping Collective and have unprecedented access to all IMW course materials and exclusive new content posted throughout the year.",
+                    places: [imw2020],
                     language: 'English',
                     permission_level: 0,
-                    interview_location_id: rfg2018.id,
-                    interviewer_id: corinne.id,
-                    speakers: [miranda])
-
-
-rudo_story = Story.find_or_create_by(title: "Rudo's testimonial",
-                    desc: "ACT program manager Rudo Kemper discusses why the organization decided to start building Terrastories to support local communities retain their oral history traditions.",
-                    places: [rbtb2019],
-                    language: 'English',
-                    permission_level: 0,
-                    interviewer_id: kalimar.id,
-                    interview_location_id: rbtb2019.id,
-                    speakers: [rudo])
-
-kalimar_story = Story.find_or_create_by(title: "Kalimar's testimonial",
-                    desc: "Mapbox sales engineer Kalimar Maia on why it is important for a company like Mapbox to support open source projects like Terrastories.",
-                    places: [rfg2018],
-                    language: 'English',
-                    permission_level: 1,
-                    interviewer_id: miranda.id,
-                    interview_location_id: rfg2018.id,
-                    speakers: [kalimar])
-
-corinne_story = Story.find_or_create_by(title: "Corinne's testimonial",
-                    desc: "Corinne Henk, Ruby by the Bay 2019 team lead, describes some of the challenges her team faced and what they managed to accomplish.",
-                    places: [rbtb2019],
-                    language: 'English',
-                    permission_level: 0,
-                    interviewer_id: rudo.id,
-                    interview_location_id: rbtb2019.id,
-                    speakers: [corinne])
-
-shared_story = Story.find_or_create_by(title: "Terrastories Team testimonial",
-                    desc: "The team tells all",
-                    places: [rfg2018],
-                    language: 'English',
-                    permission_level: 1,
-                    interview_location_id: rfg2018.id,
-                    speakers: [miranda, corinne, kalimar, rudo])
+                    interview_location_id: imw2020.id,
+                    interviewer_id: imwcanada.id,
+                    speakers: [imwcanada])
 
 
 # Create a default admin user
-User.find_or_create_by!(email: 'admin@terrastories.com') do |admin|  
-  admin.password = 'terrastories'
-  admin.password_confirmation = 'terrastories'
+User.find_or_create_by!(email: 'terrastories@indigenousmaps.com') do |admin|  
+  admin.password = 'mapsthatroar'
+  admin.password_confirmation = 'mapsthatroar'
   admin.role = 1
 end
