@@ -29,3 +29,9 @@ User.find_or_create_by!(email: 'terrastories@indigenousmaps.com') do |admin|
   admin.password_confirmation = 'mapsthatroar'
   admin.role = 1
 end
+
+User.find_or_create_by!(email: 'demo@terrastories.io') do |admin|  
+  admin.password = 'mapsthatroar'
+  admin.password_confirmation = 'mapsthatroar'
+  admin.role = 0
+end
