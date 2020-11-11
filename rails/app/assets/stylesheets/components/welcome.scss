@@ -10,9 +10,10 @@
 
   .logo {
     img {
-      max-width: 200px;
-      width: 15vw;
       height:auto;
+      @media screen and (max-width: 600px) {
+        width: 80vw;
+      }  
     }
   }
 
