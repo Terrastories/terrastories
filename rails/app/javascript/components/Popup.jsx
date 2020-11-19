@@ -12,3 +12,60 @@ const Popup = ({ feature }) => {
 };
 
 export default Popup;
+
+// buildPopupHTML(marker) {
+//   if (marker.properties.photo_url) {
+//     if (marker.properties.region) {
+//       if (marker.properties.type_of_place) {
+//         return `<h1>${marker.properties.name}</h1>
+//         <div class="ts-markerPopup-content">
+//           <img src=${marker.properties.photo_url} />
+//           <div>
+//             <div>${I18n.t("region")}: ${marker.properties.region}</div>
+//             <div>${I18n.t("place_type")}: ${
+//           marker.properties.type_of_place
+//         }</div>
+//           </div>
+//         </div>`;
+//       } else {
+//         return `<h1>${marker.properties.name}</h1>
+//         <div class="ts-markerPopup-content">
+//           <img src=${marker.properties.photo_url} />
+//           <div>
+//             <div>${I18n.t("region")}: ${marker.properties.region}</div>
+//           </div>
+//         </div>`;
+//       }
+//     } else {
+//       return `<h1>${marker.properties.name}</h1>
+//         <div class="ts-markerPopup-content">
+//           <img src=${marker.properties.photo_url} />
+//         </div>`;
+//     }
+//   } else {
+//     if (marker.properties.region) {
+//       if (marker.properties.type_of_place) {
+//         return `<h1>${marker.properties.name}</h1>
+//         <div class="ts-markerPopup-content">
+//           <div>
+//             <div>${I18n.t("region")}: ${marker.properties.region}</div>
+//             <div>${I18n.t("place_type")}: ${
+//           marker.properties.type_of_place
+//         }</div>
+//           </div>
+//         </div>`;
+//       } else {
+//         return `<h1>${marker.properties.name}</h1>
+//         <div class="ts-markerPopup-content">
+//           <div>
+//             <div>${I18n.t("region")}: ${marker.properties.region}</div>
+//           </div>
+//         </div>`;
+//       }
+//     } else {
+//       return `<h1>${marker.properties.name}</h1>
+//         <div class="ts-markerPopup-content">
+//         </div>`;
+//     }
+//   }
+// }

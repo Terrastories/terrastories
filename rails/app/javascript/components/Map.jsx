@@ -13,11 +13,16 @@ const defaultBounds = [
 const defaultZoom = 3.5;
 const defaultPitch = 0;
 const defaultBearing = 0;
+const STORY_POINTS_LAYER_ID = "ts-points-layer";
+const STORY_POINTS_DATA_SOURCE = "ts-points-data";
 
 export default class Map extends Component {
   constructor(props) {
     super(props);
     mapboxgl.accessToken = this.props.mapboxAccessToken;
+    this.state = {
+      activePopup: null
+    };
   }
 
   static propTypes = {
@@ -44,18 +49,10 @@ export default class Map extends Component {
     this.map.on("load", () => {
       console.log(this.props.points);
       // this.updateMarkers();
-      this.map.addSource("random-points-data", {
-        type: "geojson",
-        data: this.props.points
-      });
-      this.map.loadImage('http://placekitten.com/50/50', (error, image) => {
-        if (error) throw error;
-        // Add the loaded image to the style's sprite with the ID 'kitten'.
-        this.map.addImage('ts-marker', image);
-      });
+      this.addMapPoints();
       this.map.addLayer({
-        id: "random-points-layer",
-        source: "random-points-data",
+        id: STORY_POINTS_LAYER_ID,
+        source: STORY_POINTS_DATA_SOURCE,
         type: "symbol",
         layout: {
           "icon-image": "ts-marker",
@@ -65,34 +62,57 @@ export default class Map extends Component {
       });
       this.addHomeButton();
     });
-
-    this.map.on("click", "random-points-layer", e => {
-      console.log(e);
-      if (e.features.length) {
-        const feature = e.features[0];
-        // create popup node
-        const popupNode = document.createElement("div");
-        ReactDOM.render(<Popup feature={feature} />, popupNode);
-        // set popup on map
-        new mapboxgl.Popup({
-          offset: 15,
-          className: "ts-markerPopup",
-          closeButton: true,
-          closeOnClick: false
-        })
-          .setLngLat(feature.geometry.coordinates)
-          .setDOMContent(popupNode)
-          .addTo(this.map);
-      }
-    });
-
-
-
+    this.attachPopupsOnClick();
     if(!this.props.useLocalMapServer) {
       this.map.addControl(new mapboxgl.Minimap(), "top-right");
       this.map.addControl(new mapboxgl.NavigationControl());
     }
   }
+
+  addMapPoints() {
+    // TODO: Replace this with image asset URL passed from props
+    this.map.addSource(STORY_POINTS_DATA_SOURCE, {
+      type: "geojson",
+      data: this.props.points
+    });
+    this.map.loadImage('http://placekitten.com/50/50', (error, image) => {
+      if (error) throw error;
+      // Add the loaded image to the style's sprite with the ID 'kitten'.
+      this.map.addImage('ts-marker', image);
+    });
+  }
+
+  attachPopupsOnClick() {
+    this.map.on("click", STORY_POINTS_LAYER_ID, e => {
+      console.log(e);
+      if (e.features.length) {
+        // Close currently open popup
+        this.closeActivePopup();
+
+        // Select the feature clicked on
+        const feature = e.features[0];
+        
+        // create popup node
+        const popupNode = document.createElement("div");
+        ReactDOM.render(<Popup feature={feature} />, popupNode);
+        // set popup on map
+        const popup = new mapboxgl.Popup({
+          offset: 15,
+          className: "ts-markerPopup",
+          closeButton: true,
+          closeOnClick: false
+        });
+        popup.setLngLat(feature.geometry.coordinates)
+        popup.setDOMContent(popupNode)
+        popup.addTo(this.map);
+        this.setState({
+          activePopup: popup
+        });
+      }
+    });
+
+  }
+
 
   // componentDidUpdate(prevProps) {
   //   // update popups
@@ -135,63 +155,6 @@ export default class Map extends Component {
   //   }
   // }
 
-  buildPopupHTML(marker) {
-    if (marker.properties.photo_url) {
-      if (marker.properties.region) {
-        if (marker.properties.type_of_place) {
-          return `<h1>${marker.properties.name}</h1>
-          <div class="ts-markerPopup-content">
-            <img src=${marker.properties.photo_url} />
-            <div>
-              <div>${I18n.t("region")}: ${marker.properties.region}</div>
-              <div>${I18n.t("place_type")}: ${
-            marker.properties.type_of_place
-          }</div>
-            </div>
-          </div>`;
-        } else {
-          return `<h1>${marker.properties.name}</h1>
-          <div class="ts-markerPopup-content">
-            <img src=${marker.properties.photo_url} />
-            <div>
-              <div>${I18n.t("region")}: ${marker.properties.region}</div>
-            </div>
-          </div>`;
-        }
-      } else {
-        return `<h1>${marker.properties.name}</h1>
-          <div class="ts-markerPopup-content">
-            <img src=${marker.properties.photo_url} />
-          </div>`;
-      }
-    } else {
-      if (marker.properties.region) {
-        if (marker.properties.type_of_place) {
-          return `<h1>${marker.properties.name}</h1>
-          <div class="ts-markerPopup-content">
-            <div>
-              <div>${I18n.t("region")}: ${marker.properties.region}</div>
-              <div>${I18n.t("place_type")}: ${
-            marker.properties.type_of_place
-          }</div>
-            </div>
-          </div>`;
-        } else {
-          return `<h1>${marker.properties.name}</h1>
-          <div class="ts-markerPopup-content">
-            <div>
-              <div>${I18n.t("region")}: ${marker.properties.region}</div>
-            </div>
-          </div>`;
-        }
-      } else {
-        return `<h1>${marker.properties.name}</h1>
-          <div class="ts-markerPopup-content">
-          </div>`;
-      }
-    }
-  }
-
   resetMapToCenter() {
     this.map.flyTo({
       center: defaultCenter,
@@ -222,6 +185,12 @@ export default class Map extends Component {
     homeButton.addEventListener("click", () => {
       this.resetMapToCenter();
     });
+  }
+
+  closeActivePopup() {
+    if (this.state.activePopup) {
+      this.state.activePopup.remove();
+    }
   }
 
   // updateMarkers() {
