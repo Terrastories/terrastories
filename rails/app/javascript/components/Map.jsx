@@ -33,6 +33,7 @@ export default class Map extends Component {
     mapboxStyle: PropTypes.string,
     mapboxAccessToken: PropTypes.string,
     useLocalMapServer: PropTypes.bool,
+    markerImgUrl: PropTypes.string,
   };
 
   componentDidMount() {
@@ -102,9 +103,8 @@ export default class Map extends Component {
       type: "geojson",
       data: this.props.points
     });
-    this.map.loadImage('http://placekitten.com/50/50', (error, image) => {
-      if (error) throw error;
-      // Add the loaded image to the style's sprite with the ID 'kitten'.
+    this.map.loadImage(this.props.markerImgUrl, (error, image) => {
+      if (error) throw "Error loading marker images: " + error;
       this.map.addImage('ts-marker', image);
     });
   }

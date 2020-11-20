@@ -239,6 +239,7 @@ class App extends Component {
           onMapPointClick={this.handleMapPointClick}
           activePoint={this.state.activePoint}
           framedView={this.state.framedView}
+          markerImgUrl={this.props.marker_image_url}
         />
         <Card
           activeStory={this.state.activeStory}
