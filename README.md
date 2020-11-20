@@ -8,7 +8,7 @@
 
 3. [Customize Terrastories](#customize-terrastories)
 
-4. [Demo and Tutorials](#demo-tutorials)
+4. [Demo and Tutorials](#demo-and-tutorials)
 
 5. [Developing with Terrastories](#developing-with-terrastories)
 
