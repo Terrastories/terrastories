@@ -48,8 +48,11 @@ export default class Map extends Component {
 
     this.map.on("load", () => {
       console.log(this.props.points);
-      // this.updateMarkers();
+
+      // Add map point data to the map
       this.addMapPoints();
+
+      // Add mapbox markers to the map
       this.map.addLayer({
         id: STORY_POINTS_LAYER_ID,
         source: STORY_POINTS_DATA_SOURCE,
@@ -60,12 +63,23 @@ export default class Map extends Component {
           "icon-allow-overlap": true
         }
       });
+
       this.addHomeButton();
+
+      // Attaches popups + events
+      this.addMarkerClickHandler();
     });
-    this.attachPopupsOnClick();
+  
     if(!this.props.useLocalMapServer) {
       this.map.addControl(new mapboxgl.Minimap(), "top-right");
       this.map.addControl(new mapboxgl.NavigationControl());
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log("Active Point: ", this.props.activePoint);
+    if (this.props.activePoint  && prevProps.activePoint !== this.props.activePoint) {
+      this.openPopup(this.props.activePoint);
     }
   }
 
@@ -82,78 +96,41 @@ export default class Map extends Component {
     });
   }
 
-  attachPopupsOnClick() {
+  addMarkerClickHandler() {
     this.map.on("click", STORY_POINTS_LAYER_ID, e => {
       console.log(e);
       if (e.features.length) {
-        // Close currently open popup
-        this.closeActivePopup();
-
         // Select the feature clicked on
         const feature = e.features[0];
-        
-        // create popup node
-        const popupNode = document.createElement("div");
-        ReactDOM.render(<Popup feature={feature} />, popupNode);
-        // set popup on map
-        const popup = new mapboxgl.Popup({
-          offset: 15,
-          className: "ts-markerPopup",
-          closeButton: true,
-          closeOnClick: false
-        });
-        popup.setLngLat(feature.geometry.coordinates)
-        popup.setDOMContent(popupNode)
-        popup.addTo(this.map);
-        this.setState({
-          activePopup: popup
-        });
+        this.openPopup(feature);
+        this.props.onMapPointClick(feature);
       }
     });
-
   }
 
+  openPopup(feature) {
+    // Only show one popup at a time, close the active
+    this.closeActivePopup();
+    
+    // create popup node
+    const popupNode = document.createElement("div");
+    ReactDOM.render(<Popup feature={feature} />, popupNode);
+    // set popup on map
+    const popup = new mapboxgl.Popup({
+      offset: 15,
+      className: "ts-markerPopup",
+      closeButton: true,
+      closeOnClick: false
+    });
+    popup.setLngLat(feature.geometry.coordinates)
+    popup.setDOMContent(popupNode)
+    popup.addTo(this.map);
 
-  // componentDidUpdate(prevProps) {
-  //   // update popups
-  //   // only display one at a time, remove all other popups
-  //   const popupNodes = document.getElementsByClassName("mapboxgl-popup");
-  //   Array.from(popupNodes).forEach(node => node.remove());
-  //   if (this.props.activePoint) {
-  //     const marker = this.props.activePoint;
-  //     var popup = new mapboxgl.Popup({
-  //       offset: 15,
-  //       className: "ts-markerPopup",
-  //       closeButton: true,
-  //       closeOnClick: false
-  //     })
-  //       .setLngLat(marker.geometry.coordinates)
-  //       .setHTML(this.buildPopupHTML(marker))
-  //       .addTo(this.map);
-  //     popup.on("close", () => {
-  //       this.props.clearFilteredStories();
-  //     });
-  //   }
-  //   // update points/markers
-  //   if (this.props.points) {
-  //     const popupNodes = document.getElementsByClassName("mapboxgl-marker");
-  //     Array.from(popupNodes).forEach(node => node.remove());
-  //     this.updateMarkers();
-  //   }
-
-  //   if (
-  //     this.props.framedView &&
-  //     this.props.framedView !== prevProps.framedView
-  //   ) {
-  //     const { bounds, ...frameOptions } = this.props.framedView;
-  //     if (bounds) {
-  //       this.map.fitBounds(bounds, { padding: 50, duration: 2000.0, ...frameOptions });
-  //     } else {
-  //       this.map.easeTo({ duration: 2000.0, ...frameOptions });
-  //     }
-  //     return;
-  //   }
-  // }
+    // Set active popup in state
+    this.setState({
+      activePopup: popup
+    });
+  }
 
   resetMapToCenter() {
     this.map.flyTo({
@@ -192,29 +169,6 @@ export default class Map extends Component {
       this.state.activePopup.remove();
     }
   }
-
-  // updateMarkers() {
-  //   this.props.points.features.forEach(marker => {
-  //     // create popup
-  //     const popup = new mapboxgl.Popup({
-  //       offset: 15,
-  //       className: "ts-markerPopup",
-  //       closeButton: true,
-  //       closeOnClick: false
-  //     }).setHTML(this.buildPopupHTML(marker));
-  //     popup.on("close", () => {
-  //       this.props.clearFilteredStories();
-  //     });
-  //     const mapboxMarker = new mapboxgl.Marker()
-  //       .setLngLat(marker.geometry.coordinates)
-  //       .setPopup(popup)
-  //       .addTo(this.map);
-  //     mapboxMarker.getElement().addEventListener('click', () => {
-  //       this.props.onMapPointClick(marker, marker.properties.stories);
-  //       this.map.panTo(marker.geometry.coordinates);
-  //     });
-  //   });
-  // }
 
   render() {
     return <div ref={el => (this.mapContainer = el)} className="ts-MainMap" />;
