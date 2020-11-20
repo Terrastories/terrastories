@@ -77,9 +77,22 @@ export default class Map extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log("Active Point: ", this.props.activePoint);
+    // Open active popup
     if (this.props.activePoint  && prevProps.activePoint !== this.props.activePoint) {
       this.openPopup(this.props.activePoint);
+    }
+
+    // Set map framed view
+    if (
+      this.props.framedView &&
+      this.props.framedView !== prevProps.framedView
+    ) {
+      const { bounds, ...frameOptions } = this.props.framedView;
+      if (bounds) {
+        this.map.fitBounds(bounds, { padding: 50, duration: 2000.0, ...frameOptions });
+      } else {
+        this.map.easeTo({ duration: 2000.0, ...frameOptions });
+      }
     }
   }
 
@@ -111,21 +124,22 @@ export default class Map extends Component {
   openPopup(feature) {
     // Only show one popup at a time, close the active
     this.closeActivePopup();
-    
     // create popup node
     const popupNode = document.createElement("div");
-    ReactDOM.render(<Popup feature={feature} />, popupNode);
+    ReactDOM.render(<Popup feature={feature} onCloseClick={() => {
+      this.props.clearFilteredStories();
+      this.closeActivePopup();
+    }} />, popupNode);
     // set popup on map
     const popup = new mapboxgl.Popup({
       offset: 15,
       className: "ts-markerPopup",
-      closeButton: true,
+      closeButton: false, // We add our own custom close button
       closeOnClick: false
     });
     popup.setLngLat(feature.geometry.coordinates)
     popup.setDOMContent(popupNode)
     popup.addTo(this.map);
-
     // Set active popup in state
     this.setState({
       activePopup: popup

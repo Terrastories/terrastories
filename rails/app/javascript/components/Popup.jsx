@@ -1,10 +1,11 @@
 import React from "react";
 
-const Popup = ({ feature }) => {
-  const { id, name, description } = feature.properties;
+const Popup = (props) => {
+  const { id, name, description } = props.feature.properties;
 
   return (
     <div id={`popup-${id}`}>
+      <span onClick={props.onCloseClick}>✕</span>
       <h3>{name}</h3>
       {description}
     </div>

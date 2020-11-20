@@ -169,7 +169,6 @@ class App extends Component {
       this.resetStoriesAndMap();
     } else {
       const category = option.value;
-      "Picked category ", category;
       this.setState({ filterCategory: category, itemOptions: this.filterMap()[category] })
     }
   }
@@ -222,8 +221,8 @@ class App extends Component {
     });
   };
 
-  handleMapPointClick = (point, stories) => {
-    this.showMapPointStories(stories);
+  handleMapPointClick = (point) => {
+    this.showMapPointStories(JSON.parse(point.properties.stories));
     const framedView = { center: point.geometry.coordinates };
     this.setState({ activePoint: point, framedView });
   };
