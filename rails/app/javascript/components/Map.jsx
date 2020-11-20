@@ -98,7 +98,6 @@ export default class Map extends Component {
   }
 
   addMapPoints() {
-    // TODO: Replace this with image asset URL passed from props
     this.map.addSource(STORY_POINTS_DATA_SOURCE, {
       type: "geojson",
       data: this.props.points
