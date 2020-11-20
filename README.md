@@ -8,9 +8,11 @@
 
 3. [Customize Terrastories](#customize-terrastories)
 
-4. [Developing with Terrastories](#developing-with-terrastories)
+4. [Demo and Tutorials](#demo-tutorials)
 
-5. [Contributing Guidelines](#contributing)
+5. [Developing with Terrastories](#developing-with-terrastories)
+
+6. [Contributing Guidelines](#contributing)
 
 ## About Terrastories
 
@@ -39,6 +41,12 @@ To install and run Terrastories for offline "Field Kit" usage, visit:
 ## Customize Terrastories
 
 To set up Terrastories with a custom map, languages, visual assets, and to import data, see our [customization guide](documentation/CUSTOMIZATION.md).
+
+## Demo and Tutorials
+
+In anticipation of the Terrastories technical session taking place at the 2020 Indigenous Mapping Workshop, we prepared three self-guided tutorials along with video walkthroughs per tutorial. We also put together a comprehensive video showing the application's core features, and a live demo to explore. 
+
+These can be found on the [Terrastories website](https://terrastories.io/tutorials/).
 
 ## Developing with Terrastories
 
