@@ -48,7 +48,6 @@ export default class Map extends Component {
     });
 
     this.map.on("load", () => {
-      console.log(this.props.points);
 
       // Add map point data to the map
       this.addMapPoints();
@@ -110,7 +109,6 @@ export default class Map extends Component {
 
   addMarkerClickHandler() {
     this.map.on("click", STORY_POINTS_LAYER_ID, e => {
-      console.log(e);
       if (e.features.length) {
         // Select the feature clicked on
         const feature = e.features[0];
