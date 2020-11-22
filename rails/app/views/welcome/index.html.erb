@@ -27,6 +27,7 @@
       <%= application_locales %>
     </div>
   </div>
+  <% if @theme %>
   Built with ❤️ by
   <div class="logo">
     <%= image_tag "rubyforgood.png" %>
@@ -35,5 +36,6 @@
         <%= image_tag logo %>
       <% end %>
     <% end %>
+  <% end %>
   </div>
 </div>
