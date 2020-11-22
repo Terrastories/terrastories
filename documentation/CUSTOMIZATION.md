@@ -6,6 +6,8 @@
 
 4. [Importing data into Terrastories](#importing-data-into-terrastories)
 
+*Note: all of these customization possibilities were also covered in a series of self-guided tutorials and accompanying videos for the 2020 Indigenous Mapping Workshop. The links to those can be found on the [Terrastories website](https://terrastories.io/tutorials/).*
+
 ## Setting up a custom map
 
 ### Map content
