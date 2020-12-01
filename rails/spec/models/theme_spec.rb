@@ -5,9 +5,8 @@ RSpec.describe Theme, type: :model do
 
   let(:theme) {Theme.new()}
   it "can add sponsor logo" do
-    theme.logos.attach(io: File.open("./spec/fixtures/media/terrastories.png"), filename: 'file.pdf')
-    theme.valid?
-    expect(theme.errors[:logos]).to be_empty
+    theme.sponsor_logos.attach(io: File.open("./spec/fixtures/media/terrastories.png"), filename: 'file.pdf')
+    expect(theme).to be_valid
   end
   it "can add community logo" do
     theme.community_logos.attach(io: File.open("./spec/fixtures/media/terrastories.png"), filename: 'file.pdf')

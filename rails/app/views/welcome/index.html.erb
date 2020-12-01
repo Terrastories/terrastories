@@ -1,4 +1,4 @@
-<div class="welcome" style="background-image: url(<%= @theme ? @theme.background_img : asset_path('welcome-bg.jpg') %>) " >
+<div class="welcome" style="background-image: url(<%= @theme.background_img.present? ? asset_path(@theme.background_img) : asset_path('welcome-bg.jpg') %>) " >
   <div class="welcome-card">
     <%= image_tag 'logocombo.svg', alt: 'Terrastories' %>
     <% if user_signed_in? %>
@@ -34,13 +34,15 @@
       <% end %>
     <% end %>
   </div>
+  <% if @theme %>
   Built with ❤️ by
   <div class="logo">
     <%= image_tag "rubyforgood.png" %>
     <% if @theme %>
-      <% @theme.logos.each do |logo| %>
+      <% @theme.sponsor_logos.each do |logo| %>
         <%= image_tag logo %>
       <% end %>
     <% end %>
+  <% end %>
   </div>
 </div>
