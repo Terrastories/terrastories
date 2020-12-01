@@ -24,8 +24,8 @@ module Admin
         flash[:error] = "No file was attached!"
       else
         filepath = params[:file].read
-        Place.import_csv(filepath)
-        flash[:notice] = "Points were imported successfully!"
+        errors = Place.import_csv(filepath)
+        errors.empty? ? flash[:notice] = "Places were imported successfully!" : flash[:error] = errors
         redirect_back(fallback_location: root_path)
       end
     end
