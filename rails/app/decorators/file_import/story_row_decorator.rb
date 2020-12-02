@@ -26,7 +26,7 @@ class FileImport::StoryRowDecorator
   end
 
   def interview_location
-    Place.find_or_create_by(name: at(4).strip) if at(4).strip.present?
+    Place.find_or_create_by(name: at(4).strip, community: @community) if at(4).strip.present?
   end
 
   def date_interviewed
