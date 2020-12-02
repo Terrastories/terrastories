@@ -1,4 +1,6 @@
 class Theme < ApplicationRecord
+  belongs_to :community
+
     after_save :check_active
     before_destroy :can_destroy?    
     has_many_attached :sponsor_logos

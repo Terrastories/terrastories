@@ -84,5 +84,6 @@ end
 # Create a default theme
 Theme.find_or_create_by!(background_img: 'welcome-bg.jpg') do |theme|
   theme.active = true
+  theme.community = default_community
   theme.sponsor_logos.attach(io: File.open('app/assets/images/rubyforgood.png'), filename: 'rubyforgood.png')
 end
