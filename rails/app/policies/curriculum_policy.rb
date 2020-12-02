@@ -1,3 +1,8 @@
+# NOTE: TODO - this is not currently tied to a Community
+# Therefore, everything is labeled as false until we can come
+# back through and properly associate curricula and their stories to
+# a specific community.
+
 class CurriculumPolicy < ApplicationPolicy
   attr_accessor :user, :curriculum
 
@@ -7,23 +12,31 @@ class CurriculumPolicy < ApplicationPolicy
   end
 
   def index?
-    true
+    false
   end
 
   def new?
-    user.admin? || user.editor?
+    false
+  end
+
+  def create?
+    new?
   end
 
   def show?
-    true
+    false
   end
 
   def edit?
-    user.admin? || user.editor?
+    false
+  end
+
+  def update?
+    edit?
   end
 
   def destroy?
-    user.admin? || user.editor?
+    false
   end
 
 end

@@ -35,7 +35,7 @@ class UserPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve_admin
       if user.admin?
-        scope.all
+        scope.where(community: user.community)
       else
         scope.where(id: user.id)
       end

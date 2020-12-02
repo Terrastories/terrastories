@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   namespace :admin do
+    resources :communities
     resources :users
     resources :curriculums
     resources :speakers do

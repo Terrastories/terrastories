@@ -39,7 +39,7 @@ class StoryPolicy < ApplicationPolicy
     end
 
     def resolve_admin
-      user.community.stories
+      scope.where(community: user.community)
     end
   end
 end

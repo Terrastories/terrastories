@@ -17,6 +17,7 @@ class PlaceDashboard < Administrate::BaseDashboard
     region: RegionField,
     photo: Field::ActiveStorage.with_options({destroy_path: :admin_places_path}),
     type_of_place: Field::String,
+    community: Field::BelongsTo,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze

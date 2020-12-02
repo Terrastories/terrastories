@@ -20,8 +20,9 @@ class StoryDashboard < Administrate::BaseDashboard
     media: Field::ActiveStorage.with_options({destroy_path: :admin_stories_path}),
     permission_level: EnumField,
     created_at: Field::DateTime,
+    community: Field::BelongsTo,
     updated_at: Field::DateTime,
-    media_links: Field::HasMany, 
+    media_links: Field::HasMany,
   }.freeze
 
   # COLLECTION_ATTRIBUTES

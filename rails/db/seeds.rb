@@ -104,3 +104,18 @@ User.find_or_create_by!(email: 'user@terrastories.com') do |admin|
   admin.role = 0
   admin.community = default_community
 end
+
+# Create another Community
+another_community = Community.find_or_create_by!(name: "Ruby for Good") do |community|
+  community.country = "United States of America"
+  community.locale = "en"
+  community.theme = default_theme
+end
+
+# And community admin user
+User.find_or_create_by!(email: 'admin@r4g.com') do |admin|
+  admin.password = 'terrastories'
+  admin.password_confirmation = 'terrastories'
+  admin.role = 2
+  admin.community = another_community
+end
