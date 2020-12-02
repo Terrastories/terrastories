@@ -1,0 +1,8 @@
+heyo
+
+<%= page.resource.inspect %>
+
+<h1 class="main-content__page-title color-fix title-underline" id="page-title"><%= page.resource.name %></h1>
+<% content_for(:title) do %>
+  <%= page.resource.name %>
+<% end %>

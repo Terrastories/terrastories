@@ -38,7 +38,7 @@
     }
 
     &-user {
-      color: $teal;
+      color: $green;
       margin-top: 1rem;
       margin-bottom: 1rem;
       width: 100%;
@@ -48,7 +48,7 @@
           letter-spacing: 0;
         }
         text-decoration: none;
-        color: $teal;
+        color: $green;
         text-transform: uppercase;
         letter-spacing: 0.09rem;
         font-family: sans-serif;
@@ -72,13 +72,13 @@
     }
 
     a {
-      color: $teal;
+      color: $green;
       text-decoration: none;
       align-self: center;
     }
 
     button {
-      background-color: $teal;
+      background-color: $green;
       text-transform: uppercase;
       letter-spacing: 0.09rem;
       display: block;
@@ -103,7 +103,7 @@
   }
 
   .language-color:hover {
-    color: #136a7e;
+    color: $blue;
   }
 
   @include for-phone-only {

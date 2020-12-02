@@ -27,7 +27,7 @@ module Admin
       @_community ||= current_user.community
     end
 
-    def current_community
+    helper_method def current_community
       @_community
     end
 

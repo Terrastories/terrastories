@@ -1,25 +1,53 @@
 @import 'story_dashboard';
-@import 'core/colors';
 @import 'navigation_style';
 @import 'main_content_style';
 
-.import-spinner {
-  display: none !important;
+html {
+  background-color: white; // override administrate
 }
 
-button.btn-import:disabled {
-  background-color: $orange !important;
+// override Administrate's flex layout
+.app-container {
+  display: block;
+  margin: 0;
+  padding: 0;
+  color: $default-text;
+}
 
-  + .import-spinner {
-    display: inline-block !important;
+.header--main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 5px solid $orange;
+
+  h1 {
+    font-size: 2rem;
+    line-height: 2.2rem;
+    margin-left: 1rem;
+    a {
+      text-decoration: none;
+      color: currentColor;
+    }
   }
 }
 
-.attribute-data--nested-has-many {
-  width: 100%;
-  padding-right: 5%;
-}
+// .import-spinner {
+//   display: none !important;
+// }
 
-.cell-data--text {
-  white-space: normal;
-}
+// button.btn-import:disabled {
+//   background-color: $orange !important;
+
+//   + .import-spinner {
+//     display: inline-block !important;
+//   }
+// }
+
+// .attribute-data--nested-has-many {
+//   width: 100%;
+//   padding-right: 5%;
+// }
+
+// .cell-data--text {
+//   white-space: normal;
+// }

@@ -11,7 +11,7 @@
 
   &-header {
     display: flex;
-    background-color: #33aa8b; /* this should inherit the color of the marker associated with the type of place */
+    background-color: $green; /* this should inherit the color of the marker associated with the type of place */
     &-button {
       align-self: flex-start;
       margin-top: 6px;
@@ -34,7 +34,7 @@
       font-weight: 400;
       font-size: 1.2rem;
       line-height: 1.25;
-      color: white;
+      color: $white;
       border-top-left-radius: 3px;
       border-top-right-radius: 3px;
       padding: 1rem;
@@ -49,7 +49,7 @@
     }
 
     .mapboxgl-popup-close-button {
-      color: white;
+      color: $white;
       font-size: 1rem;
     }
   }

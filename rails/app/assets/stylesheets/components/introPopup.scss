@@ -4,7 +4,7 @@
   flex-direction: column;
   position: absolute;
   right: 2rem;
-  background: lighten(#0f566b, 10%);
+  background: $blue;
 	border-top-left-radius: 25px;
 	border-top-right-radius: 25px;
   width: 20rem;
@@ -28,7 +28,7 @@
     flex: 1;
     font-size: 1.25rem;
     margin: 0 0 0.5rem;
-    background: #0f566b;
+    background: $dark-blue;
 	border-top-left-radius: 25px;
 	border-top-right-radius: 25px;
     padding: 1rem;
@@ -54,6 +54,6 @@
     align-self: flex-end;
     margin-top: 0.5rem;
     cursor: pointer;
-	  color: #fff;
+	  color: $white;
   }
 }

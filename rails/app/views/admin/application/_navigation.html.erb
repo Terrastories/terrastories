@@ -6,18 +6,35 @@ for all resources in the admin dashboard,
 as defined by the routes in the `admin/` namespace
 %>
 
-<nav class="navigation" role="navigation">
-  <%= link_to(t("administrate.navigation.back_to_app"), home_map_path(locale: params[:locale]), class: "button button--alt") if defined?(root_url) %>
-  <% excluded_resources = ['curriculum_stories'] %>
-  <% Administrate::Namespace.new(namespace).resources_with_index_route.each do |resource| %>
-    <% unless excluded_resources.include?(resource) %>
-      <%= link_to(
-        t("administrate.#{resource.pluralize}"),
-        resource_index_route(resource),
-        class: "navigation__link navigation__link--#{nav_link_state(resource)}"
-      ) if valid_action?(:index, resource) && show_action?(:index, model_from_resource(resource)) %>
-    <% end %>
-  <% end %>
-  <%= current_user.email %>
-  <%= link_to t("logout"), destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-</nav>
+<header class="header--main test">
+  <h1><%= link_to current_community.name, admin_root_path %></h1>
+
+  <nav class="navigation" role="navigation">
+    <ul>
+      <% excluded_resources = ['curriculum_stories'] %>
+
+      <% Administrate::Namespace.new(namespace).resources_with_index_route.each do |resource| %>
+        <% unless excluded_resources.include?(resource) %>
+          <% if valid_action?(:index, resource) && show_action?(:index, model_from_resource(resource)) %>
+            <li>
+              <%= link_to(
+                t("administrate.#{resource.pluralize}"),
+                resource_index_route(resource),
+              ) %>
+          </li>
+          <% end %>
+        <% end %>
+      <% end %>
+      <li>
+        <%= current_user.email %> <i class="fa fa-caret-down"></i>
+        <ul class="dropdown" aria-label="submenu">
+          <li><%= link_to t("profile"), admin_user_path(current_user) %></a>
+          <li><%= link_to t("logout"), destroy_user_session_path, method: :delete  %></li>
+        </ul>
+      </li>
+      <li class="navigation__last-menu-item">
+        <%= link_to(t("administrate.navigation.back_to_app"), home_map_path(locale: params[:locale])) if defined?(root_url) %>
+      </li>
+    </ul>
+  </nav>
+</header>

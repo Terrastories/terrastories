@@ -1,59 +1,70 @@
-.title-underline {
-    border-bottom: 3px solid #d77a34;
+.main-content {
+  // this resets all of the main content from adminstrate
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+
+  // this is to match the website
+  margin: 2rem auto;
+  max-width: 1060px;
 }
 
-.table-underline {
-    border-bottom: 3px solid #d77a34;
-    margin: 1rem 2rem;
-}
+// .title-underline {
+//     border-bottom: 3px solid #d77a34;
+// }
 
-.color-fix {
-    color: #474747;
-}
+// .table-underline {
+//     border-bottom: 3px solid #d77a34;
+//     margin: 1rem 2rem;
+// }
 
-.word-hover:hover {
-    color: #0f566b;
-}
+// .color-fix {
+//     color: #474747;
+// }
 
-.border {
-    border-radius: 0 4px 4px 0;
-}
-  
-.padding-fix {
-    padding-top: 10px;
-    padding-bottom: 0;
-}
+// .word-hover:hover {
+//     color: #0f566b;
+// }
 
-.new-button {
-    background-color: #0f566b;
-}
+// .border {
+//     border-radius: 0 4px 4px 0;
+// }
 
-.new-button:hover {
-    background-color: #0c4455;
-}
+// .padding-fix {
+//     padding-top: 10px;
+//     padding-bottom: 0;
+// }
 
-.form {
-    margin-left: 2rem;
-    border: 4px  #0f566b solid;
-    width: auto;
-    padding: .5rem 1rem;
-    border-radius: 8px;
-}
+// .new-button {
+//     background-color: #0f566b;
+// }
 
-.form-title {
-    border-bottom: 1px solid #474747;
-    margin-bottom: 10px;
-}
+// .new-button:hover {
+//     background-color: #0c4455;
+// }
 
-.file-update {
-    margin-bottom: 10px;
-}
+// .form {
+//     margin-left: 2rem;
+//     border: 4px  #0f566b solid;
+//     width: auto;
+//     padding: .5rem 1rem;
+//     border-radius: 8px;
+// }
 
-.import-icon {
-    margin-right: 5px;
-}
+// .form-title {
+//     border-bottom: 1px solid #474747;
+//     margin-bottom: 10px;
+// }
 
-.import-file-btn:first-child {
-    border-radius: 10px;
-    background-color: red;
-}
+// .file-update {
+//     margin-bottom: 10px;
+// }
+
+// .import-icon {
+//     margin-right: 5px;
+// }
+
+// .import-file-btn:first-child {
+//     border-radius: 10px;
+//     background-color: red;
+// }
