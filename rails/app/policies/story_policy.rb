@@ -8,12 +8,12 @@ class StoryPolicy
         end
 
         def resolve
-            stories = Story.where(permission_level: :anonymous)
+            stories = user.community.stories.where(permission_level: :anonymous)
             if user.present?
-                stories = Story.where(permission_level: [:anonymous, :user_only])
+                stories = user.community.stories.where(permission_level: [:anonymous, :user_only])
             end
             if user && user.editor?
-                stories = Story.all
+                stories = user.community.stories.all
             end
             stories
         end
