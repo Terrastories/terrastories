@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     end
     resources :curriculum_stories
     resources :themes
-    resources :media_links
+    # resources :media_links
 
     root to: "users#index"
   end

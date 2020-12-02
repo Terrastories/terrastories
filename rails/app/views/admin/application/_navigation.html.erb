@@ -18,4 +18,6 @@ as defined by the routes in the `admin/` namespace
       ) if valid_action?(:index, resource) && show_action?(:index, model_from_resource(resource)) %>
     <% end %>
   <% end %>
+  <%= current_user.email %>
+  <%= link_to t("logout"), destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
 </nav>
