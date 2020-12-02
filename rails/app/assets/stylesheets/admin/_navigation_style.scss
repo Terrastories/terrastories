@@ -5,6 +5,9 @@
   a {
     color: currentColor;
     text-decoration: none;
+    display: table-cell;
+    vertical-align: middle;
+    padding: 1rem;
   }
 
   ul {
@@ -16,7 +19,6 @@
   li {
     display: block;
     float: left;
-    padding: 1rem;
     position: relative;
     text-decoration: none;
     transition-duration: 0.5s;
@@ -60,10 +62,10 @@
     min-width: 5rem;
     position: absolute;
     transition: all 0.5s ease;
-    margin-top: 1rem;
     left: 0;
     display: none;
     width: 100%;
+    z-index: 1;
   }
 
   ul li:hover > ul,
