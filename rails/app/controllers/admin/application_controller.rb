@@ -9,9 +9,9 @@ module Admin
     include Administrate::Punditize
 
     before_action :authenticate_user!
-    before_action :authenticate_admin
 
     before_action :set_locale
+    before_action :set_community
 
     def default_url_options
       { locale: I18n.locale }
@@ -23,8 +23,12 @@ module Admin
       I18n.locale = params[:locale] || I18n.default_locale
     end
 
-    def authenticate_admin
-      redirect_to '/', alert: 'Not authorized.' unless current_user.editor? || current_user.admin?
+    def set_community
+      @_community ||= current_user.community
+    end
+
+    def current_community
+      @_community
     end
 
     # Override this value to specify the number of elements to display at a time

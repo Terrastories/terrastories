@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     resources :themes
     # resources :media_links
 
-    root to: "users#index"
+    root to: "communities#show"
   end
 
     delete '/admin/places' => 'places#delete'
