@@ -6,11 +6,15 @@ class User < ApplicationRecord
 
   belongs_to :community
 
-  enum role: [:user, :editor]
+  enum role: {
+    member: 0, # previously user
+    editor: 1,
+    admin: 2
+  }
 
   after_initialize :set_default_role, :if => :new_record?
 
   def set_default_role
-    self.role ||= :user
+    self.role ||= :member
   end
 end

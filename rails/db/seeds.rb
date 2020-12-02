@@ -77,7 +77,23 @@ shared_story = Story.find_or_create_by(title: "Terrastories Team testimonial",
 User.find_or_create_by!(email: 'admin@terrastories.com') do |admin|
   admin.password = 'terrastories'
   admin.password_confirmation = 'terrastories'
+  admin.role = 2
+  admin.community = default_community
+end
+
+# Create a example editor user
+User.find_or_create_by!(email: 'editor@terrastories.com') do |admin|
+  admin.password = 'terrastories'
+  admin.password_confirmation = 'terrastories'
   admin.role = 1
+  admin.community = default_community
+end
+
+# Create a example member user
+User.find_or_create_by!(email: 'user@terrastories.com') do |admin|
+  admin.password = 'terrastories'
+  admin.password_confirmation = 'terrastories'
+  admin.role = 0
   admin.community = default_community
 end
 
