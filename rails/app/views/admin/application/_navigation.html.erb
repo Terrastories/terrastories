@@ -8,25 +8,20 @@ as defined by the routes in the `admin/` namespace
 
 <header class="header--main test">
   <h1><%= link_to current_community.name, admin_root_path %></h1>
-
   <nav class="navigation" role="navigation">
     <ul>
-      <% excluded_resources = ['curriculum_stories'] %>
-
-      <% Administrate::Namespace.new(namespace).resources_with_index_route.each do |resource| %>
-        <% unless excluded_resources.include?(resource) %>
-          <% if valid_action?(:index, resource) && show_action?(:index, model_from_resource(resource)) %>
-            <li>
-              <%= link_to(
-                t("administrate.#{resource.pluralize}"),
-                resource_index_route(resource),
-              ) %>
-          </li>
-          <% end %>
-        <% end %>
-      <% end %>
+      <li><%= link_to t("administrate.speakers"), admin_speakers_path %></a></li>
+      <li><%= link_to t("administrate.stories"), admin_stories_path %></a></li>
+      <li><%= link_to t("administrate.places"), admin_places_path %></a></li>
       <li>
-        <a href="javascript:void(0);"><%= current_user.email %> <i class="fa fa-caret-down"></i></a>
+        <a href=<%= admin_root_path %>><%= t("administrate.community") %> <i class="fa fa-angle-down"></i></a >
+        <ul class="dropdown" aria-label="submenu">
+          <li><%= link_to t("administrate.users"), admin_users_path %></a></li>
+          <li><%= link_to t("administrate.theme"), admin_theme_path(current_community.theme)  %></li>
+        </ul>
+      </li>
+      <li>
+        <a href="javascript:void(0);"><%= current_user.email %> <i class="fa fa-angle-down"></i></a>
         <ul class="dropdown" aria-label="submenu">
           <li><%= link_to t("profile"), admin_user_path(current_user) %></a>
           <li><%= link_to t("logout"), destroy_user_session_path, method: :delete  %></li>
