@@ -1,11 +1,11 @@
-nl: 
+nl:
   admin_page: "Admin pagina"
   alphabetical: "A-Z"
   back_to_map: "Terug naar de kaart"
   default: "standaard"
   language: "Taal"
   map: "Is dit... een kaart?"
-  most_recent: "Meest recente" 
+  most_recent: "Meest recente"
   hello: "Hallo"
   welcome: "Welkom"
   welcome_back: "Welkom terug"
@@ -31,3 +31,6 @@ nl:
   select_option: "Selecteer optie"
   region: "Regio"
   speaker: "Spreker"
+  community_search:
+    title: "Search for a Community to Explore"
+    coming_soon: "This feature is coming soon. For now, please request an invite to a specific community."

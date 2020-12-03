@@ -9,6 +9,8 @@ pt:
       show_resource: Mostrar %{name}
       new_resource: Novo %{name}
       back: Voltar
+    community: Community
+    communities: Communities
     controller:
       create:
         success: "%{resource} foi criado com sucesso."
@@ -34,6 +36,8 @@ pt:
     speaker: Orador
     stories: Histórias
     story: História
+    theme: Theme
+    themes: Themes
     media_link: Link de Mídia
     media_links: Links de Mídia
     table_columns:

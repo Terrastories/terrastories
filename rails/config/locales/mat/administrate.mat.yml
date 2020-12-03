@@ -9,6 +9,8 @@ mat:
       show_resource: Toon %{name}
       new_resource: Nieuw %{name}
       back: Terug
+    community: Community
+    communities: Communities
     controller:
       create:
         success: "%{resource} was succesvol aangemaakt."
@@ -34,8 +36,10 @@ mat:
     speaker: Spreker
     stories: Verhalen
     story: Verhaal
-    media_link: Media Link 
-    media_links: Media Links 
+    theme: Theme
+    themes: Themes
+    media_link: Media Link
+    media_links: Media Links
     table_columns:
       user:
         id: Id

@@ -31,3 +31,6 @@ pt:
   reversed_alphabetical: "Z-A"
   region: "Região"
   speaker: "O Orador"
+  community_search:
+    title: "Search for a Community to Explore"
+    coming_soon: "This feature is coming soon. For now, please request an invite to a specific community."

@@ -9,6 +9,8 @@ es:
       show_resource: Mostrar %{name}
       new_resource: Nuevo %{name}
       back: Atrás
+    community: Community
+    communities: Communities
     controller:
       create:
         success: "%{resource} fue creado correctamente."
@@ -34,8 +36,10 @@ es:
     speaker: Orador
     stories: Historias
     story: Historia
-    media_link: Enlace De Medios 
-    media_links: Enlaces De Medios  
+    theme: Theme
+    themes: Themes
+    media_link: Enlace De Medios
+    media_links: Enlaces De Medios
     table_columns:
       user:
         id: Id

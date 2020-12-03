@@ -8,6 +8,8 @@ ja:
       show_resource: "%{name}"
       new_resource: "%{name}新規作成"
       back: "戻る"
+    community: Community
+    communities: Communities
     controller:
       create:
         success: "%{resource}が作成されました。"
@@ -27,7 +29,7 @@ ja:
     places: "プレース"
     place: "プレース"
     media_link: "メディアリンク"
-    media_links: "メディアリンク"  
+    media_links: "メディアリンク"
     search:
       clear: "クリア"
       label: "%{resource}検索"
@@ -35,6 +37,8 @@ ja:
     speaker: "スピーカー"
     stories: "ストーリー"
     story: "ストーリー"
+    theme: Theme
+    themes: Themes
     table_columns:
       user:
         id: ID
