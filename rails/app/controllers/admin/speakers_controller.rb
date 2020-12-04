@@ -28,5 +28,13 @@ module Admin
         redirect_back(fallback_location: root_path)
       end
     end
+
+    def default_sorting_attribute
+      :name
+    end
+
+    def default_sorting_direction
+      :asc
+    end
   end
 end

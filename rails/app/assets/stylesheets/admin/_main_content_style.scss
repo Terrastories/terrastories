@@ -9,6 +9,11 @@
   max-width: 1060px;
 }
 
+td img {
+  // unsets adminstrate
+  max-height: unset;
+}
+
 // .title-underline {
 //     border-bottom: 3px solid #d77a34;
 // }

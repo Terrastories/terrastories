@@ -30,6 +30,10 @@ class SpeakerPolicy < ApplicationPolicy
     user.admin? || user.editor?
   end
 
+  def import_csv?
+    user.admin? || user.editor?
+  end
+
   class Scope < Scope
     def resolve_admin
       scope.where(community: user.community)
