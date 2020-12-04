@@ -1,4 +1,9 @@
-@import 'story_dashboard';
+$max-width: 1060px;
+$default-horizontal-padding: 2rem;
+$default-vertical-padding: 1rem;
+
+// @import 'story_dashboard';
+@import 'card';
 @import 'navigation_style';
 @import 'main_content_style';
 
@@ -12,6 +17,7 @@ html {
   margin: 0;
   padding: 0;
   color: $default-text;
+  max-width: unset;
 }
 
 .header--main {

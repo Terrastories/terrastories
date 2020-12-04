@@ -1,5 +1,11 @@
 ---
 en:
+  helpers:
+    label:
+      speaker:
+        speaker_community: Speaker's Community
+        birthdate: Date of Birth
+        birthplace: Born Where
   administrate:
     actions:
       confirm: Are you sure?
@@ -45,8 +51,8 @@ en:
     themes: Themes
     users: Users
     user: User
-    media_link: Media Link 
-    media_links: Media Links 
+    media_link: Media Link
+    media_links: Media Links
     table_columns:
       user:
         id: Id
@@ -58,6 +64,7 @@ en:
         name: Name
         birthdate: Birthdate
         birthplace: Birthplace
+        speaker_community: Community
       story:
         id: Id
         title: Title
@@ -78,5 +85,4 @@ en:
         long: Longitude
         lat: Latitude
         stories: Stories
-        photo: Photo  
-    
+        photo: Photo
