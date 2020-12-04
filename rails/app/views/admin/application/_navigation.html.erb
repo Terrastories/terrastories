@@ -27,7 +27,7 @@ as defined by the routes in the `admin/` namespace
       <li>
         <a href="javascript:void(0);"><%= current_user.email %> <i class="fa fa-angle-down"></i></a>
         <ul class="dropdown" aria-label="submenu">
-          <li><%= link_to t("profile"), admin_user_path(current_user) %></a>
+          <li><%= link_to t("profile"), edit_admin_user_path(current_user) %></a>
           <li><%= link_to t("logout"), destroy_user_session_path, method: :delete  %></li>
         </ul>
       </li>

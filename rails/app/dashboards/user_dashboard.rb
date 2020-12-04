@@ -32,7 +32,6 @@ class UserDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :id,
     :email,
-    :password,
     :role,
     :created_at,
     :updated_at,
