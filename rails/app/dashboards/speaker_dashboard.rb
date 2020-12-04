@@ -15,6 +15,7 @@ class SpeakerDashboard < Administrate::BaseDashboard
     birthdate: Field::DateTime.with_options(format: "%d/%m/%Y"),
     birthplace: Field::BelongsTo.with_options(class_name: "Place"),
     community: Field::BelongsTo,
+    speaker_community: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -28,7 +29,7 @@ class SpeakerDashboard < Administrate::BaseDashboard
     :photo,
     :name,
     :birthdate,
-    :birthplace,
+    :speaker_community,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -54,6 +55,7 @@ class SpeakerDashboard < Administrate::BaseDashboard
     :stories,
     :birthdate,
     :birthplace,
+    :speaker_community,
   ].freeze
 
   # Overwrite this method to customize how speakers are displayed
