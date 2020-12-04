@@ -13,6 +13,8 @@ module Admin
     before_action :set_locale
     before_action :set_community
 
+    rescue_from Pundit::NotAuthorizedError, with: :not_authorized
+
     def default_url_options
       { locale: I18n.locale }
     end
@@ -21,6 +23,11 @@ module Admin
 
     def set_locale
       I18n.locale = params[:locale] || I18n.default_locale
+    end
+
+    def not_authorized
+      flash.notice = "You are not authorized to perform this action"
+      redirect_to admin_root_path
     end
 
     def set_community

@@ -10,16 +10,20 @@ as defined by the routes in the `admin/` namespace
   <h1><%= link_to current_community.name, admin_root_path %></h1>
   <nav class="navigation" role="navigation">
     <ul>
-      <li><%= link_to t("administrate.speakers"), admin_speakers_path %></a></li>
-      <li><%= link_to t("administrate.stories"), admin_stories_path %></a></li>
-      <li><%= link_to t("administrate.places"), admin_places_path %></a></li>
-      <li>
-        <a href=<%= admin_root_path %>><%= t("administrate.community") %> <i class="fa fa-angle-down"></i></a >
-        <ul class="dropdown" aria-label="submenu">
-          <li><%= link_to t("administrate.users"), admin_users_path %></a></li>
-          <li><%= link_to t("administrate.theme"), admin_theme_path(current_community.theme)  %></li>
-        </ul>
-      </li>
+      <% if current_user.admin? || current_user.editor? %>
+        <li><%= link_to t("administrate.speakers"), admin_speakers_path %></a></li>
+        <li><%= link_to t("administrate.stories"), admin_stories_path %></a></li>
+        <li><%= link_to t("administrate.places"), admin_places_path %></a></li>
+      <% end %>
+      <% if current_user.admin? %>
+        <li>
+          <a href=<%= admin_root_path %>><%= t("administrate.community") %> <i class="fa fa-angle-down"></i></a >
+          <ul class="dropdown" aria-label="submenu">
+            <li><%= link_to t("administrate.users"), admin_users_path %></a></li>
+            <li><%= link_to t("administrate.theme"), admin_theme_path(current_community.theme)  %></li>
+          </ul>
+        </li>
+      <% end %>
       <li>
         <a href="javascript:void(0);"><%= current_user.email %> <i class="fa fa-angle-down"></i></a>
         <ul class="dropdown" aria-label="submenu">

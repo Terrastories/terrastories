@@ -9,7 +9,7 @@ class CommunityPolicy < ApplicationPolicy
   end
 
   def show?
-    user.admin?
+    true
   end
 
   def new?
