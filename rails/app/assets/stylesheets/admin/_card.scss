@@ -24,3 +24,11 @@
   margin-bottom: 1rem;
   padding-bottom: .2rem;
 }
+
+.cards__item--avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  display: block; // fill space
+  margin: 1.2rem auto; // center in space with top/bottom margins
+}

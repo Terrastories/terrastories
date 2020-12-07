@@ -25,6 +25,10 @@
   display: flex;
   justify-content: space-between;
 
+  .sidebar {
+    max-width: calc($max-width * 30%);
+  }
+
   dl {
     margin-left: 2rem;
     flex-grow: 1;
