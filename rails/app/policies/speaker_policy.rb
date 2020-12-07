@@ -26,6 +26,10 @@ class SpeakerPolicy < ApplicationPolicy
     user.admin? || user.editor?
   end
 
+  def create?
+    new?
+  end
+
   def destroy?
     user.admin? || user.editor?
   end

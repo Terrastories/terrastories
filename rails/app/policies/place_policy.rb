@@ -14,12 +14,20 @@ class PlacePolicy < ApplicationPolicy
     user.admin? || user.editor?
   end
 
+  def create?
+    new?
+  end
+
   def show?
     true
   end
 
   def edit?
     user.admin? || user.editor?
+  end
+
+  def update?
+    edit?
   end
 
   def destroy?

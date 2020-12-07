@@ -16,6 +16,10 @@ class CommunityPolicy < ApplicationPolicy
     false
   end
 
+  def create?
+    new?
+  end
+
   def edit?
     user.admin?
   end

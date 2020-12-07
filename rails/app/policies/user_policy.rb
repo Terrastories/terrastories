@@ -28,6 +28,10 @@ class UserPolicy < ApplicationPolicy
     current_user.admin?
   end
 
+  def create?
+    new?
+  end
+
   def destroy?
     current_user.admin?
   end

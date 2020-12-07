@@ -14,12 +14,20 @@ class ThemePolicy < ApplicationPolicy
     false
   end
 
+  def create?
+    new?
+  end
+
   def show?
     user.admin?
   end
 
   def edit?
     user.admin?
+  end
+
+  def update?
+    edit?
   end
 
   def destroy?
