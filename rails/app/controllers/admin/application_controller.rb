@@ -12,6 +12,7 @@ module Admin
 
     before_action :set_locale
     before_action :set_community
+    before_action :can_view_list?, only: :index
 
     rescue_from Pundit::NotAuthorizedError, with: :not_authorized
 
@@ -43,5 +44,11 @@ module Admin
     # def records_per_page
     #   params[:per_page] || 20
     # end
+
+    # by default, Punditize with Administrate does not policy on index views.
+    # this ensures we check that list views are utilizing the Pundit policies
+    def can_view_list?
+      authorize resource_name, :index?
+    end
   end
 end
