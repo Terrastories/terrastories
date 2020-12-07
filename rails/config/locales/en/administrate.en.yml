@@ -6,6 +6,15 @@ en:
         speaker_community: Speaker's Community
         birthdate: Date of Birth
         birthplace: Born Where
+      story:
+        desc: Description
+        interviewer: Interviewer
+        video_unsupported: Sorry, your browser doesn't support embedded videos.
+        permissions:
+          anonymous: "Searchable"
+          user_only: "Member"
+          editor_only: "Editor"
+          admin_only: "Admin"
   administrate:
     actions:
       confirm: Are you sure?
