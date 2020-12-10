@@ -20,6 +20,13 @@ class Story < ApplicationRecord
     end
   end
 
+  def self.export_sample_csv
+    headers = %w{name description speakers places interview_location date_interviewed interviewer language media permission_level }
+
+    CSV.generate(headers: true) do |csv|
+      csv << headers
+    end
+  end
 
   enum permission_level: [:anonymous, :user_only, :editor_only]
 end

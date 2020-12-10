@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :stories do
       collection do
         post :import_csv
+        get  :export_sample_csv
       end
     end
     resources :places do
