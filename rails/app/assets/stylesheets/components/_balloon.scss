@@ -9,6 +9,20 @@
     }
   }
 
+  &-header {
+    display: flex;
+    background-color: #33aa8b; /* this should inherit the color of the marker associated with the type of place */
+    &-button {
+      align-self: flex-start;
+      margin-top: 6px;
+      font-size: 15px;
+      background: none;
+      border: none;
+      color: #ffffff;
+      cursor: pointer;
+    }
+  }
+
   .mapboxgl-popup-content {
     h1, h2, h3, h4, h5, p, img {
       margin: 0;
@@ -20,7 +34,6 @@
       font-weight: 400;
       font-size: 1.2rem;
       line-height: 1.25;
-      background-color: #33aa8b; /* this should inherit the color of the marker associated with the type of place */
       color: white;
       border-top-left-radius: 3px;
       border-top-right-radius: 3px;

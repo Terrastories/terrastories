@@ -26,3 +26,4 @@ json.user current_user
 json.mapbox_access_token ENV["MAPBOX_ACCESS_TOKEN"]
 json.mapbox_style ENV["USE_LOCAL_MAP_SERVER"].present? ? "http://localhost:8080/styles/basic/style.json" : ENV["MAPBOX_STYLE"]
 json.use_local_map_server ENV["USE_LOCAL_MAP_SERVER"].present?
+json.marker_image_url image_url("marker1.png")

@@ -23,8 +23,8 @@
     "enzyme-to-json": "^3.5.0",
     "fstream": "1.0.12",
     "prop-types": "^15.7.2",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
     "react-list": "^0.8.15",
     "react-select": "^2.0.0",
     "react_ujs": "^2.4.4",
@@ -45,11 +45,15 @@
     "webpack-dev-server": "3.1.11"
   },
   "jest": {
-    "setupFiles": ["./spec/javascript/setupTests.js"],
+    "setupFiles": [
+      "./spec/javascript/setupTests.js"
+    ],
     "roots": [
       "spec/javascript"
     ],
-    "snapshotSerializers": ["enzyme-to-json/serializer"],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
     "collectCoverage": false,
     "moduleDirectories": [
       "node_modules",
