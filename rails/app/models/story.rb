@@ -12,12 +12,7 @@ class Story < ApplicationRecord
   validates_presence_of :speakers, message: ': Your story must have at least one Speaker'
 
   def self.import_csv(file_contents)
-    CSV.parse(file_contents, headers: true) do |row|
-      decorator = FileImport::StoryRowDecorator.new(row)
-      story = Story.new(decorator.to_h)
-      story.media.attach(decorator.media.blob_data) if decorator.media.attachable?
-      story.save
-    end
+    ApplicationController.helpers.csv_importer(file_contents, self)
   end
 
   def self.export_sample_csv

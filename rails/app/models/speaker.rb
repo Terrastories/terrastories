@@ -13,7 +13,6 @@
 # updated_at  ... datetime, not null
 
 class Speaker < ApplicationRecord
-  MEDIA_PATH = Rails.env.test? ? 'spec/fixtures/media' : 'import/media'
   require 'csv'
 
   has_many :speaker_stories
@@ -31,18 +30,7 @@ class Speaker < ApplicationRecord
   end
 
   def self.import_csv(filename)
-    CSV.parse(filename, headers: true) do |row|
-      speaker = Speaker.find_or_create_by(name: row[0])
-      speaker.birthplace = get_birthplace(row[2])
-      # Assumes birth date field is always just a year
-      speaker.birthdate = row[1].nil? || row[1].downcase == 'unknown' ? nil : Date.strptime(row[1], "%Y")
-      pathname = Rails.root.join(MEDIA_PATH, row[3])
-      if row[3] && File.exist?(pathname)
-        file = File.open(pathname)
-        speaker.photo.attach(io: file, filename: row[3])
-      end
-      speaker.save
-    end
+    ApplicationController.helpers.csv_importer(filename, self)
   end
 
   def self.get_birthplace(name)

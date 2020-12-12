@@ -23,8 +23,8 @@ module Admin
         flash[:error] = "No file was attached!"
       else
         filepath = params[:file].read
-        Story.import_csv(filepath)
-        flash[:notice] = "Stories were imported successfully!"
+        errors = Story.import_csv(filepath)
+        errors.empty? ? flash[:notice] = "Stories were imported successfully!" : flash[:error] = errors
         redirect_back(fallback_location: root_path)
       end
     end
