@@ -49,15 +49,15 @@ RSpec.describe Place, type: :model do
       before do
         @fixture_data = file_fixture('invalid places.csv').read
       end
-      it { expect(described_class.import_csv(@fixture_data)).not_to be_empty }
+      it { expect(described_class.import_csv(@fixture_data, community)).not_to be_empty }
     end
-    
+
     describe "does not fail when some rows in import are invalid" do
       it "creates valid places when importing a csv with invalid lines" do
         @fixture_data = file_fixture('invalid places.csv').read
 
         expect {
-          described_class.import_csv(@fixture_data)
+          described_class.import_csv(@fixture_data, community)
         }.to change { Place.count }.by(1)
       end
     end
@@ -72,7 +72,7 @@ RSpec.describe Place, type: :model do
       let!(:csv) { CSV.parse(@fixture_data, headers: true).first }
       it { expect(csv[6]).not_to be_nil }
     end
-    
+
   end
 
   describe '#photo_format' do

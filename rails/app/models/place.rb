@@ -12,8 +12,8 @@ class Place < ApplicationRecord
 
   attr_reader :point_geojson
 
-  def self.import_csv(filename)
-    ApplicationController.helpers.csv_importer(filename, self)
+  def self.import_csv(filename, community)
+    ApplicationController.helpers.csv_importer(filename, self, community)
   end
 
   def photo_format

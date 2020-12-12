@@ -62,14 +62,14 @@ RSpec.describe Story, type: :model do
       before do
         @fixture_data = file_fixture('invalid stories.csv').read
       end
-      it { expect(described_class.import_csv(@fixture_data)).not_to be_empty }
+      it { expect(described_class.import_csv(@fixture_data, FactoryBot.create(:community, id: 1123))).not_to be_empty }
     end
 
     describe "does not fail when some rows in import are invalid" do
       it "creates valid speakers when importing a csv with invalid lines" do
         @fixture_data = file_fixture('invalid stories.csv').read
         expect {
-          described_class.import_csv(@fixture_data)
+          described_class.import_csv(@fixture_data, FactoryBot.create(:community, id: 1123))
         }.to change { Story.count }.by(1)
       end
     end

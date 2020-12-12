@@ -12,8 +12,8 @@ class Story < ApplicationRecord
 
   validates_presence_of :speakers, message: ': Your story must have at least one Speaker'
 
-  def self.import_csv(file_contents)
-    ApplicationController.helpers.csv_importer(file_contents, self)
+  def self.import_csv(file_contents, community)
+    ApplicationController.helpers.csv_importer(file_contents, self, community)
   end
 
   def self.export_sample_csv
