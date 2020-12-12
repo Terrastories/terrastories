@@ -15,9 +15,23 @@ module Admin
       { locale: I18n.locale }
     end
 
+    helper_method :excluded_resources
+
     private
 
+    def excluded_resources
+      excluded = ['curriculum_stories']
+      unless Flipper.enabled?(:curriculum)
+        excluded << 'curriculums'
+      end
+      unless Flipper.enabled?(:media_links)
+        excluded << 'media_links'
+      end
+      excluded
+    end
+
     def set_locale
+      excluded_resources
       I18n.locale = params[:locale] || I18n.default_locale
     end
 
