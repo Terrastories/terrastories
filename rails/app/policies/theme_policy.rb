@@ -7,7 +7,7 @@ class ThemePolicy < ApplicationPolicy
   end
 
   def index?
-    user.admin?
+    false
   end
 
   def new?
@@ -31,6 +31,6 @@ class ThemePolicy < ApplicationPolicy
   end
 
   def destroy?
-    user.admin?
+    false
   end
 end

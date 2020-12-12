@@ -24,7 +24,6 @@ class ThemeDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
   id
   background_img
-  active
   created_at
   ].freeze
 
@@ -33,7 +32,6 @@ class ThemeDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
   id
   background_img
-  active
   created_at
   updated_at
   sponsor_logos
