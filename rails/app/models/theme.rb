@@ -2,7 +2,9 @@ class Theme < ApplicationRecord
     after_save :check_active
     before_destroy :can_destroy?    
     has_many_attached :sponsor_logos
+    has_many_attached :community_logos
     validates :sponsor_logos, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'], size_range: 1..5.megabytes }
+    validates :community_logos, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'], size_range: 1..5.megabytes }
 
     private
     #sets first record (default) if no themes are active
@@ -19,6 +21,6 @@ class Theme < ApplicationRecord
             self.errors.add(:base, "Cannot destroy default theme")
             throw :abort
         end
-    end
 
+    end
 end

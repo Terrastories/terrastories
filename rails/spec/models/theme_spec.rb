@@ -8,4 +8,8 @@ RSpec.describe Theme, type: :model do
     theme.sponsor_logos.attach(io: File.open("./spec/fixtures/media/terrastories.png"), filename: 'file.pdf')
     expect(theme).to be_valid
   end
+  it "can add community logo" do
+    theme.community_logos.attach(io: File.open("./spec/fixtures/media/terrastories.png"), filename: 'file.pdf')
+    expect(theme).to be_valid
+  end
 end

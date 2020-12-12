@@ -13,6 +13,7 @@ class ThemeDashboard < Administrate::BaseDashboard
     active: Field::Boolean,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    community_logos: Field::ActiveStorage.with_options({destroy_path: :admin_themes_path}),
     sponsor_logos: Field::ActiveStorage.with_options({destroy_path: :admin_themes_path}),
   }.freeze
 
@@ -37,6 +38,7 @@ class ThemeDashboard < Administrate::BaseDashboard
   created_at
   updated_at
   sponsor_logos
+  community_logos
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -46,6 +48,7 @@ class ThemeDashboard < Administrate::BaseDashboard
   background_img
   active
   sponsor_logos
+  community_logos
   ].freeze
 
   # COLLECTION_FILTERS
@@ -68,6 +71,6 @@ class ThemeDashboard < Administrate::BaseDashboard
   # end
 
   def permitted_attributes
-    super + [:sponsor_logos => []]
+    super + [:sponsor_logos => []] + [:community_logos => []]
   end
 end
