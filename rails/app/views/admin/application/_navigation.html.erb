@@ -6,8 +6,12 @@ for all resources in the admin dashboard,
 as defined by the routes in the `admin/` namespace
 %>
 
-<header class="header--main test">
-  <h1><%= link_to current_community.name, admin_root_path %></h1>
+<header class="header--main">
+  <h1>
+    <%= link_to admin_root_path do %>
+      <%= image_tag "logocombo.svg", alt: "Terrastories", class: "header--logo" %>
+    <% end %>
+  </h1>
   <nav class="navigation" role="navigation">
     <ul>
       <% if current_user.admin? || current_user.editor? %>
