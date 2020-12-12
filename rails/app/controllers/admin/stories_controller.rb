@@ -28,5 +28,9 @@ module Admin
         redirect_back(fallback_location: root_path)
       end
     end
+
+    def export_sample_csv
+      send_data Story.export_sample_csv, filename: "import-stories.csv"
+    end
   end
 end
