@@ -1,8 +1,13 @@
-heyo
+<% content_for(:title) { page.page_title } %>
 
-<%= page.resource.inspect %>
+<header class="main-content__header" role="banner">
+  <h1 class="main-content__page-title">
+    <small><%= t("welcome") %>!</small><br />
+    <%= content_for(:title) %>
+  </h1>
+</header>
 
-<h1 class="main-content__page-title color-fix title-underline" id="page-title"><%= page.resource.name %></h1>
-<% content_for(:title) do %>
-  <%= page.resource.name %>
-<% end %>
+<section class="main-content__body">
+  <span class="badge"><%= page.resource.locale %></span>
+  <span class="badge"><%= page.resource.country %></span>
+</section>
