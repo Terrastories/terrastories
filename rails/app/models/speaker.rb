@@ -1,17 +1,3 @@
-# == Schema Information ==
-#
-# Table name: speakers
-#
-# id          ... not null primary key
-# speaker_name... string
-# birth_year  ... datetime, nil if blank
-# birthplace_id  ... integer, classname: place
-# photo       ... string, url to attached media
-# region ------ removed
-# community ... string
-# created_at  ... datetime, not null
-# updated_at  ... datetime, not null
-
 class Speaker < ApplicationRecord
   require 'csv'
 
@@ -41,3 +27,22 @@ class Speaker < ApplicationRecord
     Place.find_or_create_by(name: name, community: community)
   end
 end
+
+# == Schema Information
+#
+# Table name: speakers
+#
+#  id                :bigint           not null, primary key
+#  birthdate         :datetime
+#  name              :string
+#  photo             :string
+#  speaker_community :string
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  birthplace_id     :integer
+#  community_id      :integer
+#
+# Indexes
+#
+#  index_speakers_on_birthplace_id  (birthplace_id)
+#

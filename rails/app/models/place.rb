@@ -49,3 +49,19 @@ class Place < ApplicationRecord
   end
 
 end
+
+# == Schema Information
+#
+# Table name: places
+#
+#  id            :bigint           not null, primary key
+#  description   :string
+#  lat           :decimal(10, 6)
+#  long          :decimal(10, 6)
+#  name          :string
+#  region        :string
+#  type_of_place :string
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  community_id  :integer
+#

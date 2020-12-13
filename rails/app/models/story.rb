@@ -26,3 +26,20 @@ class Story < ApplicationRecord
 
   enum permission_level: [:anonymous, :user_only, :editor_only]
 end
+
+# == Schema Information
+#
+# Table name: stories
+#
+#  id                    :bigint           not null, primary key
+#  date_interviewed      :datetime
+#  desc                  :text
+#  language              :string
+#  permission_level      :integer
+#  title                 :string
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
+#  community_id          :integer
+#  interview_location_id :integer
+#  interviewer_id        :integer
+#
