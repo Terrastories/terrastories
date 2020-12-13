@@ -21,7 +21,7 @@ as defined by the routes in the `admin/` namespace
       <% end %>
       <% if current_user.admin? %>
         <li>
-          <a href=<%= admin_root_path %>><%= t("administrate.community") %> <i class="fa fa-angle-down"></i></a >
+          <a href="javascript:void(0);"><%= t("administrate.community") %> <i class="fa fa-angle-down"></i></a >
           <ul class="dropdown" aria-label="submenu">
             <li><%= link_to t("administrate.users"), admin_users_path %></a></li>
             <li><%= link_to t("administrate.theme"), admin_theme_path(current_community.theme)  %></li>
