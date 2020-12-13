@@ -127,3 +127,10 @@ User.find_or_create_by!(email: "super@terrastories.com") do |admin|
   admin.role = 100
   admin.super_admin = true
 end
+
+# Public user, not associated with Community
+User.find_or_create_by!(email: "public@terrastories.com") do |admin|
+  admin.password = 'terrastories'
+  admin.password_confirmation = 'terrastories'
+  admin.role = 100
+end
