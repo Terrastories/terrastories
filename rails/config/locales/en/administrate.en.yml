@@ -24,6 +24,8 @@ en:
       show_resource: Show %{name}
       new_resource: New %{name}
       back: Back
+    communities: Communities
+    community: Community
     controller:
       create:
         success: "%{resource} was successfully created."
