@@ -4,12 +4,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  belongs_to :community
+  belongs_to :community, optional: true
 
   enum role: {
     member: 0, # previously user
     editor: 1,
-    admin: 2
+    admin: 2,
+    read_only: 100 # super admin
   }
 
   after_initialize :set_default_role, :if => :new_record?
@@ -35,6 +36,7 @@ end
 #  reset_password_token   :string
 #  role                   :integer
 #  sign_in_count          :integer          default(0), not null
+#  super_admin            :boolean          default(FALSE), not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  community_id           :integer

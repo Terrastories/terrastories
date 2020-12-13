@@ -119,3 +119,11 @@ User.find_or_create_by!(email: 'admin@r4g.com') do |admin|
   admin.role = 2
   admin.community = another_community
 end
+
+# Super Admin user for Terrastories
+User.find_or_create_by!(email: "super@terrastories.com") do |admin|
+  admin.password = 'terrastories'
+  admin.password_confirmation = 'terrastories'
+  admin.role = 100
+  admin.super_admin = true
+end

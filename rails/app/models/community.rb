@@ -3,7 +3,13 @@ class Community < ApplicationRecord
   has_many :places
   has_many :stories
 
-  belongs_to :theme
+  belongs_to :theme, autosave: true
+
+  after_initialize :create_theme
+
+  def create_theme
+    build_theme
+  end
 end
 
 # == Schema Information

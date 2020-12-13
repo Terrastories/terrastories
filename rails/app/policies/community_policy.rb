@@ -1,11 +1,12 @@
 class CommunityPolicy < ApplicationPolicy
+  attr_reader :user, :community
   def initialize(user, community)
     @user = user
     @community = community
   end
 
   def index?
-    false
+    user.super_admin
   end
 
   def show?
@@ -13,7 +14,7 @@ class CommunityPolicy < ApplicationPolicy
   end
 
   def new?
-    false
+    user.super_admin
   end
 
   def create?
@@ -21,7 +22,7 @@ class CommunityPolicy < ApplicationPolicy
   end
 
   def edit?
-    user.admin?
+    user.super_admin || user.admin?
   end
 
   def update?
@@ -29,6 +30,6 @@ class CommunityPolicy < ApplicationPolicy
   end
 
   def destroy?
-    false
+    user.super_admin
   end
 end

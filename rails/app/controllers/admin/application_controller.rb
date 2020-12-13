@@ -27,7 +27,7 @@ module Admin
     end
 
     def not_authorized
-      flash.notice = "You are not authorized to perform this action"
+      flash.alert = "You are not authorized to perform this action"
       redirect_to admin_root_path
     end
 

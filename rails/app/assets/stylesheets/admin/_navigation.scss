@@ -102,6 +102,7 @@
 
   ul li:hover ul a {
     color: $default-text;
+    display: block;
   }
 
   ul li ul li {
