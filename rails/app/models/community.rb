@@ -5,7 +5,7 @@ class Community < ApplicationRecord
 
   belongs_to :theme, autosave: true
 
-  after_initialize :create_theme
+  after_initialize :create_theme, if: -> { theme.nil? }
 
   def create_theme
     build_theme
