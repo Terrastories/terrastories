@@ -52,13 +52,13 @@ html {
   display: none !important;
 }
 
-// button.btn-import:disabled {
-//   background-color: $orange !important;
+button.btn-import:disabled {
+  background-color: $orange !important;
 
-//   + .import-spinner {
-//     display: inline-block !important;
-//   }
-// }
+  + .import-spinner {
+    display: inline-block !important;
+  }
+}
 
 // .attribute-data--nested-has-many {
 //   width: 100%;
