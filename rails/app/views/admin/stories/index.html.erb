@@ -53,16 +53,18 @@ It renders the `_table` partial to display details about the resources.
 </header>
 
 <section class="main-content__body main-content__body--flush padding-fix color-fix">
-  <%= render(
-          "collection",
-          collection_presenter: page,
-          collection_field_name: resource_name,
-          page: page,
-          resources: resources,
-          table_title: "page-title",
-      ) %>
+  <div class="table-wrapper">
+    <%= render(
+            "collection",
+            collection_presenter: page,
+            collection_field_name: resource_name,
+            page: page,
+            resources: resources,
+            table_title: "page-title",
+        ) %>
 
-  <%= paginate resources %>
+    <%= paginate resources %>
+  </div>
   <div class="table-underline"></div>
 
   <div style="margin: 2%">
@@ -88,4 +90,3 @@ It renders the `_table` partial to display details about the resources.
   <% end %>
   </div>
 </section>
-

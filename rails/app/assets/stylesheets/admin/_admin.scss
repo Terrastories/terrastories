@@ -48,6 +48,10 @@ html {
   }
 }
 
+.table-wrapper {
+  overflow-x: auto;
+}
+
 .import-spinner {
   display: none !important;
 }
@@ -59,12 +63,3 @@ button.btn-import:disabled {
     display: inline-block !important;
   }
 }
-
-// .attribute-data--nested-has-many {
-//   width: 100%;
-//   padding-right: 5%;
-// }
-
-// .cell-data--text {
-//   white-space: normal;
-// }
