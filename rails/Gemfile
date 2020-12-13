@@ -77,6 +77,9 @@ group :development do
   # Add better error handling to make debugging simpler
   gem "better_errors"
   gem "binding_of_caller"
+
+  # annotate models
+  gem "annotate"
 end
 
 group :test do
