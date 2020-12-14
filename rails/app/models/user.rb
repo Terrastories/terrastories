@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :community, optional: true
+  has_one_attached :photo
 
   enum role: {
     member: 0, # previously user
