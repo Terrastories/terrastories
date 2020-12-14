@@ -10,7 +10,6 @@ class ThemeDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     background_img: Field::String,
-    active: Field::Boolean,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     sponsor_logos: Field::ActiveStorage.with_options({destroy_path: :admin_themes_path}),
@@ -42,7 +41,6 @@ class ThemeDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
   background_img
-  active
   sponsor_logos
   ].freeze
 
