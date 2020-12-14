@@ -19,7 +19,8 @@ class SpeakerPolicy < ApplicationPolicy
   end
 
   def show?
-    true
+    # anyone except super admins can view
+    !user.super_admin
   end
 
   def new?
