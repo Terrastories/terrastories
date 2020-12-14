@@ -51,6 +51,7 @@ td img {
 section {
   img {
     max-width: 250px;
+    align-self: flex-start; // ensure image doesn't stretch to fill container
   }
 }
 
