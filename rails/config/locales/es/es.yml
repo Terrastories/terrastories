@@ -21,6 +21,7 @@ es:
   logout: "Logout"
   map: "¿Esto es un …mapa?"
   most_recent: "Más reciente"
+  no_media: No Media Available
   password: "Contraseña"
   place_type: "Tipo de lugar"
   region: "Región"

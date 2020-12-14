@@ -10,7 +10,6 @@
   // 4rem is main-content__body padding x 2
   // 10px is margin x 2
   width: calc(((#{$max-width} - 4rem) / 3) - 20px);
-  // min-width: calc(((#{$max-width} - 4rem) / 3) - 10px);
   padding: 1rem;
 
   display: flex;

@@ -35,6 +35,9 @@ as well as a link to its edit page.
 
 <section class="main-content__body main-content__body--split">
   <div>
+    <% if page.resource.media.none? %>
+      <p><%= t("no_media") %></p>
+    <% end %>
     <% page.resource.media.each do |media| %>
       <% if media.blob.video? %>
         <video controls width="500">
@@ -65,7 +68,7 @@ as well as a link to its edit page.
         <% else %>
           <%= image_tag asset_path("speaker.png") %>
         <% end %>
-        <%= interviewer.name %>
+        <p><%= interviewer.name %></p>
       </div>
     <% end %>
   </div>

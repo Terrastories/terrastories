@@ -26,7 +26,7 @@
   justify-content: space-between;
 
   .sidebar {
-    max-width: calc($max-width * 30%);
+    max-width: calc(#{$max-width} * 0.3);
   }
 
   dl {
