@@ -55,4 +55,8 @@ class UserDashboard < Administrate::BaseDashboard
   def display_resource(user)
     user.email
   end
+
+  def permitted_attributes
+    super + [:photo, :community_id]
+  end
 end
