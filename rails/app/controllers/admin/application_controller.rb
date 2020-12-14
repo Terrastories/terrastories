@@ -13,6 +13,7 @@ module Admin
     before_action :set_locale
     before_action :set_community
     before_action :can_view_list?, only: :index
+    before_action :can_view_show?, only: :show
 
     rescue_from Pundit::NotAuthorizedError, with: :not_authorized
 
@@ -49,6 +50,12 @@ module Admin
     # this ensures we check that list views are utilizing the Pundit policies
     def can_view_list?
       authorize resource_name, :index?
+    end
+
+    # by default, Punditize with Administrate does not policy on show views.
+    # this ensures we check that list views are utilizing the Pundit policies
+    def can_view_show?
+      authorize resource_name, :show?
     end
   end
 end
