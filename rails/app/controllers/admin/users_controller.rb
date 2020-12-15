@@ -28,6 +28,10 @@ module Admin
         params[:user].delete(:password)
         params[:user].delete(:password_confirmation)
       end
+      unless current_user.admin? || current_user.super_admin
+        # don't allow non-admin's to update their own role
+        params[:user].delete(:role)
+      end
       super
     end
 
