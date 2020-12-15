@@ -67,3 +67,23 @@ It renders the `_table` partial to display details about the resources.
     <%= paginate resources %>
   </div>
 </section>
+
+<section class="main-content__body padding-fix color-fix">
+  <%= form_tag send("import_csv_admin_#{page.resource_name.pluralize}_path"), multipart: true do %>
+    <div class=form>
+      <div class="form-group color-fix">
+        <label class="form-title" for="file"><%= t("administrate.file_to_update") %></label>
+          <%= file_field_tag :file, :accept => 'text/csv', class: "form-control-file file-update import-file-btn" %>
+      </div>
+      <div class="form-group">
+          <%= button_tag :class => "btn-import new-button",
+                :data => {
+                :disable_with => 'Uploading your file...',
+                } do %>
+          <i class="fa fa-upload import-icon"></i><%= t("administrate.import_button", resource: t("administrate.#{page.resource_name.pluralize}")) %>
+        <% end %>
+        <i class="fa fa-spinner fa-spin fa-lg import-spinner"></i>
+      </div>
+    </div>
+  <% end %>
+</section>
