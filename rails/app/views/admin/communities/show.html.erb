@@ -18,3 +18,29 @@
   <span class="badge"><%= page.resource.locale %></span>
   <span class="badge"><%= page.resource.country %></span>
 </section>
+
+<% if current_user.super_admin %>
+  <section class="main-content__body main-content__body--flush padding-fix color-fix">
+    <header class="main-content__header" role="heading">
+      <h2 class="main-content__page-title">
+        <%= t("users") %>
+      </h2>
+    </header>
+    <table aria-labelledby="community-users">
+    <thead>
+      <tr>
+        <th><%= t("helpers.label.users.email") %></th>
+        <th><%= t("helpers.label.users.role") %></th>
+      </tr>
+      </thead>
+      <tbody>
+        <% page.resource.users.each do |user| %>
+          <tr>
+            <td><%= user.email %></td>
+            <td><%= user.role %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </section>
+<% end %>

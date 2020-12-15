@@ -57,4 +57,9 @@ class CommunityDashboard < Administrate::BaseDashboard
   def display_resource(community)
     community.name
   end
+
+  def permitted_attributes
+    byebug
+    super + [users_attributes: [:email, :password, :role]]
+  end
 end

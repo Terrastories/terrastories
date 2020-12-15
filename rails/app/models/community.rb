@@ -7,6 +7,8 @@ class Community < ApplicationRecord
 
   after_initialize :create_theme, if: -> { theme.nil? }
 
+  accepts_nested_attributes_for :users, limit: 1
+
   def create_theme
     build_theme
   end
