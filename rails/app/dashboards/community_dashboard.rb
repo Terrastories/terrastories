@@ -59,7 +59,6 @@ class CommunityDashboard < Administrate::BaseDashboard
   end
 
   def permitted_attributes
-    byebug
     super + [users_attributes: [:email, :password, :role]]
   end
 end
