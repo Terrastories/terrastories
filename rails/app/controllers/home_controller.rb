@@ -1,6 +1,9 @@
 # The home controller
 class HomeController < ApplicationController
   def index
+    if current_user.super_admin
+      raise Pundit::NotAuthorizedError
+    end
   end
 
   def community_search_index
