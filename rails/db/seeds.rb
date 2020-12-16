@@ -105,6 +105,14 @@ User.find_or_create_by!(email: 'user@terrastories.com') do |admin|
   admin.community = default_community
 end
 
+# Create a example viewer user
+User.find_or_create_by!(email: 'viewer@terrastories.com') do |user|
+  user.password = 'terrastories'
+  user.password_confirmation = 'terrastories'
+  user.role = 3
+  user.community = default_community
+end
+
 # Create another Community
 another_community = Community.find_or_create_by!(name: "Ruby for Good") do |community|
   community.country = "United States of America"

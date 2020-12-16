@@ -8,16 +8,17 @@ class User < ApplicationRecord
   has_one_attached :photo
 
   enum role: {
-    member: 0, # previously user
+    member: 0, # previously user; can view restricted stories
     editor: 1,
     admin: 2,
-    read_only: 100 # super admin
+    viewer: 3, # can only view public/anonymous stories
+    super_admin: 100 # super admin
   }
 
   after_initialize :set_default_role, :if => :new_record?
 
   def set_default_role
-    self.role ||= :member
+    self.role ||= :viewer
   end
 end
 
