@@ -14,7 +14,8 @@ class SpeakerDashboard < Administrate::BaseDashboard
     stories: Field::HasMany,
     birthdate: Field::DateTime.with_options(format: "%d/%m/%Y"),
     birthplace: Field::BelongsTo.with_options(class_name: "Place"),
-    community: Field::String,
+    community: Field::BelongsTo,
+    speaker_community: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -25,12 +26,10 @@ class SpeakerDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :id,
     :photo,
     :name,
     :birthdate,
-    :birthplace,
-    :community,
+    :speaker_community,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -56,7 +55,7 @@ class SpeakerDashboard < Administrate::BaseDashboard
     :stories,
     :birthdate,
     :birthplace,
-    :community,
+    :speaker_community,
   ].freeze
 
   # Overwrite this method to customize how speakers are displayed

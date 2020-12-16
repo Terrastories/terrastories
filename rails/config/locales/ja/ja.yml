@@ -1,15 +1,18 @@
-ja: 
+ja:
   admin_page: "管理ページ"
   alphabetical: A-Z
   back_to_map: "マップに戻る"
   back_to_welcome: "入り口に戻る"
   close: "閉じる"
+  community_search:
+    title: "Search for a Community to Explore"
+    coming_soon: "This feature is coming soon. For now, please request an invite to a specific community."
   default: "デフォルト"
   enter: "入る"
   filter_stories: "フィルタ"
   forgot_password: "パスワードを忘れましたか？"
   hello: "こんにちは"
-  intro: 
+  intro:
     explanation: "Terrastories は地域に根ざした口伝を記録して保存するアプリケーションです。 地域に固有の、語り継がれてきたものごとを、場所と結びつけて地図上に表示できるのです。オフラインでも機能します。"
     question: "Terrastory とは？"
   introduction: "イントロダクション"
@@ -18,6 +21,7 @@ ja:
   logout: "ログアウト"
   map: "マップ"
   most_recent: "作成日時順"
+  no_media: No Media Available
   password: "パスワード"
   place_type: "プレースタイプ"
   region: "リージョン"

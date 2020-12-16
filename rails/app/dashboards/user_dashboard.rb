@@ -14,6 +14,7 @@ class UserDashboard < Administrate::BaseDashboard
     password: Field::Password,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    photo: Field::ActiveStorage,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -22,7 +23,7 @@ class UserDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :id,
+    :photo,
     :email,
     :role
   ].freeze
@@ -32,10 +33,10 @@ class UserDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :id,
     :email,
-    :password,
     :role,
     :created_at,
     :updated_at,
+    :photo
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -44,7 +45,8 @@ class UserDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :email,
     :password,
-    :role
+    :role,
+    :photo
   ].freeze
 
   # Overwrite this method to customize how users are displayed
@@ -52,5 +54,9 @@ class UserDashboard < Administrate::BaseDashboard
   #
   def display_resource(user)
     user.email
+  end
+
+  def permitted_attributes
+    super + [:photo, :community_id]
   end
 end

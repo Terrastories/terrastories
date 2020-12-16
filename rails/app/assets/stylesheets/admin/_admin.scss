@@ -1,7 +1,56 @@
-@import 'story_dashboard';
-@import 'core/colors';
-@import 'navigation_style';
-@import 'main_content_style';
+$max-width: 1060px;
+$default-horizontal-padding: 2rem;
+$default-vertical-padding: 1rem;
+
+// @import 'story_dashboard';
+@import 'card';
+@import 'badge';
+@import 'navigation';
+@import 'main_content';
+
+html {
+  background-color: white; // override administrate
+}
+
+// override Administrate's flex layout
+.app-container {
+  display: block;
+  margin: 0;
+  padding: 0;
+  color: $default-text;
+  max-width: unset;
+}
+
+.header--main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 5px solid $orange;
+
+  @include for-phone-only {
+    margin-top: 1rem;
+    flex-direction: column;
+  }
+
+  h1 {
+    font-size: 2rem;
+    line-height: 2.2rem;
+    margin-left: 1rem;
+
+    @include for-phone-only {
+      margin-left: 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: currentColor;
+    }
+  }
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
 
 .import-spinner {
   display: none !important;
@@ -13,13 +62,4 @@ button.btn-import:disabled {
   + .import-spinner {
     display: inline-block !important;
   }
-}
-
-.attribute-data--nested-has-many {
-  width: 100%;
-  padding-right: 5%;
-}
-
-.cell-data--text {
-  white-space: normal;
 }

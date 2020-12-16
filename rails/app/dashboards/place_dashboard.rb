@@ -17,6 +17,7 @@ class PlaceDashboard < Administrate::BaseDashboard
     region: RegionField,
     photo: Field::ActiveStorage.with_options({destroy_path: :admin_places_path}),
     type_of_place: Field::String,
+    community: Field::BelongsTo,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -27,21 +28,15 @@ class PlaceDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :id,
+    :photo,
     :name,
     :description,
-    :type_of_place,
     :region,
-    :long,
-    :lat,
-    :stories,
-    :photo,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :id,
     :name,
     :description,
     :type_of_place,

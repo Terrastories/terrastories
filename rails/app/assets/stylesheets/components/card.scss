@@ -1,4 +1,4 @@
-$el-shadow: 0 1px 4px #bbb;
+$el-shadow: 0 1px 4px $lighter-gray;
 
 .cardContainer {
   position: relative;
@@ -45,12 +45,12 @@ $el-shadow: 0 1px 4px #bbb;
     height: 100vh;
     width: 100%;
     background: white;
-    border: 1px solid #d7d7d7;
-    border-right: 1px solid #a6a6a6;
-    border-bottom: 1px solid #a6a6a6;
-    background: #efefef;
+    border: 1px solid $lightest-gray;
+    border-right: 1px solid $lighter-gray;
+    border-bottom: 1px solid $lighter-gray;
+    background: $off-white;
     padding: 0.5rem;
-    box-shadow: 3px 2px 3px transparentize(#666666, 0.9);
+    box-shadow: 3px 2px 3px transparentize($dark-gray, 0.9);
     transition: left 0.20s ease-in-out;
   }
 
@@ -72,8 +72,8 @@ $el-shadow: 0 1px 4px #bbb;
     line-height: 3.9rem;
     text-align: center;
     border-radius: 0 6px 6px 0;
-    background: #0f566b;
-    box-shadow: 3px 2px 3px transparentize(#666666, 0.9);
+    background: $dark-blue;
+    box-shadow: 3px 2px 3px transparentize($dark-gray, 0.9);
     transition: all 0.20s ease-in-out;
   }
 
@@ -89,7 +89,7 @@ $el-shadow: 0 1px 4px #bbb;
 
   .card--intro {
     display: none;
-    background-color: #0f566b;
+    background-color: $dark-blue;
     padding: 1rem;
     * {
       color: white;
@@ -135,14 +135,14 @@ $el-shadow: 0 1px 4px #bbb;
         width: 50px;
         height: 50px;
         border-radius: 50px;
-        border: 2px solid black;
+        border: 2px solid $black;
         margin-right: 5px;
       }
       padding-bottom: 0.25rem;
     }
     li {
       &.isActive {
-        border: 3px solid #0f566b;
+        border: 3px solid $dark-blue;
       }
 
       list-style: none;
@@ -157,7 +157,7 @@ $el-shadow: 0 1px 4px #bbb;
         float: right;
         margin: 0 0 1rem 1rem;
         &.placeholder {
-          background-color: #a19c9c;
+          background-color: $light-gray;
         }
       }
       p {
@@ -209,7 +209,7 @@ $el-shadow: 0 1px 4px #bbb;
       position: absolute;
       right: 0.5rem;
       top: 0.5rem;
-      color: black;
+      color: $black;
       font-family: sans-serif;
       font-size: 1.25rem;
       cursor: pointer;

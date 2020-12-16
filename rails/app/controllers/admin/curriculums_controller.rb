@@ -10,11 +10,11 @@ module Admin
     # end
 
     # def valid_action?(name, resource = resource_class)
-      
+
     #   if name == :edit && resource == CurriculumStory
     #     # raise
     #     %w[edit destroy].exclude?(name.to_s) && super
-    #   else 
+    #   else
     #     super
     #   end
     # end
@@ -38,10 +38,10 @@ module Admin
     #  end
     # end
     def new
-      resource = new_resource      
-      authorize_resource(resource) 
-      resource.user_id = @current_user.id     
-      render locals: { page: Administrate::Page::Form.new(dashboard, resource) }    
+      resource = new_resource
+      authorize_resource(resource)
+      resource.user_id = @current_user.id
+      render locals: { page: Administrate::Page::Form.new(dashboard, resource) }
     end
 
     # See https://administrate-prototype.herokuapp.com/customizing_controller_actions

@@ -1,0 +1,24 @@
+<div class="welcome" style="background-image: url(<%= asset_path('welcome-bg.jpg') %>) " >
+  <div class="welcome-card">
+    <%= image_tag 'logocombo.svg', alt: 'Terrastories' %>
+    <div class="welcome-card-user">
+      <h2><%= t("community_search.title") %></h2>
+      <p><%= t("community_search.coming_soon") %></p>
+      <br/>
+      <% if user_signed_in? %>
+        <%= link_to t("logout"), destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+      <% else %>
+        <%= link_to t("login"), new_user_session_path, :class => 'navbar-link'  %>
+      <% end %>
+    </div>
+  </div>
+  Built with ❤️ by
+  <div class="logo">
+    <%= image_tag "rubyforgood.png" %>
+    <% if @theme %>
+      <% @theme.sponsor_logos.each do |logo| %>
+        <%= image_tag logo %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

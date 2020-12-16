@@ -7,6 +7,8 @@ RSpec.describe Place, type: :model do
   end
 
   describe 'import_csv' do
+    let(:community) { FactoryBot.create(:community) }
+
     it 'is tested against fixture file' do
       expect(file_fixture('place_with_media.csv').read).not_to be_empty
     end
@@ -16,11 +18,11 @@ RSpec.describe Place, type: :model do
         @fixture_data = file_fixture('place_with_media.csv').read
 
         expect {
-          described_class.import_csv(@fixture_data)
+          described_class.import_csv(@fixture_data, community)
         }.to change { Place.count }.by(1)
 
         expect {
-          described_class.import_csv(@fixture_data)
+          described_class.import_csv(@fixture_data, community)
         }.to change { Place.count }.by(0)
       end
     end
@@ -28,7 +30,7 @@ RSpec.describe Place, type: :model do
     describe 'imports csv with media' do
       before do
         @fixture_data = file_fixture('place_with_media.csv').read
-        described_class.import_csv(@fixture_data)
+        described_class.import_csv(@fixture_data, community)
       end
 
       let!(:place) { described_class.last }
@@ -47,15 +49,15 @@ RSpec.describe Place, type: :model do
       before do
         @fixture_data = file_fixture('invalid places.csv').read
       end
-      it { expect(described_class.import_csv(@fixture_data)).not_to be_empty }
+      it { expect(described_class.import_csv(@fixture_data, community)).not_to be_empty }
     end
-    
+
     describe "does not fail when some rows in import are invalid" do
       it "creates valid places when importing a csv with invalid lines" do
         @fixture_data = file_fixture('invalid places.csv').read
 
         expect {
-          described_class.import_csv(@fixture_data)
+          described_class.import_csv(@fixture_data, community)
         }.to change { Place.count }.by(1)
       end
     end
@@ -63,22 +65,24 @@ RSpec.describe Place, type: :model do
     describe 'does not fail when media is not present' do
       before do
         @fixture_data = file_fixture('place_without_media.csv').read
-        described_class.import_csv(@fixture_data)
+        described_class.import_csv(@fixture_data, community)
       end
 
       let!(:place) { described_class.last }
       let!(:csv) { CSV.parse(@fixture_data, headers: true).first }
       it { expect(csv[6]).not_to be_nil }
     end
-    
+
   end
 
   describe '#photo_format' do
+    let(:community) { FactoryBot.create(:community) }
+
     context 'when the attachment is not located in an image folder' do
       describe 'should add an error' do
         before do
           @fixture_data = file_fixture('place_with_media.csv').read
-          described_class.import_csv(@fixture_data)
+          described_class.import_csv(@fixture_data, community)
           @place = described_class.last
           @place.photo.blob.content_type = "file/png"
           @place.photo_format
@@ -93,7 +97,7 @@ RSpec.describe Place, type: :model do
       describe 'should not add an error' do
         before do
           @fixture_data = file_fixture('place_with_media.csv').read
-          described_class.import_csv(@fixture_data)
+          described_class.import_csv(@fixture_data, community)
         end
         let!(:place) { described_class.last }
 
@@ -105,9 +109,11 @@ RSpec.describe Place, type: :model do
 
   describe 'photo_url' do
     describe 'should return a url path' do
+      let(:community) { FactoryBot.create(:community) }
+
       before do
         @fixture_data = file_fixture('place_with_media.csv').read
-        described_class.import_csv(@fixture_data)
+        described_class.import_csv(@fixture_data, community)
       end
       let!(:place) { described_class.last }
       let!(:file_name) { place.photo.filename.to_s }
@@ -118,9 +124,11 @@ RSpec.describe Place, type: :model do
   end
 
   describe 'point_geojson' do
+    let(:community) { FactoryBot.create(:community) }
+
     it 'should return a geoJson point' do
       fixture_data = file_fixture('place_with_media.csv').read
-      described_class.import_csv(fixture_data)
+      described_class.import_csv(fixture_data, community)
       place = described_class.first
       expect(place.point_geojson.keys).to include('properties')
     end

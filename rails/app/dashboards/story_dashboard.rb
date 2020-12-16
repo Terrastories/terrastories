@@ -16,12 +16,13 @@ class StoryDashboard < Administrate::BaseDashboard
     places: Field::HasMany,
     interview_location: Field::BelongsTo.with_options({class_name: "Place"}),
     interviewer: Field::BelongsTo.with_options({class_name: "Speaker"}),
-    date_interviewed: Field::DateTime,
+    date_interviewed: Field::DateTime.with_options(format: "%d/%m/%Y"),
     media: Field::ActiveStorage.with_options({destroy_path: :admin_stories_path}),
     permission_level: EnumField,
     created_at: Field::DateTime,
+    community: Field::BelongsTo,
     updated_at: Field::DateTime,
-    media_links: Field::HasMany, 
+    media_links: Field::HasMany,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -31,15 +32,9 @@ class StoryDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :title,
-    :desc,
     :language,
-    :speakers,
     :interview_location,
-    :interviewer,
     :date_interviewed,
-    :places,
-    :permission_level,
-    :media_links,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES

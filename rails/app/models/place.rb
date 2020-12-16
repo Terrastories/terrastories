@@ -2,6 +2,7 @@ class Place < ApplicationRecord
   MEDIA_PATH = Rails.env.test? ? 'spec/fixtures/media' : 'import/media'
 
   require 'csv'
+  belongs_to :community
   has_and_belongs_to_many :stories
   has_one_attached :photo
   validate :photo_format
@@ -11,8 +12,8 @@ class Place < ApplicationRecord
 
   attr_reader :point_geojson
 
-  def self.import_csv(filename)
-    ApplicationController.helpers.csv_importer(filename, self)
+  def self.import_csv(filename, community)
+    ApplicationController.helpers.csv_importer(filename, self, community)
   end
 
   def photo_format
@@ -48,3 +49,19 @@ class Place < ApplicationRecord
   end
 
 end
+
+# == Schema Information
+#
+# Table name: places
+#
+#  id            :bigint           not null, primary key
+#  description   :string
+#  lat           :decimal(10, 6)
+#  long          :decimal(10, 6)
+#  name          :string
+#  region        :string
+#  type_of_place :string
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  community_id  :integer
+#

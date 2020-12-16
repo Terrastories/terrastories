@@ -1,24 +1,16 @@
 class Theme < ApplicationRecord
-    after_save :check_active
-    before_destroy :can_destroy?    
-    has_many_attached :sponsor_logos
-    validates :sponsor_logos, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'], size_range: 1..5.megabytes }
+  has_many_attached :sponsor_logos
 
-    private
-    #sets first record (default) if no themes are active
-    def check_active
-        if Theme.find_by(active:true) == nil
-            t = Theme.first
-            t.active = true
-            t.save
-        end
-    end
-
-    def can_destroy?
-        if self == Theme.first
-            self.errors.add(:base, "Cannot destroy default theme")
-            throw :abort
-        end
-    end
-
+  validates :sponsor_logos, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'], size_range: 1..5.megabytes }
 end
+
+# == Schema Information
+#
+# Table name: themes
+#
+#  id             :bigint           not null, primary key
+#  active         :boolean          default(FALSE), not null
+#  background_img :string
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#

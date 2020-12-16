@@ -1,0 +1,33 @@
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cards__item {
+  background-color: $white;
+  box-shadow: 0 1px 15px -2px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  // 4rem is main-content__body padding x 2
+  // 10px is margin x 2
+  width: calc(((#{$max-width} - 4rem) / 3) - 20px);
+  padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cards__item--title {
+  font-size: 1.2rem;
+  border-bottom: 2px solid $orange;
+  margin-bottom: 1rem;
+  padding-bottom: .2rem;
+}
+
+.cards__item--avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  display: block; // fill space
+  margin: 1.2rem auto; // center in space with top/bottom margins
+}

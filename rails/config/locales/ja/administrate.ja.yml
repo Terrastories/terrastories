@@ -1,4 +1,19 @@
 ja:
+  helpers:
+    label:
+      speaker:
+        speaker_community: Speaker's Community
+        birthdate: Date of Birth
+        birthplace: Born Where
+      story:
+        desc: Description
+        interviewer: Interviewer
+        video_unsupported: Sorry, your browser doesn't support embedded videos.
+        permissions:
+          anonymous: "Searchable"
+          user_only: "Member"
+          editor_only: "Editor"
+          admin_only: "Admin"
   administrate:
     actions:
       confirm: "よろしいですか？"
@@ -8,6 +23,8 @@ ja:
       show_resource: "%{name}"
       new_resource: "%{name}新規作成"
       back: "戻る"
+    community: Community
+    communities: Communities
     controller:
       create:
         success: "%{resource}が作成されました。"
@@ -27,7 +44,7 @@ ja:
     places: "プレース"
     place: "プレース"
     media_link: "メディアリンク"
-    media_links: "メディアリンク"  
+    media_links: "メディアリンク"
     search:
       clear: "クリア"
       label: "%{resource}検索"
@@ -35,6 +52,8 @@ ja:
     speaker: "スピーカー"
     stories: "ストーリー"
     story: "ストーリー"
+    theme: Theme
+    themes: Themes
     table_columns:
       user:
         id: ID
