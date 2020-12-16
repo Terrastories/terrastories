@@ -1,6 +1,7 @@
 <div class="devise">
   <div class="devise-card">
-    <h2><%= t("login") %></h2>
+    <%= image_tag 'logocombo.svg', alt: 'Terrastories' %>
+    <h1><%= t("welcome") %></h1>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field">
@@ -25,6 +26,12 @@
       </div>
     <% end %>
 
+    <div class="language-picker devise-links">
+      <%= t("language") %>:
+      <%= application_locales(request_path: new_user_session_path) %>
+    </div>
+
     <%= render "devise/shared/links" %>
+
   </div>
 </div>
