@@ -10,6 +10,33 @@ module Admin
     #     per(10)
     # end
 
+    def new
+      # ensures that story is built for the current community (so scopes in administrate dashboards work)
+      resource = current_community.stories.new
+      authorize_resource(resource)
+      render locals: {
+        page: Administrate::Page::Form.new(dashboard, resource),
+      }
+    end
+
+    def create
+      resource = resource_class.new(resource_params)
+      # ensures story is created within the current community
+      resource.community = current_community
+      authorize_resource(resource)
+
+      if resource.save
+        redirect_to(
+          [namespace, resource],
+          notice: translate_with_resource("create.success"),
+        )
+      else
+        render :new, locals: {
+          page: Administrate::Page::Form.new(dashboard, resource),
+        }
+      end
+    end
+
     # Define a custom finder by overriding the `find_resource` method:
     # def find_resource(param)
     #   Story.find_by!(slug: param)

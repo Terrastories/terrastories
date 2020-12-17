@@ -15,6 +15,33 @@ module Admin
     #   Speaker.find_by!(slug: param)
     # end
 
+    def new
+      # ensures that speaker is built for the current community (so scopes in administrate dashboards work)
+      resource = current_community.speakers.new
+      authorize_resource(resource)
+      render locals: {
+        page: Administrate::Page::Form.new(dashboard, resource),
+      }
+    end
+
+    def create
+      resource = resource_class.new(resource_params)
+      # ensures speaker is created within the current community
+      resource.community = current_community
+      authorize_resource(resource)
+
+      if resource.save
+        redirect_to(
+          [namespace, resource],
+          notice: translate_with_resource("create.success"),
+        )
+      else
+        render :new, locals: {
+          page: Administrate::Page::Form.new(dashboard, resource),
+        }
+      end
+    end
+
     # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
     # for more information
     def import_csv
