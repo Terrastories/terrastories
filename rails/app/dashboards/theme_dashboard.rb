@@ -9,7 +9,7 @@ class ThemeDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    background_img: Field::String,
+    background_img: Field::ActiveStorage.with_options({destroy_path: :admin_themes_path}),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     sponsor_logos: Field::ActiveStorage.with_options({destroy_path: :admin_themes_path}),

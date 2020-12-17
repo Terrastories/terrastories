@@ -7,17 +7,15 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-# Create a default theme
-default_theme = Theme.find_or_create_by!(background_img: 'welcome-bg.jpg') do |theme|
-  theme.active = true
-  theme.sponsor_logos.attach(io: File.open('app/assets/images/rubyforgood.png'), filename: 'rubyforgood.png')
-end
-
 # Create a default Community
 default_community = Community.find_or_create_by!(name: "Terrastories") do |community|
   community.country = "United States of America"
   community.locale = "en"
-  community.theme = default_theme
+  community.theme = Theme.create! do |theme|
+    theme.active = true
+    theme.sponsor_logos.attach(io: File.open('app/assets/images/rubyforgood.png'), filename: 'rubyforgood.png')
+    theme.background_img.attach(io: File.open('app/assets/images/welcome-bg.jpg'), filename: 'welcome-bg.jpg')
+  end
 end
 
 # Create Places
@@ -117,7 +115,6 @@ end
 another_community = Community.find_or_create_by!(name: "Ruby for Good") do |community|
   community.country = "United States of America"
   community.locale = "en"
-  community.theme = default_theme
 end
 
 # And community admin user
