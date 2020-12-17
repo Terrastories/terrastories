@@ -37,13 +37,14 @@ class StoryPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      stories = user.community.stories.where(permission_level: :anonymous)
-      if user&.member?
-          stories = user.community.stories.where(permission_level: [:anonymous, :user_only])
+      if user&.super_admin || user&.editor? || user&.admin?
+        stories = scope.all
+      elsif user&.member?
+        stories = scope.where(permission_level: [:anonymous, :user_only])
+      else
+        stories = scope.where(permission_level: :anonymous)
       end
-      if user&.editor? || user&.admin?
-          stories = user.community.stories.all
-      end
+
       stories.eager_load(:speakers, :places)
     end
 
