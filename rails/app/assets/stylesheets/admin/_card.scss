@@ -16,6 +16,19 @@
   flex-direction: column;
   justify-content: space-between;
 }
+.cards__item--center {
+  text-align: center;
+}
+
+.cards__item--giant-text {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.cards__item--button {
+  margin: 2rem auto;
+  background-color: $blue;
+}
 
 .cards__item--title {
   font-size: 1.2rem;

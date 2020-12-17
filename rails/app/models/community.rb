@@ -2,6 +2,7 @@ class Community < ApplicationRecord
   has_many :users
   has_many :places
   has_many :stories
+  has_many :speakers
 
   belongs_to :theme, autosave: true
 
