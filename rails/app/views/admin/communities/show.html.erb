@@ -19,6 +19,32 @@
   <span class="badge"><%= page.resource.country %></span>
 </section>
 
+<% if current_user.member? || current_user.editor? || current_user.admin? || current_user.super_admin %>
+  <section class="main-content__body main-content__body--split padding-fix color-fix cards">
+    <div class="cards__item cards__item--center">
+      <span class="cards__item--giant-text"><%= policy_scope(page.resource.stories).count %></span>
+      <h3><%= t("stories") %></h3>
+      <%= link_to(
+        t("administrate.actions.new_resource", name: t("administrate.story")), new_admin_story_path, class: "button cards__item--button"
+        ) if valid_action?(:new) && show_action?(:new, Story.new) %>
+    </div>
+    <div class="cards__item cards__item--center">
+      <span class="cards__item--giant-text"><%= policy_scope(page.resource.places).count %></span>
+      <h3><%= t("places") %></h3>
+      <%= link_to(
+        t("administrate.actions.new_resource", name: t("administrate.place")), new_admin_place_path, class: "button cards__item--button"
+        ) if valid_action?(:new) && show_action?(:new, Place.new) %>
+    </div>
+    <div class="cards__item cards__item--center">
+      <span class="cards__item--giant-text"><%= policy_scope(page.resource.speakers).count %></span>
+      <h3><%= t("speakers") %></h3>
+      <%= link_to(
+        t("administrate.actions.new_resource", name: t("administrate.speaker")), new_admin_speaker_path, class: "button cards__item--button"
+        ) if valid_action?(:new) && show_action?(:new, Speaker.new) %>
+    </div>
+  </section>
+<% end %>
+
 <% if current_user.super_admin %>
   <section class="main-content__body main-content__body--flush padding-fix color-fix">
     <header class="main-content__header" role="heading">
