@@ -12,10 +12,10 @@ class StoryDashboard < Administrate::BaseDashboard
     title: Field::String,
     desc: Field::Text,
     language: Field::String,
-    speakers: Field::HasMany,
-    places: Field::HasMany,
-    interview_location: Field::BelongsTo.with_options({class_name: "Place"}),
-    interviewer: Field::BelongsTo.with_options({class_name: "Speaker"}),
+    speakers: Field::ScopedHasMany.with_options(scope: -> (field) { field.resource.community.speakers }),
+    places: Field::ScopedHasMany.with_options(scope: -> (field) { field.resource.community.places }),
+    interview_location: Field::ScopedBelongsTo.with_options(class_name: "Place", scope: -> (field) { field.resource.community.places }),
+    interviewer: Field::ScopedBelongsTo.with_options(class_name: "Speaker", scope: -> (field) { field.resource.community.speakers }),
     date_interviewed: Field::DateTime.with_options(format: "%d/%m/%Y"),
     media: Field::ActiveStorage.with_options({destroy_path: :admin_stories_path}),
     permission_level: EnumField,
@@ -68,8 +68,7 @@ class StoryDashboard < Administrate::BaseDashboard
     :date_interviewed,
     :places,
     :media,
-    :permission_level,
-    :media_links
+    :permission_level
   ].freeze
 
   # Overwrite this method to customize how stories are displayed

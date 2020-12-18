@@ -11,7 +11,7 @@ class PlaceDashboard < Administrate::BaseDashboard
     id: Field::Number,
     name: Field::String,
     description: Field::String,
-    stories: Field::HasMany,
+    stories: Field::ScopedHasMany.with_options(scope: -> (field) { field.resource.community.stories }),
     long: Field::String.with_options(searchable: false),
     lat: Field::String.with_options(searchable: false),
     region: RegionField,
