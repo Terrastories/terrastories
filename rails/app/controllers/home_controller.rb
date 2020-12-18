@@ -23,4 +23,20 @@ class HomeController < ApplicationController
   helper_method def stories
     policy_scope(Story)
   end
+
+  helper_method def mapbox_token
+    current_community.theme.mapbox_access_token || ENV["MAPBOX_ACCESS_TOKEN"]
+  end
+
+  helper_method def local_mapbox?
+    ENV["USE_LOCAL_MAP_SERVER"].present?
+  end
+
+  helper_method def mapbox_style
+    if local_mapbox?
+      "http://localhost:8080/styles/basic/style.json"
+    else
+      current_community.theme.mapbox_style_url || ENV["MAPBOX_STYLE"]
+    end
+  end
 end
