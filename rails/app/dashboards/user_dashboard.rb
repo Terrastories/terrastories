@@ -10,7 +10,7 @@ class UserDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     email: Field::String,
-    role: EnumField,
+    role: EnumField.with_options(skip: :super_admin),
     password: Field::Password,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,

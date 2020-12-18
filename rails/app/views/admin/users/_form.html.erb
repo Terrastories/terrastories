@@ -34,7 +34,7 @@ and renders all form fields for a resource's editable attributes.
   <% end %>
 
   <% page.attributes.each do |attribute| -%>
-    <% next if attribute.attribute == :role && !(current_user.super_admin || current_user.admin?) -%>
+    <% next if attribute.attribute == :role && !((current_user.super_admin || current_user.admin?) && page.resource.id != current_user.id) -%>
     <div class="field-unit field-unit--<%= attribute.html_class %> field-unit--<%= requireness(attribute) %>">
       <%= render_field attribute, f: f %>
     </div>
