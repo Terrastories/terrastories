@@ -13,6 +13,8 @@ class ThemeDashboard < Administrate::BaseDashboard
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     sponsor_logos: Field::ActiveStorage.with_options({destroy_path: :admin_themes_path}),
+    mapbox_style_url: Field::String,
+    mapbox_access_token: Field::String,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -29,11 +31,10 @@ class ThemeDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
-  id
   background_img
-  created_at
-  updated_at
   sponsor_logos
+  mapbox_style_url
+  mapbox_access_token
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -42,6 +43,8 @@ class ThemeDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = %i[
   background_img
   sponsor_logos
+  mapbox_style_url
+  mapbox_access_token
   ].freeze
 
   # COLLECTION_FILTERS
