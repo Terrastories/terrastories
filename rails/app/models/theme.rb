@@ -10,8 +10,10 @@ end
 #
 # Table name: themes
 #
-#  id         :bigint           not null, primary key
-#  active     :boolean          default(FALSE), not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id                  :bigint           not null, primary key
+#  active              :boolean          default(FALSE), not null
+#  mapbox_access_token :string
+#  mapbox_style_url    :string
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
 #

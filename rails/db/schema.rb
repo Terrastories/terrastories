@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_16_223155) do
+ActiveRecord::Schema.define(version: 2020_12_18_143646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -124,6 +124,8 @@ ActiveRecord::Schema.define(version: 2020_12_16_223155) do
     t.boolean "active", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "mapbox_style_url"
+    t.string "mapbox_access_token"
   end
 
   create_table "users", force: :cascade do |t|
