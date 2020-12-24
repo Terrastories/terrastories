@@ -12,7 +12,7 @@
 
 ### Map content
 
-Terrastories uses the Mapbox GL engine to serve maps. What this means is that Terrastories can either load maps from `Mapbox.com` directly, or load offline map tiles called `mbtiles` that were designed and styled in Mapbox.com's `Studio` environment.
+Terrastories uses the Mapbox GL JS engine to serve maps. What this means is that Terrastories can either load maps from `Mapbox.com` directly, or load offline map tiles called `mbtiles` that were designed and styled in Mapbox.com's `Studio` environment.
 
 For some use cases, it may be sufficient to use one of Mapbox's basic styles, such as OpenStreetMap (OSM) or imagery. The default map served by Terrastories is a light OSM map. 
 
@@ -20,11 +20,15 @@ You may also opt to design your own custom map style using Mapbox Studio. For ex
 
 To set the map style used by Terrastories, modify the `MAPBOX_STYLE` variable in the `.env` file in the main Terrastories directory. You can copy and paste your map style URL from Mapbox Studio if using an online map.
 
+You can also set a `Mapbox.com` map for a community in the `Theme` menu when logged in as an admin user. Paste in the map style URL, and your map token, in the fields and it will automatically update the map for that community instance.
+
 For offline "Field Kit" usage of Terrastories, it is necessary to create your own custom map using your own GIS data, as above. There are several additional steps to generate and style the `mbtiles`, described in the [SETUP-OFFLINE.md](SETUP-OFFLINE.md) file.
+
+_**Note:** when using Mapbox.com maps with Terrastories, you are subject to Mapbox's [pricing schema](https://www.mapbox.com/pricing/) which has a free tier of up to 50,000 map loads per month. If you anticipate more monthly loads than that, you can get in touch with Mapbox's community team at community@mapbox.com to see what they can do to help._
 
 ### Map extent and zoom
 
-It is possible to set a custom map extent, zoom level, and boundaries of the Terrastories map. Currently, these values have to be set manually in the `\rails\app\javascript\components\Map.jsx` file. (It is in our roadmap to make this process easier by using the Terrastories user interface).
+It is possible to set a custom map extent, zoom level, and boundaries of the Terrastories map. Currently, these values have to be set manually in the `\rails\app\javascript\components\Map.jsx` file. (It is in our roadmap to make this process easier by using the Theme menu in the Terrastories administrative menu).
 
 * To set the default map center, enter your desired coordinates for `defaultCenter` (line 6)
 * To set the boundaries of the map (beyond which you cannot pan or zoom), set the maximum southwest and northeast coordinates in `defaultBounds` (line 7-9)
@@ -52,7 +56,9 @@ Once you are done, the language should be available the next time you start Terr
 
 ## Adding custom visual assets
 
-It is possible to add your own background image for the Welcome screen of Terrastories, logos, and favicon. Navigate to `\rails\app\assets\images` and copy over your own images, replacing the relevant filenames of the files in this directory. (It is in our roadmap to make this process easier by using the Terrastories user interface).
+You can add your own background image for the Welcome screen of Terrastories, logos, and favicon. Navigate to `\rails\app\assets\images` and copy over your own images, replacing the relevant filenames of the files in this directory.
+
+It is now also possible to customize the background image and sponsor logos for a community via the `Theme` menu when logged in as an admin user.
 
 ## Importing data into Terrastories
 

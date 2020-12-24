@@ -97,7 +97,9 @@ docker-compose up
 
 You can view the running application at `localhost:3000`
 
-It will take a moment to load when first opening the application 
+It will take a moment to load when first opening the application.
+
+Once you have started Terrastories, the next step will be to set up Terrastories communities and users. Please see the [community setup guide] (CUSTOMIZATION.md) to proceed from here.
 
 ## Having troubles? Check our common errors & gotchas
 

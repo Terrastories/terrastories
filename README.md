@@ -4,15 +4,17 @@
 
 1. [About Terrastories](#about-terrastories)
 
-2. [Setup Terrastories](#setup)
+2. [Install Terrastories](#install-terrastories)
 
-3. [Customize Terrastories](#customize-terrastories)
+3. [Setting up Communities and Users](#setting-up-community-instances-and-users)
 
-4. [Demo and Tutorials](#demo-and-tutorials)
+4. [Customize Terrastories](#customize-terrastories)
 
-5. [Developing with Terrastories](#developing-with-terrastories)
+5. [Demo and Tutorials](#demo-and-tutorials)
 
-6. [Contributing Guidelines](#contributing)
+6. [Developing with Terrastories](#developing-with-terrastories)
+
+7. [Contributing Guidelines](#contributing)
 
 ## About Terrastories
 
@@ -25,7 +27,7 @@ Learn more about Terrastories at [https://terrastories.io/](https://terrastories
 ![](terrastories.gif)
 ###### *Terrastories: Matawai Konde 1.0 (October 2018)*
 
-## Setup
+## Install Terrastories
 
 Before you install Terrastories, you should consider the hosting environment for the application. Will it be hosted on an online server? If so, you are likely going to need to set up Terrastories on a Linux server. Are you installing Terrastories on your local machine, either for development or for demoing the app? Depending on what operating system you use, there are different setup guides, below. Lastly, if you are installing Terrastories to work fully offline (i.e. no online maps), there is a special guide for that use case as well.
 
@@ -37,6 +39,14 @@ To install and run a streamlined version of Terrastories with access to an onlin
 To install and run Terrastories for offline "Field Kit" usage, visit:
 
 4. [Setup for offline](documentation/SETUP-OFFLINE.md)
+
+## Setting up Communities and Users
+
+Terrastories is built to host multiple communities with their own maps and stories on one Terrastories application. The communities' data is protected and accessible only through their own  user credentials, with different layers of permissions like viewing, editing, and changing settings for the whole community. 
+
+Terrastories is set up in this way to enable multiple communities to leverage one hosting environment (online or offline) instead of having to set up a dedicated server, while retaining sovereignty over their data. In the future we will make it possible to enable selective sharing between communities across Terrastories, when desired.
+
+To learn how to set up Terrastories community instances and users, see our [community setup guide](documentation/COMMUNITY-SETUP.md).
 
 ## Customize Terrastories
 
@@ -63,7 +73,7 @@ We ♥ contributors! By participating in this project, you agree to abide by the
 ### How To Contribute To Terrastories
 
 **Step 1: Learn a little about the app**
-One of our core contributors @mirandawang wrote a really nice [outline of the app](https://docs.google.com/document/d/1azfvU7tXLv2EHGrc3Hs5SPmB32MkyYuhXTB4JjymlV4/edit). Unless you are working on something related to Docker containers or to map cartography then you will benefit from taking a couple minutes to get acquainted with the app. 
+One of our core contributors @mirandawang wrote a really nice [outline of the app](https://docs.google.com/document/d/1azfvU7tXLv2EHGrc3Hs5SPmB32MkyYuhXTB4JjymlV4/edit). Unless you are working on something related to Docker containers or to map cartography then you will benefit from taking a couple minutes to get acquainted with the app. You can also check out our [roadmap](https://github.com/Terrastories/terrastories/wiki/Terrastories-Roadmap) to see where things are going with Terrastories development.
 
 **Step 2: Find an issue to work on**
 Please find an [issue](https://github.com/Terrastories/terrastories/issues) that you would like to take on and comment to assign yourself if no one else has done so already. All issues with the label `status: help wanted` are up for grabs! We will add the `status: claimed` label to the issue to mark it as assigned to you. Also, feel free to ask questions in the issues, and we will get back to you ASAP!
@@ -89,5 +99,5 @@ Try to keep your PRs limited to one particular issue and don't make changes that
 ### Work In Progress Pull Requests
 Sometimes we want to get a PR up there and going so that other people can review it or provide feedback, but maybe it's incomplete. This is OK, but if you do it, please tag your PR with an  `in-progress`  label so that we know not to review / merge it.
 
-### Becoming a Core Contributor
+### Becoming a Core Steward
 Users that are frequent contributors and are involved in discussion may be given direct Contributor access to the Repo so they can submit Pull Requests directly, instead of Forking first. You can join us in Slack [here](https://t.co/kUtI3lnpW1), and find us in the channel #terrastories! :) 
