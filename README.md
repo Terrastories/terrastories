@@ -6,7 +6,7 @@
 
 2. [Install Terrastories](#install-terrastories)
 
-3. [Setting up Communities and Users](#setting-up-community-instances-and-users)
+3. [Setting up Communities and Users](#setting-up-communities-and-users)
 
 4. [Customize Terrastories](#customize-terrastories)
 

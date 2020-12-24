@@ -6,7 +6,7 @@
 
 2. [Setting up communities](#setting-up-communities)
 
-3. [Managing community users](managing-community-users)
+3. [Managing community users](#managing-community-users)
 
 ## Why multi-instance architecture?
 
