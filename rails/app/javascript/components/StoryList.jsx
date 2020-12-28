@@ -82,7 +82,7 @@ class StoryList extends Component {
           <ReactList
             ref={list => this._list = list }
             itemRenderer={this.renderStory}
-            length={this.props.stories.length}
+            length={this.props.stories ? this.props.stories.length : 0}
             type='variable'
           />
         </div>

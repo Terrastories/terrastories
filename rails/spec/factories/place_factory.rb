@@ -5,5 +5,6 @@ FactoryBot.define do
     long { -77.073168 }
     lat { 38.906302 }
     region { 'Washington DC' }
+    community
   end
 end

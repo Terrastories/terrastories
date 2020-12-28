@@ -1,5 +1,20 @@
 ---
 mat:
+  helpers:
+    label:
+      speaker:
+        speaker_community: Speaker's Community
+        birthdate: Date of Birth
+        birthplace: Born Where
+      story:
+        desc: Description
+        interviewer: Interviewer
+        video_unsupported: Sorry, your browser doesn't support embedded videos.
+        permissions:
+          anonymous: "Searchable"
+          user_only: "Member"
+          editor_only: "Editor"
+          admin_only: "Admin"
   administrate:
     actions:
       confirm: Weet u het zeker?
@@ -9,6 +24,8 @@ mat:
       show_resource: Toon %{name}
       new_resource: Nieuw %{name}
       back: Terug
+    community: Community
+    communities: Communities
     controller:
       create:
         success: "%{resource} was succesvol aangemaakt."
@@ -34,8 +51,10 @@ mat:
     speaker: Spreker
     stories: Verhalen
     story: Verhaal
-    media_link: Media Link 
-    media_links: Media Links 
+    theme: Theme
+    themes: Themes
+    media_link: Media Link
+    media_links: Media Links
     table_columns:
       user:
         id: Id

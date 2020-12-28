@@ -1,7 +1,8 @@
 class FileImport::StoryRowDecorator
   METHODS_EXCEPT = [:media, :to_h]
-  def initialize(row)
+  def initialize(row, community)
     @row = row.map { |_, value| value.to_s }
+    @community = community
   end
 
   def title
@@ -14,18 +15,18 @@ class FileImport::StoryRowDecorator
 
   def speakers
     at(2).split(',').map do |speaker_name|
-      Speaker.find_or_create_by(name: speaker_name.strip)
+      Speaker.find_or_create_by(name: speaker_name.strip, community: @community)
     end
   end
 
   def places
     at(3).split(',').map do |place_name|
-      Place.find_or_create_by(name: place_name.strip)
+      Place.find_or_create_by(name: place_name.strip, community: @community)
     end
   end
 
   def interview_location
-    Place.find_or_create_by(name: at(4).strip) if at(4).strip.present?
+    Place.find_or_create_by(name: at(4).strip, community: @community) if at(4).strip.present?
   end
 
   def date_interviewed
@@ -33,7 +34,11 @@ class FileImport::StoryRowDecorator
   end
 
   def interviewer
-    Speaker.find_or_create_by(name: at(6).strip) if at(6).strip.present?
+    Speaker.find_or_create_by(name: at(6).strip, community: @community) if at(6).strip.present?
+  end
+
+  def community
+    @community
   end
 
   def language

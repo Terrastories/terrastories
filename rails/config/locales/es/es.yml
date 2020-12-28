@@ -4,6 +4,9 @@ es:
   back_to_map: "Volver al Mapa"
   back_to_welcome: "Volver a la página de inicio"
   close: "Cerrar"
+  community_search:
+    title: "Search for a Community to Explore"
+    coming_soon: "This feature is coming soon. For now, please request an invite to a specific community."
   default: "default"
   enter: "Ingresar"
   filter_stories: "Filtrar historias"
@@ -18,6 +21,7 @@ es:
   logout: "Logout"
   map: "¿Esto es un …mapa?"
   most_recent: "Más reciente"
+  no_media: No Media Available
   password: "Contraseña"
   place_type: "Tipo de lugar"
   region: "Región"

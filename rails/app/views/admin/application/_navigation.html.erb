@@ -6,16 +6,54 @@ for all resources in the admin dashboard,
 as defined by the routes in the `admin/` namespace
 %>
 
-<nav class="navigation" role="navigation">
-  <%= link_to(t("administrate.navigation.back_to_app"), home_map_path(locale: params[:locale]), class: "button button--alt") if defined?(root_url) %>
-  <% excluded_resources = ['curriculum_stories'] %>
-  <% Administrate::Namespace.new(namespace).resources_with_index_route.each do |resource| %>
-    <% unless excluded_resources.include?(resource) %>
-      <%= link_to(
-        t("administrate.#{resource.pluralize}"),
-        resource_index_route(resource),
-        class: "navigation__link navigation__link--#{nav_link_state(resource)}"
-      ) if valid_action?(:index, resource) && show_action?(:index, model_from_resource(resource)) %>
+<header class="header--main">
+  <h1>
+    <%= link_to admin_root_path do %>
+      <%= image_tag "logocombo.svg", alt: "Terrastories", class: "header--logo" %>
     <% end %>
-  <% end %>
-</nav>
+  </h1>
+  <nav class="navigation" role="navigation">
+    <ul>
+      <% if current_user.super_admin %>
+        <li><%= link_to t("administrate.communities"), admin_communities_path %></a></li>
+        <li>
+          <a href="javascript:void(0);"><%= current_user.email %> <i class="fa fa-angle-down"></i></a>
+          <ul class="dropdown" aria-label="submenu">
+            <% if current_user.super_admin %>
+            <% end %>
+            <li><%= link_to t("profile"), edit_admin_user_path(current_user) %></a></li>
+            <li><%= link_to t("logout"), destroy_user_session_path, method: :delete  %></li>
+          </ul>
+        </li>
+      <% else %>
+        <% if current_user.admin? || current_user.editor? %>
+          <li><%= link_to t("administrate.speakers"), admin_speakers_path %></a></li>
+          <li><%= link_to t("administrate.stories"), admin_stories_path %></a></li>
+          <li><%= link_to t("administrate.places"), admin_places_path %></a></li>
+        <% end %>
+        <% if current_user.admin? %>
+          <li>
+            <a href="javascript:void(0);"><%= t("administrate.community") %> <i class="fa fa-angle-down"></i></a >
+            <ul class="dropdown" aria-label="submenu">
+              <li><%= link_to t("administrate.users"), admin_users_path %></a></li>
+              <li><%= link_to t("administrate.theme"), admin_theme_path(current_community.theme)  %></li>
+            </ul>
+          </li>
+        <% end %>
+        <li>
+          <a href="javascript:void(0);"><%= current_user.email %> <i class="fa fa-angle-down"></i></a>
+          <ul class="dropdown" aria-label="submenu">
+            <% if current_user.super_admin %>
+              <li><%= link_to t("administrate.communities"), admin_communities_path %></a></li>
+            <% end %>
+            <li><%= link_to t("profile"), edit_admin_user_path(current_user) %></a></li>
+            <li><%= link_to t("logout"), destroy_user_session_path, method: :delete  %></li>
+          </ul>
+        </li>
+        <li class="navigation__last-menu-item">
+          <%= link_to(t("administrate.navigation.back_to_app"), home_map_path(locale: params[:locale])) if defined?(root_url) %>
+        </li>
+      <% end %>
+    </ul>
+  </nav>
+</header>

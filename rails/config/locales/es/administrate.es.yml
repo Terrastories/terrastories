@@ -1,5 +1,20 @@
 ---
 es:
+  helpers:
+    label:
+      speaker:
+        speaker_community: Speaker's Community
+        birthdate: Date of Birth
+        birthplace: Born Where
+      story:
+        desc: Description
+        interviewer: Interviewer
+        video_unsupported: Sorry, your browser doesn't support embedded videos.
+        permissions:
+          anonymous: "Searchable"
+          user_only: "Member"
+          editor_only: "Editor"
+          admin_only: "Admin"
   administrate:
     actions:
       confirm: ¿Estás seguro?
@@ -9,6 +24,8 @@ es:
       show_resource: Mostrar %{name}
       new_resource: Nuevo %{name}
       back: Atrás
+    community: Community
+    communities: Communities
     controller:
       create:
         success: "%{resource} fue creado correctamente."
@@ -34,8 +51,10 @@ es:
     speaker: Orador
     stories: Historias
     story: Historia
-    media_link: Enlace De Medios 
-    media_links: Enlaces De Medios  
+    theme: Theme
+    themes: Themes
+    media_link: Enlace De Medios
+    media_links: Enlaces De Medios
     table_columns:
       user:
         id: Id
