@@ -12,7 +12,7 @@ mat:
       locked: "Je account is vergrendeld."
       not_found_in_database: "Ongeldig e-mail of wachtwoord."
       timeout: "Je sessie is verlopen, log alsjeblieft opnieuw in om verder te gaan."
-      unauthenticated: "Je moet eerst inloggen of aanmelden, voordat je verder kunt gaan."
+      unauthenticated: "Fu ko denda a Terrastories, fosi i musu skiif i ne"
       unconfirmed: "Je moet eerst je account bevestigen, voordat je verder kunt gaan"
     mailer:
       confirmation_instructions:
