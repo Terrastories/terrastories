@@ -8,6 +8,18 @@
   align-items: center;
   text-align: center;
 
+  .flashes {
+    margin-bottom: 1rem;
+
+    .flash-alert {
+      color: $dark-red;
+    }
+
+    .flash-notice {
+      color: $dark-orange;
+    }
+  }
+
   .logo {
     img {
       width: 50%;

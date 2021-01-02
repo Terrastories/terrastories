@@ -9,7 +9,7 @@ pt:
         other: '%{count} erros impediram que %{resource} fosse gravado:'
   devise:
     failure:
-      unauthenticated: 'Para continuar, faça login ou registre-se.'
+      unauthenticated: 'Por favor entre com uma conta de comunidade.'
       unconfirmed: 'Antes de continuar, confirme a sua conta.'
       locked: 'A sua conta está bloqueada.'
       invalid: 'Email ou senha inválidos.'
