@@ -9,11 +9,12 @@ class ThemeDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    background_img: Field::String,
-    active: Field::Boolean,
+    background_img: Field::ActiveStorage.with_options({destroy_path: :admin_themes_path}),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    logos: Field::ActiveStorage.with_options({destroy_path: :admin_themes_path}),
+    sponsor_logos: Field::ActiveStorage.with_options({destroy_path: :admin_themes_path}),
+    mapbox_style_url: Field::String,
+    mapbox_access_token: Field::String,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -24,19 +25,16 @@ class ThemeDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
   id
   background_img
-  active
   created_at
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
-  id
   background_img
-  active
-  created_at
-  updated_at
-  logos
+  sponsor_logos
+  mapbox_style_url
+  mapbox_access_token
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -44,8 +42,9 @@ class ThemeDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
   background_img
-  active
-  logos
+  sponsor_logos
+  mapbox_style_url
+  mapbox_access_token
   ].freeze
 
   # COLLECTION_FILTERS
@@ -68,6 +67,6 @@ class ThemeDashboard < Administrate::BaseDashboard
   # end
 
   def permitted_attributes
-    super + [:logos => []]
+    super + [:sponsor_logos => []]
   end
 end

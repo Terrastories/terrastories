@@ -6,10 +6,16 @@
 # you're free to overwrite the RESTful controller actions.
 module Admin
   class ApplicationController < Administrate::ApplicationController
+    include Administrate::Punditize
+
     before_action :authenticate_user!
-    before_action :authenticate_admin
 
     before_action :set_locale
+    before_action :set_community
+    before_action :can_view_list?, only: :index
+    before_action :can_view_show?, only: :show
+
+    rescue_from Pundit::NotAuthorizedError, with: :not_authorized
 
     def default_url_options
       { locale: I18n.locale }
@@ -21,8 +27,17 @@ module Admin
       I18n.locale = params[:locale] || I18n.default_locale
     end
 
-    def authenticate_admin
-      redirect_to '/', alert: 'Not authorized.' unless current_user && current_user.editor?
+    def not_authorized
+      flash.alert = "You are not authorized to perform this action"
+      redirect_to admin_root_path
+    end
+
+    def set_community
+      @_community ||= current_user.community
+    end
+
+    helper_method def current_community
+      @_community
     end
 
     # Override this value to specify the number of elements to display at a time
@@ -30,5 +45,17 @@ module Admin
     # def records_per_page
     #   params[:per_page] || 20
     # end
+
+    # by default, Punditize with Administrate does not policy on index views.
+    # this ensures we check that list views are utilizing the Pundit policies
+    def can_view_list?
+      authorize resource_name, :index?
+    end
+
+    # by default, Punditize with Administrate does not policy on show views.
+    # this ensures we check that list views are utilizing the Pundit policies
+    def can_view_show?
+      authorize resource_name, :show?
+    end
   end
 end

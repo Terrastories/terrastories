@@ -43,7 +43,7 @@ class Card extends Component {
   }
 
   renderUserInformation = () => {
-    if (this.props.user && this.props.user.role === 'editor') {
+    if (this.props.user && this.props.user.role === 'admin') {
       return (
         <ul>
           <li>{I18n.t("hello")} {this.props.user.email} (<a href={`/${I18n.currentLocale()}`}>{I18n.t("back_to_welcome")}</a>)</li>

@@ -1,6 +1,50 @@
-$teal: #5aa68d;
-$blue: #136a7e;
-$white: #ffffff;
-$orange: #d77a34;
+// $teal: #5aa68d;
+
+// $dark-teal: #09697e;
+
 $card-background: rgba(255,255,255,0.70);
-$default-text: #474747;
+
+
+$black: #000000;
+$white: #ffffff;
+// $lightest-gray: #f6f6f6;
+$off-white: #efefef;
+$lightest-gray: #d7d7d7;
+$lighter-gray: #bbbbbb;
+// $light-gray: #7A7A7A;
+$light-gray: #a6a6a6;
+$medium-gray: #54595F;
+$dark-gray: #666666;
+$darker-gray: #3a3a3a;
+
+$text-color: #05323a;
+
+$background: $white;
+$secondary-background: #f6f6f6;
+
+$default-text: $text-color;
+$secondary-text: #54595F;
+
+// These are the official colors from the Designer, as variables
+$blue: #09697e;
+$light-blue: #179caa;
+$medium-blue: $blue;
+$dark-blue: #0f566b; // does not match palatte since dark blue is text color
+
+$green: #33aa8b;
+$light-green: #4dd5ae;
+$medium-green: $green;
+$dark-green: #227a61;
+
+$orange: #d97629;
+$light-orange: #ff9c43;
+$medium-orange: $orange;
+$dark-orange: #b55915;
+
+$light-red: #ff6850;
+$medium-red: #ef502e;
+$dark-red: #c93017;
+
+$light-yellow: #c1880a;
+$medium-yellow: #dea826;
+$dark-yellow: #ffc33e;

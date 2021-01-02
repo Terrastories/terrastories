@@ -1,0 +1,119 @@
+<%#
+# Show
+
+This view is the template for the show page.
+It renders the attributes of a resource,
+as well as a link to its edit page.
+
+## Local variables:
+
+- `page`:
+  An instance of [Administrate::Page::Show][1].
+  Contains methods for accessing the resource to be displayed on the page,
+  as well as helpers for describing how each attribute of the resource
+  should be displayed.
+
+[1]: http://www.rubydoc.info/gems/administrate/Administrate/Page/Show
+%>
+
+<% content_for(:title) { page.page_title } %>
+
+<header class="main-content__header" role="banner">
+  <h1 class="main-content__page-title">
+    <small><%= t("story") %></small><br />
+    <%= content_for(:title) %>
+  </h1>
+
+  <div>
+    <%= link_to(
+      t("administrate.actions.edit_resource", name: page.page_title),
+      [:edit, namespace, page.resource],
+      class: "button",
+    ) if valid_action?(:edit) && show_action?(:edit, page.resource) %>
+  </div>
+</header>
+
+<section class="main-content__body main-content__body--split">
+  <div>
+    <% if page.resource.media.none? %>
+      <p><%= t("no_media") %></p>
+    <% end %>
+    <% page.resource.media.each do |media| %>
+      <% if media.blob.video? %>
+        <video controls width="500">
+
+        <source src="<%= url_for(media) %>"
+                type="<%= media.blob.content_type %>">
+
+        <%= t("helpers.label.#{page.resource_name}.#{:video_unsupported}") %>
+        </video>
+      <% end %>
+    <% end %>
+
+  </div>
+  <div class="sidebar">
+    <h2><%= t("helpers.label.#{page.resource_name}.#{:desc}") %></h2>
+    <p><%= page.resource.desc %></p>
+    <p>
+    <span class="badge"><%= page.resource.language %></span>
+    <span class="badge"><%= t("helpers.label.#{page.resource_name}.permissions.#{page.resource.permission_level}") %></span>
+    </p>
+    <br/>
+
+    <% if (interviewer = page.resource.interviewer) %>
+      <div>
+        <h2><%= t("helpers.label.#{page.resource_name}.#{:interviewer}") %></h2>
+        <% if interviewer.photo.attached? %>
+          <%= image_tag url_for(interviewer.photo) %>
+        <% else %>
+          <%= image_tag asset_path("speaker.png") %>
+        <% end %>
+        <p><%= interviewer.name %></p>
+      </div>
+    <% end %>
+  </div>
+</section>
+
+<section class="main-content__body">
+  <h2><%= t("administrate.speakers") %></h2>
+  <div class="cards">
+    <% page.resource.speakers.each do |speaker| %>
+      <div class="cards__item">
+        <div>
+        <% if speaker.photo.attached? %>
+          <%= image_tag url_for(speaker.photo), class: "cards__item--avatar" %>
+        <% else %>
+          <%= image_tag asset_path("speaker.png"), class: "cards__item--avatar" %>
+        <% end %>
+        <h4 class="cards__item--title"><%= speaker.name %></h4>
+        </div>
+        <div>
+          <%= link_to t("administrate.actions.show_resource", name: nil), admin_speaker_path(speaker), class: "button" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>
+
+<section class="main-content__body">
+  <h2><%= t("administrate.places") %></h2>
+  <div class="cards">
+    <% page.resource.places.each do |place| %>
+      <div class="cards__item">
+        <div>
+        <h4 class="cards__item--title"><%= place.name %></h4>
+        <% if place.photo.attached? %>
+          <%= image_tag url_for(place.photo), style: "display: block; margin: 2rem auto;" %>
+        <% end %>
+        <p>
+          <span class="badge"><%= place.type_of_place %></span>
+          <span class="badge"><%= place.region %></span>
+        </p>
+        </div>
+        <div>
+          <%= link_to t("administrate.actions.show_resource", name: nil), admin_place_path(place), class: "button" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>

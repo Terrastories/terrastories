@@ -65,7 +65,7 @@ const Story = props => {
 }
 
 Story.propTypes = {
-  story: PropTypes.shape,
+  story: PropTypes.object,
   onStoryClick: PropTypes.func,
   storyClass: PropTypes.string,
 };

@@ -3,7 +3,9 @@ require 'csv'
 
 RSpec.describe FileImport::StoryRowDecorator do
   let(:csv) { CSV.parse(file_fixture('story_with_media.csv').read, headers: true).first }
-  subject { described_class.new(csv) }
+  let(:community) { create(:community) }
+
+  subject { described_class.new(csv, community) }
 
   example '#title'  do
     expect(subject.title).to eq csv[0]

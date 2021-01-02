@@ -48,9 +48,15 @@ Importantly, the layer names referenced in `styles` and `mbtiles` have to match,
 
 ## Setup and running the server
 
-Once you have prepped the environment and offline map content, you may proceed to [the standard guides per operating system](README.md#setup) for building and starting Terrastories.
+Once you have prepped the environment and offline map content, you may proceed to [the standard guides per operating system](/README.md#setup) to follow the same process for building and starting Terrastories, with one exception:
 
-It is possible to switch between offline and online by removing the `USE_LOCAL_MAP_SERVER=true` variable when Terrastories is down, so long as the other `.env` map variables (`MAPBOX_STYLE` and `MAPBOX_ACCESS_TOKEN`) are set.
+Instead of running the final step of `docker-compose up` to start Terrastories, run 
+
+```bash
+script/run_offline_maps.sh
+```
+
+It is possible to switch between offline and online by removing the `USE_LOCAL_MAP_SERVER=true` variable when Terrastories is down, so long as the other `.env` map variables (`MAPBOX_STYLE` and `MAPBOX_ACCESS_TOKEN`) are set. Just remember to use the right starting command for each environment (`docker-compose up` for online mode, `script/run_offline_maps.sh` for offline mode).
 
 ## Instructions for setting up an offline computer
 
