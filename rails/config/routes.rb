@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       collection do
         post :import_csv
         get  :export_sample_csv
+        get  :import_page
       end
     end
     resources :places do
