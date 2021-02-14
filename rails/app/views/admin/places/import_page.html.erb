@@ -1,9 +1,9 @@
 <section class="main-content__body padding-fix color-fix">
   <p>
-    IMPORTANT: Need to import stories? The values in your csv must be in a particular order. Feel free to use this <%= link_to "SAMPLE CSV", export_sample_csv_admin_stories_path %> to get started with successfully uploading stories.
+    IMPORTANT: Need to import places? The values in your csv must be in a particular order. Feel free to use this <%= link_to "SAMPLE CSV", export_sample_csv_admin_places_path %> to get started with successfully uploading places.
   </p>
 
-  <%= form_tag send("import_csv_admin_stories_path"), multipart: true do %>
+  <%= form_tag send("import_csv_admin_places_path"), multipart: true do %>
     <div class=form>
       <div class="form-group color-fix">
         <label class="form-title" for="file"><%= t("administrate.file_to_update") %></label>
@@ -14,7 +14,7 @@
                 :data => {
                 :disable_with => 'Uploading your file...',
                 } do %>
-          <i class="fa fa-upload import-icon"></i><%= t("administrate.import_button", resource: t("administrate.stories")) %>
+          <i class="fa fa-upload import-icon"></i><%= t("administrate.import_button", resource: t("administrate.places")) %>
         <% end %>
         <i class="fa fa-spinner fa-spin fa-lg import-spinner"></i>
       </div>

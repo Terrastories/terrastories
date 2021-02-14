@@ -33,6 +33,14 @@ class Place < ApplicationRecord
     RGeo::GeoJSON.encode geojson
   end
 
+  def self.export_sample_csv
+    headers = %w{ name description region }
+
+    CSV.generate(headers: true) do |csv|
+      csv << headers
+    end
+  end
+
   private
 
   def geojson

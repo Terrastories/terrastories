@@ -51,7 +51,7 @@ module Admin
       else
         filepath = params[:file].read
         errors = Story.import_csv(filepath, current_community)
-        errors.empty? ? flash[:notice] = "Stories were imported successfully!" : flash[:error] = errors
+        errors.empty? ? flash[:notice] = "Stories were imported successfully! View them #{view_context.link_to 'here', admin_stories_path}." : flash[:error] = errors
         redirect_back(fallback_location: root_path)
       end
     end

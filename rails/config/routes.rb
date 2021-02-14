@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     resources :speakers do
       collection do
         post :import_csv
+        get  :import_page
+        get  :export_sample_csv
       end
     end
     resources :stories do
@@ -18,6 +20,8 @@ Rails.application.routes.draw do
     resources :places do
       collection do
         post :import_csv
+        get  :import_page
+        get  :export_sample_csv
       end
     end
     resources :curriculum_stories

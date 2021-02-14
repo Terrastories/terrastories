@@ -52,9 +52,17 @@ module Admin
       else
         filepath = params[:file].read
         errors = Place.import_csv(filepath, current_community)
-        errors.empty? ? flash[:notice] = "Places were imported successfully!" : flash[:error] = errors
+        errors.empty? ? flash[:notice] = "Places were imported successfully! View them #{view_context.link_to 'here', admin_places_path}." : flash[:error] = errors
         redirect_back(fallback_location: root_path)
       end
+    end
+
+    def import_page
+      render "import_page"
+    end
+
+    def export_sample_csv
+      send_data Place.export_sample_csv, filename: "sample_places.csv"
     end
   end
 end
