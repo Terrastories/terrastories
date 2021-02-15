@@ -25,7 +25,7 @@ class HomeController < ApplicationController
   end
 
   helper_method def mapbox_token
-    current_community.theme.mapbox_access_token || ENV["MAPBOX_ACCESS_TOKEN"]
+    current_community.theme.mapbox_access_token.presence || ENV["MAPBOX_ACCESS_TOKEN"]
   end
 
   helper_method def local_mapbox?
@@ -36,7 +36,7 @@ class HomeController < ApplicationController
     if local_mapbox?
       "http://localhost:8080/styles/basic/style.json"
     else
-      current_community.theme.mapbox_style_url || ENV["MAPBOX_STYLE"]
+      current_community.theme.mapbox_style_url.presence || ENV["MAPBOX_STYLE"]
     end
   end
 end
