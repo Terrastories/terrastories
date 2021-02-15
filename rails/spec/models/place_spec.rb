@@ -133,4 +133,10 @@ RSpec.describe Place, type: :model do
       expect(place.point_geojson.keys).to include('properties')
     end
   end
+
+  describe 'export_sample_csv' do
+    it 'downloads a csv' do
+      expect(described_class.export_sample_csv).to eq("name,description,region\n")
+    end
+  end
 end
