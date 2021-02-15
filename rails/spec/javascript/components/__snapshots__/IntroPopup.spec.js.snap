@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`IntroPopup should render correctly 1`] = `
+<div
+  className="intro-card isShown"
+>
+  <h2>
+    introduction in local translation
+  </h2>
+  <h3>
+    intro.question in local translation
+  </h3>
+  <p>
+    intro.explanation in local translation
+  </p>
+  <div
+    className="intro-card--actions"
+  >
+    <span
+      className="count"
+      onClick={[Function]}
+    >
+      close in local translation
+    </span>
+  </div>
+</div>
+`;
