@@ -1,10 +1,10 @@
 class Community < ApplicationRecord
-  has_many :users
-  has_many :places
-  has_many :stories
-  has_many :speakers
+  has_many :users, dependent: :nullify
+  has_many :places, dependent: :destroy
+  has_many :stories, dependent: :destroy
+  has_many :speakers, dependent: :destroy
 
-  belongs_to :theme, autosave: true
+  belongs_to :theme, autosave: true, dependent: :destroy
 
   after_initialize :create_theme, if: -> { theme.nil? }
 
