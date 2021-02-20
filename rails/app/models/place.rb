@@ -34,7 +34,7 @@ class Place < ApplicationRecord
   end
 
   def self.export_sample_csv
-    headers = %w{ name description region }
+    headers = %w{ name type_of_place description region long lat media }
 
     CSV.generate(headers: true) do |csv|
       csv << headers

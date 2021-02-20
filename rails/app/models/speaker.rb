@@ -28,7 +28,7 @@ class Speaker < ApplicationRecord
   end
 
   def self.export_sample_csv
-    headers = %w{ name birthdate community }
+    headers = %w{ name birthdate birthplace media }
 
     CSV.generate(headers: true) do |csv|
       csv << headers

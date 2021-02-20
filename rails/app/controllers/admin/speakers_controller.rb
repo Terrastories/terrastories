@@ -69,7 +69,7 @@ module Admin
     end
 
     def export_sample_csv
-      send_data Speaker.export_sample_csv, filename: "sample_places.csv"
+      send_data Speaker.export_sample_csv, filename: "sample_speakers.csv"
     end
   end
 end
