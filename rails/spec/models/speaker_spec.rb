@@ -136,4 +136,10 @@ RSpec.describe Speaker, type: :model do
       it { is_expected.to be_nil }
     end
   end
+
+  describe 'export_sample_csv' do
+    it 'downloads a csv' do
+      expect(described_class.export_sample_csv).to eq("name,birthdate,birthplace,media\n")
+    end
+  end
 end

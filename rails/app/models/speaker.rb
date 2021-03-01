@@ -26,6 +26,14 @@ class Speaker < ApplicationRecord
     end
     Place.find_or_create_by(name: name, community: community)
   end
+
+  def self.export_sample_csv
+    headers = %w{ name birthdate birthplace media }
+
+    CSV.generate(headers: true) do |csv|
+      csv << headers
+    end
+  end
 end
 
 # == Schema Information

@@ -51,13 +51,17 @@ module Admin
       else
         filepath = params[:file].read
         errors = Story.import_csv(filepath, current_community)
-        errors.empty? ? flash[:notice] = "Stories were imported successfully!" : flash[:error] = errors
+        errors.empty? ? flash[:notice] = "Stories were imported successfully! View them #{view_context.link_to 'here', admin_stories_path}." : flash[:error] = errors
         redirect_back(fallback_location: root_path)
       end
     end
 
     def export_sample_csv
-      send_data Story.export_sample_csv, filename: "import-stories.csv"
+      send_data Story.export_sample_csv, filename: "sample_stories.csv"
+    end
+
+    def import_page
+      render "import_page"
     end
   end
 end

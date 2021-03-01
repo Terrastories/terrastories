@@ -75,4 +75,10 @@ RSpec.describe Story, type: :model do
     end
 
   end
+
+  describe 'export_sample_csv' do
+    it 'downloads a csv' do
+      expect(described_class.export_sample_csv).to eq("name,description,speakers,places,interview_location,date_interviewed,interviewer,language,media,permission_level\n")
+    end
+  end
 end
