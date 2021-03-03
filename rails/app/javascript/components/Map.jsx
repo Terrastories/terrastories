@@ -77,8 +77,12 @@ export default class Map extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    if (prevProps.activePoint && !this.props.activePoint) {
+      this.closeActivePopup();
+    }
+
     // Open active popup
-    if (this.props.activePoint  && prevProps.activePoint !== this.props.activePoint) {
+    if (this.props.activePoint && prevProps.activePoint !== this.props.activePoint) {
       this.openPopup(this.props.activePoint);
     }
 

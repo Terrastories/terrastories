@@ -156,10 +156,17 @@ class App extends Component {
         bounds,
         maxZoom: 12
       };
+
+      var activePoint = this.state.activePoint;
+      if (activePoint && !filteredPoints.features.some(point => point.id === activePoint.id)) {
+          activePoint = null;
+      }
+
       this.setState({
         stories: filteredStories,
         points: filteredPoints,
-        framedView
+        framedView,
+        activePoint
       });
     }
   };
