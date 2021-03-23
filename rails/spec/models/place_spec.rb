@@ -83,7 +83,6 @@ RSpec.describe Place, type: :model do
     describe 'does not fail when media is not present' do
       before do
         @fixture_data = file_fixture('place_without_media.csv').read
-        binding.pry
         described_class.import_csv(@fixture_data, community)
       end
 
