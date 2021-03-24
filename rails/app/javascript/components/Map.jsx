@@ -5,7 +5,7 @@ import MiniMap from "../vendor/mapboxgl-control-minimap";
 import Popup from "./Popup";
 
 // @NOTE: MAKE SURE ARRAY IS [LONGITUDE, LATITUDE]
-const defaultCenter = [-108, 38.5];
+// const defaultCenter = [-108, 38.5];
 const defaultBounds = [
   [-180, -85], //southwest
   [180, 85] //northeast
@@ -40,7 +40,7 @@ export default class Map extends Component {
     this.map = new mapboxgl.Map({
       container: this.mapContainer,
       style: this.props.mapboxStyle,
-      center: defaultCenter,
+      center: [this.props.centerLong, this.props.centerLat],
       zoom: defaultZoom,
       maxBounds: defaultBounds,
       pitch: defaultPitch,
@@ -145,7 +145,7 @@ export default class Map extends Component {
 
   resetMapToCenter() {
     this.map.flyTo({
-      center: defaultCenter,
+      center: [this.props.centerLong, this.props.centerLat],
       zoom: defaultZoom,
       pitch: defaultPitch,
       bearing: defaultBearing,

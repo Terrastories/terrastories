@@ -39,4 +39,12 @@ class HomeController < ApplicationController
       current_community.theme.mapbox_style_url.presence || ENV["MAPBOX_STYLE"]
     end
   end
+
+  helper_method def center_lat
+    current_community.theme.center_lat.present? ? current_community.theme.center_lat : 38.5
+  end
+
+  helper_method def center_long
+    current_community.theme.center_long.present? ? current_community.theme.center_long : -108
+  end
 end

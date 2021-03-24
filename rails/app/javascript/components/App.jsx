@@ -30,7 +30,9 @@ class App extends Component {
     mapbox_access_token: PropTypes.string,
     mapbox_style: PropTypes.string,
     logo_path: PropTypes.string,
-    user: PropTypes.object
+    user: PropTypes.object,
+    center_lat: PropTypes.string,
+    center_long: PropTypes.string
   };
 
   componentDidMount() {
@@ -240,6 +242,8 @@ class App extends Component {
           activePoint={this.state.activePoint}
           framedView={this.state.framedView}
           markerImgUrl={this.props.marker_image_url}
+          centerLat={this.props.center_lat}
+          centerLong={this.props.center_long}
         />
         <Card
           activeStory={this.state.activeStory}

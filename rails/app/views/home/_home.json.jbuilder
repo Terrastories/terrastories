@@ -26,4 +26,6 @@ json.user current_user
 json.mapbox_access_token mapbox_token
 json.mapbox_style mapbox_style
 json.use_local_map_server local_mapbox?
+json.center_lat center_lat
+json.center_long center_long
 json.marker_image_url image_url("marker1.png")
