@@ -32,7 +32,14 @@ class App extends Component {
     logo_path: PropTypes.string,
     user: PropTypes.object,
     center_lat: PropTypes.string,
-    center_long: PropTypes.string
+    center_long: PropTypes.string,
+    zoom: PropTypes.number,
+    sw_boundary_lat: PropTypes.string,
+    sw_boundary_long: PropTypes.string,
+    ne_boundary_lat: PropTypes.string,
+    ne_boundary_long: PropTypes.string,
+    pitch: PropTypes.number,
+    bearing: PropTypes.string
   };
 
   componentDidMount() {
@@ -244,6 +251,13 @@ class App extends Component {
           markerImgUrl={this.props.marker_image_url}
           centerLat={this.props.center_lat}
           centerLong={this.props.center_long}
+          zoom={this.props.zoom}
+          sw_boundary_lat={this.props.sw_boundary_lat}
+          sw_boundary_long={this.props.sw_boundary_long}
+          ne_boundary_lat={this.props.ne_boundary_lat}
+          ne_boundary_long={this.props.ne_boundary_long}
+          pitch={this.props.pitch}
+          bearing={this.props.bearing}
         />
         <Card
           activeStory={this.state.activeStory}

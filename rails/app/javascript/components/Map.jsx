@@ -6,13 +6,13 @@ import Popup from "./Popup";
 
 // @NOTE: MAKE SURE ARRAY IS [LONGITUDE, LATITUDE]
 // const defaultCenter = [-108, 38.5];
-const defaultBounds = [
-  [-180, -85], //southwest
-  [180, 85] //northeast
-];
-const defaultZoom = 3.5;
-const defaultPitch = 0;
-const defaultBearing = 0;
+// const defaultBounds = [
+//   [-180, -85], //southwest
+//   [180, 85] //northeast
+// ];
+// const defaultZoom = 3.5;
+// const defaultPitch = 0;
+// const defaultBearing = 0;
 const STORY_POINTS_LAYER_ID = "ts-points-layer";
 const STORY_POINTS_DATA_SOURCE = "ts-points-data";
 
@@ -41,10 +41,13 @@ export default class Map extends Component {
       container: this.mapContainer,
       style: this.props.mapboxStyle,
       center: [this.props.centerLong, this.props.centerLat],
-      zoom: defaultZoom,
-      maxBounds: defaultBounds,
-      pitch: defaultPitch,
-      bearing: defaultBearing
+      zoom: this.props.zoom,
+      maxBounds: [
+        [this.props.sw_boundary_long, this.props.sw_boundary_lat], //southwest
+        [this.props.ne_boundary_long, this.props.ne_boundary_lat] //northeast
+      ],
+      pitch: this.props.pitch,
+      bearing: this.props.bearing
     });
 
     this.map.on("load", () => {
@@ -69,7 +72,7 @@ export default class Map extends Component {
       // Attaches popups + events
       this.addMarkerClickHandler();
     });
-  
+
     if(!this.props.useLocalMapServer) {
       this.map.addControl(new mapboxgl.Minimap(), "top-right");
       this.map.addControl(new mapboxgl.NavigationControl());
@@ -146,10 +149,13 @@ export default class Map extends Component {
   resetMapToCenter() {
     this.map.flyTo({
       center: [this.props.centerLong, this.props.centerLat],
-      zoom: defaultZoom,
-      pitch: defaultPitch,
-      bearing: defaultBearing,
-      maxBounds: defaultBounds
+      zoom: this.props.zoom,
+      pitch: this.props.pitch,
+      bearing: this.props.bearing,
+      maxBounds: [
+        [this.props.sw_boundary_long, this.props.sw_boundary_lat], //southwest
+        [this.props.ne_boundary_long, this.props.ne_boundary_lat] //northeast
+      ]
     });
   }
 
