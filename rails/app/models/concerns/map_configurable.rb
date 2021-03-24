@@ -24,12 +24,6 @@ module MapConfigurable
     @ne_boundary ||= [ne_boundary_long, ne_boundary_lat]
   end
 
-  // @NOTE: MAKE SURE ARRAY IS [LONGITUDE, LATITUDE]
-  // const defaultCenter = [-108, 38.5];
-  // const defaultBounds = [
-  //   [-180, -85], //southwest
-  //   [180, 85] //northeast
-  // ];
   def boundaries
     [sw_boundary, ne_boundary]
   end
