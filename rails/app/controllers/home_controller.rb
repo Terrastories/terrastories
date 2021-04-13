@@ -1,6 +1,6 @@
 # The home controller
 class HomeController < ApplicationController
-  before_action :set_theme
+  before_action :set_theme, except: :community_search_index
 
   def index
     if current_user.super_admin
