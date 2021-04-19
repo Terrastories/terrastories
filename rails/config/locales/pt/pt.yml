@@ -5,8 +5,8 @@ pt:
   language: "Idioma"
   map: "Isto é um... mapa?"
   hello: "Olá"
-  welcome: "Bem vindo"
-  welcome_back: "Bem vindo"
+  welcome: "Bem vindo/a"
+  welcome_back: "Bem vindo/a de volta"
   introduction: "Introdução"
   intro:
     question: "O que é uma Terrastory?"
@@ -30,8 +30,8 @@ pt:
   alphabetical: "A-Z"
   reversed_alphabetical: "Z-A"
   region: "Região"
-  speaker: "O Orador"
+  speaker: "Orador"
   community_search:
-    title: "Search for a Community to Explore"
-    coming_soon: "This feature is coming soon. For now, please request an invite to a specific community."
-  no_media: No Media Available
+    title: "Procure por uma Comunidade para explorar"
+    coming_soon: "Funcionalidade disponível em breve. Requisite um convite para uma comunidade específica."
+  no_media: "Esta mídia não está disponível"
