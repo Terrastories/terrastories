@@ -12,7 +12,8 @@ module CsvHelper
           object.community = community
         when "Place"
           decorator = FileImport::PlaceRowDecorator.new(row)
-          object = Place.find_or_create_by(decorator.to_h)
+          object = Place.find_or_create_by(name: decorator.name)
+          object.assign_attributes(decorator.to_h)
           object.photo.attach(decorator.media.blob_data) if decorator.media.attachable?
           object.community = community
         when "Speaker"
