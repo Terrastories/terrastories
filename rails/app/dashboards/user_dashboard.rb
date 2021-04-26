@@ -9,7 +9,7 @@ class UserDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    email: Field::String,
+    username: Field::String,
     role: EnumField.with_options(skip: :super_admin),
     password: Field::Password,
     created_at: Field::DateTime,
@@ -43,7 +43,7 @@ class UserDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :email,
+    :username,
     :password,
     :role,
     :photo
@@ -53,7 +53,7 @@ class UserDashboard < Administrate::BaseDashboard
   # across all pages of the admin dashboard.
   #
   def display_resource(user)
-    user.email
+    user.username
   end
 
   def permitted_attributes

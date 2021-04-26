@@ -29,6 +29,7 @@ end
 #  id                     :bigint           not null, primary key
 #  current_sign_in_at     :datetime
 #  current_sign_in_ip     :string
+#  username               :string           default(""), not null
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  last_sign_in_at        :datetime

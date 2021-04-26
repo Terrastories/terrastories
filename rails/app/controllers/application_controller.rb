@@ -13,6 +13,10 @@ class ApplicationController < ActionController::Base
   end
 
   private
+  
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:username)
+  end
 
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
