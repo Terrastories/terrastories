@@ -81,6 +81,7 @@ shared_story = Story.find_or_create_by(title: "Terrastories Team testimonial",
 
 # Create a default admin user
 User.find_or_create_by!(email: 'admin@terrastories.com') do |admin|
+  admin.username = 'admin'
   admin.password = 'terrastories'
   admin.password_confirmation = 'terrastories'
   admin.role = 2
@@ -89,6 +90,7 @@ end
 
 # Create a example editor user
 User.find_or_create_by!(email: 'editor@terrastories.com') do |admin|
+  admin.username = 'editor'
   admin.password = 'terrastories'
   admin.password_confirmation = 'terrastories'
   admin.role = 1
@@ -97,6 +99,7 @@ end
 
 # Create a example member user
 User.find_or_create_by!(email: 'user@terrastories.com') do |admin|
+  admin.username = 'user'
   admin.password = 'terrastories'
   admin.password_confirmation = 'terrastories'
   admin.role = 0
@@ -105,6 +108,7 @@ end
 
 # Create a example viewer user
 User.find_or_create_by!(email: 'viewer@terrastories.com') do |user|
+  user.username = 'viewer'
   user.password = 'terrastories'
   user.password_confirmation = 'terrastories'
   user.role = 3
@@ -119,6 +123,7 @@ end
 
 # And community admin user
 User.find_or_create_by!(email: 'admin@r4g.com') do |admin|
+  admin.username = 'adminr4g'
   admin.password = 'terrastories'
   admin.password_confirmation = 'terrastories'
   admin.role = 2
@@ -127,6 +132,7 @@ end
 
 # Super Admin user for Terrastories
 User.find_or_create_by!(email: "super@terrastories.com") do |admin|
+  admin.username = 'super'
   admin.password = 'terrastories'
   admin.password_confirmation = 'terrastories'
   admin.role = 100
@@ -135,6 +141,7 @@ end
 
 # Public user, not associated with Community
 User.find_or_create_by!(email: "public@terrastories.com") do |admin|
+  admin.username = 'public'
   admin.password = 'terrastories'
   admin.password_confirmation = 'terrastories'
   admin.role = 100

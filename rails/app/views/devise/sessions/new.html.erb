@@ -15,8 +15,8 @@
       <% end %>
 
       <div class="field">
-        <%= f.label :email %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <%= f.label :username, t("username") %>
+        <%= f.text_field :username, autofocus: true, autocomplete: "off" %>
       </div>
 
       <div class="field">
