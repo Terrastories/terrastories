@@ -100,6 +100,20 @@ class App extends Component {
           filterMap[category] = Array.from(speakerSet).sort();
           break;
         }
+        case FILTER_CATEGORIES[3]: {
+          // second category: Topic
+          const topicSet = new Set(
+            this.props.stories
+              .map(story => {
+                return story.points.map(
+                  point => point.properties.topic
+                );
+              })
+              .flat()
+          );
+          filterMap[category] = Array.from(topicSet).sort();
+          break;
+        }
       }
     });
     return filterMap;
@@ -149,6 +163,23 @@ class App extends Component {
               return (
                 speaker.name &&
                 speaker.name.toLowerCase() === item.toLowerCase()
+              );
+            })
+          ) {
+            return story;
+          }
+        });
+        break;
+      }
+      case FILTER_CATEGORIES[3]: {
+        // second category: topic
+        filteredStories = this.props.stories.filter(story => {
+          if (
+            story.points.some(point => {
+              return (
+                point.properties["topic"] &&
+                point.properties["topic"].toLowerCase() ===
+                  item.toLowerCase()
               );
             })
           ) {

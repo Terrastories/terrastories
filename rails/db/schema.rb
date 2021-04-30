@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_23_183008) do
+ActiveRecord::Schema.define(version: 2021_04_28_010507) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -118,6 +118,7 @@ ActiveRecord::Schema.define(version: 2021_03_23_183008) do
     t.integer "interview_location_id"
     t.integer "interviewer_id"
     t.integer "community_id"
+    t.string "topic"
   end
 
   create_table "themes", force: :cascade do |t|

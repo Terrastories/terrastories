@@ -23,6 +23,7 @@ class StoryDashboard < Administrate::BaseDashboard
     community: Field::BelongsTo,
     updated_at: Field::DateTime,
     media_links: Field::HasMany,
+    topic: Field::String,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -53,6 +54,7 @@ class StoryDashboard < Administrate::BaseDashboard
     :permission_level,
     :created_at,
     :updated_at,
+    :topic
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -62,6 +64,7 @@ class StoryDashboard < Administrate::BaseDashboard
     :title,
     :desc,
     :language,
+    :topic,
     :speakers,
     :interview_location,
     :interviewer,
