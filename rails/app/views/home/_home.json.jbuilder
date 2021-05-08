@@ -18,6 +18,7 @@ json.stories stories do |story|
     json.url media_link.url
   end
   json.permission_level story.permission_level == "anonymous" ? "anonymous" : "restricted"
+  json.topic story.topic
 end
 json.logo_path image_path("logocombo.svg")
 json.user current_user

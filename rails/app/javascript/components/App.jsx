@@ -104,11 +104,7 @@ class App extends Component {
           // second category: Topic
           const topicSet = new Set(
             this.props.stories
-              .map(story => {
-                return story.points.map(
-                  point => point.properties.topic
-                );
-              })
+              .map(story => story.topic)
               .flat()
           );
           filterMap[category] = Array.from(topicSet).sort();
@@ -172,19 +168,14 @@ class App extends Component {
         break;
       }
       case FILTER_CATEGORIES[3]: {
-        // second category: topic
+        // fourth category: topic
         filteredStories = this.props.stories.filter(story => {
-          if (
-            story.points.some(point => {
+            if (story.topic) {
               return (
-                point.properties["topic"] &&
-                point.properties["topic"].toLowerCase() ===
-                  item.toLowerCase()
-              );
-            })
-          ) {
-            return story;
-          }
+                story.topic &&
+                story.topic.toLowerCase() === item.toLowerCase()
+              )
+            }
         });
         break;
       }
