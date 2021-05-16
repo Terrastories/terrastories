@@ -37,6 +37,7 @@ end
 #  language              :string
 #  permission_level      :integer
 #  title                 :string
+#  topic                 :string
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
 #  community_id          :integer
