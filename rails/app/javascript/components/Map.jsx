@@ -80,6 +80,9 @@ export default class Map extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    if (prevProps.points !== this.props.points) {
+      this.updateMapPoints();
+    }
     // Open active popup
     if (this.props.activePoint  && prevProps.activePoint !== this.props.activePoint) {
       this.openPopup(this.props.activePoint);
@@ -108,6 +111,12 @@ export default class Map extends Component {
       if (error) throw "Error loading marker images: " + error;
       this.map.addImage('ts-marker', image);
     });
+  }
+
+  updateMapPoints() {
+    if (this.map.getSource(STORY_POINTS_DATA_SOURCE)) {
+      this.map.getSource(STORY_POINTS_DATA_SOURCE).setData(this.props.points);
+    }
   }
 
   addMarkerClickHandler() {
