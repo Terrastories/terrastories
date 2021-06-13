@@ -9,6 +9,7 @@ Rails.application.routes.draw do
         get  :import_page
         get  :export_sample_csv
       end
+      delete :photos, on: :member, action: :delete_photo
     end
     resources :stories do
       collection do

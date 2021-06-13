@@ -71,5 +71,11 @@ module Admin
     def export_sample_csv
       send_data Speaker.export_sample_csv, filename: "sample_speakers.csv"
     end
+
+    def delete_photo
+      photo = requested_resource.photos.find(params[:attachment_id])
+      photo.purge
+      redirect_back(fallback_location: requested_resource)
+    end
   end
 end
