@@ -9,7 +9,7 @@ class SpeakerDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    photo: Field::ActiveStorage,
+    photo: Field::ActiveStorage.with_options({destroy_path: :photos_admin_speaker_path}),
     name: Field::String,
     stories: Field::ScopedHasMany.with_options(scope: -> (field) { field.resource.community.stories }),
     birthdate: Field::DateTime.with_options(format: "%d/%m/%Y"),
