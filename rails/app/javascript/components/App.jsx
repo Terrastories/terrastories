@@ -248,7 +248,8 @@ class App extends Component {
       activePoint: null,
       activeStory: null,
       filterCategory: DEFAULT_CATEGORY_PLACEHOLDER,
-      filterItem: DEFAULT_ITEM_PLACEHOLDER
+      filterItem: DEFAULT_ITEM_PLACEHOLDER,
+      itemOptions: []
     });
   };
 
