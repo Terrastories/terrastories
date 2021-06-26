@@ -21,7 +21,7 @@ class App extends Component {
       filterCategory: DEFAULT_CATEGORY_PLACEHOLDER,
       filterItem: DEFAULT_ITEM_PLACEHOLDER,
       itemOptions: [],
-    };
+    }
   }
 
   static propTypes = {
@@ -39,7 +39,7 @@ class App extends Component {
     ne_boundary_lat: PropTypes.string,
     ne_boundary_long: PropTypes.string,
     pitch: PropTypes.number,
-    bearing: PropTypes.string,
+    bearing: PropTypes.string
   };
 
   componentDidMount() {
@@ -47,11 +47,11 @@ class App extends Component {
     this.setState({ points: points });
   }
 
-  getPointsFromStories = (stories) => {
-    const points = stories.map((story) => story.points).flat();
+  getPointsFromStories = stories => {
+    const points = stories.map(story => story.points).flat();
     const pointObj = {
       type: "FeatureCollection",
-      features: points,
+      features: points
     };
     return pointObj;
   };
@@ -60,14 +60,14 @@ class App extends Component {
     // Build Filter Map for Dropdowns
     // {category name: array of items}
     let filterMap = {};
-    FILTER_CATEGORIES.map((category) => {
+    FILTER_CATEGORIES.map(category => {
       switch (category) {
         case FILTER_CATEGORIES[0]: {
           // first category: Region
           const regionSet = new Set(
             this.props.stories
-              .map((story) => {
-                return story.points.map((point) => point.properties.region);
+              .map(story => {
+                return story.points.map(point => point.properties.region);
               })
               .flat()
           );
@@ -78,9 +78,9 @@ class App extends Component {
           // second category: Type of Place
           const typeOfPlaceSet = new Set(
             this.props.stories
-              .map((story) => {
+              .map(story => {
                 return story.points.map(
-                  (point) => point.properties.type_of_place
+                  point => point.properties.type_of_place
                 );
               })
               .flat()
@@ -92,8 +92,8 @@ class App extends Component {
           // third category: Speaker
           const speakerSet = new Set(
             this.props.stories
-              .map((story) => {
-                return story.speakers.map((speaker) => speaker.name);
+              .map(story => {
+                return story.speakers.map(speaker => speaker.name);
               })
               .flat()
           );
@@ -103,7 +103,9 @@ class App extends Component {
         case FILTER_CATEGORIES[3]: {
           // second category: Topic
           const topicSet = new Set(
-            this.props.stories.map((story) => story.topic).flat()
+            this.props.stories
+              .map(story => story.topic)
+              .flat()
           );
           filterMap[category] = Array.from(topicSet).sort();
           break;
@@ -118,9 +120,9 @@ class App extends Component {
     switch (category) {
       case FILTER_CATEGORIES[0]: {
         // first category: region
-        filteredStories = this.props.stories.filter((story) => {
+        filteredStories = this.props.stories.filter(story => {
           if (
-            story.points.some((point) => {
+            story.points.some(point => {
               return (
                 point.properties.region &&
                 point.properties.region.toLowerCase() === item.toLowerCase()
@@ -134,9 +136,9 @@ class App extends Component {
       }
       case FILTER_CATEGORIES[1]: {
         // second category: type of places
-        filteredStories = this.props.stories.filter((story) => {
+        filteredStories = this.props.stories.filter(story => {
           if (
-            story.points.some((point) => {
+            story.points.some(point => {
               return (
                 point.properties["type_of_place"] &&
                 point.properties["type_of_place"].toLowerCase() ===
@@ -151,9 +153,9 @@ class App extends Component {
       }
       case FILTER_CATEGORIES[2]: {
         // third category: speaker name
-        filteredStories = this.props.stories.filter((story) => {
+        filteredStories = this.props.stories.filter(story => {
           if (
-            story.speakers.some((speaker) => {
+            story.speakers.some(speaker => {
               return (
                 speaker.name &&
                 speaker.name.toLowerCase() === item.toLowerCase()
@@ -167,12 +169,13 @@ class App extends Component {
       }
       case FILTER_CATEGORIES[3]: {
         // fourth category: topic
-        filteredStories = this.props.stories.filter((story) => {
-          if (story.topic) {
-            return (
-              story.topic && story.topic.toLowerCase() === item.toLowerCase()
-            );
-          }
+        filteredStories = this.props.stories.filter(story => {
+            if (story.topic) {
+              return (
+                story.topic &&
+                story.topic.toLowerCase() === item.toLowerCase()
+              )
+            }
         });
         break;
       }
@@ -182,29 +185,26 @@ class App extends Component {
       const bounds = bbox(filteredPoints);
       const framedView = {
         bounds,
-        maxZoom: 12,
+        maxZoom: 12
       };
       this.setState({
         stories: filteredStories,
         points: filteredPoints,
-        framedView,
+        framedView
       });
     }
   };
 
-  handleFilterCategoryChange = (option) => {
+  handleFilterCategoryChange = option => {
     if (option === null) {
       this.resetStoriesAndMap();
     } else {
       const category = option.value;
-      this.setState({
-        filterCategory: category,
-        itemOptions: this.filterMap()[category],
-      });
+      this.setState({ filterCategory: category, itemOptions: this.filterMap()[category] })
     }
-  };
+  }
 
-  handleFilterItemChange = (option) => {
+  handleFilterItemChange = option => {
     if (option === null) {
       this.resetStoriesAndMap();
     } else if (this.state.filterCategory !== null) {
@@ -212,27 +212,27 @@ class App extends Component {
       this.handleFilter(this.state.filterCategory, item);
       this.setState({ filterItem: item });
     }
-  };
+  }
 
-  showMapPointStories = (stories) => {
-    let storyTitles = stories.map((story) => story.title);
+  showMapPointStories = stories => {
+    let storyTitles = stories.map(story => story.title);
     let filteredStories = [];
-    filteredStories = this.props.stories.filter((story) =>
+    filteredStories = this.props.stories.filter(story =>
       storyTitles.includes(story.title)
     );
     if (filteredStories) {
       this.setState({
         stories: filteredStories,
-        activeStory: filteredStories[0],
+        activeStory: filteredStories[0]
       });
     }
   };
 
-  handleStoriesChanged = (stories) => {
+  handleStoriesChanged = stories => {
     this.setState({ stories: stories });
   };
 
-  handleStoryClick = (story) => {
+  handleStoryClick = story => {
     // set active to first point in story
     const point = story.points[0];
     const framedView = { center: point.geometry.coordinates };
@@ -248,8 +248,7 @@ class App extends Component {
       activePoint: null,
       activeStory: null,
       filterCategory: DEFAULT_CATEGORY_PLACEHOLDER,
-      filterItem: DEFAULT_ITEM_PLACEHOLDER,
-      itemOptions: [],
+      filterItem: DEFAULT_ITEM_PLACEHOLDER
     });
   };
 
