@@ -12,17 +12,17 @@
 
 ### Map content
 
-Terrastories uses the Mapbox GL JS engine to serve maps. What this means is that Terrastories can either load maps from `Mapbox.com` directly, or load offline map tiles called `mbtiles` that were designed and styled in Mapbox.com's `Studio` environment.
+Terrastories uses the Mapbox GL JS engine to serve maps. What this means is that Terrastories can either load maps from `Mapbox.com` directly, or load offline map tiles called `MBTiles` that were designed and styled in Mapbox.com's `Studio` environment.
 
 For some use cases, it may be sufficient to use one of Mapbox's basic styles, such as OpenStreetMap (OSM) or imagery. The default map served by Terrastories is a light OSM map. 
 
-You may also opt to design your own custom map style using Mapbox Studio. For example, if you have your own GIS shapefiles, you can upload the shapefile content to [Mapbox Studio](https://www.mapbox.com/mapbox-studio/), and use the Studio interface to lay out the map. You have to have a Mapbox account to use Mapbox Studio (creating and designing maps using Mapbox Studio is free up to certain file size limitations). To learn how to use Mapbox Studio, you can refer to the manuals and tutorials made available by Mapbox [here](https://www.mapbox.com/help/studio-manual-tutorials/) or other resources on the web.
+You may also opt to design your own custom map style using Mapbox Studio. For example, if you have your own GIS data, you can upload the data to [Mapbox Studio](https://www.mapbox.com/mapbox-studio/), and use the Studio interface to lay out the map. You have to have a Mapbox account to use Mapbox Studio (creating and designing maps using Mapbox Studio is free up to certain file size limitations). To learn how to use Mapbox Studio, you can refer to the manuals and tutorials made available by Mapbox [here](https://www.mapbox.com/help/studio-manual-tutorials/) or other resources on the web.
 
 To set the map style used by Terrastories, modify the `MAPBOX_STYLE` variable in the `.env` file in the main Terrastories directory. You can copy and paste your map style URL from Mapbox Studio if using an online map.
 
 You can also set a `Mapbox.com` map for a community in the `Theme` menu when logged in as an admin user. Paste in the map style URL, and your map token, in the fields and it will automatically update the map for that community instance.
 
-For offline "Field Kit" usage of Terrastories, it is necessary to create your own custom map using your own GIS data, as above. There are several additional steps to generate and style the `mbtiles`, described in the [SETUP-OFFLINE.md](SETUP-OFFLINE.md) file.
+For offline "Field Kit" usage of Terrastories, it is necessary to create your own custom map using your own GIS data, as above. There are several additional steps to generate and style the `MBTiles`, described in the [SETUP-OFFLINE.md](SETUP-OFFLINE.md) file.
 
 _**Note:** when using Mapbox.com maps with Terrastories, you are subject to Mapbox's [pricing schema](https://www.mapbox.com/pricing/) which has a free tier of up to 50,000 map loads per month. If you anticipate more monthly loads than that, you can get in touch with Mapbox's community team at community@mapbox.com to see what they can do to help._
 
