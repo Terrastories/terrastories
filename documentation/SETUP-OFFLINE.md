@@ -36,7 +36,7 @@ Terrastories in the "Field Kit" environment works by integrating map `tiles` and
 
 * The open-source GIS software QGIS has several tools for generating `MBTiles` in both raster and vector format. `Generate XYZ tiles (MBTiles)` can be used to create raster tiles of all of the content on your map canvas; this may also include XYZ Tiles from services such as OpenStreetMap, Bing, and Google Satellite. `Generate Vector Tiles (MBTiles)` can be used to create vector tiles from one or more vector layers. You can then further style these vector tiles in your ` style.json` file.
 * There is also a command line option to generate vector `MBTiles` called `tippecanoe`, created by Mapbox: [guide](https://docs.mapbox.com/help/troubleshooting/large-data-tippecanoe/).
-* If you already have tiles in a different format (like `tilelive-file`), you can use a Node command line tool called `tl` to conver them to `MBTiles`: [guide](https://github.com/mojodna/tl).
+* If you already have tiles in a different format (like in the `tilelive-file` used by [Mapeo](https://mapeo.app/)), you can use a Node command line tool called `tl` to conver them to `MBTiles`: [guide](https://github.com/mojodna/tl).
 
 Once generated, place the `MBTiles` in the `tileserver/data/mbtiles/` directory, with the right filename as referenced by `style.json`.
 
