@@ -18,8 +18,8 @@
             "type": "vector"
         }
      },
-     "sprite": "sprites",
-     "glyphs": "fonts/{fontstack}/{range}.pbf",
+     "sprite": "sprite",
+     "glyphs": "{fontstack}/{range}.pbf",
      "layers": [
          {
              "id": "background",
