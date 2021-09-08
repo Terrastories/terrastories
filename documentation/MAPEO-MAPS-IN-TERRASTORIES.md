@@ -1,4 +1,4 @@
-The [Terrastories](https://www.notion.so/Terrastories-d61ccbf6dba345d1aa7f616fe4d54f6f) application uses a tileserver `TileServer-GL` developed by KlokanTech, which reads a different tile format than Mapeo: MBTiles. MBTiles is a tile format that stores tiles in a SQLite database rather than in individual folders like the tiles used by Mapeo. 
+The [Terrastories](https://www.notion.so/Terrastories-d61ccbf6dba345d1aa7f616fe4d54f6f) application uses a tileserver `TileServer-GL` developed by KlokanTech, which reads a different tile format than Mapeo: MBTiles. MBTiles is a tile format that stores tiles in a SQLite database rather than in individual folders like the XYZ tiles used by Mapeo. 
 
 There are various pathways to convert tiles generated for Mapeo working in Terrastories.
 
@@ -14,9 +14,13 @@ Either pathway will generate a raster `.mbtiles` file which you can add to Terra
 
 ### Converting vector tiles for Terrastories
 
+This workflow assumes that you have `.pbf` vector tiles in an XYZ file directory format.
+
 1. Converting the tiles to MBTiles
     1. Using TL:
-        1. In a terminal, navigate to the directory where your tiles are located, and run a conversion command like `tl copy -z 1 -Z 16 file://./**tile-directory** mbtiles://./**tiles**.mbtiles` where **tile-directory** is the name of the directory, and **tiles** is the name you want to give your mbtiles file.
+        1. In a terminal, navigate to the directory where your tiles are located, and run a conversion command like `tl copy -z 1 -Z 16 file://./**tile-directory**/filetype=vector.pbf mbtiles://./**tiles**.mbtiles` where **tile-directory** is the name of the directory, and **tiles** is the name you want to give your mbtiles file.
+
+        _Note_: if the filename for your tiles ends in `.vector` (like `1.vector.pbf`), you need to have this `?filetype=vector.pbf` parameter at the end of your file definition. However, if the filenames don't end in `.vector`, you should use `filetype=pbf`.
 2. Editing the style.json
     1. In the `style.json` file that comes with the tiles generated for Mapeo, replace the `sources` → `composite` content with the following: 
 
@@ -38,4 +42,4 @@ Either pathway will generate a raster `.mbtiles` file which you can add to Terra
     1. There are dedicated folders for the `MBTiles`, sprites, and glyphs.
     2. In `config.json`, set the `"mbtiles":` definition to your MBTiles file. 
 
-With all of this done, the next time you start Terrastories for offline mode it should load the vector tiles successfully as the basemap. (You can also check the tileserver directly by visiting `localhost:8080`.
+With all of this done, the next time you start Terrastories for offline mode it should load the raster or vector tiles successfully as the basemap. (You can also check the tileserver directly by visiting `localhost:8080`.
