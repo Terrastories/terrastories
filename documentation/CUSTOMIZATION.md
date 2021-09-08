@@ -22,7 +22,7 @@ To set the map style used by Terrastories, modify the `MAPBOX_STYLE` variable in
 
 You can also set a `Mapbox.com` map for a community in the `Theme` menu when logged in as an admin user. Paste in the map style URL, and your map token, in the fields and it will automatically update the map for that community instance.
 
-For offline "Field Kit" usage of Terrastories, it is necessary to create your own custom map using your own GIS data, as above. There are several additional steps to generate and style the `MBTiles`, described in the [SETUP-OFFLINE.md](SETUP-OFFLINE.md) file.
+For offline "Field Kit" usage of Terrastories, it is necessary to create your own custom map using your own GIS data, as above. There are several additional steps to generate and style the `MBTiles`, described in the [SETUP-OFFLINE.md](SETUP-OFFLINE.md) file. It's also possible to get offline basemaps for [Mapeo](https://mapeo.app) working in Terrastories: please see our [Mapeo to Terrastories guide](MAPEO-MAPS-IN-TERRASTORIES.md).
 
 _**Note:** when using Mapbox.com maps with Terrastories, you are subject to Mapbox's [pricing schema](https://www.mapbox.com/pricing/) which has a free tier of up to 50,000 map loads per month. If you anticipate more monthly loads than that, you can get in touch with Mapbox's community team at community@mapbox.com to see what they can do to help._
 
