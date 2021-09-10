@@ -22,7 +22,9 @@
 
   .logo {
     img {
-      width: 50%;
+      max-width: 120px;
+      width: 14vh;
+      height: auto;
     }
   }
 
@@ -39,6 +41,7 @@
     flex-shrink: 0;
     @media screen and (max-width: 600px) {
       width: 80vw;
+      margin-bottom: 10px;
     }
 
     img {
@@ -94,11 +97,6 @@
       }
     }
   }
-  @include for-phone-only {
-    .logo {
-      height: 25%;
-    }
-  }
   @media screen and (max-width: 370px) {
     h1 {
       font-size: 1.5rem;
@@ -114,7 +112,11 @@
       font-size: 0.6em;
     }
   }
-  @media screen and (max-height: 450px) {
+  @media screen and (max-height: 550px) {
+    .built-with {
+      display: none;
+    }
+
     .logo {
       display: none;
     }
