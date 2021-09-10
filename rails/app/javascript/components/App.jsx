@@ -48,7 +48,16 @@ class App extends Component {
   }
 
   getPointsFromStories = stories => {
-    const points = stories.map(story => story.points).flat();
+    //get unique points only
+    const points = stories.reduce((accumulator, story) => {
+      story.points.map(storyPoint => {
+        if (!accumulator.some(point => point.id === storyPoint.id)) {
+          accumulator.push(storyPoint);
+        }
+      });
+      return accumulator;
+    }, []);
+
     const pointObj = {
       type: "FeatureCollection",
       features: points
