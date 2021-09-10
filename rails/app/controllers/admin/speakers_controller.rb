@@ -71,5 +71,17 @@ module Admin
     def export_sample_csv
       send_data Speaker.export_sample_csv, filename: "sample_speakers.csv"
     end
+
+    def delete
+      remove_attachment
+    end
+
+    private
+
+    def remove_attachment
+      photo = ActiveStorage::Attachment.find(params[:attachment_id])
+      photo.purge
+      redirect_back(fallback_location: "/")
+    end
   end
 end

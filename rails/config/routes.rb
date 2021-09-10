@@ -34,6 +34,7 @@ Rails.application.routes.draw do
     delete '/admin/places' => 'places#delete'
     delete '/admin/stories' => 'stories#delete'
     delete '/admin/themes' => 'admin/themes#delete'
+    delete '/admin/speakers' => 'admin/speakers#delete'
 
   scope "(:locale)", locale: Regexp.union(I18n.available_locales.map(&:to_s)) do
     resources :places do
