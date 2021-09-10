@@ -60,6 +60,10 @@ as well as a link to its edit page.
     </p>
     <br/>
 
+    <h2><%= t("administrate.topic") %></h2>
+    <p><%= page.resource.topic %></p>
+    <br/>
+
     <% if (interviewer = page.resource.interviewer) %>
       <div>
         <h2><%= t("helpers.label.#{page.resource_name}.#{:interviewer}") %></h2>

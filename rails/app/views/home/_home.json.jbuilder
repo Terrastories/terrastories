@@ -17,13 +17,21 @@ json.stories stories do |story|
     json.id media_link.id
     json.url media_link.url
   end
-
-
   json.permission_level story.permission_level == "anonymous" ? "anonymous" : "restricted"
+  json.topic story.topic
 end
 json.logo_path image_path("logocombo.svg")
 json.user current_user
 json.mapbox_access_token mapbox_token
 json.mapbox_style mapbox_style
 json.use_local_map_server local_mapbox?
+json.center_lat @theme.center_lat
+json.center_long @theme.center_long
+json.sw_boundary_lat @theme.sw_boundary_lat
+json.sw_boundary_long @theme.sw_boundary_long
+json.ne_boundary_lat @theme.ne_boundary_lat
+json.ne_boundary_long @theme.ne_boundary_long
+json.zoom @theme.zoom.to_f
+json.pitch @theme.pitch.to_f
+json.bearing @theme.bearing
 json.marker_image_url image_url("marker1.png")

@@ -5,14 +5,14 @@ import MiniMap from "../vendor/mapboxgl-control-minimap";
 import Popup from "./Popup";
 
 // @NOTE: MAKE SURE ARRAY IS [LONGITUDE, LATITUDE]
-const defaultCenter = [-108, 38.5];
-const defaultBounds = [
-  [-180, -85], //southwest
-  [180, 85] //northeast
-];
-const defaultZoom = 3.5;
-const defaultPitch = 0;
-const defaultBearing = 0;
+// const defaultCenter = [-108, 38.5];
+// const defaultBounds = [
+//   [-180, -85], //southwest
+//   [180, 85] //northeast
+// ];
+// const defaultZoom = 3.5;
+// const defaultPitch = 0;
+// const defaultBearing = 0;
 const STORY_POINTS_LAYER_ID = "ts-points-layer";
 const STORY_POINTS_DATA_SOURCE = "ts-points-data";
 
@@ -40,11 +40,14 @@ export default class Map extends Component {
     this.map = new mapboxgl.Map({
       container: this.mapContainer,
       style: this.props.mapboxStyle,
-      center: defaultCenter,
-      zoom: defaultZoom,
-      maxBounds: defaultBounds,
-      pitch: defaultPitch,
-      bearing: defaultBearing
+      center: [this.props.centerLong, this.props.centerLat],
+      zoom: this.props.zoom,
+      maxBounds: [
+        [this.props.sw_boundary_long, this.props.sw_boundary_lat], //southwest
+        [this.props.ne_boundary_long, this.props.ne_boundary_lat] //northeast
+      ],
+      pitch: this.props.pitch,
+      bearing: this.props.bearing
     });
 
     this.map.on("load", () => {
@@ -69,7 +72,7 @@ export default class Map extends Component {
       // Attaches popups + events
       this.addMarkerClickHandler();
     });
-  
+
     if(!this.props.useLocalMapServer) {
       this.map.addControl(new mapboxgl.Minimap(), "top-right");
       this.map.addControl(new mapboxgl.NavigationControl());
@@ -80,8 +83,13 @@ export default class Map extends Component {
     if (prevProps.points !== this.props.points) {
       this.updateMapPoints();
     }
+
+    if (prevProps.activePoint && !this.props.activePoint) {
+      this.closeActivePopup();
+    }
+
     // Open active popup
-    if (this.props.activePoint  && prevProps.activePoint !== this.props.activePoint) {
+    if (this.props.activePoint && prevProps.activePoint !== this.props.activePoint) {
       this.openPopup(this.props.activePoint);
     }
 
@@ -154,11 +162,14 @@ export default class Map extends Component {
 
   resetMapToCenter() {
     this.map.flyTo({
-      center: defaultCenter,
-      zoom: defaultZoom,
-      pitch: defaultPitch,
-      bearing: defaultBearing,
-      maxBounds: defaultBounds
+      center: [this.props.centerLong, this.props.centerLat],
+      zoom: this.props.zoom,
+      pitch: this.props.pitch,
+      bearing: this.props.bearing,
+      maxBounds: [
+        [this.props.sw_boundary_long, this.props.sw_boundary_lat], //southwest
+        [this.props.ne_boundary_long, this.props.ne_boundary_lat] //northeast
+      ]
     });
   }
 

@@ -11,8 +11,8 @@
   .logo {
     img {
       max-width: 200px;
-      width: 15vw;
-      height:auto;
+      width: 15vh;
+      height: auto;
     }
   }
 
@@ -26,7 +26,7 @@
     height: 20rem;
     display: flex;
     flex-direction: column;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     flex-shrink: 0;
     @media screen and (max-width: 600px) {
       width: 80vw;

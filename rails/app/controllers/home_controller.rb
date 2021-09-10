@@ -1,5 +1,7 @@
 # The home controller
 class HomeController < ApplicationController
+  before_action :set_theme, except: :community_search_index
+
   def index
     if current_user.super_admin
       raise Pundit::NotAuthorizedError
@@ -25,7 +27,7 @@ class HomeController < ApplicationController
   end
 
   helper_method def mapbox_token
-    current_community.theme.mapbox_access_token.presence || ENV["MAPBOX_ACCESS_TOKEN"]
+    @theme.mapbox_access_token.presence || ENV["MAPBOX_ACCESS_TOKEN"]
   end
 
   helper_method def local_mapbox?
@@ -36,7 +38,12 @@ class HomeController < ApplicationController
     if local_mapbox?
       "http://localhost:8080/styles/basic/style.json"
     else
-      current_community.theme.mapbox_style_url.presence || ENV["MAPBOX_STYLE"]
+      @theme.mapbox_style_url.presence || ENV["MAPBOX_STYLE"]
     end
+  end
+
+  private
+  def set_theme
+    @theme ||= current_community.theme
   end
 end

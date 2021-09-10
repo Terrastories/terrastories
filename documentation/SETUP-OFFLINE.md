@@ -26,25 +26,53 @@ Copy the contents of this file into a newly created file called `.env` (Do not c
 
 Next, add a line at the bottom of the `.env` file with the content: `USE_LOCAL_MAP_SERVER=true`. (Remove this variable to go back to using online maps from Mapbox.)
 
-### Step 2: preparing the offline map (styles and tiles)
+### Step 2: preparing the offline map (tiles and styles)
 
-Terrastories in the "Field Kit" environment works by integrating map `styles` and `mbtiles`. Tiles are the raw spatial data, and styles gives a symbology to the data (like color, outline, opacity, label, and so on). Unlike the online environment (where Terrastories relies on Mapbox.com for all map content), each of these have to be made available to Terrastories in a file format.
+Terrastories in the "Field Kit" environment works by integrating map `tiles` and `styles`. Map tiles are square grids of spatial data consumed by the offline Tileserver, and can be in either raster (image) or vector format. Styles points the Terrastories tileserver to the tiles and in the case of vector data, gives style or symbology properties to the data (such as color, opacity, labels, visibility per zoom extent, and so on). Unlike the online environment (where Terrastories relies on Mapbox.com for all map content), each of these have to be made available to Terrastories in a file format.
 
-`Styles` can be downloaded from Mapbox Studio and processed in the following way:
+#### Working with MBTiles
+
+`MBTiles` can be generated from standard geospatial data (Shapefile, GeoJSON) in several ways. 
+
+* The open-source GIS software QGIS has several tools for generating `MBTiles` in both raster and vector format. `Generate XYZ tiles (MBTiles)` can be used to create raster tiles of all of the content on your map canvas; this may also include XYZ Tiles from services such as OpenStreetMap, Bing, and Google Satellite. `Generate Vector Tiles (MBTiles)` can be used to create vector tiles from one or more vector layers. You can then further style these vector tiles in your ` style.json` file.
+* There is also a command line option to generate vector `MBTiles` called `tippecanoe`, created by Mapbox: [guide](https://docs.mapbox.com/help/troubleshooting/large-data-tippecanoe/).
+* If you already have tiles in a different format (like in the `tilelive-file` used by [Mapeo](https://mapeo.app/)), you can use a Node command line tool called `tl` to convert them to `MBTiles`. Please see our [Mapeo maps to Terrastories guide](MAPEO-MAPS-IN-TERRASTORIES.md).
+
+Once generated, place the `MBTiles` in the `tileserver/data/mbtiles/` directory, with the right filename as referenced by `style.json`.
+
+#### Working with styles
+
+`Styles` (in style.json format) defines the visual appearance of a map: what data to draw, the order to draw it in, and how to style the data when drawing it. Mapbox provides a helpful [guide](https://docs.mapbox.com/mapbox-gl-js/style-spec/) with all of the possible style parameters, but it's generally useful to download an existing `style.json` file and modify it to suit your needs. One of the easiest ways to build a `style.json` file is by uploading and styling your data on [Mapbox Studio](http://mapbox.com/studio) and downloading the `style.json` file from there, in the following way:
 
 * Follow the map design process described [here](CUSTOMIZATION.md#setting-up-a-custom-map)
 * In the Mapbox Studio environment, click "Share" and then download the Map style ZIP file.
 * Unzip the file, and extract the `style.json` and place it in `tileserver/data/styles`.
-* In `style.json`, the tiles are referenced in `sources` > `composite` > `url` in the following format: `"url": "mbtiles://mbtiles/name.mbtiles"`. (Here, `name` is just an example; it can be called whatever you want, so long as the filename is the same.)
+* Next, you will need to make some changes. The `style.json` from Mapbox will be referring to an online URL for the map sources. You need to change this to refer to the local `MBTiles`. Change `sources` > `composite` > `url` to the following format: `"url": "MBTiles://MBTiles/name.MBTiles"`. (Here, `name` is just an example; it can be called whatever you want, so long as the filename is the same.)
 
-`Mbtiles` 
+Importantly, the layer names referenced in `styles` and `MBTiles` have to match, in order for the raw tiles to receive a style property. It may be necessary to edit the layer names in `style.json` to reflect the names of the spatial data in the `MBTiles` file. 
 
-* `mbtiles` can be generated from standard geospatial data (Shapefile, GeoJSON) in a number of ways. The easiest way is to use  `tippecanoe` created by Mapbox: [guide](https://docs.mapbox.com/help/troubleshooting/large-data-tippecanoe/).
-* Once generated, place the `mbtiles` in the `tileserver/data/mbtiles/` directory, with the right filename as references by `style.json` as described above. 
+(For example, sometimes when you upload shapefiles to Mapbox Studio, it adds six alphanumeric characters preceded by a dash (-) to your layer name. This is called a "hash." For example, a shapefile called "South_America" might be called "South_America-a2027z" in Mapbox Studio. And then in style.json file, all of the names for this layer will have "–a2027z" added to it. This is a problem because there is a discrepancy between the names in MBTiles, which does no include "-a2027z." So, you have to go into the json and look for "source-layer": "South_America-a2027z", and take out the "-a2027z", and do the same for each layer with a hash.)
 
-Importantly, the layer names referenced in `styles` and `mbtiles` have to match, in order for the raw tiles to receive a style property. It may be necessary to edit the layer names in `style.json` to reflect the names of the spatial data in the `mbtiles` file. 
+*Raster tiles*: If you have raster tiles that you want to load in Terrastories, those will need to defined differently from the vector tiles above. In `sources`, create a new source definition with `url` pointing to the raster `MBTIles` in the same format as above, `type` set to `raster`, and `tileSize` to `256`. Then, in `layers`, create a map object with your `id` of choice, `type` set to `raster`, and `source` set to the name of your raster tiles as defined in `sources`. Here is an example:
 
-(For example, sometimes when you upload shapefiles to Mapbox Studio, it  adds on an additional six alphanumeric characters preceded by a dash (-), which is called "hash." For example, a shapefile called "South_America" might be called "South_America-a2027z" in Mapbox Studio. And then in style.json file, all of the names for this layer will have "–a2027z" added to it. This is a problem because there is a discrepancy between the names in mbtiles, which does no include "-a2027z." So, you have to go into the json and look for "source-layer": "South_America-a2027z", and take out the "-a2027z", and do the same for each layer with a hash.)
+
+```
+    "sources": {
+        "raster-tiles": {
+            "url": "mbtiles://mbtiles/raster.mbtiles",
+            "type": "raster"
+			"tileSize": 256
+        }
+     },
+     "layers": [
+         {
+             "id": "raster-background",
+             "type": "raster",
+             "source": "raster-tiles"
+         },
+```
+
+You can define multiple `mbtiles` sources (vector as well as raster), and place your raster tile layer underneath vector layers. This is a good way to have an offline satellite imagery basemap with vector data (points, lines, polygons, and labels) overlaid on top of it.
 
 ## Setup and running the server
 
@@ -58,6 +86,8 @@ script/run_offline_maps.sh
 
 It is possible to switch between offline and online by removing the `USE_LOCAL_MAP_SERVER=true` variable when Terrastories is down, so long as the other `.env` map variables (`MAPBOX_STYLE` and `MAPBOX_ACCESS_TOKEN`) are set. Just remember to use the right starting command for each environment (`docker-compose up` for online mode, `script/run_offline_maps.sh` for offline mode).
 
-## Instructions for setting up an offline computer
+Once you have started Terrastories, the next step will be to set up Terrastories communities and users. Please see the [community setup guide](COMMUNITY-SETUP.md) to proceed from here.
+
+## Instructions for setting up an offline computer (serving Terrastories via a WiFi hotspot)
 
 Under construction: https://gist.github.com/kalimar/ed14b5d026220ee5cd81d416b4f67b7b#file-matawai-nuc-md

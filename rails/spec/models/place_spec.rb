@@ -14,16 +14,34 @@ RSpec.describe Place, type: :model do
     end
 
     describe "does not create duplicated places" do
-      it "creates a single place when importing the same csv twice" do
-        @fixture_data = file_fixture('place_with_media.csv').read
+      context "when importing the same csv twice" do
+        it "creates a single place " do
+          expect {
+            described_class.import_csv(@fixture_data, community)
+          }.to change { Place.count }.by(1)
 
-        expect {
-          described_class.import_csv(@fixture_data, community)
-        }.to change { Place.count }.by(1)
+          expect {
+            described_class.import_csv(@fixture_data, community)
+          }.to change { Place.count }.by(0)
+        end
+      end
 
-        expect {
-          described_class.import_csv(@fixture_data, community)
-        }.to change { Place.count }.by(0)
+      context "when importing different files with info about same place" do
+        before do
+          fixture_data = file_fixture('place_with_media.csv').read
+          described_class.import_csv(fixture_data, community)
+        end
+
+        it "updates place's info" do
+          place = Place.last
+
+          fixture_data_to_edit = file_fixture('edit_place_with_media.csv').read
+          described_class.import_csv(fixture_data_to_edit, community)
+
+          expect {
+            place.reload
+          }.to change(place, :description)
+        end
       end
     end
 
@@ -72,7 +90,6 @@ RSpec.describe Place, type: :model do
       let!(:csv) { CSV.parse(@fixture_data, headers: true).first }
       it { expect(csv[6]).not_to be_nil }
     end
-
   end
 
   describe '#photo_format' do
