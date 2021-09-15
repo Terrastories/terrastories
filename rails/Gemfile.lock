@@ -71,7 +71,7 @@ GEM
       rake (>= 10.4, < 14.0)
     arel (9.0.0)
     aws-eventstream (1.2.0)
-    aws-partitions (1.499.0)
+    aws-partitions (1.501.0)
     aws-sdk-core (3.121.0)
       aws-eventstream (~> 1, >= 1.0.2)
       aws-partitions (~> 1, >= 1.239.0)
@@ -184,7 +184,6 @@ GEM
       activerecord
       kaminari-core (= 1.2.1)
     kaminari-core (1.2.1)
-    libv8-node (15.14.0.1)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -202,8 +201,6 @@ GEM
     mini_magick (4.11.0)
     mini_mime (1.1.1)
     mini_portile2 (2.6.1)
-    mini_racer (0.4.0)
-      libv8-node (~> 15.14.0.0)
     minitest (5.14.4)
     momentjs-rails (2.20.1)
       railties (>= 3.1)
@@ -404,7 +401,6 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   mapbox-gl-rails
   mini_magick (~> 4.8)
-  mini_racer
   pg (>= 0.18, < 2.0)
   plyr-rails
   pry-rails
