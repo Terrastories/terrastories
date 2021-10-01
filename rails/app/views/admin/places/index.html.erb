@@ -34,10 +34,11 @@ It renders the `_table` partial to display details about the resources.
 
   <% if show_search_bar %>
     <%= render(
-            "search",
-            search_term: search_term,
-            resource_name: t("administrate.#{page.resource_name.pluralize}")
-        ) %>
+      "shared/search",
+      search_term: search_term,
+      resource_name: t("administrate.#{page.resource_name.pluralize}"),
+      per_page: params[:per_page]
+    ) %>
   <% end %>
 
   <div>
