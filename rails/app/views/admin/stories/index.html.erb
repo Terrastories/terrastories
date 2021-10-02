@@ -64,7 +64,7 @@ It renders the `_table` partial to display details about the resources.
             table_title: "page-title",
         ) %>
 
-    <%= paginate resources %>
+    <%= paginate resources, param_name: '_page' %>
   </div>
   <div class="table-underline"></div>
 </section>
