@@ -65,12 +65,12 @@ class StoryDashboard < Administrate::BaseDashboard
     :desc,
     :language,
     :topic,
+    :media,
     :speakers,
+    :places,
     :interview_location,
     :interviewer,
     :date_interviewed,
-    :places,
-    :media,
     :permission_level
   ].freeze
 

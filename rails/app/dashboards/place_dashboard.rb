@@ -54,13 +54,13 @@ class PlaceDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :name,
+    :photo,
     :description,
     :type_of_place,
     :region,
-    :long,
-    :lat,
     :stories,
-    :photo,
+    :lat,
+    :long,
   ].freeze
 
   # Overwrite this method to customize how places are displayed
