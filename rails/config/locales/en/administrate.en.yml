@@ -15,6 +15,9 @@ en:
           user_only: "Member"
           editor_only: "Editor"
           admin_only: "Admin"
+      place:
+        lat: Latitude
+        long: Longitude
   administrate:
     actions:
       confirm: Are you sure?
