@@ -10,11 +10,13 @@ RSpec.describe Story, type: :model do
   end
 
   describe 'validation' do
-    let(:story_1) {build(:story)}
-    let(:story_2) {create(:story, :with_speakers)}
-    describe 'must have at least one speaker' do
+    let(:story_1) {build(:story, :with_places)}
+    let(:story_2) {build(:story, :with_speakers)}
+    let(:story_3) {create(:story, :with_places, :with_speakers)}
+    describe 'must have at least one speaker and a place' do
       it {expect(story_1).to_not be_valid}
-      it {expect(story_2).to be_valid}
+      it {expect(story_2).to_not be_valid}
+      it {expect(story_3).to be_valid}
     end
   end
 

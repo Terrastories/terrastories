@@ -19,5 +19,11 @@ FactoryBot.define do
         story.speakers = FactoryBot.build_list(:speaker, 2)
       end
     end
+
+    trait :with_places do
+      after(:build) do |story|
+        story.places = FactoryBot.build_list(:place, 1)
+      end
+    end
   end
 end
