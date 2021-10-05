@@ -11,6 +11,7 @@ class Story < ApplicationRecord
   has_many :media_links
 
   validates_presence_of :speakers, message: ': Your story must have at least one Speaker'
+  validates_presence_of :places, message: ': Your story must have a Place'
 
   def self.import_csv(file_contents, community)
     ApplicationController.helpers.csv_importer(file_contents, self, community)
