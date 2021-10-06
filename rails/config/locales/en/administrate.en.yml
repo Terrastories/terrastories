@@ -18,6 +18,20 @@ en:
       place:
         lat: Latitude
         long: Longitude
+      theme:
+        background_img: Background image (for welcome screen)
+        sponsor_logos: Sponsor logos (for welcome screen)
+        mapbox_style_url: Mapbox style URL (for online maps)
+        mapbox_access_token: Mapbox access token associated with the style
+        center_lat: Map center, latitude
+        center_long: Map center, longitude
+        sw_boundary_lat: SW bounding box, latitude
+        sw_boundary_long: SW bounding box, longitude
+        ne_boundary_lat: NE bounding box, latitude
+        ne_boundary_long: NE bounding box, longitude
+        zoom: Map zoom level (1 to 22)
+        pitch: Map pitch degree (0 to 90)
+        bearing: Map bearing degree (-180 to 180)
   administrate:
     actions:
       confirm: Are you sure?
