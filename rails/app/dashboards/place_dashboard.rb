@@ -16,7 +16,7 @@ class PlaceDashboard < Administrate::BaseDashboard
     lat: Field::String.with_options(searchable: false),
     region: RegionField,
     photo: Field::ActiveStorage.with_options({destroy_path: :admin_places_path}),
-    type_of_place: Field::String,
+    type_of_place: TypeOfPlaceField,
     community: Field::BelongsTo,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
