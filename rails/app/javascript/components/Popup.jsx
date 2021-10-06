@@ -13,7 +13,7 @@ const Popup = (props) => {
         {photo_url !== "null" && (<img src={photo_url} />)}
         {description !== "" && (<div class={`ts-markerPopup-description`}>{description}</div>)}
         {region !== "" && (<div><span class="ts-markerPopup-label">Region:</span> {region}</div>)}
-        {type_of_place !== "" && (<div>Type of Place: {type_of_place}</div>)}
+        {type_of_place !== "" && (<div><span class="ts-markerPopup-label">Type of Place:</span> {type_of_place}</div>)}
       </div>
     </div>
   );
