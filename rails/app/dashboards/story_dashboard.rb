@@ -23,7 +23,7 @@ class StoryDashboard < Administrate::BaseDashboard
     community: Field::BelongsTo,
     updated_at: Field::DateTime,
     media_links: Field::HasMany,
-    topic: Field::String,
+    topic: TopicField,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
