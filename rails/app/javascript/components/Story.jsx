@@ -24,7 +24,7 @@ const Story = props => {
           {
             speakers.map(speaker => {
               return speaker.name
-            }).join(',')
+            }).join(', ')
           }
         </p>
       </div>
@@ -45,8 +45,8 @@ const Story = props => {
         </div>
         <div className="container">
           <h6 className="title">
-            {story.permission_level === "restricted" && "🔒"}
             {story.title}
+            {story.permission_level === "restricted" && "🔒"}
           </h6>
           <p>{story.desc}</p>
           {
