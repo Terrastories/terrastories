@@ -46,7 +46,7 @@ const Story = props => {
         <div className="container">
           <h6 className="title">
             {story.title}
-            {story.permission_level === "restricted" && " 🔒"}            
+            {story.permission_level === "restricted" && " 🔒"}
           </h6>
           <p>{story.desc}</p>
           {

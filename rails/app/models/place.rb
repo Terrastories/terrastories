@@ -49,6 +49,7 @@ class Place < ApplicationRecord
       RGeo::Cartesian.factory.point(long, lat),
       id,
       name: name,
+      description: description,
       region: region,
       type_of_place: type_of_place,
       photo_url: photo_url,

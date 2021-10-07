@@ -1,7 +1,7 @@
 import React from "react";
 
 const Popup = (props) => {
-  const { id, name, photo_url, region, type_of_place } = props.feature.properties;
+  const { id, name, photo_url, description, region, type_of_place } = props.feature.properties;
   
   return (
     <div id={`popup-${id}`}>
@@ -11,10 +11,9 @@ const Popup = (props) => {
       </div>
       <div className="ts-markerPopup-content">
         {photo_url !== "null" && (<img src={photo_url} />)}
-        {region || type_of_place && <div>
-          {region !== "null" && <div>Region: {region} </div>}
-          {type_of_place !== "null" && <div>Type of Place: {type_of_place} </div>}
-        </div> }
+        {description !== "" && (<div class="ts-markerPopup-description">{description}</div>)}
+        {region !== "" && (<div><span class="ts-markerPopup-label">Region:</span> {region}</div>)}
+        {type_of_place !== "" && (<div><span class="ts-markerPopup-label">Type of Place:</span> {type_of_place}</div>)}
       </div>
     </div>
   );
