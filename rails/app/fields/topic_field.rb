@@ -5,7 +5,7 @@ class TopicField < Administrate::Field::Base
     data
   end
 
-  def candidates
-    Story.order(:topic).distinct.pluck(:topic)
+  def candidates(community_id)
+    Story.order(:topic).where(community_id: community_id).distinct.pluck(:topic)
   end
 end

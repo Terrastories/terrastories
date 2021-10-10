@@ -5,7 +5,7 @@ class RegionField < Administrate::Field::Base
     data
   end
 
-  def candidates
-    Place.order(:region).distinct.pluck(:region)
+  def candidates(community_id)
+    Place.order(:region).where(community_id: community_id).distinct.pluck(:region)
   end
 end
