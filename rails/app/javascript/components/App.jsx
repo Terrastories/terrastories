@@ -71,7 +71,7 @@ class App extends Component {
     let filterMap = {};
     FILTER_CATEGORIES.map(category => {
       switch (category) {
-        case FILTER_CATEGORIES[0]: {
+        case I18n.t("region"): {
           // first category: Region
           const regionSet = new Set(
             this.props.stories
@@ -83,7 +83,7 @@ class App extends Component {
           filterMap[category] = Array.from(regionSet).filter(item => item).sort();
           break;
         }
-        case FILTER_CATEGORIES[1]: {
+        case I18n.t("place_type"): {
           // second category: Type of Place
           const typeOfPlaceSet = new Set(
             this.props.stories
@@ -97,7 +97,7 @@ class App extends Component {
           filterMap[category] = Array.from(typeOfPlaceSet).filter(item => item).sort();
           break;
         }
-        case FILTER_CATEGORIES[2]: {
+        case I18n.t("speaker"): {
           // third category: Speaker
           const speakerSet = new Set(
             this.props.stories
@@ -109,7 +109,7 @@ class App extends Component {
           filterMap[category] = Array.from(speakerSet).filter(item => item).sort();
           break;
         }
-        case FILTER_CATEGORIES[3]: {
+        case I18n.t("topic"): {
           // second category: Topic
           const topicSet = new Set(
             this.props.stories
@@ -127,7 +127,7 @@ class App extends Component {
   handleFilter = (category, item) => {
     let filteredStories = [];
     switch (category) {
-      case FILTER_CATEGORIES[0]: {
+      case I18n.t("region"): {
         // first category: region
         filteredStories = this.props.stories.filter(story => {
           if (
@@ -143,7 +143,7 @@ class App extends Component {
         });
         break;
       }
-      case FILTER_CATEGORIES[1]: {
+      case I18n.t("place_type"): {
         // second category: type of places
         filteredStories = this.props.stories.filter(story => {
           if (
@@ -160,7 +160,7 @@ class App extends Component {
         });
         break;
       }
-      case FILTER_CATEGORIES[2]: {
+      case I18n.t("speaker"): {
         // third category: speaker name
         filteredStories = this.props.stories.filter(story => {
           if (
@@ -176,7 +176,7 @@ class App extends Component {
         });
         break;
       }
-      case FILTER_CATEGORIES[3]: {
+      case I18n.t("topic"): {
         // fourth category: topic
         filteredStories = this.props.stories.filter(story => {
             if (story.topic) {
