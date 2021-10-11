@@ -80,7 +80,7 @@ class App extends Component {
               })
               .flat()
           );
-          filterMap[category] = Array.from(regionSet).sort();
+          filterMap[category] = Array.from(regionSet).filter(item => item).sort();
           break;
         }
         case FILTER_CATEGORIES[1]: {
@@ -94,7 +94,7 @@ class App extends Component {
               })
               .flat()
           );
-          filterMap[category] = Array.from(typeOfPlaceSet).sort();
+          filterMap[category] = Array.from(typeOfPlaceSet).filter(item => item).sort();
           break;
         }
         case FILTER_CATEGORIES[2]: {
@@ -106,7 +106,7 @@ class App extends Component {
               })
               .flat()
           );
-          filterMap[category] = Array.from(speakerSet).sort();
+          filterMap[category] = Array.from(speakerSet).filter(item => item).sort();
           break;
         }
         case FILTER_CATEGORIES[3]: {
@@ -116,7 +116,7 @@ class App extends Component {
               .map(story => story.topic)
               .flat()
           );
-          filterMap[category] = Array.from(topicSet).sort();
+          filterMap[category] = Array.from(topicSet).filter(item => item).sort();
           break;
         }
       }
