@@ -1,13 +1,13 @@
 module MapConfigurable
   extend ActiveSupport::Concern
   def set_map_defaults
-    self.center_lat ||= 38.5
-    self.center_long ||= -108
+    self.center_lat ||= 15
+    self.center_long ||= 0
     self.sw_boundary_lat ||= -85
     self.sw_boundary_long ||= -180
     self.ne_boundary_lat ||= 85
     self.ne_boundary_long ||= 180
-    self.zoom ||= 3.5
+    self.zoom ||= 2
     self.pitch ||= 0
     self.bearing ||= 0
   end

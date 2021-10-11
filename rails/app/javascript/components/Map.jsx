@@ -4,15 +4,6 @@ import PropTypes from "prop-types";
 import MiniMap from "../vendor/mapboxgl-control-minimap";
 import Popup from "./Popup";
 
-// @NOTE: MAKE SURE ARRAY IS [LONGITUDE, LATITUDE]
-// const defaultCenter = [-108, 38.5];
-// const defaultBounds = [
-//   [-180, -85], //southwest
-//   [180, 85] //northeast
-// ];
-// const defaultZoom = 3.5;
-// const defaultPitch = 0;
-// const defaultBearing = 0;
 const STORY_POINTS_LAYER_ID = "ts-points-layer";
 const STORY_POINTS_DATA_SOURCE = "ts-points-data";
 
