@@ -94,7 +94,7 @@ class StoryList extends Component {
             itemOptions={this.props.itemOptions}
           />
         </div>
-          {!this.state.showStories
+          {!this.state.showStories && window.innerWidth > 600
             ?
           <div className="card--nav terrastory-info">
             <IntroductoryPanel 
