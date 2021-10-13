@@ -11,7 +11,7 @@ class StoryList extends Component {
   constructor() {
     super();
     this.state = {
-      isClicked: false
+      showStories: false
     };
   }
 
@@ -35,7 +35,7 @@ class StoryList extends Component {
 
   handleClickExplore = () => {
     this.setState(prevState => ({
-      isClicked: !prevState.isClicked
+      showStories: !prevState.showStories
     }));
   }
 
@@ -45,6 +45,9 @@ class StoryList extends Component {
 
   handleFilterItemChange = (item) => {
     this.props.handleFilterItemChange(item);
+    this.setState(() => ({
+      showStories: true
+    }));
     this._list.scrollTo(0);
   }
 
@@ -91,7 +94,7 @@ class StoryList extends Component {
             itemOptions={this.props.itemOptions}
           />
         </div>
-          {!this.state.isClicked
+          {!this.state.showStories
             ?
           <div className="card--nav terrastory-info">
             <IntroductoryPanel 
