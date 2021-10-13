@@ -4,8 +4,17 @@ import Story from "./Story";
 import Filter from "./Filter";
 import Sort from "./Sort";
 import ReactList from 'react-list';
+import IntroductoryPanel from "./IntroductoryPanel";
+import Button from "./Button";
 
 class StoryList extends Component {
+  constructor() {
+    super();
+    this.state = {
+      isClicked: false
+    };
+  }
+
   static propTypes = {
     stories: PropTypes.array,
     handleStoriesChanged: PropTypes.func,
@@ -19,8 +28,16 @@ class StoryList extends Component {
     filterItem: PropTypes.string,
     handleFilterCategoryChange: PropTypes.func,
     handleFilterItemChange: PropTypes.func,
-    itemOptions: PropTypes.array
+    itemOptions: PropTypes.array,
+    numberOnePath: PropTypes.string,
+    numberTwoPath: PropTypes.string
   };
+
+  handleClickExplore = () => {
+    this.setState(prevState => ({
+      isClicked: !prevState.isClicked
+    }));
+  }
 
   handleClickStory = (story, index) => {
     this.props.onStoryClick(story);
@@ -73,19 +90,38 @@ class StoryList extends Component {
             handleFilterItemChange={this.handleFilterItemChange}
             itemOptions={this.props.itemOptions}
           />
-          <Sort
-            stories={this.props.stories}
-            handleStoriesChanged={this.props.handleStoriesChanged}
-          />
         </div>
-        <div className="stories">
-          <ReactList
-            ref={list => this._list = list }
-            itemRenderer={this.renderStory}
-            length={this.props.stories ? this.props.stories.length : 0}
-            type='variable'
-          />
-        </div>
+          {!this.state.isClicked
+            ?
+          <div className="card--nav terrastory-info">
+            <IntroductoryPanel 
+              numberOnePath={this.props.numberOnePath}
+              numberTwoPath={this.props.numberTwoPath}
+            />
+            <Button 
+              buttonType='explore-button' 
+              handleClick={this.handleClickExplore} 
+              buttonText='EXPLORE'
+            />
+          </div>
+            :
+            <React.Fragment>
+              <div className="card--nav">
+                <Sort
+                  stories={this.props.stories}
+                  handleStoriesChanged={this.props.handleStoriesChanged}
+                />
+              </div>
+              <div className="stories">
+                <ReactList
+                  ref={list => this._list = list }
+                  itemRenderer={this.renderStory}
+                  length={this.props.stories ? this.props.stories.length : 0}
+                  type='variable'
+                />
+              </div>
+            </React.Fragment>
+        }
       </React.Fragment>
     );
   }

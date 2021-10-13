@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`IntroductoryPanel Component Displays correctly 1`] = `
+<Fragment>
+  <span
+    className="card--nav-intro"
+  >
+    intro.question in local translation
+  </span>
+  <p>
+    intro.explanation in local translation
+  </p>
+  <span
+    className="card--nav-intro"
+  >
+    usage.question in local translation
+  </span>
+  <div
+    className="card--nav-usage"
+  >
+    <div
+      className="first-info"
+    >
+      <div
+        className="first-img"
+      >
+        <img
+          alt="First"
+          src="first.svg"
+        />
+      </div>
+      <p>
+        usage.category_explanation in local translation
+      </p>
+    </div>
+    <div>
+      <div
+        className="second-img"
+      >
+        <img
+          alt="Second"
+          src="second.svg"
+        />
+      </div>
+      <p>
+        usage.option_explanation in local translation
+      </p>
+    </div>
+  </div>
+  <p>
+    usage.explore_explanation in local translation
+  </p>
+</Fragment>
+`;

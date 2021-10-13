@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import StoryList from "./StoryList";
 
 class Card extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -26,7 +25,9 @@ class Card extends Component {
     filterItem: PropTypes.string,
     handleFilterCategoryChange: PropTypes.func,
     handleFilterItemChange: PropTypes.func,
-    itemOptions: PropTypes.array
+    itemOptions: PropTypes.array,
+    numberOnePath: PropTypes.string,
+    numberTwoPath: PropTypes.string
   };
 
   static defaultProps = {
@@ -92,6 +93,8 @@ class Card extends Component {
               handleFilterCategoryChange={this.props.handleFilterCategoryChange}
               handleFilterItemChange={this.props.handleFilterItemChange}
               itemOptions={this.props.itemOptions}
+              numberOnePath={this.props.numberOnePath}
+              numberTwoPath={this.props.numberTwoPath}
             />
 
             <div className="card--tasks">
