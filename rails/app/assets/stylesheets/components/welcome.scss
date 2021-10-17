@@ -22,7 +22,7 @@
     padding: 2em;
     border-radius: 5%;
     color: $blue;
-    min-width: 25rem;
+    max-width: 25rem;
     min-height: 20rem;
     display: flex;
     flex-direction: column;
@@ -140,6 +140,11 @@
     }
   }
 }
+@media screen and (max-width:678px) {
+  .welcome-card{
+    min-width:25rem;
+  }
+}
 @media screen and (max-width:455px){
   .welcome-card h1{
     font-size: 7.08vw;
@@ -147,13 +152,14 @@
   .welcome-card{
     min-width: 0 !important;
     max-width: 25rem;
+    min-height: 15rem;
   }
   .language-picker {
     font-size: 3.1vw;
   }
 }
-@media screen and (max-width:400px){
-  .welcome-card{
-    min-height: 15rem;
-  }
-}
+// @media screen and (max-width:450px){
+//   .welcome-card{
+//     min-height: 15rem;
+//   }
+// }
