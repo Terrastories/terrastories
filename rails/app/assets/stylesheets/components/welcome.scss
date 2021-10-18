@@ -23,7 +23,7 @@
     border-radius: 5%;
     color: $blue;
     max-width: 25rem;
-    height: 20rem;
+    min-height: 20rem;
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
@@ -31,7 +31,7 @@
     @media screen and (max-width: 600px) {
       width: 80vw;
     }
-
+    
     img {
       margin-bottom: 0.5rem;
       width: 100%;
@@ -140,3 +140,22 @@
     }
   }
 }
+@media screen and (max-width:678px) {
+  .welcome-card{
+    min-width:25rem;
+  }
+}
+@media screen and (max-width:455px){
+  .welcome-card h1{
+    font-size: 7.08vw;
+  }
+  .welcome-card{
+    min-width: 0 !important;
+    max-width: 25rem;
+    min-height: 15rem;
+  }
+  .language-picker {
+    font-size: 3.1vw;
+  }
+}
+
