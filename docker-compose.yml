@@ -1,4 +1,14 @@
 version: "3.7"
+
+x-web-common: &x-web-common
+  image: ${DOCKER_IMAGE_NAME:-terrastories}
+  build:
+    context: ./rails
+    args:
+      precompileassets: "not"
+  env_file:
+    - .env
+
 services:
   db:
     image: postgres:11
@@ -16,15 +26,6 @@ services:
   #     - ./rails:/opt/terrastories:cached
   #   ports:
   #     - 3035:3035
-
-  x-web-common: &x-web-common
-    image: ${DOCKER_IMAGE_NAME-terrastories}
-    build:
-      context: ./rails
-      args:
-        precompileassets: "not"
-    env_file:
-      - .env
 
   web:
     <<: *x-web-common
