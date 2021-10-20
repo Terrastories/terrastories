@@ -20,6 +20,12 @@ RSpec.describe Story, type: :model do
     end
   end
 
+  describe 'properties' do
+    let(:story) {create(:story, :with_places, :with_speakers, language: "Portuguese")}
+    describe 'stories have an optional language property'
+    it {expect(story.language).to eq("Portuguese")}
+  end
+
   context '.import_csv' do
     describe 'is tested against fixture file' do
       it {expect(file_fixture('story_with_media.csv').read).not_to be_empty}
