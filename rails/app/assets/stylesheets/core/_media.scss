@@ -27,3 +27,17 @@
     @content;
   }
 }
+
+@media screen and (orientation:landscape) 
+ {
+   html{
+    transform: rotate(-90deg);
+    width: 100vh;
+    height: 100vw;
+    transform-origin: left top;
+    overflow-x: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
+   }
+  }
