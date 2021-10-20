@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>The page you were looking for doesn't exist (404)</title>
+  <title>The page you were looking for doesn't exist</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
   .rails-default-error-page {
@@ -23,7 +23,7 @@
     border-right-color: #999;
     border-left-color: #999;
     border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
+    border-top: #33aa8b solid 4px;
     border-top-left-radius: 9px;
     border-top-right-radius: 9px;
     background-color: white;
@@ -33,7 +33,7 @@
 
   .rails-default-error-page h1 {
     font-size: 100%;
-    color: #730E15;
+    color: #09697e;
     line-height: 1.5em;
   }
 
@@ -51,6 +51,36 @@
     color: #666;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
   }
+
+  .rails-default-error-page button {
+      background-color: #33aa8b;
+      text-transform: uppercase;
+      letter-spacing: 0.09rem;
+      display: block;
+      border-radius: 5px;
+      border-color: transparent;
+      font-weight: 400;
+      font-size: 0.85rem;
+      cursor: pointer;
+      padding: 1rem;
+      width: 15rem;
+      margin-top: 0.5rem;
+      margin-left: auto;
+      margin-right: auto;
+      color: #FFFFFF;
+  }
+
+  .rails-default-error-page button:hover {
+      background-color: #09697e;
+  }
+
+  .rails-default-error-page button:focus {
+      outline-color: #FFFFFF;
+  }
+
+  .rails-default-error-page a {
+      text-decoration: none;
+  }
   </style>
 </head>
 
@@ -58,10 +88,13 @@
   <!-- This file lives in public/404.html -->
   <div class="dialog">
     <div>
+      <img src="../app/assets/images/logocombo.svg" width="80%">
       <h1>The page you were looking for doesn't exist.</h1>
-      <p>You may have mistyped the address or the page may have moved.</p>
+      <p></p>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
+    <p>Let's return to Terrastories:
+      <button onclick="history.go(-1);" type="button">Take me back</button>
+    </p>
   </div>
 </body>
 </html>
