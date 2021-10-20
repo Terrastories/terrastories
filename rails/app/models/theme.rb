@@ -6,8 +6,8 @@ class Theme < ApplicationRecord
 
   validates :background_img, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'] }
   validates :sponsor_logos, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'], size_range: 1..5.megabytes }
-  validates :mapbox_access_token, presence: true, unless: -> { mapbox_style_url.blank? }
-  validates:mapbox_style_url, presence:true, unless: ->{mapbox_access_token.blank?}
+  validates :mapbox_access_token, :presence => {:message => 'You need a Mapbox access token to go along with your Mapbox style URL'}, unless: -> { mapbox_style_url.blank? }
+  validates :mapbox_style_url, :presence => {:message => 'You need a Mapbox style URL to go along with your access token'}, unless: -> { mapbox_access_token.blank? }
   validates :center_lat, :sw_boundary_lat, :ne_boundary_lat,
     :numericality=> true, allow_nil: true, :inclusion => {:in => -90..90, :message => "value should be between -90 and 90"}
   validates :bearing, :center_long, :sw_boundary_long, :ne_boundary_long,
