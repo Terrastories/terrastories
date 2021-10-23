@@ -5,7 +5,7 @@ class SpeakerCommunityField < Administrate::Field::Base
     data
   end
 
-  def candidates
-    Speaker.order(:speaker_community).distinct.pluck(:speaker_community)
+  def candidates(community_id)
+    Speaker.order(:speaker_community).where(community_id: community_id).distinct.pluck(:speaker_community)
   end
 end
