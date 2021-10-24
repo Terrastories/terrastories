@@ -89,9 +89,9 @@ class ThemeDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how themes are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(theme)
-  #   "Theme ##{theme.id}"
-  # end
+  def display_resource(theme)
+    I18n.t('helpers.label.theme.display_resource', community_name: theme.community.name)
+  end
 
   def permitted_attributes
     super + [:sponsor_logos => []]

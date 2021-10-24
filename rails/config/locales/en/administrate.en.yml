@@ -32,6 +32,7 @@ en:
         zoom: Map zoom level (1 to 22)
         pitch: Map pitch degree (0 to 90)
         bearing: Map bearing degree (-180 to 180)
+        display_resource: "Theme for Terrastories: %{community_name}"
   administrate:
     actions:
       confirm: Are you sure?

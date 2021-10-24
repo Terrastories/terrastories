@@ -2,6 +2,7 @@ class Theme < ApplicationRecord
   include MapConfigurable
   has_one_attached :background_img
   has_many_attached :sponsor_logos
+  has_one :community
   after_initialize :set_map_defaults
 
   validates :background_img, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'] }
