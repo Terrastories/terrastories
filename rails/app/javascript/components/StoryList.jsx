@@ -25,23 +25,25 @@ class StoryList extends Component {
   handleClickStory = (story, index) => {
     this.props.onStoryClick(story);
   }
-
+  
   handleFilterItemChange = (item) => {
     this.props.handleFilterItemChange(item);
     this._list.scrollTo(0);
   }
-
+  
   handleClearFilteredStories = () => {
     this.props.clearFilteredStories();
     this._list.scrollTo(0);
   }
-
+  
   handleSort = (option) => {
     this.props.handleStoriesChanged(option);
     this._list.scrollTo(0);
   }
-
+  
+  
   renderStory = (index, key) => {
+    console.log(this.props)
     const story = this.props.stories[index];
     let storyClass = '';
     if (this.props.activeStory && this.props.activeStory.id === story.id) {

@@ -110,7 +110,7 @@ class App extends Component {
           break;
         }
         case I18n.t("topic"): {
-          // second category: Topic
+          // fourth category: Topic
           const topicSet = new Set(
             this.props.stories
               .map(story => story.topic)
@@ -119,8 +119,19 @@ class App extends Component {
           filterMap[category] = Array.from(topicSet).filter(item => item).sort();
           break;
         }
+        case I18n.t("language"): {
+          // fifth category: Language
+          const languageSet = new Set(
+            this.props.stories
+              .map(story => story.language)
+              .flat()
+          );
+          filterMap[category] = Array.from(languageSet).filter(item => item).sort();
+          break;
+        }
       }
     });
+    console.log(filterMap)
     return filterMap;
   };
 
@@ -183,6 +194,18 @@ class App extends Component {
               return (
                 story.topic &&
                 story.topic.toLowerCase() === item.toLowerCase()
+              )
+            }
+        });
+        break;
+      }
+      case I18n.t("language"): {
+        // fifth category: language
+        filteredStories = this.props.stories.filter(story => {
+            if (story.language) {
+              return (
+                story.language &&
+                story.language.toLowerCase() === item.toLowerCase()
               )
             }
         });
