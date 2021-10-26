@@ -18,6 +18,10 @@ en:
       place:
         lat: Latitude
         long: Longitude
+        name: Name
+        description: Description
+        type_of_place: Type of place
+        region: Region
       theme:
         background_img: Background image (for welcome screen)
         sponsor_logos: Sponsor logos (for welcome screen)

@@ -33,9 +33,10 @@ class StoryDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :title,
-    :language,
-    :interview_location,
-    :date_interviewed,
+    :desc,
+    :speakers,
+    :places,
+    :permission_level,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
