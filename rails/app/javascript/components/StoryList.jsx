@@ -35,12 +35,11 @@ class StoryList extends Component {
     this.props.clearFilteredStories();
     this._list.scrollTo(0);
   }
-  
+
   handleSort = (option) => {
     this.props.handleStoriesChanged(option);
     this._list.scrollTo(0);
   }
-  
   
   renderStory = (index, key) => {
     const story = this.props.stories[index];
