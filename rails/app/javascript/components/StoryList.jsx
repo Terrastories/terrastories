@@ -43,7 +43,6 @@ class StoryList extends Component {
   
   
   renderStory = (index, key) => {
-    console.log(this.props)
     const story = this.props.stories[index];
     let storyClass = '';
     if (this.props.activeStory && this.props.activeStory.id === story.id) {
