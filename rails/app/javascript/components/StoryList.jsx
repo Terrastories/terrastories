@@ -25,12 +25,12 @@ class StoryList extends Component {
   handleClickStory = (story, index) => {
     this.props.onStoryClick(story);
   }
-  
+
   handleFilterItemChange = (item) => {
     this.props.handleFilterItemChange(item);
     this._list.scrollTo(0);
   }
-  
+
   handleClearFilteredStories = () => {
     this.props.clearFilteredStories();
     this._list.scrollTo(0);
@@ -40,7 +40,7 @@ class StoryList extends Component {
     this.props.handleStoriesChanged(option);
     this._list.scrollTo(0);
   }
-  
+
   renderStory = (index, key) => {
     const story = this.props.stories[index];
     let storyClass = '';
