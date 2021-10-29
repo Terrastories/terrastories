@@ -15,7 +15,7 @@ class SpeakerDashboard < Administrate::BaseDashboard
     birthdate: Field::DateTime.with_options(format: "%d/%m/%Y"),
     birthplace: Field::ScopedBelongsTo.with_options(class_name: "Place", scope: -> (field) { field.resource.community.places }),
     community: Field::BelongsTo,
-    speaker_community: Field::String,
+    speaker_community: SpeakerCommunityField,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
