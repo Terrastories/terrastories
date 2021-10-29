@@ -326,10 +326,11 @@ class App extends Component {
   
   // build category list based that excludes empty category sets
   buildFilterCategories = () => {
+    const variableCategories = [I18n.t("topic"), I18n.t("language"), I18n.t("helpers.label.speaker.speaker_community"),]
     let categories = this.filterMap();
     
     Object.keys(categories).map(cat => {
-      if (categories[cat].length === 0) {
+      if (categories[cat].length === 0 && variableCategories.includes(cat)) {
         delete categories[cat]
       }
     })
