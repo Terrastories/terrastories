@@ -5,7 +5,9 @@ class Place < ApplicationRecord
   belongs_to :community
   has_and_belongs_to_many :stories
   has_one_attached :photo
+  has_one_attached :name_audio
   validate :photo_format
+  validates :name_audio, blob: { content_type: ['audio/mpeg', 'audio/wav'] }
   validates :lat, numericality: { greater_than_or_equal_to:  -90, less_than_or_equal_to:  90 }, allow_blank: true
   validates :long, numericality: { greater_than_or_equal_to: -180, less_than_or_equal_to: 180 }, allow_blank: true
   has_many :interview_stories, class_name: "Story", foreign_key: "interview_location_id"
@@ -26,6 +28,12 @@ class Place < ApplicationRecord
   def photo_url
     if photo.attached?
       Rails.application.routes.url_helpers.rails_blob_path(photo, only_path: true)
+    end
+  end
+
+  def name_audio_url
+    if name_audio.attached?
+      Rails.application.routes.url_helpers.rails_blob_path(name_audio, only_path: true)
     end
   end
 
@@ -53,6 +61,7 @@ class Place < ApplicationRecord
       region: region,
       type_of_place: type_of_place,
       photo_url: photo_url,
+      name_audio_url: name_audio_url,
       stories: stories
     )
   end
