@@ -7,7 +7,7 @@ gem "dotenv-rails", require: "dotenv/rails-now", group: %i[development test]
 
 gem 'rails', '~> 5.2.5'
 # Use Puma as the app server
-gem 'puma', '~> 4.3'
+gem 'puma', '~> 5.6'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Already has rgeo
