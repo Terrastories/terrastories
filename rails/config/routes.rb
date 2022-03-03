@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   end
 
     delete '/admin/places' => 'places#delete'
-    delete '/admin/stories' => 'stories#delete'
+    delete '/admin/stories' => 'admin/stories#delete'
     delete '/admin/themes' => 'admin/themes#delete'
     delete '/admin/speakers' => 'admin/speakers#delete'
 
