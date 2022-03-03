@@ -66,4 +66,11 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.webpacker.check_yarn_integrity = false
+
+  # Check if we use Docker to allow docker ip through web-console
+  if File.file?('/.dockerenv') == true
+    host_ip = `/sbin/ip route|awk '/default/ { print $3 }'`.strip
+    config.web_console.whitelisted_ips << host_ip
+  end
+
 end
