@@ -1,4 +1,4 @@
-FROM ruby:2.5.5-alpine
+FROM ruby:2.5.6-alpine
 ARG precompileassets
 
 RUN apk --no-cache add --update \
