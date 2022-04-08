@@ -38,7 +38,7 @@ services:
       - bundler:/usr/local/bundle
       - ./rails:/api
       - ./data/media:/media
-      - ./data/import/media:/opt/terrastories/import/media
+      - ./data/import/media:/api/import/media
 
   web-test:
     <<: *x-web-common
