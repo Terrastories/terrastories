@@ -1,6 +1,6 @@
 {
     "version": 8,
-    "name": "terrastories-generic",
+    "name": "terrastories-map",
     "metadata": {
         "mapbox:autocomposite": true,
         "mapbox:type": "template",
@@ -14,7 +14,7 @@
     "light": {"anchor": "viewport"},	
     "sources": {
         "composite": {
-            "url": "mbtiles://mbtiles/basic.mbtiles",
+            "url": "mbtiles://mbtiles/terrastories.mbtiles",
             "type": "vector"
         }
      },
