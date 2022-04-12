@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StoryList Component Displays correctly 1`] = `
+<Fragment>
+  <div
+    className="card--nav"
+  >
+    <Filter
+      categories={Array []}
+      clearFilteredStories={[Function]}
+      filterMap={Object {}}
+      handleFilterItemChange={[Function]}
+    />
+  </div>
+  <div
+    className="card--nav terrastory-info"
+  >
+    <IntroductoryPanel />
+    <Button
+      buttonText="EXPLORE"
+      buttonType="explore-button"
+      handleClick={[Function]}
+    />
+  </div>
+</Fragment>
+`;

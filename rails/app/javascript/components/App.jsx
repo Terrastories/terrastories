@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Map from "./Map";
 import Card from "./Card";
-import IntroPopup from "./IntroPopup";
 import FILTER_CATEGORIES from "../constants/FilterConstants";
 import bbox from "@turf/bbox";
 
@@ -39,7 +38,9 @@ class App extends Component {
     ne_boundary_lat: PropTypes.string,
     ne_boundary_long: PropTypes.string,
     pitch: PropTypes.number,
-    bearing: PropTypes.string
+    bearing: PropTypes.string,
+    number_one_path: PropTypes.string,
+    number_two_path: PropTypes.string
   };
 
   componentDidMount() {
@@ -377,8 +378,9 @@ class App extends Component {
           handleFilterCategoryChange={this.handleFilterCategoryChange}
           handleFilterItemChange={this.handleFilterItemChange}
           itemOptions={this.state.itemOptions}
+          numberOnePath={this.props.number_one_path}
+          numberTwoPath={this.props.number_two_path}
         />
-        <IntroPopup />
       </div>
     );
   }

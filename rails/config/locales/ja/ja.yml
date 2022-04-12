@@ -36,3 +36,8 @@ ja:
   welcome: "いらっしゃい"
   welcome_back: "まいど！"
   topic: "Topic"
+  usage:
+    category_explanation: "Select your category above. You can choose from one of three options: Region, Type of place or Speaker."
+    option_explanation: "Choose from the list of options based on the category you chose to view the story!"
+    explore_explanation: "Or simply hit explore below to discover stories all over!"
+    question: "How do I use Terrastories?"

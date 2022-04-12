@@ -37,3 +37,5 @@ json.zoom @theme.zoom.to_f
 json.pitch @theme.pitch.to_f
 json.bearing @theme.bearing
 json.marker_image_url image_url("marker1.png")
+json.number_one_path image_path("number1.svg")
+json.number_two_path image_path("number2.svg")
