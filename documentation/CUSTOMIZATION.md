@@ -29,9 +29,9 @@ _**Note:** when using Mapbox.com maps with Terrastories, you are subject to Mapb
 It is possible to set a custom map extent, zoom level, and boundaries of the Terrastories map. This can be done in the Terrastories `Theme` menu for a community when logged in as a user with admin permissions.
 ## Adding languages to Terrastories
 
-Terrastories uses internationalization to translate the application's core text, like the welcome page, sidebar, and administrative back end content. We have made it easy to add new languages to Terrastories without needing to touch any of the code. However, please note that this will only work for Terrastories that you host yourself (online or offline). In the future, we will make it possible to easily add other languages per each community on a Terrastories server.
+Terrastories uses internationalization to translate the application's core text, like the welcome page, sidebar, and administrative back end content. We have made it easy to add new languages to a Terrastories server without needing to touch any of the code.
 
-To add a language to Terrastories, navigate to the `rails/config/locales/` directory. Within this directory, each language has it's own subdirectory, like `en` (English) or `pt` (Portuguese). Currently, there are three files in each (using Portuguese as an example):
+To add a language to your Terrastories server, navigate to the `rails/config/locales/` directory. Within this directory, each language has it's own subdirectory, like `en` (English) or `pt` (Portuguese). Currently, there are three files in each (using Portuguese as an example):
 
 1.  `pt.yml`
 2.  `devise.pt.yml`
@@ -46,6 +46,8 @@ For the `devise` and `administrate` files, there might be available translations
 If you want to change the default language for Terrastories, set the language on line 21 in `rails/config/application.rb`. To set it to Papiamentu, change this line to `config.i18n.default_locale = :pap`
 
 Once you are done, the language should be available the next time you start Terrastories. 
+
+We absolutely welcome translation submissions for Terrastories! You can either submit a PR with your translations, or send the `yml` files to us directory. In the future, we'll make it possible for a community administrator to select the languages they want to have available for translation for their community members.
 
 ## Adding custom visual assets
 
