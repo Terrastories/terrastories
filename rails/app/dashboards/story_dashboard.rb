@@ -11,7 +11,7 @@ class StoryDashboard < Administrate::BaseDashboard
     id: Field::Number,
     title: Field::String,
     desc: Field::Text,
-    language: Field::String,
+    language: LanguageField,
     speakers: Field::ScopedHasMany.with_options(scope: -> (field) { field.resource.community.speakers }),
     places: Field::ScopedHasMany.with_options(scope: -> (field) { field.resource.community.places }),
     interview_location: Field::ScopedBelongsTo.with_options(class_name: "Place", scope: -> (field) { field.resource.community.places }),
@@ -33,9 +33,10 @@ class StoryDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :title,
-    :language,
-    :interview_location,
-    :date_interviewed,
+    :desc,
+    :speakers,
+    :places,
+    :permission_level,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES

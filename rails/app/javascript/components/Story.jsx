@@ -58,6 +58,12 @@ const Story = props => {
               />
             ))
           }
+          {
+            story.language &&
+            <p>
+              <b>{I18n.t("language")}:</b> {story.language}
+            </p>
+          }
         </div>
       </li>
     </React.Fragment>

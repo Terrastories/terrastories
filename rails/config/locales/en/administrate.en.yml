@@ -18,7 +18,11 @@ en:
       place:
         lat: Latitude
         long: Longitude
+        name: Name
         name_audio: Audio
+        description: Description
+        type_of_place: Type of place
+        region: Region
       theme:
         background_img: Background image (for welcome screen)
         sponsor_logos: Sponsor logos (for welcome screen)
@@ -33,6 +37,7 @@ en:
         zoom: Map zoom level (1 to 22)
         pitch: Map pitch degree (0 to 90)
         bearing: Map bearing degree (-180 to 180)
+        display_resource: "Theme for Terrastories: %{community_name}"
   administrate:
     actions:
       confirm: Are you sure?

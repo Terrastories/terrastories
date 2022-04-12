@@ -166,6 +166,9 @@ $el-shadow: 0 1px 4px $lighter-gray;
         margin-top: 1rem;
         @include ui-font;
         padding-bottom: 1rem;
+        b {
+          font-weight: bold;
+        }
       }
     }
   }

@@ -1,4 +1,14 @@
 version: "3.7"
+
+x-web-common: &x-web-common
+  image: ${DOCKER_IMAGE_NAME-terrastories}
+  build:
+    context: ./rails
+    args:
+      precompileassets: "not"
+  env_file:
+    - .env
+
 services:
   db:
     image: postgres:11
@@ -17,15 +27,6 @@ services:
   #   ports:
   #     - 3035:3035
 
-  x-web-common: &x-web-common
-    image: ${DOCKER_IMAGE_NAME-terrastories}
-    build:
-      context: ./rails
-      args:
-        precompileassets: "not"
-    env_file:
-      - .env
-
   web:
     <<: *x-web-common
     command: scripts/server
@@ -34,9 +35,10 @@ services:
     depends_on:
       - db
     volumes:
-      - ./rails:/opt/terrastories:cached
+      - bundler:/usr/local/bundle
+      - ./rails:/api
       - ./data/media:/media
-      - ./data/import/media:/opt/terrastories/import/media
+      - ./data/import/media:/api/import/media
 
   web-test:
     <<: *x-web-common
@@ -48,7 +50,8 @@ services:
     depends_on:
       - db
     volumes:
-      - ./rails:/opt/terrastories:cached
+      - bundler:/usr/local/bundle
+      - ./rails:/api
 
   selenium:
     # Debug version enables VNC ability
@@ -78,3 +81,4 @@ services:
 volumes:
   postgres_data:
   mbtiles:
+  bundler:

@@ -32,6 +32,7 @@ class PlaceDashboard < Administrate::BaseDashboard
     :photo,
     :name,
     :description,
+    :type_of_place,
     :region,
   ].freeze
 

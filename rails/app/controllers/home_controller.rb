@@ -36,7 +36,7 @@ class HomeController < ApplicationController
 
   helper_method def mapbox_style
     if local_mapbox?
-      "http://localhost:8080/styles/basic/style.json"
+      "http://localhost:8080/styles/terrastories-map/style.json"
     else
       @theme.mapbox_style_url.presence || ENV["MAPBOX_STYLE"]
     end

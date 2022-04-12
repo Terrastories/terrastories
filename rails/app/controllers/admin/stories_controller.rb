@@ -10,6 +10,8 @@ module Admin
     #     per(10)
     # end
 
+    Rails.logger.debug("My object: #{StoriesController.inspect}")
+
     def new
       # ensures that story is built for the current community (so scopes in administrate dashboards work)
       resource = current_community.stories.new
@@ -62,6 +64,18 @@ module Admin
 
     def import_page
       render "import_page"
+    end
+
+    def delete
+      remove_attachment
+    end
+
+    private
+
+    def remove_attachment
+      photo = ActiveStorage::Attachment.find(params[:attachment_id])
+      photo.purge
+      redirect_back(fallback_location: "/")
     end
   end
 end

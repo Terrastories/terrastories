@@ -14,6 +14,8 @@ ja:
           user_only: "Member"
           editor_only: "Editor"
           admin_only: "Admin"
+      theme:
+        display_resource: "Theme for Terrastories: %{community_name}"
   administrate:
     actions:
       confirm: "よろしいですか？"
