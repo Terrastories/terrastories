@@ -12,6 +12,7 @@ json.stories stories do |story|
     json.id speaker.id
     json.name speaker.name
     json.picture_url speaker.picture_url
+    json.speaker_community speaker.speaker_community
   end
 
   json.media_links story.media_links do |media_link|
