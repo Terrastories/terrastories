@@ -24,6 +24,8 @@ Rails.application.routes.draw do
         get  :export_sample_csv
       end
     end
+    delete :places_destroy_name_audio, to: 'places#destroy_name_audio'
+
     resources :curriculum_stories
     resources :themes
     # resources :media_links

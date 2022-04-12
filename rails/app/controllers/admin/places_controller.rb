@@ -64,5 +64,14 @@ module Admin
     def export_sample_csv
       send_data Place.export_sample_csv, filename: "sample_places.csv"
     end
+
+    def destroy_name_audio
+      return unless current_user.admin?
+
+      place = Place.find(params[:record_id])
+      place.name_audio.purge
+
+      redirect_back(fallback_location: "/")
+    end
   end
 end

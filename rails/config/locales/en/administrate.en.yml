@@ -19,6 +19,7 @@ en:
         lat: Latitude
         long: Longitude
         name: Name
+        name_audio: Audio
         description: Description
         type_of_place: Type of place
         region: Region
@@ -119,3 +120,4 @@ en:
         lat: Latitude
         stories: Stories
         photo: Photo
+        name_audio: Audio

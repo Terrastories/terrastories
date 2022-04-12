@@ -15,7 +15,8 @@ class PlaceDashboard < Administrate::BaseDashboard
     long: Field::String.with_options(searchable: false),
     lat: Field::String.with_options(searchable: false),
     region: RegionField,
-    photo: Field::ActiveStorage.with_options({destroy_path: :admin_places_path}),
+    photo: Field::ActiveStorage.with_options(destroy_path: :admin_places_path),
+    name_audio: Field::ActiveStorage.with_options(destroy_path: :admin_places_destroy_name_audio_path),
     type_of_place: TypeOfPlaceField,
     community: Field::BelongsTo,
     created_at: Field::DateTime,
@@ -46,6 +47,7 @@ class PlaceDashboard < Administrate::BaseDashboard
     :lat,
     :stories,
     :photo,
+    :name_audio,
     :created_at,
     :updated_at,
   ].freeze
@@ -56,6 +58,7 @@ class PlaceDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :name,
     :photo,
+    :name_audio,
     :description,
     :type_of_place,
     :region,
