@@ -12,33 +12,26 @@
 
 ### Map content
 
-Terrastories uses the Mapbox GL JS engine to serve maps. What this means is that Terrastories can either load maps from `Mapbox.com` directly, or load offline map tiles called `MBTiles` that were designed and styled in Mapbox.com's `Studio` environment.
+Terrastories uses the Mapbox GL JS library to serve maps. Terrastories can either load maps from `Mapbox.com` directly, or load offline map tiles in the `MBTiles` format together with font glyphs, image sprites, and a `style.json` file.
 
-For some use cases, it may be sufficient to use one of Mapbox's basic styles, such as OpenStreetMap (OSM) or imagery. The default map served by Terrastories is a light OSM map. 
+For some online use cases, it may be sufficient to use one of Mapbox's basic styles, such as OpenStreetMap (OSM) or imagery. The default map served by Terrastories is a light OSM map. 
 
-You may also opt to design your own custom map style using Mapbox Studio. For example, if you have your own GIS data, you can upload the data to [Mapbox Studio](https://www.mapbox.com/mapbox-studio/), and use the Studio interface to lay out the map. You have to have a Mapbox account to use Mapbox Studio (creating and designing maps using Mapbox Studio is free up to certain file size limitations). To learn how to use Mapbox Studio, you can refer to the manuals and tutorials made available by Mapbox [here](https://www.mapbox.com/help/studio-manual-tutorials/) or other resources on the web.
+You may also opt to design your own custom map style using Mapbox Studio. You could either customize one of these basic styles, or if you have your own GIS data, you can upload the data to [Mapbox Studio](https://www.mapbox.com/mapbox-studio/), and use the Studio interface to lay out the map. You have to have a Mapbox account to use Mapbox Studio (creating and designing maps using Mapbox Studio is free up to certain file size limitations). To learn how to use Mapbox Studio, you can refer to the manuals and tutorials made available by Mapbox [here](https://www.mapbox.com/help/studio-manual-tutorials/) or other resources on the web.
 
-To set the map style used by Terrastories, modify the `MAPBOX_STYLE` variable in the `.env` file in the main Terrastories directory. You can copy and paste your map style URL from Mapbox Studio if using an online map.
+For online use of Terrastories, you can set a `Mapbox.com` map for a community in the `Theme` menu when logged in as an admin user. Paste in the map style URL, and your map token, in the respective fields and it will automatically update the map for that community instance.
 
-You can also set a `Mapbox.com` map for a community in the `Theme` menu when logged in as an admin user. Paste in the map style URL, and your map token, in the fields and it will automatically update the map for that community instance.
-
-For offline "Field Kit" usage of Terrastories, it is necessary to create your own custom map using your own GIS data, as above. There are several additional steps to generate and style the `MBTiles`, described in the [SETUP-OFFLINE.md](SETUP-OFFLINE.md) file. It's also possible to get offline basemaps for [Mapeo](https://mapeo.app) working in Terrastories: please see our [Mapeo to Terrastories guide](MAPEO-MAPS-IN-TERRASTORIES.md).
+For offline "Field Kit" usage of Terrastories, you need to supply your own map tiles (in `MBTiles` format). There are several additional steps to generate and style the `MBTiles`, described in the [SETUP-OFFLINE.md](SETUP-OFFLINE.md) file. It's also possible to get offline basemaps for [Mapeo](https://mapeo.app) working in Terrastories: please see our [Mapeo to Terrastories guide](MAPEO-MAPS-IN-TERRASTORIES.md).
 
 _**Note:** when using Mapbox.com maps with Terrastories, you are subject to Mapbox's [pricing schema](https://www.mapbox.com/pricing/) which has a free tier of up to 50,000 map loads per month. If you anticipate more monthly loads than that, you can get in touch with Mapbox's community team at community@mapbox.com to see what they can do to help._
 
 ### Map extent and zoom
 
-It is possible to set a custom map extent, zoom level, and boundaries of the Terrastories map. Currently, these values have to be set manually in the `\rails\app\javascript\components\Map.jsx` file. (It is in our roadmap to make this process easier by using the Theme menu in the Terrastories administrative menu).
-
-* To set the default map center, enter your desired coordinates for `defaultCenter` (line 6)
-* To set the boundaries of the map (beyond which you cannot pan or zoom), set the maximum southwest and northeast coordinates in `defaultBounds` (line 7-9)
-* To set the default zoom level, set the `defaultZoom` (line 11)
-
+It is possible to set a custom map extent, zoom level, and boundaries of the Terrastories map. This can be done in the Terrastories `Theme` menu for a community when logged in as a user with admin permissions.
 ## Adding languages to Terrastories
 
-Terrastories uses internationalization to translate the application's core text, like the welcome page, sidebar, and administrative back end content. We have made it easy to add new languages to Terrastories without needing to touch any of the code.
+Terrastories uses internationalization to translate the application's core text, like the welcome page, sidebar, and administrative back end content. We have made it easy to add new languages to a Terrastories server without needing to touch any of the code.
 
-To add a language to Terrastories, navigate to the `rails/config/locales/` directory. Within this directory, each language has it's own subdirectory, like `en` (English) or `pt` (Portuguese). Currently, there are three files in each (using Portuguese as an example):
+To add a language to your Terrastories server, navigate to the `rails/config/locales/` directory. Within this directory, each language has it's own subdirectory, like `en` (English) or `pt` (Portuguese). Currently, there are three files in each (using Portuguese as an example):
 
 1.  `pt.yml`
 2.  `devise.pt.yml`
@@ -52,13 +45,13 @@ For the `devise` and `administrate` files, there might be available translations
 
 If you want to change the default language for Terrastories, set the language on line 21 in `rails/config/application.rb`. To set it to Papiamentu, change this line to `config.i18n.default_locale = :pap`
 
-Once you are done, the language should be available the next time you start Terrastories.
+Once you are done, the language should be available the next time you start Terrastories. 
+
+We absolutely welcome translation submissions for Terrastories! You can either submit a PR with your translations, or send the `yml` files to us directory. In the future, we'll make it possible for a community administrator to select the languages they want to have available for translation for their community members.
 
 ## Adding custom visual assets
 
-You can add your own background image for the Welcome screen of Terrastories, logos, and favicon. Navigate to `\rails\app\assets\images` and copy over your own images, replacing the relevant filenames of the files in this directory.
-
-It is now also possible to customize the background image and sponsor logos for a community via the `Theme` menu when logged in as an admin user.
+You can add your own background image for the Welcome screen of Terrastories, and any logos you want to appear under the login box on the Welcome screen. These can be added via the `Theme` menu when logged in as an admin user.
 
 ## Importing data into Terrastories
 
