@@ -26,7 +26,9 @@ _**Note:** when using Mapbox.com maps with Terrastories, you are subject to Mapb
 
 ### Map extent, zoom, pitch, boundaries, and 3D Terrain
 
-It is possible to set a custom map extent, zoom level, pitch, and boundaries of the Terrastories map. Additionally, for online Terrastories maps, you can activate a realistic 3D Terrain layer to view your maps in 3D. This can be done in the Terrastories `Theme` menu for a community when logged in as a user with admin permissions.
+It is possible to set a custom map extent, zoom level, pitch, and boundaries of the Terrastories map. Additionally, for online Terrastories maps, you can toggle on/off a realistic Mapbox 3D Terrain layer to view your maps in 3D. 3D Terrain adds another level of detail to the landscape, but requires more map and tile loading and therefore can impact the overall performance of Terrastories on your device.
+
+Setting these map properties can be done in the Terrastories `Theme` menu for a community when logged in as a user with admin permissions.
 ## Adding languages to Terrastories
 
 Terrastories uses internationalization to translate the application's core text, like the welcome page, sidebar, and administrative back end content. We have made it easy to add new languages to a Terrastories server without needing to touch any of the code.
