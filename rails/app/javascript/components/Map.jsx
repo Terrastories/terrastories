@@ -23,6 +23,7 @@ export default class Map extends Component {
     onMapPointClick: PropTypes.func,
     mapboxStyle: PropTypes.string,
     mapboxAccessToken: PropTypes.string,
+    mapbox3d: PropTypes.bool,
     useLocalMapServer: PropTypes.bool,
     markerImgUrl: PropTypes.string,
   };
@@ -57,27 +58,28 @@ export default class Map extends Component {
           "icon-allow-overlap": true
         }
       });
-
-      this.map.addSource('mapbox-dem', {
-        'type': 'raster-dem',
-        'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
-        'tileSize': 512,
-        'maxzoom': 14
+      if(this.props.mapbox3d) {
+        this.map.addSource('mapbox-dem', {
+          'type': 'raster-dem',
+          'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
+          'tileSize': 512,
+          'maxzoom': 14
         });
-
-      // add the DEM source as a terrain layer with exaggerated height
-      this.map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.5 });
-         
-      // add a sky layer that will show when the map is highly pitched
-      this.map.addLayer({
-        'id': 'sky',
-        'type': 'sky',
-        'paint': {
-        'sky-type': 'atmosphere',
-        'sky-atmosphere-sun': [0.0, 0.0],
-        'sky-atmosphere-sun-intensity': 15
-        }
-      });
+    
+        // add the DEM source as a terrain layer with exaggerated height
+        this.map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.5 });
+          
+        // add a sky layer that will show when the map is highly pitched
+        this.map.addLayer({
+          'id': 'sky',
+          'type': 'sky',
+          'paint': {
+          'sky-type': 'atmosphere',
+          'sky-atmosphere-sun': [0.0, 0.0],
+          'sky-atmosphere-sun-intensity': 15
+          }
+        });
+      }
 
       this.addHomeButton();
 

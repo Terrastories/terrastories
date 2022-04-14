@@ -15,6 +15,7 @@ class ThemeDashboard < Administrate::BaseDashboard
     sponsor_logos: Field::ActiveStorage.with_options({destroy_path: :admin_themes_path}),
     mapbox_style_url: Field::String,
     mapbox_access_token: Field::String,
+    mapbox_3d: Field::Boolean,
     center_lat: Field::Number,
     center_long: Field::Number,
     sw_boundary_lat: Field::Number,
@@ -44,6 +45,7 @@ class ThemeDashboard < Administrate::BaseDashboard
   sponsor_logos
   mapbox_style_url
   mapbox_access_token
+  mapbox_3d
   center_lat
   center_long
   sw_boundary_lat
@@ -63,6 +65,7 @@ class ThemeDashboard < Administrate::BaseDashboard
   sponsor_logos
   mapbox_style_url
   mapbox_access_token
+  mapbox_3d
   center_lat
   center_long
   sw_boundary_lat
