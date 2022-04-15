@@ -58,7 +58,7 @@ export default class Map extends Component {
           "icon-allow-overlap": true
         }
       });
-      if(this.props.mapbox3d) {
+      if(!this.props.useLocalMapServer && this.props.mapbox3d) {
         this.map.addSource('mapbox-dem', {
           'type': 'raster-dem',
           'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
