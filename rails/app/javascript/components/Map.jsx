@@ -28,30 +28,15 @@ export default class Map extends Component {
   };
 
   componentDidMount() {
-    if (this.props.sw_boundary_long == null) { // no bounding box
-      this.map = new mapboxgl.Map({
+    this.map = new mapboxgl.Map({
         container: this.mapContainer,
         style: this.props.mapboxStyle,
         center: [this.props.centerLong, this.props.centerLat],
         zoom: this.props.zoom,
-        maxBounds: null, // no bounding box
+        maxBounds: this.checkBB(), // check for bounding box presence
         pitch: this.props.pitch,
         bearing: this.props.bearing
-      });
-    } else { // map does have bounding box
-      this.map = new mapboxgl.Map({
-        container: this.mapContainer,
-        style: this.props.mapboxStyle,
-        center: [this.props.centerLong, this.props.centerLat],
-        zoom: this.props.zoom,
-        maxBounds: [
-          [this.props.sw_boundary_long, this.props.sw_boundary_lat], //southwest
-          [this.props.ne_boundary_long, this.props.ne_boundary_lat] //northeast
-        ],
-        pitch: this.props.pitch,
-        bearing: this.props.bearing
-      });
-    }
+    });
 
     this.map.on("load", () => {
 
@@ -164,26 +149,13 @@ export default class Map extends Component {
   }
 
   resetMapToCenter() {
-    if (this.props.sw_boundary_long == null) { // no bounding box
-      this.map.flyTo({
+    this.map.flyTo({
         center: [this.props.centerLong, this.props.centerLat],
         zoom: this.props.zoom,
         pitch: this.props.pitch,
         bearing: this.props.bearing,
-        maxBounds: null // no bounding box
-      });
-    } else { // map does have bounding box
-      this.map.flyTo({
-        center: [this.props.centerLong, this.props.centerLat],
-        zoom: this.props.zoom,
-        pitch: this.props.pitch,
-        bearing: this.props.bearing,
-        maxBounds: [
-          [this.props.sw_boundary_long, this.props.sw_boundary_lat], //southwest
-          [this.props.ne_boundary_long, this.props.ne_boundary_lat] //northeast
-        ]
-      });
-    }
+        maxBounds: this.checkBB(), // check for bounding box presence
+    });
   }
 
   // TODO: update this to JSX
@@ -216,5 +188,18 @@ export default class Map extends Component {
 
   render() {
     return <div ref={el => (this.mapContainer = el)} className="ts-MainMap" />;
+  }
+
+// test for bounding box presence
+  checkBB() {
+    let mapBounds = null;
+    if (this.props.sw_boundary_long != null && this.props.sw_boundary_lat != null
+        && this.props.ne_boundary_long != null && this.props.ne_boundary_lat != null) {
+        mapBounds = [
+            [this.props.sw_boundary_long, this.props.sw_boundary_lat], //southwest
+            [this.props.ne_boundary_long, this.props.ne_boundary_lat] //northeast
+        ]
+    }
+    return mapBounds;
   }
 }
