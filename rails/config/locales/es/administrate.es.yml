@@ -3,20 +3,47 @@ es:
   helpers:
     label:
       speaker:
-        speaker_community: Speaker's Community
-        birthdate: Date of Birth
-        birthplace: Born Where
+        name: Nombre
+        speaker_community: Comunidad del Orador
+        birthdate: Fecha de cumpleaños
+        birthplace: Lugar de nacimiento
       story:
-        desc: Description
-        interviewer: Interviewer
-        video_unsupported: Sorry, your browser doesn't support embedded videos.
+        desc: Descripción
+        interviewer: Entrevistador/a
+        video_unsupported: Lo sentimos, su navegador no admite videos incrustados.
         permissions:
-          anonymous: "Searchable"
-          user_only: "Member"
-          editor_only: "Editor"
-          admin_only: "Admin"
+          anonymous: "Buscable"
+          user_only: "Miembro/a"
+          editor_only: "Editor/a"
+          admin_only: "Administrador/a"
+      place:
+        lat: Latitud
+        long: Longitud
+        name: Nombre
+        name_audio: Audio
+        description: Descripción
+        type_of_place: Tipo de lugar
+        region: Región          
       theme:
-        display_resource: "Theme para Terrastories: %{community_name}"
+        background_img: Imagen de fondo (para la pantalla de bienvenida)
+        sponsor_logos: Logotipos de patrocinadores (para la pantalla de bienvenida)
+        mapbox_style_url: URL de estilo Mapbox (para mapas en línea)
+        mapbox_access_token: Token de acceso a Mapbox asociado al estilo
+        mapbox_3d: Activar la vista de terreno 3D para el mapa en línea
+        center_lat: Centro del mapa, latitud
+        center_long: Centro del mapa, longitud
+        sw_boundary_lat: SW cuadro delimitador, latitud (opcional)
+        sw_boundary_long: SW cuadro delimitador, longitud (opcional)
+        ne_boundary_lat: NE cuadro delimitador, latitud (opcional)
+        ne_boundary_long: NE cuadro delimitador, longit (opcional)
+        zoom: Nivel de zoom del mapa (1 a 22)
+        pitch: Grado de tono del mapa (0 a 90)
+        bearing: Grado de orientación del mapa (-180 a 180)
+        display_resource: "Tema para Terrastories: %{community_name}"
+      user:
+        id: Id
+        email: Correo electrónico
+        role: Rol
   administrate:
     actions:
       confirm: ¿Estás seguro?
@@ -26,8 +53,8 @@ es:
       show_resource: Mostrar %{name}
       new_resource: Nuevo %{name}
       back: Atrás
-    community: Community
-    communities: Communities
+    community: Comunidad
+    communities: Comunidades
     controller:
       create:
         success: "%{resource} fue creado correctamente."
@@ -49,18 +76,19 @@ es:
     search:
       clear: Limpiar busqueda
       label: Buscar %{resource}
+      results: "resultados"
     speakers: Oradores
     speaker: Orador
     stories: Historias
     story: Historia
-    theme: Theme
-    themes: Themes
+    theme: Tema
+    themes: Temas
     media_link: Enlace De Medios
     media_links: Enlaces De Medios
     table_columns:
       user:
         id: Id
-        email: Email
+        email: Correo electrónico
         role: Rol
       speaker:
         id: Id

@@ -23,16 +23,18 @@ es:
   most_recent: "Más reciente"
   no_media: No Media Available
   password: "Contraseña"
+  place_name: "Pronunciación del nombre del lugar"
   place_type: "Tipo de lugar"
   region: "Región"
   remember_me: "Recordarme"
   reversed_alphabetical: Z-A
   select_category: "Seleccionar categoría"
-  selected_language: "seleccionado"
   select_option: "Seleccionar opción"
+  selected_language: "seleccionado"
   sign_up: "Registrarse"
   sort_stories: "Ordenar las historias"
   speaker: "Orador"
+  topic: "Tema"
   welcome: "Bienvenido/a"
   welcome_back: "Bienvenido/a de nuevo"
-  topic: "Tema"
+

@@ -71,8 +71,9 @@ It renders the `_table` partial to display details about the resources.
 
 <section>
   <div>
-    <%= link_to 'Import',
-    page.resource_name.pluralize + '/import_page',
+    <%= link_to t("administrate.import_button",
+     resource: t("administrate.#{page.resource_name.pluralize}")),
+     page.resource_name.pluralize + '/import_page',
     class: 'button'
     %>
   </div>

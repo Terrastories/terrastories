@@ -3,20 +3,20 @@ mat:
   helpers:
     label:
       speaker:
-        speaker_community: Speaker's Community
-        birthdate: Date of Birth
-        birthplace: Born Where
+        speaker_community: Sprekersgemeenschap
+        birthdate: Geboortedatum
+        birthplace: Waar geboren
       story:
-        desc: Description
+        desc: Beschrijving
         interviewer: Interviewer
-        video_unsupported: Sorry, your browser doesn't support embedded videos.
+        video_unsupported: Sorry, uw browser ondersteunt geen ingesloten video's.
         permissions:
-          anonymous: "Searchable"
-          user_only: "Member"
+          anonymous: "Doorzoekbaar"
+          user_only: "Lid"
           editor_only: "Editor"
           admin_only: "Admin"
       theme:
-        display_resource: "Theme for Terrastories: %{community_name}"
+        display_resource: "Thema voor Terrastories: %{community_name}"
   administrate:
     actions:
       confirm: Weet u het zeker?
@@ -26,8 +26,8 @@ mat:
       show_resource: Toon %{name}
       new_resource: Nieuw %{name}
       back: Terug
-    community: Community
-    communities: Communities
+    community: Gemeenschap
+    communities: Gemeenschappen
     controller:
       create:
         success: "%{resource} was succesvol aangemaakt."
@@ -47,14 +47,15 @@ mat:
     places: Plaatsen
     place: Plaats
     search:
-      clear: CDuidelijke zoek
+      clear: Verwijder
       label: Zoeken %{resource}
-    speakers: Speakers
+      results: "resultaten"
+    speakers: Sprekers
     speaker: Spreker
     stories: Verhalen
     story: Verhaal
-    theme: Theme
-    themes: Themes
+    theme: Thema
+    themes: Themas
     media_link: Media Link
     media_links: Media Links
     table_columns:
