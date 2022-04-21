@@ -58,6 +58,8 @@ export default class Map extends Component {
           "icon-allow-overlap": true
         }
       });
+
+      // Add 3d terrain DEM layer if activated
       if(!this.props.useLocalMapServer && this.props.mapbox3d) {
         this.map.addSource('mapbox-dem', {
           'type': 'raster-dem',
@@ -87,10 +89,19 @@ export default class Map extends Component {
       this.addMarkerClickHandler();
     });
 
+    // Hide minimap and nav controls for offline Terrastories
     if(!this.props.useLocalMapServer) {
       this.map.addControl(new mapboxgl.Minimap(), "top-right");
       this.map.addControl(new mapboxgl.NavigationControl());
     }
+
+    // Change mouse pointer when hovering over ts-marker points
+    this.map.on('mouseenter', STORY_POINTS_LAYER_ID, () => {
+      this.map.getCanvas().style.cursor = 'pointer'
+    })
+    this.map.on('mouseleave', STORY_POINTS_LAYER_ID, () => {
+      this.map.getCanvas().style.cursor = ''
+    })
   }
 
   componentDidUpdate(prevProps, prevState) {
