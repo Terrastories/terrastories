@@ -16,9 +16,9 @@ const Popup = (props) => {
                                                       controls
                                                       controlsList="nodownload"
                                                       src={name_audio_url}> </audio></div>)}
-        {description !== "" && (<div class="ts-markerPopup-description">{description}</div>)}
-        {region !== "" && (<div><span class="ts-markerPopup-label">{I18n.t("region")}:</span> {region}</div>)}
-        {type_of_place !== "" && (<div><span class="ts-markerPopup-label">{I18n.t("place_type")}:</span> {type_of_place}</div>)}
+        {description && (<div class="ts-markerPopup-description">{description}</div>)}
+        {region && (<div><span class="ts-markerPopup-label">{I18n.t("region")}:</span> {region}</div>)}
+        {type_of_place && (<div><span class="ts-markerPopup-label">{I18n.t("place_type")}:</span> {type_of_place}</div>)}
       </div>
     </div>
   );
