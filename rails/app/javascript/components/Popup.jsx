@@ -10,15 +10,15 @@ const Popup = (props) => {
         <button className="ts-markerPopup-header-button" onClick={props.onCloseClick}>✕</button>
       </div>
       <div className="ts-markerPopup-content">
-        {String(photo_url) !== "null" && (<img src={photo_url} />)}
-        {String(name_audio_url) !== "null" && (<div><span class="ts-markerPopup-label">{I18n.t("place_name")}:</span>
+        {photo_url && (<img src={photo_url} />)}
+        {name_audio_url && (<div><span class="ts-markerPopup-label">{I18n.t("place_name")}:</span>
                                                       <audio class="ts-markerPopup-audio"
                                                       controls
                                                       controlsList="nodownload"
                                                       src={name_audio_url}> </audio></div>)}
-        {description !== "" && (<div class="ts-markerPopup-description">{description}</div>)}
-        {region !== "" && (<div><span class="ts-markerPopup-label">{I18n.t("region")}:</span> {region}</div>)}
-        {type_of_place !== "" && (<div><span class="ts-markerPopup-label">{I18n.t("place_type")}:</span> {type_of_place}</div>)}
+        {description && (<div class="ts-markerPopup-description">{description}</div>)}
+        {region && (<div><span class="ts-markerPopup-label">{I18n.t("region")}:</span> {region}</div>)}
+        {type_of_place && (<div><span class="ts-markerPopup-label">{I18n.t("place_type")}:</span> {type_of_place}</div>)}
       </div>
     </div>
   );
