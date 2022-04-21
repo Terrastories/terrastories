@@ -33,7 +33,7 @@ export default class Map extends Component {
         style: this.props.mapboxStyle,
         center: [this.props.centerLong, this.props.centerLat],
         zoom: this.props.zoom,
-        maxBounds: this.checkBB(), // check for bounding box presence
+        maxBounds: this.checkBounds(), // check for bounding box presence
         pitch: this.props.pitch,
         bearing: this.props.bearing
     });
@@ -154,7 +154,7 @@ export default class Map extends Component {
         zoom: this.props.zoom,
         pitch: this.props.pitch,
         bearing: this.props.bearing,
-        maxBounds: this.checkBB(), // check for bounding box presence
+        maxBounds: this.checkBounds(), // check for bounding box presence
     });
   }
 
@@ -191,7 +191,7 @@ export default class Map extends Component {
   }
 
 // test for bounding box presence
-  checkBB() {
+  checkBounds() {
     let mapBounds = null;
     if (this.props.sw_boundary_long != null && this.props.sw_boundary_lat != null
         && this.props.ne_boundary_long != null && this.props.ne_boundary_lat != null) {
