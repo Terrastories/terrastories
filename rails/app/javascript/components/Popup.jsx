@@ -11,13 +11,14 @@ const Popup = (props) => {
       </div>
       <div className="ts-markerPopup-content">
         {String(photo_url) !== "null" && (<img src={photo_url} />)}
-        {String(name_audio_url) !== "null" && (<audio class="ts-markerPopup-audio"
+        {String(name_audio_url) !== "null" && (<div><span class="ts-markerPopup-label">{I18n.t("place_name")}:</span>
+                                                      <audio class="ts-markerPopup-audio"
                                                       controls
                                                       controlsList="nodownload"
-                                                      src={name_audio_url}> </audio>)}
+                                                      src={name_audio_url}> </audio></div>)}
         {description !== "" && (<div class="ts-markerPopup-description">{description}</div>)}
-        {region !== "" && (<div><span class="ts-markerPopup-label">Region:</span> {region}</div>)}
-        {type_of_place !== "" && (<div><span class="ts-markerPopup-label">Type of Place:</span> {type_of_place}</div>)}
+        {region !== "" && (<div><span class="ts-markerPopup-label">{I18n.t("region")}:</span> {region}</div>)}
+        {type_of_place !== "" && (<div><span class="ts-markerPopup-label">{I18n.t("place_type")}:</span> {type_of_place}</div>)}
       </div>
     </div>
   );
