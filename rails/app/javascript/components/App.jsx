@@ -29,6 +29,7 @@ class App extends Component {
     use_local_map_server: PropTypes.bool,
     mapbox_access_token: PropTypes.string,
     mapbox_style: PropTypes.string,
+    mapbox_3d: PropTypes.bool,
     logo_path: PropTypes.string,
     user: PropTypes.object,
     center_lat: PropTypes.string,
@@ -41,6 +42,8 @@ class App extends Component {
     pitch: PropTypes.number,
     bearing: PropTypes.string
   };
+
+
 
   componentDidMount() {
     const points = this.getPointsFromStories(this.state.stories);
@@ -346,6 +349,7 @@ class App extends Component {
           mapboxAccessToken={this.props.mapbox_access_token}
           useLocalMapServer={this.props.use_local_map_server}
           mapboxStyle={this.props.mapbox_style}
+          mapbox3d={this.props.mapbox_3d}
           clearFilteredStories={this.resetStoriesAndMap}
           onMapPointClick={this.handleMapPointClick}
           activePoint={this.state.activePoint}

@@ -2,20 +2,20 @@ ja:
   helpers:
     label:
       speaker:
-        speaker_community: Speaker's Community
-        birthdate: Date of Birth
-        birthplace: Born Where
+        speaker_community: スピーカーのコミュニティ
+        birthdate: 生年月日
+        birthplace: どこで生まれた
       story:
-        desc: Description
-        interviewer: Interviewer
-        video_unsupported: Sorry, your browser doesn't support embedded videos.
+        desc: 説明
+        interviewer: インタビュアー
+        video_unsupported: 申し訳ありませんが、お使いのブラウザは埋め込み動画をサポートしていません。
         permissions:
-          anonymous: "Searchable"
-          user_only: "Member"
-          editor_only: "Editor"
-          admin_only: "Admin"
+          anonymous: "検索可能"
+          user_only: "メンバー"
+          editor_only: "編集者"
+          admin_only: "管理者"
       theme:
-        display_resource: "Theme for Terrastories: %{community_name}"
+        display_resource: "のテーマ Terrastories: %{community_name}"
   administrate:
     actions:
       confirm: "よろしいですか？"
@@ -25,8 +25,8 @@ ja:
       show_resource: "%{name}"
       new_resource: "%{name}新規作成"
       back: "戻る"
-    community: Community
-    communities: Communities
+    community: コミュニティ
+    communities: コミュニティ
     controller:
       create:
         success: "%{resource}が作成されました。"
@@ -50,12 +50,13 @@ ja:
     search:
       clear: "クリア"
       label: "%{resource}検索"
+      results: "結果"
     speakers: "スピーカー"
     speaker: "スピーカー"
     stories: "ストーリー"
     story: "ストーリー"
-    theme: Theme
-    themes: Themes
+    theme: テーマ
+    themes: テーマ
     table_columns:
       user:
         id: ID

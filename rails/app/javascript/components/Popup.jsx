@@ -9,17 +9,16 @@ const Popup = (props) => {
         <h1>{name}</h1>
         <button className="ts-markerPopup-header-button" onClick={props.onCloseClick}>✕</button>
       </div>
-      {/* To do post-refactor: internationalize label strings in popup*/}
       <div className="ts-markerPopup-content">
         {photo_url && (<img src={photo_url} />)}
-        {name_audio_url && (<div><span class="ts-markerPopup-label">Place name pronunciation:</span>
+        {name_audio_url && (<div><span class="ts-markerPopup-label">{I18n.t("place_name")}:</span>
                                                       <audio class="ts-markerPopup-audio"
                                                       controls
                                                       controlsList="nodownload"
                                                       src={name_audio_url}> </audio></div>)}
-        {description && (<div class="ts-markerPopup-description">{description}</div>)}
-        {region && (<div><span class="ts-markerPopup-label">Region:</span> {region}</div>)}
-        {type_of_place && (<div><span class="ts-markerPopup-label">Type of Place:</span> {type_of_place}</div>)}
+        {description !== "" && (<div class="ts-markerPopup-description">{description}</div>)}
+        {region !== "" && (<div><span class="ts-markerPopup-label">{I18n.t("region")}:</span> {region}</div>)}
+        {type_of_place !== "" && (<div><span class="ts-markerPopup-label">{I18n.t("place_type")}:</span> {type_of_place}</div>)}
       </div>
     </div>
   );
