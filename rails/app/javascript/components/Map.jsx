@@ -92,8 +92,9 @@ export default class Map extends Component {
     // Hide minimap and nav controls for offline Terrastories
     if(!this.props.useLocalMapServer) {
       this.map.addControl(new mapboxgl.Minimap(), "top-right");
-      this.map.addControl(new mapboxgl.NavigationControl());
     }
+
+    this.map.addControl(new mapboxgl.NavigationControl());
 
     // Change mouse pointer when hovering over ts-marker points
     this.map.on('mouseenter', STORY_POINTS_LAYER_ID, () => {
