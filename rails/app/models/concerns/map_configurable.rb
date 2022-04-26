@@ -3,10 +3,6 @@ module MapConfigurable
   def set_map_defaults
     self.center_lat ||= 15
     self.center_long ||= 0
-    self.sw_boundary_lat ||= nil #-85
-    self.sw_boundary_long ||= nil #-180
-    self.ne_boundary_lat ||= nil #85
-    self.ne_boundary_long ||= nil #180
     self.zoom ||= 2
     self.pitch ||= 0
     self.bearing ||= 0
