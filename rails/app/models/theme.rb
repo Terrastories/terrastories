@@ -14,6 +14,9 @@ class Theme < ApplicationRecord
    def map_bounds
      return if sw_boundary_long.nil? && sw_boundary_lat.nil? && ne_boundary_long.nil? && ne_boundary_lat.nil?
 
+     if sw_boundary_long.nil? || sw_boundary_lat.nil? || ne_boundary_long.nil? || ne_boundary_lat.nil?
+       errors.add(:base, "All four bounding box values must be set, or left blank") # at least one nil and at least one numeric
+     end
      errors.add(:sw_boundary_lat, "value should be between -90 and 90") unless (-90..90).include?(sw_boundary_lat)
      errors.add(:ne_boundary_lat, "value should be between -90 and 90") unless (-90..90).include?(ne_boundary_lat)
      errors.add(:sw_boundary_long, "value should be between -180 and 180") unless (-180..180).include?(sw_boundary_long)
