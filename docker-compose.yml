@@ -10,6 +10,13 @@ x-web-common: &x-web-common
     - .env
 
 services:
+  nginx-proxy:
+    image: jwilder/nginx-proxy:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+
   db:
     image: postgres:11
     ports:
@@ -32,6 +39,8 @@ services:
     command: scripts/server
     ports:
       - 3000:3000
+    expose:
+      - "3000"
     depends_on:
       - db
     volumes:
@@ -39,6 +48,8 @@ services:
       - ./rails:/api
       - ./data/media:/media
       - ./data/import/media:/api/import/media
+    environment:
+      - VIRTUAL_HOST=.terrastories.local
 
   web-test:
     <<: *x-web-common
