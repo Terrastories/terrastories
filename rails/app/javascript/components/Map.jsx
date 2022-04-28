@@ -30,16 +30,13 @@ export default class Map extends Component {
 
   componentDidMount() {
     this.map = new mapboxgl.Map({
-      container: this.mapContainer,
-      style: this.props.mapboxStyle,
-      center: [this.props.centerLong, this.props.centerLat],
-      zoom: this.props.zoom,
-      maxBounds: [
-        [this.props.sw_boundary_long, this.props.sw_boundary_lat], //southwest
-        [this.props.ne_boundary_long, this.props.ne_boundary_lat] //northeast
-      ],
-      pitch: this.props.pitch,
-      bearing: this.props.bearing
+        container: this.mapContainer,
+        style: this.props.mapboxStyle,
+        center: [this.props.centerLong, this.props.centerLat],
+        zoom: this.props.zoom,
+        maxBounds: this.checkBounds(), // check for bounding box presence
+        pitch: this.props.pitch,
+        bearing: this.props.bearing
     });
 
     this.map.on("load", () => {
@@ -188,14 +185,11 @@ export default class Map extends Component {
 
   resetMapToCenter() {
     this.map.flyTo({
-      center: [this.props.centerLong, this.props.centerLat],
-      zoom: this.props.zoom,
-      pitch: this.props.pitch,
-      bearing: this.props.bearing,
-      maxBounds: [
-        [this.props.sw_boundary_long, this.props.sw_boundary_lat], //southwest
-        [this.props.ne_boundary_long, this.props.ne_boundary_lat] //northeast
-      ]
+        center: [this.props.centerLong, this.props.centerLat],
+        zoom: this.props.zoom,
+        pitch: this.props.pitch,
+        bearing: this.props.bearing,
+        maxBounds: this.checkBounds(), // check for bounding box presence
     });
   }
 
@@ -229,5 +223,18 @@ export default class Map extends Component {
 
   render() {
     return <div ref={el => (this.mapContainer = el)} className="ts-MainMap" />;
+  }
+
+// test for bounding box presence
+  checkBounds() {
+    let mapBounds = null;
+    if (this.props.sw_boundary_long != null && this.props.sw_boundary_lat != null
+        && this.props.ne_boundary_long != null && this.props.ne_boundary_lat != null) {
+        mapBounds = [
+            [this.props.sw_boundary_long, this.props.sw_boundary_lat], //southwest
+            [this.props.ne_boundary_long, this.props.ne_boundary_lat] //northeast
+        ]
+    }
+    return mapBounds;
   }
 }

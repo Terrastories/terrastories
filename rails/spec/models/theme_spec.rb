@@ -27,7 +27,7 @@ RSpec.describe Theme, type: :model do
   it "returns map points as an array of longitude and latitude" do
     expect(theme.center).to be_an_instance_of Array
     expect(theme.center).to eq [-108, 38.5]
-    expect(theme.sw_boundary).to eq [-180, -85]
-    expect(theme.ne_boundary).to eq [180, 85]
+    expect(theme.sw_boundary).to eq nil # was [-180, -85]
+    expect(theme.ne_boundary).to eq nil # was [180, 85]
   end
 end
