@@ -1,4 +1,4 @@
-FROM ruby:2.5.31-slim
+FROM ruby:2.5.1-slim
 ARG precompileassets
 
 RUN apt-get update && apt-get install -y curl gnupg

@@ -30,13 +30,13 @@ export default class Map extends Component {
 
   componentDidMount() {
     this.map = new mapboxgl.Map({
-      container: this.mapContainer,
-      style: this.props.mapboxStyle,
-      center: [this.props.centerLong, this.props.centerLat],
-      zoom: this.props.zoom,
-      maxBounds: this.checkBounds(), // check for bounding box presence
-      pitch: this.props.pitch,
-      bearing: this.props.bearing
+        container: this.mapContainer,
+        style: this.props.mapboxStyle,
+        center: [this.props.centerLong, this.props.centerLat],
+        zoom: this.props.zoom,
+        maxBounds: this.checkBounds(), // check for bounding box presence
+        pitch: this.props.pitch,
+        bearing: this.props.bearing
     });
 
     this.map.on("load", () => {
@@ -56,7 +56,6 @@ export default class Map extends Component {
         }
       });
 
-
       // Add 3d terrain DEM layer if activated
       if(!this.props.useLocalMapServer && this.props.mapbox3d) {
         this.map.addSource('mapbox-dem', {
@@ -65,10 +64,10 @@ export default class Map extends Component {
           'tileSize': 512,
           'maxzoom': 14
         });
-
+    
         // add the DEM source as a terrain layer with exaggerated height
         this.map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.5 });
-
+          
         // add a sky layer that will show when the map is highly pitched
         this.map.addLayer({
           'id': 'sky',
@@ -87,18 +86,19 @@ export default class Map extends Component {
       this.addMarkerClickHandler();
     });
 
-        // Hide minimap for offline Terrastories
+    // Hide minimap and nav controls for offline Terrastories
     if(!this.props.useLocalMapServer) {
       this.map.addControl(new mapboxgl.Minimap(), "top-right");
     }
 
     this.map.addControl(new mapboxgl.NavigationControl());
-        // Change mouse pointer when hovering over ts-marker points
-        this.map.on('mouseenter', STORY_POINTS_LAYER_ID, () => {
-          this.map.getCanvas().style.cursor = 'pointer'
-        })
-        this.map.on('mouseleave', STORY_POINTS_LAYER_ID, () => {
-          this.map.getCanvas().style.cursor = ''
+
+    // Change mouse pointer when hovering over ts-marker points
+    this.map.on('mouseenter', STORY_POINTS_LAYER_ID, () => {
+      this.map.getCanvas().style.cursor = 'pointer'
+    })
+    this.map.on('mouseleave', STORY_POINTS_LAYER_ID, () => {
+      this.map.getCanvas().style.cursor = ''
     })
   }
 
@@ -185,11 +185,11 @@ export default class Map extends Component {
 
   resetMapToCenter() {
     this.map.flyTo({
-      center: [this.props.centerLong, this.props.centerLat],
-      zoom: this.props.zoom,
-      pitch: this.props.pitch,
-      bearing: this.props.bearing,
-      maxBounds: this.checkBounds(), // check for bounding box presence
+        center: [this.props.centerLong, this.props.centerLat],
+        zoom: this.props.zoom,
+        pitch: this.props.pitch,
+        bearing: this.props.bearing,
+        maxBounds: this.checkBounds(), // check for bounding box presence
     });
   }
 
@@ -225,11 +225,11 @@ export default class Map extends Component {
     return <div ref={el => (this.mapContainer = el)} className="ts-MainMap" />;
   }
 
-  // test for bounding box presence
+// test for bounding box presence
   checkBounds() {
     let mapBounds = null;
-    if (this.props.sw_boundary_long != null && this.props.sw_boundary_lat != null 
-    && this.props.ne_boundary_long != null && this.props.ne_boundary_lat != null) {
+    if (this.props.sw_boundary_long != null && this.props.sw_boundary_lat != null
+        && this.props.ne_boundary_long != null && this.props.ne_boundary_lat != null) {
         mapBounds = [
             [this.props.sw_boundary_long, this.props.sw_boundary_lat], //southwest
             [this.props.ne_boundary_long, this.props.ne_boundary_lat] //northeast

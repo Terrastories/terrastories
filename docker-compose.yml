@@ -49,8 +49,7 @@ services:
     depends_on:
       - db
     volumes:
-      - bundler:/usr/local/bundle
-      - ./rails:/api
+      - ./rails:/opt/terrastories:cached
 
   selenium:
     # Debug version enables VNC ability
