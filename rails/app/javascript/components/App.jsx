@@ -43,6 +43,8 @@ class App extends Component {
     bearing: PropTypes.string
   };
 
+
+
   componentDidMount() {
     const points = this.getPointsFromStories(this.state.stories);
     this.setState({ points: points });
@@ -111,13 +113,35 @@ class App extends Component {
           break;
         }
         case I18n.t("topic"): {
-          // second category: Topic
+          // fourth category: Topic
           const topicSet = new Set(
             this.props.stories
               .map(story => story.topic)
               .flat()
           );
           filterMap[category] = Array.from(topicSet).filter(item => item).sort();
+          break;
+        }
+        case I18n.t("language"): {
+          // fifth category: Language
+          const languageSet = new Set(
+            this.props.stories
+              .map(story => story.language)
+              .flat()
+          );
+          filterMap[category] = Array.from(languageSet).filter(item => item).sort();
+          break;
+        }
+        case I18n.t("helpers.label.speaker.speaker_community"): {
+          // sixth category: Community
+          const communitySet = new Set(
+            this.props.stories
+            .map(story => {
+              return story.speakers.map(speaker => speaker.speaker_community);
+            })
+            .flat()
+          );
+          filterMap[category] = Array.from(communitySet).filter(item => item).sort();
           break;
         }
       }
@@ -187,6 +211,32 @@ class App extends Component {
               )
             }
         });
+        break;
+      }
+      case I18n.t("language"): {
+        // fifth category: language
+        filteredStories = this.props.stories.filter(story => {
+            if (story.language) {
+              return (
+                story.language &&
+                story.language.toLowerCase() === item.toLowerCase()
+              )
+            }
+        });
+        break;
+      }
+      case I18n.t("helpers.label.speaker.speaker_community"): {
+        // sixth category: community
+        filteredStories = this.props.stories
+          .filter((story) => story.speakers
+            .some(speaker => speaker.speaker_community && speaker.speaker_community.toLowerCase() === item.toLowerCase())
+          )
+          .map(story => {
+            let n = Object.assign({}, story) 
+            n.speakers = n.speakers
+              .filter(speaker => speaker.speaker_community && speaker.speaker_community.toLowerCase() === item.toLowerCase())
+              return n
+            });
         break;
       }
     }
@@ -276,6 +326,21 @@ class App extends Component {
     this.setState({ activePoint: point, framedView });
   };
 
+  
+  // build category list based that excludes empty category sets
+  buildFilterCategories = () => {
+    const variableCategories = [I18n.t("topic"), I18n.t("language"), I18n.t("helpers.label.speaker.speaker_community"),]
+    let categories = this.filterMap();
+    
+    Object.keys(categories).map(cat => {
+      if (categories[cat].length === 0 && variableCategories.includes(cat)) {
+        delete categories[cat]
+      }
+    })
+    let filteredCategories = Object.keys(categories)
+    return filteredCategories
+  }
+
   render() {
     return (
       <div>
@@ -304,7 +369,7 @@ class App extends Component {
           activeStory={this.state.activeStory}
           stories={this.state.stories}
           handleStoriesChanged={this.handleStoriesChanged}
-          categories={FILTER_CATEGORIES}
+          categories={this.buildFilterCategories()}
           filterMap={this.filterMap()}
           handleFilter={this.handleFilter}
           clearFilteredStories={this.resetStoriesAndMap}
