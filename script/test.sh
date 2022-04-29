@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 ## Run App unit tests
 docker-compose run --rm web-test rspec
