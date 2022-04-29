@@ -20,7 +20,7 @@ Additionally, it may become beneficial in the future to integrate and create hoo
 
 Terrastories has a special administrative user credential that has the power to create and modify communities. We call this `super admin`. When logged in as super admin, you are not able to access or modify any community's data or maps - this user credential is for the management of communities exclusively.
 
-In the seed data that comes default with Terrastories, the default super admin credential is `super@terrastories.com` with password `terrastories`. When you install Terrastories for the first time, you can log in with this username to set up the communities you will be hosting. (There are two additional seed communities that come installed by default, `Terrastories` and `rfg`, which serve as examples and may be deleted.)
+In the seed data that comes default with Terrastories, the default super admin credential is `super@terrastories.io` with password `terrastories`. When you install Terrastories for the first time, you can log in with this username to set up the communities you will be hosting. There is also a sample Community set up on Terrastories to demonstrate how the database works; you can log in with `admin@terrastories.io`, `editor@terrastories.io`, `member@terrastories.io`, or `viewer@terrastories.io` to explore this Community with the respective levels of permissions detailed below.
 
 When you create a community as super admin, you will be required to specify an `admin` login. This `admin` credential serves that community exclusively, and has the power to create new users, edit the community theme, and add/modify stories and data.
 
@@ -33,6 +33,6 @@ There are currently four types of Terrastories users at the community level:
 3. `member` - has the permission to view `Stories`, `Speakers`, and `Places` (restricted and non-restricted).
 4. `viewer` - has the permission to view `Stories`, `Speakers`, and `Places` (non-restricted only).
 
-The idea behind this architecture is to allow communities to determine who gets to edit manage the data, and who has access to restricted content. `members` can be understood as community members who can see all of the stories and places, whereas `viewers` are non-community members who may only see a selection of the stories that the community has chosen to share with outsiders.
+The idea behind this architecture is to allow communities to determine who gets to edit and manage the data, and who has access to restricted content. `members` can be understood as community members who can see all of the stories and places, whereas `viewers` are non-community members who may only see a selection of the stories that the community has chosen to share with outsiders.
 
 It is in our roadmap to allow `admins` to set granulated viewing and editing permissions for each individual story per specific username credentials, instead of doing so on a binary community vs. outsider basis.

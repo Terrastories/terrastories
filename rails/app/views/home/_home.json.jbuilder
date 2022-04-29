@@ -12,6 +12,7 @@ json.stories stories do |story|
     json.id speaker.id
     json.name speaker.name
     json.picture_url speaker.picture_url
+    json.speaker_community speaker.speaker_community
   end
 
   json.media_links story.media_links do |media_link|
@@ -25,6 +26,7 @@ json.logo_path image_path("logocombo.svg")
 json.user current_user
 json.mapbox_access_token mapbox_token
 json.mapbox_style mapbox_style
+json.mapbox_3d @theme.mapbox_3d
 json.use_local_map_server local_mapbox?
 json.center_lat @theme.center_lat
 json.center_long @theme.center_long

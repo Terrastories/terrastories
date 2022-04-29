@@ -6,12 +6,12 @@
     }
   },
   "data": {
-    "basic": {
-      "mbtiles": "mbtiles/basic.mbtiles"
+    "terrastories-map": {
+      "mbtiles": "mbtiles/terrastories.mbtiles"
     }
   },
   "styles": {
-    "basic": {
+    "terrastories-map": {
       "style": "styles/style.json",
       "tilejson": {
         "type": "overlay"

@@ -23,6 +23,7 @@ export default class Map extends Component {
     onMapPointClick: PropTypes.func,
     mapboxStyle: PropTypes.string,
     mapboxAccessToken: PropTypes.string,
+    mapbox3d: PropTypes.bool,
     useLocalMapServer: PropTypes.bool,
     markerImgUrl: PropTypes.string,
   };
@@ -33,10 +34,7 @@ export default class Map extends Component {
       style: this.props.mapboxStyle,
       center: [this.props.centerLong, this.props.centerLat],
       zoom: this.props.zoom,
-      maxBounds: [
-        [this.props.sw_boundary_long, this.props.sw_boundary_lat], //southwest
-        [this.props.ne_boundary_long, this.props.ne_boundary_lat] //northeast
-      ],
+      maxBounds: this.checkBounds(), // check for bounding box presence
       pitch: this.props.pitch,
       bearing: this.props.bearing
     });
@@ -58,16 +56,50 @@ export default class Map extends Component {
         }
       });
 
+
+      // Add 3d terrain DEM layer if activated
+      if(!this.props.useLocalMapServer && this.props.mapbox3d) {
+        this.map.addSource('mapbox-dem', {
+          'type': 'raster-dem',
+          'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
+          'tileSize': 512,
+          'maxzoom': 14
+        });
+
+        // add the DEM source as a terrain layer with exaggerated height
+        this.map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.5 });
+
+        // add a sky layer that will show when the map is highly pitched
+        this.map.addLayer({
+          'id': 'sky',
+          'type': 'sky',
+          'paint': {
+          'sky-type': 'atmosphere',
+          'sky-atmosphere-sun': [0.0, 0.0],
+          'sky-atmosphere-sun-intensity': 15
+          }
+        });
+      }
+
       this.addHomeButton();
 
       // Attaches popups + events
       this.addMarkerClickHandler();
     });
 
+        // Hide minimap for offline Terrastories
     if(!this.props.useLocalMapServer) {
       this.map.addControl(new mapboxgl.Minimap(), "top-right");
-      this.map.addControl(new mapboxgl.NavigationControl());
     }
+
+    this.map.addControl(new mapboxgl.NavigationControl());
+        // Change mouse pointer when hovering over ts-marker points
+        this.map.on('mouseenter', STORY_POINTS_LAYER_ID, () => {
+          this.map.getCanvas().style.cursor = 'pointer'
+        })
+        this.map.on('mouseleave', STORY_POINTS_LAYER_ID, () => {
+          this.map.getCanvas().style.cursor = ''
+    })
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -157,10 +189,7 @@ export default class Map extends Component {
       zoom: this.props.zoom,
       pitch: this.props.pitch,
       bearing: this.props.bearing,
-      maxBounds: [
-        [this.props.sw_boundary_long, this.props.sw_boundary_lat], //southwest
-        [this.props.ne_boundary_long, this.props.ne_boundary_lat] //northeast
-      ]
+      maxBounds: this.checkBounds(), // check for bounding box presence
     });
   }
 
@@ -194,5 +223,18 @@ export default class Map extends Component {
 
   render() {
     return <div ref={el => (this.mapContainer = el)} className="ts-MainMap" />;
+  }
+
+  // test for bounding box presence
+  checkBounds() {
+    let mapBounds = null;
+    if (this.props.sw_boundary_long != null && this.props.sw_boundary_lat != null 
+    && this.props.ne_boundary_long != null && this.props.ne_boundary_lat != null) {
+        mapBounds = [
+            [this.props.sw_boundary_long, this.props.sw_boundary_lat], //southwest
+            [this.props.ne_boundary_long, this.props.ne_boundary_lat] //northeast
+        ]
+    }
+    return mapBounds;
   }
 }
