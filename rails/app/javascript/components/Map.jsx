@@ -47,6 +47,7 @@ export default class Map extends Component {
       this.map.addLayer({
         id: STORY_POINTS_LAYER_ID,
         source: STORY_POINTS_DATA_SOURCE,
+        filter: ['!', ['has', 'point_count']], // single point, non-cluster
         type: "symbol",
         layout: {
           "icon-image": "ts-marker",
@@ -55,10 +56,37 @@ export default class Map extends Component {
         }
       });
 
+      // Add clusters for overlapping markers
+      this.map.addLayer({
+        id: 'clusters',
+        source: STORY_POINTS_DATA_SOURCE,
+        filter: ['has', 'point_count'], // multiple points, cluster
+        type: "symbol",
+        layout: {
+          "icon-image": "ts-marker",
+          "icon-padding": 0,
+          "icon-allow-overlap": true,
+          "icon-size": [ // make cluster size reflect number of points within
+              "interpolate",
+              ["linear"],
+              ['get', 'point_count'],
+              // when number of points in cluster is 2, size will be 1.4 * single point
+              2,
+              1.4,
+              // when number of points in cluster is 10 or more, size will be 1.6 * single point
+              10,
+              1.6
+          ]
+        }
+      });
+
       this.addHomeButton();
 
       // Attaches popups + events
       this.addMarkerClickHandler();
+
+      // Click handler for clusters, zoom in when clicked
+      this.addClusterClickHandler();
     });
 
     if(!this.props.useLocalMapServer) {
@@ -98,7 +126,10 @@ export default class Map extends Component {
   addMapPoints() {
     this.map.addSource(STORY_POINTS_DATA_SOURCE, {
       type: "geojson",
-      data: this.props.points
+      data: this.props.points,
+      cluster: true, // turn clusterin on
+      clusterMaxZoom: 14, // max zoom on which to cluster points, default is 14
+      clusterRadius: 50 // radius of each cluster when clustering points, default is 50
     });
     this.map.loadImage(this.props.markerImgUrl, (error, image) => {
       if (error) throw "Error loading marker images: " + error;
@@ -120,6 +151,27 @@ export default class Map extends Component {
         this.openPopup(feature);
         this.props.onMapPointClick(feature);
       }
+    });
+  }
+
+  addClusterClickHandler() {
+    // Inspect a cluster (zoom in) on click
+    this.map.on("click", "clusters", e => {
+      const features = this.map.queryRenderedFeatures(e.point, {
+        layers: ["clusters"]
+      });
+      const clusterId = features[0].properties.cluster_id;
+      this.map.getSource(STORY_POINTS_DATA_SOURCE).getClusterExpansionZoom(
+          clusterId,
+          (err, zoom) => {
+            if (err) return;
+
+            this.map.easeTo({
+              center: features[0].geometry.coordinates,
+              zoom: zoom
+            });
+          }
+      );
     });
   }
 
