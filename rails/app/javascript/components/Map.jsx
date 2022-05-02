@@ -25,6 +25,7 @@ export default class Map extends Component {
     mapboxAccessToken: PropTypes.string,
     useLocalMapServer: PropTypes.bool,
     markerImgUrl: PropTypes.string,
+    markerClusterImgUrl: PropTypes.string,
   };
 
   componentDidMount() {
@@ -52,7 +53,8 @@ export default class Map extends Component {
         layout: {
           "icon-image": "ts-marker",
           "icon-padding": 0,
-          "icon-allow-overlap": true
+          "icon-allow-overlap": true,
+          "icon-size": 0.75
         }
       });
 
@@ -63,20 +65,38 @@ export default class Map extends Component {
         filter: ['has', 'point_count'], // multiple points, cluster
         type: "symbol",
         layout: {
-          "icon-image": "ts-marker",
+          "icon-image": "ts-marker-cluster",
           "icon-padding": 0,
           "icon-allow-overlap": true,
           "icon-size": [ // make cluster size reflect number of points within
               "interpolate",
               ["linear"],
               ['get', 'point_count'],
-              // when number of points in cluster is 2, size will be 1.4 * single point
+              // when number of points in cluster is 2, size will be 0.7 * single point
               2,
-              1.4,
-              // when number of points in cluster is 10 or more, size will be 1.6 * single point
+              0.7,
+              // when number of points in cluster is 10 or more, size will be 0.8 * single point
               10,
-              1.6
+              0.8
           ]
+        }
+      });
+
+      this.map.addLayer({
+        id: 'clustercount',
+        source: STORY_POINTS_DATA_SOURCE,
+        filter: ['has', 'point_count'], // multiple points, cluster
+        type: "symbol",
+        layout: {
+          'text-field': '{point_count_abbreviated}',
+          'text-font': ['DIN Offc Pro Bold', 'Arial Unicode MS Bold'],
+          'text-size': 18,
+          'text-offset': [0.2, 0.1]
+          },
+        paint: {
+          'text-color': "#ffffff",
+          'text-halo-color': "#000000",
+          'text-halo-width': 1.5
         }
       });
 
@@ -127,13 +147,19 @@ export default class Map extends Component {
     this.map.addSource(STORY_POINTS_DATA_SOURCE, {
       type: "geojson",
       data: this.props.points,
-      cluster: true, // turn clusterin on
+      cluster: true, // turn clustering on
       clusterMaxZoom: 14, // max zoom on which to cluster points, default is 14
       clusterRadius: 50 // radius of each cluster when clustering points, default is 50
     });
+    // default Terrastories marker icon
     this.map.loadImage(this.props.markerImgUrl, (error, image) => {
       if (error) throw "Error loading marker images: " + error;
       this.map.addImage('ts-marker', image);
+    });
+    // default Terrastories cluster icon
+    this.map.loadImage(this.props.markerClusterImgUrl, (error, image) => {
+      if (error) throw "Error loading marker images: " + error;
+      this.map.addImage('ts-marker-cluster', image);
     });
   }
 
