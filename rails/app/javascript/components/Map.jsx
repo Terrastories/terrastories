@@ -82,6 +82,7 @@ export default class Map extends Component {
         }
       });
 
+      // Add labels for number of points clustered for overlapping markers
       this.map.addLayer({
         id: 'clustercount',
         source: STORY_POINTS_DATA_SOURCE,
