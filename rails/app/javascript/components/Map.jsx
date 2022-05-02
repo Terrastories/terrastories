@@ -156,7 +156,7 @@ export default class Map extends Component {
       if (error) throw "Error loading marker images: " + error;
       this.map.addImage('ts-marker', image);
     });
-    // default Terrastories cluster icon
+    // default Terrastories cluster icon; in the future we will need to think of way to visualize clusters of user-submitted custom icons
     this.map.loadImage(this.props.markerClusterImgUrl, (error, image) => {
       if (error) throw "Error loading marker images: " + error;
       this.map.addImage('ts-marker-cluster', image);
