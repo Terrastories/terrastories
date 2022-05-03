@@ -37,4 +37,5 @@ json.ne_boundary_long @theme.ne_boundary_long
 json.zoom @theme.zoom.to_f
 json.pitch @theme.pitch.to_f
 json.bearing @theme.bearing
-json.marker_image_url image_url("marker1.png")
+json.marker_image_url image_url("place-marker.png")
+json.marker_cluster_image_url image_url("place-marker-cluster.png")
