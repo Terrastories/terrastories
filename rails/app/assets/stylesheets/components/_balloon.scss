@@ -15,7 +15,7 @@
     background-color: $green; /* this should inherit the color of the marker associated with the type of place */
     &-button {
       align-self: flex-start;
-      margin-top: 6px;
+      margin: 6px 6px 0 0;
       font-size: 15px;
       background: none;
       border: none;
