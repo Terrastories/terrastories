@@ -26,6 +26,7 @@ export default class Map extends Component {
     mapbox3d: PropTypes.bool,
     useLocalMapServer: PropTypes.bool,
     markerImgUrl: PropTypes.string,
+    markerClusterImgUrl: PropTypes.string,
   };
 
   componentDidMount() {
@@ -48,11 +49,56 @@ export default class Map extends Component {
       this.map.addLayer({
         id: STORY_POINTS_LAYER_ID,
         source: STORY_POINTS_DATA_SOURCE,
+        filter: ['!', ['has', 'point_count']], // single point, non-cluster
         type: "symbol",
         layout: {
           "icon-image": "ts-marker",
           "icon-padding": 0,
-          "icon-allow-overlap": true
+          "icon-allow-overlap": true,
+          "icon-size": 0.75
+        }
+      });
+
+      // Add clusters for overlapping markers
+      this.map.addLayer({
+        id: 'clusters',
+        source: STORY_POINTS_DATA_SOURCE,
+        filter: ['has', 'point_count'], // multiple points, cluster
+        type: "symbol",
+        layout: {
+          "icon-image": "ts-marker-cluster",
+          "icon-padding": 0,
+          "icon-allow-overlap": true,
+          "icon-size": [ // make cluster size reflect number of points within
+              "interpolate",
+              ["linear"],
+              ['get', 'point_count'],
+              // when number of points in cluster is 2, size will be 0.7 * single point
+              2,
+              0.7,
+              // when number of points in cluster is 10 or more, size will be 0.8 * single point
+              10,
+              0.8
+          ]
+        }
+      });
+
+      // Add labels for number of points clustered for overlapping markers
+      this.map.addLayer({
+        id: 'clustercount',
+        source: STORY_POINTS_DATA_SOURCE,
+        filter: ['has', 'point_count'], // multiple points, cluster
+        type: "symbol",
+        layout: {
+          'text-field': '{point_count_abbreviated}',
+          'text-font': ['DIN Offc Pro Bold', 'Arial Unicode MS Bold'],
+          'text-size': 18,
+          'text-offset': [0.2, 0.1]
+          },
+        paint: {
+          'text-color': "#ffffff",
+          'text-halo-color': "#000000",
+          'text-halo-width': 1.5
         }
       });
 
@@ -84,6 +130,9 @@ export default class Map extends Component {
 
       // Attaches popups + events
       this.addMarkerClickHandler();
+
+      // Click handler for clusters, zoom in when clicked
+      this.addClusterClickHandler();
     });
 
     // Hide minimap and nav controls for offline Terrastories
@@ -133,11 +182,20 @@ export default class Map extends Component {
   addMapPoints() {
     this.map.addSource(STORY_POINTS_DATA_SOURCE, {
       type: "geojson",
-      data: this.props.points
+      data: this.props.points,
+      cluster: true, // turn clustering on
+      clusterMaxZoom: 14, // max zoom on which to cluster points, default is 14
+      clusterRadius: 50 // radius of each cluster when clustering points, default is 50
     });
+    // default Terrastories marker icon
     this.map.loadImage(this.props.markerImgUrl, (error, image) => {
       if (error) throw "Error loading marker images: " + error;
       this.map.addImage('ts-marker', image);
+    });
+    // default Terrastories cluster icon; in the future we will need to think of way to visualize clusters of user-submitted custom icons
+    this.map.loadImage(this.props.markerClusterImgUrl, (error, image) => {
+      if (error) throw "Error loading marker images: " + error;
+      this.map.addImage('ts-marker-cluster', image);
     });
   }
 
@@ -155,6 +213,27 @@ export default class Map extends Component {
         this.openPopup(feature);
         this.props.onMapPointClick(feature);
       }
+    });
+  }
+
+  addClusterClickHandler() {
+    // Inspect a cluster (zoom in) on click
+    this.map.on("click", "clusters", e => {
+      const features = this.map.queryRenderedFeatures(e.point, {
+        layers: ["clusters"]
+      });
+      const clusterId = features[0].properties.cluster_id;
+      this.map.getSource(STORY_POINTS_DATA_SOURCE).getClusterExpansionZoom(
+          clusterId,
+          (err, zoom) => {
+            if (err) return;
+
+            this.map.easeTo({
+              center: features[0].geometry.coordinates,
+              zoom: zoom
+            });
+          }
+      );
     });
   }
 
