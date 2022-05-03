@@ -149,6 +149,14 @@ export default class Map extends Component {
     this.map.on('mouseleave', STORY_POINTS_LAYER_ID, () => {
       this.map.getCanvas().style.cursor = ''
     })
+
+    // Change mouse pointer when hovering over ts-marker-cluster points
+    this.map.on('mouseenter', 'clusters', () => {
+      this.map.getCanvas().style.cursor = 'pointer'
+    })
+    this.map.on('mouseleave', 'clusters', () => {
+      this.map.getCanvas().style.cursor = ''
+    })
   }
 
   componentDidUpdate(prevProps, prevState) {
