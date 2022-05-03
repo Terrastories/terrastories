@@ -130,6 +130,9 @@ export default class Map extends Component {
 
       // Attaches popups + events
       this.addMarkerClickHandler();
+
+      // Click handler for clusters, zoom in when clicked
+      this.addClusterClickHandler();
     });
 
     // Hide minimap and nav controls for offline Terrastories
@@ -138,6 +141,14 @@ export default class Map extends Component {
     }
 
     this.map.addControl(new mapboxgl.NavigationControl());
+
+    // Change mouse pointer when hovering over ts-marker-cluster points
+    this.map.on('mouseenter', 'clusters', () => {
+      this.map.getCanvas().style.cursor = 'pointer'
+    })
+    this.map.on('mouseleave', 'clusters', () => {
+      this.map.getCanvas().style.cursor = ''
+    })
 
     // Change mouse pointer when hovering over ts-marker points
     this.map.on('mouseenter', STORY_POINTS_LAYER_ID, () => {
