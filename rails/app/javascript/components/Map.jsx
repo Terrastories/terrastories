@@ -91,14 +91,12 @@ export default class Map extends Component {
         type: "symbol",
         layout: {
           'text-field': '{point_count_abbreviated}',
-          'text-font': ['DIN Offc Pro Bold', 'Arial Unicode MS Bold'],
-          'text-size': 18,
+          'text-font': ['Open Sans Bold'],
+          'text-size': 16,
           'text-offset': [0.2, 0.1]
           },
         paint: {
           'text-color': "#ffffff",
-          'text-halo-color': "#000000",
-          'text-halo-width': 1.5
         }
       });
 
