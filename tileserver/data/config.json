@@ -7,7 +7,7 @@
   },
   "data": {
     "terrastories-map": {
-      "mbtiles": "mbtiles/terrastories.mbtiles"
+      "mbtiles": "mbtiles/tiles.mbtiles"
     }
   },
   "styles": {

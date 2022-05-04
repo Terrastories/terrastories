@@ -7,6 +7,8 @@ https://github.com/klokantech/tileserver-gl
 
 We'll be using its docker image `klokantech/tileserver-gl`.
 
+## Default offline tiles
+A default, open-license map for using offline with Terrastories is available at https://github.com/terrastories/default-offline/tiles. Download these files and place them in the `data` directory, and they should work when you load Terrastories in Field Kit mode.
 ## Start the tile server
 This should be run from the project root directory.
 ```

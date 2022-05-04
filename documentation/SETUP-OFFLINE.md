@@ -30,7 +30,9 @@ Next, add a line at the bottom of the `.env` file with the content: `USE_LOCAL_M
 
 Terrastories in the "Field Kit" environment works by integrating map `tiles` and `styles`. Map tiles are square grids of spatial data consumed by the offline Tileserver, and can be in either raster (image) or vector format. Styles points the Terrastories tileserver to the tiles and in the case of vector data, gives style or symbology properties to the data (such as color, opacity, labels, visibility per zoom extent, and so on). Unlike the online environment (where Terrastories relies on Mapbox.com for all map content), each of these have to be made available to Terrastories in a file format.
 
-#### Working with MBTiles
+#### Default offline map tiles
+A default, open-license map for using offline with Terrastories is available at https://github.com/terrastories/default-offline/tiles. Download these files and place them in the `data` directory, and they should work when you load Terrastories in Field Kit mode.
+#### Working with custom MBTiles
 
 `MBTiles` can be generated from standard geospatial data (Shapefile, GeoJSON) in several ways. 
 
@@ -40,7 +42,7 @@ Terrastories in the "Field Kit" environment works by integrating map `tiles` and
 
 Once generated, place the `MBTiles` in the `tileserver/data/mbtiles/` directory, with the right filename as referenced by `style.json`.
 
-#### Working with styles
+#### Working with custom styles
 
 `Styles` (in style.json format) defines the visual appearance of a map: what data to draw, the order to draw it in, and how to style the data when drawing it. Mapbox provides a helpful [guide](https://docs.mapbox.com/mapbox-gl-js/style-spec/) with all of the possible style parameters, but it's generally useful to download an existing `style.json` file and modify it to suit your needs. One of the easiest ways to build a `style.json` file is by uploading and styling your data on [Mapbox Studio](http://mapbox.com/studio) and downloading the `style.json` file from there, in the following way:
 
