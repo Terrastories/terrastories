@@ -20,5 +20,8 @@ module App
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '*', '*.{rb,yml}').to_s]
     config.i18n.available_locales = Dir[Rails.root.join('config','locales', '*')].map {|f| File.basename(f).to_sym }
     config.i18n.default_locale = :en
+
+    # Don't replace existing images on upload for has_many_attached
+    config.active_storage.replace_on_assign_to_many = false
   end
 end
