@@ -12,10 +12,16 @@ x-web-common: &x-web-common
 services:
   nginx-proxy:
     image: jwilder/nginx-proxy:alpine
+    restart: always
     ports:
       - "80:80"
+    depends_on:
+      - web
+      - db
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./nginx/vhost.d:/etc/nginx/vhost.d:ro
+      - ./nginx/unrestricted_file_size.conf:/etc/nginx/conf.d/unrestricted_file_size.conf:ro
 
   db:
     image: postgres:11
@@ -26,17 +32,12 @@ services:
     volumes:
       - "postgres_data:/var/lib/postgresql/data"
 
-  # webpacker:
-  #   image: ${DOCKER_IMAGE_NAME-terrastories}
-  #   command: ["./scripts/start_webpack_dev.sh"]
-  #   volumes:
-  #     - ./rails:/opt/terrastories:cached
-  #   ports:
-  #     - 3035:3035
-
   web:
     <<: *x-web-common
     command: scripts/server
+    restart: always
+    stdin_open: true
+    tty: true
     ports:
       - 3000:3000
     expose:
@@ -49,45 +50,8 @@ services:
       - ./data/media:/media
       - ./data/import/media:/api/import/media
     environment:
-      - VIRTUAL_HOST=.terrastories.local
-
-  web-test:
-    <<: *x-web-common
-    environment:
-      RAILS_ENV: test
-    command: scripts/test-server
-    ports:
-      - 3001:3000
-    depends_on:
-      - db
-    volumes:
-      - bundler:/usr/local/bundle
-      - ./rails:/api
-
-  selenium:
-    # Debug version enables VNC ability
-    image: selenium/standalone-chrome-debug:3.0.1-germanium
-    # Bind selenium port & VNC port
-    ports: ['4444:4444', '5900:5900']
-    logging:
-      # Disable noisy logs.
-      driver: none
-    # bump this number up if pages are crashing
-    shm_size: '256mb'
-
-  e2e:
-    build:
-      context: ./e2e
-    volumes:
-      - ./e2e:/opt/terrastories_e2e:cached
-    environment:
-      TEST_APP_HOST: web-test
-      TEST_APP_PORT: 3000
-      SELENIUM_HOST: selenium
-      SELENIUM_PORT: 4444
-    depends_on:
-      - web-test
-      - selenium
+      - VIRTUAL_HOST=terrastories.local,member.terrastories.local
+      - CHOKIDAR_USEPOLLING=true
 
 volumes:
   postgres_data:
