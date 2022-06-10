@@ -1,0 +1,68 @@
+<% content_for(:title) do %>
+  <%= @speaker.name %> | <%= t("speaker") %>
+<% end %>
+
+<% content_for(:main_heading) do %>
+<div class="avatar-card">
+  <% if @speaker.photo.attached? %>
+    <%= image_tag @speaker.photo, class: "img--rounded img--larger", alt: @speaker.name, title: @speaker.name %>
+  <% else %>
+    <%= image_tag asset_path("speaker.png"), class: "img--rounded img--larger", alt: @speaker.name, title: @speaker.name %>
+  <% end %>
+  <h2>
+    <% if @speaker.speaker_community %>
+      <div class="small">
+        <%= @speaker.speaker_community %>
+      </div>
+    <% end %>
+    <%= @speaker.name %>
+    <div class="small separated">
+      <% if @speaker.birthdate %>
+        <span><%= l(@speaker.birthdate.to_date, format: :long) %></span>
+      <% end %>
+
+      <% if @speaker.birthplace %>
+        <span><%= @speaker.birthplace.name %></span>
+      <% end %>
+    </div>
+  </h2>
+</div>
+<% end %>
+
+<div>
+  <h4><%= t("stories") %></h4>
+
+  <div class="collection">
+    <% if @speaker.stories.empty? %>
+      <p>This speaker has no stories.</p>
+    <% else %>
+      <% @speaker.stories.each do |story| %>
+        <%= link_to story, class: "card" do %>
+          <div>
+            <h3>
+              <span class="card__heading--small"><%= story.topic %></span>
+              <%= story.title %>
+            </h3>
+
+            <% if story.language %>
+              <span class="badge"><%= story.language %></span>
+            <% end %>
+
+            <% if story.permission_level %>
+              <span class="badge"><%= t("story.permissions.#{story.permission_level}") %></span>
+            <% end %>
+
+            <p><%= story.desc %></p>
+          </div>
+
+          <span>
+            <svg class="icon">
+              <use href="#icon-location-pin">
+            </svg>
+            <%= story.places.map(&:name).join(", ") %>
+          </span>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

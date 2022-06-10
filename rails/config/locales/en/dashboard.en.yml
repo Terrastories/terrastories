@@ -1,0 +1,41 @@
+en:
+  places: Places
+  place: Place
+  speakers: Speakers
+  speaker: Speaker
+  stories: Stories
+  story: Story
+  theme: Theme
+  users: Users
+  user: user
+  map:
+    center: Map Center
+    bounds: Map Bounds
+    sw_corner: Southwest Corner
+    ne_corner: Northeast Corner
+  dashboard:
+    back_to_app: Back to App
+    actions:
+      confirm: Are you sure?
+      destroy: Delete
+      edit: Edit
+      edit_resource: Edit %{name}
+      show_resource: Show %{name}
+      new_resource: New %{name}
+      back: Back
+    theme:
+      welcome_screen: Welcome Screen
+      background_img: Customize the background image on the landing page of your community.
+      sponsor_logos: Display sponsorship logos on your community page to thank your supporters.
+  search:
+    clear: Clear search
+    label: Search
+    results: results
+  filter:
+    all: All
+    per_page: per page
+  story_permissions:
+    anonymous: "Public"
+    user_only: "Member"
+    editor_only: "Editor"
+    admin_only: "Admin"

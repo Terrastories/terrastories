@@ -30,15 +30,26 @@ en:
         mapbox_style_url: Mapbox style URL (for online maps)
         mapbox_access_token: Mapbox access token associated with the style
         mapbox_3d: Activate 3D Terrain view for online map
-        center_lat: Map center, latitude
-        center_long: Map center, longitude
-        sw_boundary_lat: SW bounding box, latitude (optional)
-        sw_boundary_long: SW bounding box, longitude (optional)
-        ne_boundary_lat: NE bounding box, latitude (optional)
-        ne_boundary_long: NE bounding box, longitude (optional)
-        zoom: Map zoom level (1 to 22)
-        pitch: Map pitch degree (0 to 90)
-        bearing: Map bearing degree (-180 to 180)
+        # center_lat: Map center, latitude
+        # center_long: Map center, longitude
+        # sw_boundary_lat: SW bounding box, latitude (optional)
+        # sw_boundary_long: SW bounding box, longitude (optional)
+        # ne_boundary_lat: NE bounding box, latitude (optional)
+        # ne_boundary_long: NE bounding box, longitude (optional)
+        background_img: Background Image
+        sponsor_logos: Sponsor Logos
+        mapbox_style_url: Mapbox Style URL
+        mapbox_access_token: Mapbox access token associated with the style
+        mapbox_3d: Activate 3D Terrain view for online map
+        center_lat: latitude
+        center_long: longitude
+        sw_boundary_lat: min latitude
+        sw_boundary_long: min longitude
+        ne_boundary_lat: max latitude
+        ne_boundary_long: max longitude
+        zoom: Zoom level
+        pitch: Pitch degree
+        bearing: Bearing degree
         display_resource: "Theme for Terrastories: %{community_name}"
       user:
         id: Id

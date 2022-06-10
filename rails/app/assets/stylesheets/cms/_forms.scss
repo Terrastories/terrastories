@@ -1,0 +1,55 @@
+form {
+  @include ui-font;
+
+  label {
+    font-weight: bold;
+  }
+
+  input:not([type=checkbox]):not([type=submit]),
+  select {
+    padding: .25rem .5rem ;
+    border: 1px solid $lighter-gray;
+    font-size: 16px;
+    display: block;
+    width: 100%;
+  }
+
+  .input-group {
+    margin: 0.5rem 0;
+  }
+
+  .side-by-side {
+    @include flexbox;
+    row-gap: 1rem;
+    column-gap: 1rem;
+
+    > * {
+      @include flex(1);
+      width: calc(50% - 2rem);
+      flex-wrap: wrap;
+
+      .input-group {
+        width: 160px;
+      }
+    }
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .small-labels label {
+    font-weight: 500;
+  }
+
+}
+
+fieldset {
+  border: 1px solid $black;
+  padding: 1rem;
+
+  legend {
+    padding: 0 0.5rem;
+    font-weight: bold;
+  }
+}

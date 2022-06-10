@@ -1,0 +1,77 @@
+.image-with-controls {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  a {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+
+    svg {
+      visibility: hidden;
+      max-height: 25px;
+      max-width: 25px;
+    }
+  }
+
+  &.deleting {
+    background-color: $darker-gray;
+
+    &::after {
+      content: image-url('loading.png');
+      position: absolute;
+
+      @include spinner;
+    }
+
+    img {
+      opacity: 50%;
+    }
+  }
+
+  &:hover {
+    svg {
+      visibility: visible;
+    }
+  }
+}
+
+.img {
+  &--rounded {
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+  }
+
+  &--micro {
+    height: 20px;
+    width: 20px;
+  }
+
+  &--mini {
+    height: 30px;
+    width: 30px;
+  }
+
+  &--small {
+    height: 40px;
+    width: 40px;
+  }
+
+  &--large {
+    height: 60px;
+    width: 60px;
+  }
+
+  &--larger {
+    height: 75px;
+    width: 75px;
+  }
+
+  &--mega {
+    height: 100px;
+    width: 100px;
+  }
+}

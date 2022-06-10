@@ -1,0 +1,15 @@
+.filters {
+  label {
+    @include ui-font;
+
+    font-size: .8rem;
+    font-weight: bold;
+  }
+
+  select {
+    display: inline-block;
+    max-width: max-content;
+    margin: 0;
+    padding: 0;
+  }
+}

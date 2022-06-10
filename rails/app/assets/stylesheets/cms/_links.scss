@@ -1,0 +1,51 @@
+nav {
+  @include flexbox();
+
+  flex-direction: column;
+  align-items: stretch;
+
+  h1 {
+    font-size: 1.25rem;
+    text-align: center;
+  }
+}
+
+nav > a {
+  line-height: 2.5rem;
+  padding-left: 10px;
+  color: $darker-gray;
+}
+
+.active-link {
+  background-color: $light-blue;
+}
+
+.settings {
+  @include flexbox();
+
+  flex-direction: column;
+  align-items: stretch;
+  padding-bottom: 15px;
+
+  h5 {
+    font-size: .8rem;
+    color: $light-gray;
+    margin-bottom: 1rem;
+    padding-left: 15px;
+    text-transform: uppercase;
+  }
+
+  > a {
+    @include ui-font;
+    line-height: 1.5rem;
+    font-size: .8rem;
+    padding-left: 15px;
+  }
+
+  .language-picker {
+    @include ui-font;
+    padding-top: 2rem;
+    padding-left: 15px;
+    font-size: .8rem;
+  }
+}

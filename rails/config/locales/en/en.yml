@@ -19,7 +19,6 @@ en:
   language: Language
   login: Login
   logout: Logout
-  map: "Is this a …map?"
   most_recent: "Most recent"
   no_media: No Media Available
   password: Password
@@ -37,4 +36,3 @@ en:
   topic: Topic
   welcome: Welcome
   welcome_back: "Welcome back"
-

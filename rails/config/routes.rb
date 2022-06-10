@@ -1,4 +1,26 @@
+# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
+  scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do
+    constraints subdomain: 'member' do
+      scope module: 'dashboard' do
+        root to: 'stories#index', as: 'member_root'
+
+        resources :users
+        resources :speakers
+        resources :places
+        resources :stories
+        resource :theme, only: [:update, :edit] do
+          delete '/sponsor_logo/:id/delete', action: :delete_sponsor_logo, as: :delete_sponsor_logo
+        end
+      end
+    end
+
+    devise_for :users, :controllers => { registrations: 'registrations' }
+    root to: 'welcome#index'
+    get 'home', to: 'home#index', as: "home_map"
+    get "search", to: "home#community_search_index", as: "community_search"
+  end
+
   namespace :admin do
     resources :communities
     resources :users
@@ -37,28 +59,4 @@ Rails.application.routes.draw do
     delete '/admin/stories' => 'admin/stories#delete'
     delete '/admin/themes' => 'admin/themes#delete'
     delete '/admin/speakers' => 'admin/speakers#delete'
-
-  scope "(:locale)", locale: Regexp.union(I18n.available_locales.map(&:to_s)) do
-    resources :places do
-      collection do
-        post :import_csv
-      end
-    end
-    resources :stories do
-      collection do
-        post :import_csv
-      end
-    end
-
-    devise_for :users, :controllers => { registrations: 'registrations' }
-    # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-    root to: 'welcome#index'
-    get 'home', to: 'home#index', as: "home_map"
-    get "search", to: "home#community_search_index", as: "community_search"
-    resources :speakers do
-      collection do
-        post :import_csv
-      end
-    end
-  end
 end

@@ -1,0 +1,32 @@
+es:
+  places: Lugares
+  place: Lugar
+  speakers: Oradores
+  speaker: Orador
+  stories: Historias
+  story: Historia
+  theme: Tema
+  users: Usuarios
+  user: Usuario
+  interviewer: Entrevistador/a
+  dashboard:
+    back_to_app: Regresar a la aplicación
+    actions:
+      confirm: ¿Estás seguro?
+      destroy: Borrar
+      edit: Editar
+      edit_resource: Editar %{name}
+      show_resource: Mostrar %{name}
+      new_resource: Nuevo %{name}
+      back: Atrás
+  search:
+    clear: Limpiar busqueda
+    label: Buscar
+    results: resultados
+  filter:
+    all: All
+  story_permissions:
+    anonymous: "Buscable"
+    user_only: "Miembro/a"
+    editor_only: "Editor/a"
+    admin_only: "Administrador/a"

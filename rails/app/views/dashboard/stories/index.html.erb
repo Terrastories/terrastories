@@ -1,0 +1,69 @@
+<% content_for(:title) do %>
+  <%= t("stories") %>
+<% end %>
+
+<% content_for(:main_heading) do %>
+  <h2><%= t("stories") %></h2>
+  <span class="filters">
+    <%= form_tag stories_path, method: :get do %>
+      <%= label_tag :place, t("place") %>
+      <%= select_tag :place, options_for_select(community.stories.joins(:places).flat_map { |s| s.places.pluck(:name, :id) }.uniq, params[:place]), include_blank: t("filter.all") %>
+      <%= label_tag :speaker, t("speaker") %>
+      <%= select_tag :speaker, options_for_select(community.stories.joins(:speakers).flat_map { |s| s.speakers.pluck(:name, :id) }.uniq, params[:speaker]), include_blank: t("filter.all") %>
+      <%= label_tag :visibility, t("visibility") %>
+      <%= select_tag :visibility, options_for_select(Story.permission_levels.map { |k, v| [t("story.permissions.#{k}"), v]}, params[:visibility]), include_blank: t("filter.any") %>
+      <%= label_tag :per_page, t("filters.per_page") %>
+      <%= select_tag :per_page, options_for_select([1, 20, 50, 100]) %>
+      <%= submit_tag :filter %>
+    <% end %>
+  </span>
+<% end %>
+
+<div class="collection">
+  <% if @stories.empty? %>
+    <p>There are no stories available. Adjust your filters.</p>
+  <% else %>
+    <% @stories.each do |story| %>
+      <%= link_to story, class: "card" do %>
+        <div>
+          <h3>
+            <span class="card__heading--small"><%= story.topic %></span>
+            <%= story.title %>
+          </h3>
+
+          <% if story.language %>
+            <span class="badge"><%= story.language %></span>
+          <% end %>
+
+          <% if story.permission_level %>
+            <span class="badge"><%= t("story.permissions.#{story.permission_level}") %></span>
+          <% end %>
+
+        <p><%= story.desc %></p>
+        </div>
+
+        <div>
+          <span>
+            <svg class="icon">
+              <use href="#icon-location-pin">
+            </svg>
+            <%= story.places.map(&:name).join(", ") %>
+          </span>
+          <div class="avatars">
+            <% story.speakers.each do |speaker| %>
+              <span class="tooltip">
+                <% if speaker.photo.attached? %>
+                  <%= image_tag speaker.photo, class: "img--rounded img--mini", alt: speaker.name, title: speaker.name %>
+                <% else %>
+                  <%= image_tag asset_path("speaker.png"), class: "img--rounded img--mini", alt: speaker.name, title: speaker.name %>
+                <% end %>
+
+                <span class="tooltip-text"><%= speaker.name %></span>
+              </span>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

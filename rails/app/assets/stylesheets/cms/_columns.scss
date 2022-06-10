@@ -1,0 +1,45 @@
+.two-columns {
+  @include flexbox;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.two-columns-left {
+  @include flex(1);
+  @include order(1);
+}
+.two-columns-right {
+  @include flex(1);
+  @include order(2);
+}
+
+.column-fixed-350 {
+  max-width: 350px;
+  margin-right: 0.5rem;
+}
+
+.column-fixed-400 {
+  max-width: 400px;
+  margin-right: 0.5rem;
+}
+
+
+@media (min-width: "1180px") {
+  .two-columns {
+    column-gap: 10px;
+    flex-direction: row;
+
+    p {
+      padding-bottom: 1rem;
+    }
+  }
+
+  // .two-columns.two-columns-reverse-stack {
+  //   .two-columns-right {
+  //     @include order(2);
+  //   }
+  //   .two-columns-left {
+  //     @include order(1);
+  //   }
+  // }
+}

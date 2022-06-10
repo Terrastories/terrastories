@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>">
+  <head>
+    <meta charset="utf-8">
+    <meta name="ROBOTS" content="NOODP">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <%= favicon_link_tag asset_path('favicon.ico'), rel: 'icon' %>
+    <title><%= yield (:title) %> - Terrastories</title>
+
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag 'dashboard', media: 'all' %>
+    <%= javascript_include_tag 'dashboard', media: 'all' %>
+  </head>
+
+  <body class="content-wrapper">
+    <%= render "shared/icons" %>
+    <div class="content-sidebar">
+      <nav>
+        <%= image_tag "logocombo.svg", alt: "Terrastories", class: "header--logo" %>
+        <h1><%= community.name %></h1>
+        <%= link_to t("stories"), stories_path, class: ("active-link" if params[:controller] == "dashboard/stories") %>
+        <%= link_to t("speakers"), speakers_path, class: ("active-link" if params[:controller] == "dashboard/speakers") %>
+        <%= link_to t("places"), places_path, class: ("active-link" if params[:controller] == "dashboard/places") %>
+      </nav>
+
+      <div class="settings">
+        <% if current_user.admin? %>
+          <h5>Community Settings</h5>
+          <%= link_to t("users"), users_path %>
+          <%= link_to t("theme"), edit_theme_path %>
+        <% end %>
+        <div class="language-picker"><%= application_locales(request_path: request.env['PATH_INFO']) %></div>
+      </div>
+    </div>
+    <div class="content-main">
+      <div class="observer-sentinel"><%# do not remove this element! %></div>
+      <div class="top-bar">
+        <form class="search" role="search">
+          <label for="search">
+            <svg class="search__eyeglass-icon" role="img">
+              <title>
+                <%= t("search.label") %>
+              </title>
+              <use href="#icon-eyeglass" />
+            </svg>
+          </label>
+          <input placeholder=<%= t("search.label") %> class="search__input" type="search" id="search" name="search" />
+        </form>
+        <div>
+          <%= current_user.email %>
+          <%= link_to t("dashboard.back_to_app") %>
+        </div>
+      </div>
+      <main>
+        <div class="page-heading">
+          <%= yield :main_heading %>
+        </div>
+        <div class="page-content">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script type="text/javascript">
+    const pageContentHeader = document.querySelector(".page-heading");
+    const sentinel = document.querySelector(".observer-sentinel");
+
+    const headerObserver = new IntersectionObserver(
+      (entries) => {
+        pageContentHeader.classList.toggle("sticky", !entries[0].isIntersecting )
+      }
+    );
+    headerObserver.observe(sentinel);
+  </script>
+</html>

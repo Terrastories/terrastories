@@ -1,0 +1,235 @@
+<%= flash[:errors].inspect if flash[:errors] %>
+<% content_for(:title) do %>
+  <%= t("theme") %>
+<% end %>
+
+<% content_for(:main_heading) do %>
+  <h2><%= t("theme") %></h2>
+<% end %>
+
+<%= form_with model: @theme, method: :patch, multipart: true, data: {remote: false}, url: theme_path, id: "themeForm" do |f| %>
+
+  <h4><%= t("dashboard.theme.welcome_screen") %></h4>
+
+  <div class="two-columns">
+    <div class="two-column-left column-fixed-400">
+        <%= f.label :background_img %>
+        <p><%= t("dashboard.theme.background_img") %></p>
+        <%= f.file_field :background_img %>
+    </div>
+    <div class="two-columns-right">
+      <%= image_tag(@theme.background_img, width: 300)if @theme.background_img.attached? %>
+    </div>
+  </div>
+
+  <div class="two-columns">
+    <div class="two-column-left column-fixed-400">
+      <div class="input-group">
+        <%= f.label :sponsor_logos %>
+        <p><%= t("dashboard.theme.sponsor_logos") %></p>
+        <%= f.file_field :sponsor_logos, multiple: true %>
+      </div>
+    </div>
+
+    <div class="two-column-right">
+      <% if @theme.sponsor_logos.any? %>
+        <% @theme.sponsor_logos.each do |img| %>
+          <span class="image-with-controls">
+            <%= image_tag(img, width: 150) %>
+            <%= link_to delete_sponsor_logo_theme_url(img.signed_id), class: "delete-link", method: :delete, data: {confirm: t("dashboard.actions.delete")}, remote: true do %>
+              <svg><use href="#icon-cancel"></svg>
+            <% end %>
+          </span>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <h4>Map Settings</h4>
+  <p>Customize your community's map settings.</p>
+
+  <div class="two-columns">
+    <div class="two-columns-left  column-fixed-400">
+      <fieldset class="small-labels">
+        <legend>Map Bounds</legend>
+
+        <p>The boundaries of the map determine the extent of where you can scroll on the map. Unrestricted, the map will be infinitely scrollable.</p>
+
+        <%# These are basic form tags so they don't get submitted / evaluated during the theme update. %>
+        <div class="input-group">
+          <%= check_box_tag :unrestricted_bounds, nil, true %>
+          <label for="unrestricted_bounds">Allow unrestricted boundaries</label>
+        </div>
+
+        <div class="side-by-side hidden unrestricted_bounds">
+          <div>
+            <label><%= t("map.sw_corner") %></label>
+            <div class="input-group">
+              <%= f.label :sw_boundary_lat %>
+              <%= f.number_field :sw_boundary_lat, optional: true %>
+            </div>
+            <div class="input-group">
+              <%= f.label :sw_boundary_long %>
+              <%= f.number_field :sw_boundary_long, optional: true %>
+            </div>
+          </div>
+          <div>
+            <label><%= t("map.ne_corner") %></label>
+            <div class="input-group">
+              <%= f.label :ne_boundary_lat %>
+              <%= f.number_field :ne_boundary_lat, optional: true %>
+            </div>
+
+            <div class="input-group">
+              <%= f.label :ne_boundary_long %>
+              <%= f.number_field :ne_boundary_long, optional: true %>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="small-labels">
+        <legend><%= t("map.center") %></legend>
+        <div class="side-by-side">
+          <div class="input-group">
+          <%= f.label :center_lat %><%= f.number_field :center_lat %>
+          </div>
+          <div class="input-group">
+          <%= f.label :center_long %><%= f.number_field :center_long %>
+          </div>
+        </div>
+
+      </fieldset>
+
+      <%= f.label :zoom %>
+      <span id="zoomValue"><%= @theme.zoom %></span>
+      <%= f.range_field :zoom, min: 1, max: 22, step: 0.25 %>
+
+      <%= f.label :pitch %>
+      <span id="pitchValue"><%= @theme.pitch %></span>
+      <%= f.range_field :pitch, min: 0, max: 90 %>
+
+      <%= f.label :bearing %>
+      <span id="bearingValue"><%= @theme.bearing %></span>
+      <%= f.range_field :bearing, min: -180, max: 180 %>
+    </div>
+
+    <div class="two-columns-right">
+      <div id="themeMap"></div>
+    </div>
+  </div>
+
+  <div>
+    <h5>Online Maps Configuration</h5>
+    <div class="input-group">
+    <%= f.label :mapbox_style_url %>
+    <%= f.text_field :mapbox_style_url %>
+    </div>
+    <div class="input-group">
+    <%= f.label :mapbox_access_token %>
+    <%= f.text_field :mapbox_access_token %>
+    </div>
+    <div class="input-group">
+    <%= f.check_box :mapbox_3d %>
+    <%= f.label :mapbox_3d %>
+    </div>
+  </div>
+
+  <%= f.submit %>
+<% end %>
+
+<script>
+document.querySelectorAll('.delete-link').forEach(lnk => {
+  lnk.addEventListener('ajax:beforeSend', function(e) {
+    lnk.parentNode.classList.add("deleting");
+  });
+
+  lnk.addEventListener('ajax:success', function(e, args) {
+    lnk.parentNode.remove();
+  });
+});
+
+// document.querySelectorAll('.delete-link').on('ajax:complete', function(e) {
+//   // document.querySelectorAll('#mySpinner').hide();
+// });
+
+const themeForm = document.querySelector("#themeForm");
+const zoomInput = themeForm.querySelector("#theme_zoom");
+const zoomValue = themeForm.querySelector("#zoomValue");
+const pitchInput = themeForm.querySelector("#theme_pitch");
+const pitchValue = themeForm.querySelector("#pitchValue");
+const bearingInput = themeForm.querySelector("#theme_bearing");
+const bearingValue = themeForm.querySelector("#bearingValue");
+
+const themeMap = new mapboxgl.Map({
+  accessToken: "<%= @theme.mapbox_access_token %>",
+  container: 'themeMap', // container ID
+  center: <%= [@theme.center_long, @theme.center_lat] %>, // starting position [lng, lat]
+  zoom: <%= @theme.zoom  || 0 %>, // starting zoom
+  pitch: <%= @theme.pitch  || 0 %>, // starting pitch
+  bearing: <%= @theme.bearing  || 0 %>, // starting bearing
+  style: "<%= @theme.mapbox_style_url || 'mapbox://styles/mapbox/streets-v11' %>", // style URL or style object
+  hash: false,
+  cooperativeGestures: true
+});
+
+themeMap.on('moveend', (e) => {
+  let themeForm = document.querySelector("#themeForm");
+  let { lng, lat } = e.target.getCenter();
+  themeForm.querySelector("input#theme_center_long").setAttribute("value", lng);
+  themeForm.querySelector("input#theme_center_lat").setAttribute("value", lat);
+
+  if (!themeForm.querySelector("input#unrestricted_bounds").checked) {
+    console.log("updating bounds")
+    let { _ne, _sw } = themeMap.getBounds();
+    themeForm.querySelector("input#theme_ne_boundary_long").setAttribute("value", _ne.lng);
+    themeForm.querySelector("input#theme_ne_boundary_lat").setAttribute("value", _ne.lat);
+    themeForm.querySelector("input#theme_sw_boundary_long").setAttribute("value", _sw.lng);
+    themeForm.querySelector("input#theme_sw_boundary_lat").setAttribute("value", _sw.lat);
+  }
+});
+
+themeMap.on('zoomend', (e) => {
+  zoomValue.innerHTML = e.target.getZoom().toPrecision(5);
+  zoomInput.value = e.target.getZoom();
+});
+
+themeMap.on('pitchend', (e) => {
+  pitchValue.innerHTML = e.target.getPitch().toPrecision(5);
+  pitchInput.value = e.target.getPitch();
+  bearingValue.innerHTML = e.target.getBearing().toPrecision(5);
+  bearingInput.value = e.target.getBearing();
+});
+
+const nav = new mapboxgl.NavigationControl({
+  visualizePitch: true
+});
+themeMap.addControl(nav, 'top-right');
+
+themeForm.querySelector("input#unrestricted_bounds").addEventListener("click", (e) => {
+  themeForm.querySelector(".unrestricted_bounds").classList.toggle("hidden", e.target.checked)
+  if (e.target.checked) {
+    themeForm.querySelectorAll(".unrestricted_bounds input").forEach((item)=>{item.value = ""})
+  } else {
+    let { _ne, _sw } = themeMap.getBounds();
+    themeForm.querySelector("input#theme_ne_boundary_long").setAttribute("value", _ne.lng);
+    themeForm.querySelector("input#theme_ne_boundary_lat").setAttribute("value", _ne.lat);
+    themeForm.querySelector("input#theme_sw_boundary_long").setAttribute("value", _sw.lng);
+    themeForm.querySelector("input#theme_sw_boundary_lat").setAttribute("value", _sw.lat);
+  }
+})
+
+zoomInput.addEventListener("input", (e) => {
+  zoomValue.innerHTML = e.target.value;
+  themeMap.setZoom(e.target.value);
+});
+pitchInput.addEventListener("input", (e) => {
+  pitchValue.innerHTML = e.target.value;
+  themeMap.setPitch(e.target.value);
+});
+bearingInput.addEventListener("input", (e) => {
+  bearingValue.innerHTML = e.target.value;
+  themeMap.setBearing(e.target.value);
+});
+
+</script>

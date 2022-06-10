@@ -1,0 +1,27 @@
+<% content_for(:title) do %>
+  <%= t("speakers") %>
+<% end %>
+
+<h2><%= t("speakers") %></h2>
+
+<div class="collection">
+  <% @speakers.order(:created_at).each do |speaker| %>
+    <%= link_to speaker, class: "card card--narrow card--stacked card--center" do %>
+      <% if speaker.photo.attached? %>
+        <%= image_tag url_for(speaker.photo), class: "card__img--circle" %>
+      <% else %>
+        <%= image_tag asset_path("speaker.png"), class: "card__img--circle" %>
+      <% end %>
+      <div><%= speaker.name %></div>
+      <% if speaker.speaker_community.present? %>
+        <p class="narrow-spacing"><%= speaker.speaker_community %></p>
+      <% end %>
+      <% if speaker.birthplace.present? %>
+        <p class="narrow-spacing"><%= speaker.birthplace.name %></p>
+      <% end %>
+      <% if speaker.birthdate.present? %>
+        <p class="narrow-spacing"><%= l(speaker.birthdate.to_date) %></p>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

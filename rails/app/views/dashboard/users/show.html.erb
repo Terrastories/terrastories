@@ -1,0 +1,15 @@
+<% content_for(:title) do %>
+  <%= @user.email %> | <%= t("user") %>
+<% end %>
+
+<% content_for(:main_heading) do %>
+  <div class="avatar-card">
+  <% if @user.photo.attached? %>
+    <%= image_tag @user.photo, class: "img--rounded img--larger", alt: @user.email, title: @user.email %>
+  <% else %>
+    <%= image_tag asset_path("speaker.png"), class: "img--rounded img--larger", alt: @user.email, title: @user.email %>
+  <% end %>
+  </div>
+<% end %>
+
+show

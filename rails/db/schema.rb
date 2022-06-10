@@ -127,7 +127,6 @@ ActiveRecord::Schema.define(version: 2022_04_14_120430) do
     t.datetime "updated_at", null: false
     t.string "mapbox_style_url"
     t.string "mapbox_access_token"
-    t.boolean "mapbox_3d", default: false
     t.decimal "center_lat", precision: 10, scale: 6
     t.decimal "center_long", precision: 10, scale: 6
     t.decimal "sw_boundary_lat", precision: 10, scale: 6
@@ -137,6 +136,7 @@ ActiveRecord::Schema.define(version: 2022_04_14_120430) do
     t.decimal "zoom", precision: 10, scale: 6
     t.decimal "pitch", precision: 10, scale: 6
     t.decimal "bearing", precision: 10, scale: 6
+    t.boolean "mapbox_3d", default: false
   end
 
   create_table "users", force: :cascade do |t|

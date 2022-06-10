@@ -1,0 +1,91 @@
+<% content_for(:title) do %>
+  <%= @story.title %> | <%= t("story") %>
+<% end %>
+
+<% content_for(:main_heading) do %>
+  <h2>
+    <% if @story.topic %>
+      <div class="small"><%= @story.topic %></div>
+    <% end %>
+    <%= @story.title %>
+    <div class="small">
+      <% if @story.language %>
+        <span class="badge"><%= @story.language %></span>
+      <% end %>
+
+      <% if @story.permission_level %>
+        <span class="badge"><%= t("story_permissions.#{@story.permission_level}") %></span>
+      <% end %>
+    </div>
+  </h2>
+<% end %>
+
+<div class="two-columns">
+  <div class="two-columns-right column-fixed-350">
+    <section>
+      <img src=<%= "https://api.mapbox.com/styles/v1/mapbox/light-v10/static/geojson(#{CGI.escape(@story.static_map)})/#{@story.geo_center},#{@story.community.theme.zoom},#{@story.community.theme.bearing},#{@story.community.theme.static_map_pitch}/350x350?access_token=#{@story.community.theme.mapbox_access_token}" %> />
+      <% @story.places.each do |place| %>
+        <span class="badge"><%= place.name[0].upcase %></span>
+        <%= place.name %>
+        <p>
+          <%= place.region %>
+          <%= place.type_of_place %>
+        </p>
+      <% end %>
+    </section>
+
+    <section class="collection">
+      <% if @story.interviewer %>
+        <span class="card card--mini card--center card--noborder card--nogap">
+          <% if @story.interviewer.photo.attached? %>
+            <%= image_tag @story.interviewer.photo, class: "img--rounded img--large", alt: @story.interviewer.name, title: @story.interviewer.name %>
+          <% else %>
+            <%= image_tag asset_path("speaker.png"), class: "img--rounded img--large", alt: @story.interviewer.name, title: @story.interviewer.name %>
+          <% end %>
+
+          <div><%= @story.interviewer.name %></div>
+          <div class="small"><%= t("interviewer") %></div>
+        </span>
+      <% end %>
+      <% @story.speakers.each do |speaker| %>
+        <span class="card card--mini card--center card--noborder card--nogap">
+          <% if speaker.photo.attached? %>
+            <%= image_tag speaker.photo, class: "img--rounded img--large", alt: speaker.name, title: speaker.name %>
+          <% else %>
+            <%= image_tag asset_path("speaker.png"), class: "img--rounded img--large", alt: speaker.name, title: speaker.name %>
+          <% end %>
+
+          <div><%= speaker.name %></div>
+          <div class="small"><%= t("speaker") %></div>
+        </span>
+      <% end %>
+    </section>
+  </div>
+
+  <div class="two-columns-left">
+    <p><%= @story.desc %></p>
+
+    <% @story.media.each do |media| %>
+      <p class="media">
+        <% if media.image? %>
+          <%= image_tag url_for(media) %>
+        <% end %>
+
+        <% if media.video? %>
+          <video controls disablePictureInPicture controlsList="nodownload" id="video-player-<%= media.blob.id %>">
+            <source src="<%= url_for(media) %>" type="<%= media.blob.content_type %>" />
+          </video>
+        <% end %>
+
+        <% if media.audio? %>
+          <audio id="audio-player-<%= media.blob.id %>"
+            controls
+            ref="audio"
+          >
+            <source src="<%= url_for(media) %>" type="<%= media.blob.content_type %>" />
+          </audio>
+        <% end %>
+      </p>
+    <% end %>
+  </div>
+</div>

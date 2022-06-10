@@ -1,0 +1,136 @@
+/* Layout */
+
+/**
+z-indicies:
+
+2: Mapbox Map controls
+3: Page Heading
+4: Top Search Bar
+**/
+
+.content-wrapper {
+  @include flexbox();
+  display: flex;
+}
+
+.content-sidebar {
+  @include flex(0);
+  @include order(1);
+
+  @include flexbox();
+  flex-direction: column;
+  justify-content: space-between;
+
+  background-color: $secondary-background;
+  border-right: 1px solid $off-white;
+
+  min-width: 250px;
+
+  img {
+    max-width: 180px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    align-self: center;
+  }
+}
+
+.content-sidebar.hidden {
+  display: none;
+}
+
+.content-main {
+  @include flex(4);
+  @include order(2);
+
+  min-width: 600px;
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: visible;
+}
+
+.top-bar {
+  @include flexbox;
+  justify-content: space-between;
+  align-items: baseline;
+
+  position: sticky;
+  top: 0;
+  z-index: 4;
+
+  background-color: $secondary-background;
+  border-bottom: 1px solid $off-white;
+  padding: .5rem 1rem;
+
+  .search {
+    max-width: 50rem;
+    width: 20rem;
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+
+  input.search__input[type=search] {
+    border-radius: 100rem;
+    padding-left: 1.6rem;
+    width: 100%;
+  }
+
+  .search__eyeglass-icon {
+    fill: $light-gray;
+    height: 1rem;
+    left: 1.5rem;
+    position: absolute;
+    top: 1.4rem;
+    transform: translateY(-50%);
+    width: 1rem;
+  }
+}
+
+.page-heading {
+  background-color: $background;
+  position: sticky;
+  top: 2.5rem;
+  padding: 0 1rem;
+
+  @include flexbox;
+  justify-content: space-between;
+  align-items: baseline;
+  z-index: 3;
+
+  h1, h2, h3 {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &.sticky {
+    box-shadow: 0 0 1rem $lighter-gray;
+  }
+}
+
+.page-content {
+  padding: 1rem;
+
+  > p {
+    margin: 1rem 0;
+  }
+}
+
+.separated {
+  @include ui-font;
+  span:nth-child(n+2) {
+    &::before {
+      content: " | "
+    }
+  }
+}
+
+main {
+  padding-bottom: 6rem;
+}
+
+svg[hidden] {
+  display: none;
+  visibility: collapse;
+}
+svg:not(:root) {
+  overflow: hidden;
+}
