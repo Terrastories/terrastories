@@ -25,6 +25,24 @@ class Story < ApplicationRecord
     end
   end
 
+  def geo_center
+    Geocoder::Calculations.geographic_center(places.map { |p| [p.lat, p.long] }).reverse.join(",")
+  end
+
+  def static_map
+    RGeo::GeoJSON.encode(
+      RGeo::GeoJSON::FeatureCollection.new(
+        places.map { |p|
+          RGeo::GeoJSON::Feature.new(
+            RGeo::Cartesian.factory.point(p.long, p.lat),
+            p.id,
+            "marker-symbol": p.name[0].downcase
+          )
+        }
+      )
+    ).to_json
+  end
+
   enum permission_level: [:anonymous, :user_only, :editor_only]
 end
 

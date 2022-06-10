@@ -158,6 +158,7 @@ GEM
     font-awesome-rails (4.7.0.8)
       railties (>= 3.2, < 8.0)
     formatador (1.1.0)
+    geocoder (1.7.5)
     globalid (1.0.0)
       activesupport (>= 5.0)
     guard (2.18.0)
@@ -413,6 +414,7 @@ DEPENDENCIES
   dotenv-rails
   factory_bot_rails
   font-awesome-rails (~> 4.7)
+  geocoder
   guard-rspec
   i18n-js
   jbuilder (~> 2.5)

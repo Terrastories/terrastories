@@ -30,6 +30,11 @@ class Theme < ApplicationRecord
     :numericality=> true, allow_nil: true, :inclusion => {:in => 0..22, :message => "value should be between 0 and 22"}
   validates :pitch,
     :numericality=> true, allow_nil: true, :inclusion => {:in => 0..85, :message => "value should be between 0 and 85"}
+
+
+  def static_map_pitch
+    pitch.to_i > 60 ? 60 : pitch.to_i
+  end
 end
 
 # == Schema Information
