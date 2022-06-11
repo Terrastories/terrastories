@@ -1,0 +1,42 @@
+<% @stories.each do |story| %>
+  <%= link_to story, class: "card" do %>
+    <div>
+      <h3>
+        <span class="card__heading--small"><%= story.topic %></span>
+        <%= story.title %>
+      </h3>
+
+      <% if story.language %>
+        <span class="badge"><%= story.language %></span>
+      <% end %>
+
+      <% if story.permission_level %>
+        <span class="badge"><%= t("story.permissions.#{story.permission_level}") %></span>
+      <% end %>
+
+    <p><%= story.desc %></p>
+    </div>
+
+    <div>
+      <span>
+        <svg class="icon">
+          <use href="#icon-location-pin">
+        </svg>
+        <%= story.places.map(&:name).join(", ") %>
+      </span>
+      <div class="avatars">
+        <% story.speakers.each do |speaker| %>
+          <span class="tooltip">
+            <% if speaker.photo.attached? %>
+              <%= image_tag speaker.photo, class: "img--rounded img--mini", alt: speaker.name, title: speaker.name %>
+            <% else %>
+              <%= image_tag asset_path("speaker.png"), class: "img--rounded img--mini", alt: speaker.name, title: speaker.name %>
+            <% end %>
+
+            <span class="tooltip-text"><%= speaker.name %></span>
+          </span>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

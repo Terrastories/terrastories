@@ -1,10 +1,18 @@
 module Dashboard
   class StoriesController < ApplicationController
     def index
-      @stories = community.stories
-      @stories = @stories.joins(:places).where(places: {id: params[:place]}) if params[:place].present?
-      @stories = @stories.joins(:speakers).where(speakers: {id: params[:speaker]}) if params[:speaker].present?
-      @stories = @stories.where(permission_level: params[:visibility]) if params[:visibility].present?
+      @page = StoriesPage.new(community, params)
+      @stories = @page.data
+
+      respond_to do |format|
+        format.html
+        format.json {
+          render json: {
+            entries: render_to_string(partial: "stories", formats: [:html]),
+            pagination: @page.has_next_page? ? stories_url(@page.next_page_meta) : nil
+          }
+        }
+      end
     end
 
     def show

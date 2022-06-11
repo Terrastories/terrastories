@@ -12,58 +12,59 @@
       <%= select_tag :speaker, options_for_select(community.stories.joins(:speakers).flat_map { |s| s.speakers.pluck(:name, :id) }.uniq, params[:speaker]), include_blank: t("filter.all") %>
       <%= label_tag :visibility, t("visibility") %>
       <%= select_tag :visibility, options_for_select(Story.permission_levels.map { |k, v| [t("story.permissions.#{k}"), v]}, params[:visibility]), include_blank: t("filter.any") %>
-      <%= label_tag :per_page, t("filters.per_page") %>
-      <%= select_tag :per_page, options_for_select([1, 20, 50, 100]) %>
       <%= submit_tag :filter %>
     <% end %>
   </span>
 <% end %>
 
-<div class="collection">
+<div class="infinite-scroll">
   <% if @stories.empty? %>
     <p>There are no stories available. Adjust your filters.</p>
   <% else %>
-    <% @stories.each do |story| %>
-      <%= link_to story, class: "card" do %>
-        <div>
-          <h3>
-            <span class="card__heading--small"><%= story.topic %></span>
-            <%= story.title %>
-          </h3>
-
-          <% if story.language %>
-            <span class="badge"><%= story.language %></span>
-          <% end %>
-
-          <% if story.permission_level %>
-            <span class="badge"><%= t("story.permissions.#{story.permission_level}") %></span>
-          <% end %>
-
-        <p><%= story.desc %></p>
-        </div>
-
-        <div>
-          <span>
-            <svg class="icon">
-              <use href="#icon-location-pin">
-            </svg>
-            <%= story.places.map(&:name).join(", ") %>
-          </span>
-          <div class="avatars">
-            <% story.speakers.each do |speaker| %>
-              <span class="tooltip">
-                <% if speaker.photo.attached? %>
-                  <%= image_tag speaker.photo, class: "img--rounded img--mini", alt: speaker.name, title: speaker.name %>
-                <% else %>
-                  <%= image_tag asset_path("speaker.png"), class: "img--rounded img--mini", alt: speaker.name, title: speaker.name %>
-                <% end %>
-
-                <span class="tooltip-text"><%= speaker.name %></span>
-              </span>
-            <% end %>
-          </div>
-        </div>
+    <div data-infinite-scroll="entries" class="collection">
+    <%= render "stories" %>
+    </div>
+    <div data-infinite-scroll="pagination">
+      <%#= Prev/Next Pagination Links for folks that don't use / have JavaScript %>
+      <% if @page.meta[:offset] > 0 %>
+        <%= link_to "Prev", stories_url(request.query_parameters.merge(offset: @page.meta[:offset] - @page.meta[:limit])), rel: "prev" %>
       <% end %>
-    <% end %>
+      <% if @page.meta[:next_offset] %>
+        <%= link_to "Next", stories_url(request.query_parameters.merge(offset: @page.meta[:next_offset])), rel: "next" %>
+      <% end %>
+    </div>
   <% end %>
 </div>
+
+<script type="text/javascript">
+  const stories_list = document.querySelector("[data-infinite-scroll=entries]");
+  const stories_pager = document.querySelector("[data-infinite-scroll=pagination]");
+
+  const storiesObserver = new IntersectionObserver(
+    (entries) => {
+      if (entries[0].isIntersecting) {
+        let next_page = entries[0].target.querySelector("a[rel=next]")
+        if (next_page == null) { return }
+
+        let url = next_page.href
+        fetch(url,
+          {
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            }
+          })
+          .then((response) => response.json())
+          .then(data => {
+            stories_list.insertAdjacentHTML('beforeend', data.entries)
+            if (data.pagination == null) {
+              next_page.remove()
+            } else {
+              next_page.setAttribute("href", data.pagination)
+            }
+          })
+      }
+    }
+  );
+  storiesObserver.observe(stories_pager);
+</script>
