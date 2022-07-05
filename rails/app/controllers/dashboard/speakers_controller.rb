@@ -15,8 +15,50 @@ module Dashboard
       end
     end
 
+    def new
+      authorize @speaker = community.speakers.new
+    end
+
+    def create
+      authorize Speaker
+      @speaker = community.speakers.new(speaker_params)
+
+      if @speaker.save
+        redirect_to @speaker
+      else
+        render :new
+      end
+    end
+
     def show
       @speaker = community.speakers.find(params[:id])
+    end
+
+    def edit
+      @speaker = authorize community.speakers.find(params[:id])
+    end
+
+    def update
+      @speaker = authorize community.speakers.find(params[:id])
+
+      if @speaker.update(speaker_params)
+        redirect_to @speaker
+      else
+        render :edit
+      end
+    end
+
+    private
+
+    def speaker_params
+      params.require(:speaker).permit(
+        :name,
+        :photo,
+        :speaker_community,
+        :birthdate,
+        :birthplace,
+        story_ids: []
+      )
     end
   end
 end

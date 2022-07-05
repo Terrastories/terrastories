@@ -3,29 +3,32 @@
 <% end %>
 
 <% content_for(:main_heading) do %>
-<div class="avatar-card">
-  <% if @speaker.photo.attached? %>
-    <%= image_tag @speaker.photo, class: "img--rounded img--larger", alt: @speaker.name, title: @speaker.name %>
-  <% else %>
-    <%= image_tag asset_path("speaker.png"), class: "img--rounded img--larger", alt: @speaker.name, title: @speaker.name %>
-  <% end %>
-  <h2>
-    <% if @speaker.speaker_community %>
-      <div class="small">
-        <%= @speaker.speaker_community %>
-      </div>
+<div class="columns">
+  <div class="avatar-card">
+    <% if @speaker.photo.attached? %>
+      <%= image_tag @speaker.photo, class: "img--rounded img--larger", alt: @speaker.name, title: @speaker.name %>
+    <% else %>
+      <%= image_tag asset_path("speaker.png"), class: "img--rounded img--larger", alt: @speaker.name, title: @speaker.name %>
     <% end %>
-    <%= @speaker.name %>
-    <div class="small separated">
-      <% if @speaker.birthdate %>
-        <span><%= l(@speaker.birthdate.to_date, format: :long) %></span>
+    <h2>
+      <% if @speaker.speaker_community %>
+        <div class="small">
+          <%= @speaker.speaker_community %>
+        </div>
       <% end %>
+      <%= @speaker.name %>
+      <div class="small separated">
+        <% if @speaker.birthdate %>
+          <span><%= l(@speaker.birthdate.to_date, format: :long) %></span>
+        <% end %>
 
-      <% if @speaker.birthplace %>
-        <span><%= @speaker.birthplace.name %></span>
-      <% end %>
-    </div>
-  </h2>
+        <% if @speaker.birthplace %>
+          <span><%= @speaker.birthplace.name %></span>
+        <% end %>
+      </div>
+    </h2>
+  </div>
+  <%= link_to t("dashboard.actions.edit"), edit_speaker_path(@speaker), class: "btn" %>
 </div>
 <% end %>
 

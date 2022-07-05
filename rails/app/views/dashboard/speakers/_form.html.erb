@@ -1,0 +1,23 @@
+<%= form_with model: @speaker, multipart: true, data: {remote: false} do |f| %>
+  <%= render partial: "shared/form_errors", locals: { resource: @speaker } %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :photo %>
+  <%= f.file_field :photo %>
+
+  <%= f.label :speaker_community %>
+  <%= f.text_field :speaker_community %>
+
+  <%= f.label :birthdate %>
+  <%= f.date_field :birthdate %>
+
+  <%= f.label :birthplace_id %>
+  <%= f.select :birthplace_id, options_from_collection_for_select(community.places, 'id', 'name', @speaker.birthplace_id) %>
+
+  <%= f.label :story_ids %>
+  <%= f.select :story_ids, options_from_collection_for_select(community.stories, 'id', 'title', @speaker.stories.pluck(:id)), {}, {multiple: true} %>
+
+  <%= f.submit %>
+<% end %>
