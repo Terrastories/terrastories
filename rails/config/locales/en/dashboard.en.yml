@@ -11,8 +11,13 @@ en:
   map:
     center: Map Center
     bounds: Map Bounds
+    bounds_description: The boundaries of the map determine the extent of where you can scroll on the map. Unrestricted, the map will be infinitely scrollable.
     sw_corner: Southwest Corner
     ne_corner: Northeast Corner
+    unrestricted_bounds: Allow unrestricted bounds
+    online: Online Map Configuration
+    settings: Map Settings
+    settings_description: Customize your community's map settings.
   dashboard:
     back_to_app: Back to App
     actions:
@@ -35,7 +40,7 @@ en:
     all: All
     per_page: per page
   story_permissions:
-    anonymous: "Public"
-    user_only: "Member"
-    editor_only: "Editor"
-    admin_only: "Admin"
+    anonymous: Public
+    user_only: Member
+    editor_only: Editor
+    admin_only: Admin

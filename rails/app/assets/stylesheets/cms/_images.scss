@@ -4,6 +4,10 @@
   justify-content: center;
   align-items: center;
 
+  span.overlay {
+    visibility: collapse;
+  }
+
   a {
     position: absolute;
     top: 5px;
@@ -35,6 +39,15 @@
     svg {
       visibility: visible;
     }
+    span.overlay {
+      visibility: visible;
+      background-color: $white;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      opacity: .5;
+    }
+
   }
 }
 

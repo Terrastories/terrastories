@@ -36,7 +36,8 @@
         <% @theme.sponsor_logos.each do |img| %>
           <span class="image-with-controls">
             <%= image_tag(img, width: 150) %>
-            <%= link_to delete_sponsor_logo_theme_url(img.signed_id), class: "delete-link", method: :delete, data: {confirm: t("dashboard.actions.delete")}, remote: true do %>
+            <span class="overlay"></span>
+            <%= link_to delete_sponsor_logo_theme_url(img.signed_id), class: "delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm")}, remote: true do %>
               <svg><use href="#icon-cancel"></svg>
             <% end %>
           </span>
@@ -45,20 +46,20 @@
     </div>
   </div>
 
-  <h4>Map Settings</h4>
-  <p>Customize your community's map settings.</p>
+  <h4><%= t("map.settings") %></h4>
+  <p><%= t("map.settings_description") %></p>
 
   <div class="two-columns">
     <div class="two-columns-left  column-fixed-400">
       <fieldset class="small-labels">
-        <legend>Map Bounds</legend>
+        <legend><%= t("map.bounds") %></legend>
 
-        <p>The boundaries of the map determine the extent of where you can scroll on the map. Unrestricted, the map will be infinitely scrollable.</p>
+        <p><%= t("map.bounds_description") %></p>
 
         <%# These are basic form tags so they don't get submitted / evaluated during the theme update. %>
         <div class="input-group">
           <%= check_box_tag :unrestricted_bounds, nil, true %>
-          <label for="unrestricted_bounds">Allow unrestricted boundaries</label>
+          <label for="unrestricted_bounds"><%= t("map.unrestricted_bounds") %></label>
         </div>
 
         <div class="side-by-side hidden unrestricted_bounds">
@@ -120,7 +121,7 @@
   </div>
 
   <div>
-    <h5>Online Maps Configuration</h5>
+    <h5><%= t("map.online") %></h5>
     <div class="input-group">
     <%= f.label :mapbox_style_url %>
     <%= f.text_field :mapbox_style_url %>
