@@ -48,6 +48,14 @@ module Dashboard
       end
     end
 
+    def destroy
+      @speaker = authorize community.speakers.find(params[:id])
+
+      @speaker.destroy
+
+      redirect_to speakers_path
+    end
+
     private
 
     def speaker_params

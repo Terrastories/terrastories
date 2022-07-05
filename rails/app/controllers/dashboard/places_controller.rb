@@ -48,6 +48,14 @@ module Dashboard
       end
     end
 
+    def destroy
+      @place = authorize community.places.find(params[:id])
+
+      @place.destroy
+
+      redirect_to places_path
+    end
+
     private
 
     def place_params

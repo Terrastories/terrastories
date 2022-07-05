@@ -28,7 +28,10 @@
       </div>
     </h2>
   </div>
-  <%= link_to t("dashboard.actions.edit"), edit_speaker_path(@speaker), class: "btn" %>
+  <div class="actions">
+    <%= link_to t("dashboard.actions.edit"), edit_speaker_path(@speaker), class: "btn" %>
+    <%= link_to t("dashboard.actions.destroy"), speaker_path(@speaker), method: :delete, data: {confirm: t("dashboard.actions.confirm")}, class: "btn btn-danger" %>
+  </div>
 </div>
 <% end %>
 

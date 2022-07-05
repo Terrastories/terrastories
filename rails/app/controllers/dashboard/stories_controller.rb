@@ -48,6 +48,14 @@ module Dashboard
       end
     end
 
+    def destroy
+      @story = authorize community.stories.find(params[:id])
+
+      @story.destroy
+
+      redirect_to stories_path
+    end
+
     private
 
     def story_params

@@ -52,6 +52,14 @@ module Dashboard
       end
     end
 
+    def destroy
+      @user = authorize community.users.find(params[:id])
+
+      @user.destroy
+
+      redirect_to users_path
+    end
+
     private
 
     def user_params

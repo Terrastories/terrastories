@@ -10,11 +10,16 @@
   <% else %>
     <%= image_tag asset_path("speaker.png"), class: "img--rounded img--larger", alt: @user.email, title: @user.email %>
   <% end %>
+  <h2>
+    <%= @user.email %>
+    <div class="small">
+      <span class="badge"><%= @user.role %></span>
+    </div>
+  </h2>
   </div>
   <div>
     <%= link_to t("dashboard.actions.edit"), edit_user_path(@user), class: "btn" %>
+    <%= link_to t("dashboard.actions.destroy"), user_path(@user), method: :delete, data: {confirm: t("dashboard.actions.confirm")}, class: "btn btn-danger" %>
   </div>
 </div>
 <% end %>
-
-show

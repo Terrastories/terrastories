@@ -19,7 +19,10 @@
       <% end %>
     </div>
   </h2>
-  <%= link_to t("dashboard.actions.edit"), edit_story_path(@story), class: "btn" %>
+  <div class="actions">
+    <%= link_to t("dashboard.actions.edit"), edit_story_path(@story), class: "btn" %>
+    <%= link_to t("dashboard.actions.destroy"), story_path(@story), method: :delete, data: {confirm: t("dashboard.actions.confirm")}, class: "btn btn-danger" %>
+  </div>
 </div>
 <% end %>
 
