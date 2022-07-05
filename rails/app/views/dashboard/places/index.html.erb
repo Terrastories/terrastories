@@ -5,13 +5,13 @@
 <% content_for(:main_heading) do %>
 <div class="columns">
 <h2><%= t("places") %></h2>
-<%= link_to t("new"), new_place_path, class: "btn" %>
+<%= link_to t("new"), new_place_path, class: "btn" if policy(:place).new? %>
 </div>
 <% end %>
 
 <div class="infinite-scroll">
   <% if @places.empty? %>
-    <p>There are no places available.</p>
+    <p><%= t("list.no_results", resources: t("places").downcase) %></p>
   <% else %>
     <div data-infinite-scroll="entries" class="collection">
       <%= render "places" %>

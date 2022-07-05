@@ -29,8 +29,8 @@
     </h2>
   </div>
   <div class="actions">
-    <%= link_to t("dashboard.actions.edit"), edit_speaker_path(@speaker), class: "btn" %>
-    <%= link_to t("dashboard.actions.destroy"), speaker_path(@speaker), method: :delete, data: {confirm: t("dashboard.actions.confirm")}, class: "btn btn-danger" %>
+    <%= link_to t("dashboard.actions.edit"), edit_speaker_path(@speaker), class: "btn" if policy(@speaker).edit? %>
+    <%= link_to t("dashboard.actions.destroy"), speaker_path(@speaker), method: :delete, data: {confirm: t("dashboard.actions.confirm")}, class: "btn btn-danger" if policy(@speaker).destroy? %>
   </div>
 </div>
 <% end %>
@@ -40,7 +40,7 @@
 
   <div class="collection">
     <% if @speaker.stories.empty? %>
-      <p>This speaker has no stories.</p>
+      <p><%= t("list.no_nested_results", resource: t("speaker").downcase, resources: t("stories").downcase) %></p>
     <% else %>
       <% @speaker.stories.each do |story| %>
         <%= link_to story, class: "card" do %>

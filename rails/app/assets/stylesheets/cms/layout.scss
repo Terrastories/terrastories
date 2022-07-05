@@ -90,6 +90,7 @@ z-indicies:
   position: sticky;
   top: 2.5rem;
   padding: 0 1rem;
+  z-index: 3;
 
   .columns {
     @include flexbox;

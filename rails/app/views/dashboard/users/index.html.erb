@@ -5,13 +5,13 @@
 <% content_for(:main_heading) do %>
   <div class="columns">
     <h2><%= t("users") %></h2>
-    <%= link_to t("dashboard.actions.new"), new_user_path, class: "btn" %>
+    <%= link_to t("dashboard.actions.new"), new_user_path, class: "btn" if policy(:user).new? %>
   </div>
 <% end %>
 
 <div class="infinite-scroll">
   <% if @users.empty? %>
-    <p>There are no users available.</p>
+    <p><%= t("list.no_results", resources: t("users").downcase) %></p>
   <% else %>
     <div data-infinite-scroll="entries" class="collection">
       <%= render "users" %>

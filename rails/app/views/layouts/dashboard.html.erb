@@ -26,7 +26,7 @@
 
       <div class="settings">
         <% if current_user.admin? %>
-          <h5>Community Settings</h5>
+          <h5><%= t("dashboard.community_settings") %></h5>
           <%= link_to t("users"), users_path %>
           <%= link_to t("theme"), edit_theme_path %>
         <% end %>
@@ -49,6 +49,13 @@
         </form>
         <div>
           <%= current_user.email %>
+          <%= link_to edit_user_path(current_user) do %>
+            <% if current_user.photo.attached? %>
+              <%= image_tag current_user.photo, class: "img img--rounded img--micro" %>
+            <% else %>
+              <%= image_tag asset_path("speaker.png"), class: "img img--rounded img--micro" %>
+            <% end %>
+          <% end %>
           <%= link_to t("dashboard.back_to_app") %>
         </div>
       </div>
@@ -76,33 +83,37 @@
     headerObserver.observe(sentinel);
 
     // Infinite Scroll
-    const infiniteScrollObserver = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          let next_page = entries[0].target.querySelector("a[rel=next]")
-          if (next_page == null) { return }
+    let hasInfiniteScroll = document.querySelector("[data-infinite-scroll]")
 
-          let url = next_page.href
-          fetch(url,
-            {
-              headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-              }
-            })
-            .then((response) => response.json())
-            .then(data => {
-              document.querySelector("[data-infinite-scroll=entries]").insertAdjacentHTML('beforeend', data.entries)
-              if (data.pagination == null) {
-                next_page.remove()
-              } else {
-                next_page.setAttribute("href", data.pagination)
-              }
-            })
+    if (hasInfiniteScroll !== null) {
+      const infiniteScrollObserver = new IntersectionObserver(
+        (entries) => {
+          if (entries[0].isIntersecting) {
+            let next_page = entries[0].target.querySelector("a[rel=next]")
+            if (next_page == null) { return }
+
+            let url = next_page.href
+            fetch(url,
+              {
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Accept': 'application/json'
+                }
+              })
+              .then((response) => response.json())
+              .then(data => {
+                document.querySelector("[data-infinite-scroll=entries]").insertAdjacentHTML('beforeend', data.entries)
+                if (data.pagination == null) {
+                  next_page.remove()
+                } else {
+                  next_page.setAttribute("href", data.pagination)
+                }
+              })
+          }
         }
-      }
-    );
-    infiniteScrollObserver.observe(document.querySelector("[data-infinite-scroll=pagination]"))
+      );
+      infiniteScrollObserver.observe(document.querySelector("[data-infinite-scroll=pagination]"))
+    }
 
   </script>
 </html>

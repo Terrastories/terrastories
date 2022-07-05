@@ -5,7 +5,7 @@
 <% content_for(:main_heading) do %>
   <div class="columns">
   <h2><%= t("stories") %></h2>
-  <%= link_to t("new"), new_story_path, class: "btn" %>
+  <%= link_to t("new"), new_story_path, class: "btn" if policy(:story).new? %>
   </div>
   <div class="filters">
     <%= form_tag stories_path, method: :get do %>
@@ -22,7 +22,7 @@
 
 <div class="infinite-scroll">
   <% if @stories.empty? %>
-    <p>There are no stories available. Adjust your filters.</p>
+    <p><%= t("list.no_results", resources: t("stories").downcase) %></p>
   <% else %>
     <div data-infinite-scroll="entries" class="collection">
     <%= render "stories" %>

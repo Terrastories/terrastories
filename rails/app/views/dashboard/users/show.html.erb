@@ -18,8 +18,8 @@
   </h2>
   </div>
   <div>
-    <%= link_to t("dashboard.actions.edit"), edit_user_path(@user), class: "btn" %>
-    <%= link_to t("dashboard.actions.destroy"), user_path(@user), method: :delete, data: {confirm: t("dashboard.actions.confirm")}, class: "btn btn-danger" %>
+    <%= link_to t("dashboard.actions.edit"), edit_user_path(@user), class: "btn" if policy(@user).edit? %>
+    <%= link_to t("dashboard.actions.destroy"), user_path(@user), method: :delete, data: {confirm: t("dashboard.actions.confirm")}, class: "btn btn-danger" if policy(@user).destroy? %>
   </div>
 </div>
 <% end %>

@@ -31,8 +31,8 @@
     </h2>
   </div>
   <div class="actions">
-    <%= link_to t("dashboard.actions.edit"), edit_place_path(@place), class: "btn" %>
-    <%= link_to t("dashboard.actions.destroy"), place_path(@place), method: :delete, data: {confirm: t("dashboard.actions.confirm")}, class: "btn btn-danger" %>
+    <%= link_to t("dashboard.actions.edit"), edit_place_path(@place), class: "btn" if policy(@place).edit? %>
+    <%= link_to t("dashboard.actions.destroy"), place_path(@place), method: :delete, data: {confirm: t("dashboard.actions.confirm")}, class: "btn btn-danger" if policy(@place).destroy? %>
   </div>
 </div>
 <% end %>
@@ -48,7 +48,7 @@
 
   <div class="collection">
     <% if @place.stories.empty? %>
-      <p>This place has no stories.</p>
+      <p><%= t("list.no_nested_results", resource: t("place").downcase, resources: t("stories").downcase) %></p>
     <% else %>
       <% @place.stories.each do |story| %>
         <%= link_to story, class: "card" do %>

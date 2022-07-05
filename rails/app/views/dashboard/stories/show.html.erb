@@ -20,8 +20,8 @@
     </div>
   </h2>
   <div class="actions">
-    <%= link_to t("dashboard.actions.edit"), edit_story_path(@story), class: "btn" %>
-    <%= link_to t("dashboard.actions.destroy"), story_path(@story), method: :delete, data: {confirm: t("dashboard.actions.confirm")}, class: "btn btn-danger" %>
+    <%= link_to t("dashboard.actions.edit"), edit_story_path(@story), class: "btn" if policy(@story).edit? %>
+    <%= link_to t("dashboard.actions.destroy"), story_path(@story), method: :delete, data: {confirm: t("dashboard.actions.confirm")}, class: "btn btn-danger" if policy(@story).destroy? %>
   </div>
 </div>
 <% end %>
