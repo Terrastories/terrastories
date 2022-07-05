@@ -1,7 +1,5 @@
 <%= form_with model: @user, multipart: true, data: {remote: false}, id: "userForm" do |f| %>
-  <% if @user.errors.any? %>
-    <%= @user.errors.full_messages %>
-  <% end %>
+  <%= render partial: "shared/form_errors", locals: { resource: @user } %>
 
   <%= f.label :email %>
   <%= f.email_field :email %>
