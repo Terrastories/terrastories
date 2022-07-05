@@ -12,17 +12,4 @@
   </div>
 <% end %>
 
-<%= form_with model: @user, method: :patch, multipart: true, data: {remote: false}, url: user_path, id: "userForm" do |f| %>
-  <%= @user.errors.full_messages %>
-  <%= f.label :email %>
-  <%= f.email_field :email %>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <% unless !((current_user.super_admin || current_user.admin?) && @user.id != current_user.id) %>
-    <%= f.label :role %>
-    <%= f.select :role, User.roles.keys.reject { |k| ['super_admin'].include?(k) }.map { |k| [k.titleize, k] } %>
-  <% end %>
-  <%= f.label :photo %>
-  <%= f.file_field :photo %>
-  <%= f.submit %>
-<% end %>
+<%= render "form" %>

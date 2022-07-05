@@ -91,10 +91,12 @@ z-indicies:
   top: 2.5rem;
   padding: 0 1rem;
 
-  @include flexbox;
-  justify-content: space-between;
-  align-items: baseline;
-  z-index: 3;
+  .columns {
+    @include flexbox;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 3;
+  }
 
   h1, h2, h3 {
     margin-top: 0.5rem;

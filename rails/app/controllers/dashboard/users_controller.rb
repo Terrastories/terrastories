@@ -17,6 +17,22 @@ module Dashboard
       end
     end
 
+    def new
+      @user = authorize community.users.new
+    end
+
+    def create
+      authorize User
+      @user = community.users.new(user_params)
+
+      if @user.save
+        redirect_to @user
+      else
+        @user.password = nil
+        render :new
+      end
+    end
+
     def show
       @user = authorize community.users.find(params[:id])
     end

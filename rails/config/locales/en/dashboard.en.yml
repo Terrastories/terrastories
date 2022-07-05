@@ -7,7 +7,7 @@ en:
   story: Story
   theme: Theme
   users: Users
-  user: user
+  user: User
   map:
     center: Map Center
     bounds: Map Bounds
@@ -24,6 +24,7 @@ en:
       confirm: Are you sure?
       destroy: Delete
       edit: Edit
+      new: New
       edit_resource: Edit %{name}
       show_resource: Show %{name}
       new_resource: New %{name}

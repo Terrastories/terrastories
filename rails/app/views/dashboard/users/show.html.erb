@@ -3,6 +3,7 @@
 <% end %>
 
 <% content_for(:main_heading) do %>
+<div class="columns">
   <div class="avatar-card">
   <% if @user.photo.attached? %>
     <%= image_tag @user.photo, class: "img--rounded img--larger", alt: @user.email, title: @user.email %>
@@ -10,6 +11,10 @@
     <%= image_tag asset_path("speaker.png"), class: "img--rounded img--larger", alt: @user.email, title: @user.email %>
   <% end %>
   </div>
+  <div>
+    <%= link_to t("dashboard.actions.edit"), edit_user_path(@user), class: "btn" %>
+  </div>
+</div>
 <% end %>
 
 show

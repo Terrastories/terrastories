@@ -3,7 +3,10 @@
 <% end %>
 
 <% content_for(:main_heading) do %>
-  <h2><%= t("users") %></h2>
+  <div class="columns">
+    <h2><%= t("users") %></h2>
+    <%= link_to t("dashboard.actions.new"), new_user_path, class: "btn" %>
+  </div>
 <% end %>
 
 <div class="infinite-scroll">
