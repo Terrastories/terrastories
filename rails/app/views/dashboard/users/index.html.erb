@@ -6,22 +6,21 @@
   <h2><%= t("users") %></h2>
 <% end %>
 
-<div class="collection">
+<div class="infinite-scroll">
   <% if @users.empty? %>
-    <p>There are no users available. Adjust your filters.</p>
+    <p>There are no users available.</p>
   <% else %>
-    <% @users.each do |user| %>
-      <%= link_to user, class: "card card--narrow card--center" do %>
-        <% if user.photo.attached? %>
-          <%= image_tag url_for(user.photo), class: "card__img--circle" %>
-        <% else %>
-          <%= image_tag asset_path("speaker.png"), class: "card__img--circle" %>
-        <% end %>
-        <div><%= user.email %></div>
-        <% if user.role %>
-          <div class="badge"><%= user.role %></div>
-        <% end %>
+    <div data-infinite-scroll="entries" class="collection">
+      <%= render "users" %>
+    </div>
+    <div data-infinite-scroll="pagination">
+      <%#= Prev/Next Pagination Links for folks that don't use / have JavaScript %>
+      <% if @page.meta[:offset] > 0 %>
+        <%= link_to "Prev", users_path(request.query_parameters.merge(offset: @page.meta[:offset] - @page.meta[:limit])), rel: "prev" %>
       <% end %>
-    <% end %>
+      <% if @page.meta[:next_offset] %>
+        <%= link_to "Next", users_path(request.query_parameters.merge(offset: @page.meta[:next_offset])), rel: "next" %>
+      <% end %>
+    </div>
   <% end %>
 </div>

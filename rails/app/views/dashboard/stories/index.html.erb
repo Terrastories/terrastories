@@ -35,36 +35,3 @@
     </div>
   <% end %>
 </div>
-
-<script type="text/javascript">
-  const stories_list = document.querySelector("[data-infinite-scroll=entries]");
-  const stories_pager = document.querySelector("[data-infinite-scroll=pagination]");
-
-  const storiesObserver = new IntersectionObserver(
-    (entries) => {
-      if (entries[0].isIntersecting) {
-        let next_page = entries[0].target.querySelector("a[rel=next]")
-        if (next_page == null) { return }
-
-        let url = next_page.href
-        fetch(url,
-          {
-            headers: {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json'
-            }
-          })
-          .then((response) => response.json())
-          .then(data => {
-            stories_list.insertAdjacentHTML('beforeend', data.entries)
-            if (data.pagination == null) {
-              next_page.remove()
-            } else {
-              next_page.setAttribute("href", data.pagination)
-            }
-          })
-      }
-    }
-  );
-  storiesObserver.observe(stories_pager);
-</script>

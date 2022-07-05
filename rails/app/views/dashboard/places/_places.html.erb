@@ -1,0 +1,17 @@
+<% @places.each do |place| %>
+  <%= link_to place_path(place), class: "card card--stacked" do %>
+    <% if place.photo.attached? %>
+      <%= image_tag url_for(place.photo), class: "card__img" %>
+    <% else %>
+      <%= image_tag asset_path("home-icon.svg"), class: "card__img", height: 150 %>
+    <% end %>
+    <div>
+    <h3>
+      <% if place.region %><span class="card__heading--small"><%= place.region %></span><% end %>
+      <%= place.name %>
+    </h3>
+    <% if place.region %><span class="badge"><%= place.type_of_place %></span><% end %>
+    </div>
+    <% if place.description.present? %><p><%= place.description %></p><% end %>
+  <% end %>
+<% end %>

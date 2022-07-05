@@ -64,6 +64,7 @@
   </body>
 
   <script type="text/javascript">
+    // Sticky Header Observer
     const pageContentHeader = document.querySelector(".page-heading");
     const sentinel = document.querySelector(".observer-sentinel");
 
@@ -73,5 +74,35 @@
       }
     );
     headerObserver.observe(sentinel);
+
+    // Infinite Scroll
+    const infiniteScrollObserver = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          let next_page = entries[0].target.querySelector("a[rel=next]")
+          if (next_page == null) { return }
+
+          let url = next_page.href
+          fetch(url,
+            {
+              headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+              }
+            })
+            .then((response) => response.json())
+            .then(data => {
+              document.querySelector("[data-infinite-scroll=entries]").insertAdjacentHTML('beforeend', data.entries)
+              if (data.pagination == null) {
+                next_page.remove()
+              } else {
+                next_page.setAttribute("href", data.pagination)
+              }
+            })
+        }
+      }
+    );
+    infiniteScrollObserver.observe(document.querySelector("[data-infinite-scroll=pagination]"))
+
   </script>
 </html>

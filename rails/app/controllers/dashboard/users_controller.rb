@@ -1,7 +1,20 @@
 module Dashboard
   class UsersController < ApplicationController
     def index
-      @users = authorize community.users
+      authorize community.users
+
+      @page = UsersPage.new(community, params)
+      @users = @page.data
+
+      respond_to do |format|
+        format.html
+        format.json {
+          render json: {
+            entries: render_to_string(partial: "users", formats: [:html]),
+            pagination: @page.has_next_page? ? users_url(@page.next_page_meta) : nil
+          }
+        }
+      end
     end
 
     def show
