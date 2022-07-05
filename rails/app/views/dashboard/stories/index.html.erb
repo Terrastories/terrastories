@@ -3,8 +3,11 @@
 <% end %>
 
 <% content_for(:main_heading) do %>
+  <div class="columns">
   <h2><%= t("stories") %></h2>
-  <span class="filters">
+  <%= link_to t("new"), new_story_path, class: "btn" %>
+  </div>
+  <div class="filters">
     <%= form_tag stories_path, method: :get do %>
       <%= label_tag :place, t("place") %>
       <%= select_tag :place, options_for_select(community.stories.joins(:places).flat_map { |s| s.places.pluck(:name, :id) }.uniq, params[:place]), include_blank: t("filter.all") %>
@@ -14,7 +17,7 @@
       <%= select_tag :visibility, options_for_select(Story.permission_levels.map { |k, v| [t("story.permissions.#{k}"), v]}, params[:visibility]), include_blank: t("filter.any") %>
       <%= submit_tag :filter %>
     <% end %>
-  </span>
+  </div>
 <% end %>
 
 <div class="infinite-scroll">

@@ -16,6 +16,8 @@ en:
           user_only: "Member"
           editor_only: "Editor"
           admin_only: "Admin"
+        place_ids: Places
+        speaker_ids: Speakers
       place:
         lat: Latitude
         long: Longitude

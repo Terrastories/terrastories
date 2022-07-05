@@ -1,0 +1,38 @@
+<%= form_with model: @story, multipart: true, data: {remote: false} do |f| %>
+  <%= render partial: "shared/form_errors", locals: { resource: @story } %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :desc %>
+  <%= f.text_field :desc %>
+
+  <%= f.label :language %>
+  <%= f.text_field :language %>
+
+  <%= f.label :topic %>
+  <%= f.text_field :topic %>
+
+  <%= f.label :date_interviewed %>
+  <%= f.date_field :date_interviewed %>
+
+  <%= f.label :media %>
+  <%= f.file_field :media, multiple: true %>
+
+  <%= f.label :speaker_ids %>
+  <%= f.select :speaker_ids, options_from_collection_for_select(community.speakers, 'id', 'name', @story.speakers.pluck(:id)), {}, {multiple: true} %>
+
+  <%= f.label :place_ids %>
+  <%= f.select :place_ids, options_from_collection_for_select(community.places, 'id', 'name', @story.places.pluck(:id)), {}, {multiple: true} %>
+
+  <%= f.label :interview_location_id %>
+  <%= f.select :interview_location_id, options_from_collection_for_select(community.places, 'id', 'name', @story.interview_location_id), include_blank: true %>
+
+  <%= f.label :interviewer_id %>
+  <%= f.select :interviewer_id, options_from_collection_for_select(community.speakers, 'id', 'name', @story.interviewer_id) %>
+
+  <%= f.label :permission_level %>
+  <%= f.select :permission_level, Story.permission_levels.keys.map { |k| [t("story_permissions.#{k}"), k]} %>
+
+  <%= f.submit %>
+<% end %>
