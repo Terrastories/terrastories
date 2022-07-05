@@ -1,0 +1,32 @@
+<%= form_with model: @place, multipart: true, data: {remote: false} do |f| %>
+  <%= render partial: "shared/form_errors", locals: { resource: @place } %>
+
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :name_audio %>
+  <%= f.file_field :name_audio %>
+
+  <%= f.label :photo %>
+  <%= f.file_field :photo %>
+
+  <%= f.label :type_of_place %>
+  <%= f.text_field :type_of_place %>
+
+  <%= f.label :region %>
+  <%= f.text_field :region %>
+
+  <%= f.label :story_ids %>
+  <%= f.select :story_ids, options_from_collection_for_select(community.stories, 'id', 'title', @place.stories.pluck(:id)), {}, {multiple: true} %>
+
+  <%= f.label :lat %>
+  <%= f.number_field :lat %>
+
+  <%= f.label :long %>
+  <%= f.number_field :long %>
+
+  <%= f.submit %>
+<% end %>

@@ -24,6 +24,7 @@ en:
         description: Description
         type_of_place: Type of place
         region: Region
+        story_ids: Stories
       theme:
         background_img: Background image (for welcome screen)
         sponsor_logos: Sponsor logos (for welcome screen)

@@ -3,7 +3,10 @@
 <% end %>
 
 <% content_for(:main_heading) do %>
+<div class="columns">
 <h2><%= t("places") %></h2>
+<%= link_to t("new"), new_place_path, class: "btn" %>
+</div>
 <% end %>
 
 <div class="infinite-scroll">

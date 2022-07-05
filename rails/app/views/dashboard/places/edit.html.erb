@@ -1,0 +1,34 @@
+<% content_for(:title) do %>
+  <%= @place.name %> | <%= t("place") %>
+<% end %>
+
+<% content_for(:main_heading) do %>
+  <div class="avatar-card">
+    <% if @place.photo.attached? %>
+      <%= image_tag @place.photo, class: "img--rounded img--larger", alt: @place.name, title: @place.name %>
+    <% else %>
+      <%= image_tag asset_path("home-icon.svg"), class: "img--rounded img--larger", alt: @place.name, title: @place.name %>
+    <% end %>
+    <h2>
+      <% if @place.region %>
+        <div class="small">
+          <%= @place.region %>
+        </div>
+      <% end %>
+      <%= @place.name %>
+      <div class="small">
+        <% if @place.name_audio.attached? %>
+          <%= audio_tag url_for(@place.name_audio), class: "audio-player" %>
+          <svg class="icon audio">
+            <use href="#icon-speaker">
+          </svg>
+        <% end %>
+        <% if @place.type_of_place %>
+          <span class="badge"><%= @place.type_of_place %></span>
+        <% end %>
+      </div>
+    </h2>
+  </div>
+<% end %>
+
+<%= render "form" %>
