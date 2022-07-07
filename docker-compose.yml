@@ -20,6 +20,7 @@ services:
       - db
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./nginx/error_pages:/usr/share/nginx/html:ro
       - ./nginx/vhost.d:/etc/nginx/vhost.d:ro
       - ./nginx/unrestricted_file_size.conf:/etc/nginx/conf.d/unrestricted_file_size.conf:ro
 
