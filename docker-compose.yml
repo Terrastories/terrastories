@@ -1,14 +1,5 @@
 version: "3.7"
 
-x-web-common: &x-web-common
-  image: ${DOCKER_IMAGE_NAME-terrastories}
-  build:
-    context: ./rails
-    args:
-      precompileassets: "not"
-  env_file:
-    - .env
-
 services:
   nginx-proxy:
     image: jwilder/nginx-proxy:alpine
@@ -18,6 +9,8 @@ services:
     depends_on:
       - web
       - db
+    environment:
+      - DEFAULT_HOST=terrastories.local
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - ./nginx/error_pages:/usr/share/nginx/html:ro
@@ -34,7 +27,13 @@ services:
       - "postgres_data:/var/lib/postgresql/data"
 
   web:
-    <<: *x-web-common
+    image: ${DOCKER_IMAGE_NAME-terrastories}
+    build:
+      context: ./rails
+      args:
+        precompileassets: "not"
+    env_file:
+      - .env
     command: scripts/server
     restart: always
     stdin_open: true
