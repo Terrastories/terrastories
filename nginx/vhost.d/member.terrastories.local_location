@@ -3,7 +3,7 @@ proxy_no_cache 1;
 # even if cached, don't try to use it
 proxy_cache_bypass 1;
 
-error_page 502 503 /loading.html;
+error_page 502 503 504 /loading.html;
 location = /loading.html {
   root /usr/share/nginx/html;
 }
