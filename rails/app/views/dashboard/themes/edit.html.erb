@@ -58,11 +58,11 @@
 
         <%# These are basic form tags so they don't get submitted / evaluated during the theme update. %>
         <div class="input-group">
-          <%= check_box_tag :unrestricted_bounds, nil, true %>
+          <%= check_box_tag :unrestricted_bounds, nil, @theme.boundaries.nil? %>
           <label for="unrestricted_bounds"><%= t("map.unrestricted_bounds") %></label>
         </div>
 
-        <div class="side-by-side hidden unrestricted_bounds">
+        <div class="side-by-side unrestricted_bounds <%= "hidden" if @theme.boundaries.nil? %>">
           <div>
             <label><%= t("map.sw_corner") %></label>
             <div class="input-group">
