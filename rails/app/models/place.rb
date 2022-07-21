@@ -49,18 +49,15 @@ class Place < ApplicationRecord
     end
   end
 
-  def static_map_url
-    geojson = RGeo::GeoJSON.encode(
+  def static_map_markers
+    geo = RGeo::GeoJSON.encode(
       RGeo::GeoJSON::Feature.new(
         RGeo::Cartesian.factory.point(long, lat),
         id,
         "marker-symbol": name[0].downcase
       )
     ).to_json
-
-    "https://api.mapbox.com/styles/v1/mapbox/light-v10/static/pin-l+000(#{long},#{lat})/#{long},#{lat},#{community.theme.zoom},#{community.theme.bearing},#{community.theme.static_map_pitch}/350x350?access_token=#{community.theme.mapbox_access_token}"
   end
-
 
   private
 

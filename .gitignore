@@ -63,3 +63,8 @@ yarn-debug.log*
 /node_modules
 yarn-debug.log*
 .yarn-integrity
+
+# tileserver config
+tileserver/data/mbtiles/*.mbtiles
+tileserver/data/styles/*.json
+tileserver/data/sprites/*

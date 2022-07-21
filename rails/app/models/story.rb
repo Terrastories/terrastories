@@ -26,17 +26,17 @@ class Story < ApplicationRecord
   end
 
   def geo_center
-    Geocoder::Calculations.geographic_center(places.map { |p| [p.lat, p.long] }).reverse.join(",")
+    Geocoder::Calculations.geographic_center(places.map { |p| [p.lat, p.long] }).reverse
   end
 
-  def static_map
+  def static_map_markers
     RGeo::GeoJSON.encode(
       RGeo::GeoJSON::FeatureCollection.new(
         places.map { |p|
           RGeo::GeoJSON::Feature.new(
             RGeo::Cartesian.factory.point(p.long, p.lat),
             p.id,
-            "marker-symbol": p.name[0].downcase
+            "marker-symbol": p.name[0]
           )
         }
       )

@@ -29,7 +29,7 @@
 <div class="two-columns">
   <div class="two-columns-right column-fixed-350">
     <section>
-      <img src=<%= "https://api.mapbox.com/styles/v1/mapbox/light-v10/static/geojson(#{CGI.escape(@story.static_map)})/#{@story.geo_center},#{@story.community.theme.zoom},#{@story.community.theme.bearing},#{@story.community.theme.static_map_pitch}/350x350?access_token=#{@story.community.theme.mapbox_access_token}" %> />
+      <div id="static-map"></div>
       <% @story.places.each do |place| %>
         <span class="badge"><%= place.name[0].upcase %></span>
         <%= place.name %>
@@ -95,3 +95,38 @@
     <% end %>
   </div>
 </div>
+
+<script>
+const staticMap = new mapboxgl.Map({
+  accessToken: "<%= @community.theme.mapbox_token %>",
+  container: "static-map", // container ID
+  center: <%= @story.geo_center %>,
+  zoom: 2, // starting zoom
+  style: "<%= @community.theme.mapbox_style %>", // style URL or style object
+  interactive: false // don't allow map movement
+});
+
+staticMap.on("load", () => {
+  staticMap.addSource("points", {
+    "type": "geojson",
+    "data": <%= raw @story.static_map_markers %>
+  });
+
+  staticMap.addLayer({
+    type: "symbol",
+    id: "points",
+    source: "points",
+    layout: {
+      "icon-image": "rectangle-blue-2",
+      "icon-text-fit": "height",
+      "icon-text-fit-padding": [1,2,1,2],
+      "text-field": "{marker-symbol}",
+      "text-transform": "uppercase",
+      "text-font": ["Open Sans Bold"]
+    },
+    paint: {
+      "text-color": "#FFFFFF"
+    }
+  })
+});
+</script>

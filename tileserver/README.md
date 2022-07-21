@@ -1,23 +1,37 @@
-# TerraStories Tile Server
+# Terrastories Offline Tile Server
 
-## Tile Server
+For online or internet-connected instances of Terrastories, the tiles for Terrastories are provided by [Mapbox](https://www.mapbox.com) with a configurable API key and style url. For offine, however, a tile server is required to serve map tiles for Terrastories to work.
 
-The source for TileServer GL is available at
-https://github.com/klokantech/tileserver-gl
+## TileServer GL
 
-We'll be using its docker image `klokantech/tileserver-gl`.
+TileServer GL is a map tile server for Mapbox GL (and more) that will allow us to server local map tiles for offline mode consumption.
 
-## Default offline tiles
-A default, open-license map for using offline with Terrastories is available at https://github.com/terrastories/default-offline/tiles. Download these files and place them in the `data` directory, and they should work when you load Terrastories in Field Kit mode.
-## Start the tile server
-This should be run from the project root directory.
+The source for TileServer GL is available at https://github.com/maptiler/tileserver-gl
+
+## Setup for Offline Mode
+
+We'll be using the TileServer GL docker image `maptiler/tileserver-gl`.
+
+1. Download Default Offline Tiles
+
+   A default, open-license map for using offline with Terrastories is available at https://github.com/terrastories/default-offline/tiles. Download these files and place them in the `tileserver/data` directory, and they should work when you load Terrastories in Field Kit mode.
+
+2. Follow instructions to run Terrastories in offline mode from project root.
+
+## Manually run the tile server
+
+From project root directory, run:
+
 ```
 $ docker-compose up tileserver
 ```
 
-To run just this container on its own, we would run something like this.
+This will boot up the tileserver using the docker compose settings for the project.
+
+Alternatively, create a container and run the server on its own with a command like
+
 ```
-docker run --rm -it -v $(pwd):/data -p 8080:80 klokantech/tileserver-gl
+docker run --rm -it -v $(pwd):/data -p 8080:80 maptiler/tileserver-gl
 ```
 
 Let's break those options down a little bit:

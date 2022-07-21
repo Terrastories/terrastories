@@ -5,7 +5,7 @@ services:
     image: jwilder/nginx-proxy:alpine
     restart: always
     ports:
-      - "80:80"
+      - 80:80
     depends_on:
       - web
       - db
@@ -24,7 +24,7 @@ services:
     environment:
       POSTGRES_PASSWORD: ${DB_USER_PASSWORD}
     volumes:
-      - "postgres_data:/var/lib/postgresql/data"
+      - postgres_data:/var/lib/postgresql/data
 
   web:
     image: ${DOCKER_IMAGE_NAME-terrastories}
@@ -55,5 +55,4 @@ services:
 
 volumes:
   postgres_data:
-  mbtiles:
   bundler:

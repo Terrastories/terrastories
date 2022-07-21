@@ -41,7 +41,7 @@
 
 <div class="two-columns">
 <div class="two-columns-right column-fixed-350">
-<img src=<%= @place.static_map_url %> />
+<div id="static-map"></div>
 </div>
 <div class="two-columns-left">
   <h4><%= t("stories") %></h4>
@@ -86,5 +86,38 @@ nameAudio.addEventListener("click", function(e) {
   } else {
     audioPlayer.pause();
   }
+});
+
+const staticMap = new mapboxgl.Map({
+  accessToken: "<%= @community.theme.mapbox_token %>",
+  container: "static-map", // container ID
+  center: [<%= @place.long %>, <%= @place.lat %>], // starting position [lng, lat]
+  zoom: 8, // starting zoom
+  style: "<%= @community.theme.mapbox_style %>", // style URL or style object
+  interactive: false
+});
+
+staticMap.on("load", () => {
+  staticMap.addSource("points", {
+    "type": "geojson",
+    "data": <%= raw @place.static_map_markers %>
+  });
+
+  staticMap.addLayer({
+    type: "symbol",
+    id: "points",
+    source: "points",
+    layout: {
+      "icon-image": "rectangle-blue-2",
+      "icon-text-fit": "height",
+      "icon-text-fit-padding": [1,2,1,2],
+      "text-field": "{marker-symbol}",
+      "text-transform": "uppercase",
+      "text-font": ["Open Sans Bold"]
+    },
+    paint: {
+      "text-color": "#FFFFFF"
+    }
+  })
 });
 </script>
