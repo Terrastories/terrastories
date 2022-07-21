@@ -18,8 +18,8 @@ amazon:
 # It does not use the shared AWS environment that is used by `amazon` in our staging/demo environments.
 production:
   service: S3
-  access_key_id: <%= ENV.fetch("AWS_ACCESS_KEY") %>
-  secret_access_key: <%= ENV.fetch("AWS_SECRET_ACCESS_KEY") %>
+  access_key_id: <%= ENV["AWS_ACCESS_KEY"] %>
+  secret_access_key: <%= ENV["AWS_SECRET_ACCESS_KEY"] %>
   region: <%= ENV.fetch("AWS_REGION", "us-east-2") %>
   bucket: <%= ENV.fetch("AWS_BUCKET_NAME", "terrastories-demo") %>
 
