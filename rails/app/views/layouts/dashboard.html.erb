@@ -47,15 +47,21 @@
           </label>
           <input placeholder=<%= t("search.label") %> class="search__input" type="search" id="search" name="search" />
         </form>
-        <div>
-          <%= current_user.email %>
-          <%= link_to edit_user_path(current_user) do %>
+        <div class="top-nav">
+          <div class="user-nav">
+            <%= current_user.email %>
             <% if current_user.photo.attached? %>
               <%= image_tag current_user.photo, class: "img img--rounded img--micro" %>
             <% else %>
               <%= image_tag asset_path("speaker.png"), class: "img img--rounded img--micro" %>
             <% end %>
-          <% end %>
+            <ul class="dropdown" aria-label="submenu">
+              <% if current_user.super_admin %>
+              <% end %>
+              <li><%= link_to t("profile"), edit_user_path(current_user) %></a></li>
+              <li><%= link_to t("logout"), destroy_user_session_path, method: :delete  %></li>
+            </ul>
+          </div>
           <%= link_to t("dashboard.back_to_app"), home_map_url(subdomain: nil) %>
         </div>
       </div>

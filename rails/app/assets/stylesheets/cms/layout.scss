@@ -51,7 +51,10 @@ z-indicies:
 .top-bar {
   @include flexbox;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: stretch;
+  // align-content: stretch;
+
+  height: 45px;
 
   position: sticky;
   top: 0;
@@ -59,13 +62,38 @@ z-indicies:
 
   background-color: $secondary-background;
   border-bottom: 1px solid $off-white;
-  padding: .5rem 1rem;
 
   .search {
+    margin: .5rem 1rem;
     max-width: 50rem;
     width: 20rem;
-    flex-grow: 0;
-    flex-shrink: 0;
+    display: inline-block;
+  }
+
+  .top-nav {
+    @include flexbox;
+    align-items: stretch;
+
+    img {
+      margin: 0.5rem;
+    }
+
+    > * {
+      // make all children center in bar
+      display: flex;
+      align-items: center;
+    }
+
+    > a {
+      padding: 0.5rem 1rem;
+      background-color: $dark-blue;
+      color: $off-white;
+      text-decoration: none;
+
+      &:hover {
+        background-color: $blue;
+      }
+    }
   }
 
   input.search__input[type=search] {
