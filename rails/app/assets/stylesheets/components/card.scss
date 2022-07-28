@@ -160,8 +160,12 @@ $el-shadow: 0 1px 4px $lighter-gray;
           background-color: $light-gray;
         }
       }
+      .title {
+        overflow-wrap: break-word;
+      }
       p {
         font-size: 0.85rem;
+        overflow-wrap: break-word;
         line-height: 1.25;
         margin-top: 1rem;
         @include ui-font;
