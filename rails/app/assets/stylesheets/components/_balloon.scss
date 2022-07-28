@@ -25,12 +25,17 @@
     }
   }
 
+  &-tag {
+    overflow-wrap: break-word;
+  }
+
   &-label {
     font-weight: bold !important;
   }
 
   &-description {
     margin: 10px 0;
+    overflow-wrap: break-word;
   }
 
   &-audio {
@@ -45,6 +50,8 @@
 
     h1 {
       text-align: center;
+      overflow-wrap: break-word;
+      overflow: auto;
       font-weight: 400;
       font-size: 1.2rem;
       line-height: 1.25;
