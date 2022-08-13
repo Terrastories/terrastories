@@ -31,7 +31,7 @@ Next, add a line at the bottom of the `.env` file with the content: `USE_LOCAL_M
 Terrastories in the "Field Kit" environment works by integrating map `tiles` and `styles`. Map tiles are square grids of spatial data consumed by the offline Tileserver, and can be in either raster (image) or vector format. Styles points the Terrastories tileserver to the tiles and in the case of vector data, gives style or symbology properties to the data (such as color, opacity, labels, visibility per zoom extent, and so on). Unlike the online environment (where Terrastories relies on Mapbox.com for all map content), each of these have to be made available to Terrastories in a file format.
 
 #### Default offline map tiles
-A default, open-license map for using offline with Terrastories is available at https://github.com/terrastories/default-offline/tiles. Download these files and place them in the `data` directory, and they should work when you load Terrastories in Field Kit mode.
+A default, open-license map for using offline with Terrastories is available at https://github.com/Terrastories/default-offline-map. Download these files and place them in the `data` directory, and they should work when you load Terrastories in Field Kit mode.
 #### Working with custom MBTiles
 
 `MBTiles` can be generated from standard geospatial data (Shapefile, GeoJSON) in several ways. 
@@ -46,7 +46,7 @@ Once generated, place the `MBTiles` in the `tileserver/data/mbtiles/` directory,
 
 `Styles` (in style.json format) defines the visual appearance of a map: what data to draw, the order to draw it in, and how to style the data when drawing it. Mapbox provides a helpful [guide](https://docs.mapbox.com/mapbox-gl-js/style-spec/) with all of the possible style parameters, but it's generally useful to download an existing `style.json` file and modify it to suit your needs. One of the easiest ways to build a `style.json` file is by uploading and styling your data on [Mapbox Studio](http://mapbox.com/studio) and downloading the `style.json` file from there, in the following way:
 
-* Follow the map design process described [here](CUSTOMIZATION.md#setting-up-a-custom-map)
+* Follow the map design process described [here](CUSTOMIZATION.md#setting-up-a-custom-map).
 * In the Mapbox Studio environment, click "Share" and then download the Map style ZIP file.
 * Unzip the file, and extract the `style.json` and place it in `tileserver/data/styles`.
 * Next, you will need to make some changes. The `style.json` from Mapbox will be referring to an online URL for the map sources. You need to change this to refer to the local `MBTiles`. Change `sources` > `composite` > `url` to the following format: `"url": "MBTiles://MBTiles/name.MBTiles"`. (Here, `name` is just an example; it can be called whatever you want, so long as the filename is the same.)
@@ -78,7 +78,7 @@ You can define multiple `mbtiles` sources (vector as well as raster), and place 
 
 ## Setup and running the server
 
-Once you have prepped the environment and offline map content, you may proceed to [the standard guides per operating system](/README.md#setup) to follow the same process for building and starting Terrastories, with one exception:
+Once you have prepped the environment and offline map content, you may proceed to [the standard guides per operating system](/README.md#install-terrastories) to follow the same process for building and starting Terrastories, with one exception:
 
 Instead of running the final step of `docker-compose up` to start Terrastories, run 
 
