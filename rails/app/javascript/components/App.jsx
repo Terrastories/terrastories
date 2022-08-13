@@ -30,6 +30,7 @@ class App extends Component {
     mapbox_access_token: PropTypes.string,
     mapbox_style: PropTypes.string,
     mapbox_3d: PropTypes.bool,
+    map_projection: PropTypes.string,
     logo_path: PropTypes.string,
     user: PropTypes.object,
     center_lat: PropTypes.string,
@@ -350,6 +351,7 @@ class App extends Component {
           useLocalMapServer={this.props.use_local_map_server}
           mapboxStyle={this.props.mapbox_style}
           mapbox3d={this.props.mapbox_3d}
+          mapProjection={this.props.map_projection}
           clearFilteredStories={this.resetStoriesAndMap}
           onMapPointClick={this.handleMapPointClick}
           activePoint={this.state.activePoint}

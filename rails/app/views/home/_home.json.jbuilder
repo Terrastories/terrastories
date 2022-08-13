@@ -28,6 +28,7 @@ json.mapbox_access_token @theme.mapbox_token
 json.mapbox_style @theme.mapbox_style
 json.mapbox_3d @theme.mapbox_3d
 json.use_local_map_server @theme.offline_mode?
+json.map_projection @theme.map_projection
 json.center_lat @theme.center_lat
 json.center_long @theme.center_long
 json.sw_boundary_lat @theme.sw_boundary_lat

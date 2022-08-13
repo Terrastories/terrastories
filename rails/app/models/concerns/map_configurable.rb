@@ -6,6 +6,7 @@ module MapConfigurable
     self.zoom ||= 2
     self.pitch ||= 0
     self.bearing ||= 0
+    self.map_projection ||= 0
   end
 
   def center
