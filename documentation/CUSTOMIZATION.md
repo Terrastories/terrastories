@@ -24,11 +24,16 @@ For offline "Field Kit" usage of Terrastories, you need to supply your own map t
 
 _**Note:** when using Mapbox.com maps with Terrastories, you are subject to Mapbox's [pricing schema](https://www.mapbox.com/pricing/) which has a free tier of up to 50,000 map loads per month. If you anticipate more monthly loads than that, you can get in touch with Mapbox's community team at community@mapbox.com to see what they can do to help._
 
-### Map extent, zoom, pitch, boundaries, and 3D Terrain
+### Map extent, zoom, pitch, boundaries, projection, and 3D Terrain
 
-It is possible to set a custom map extent, zoom level, pitch, and boundaries of the Terrastories map. Additionally, for online Terrastories maps, you can toggle on/off a realistic Mapbox 3D Terrain layer to view your maps in 3D. 3D Terrain adds another level of detail to the landscape, but requires more map and tile loading and therefore can impact the overall performance of Terrastories on your device.
+It is possible to set a custom map extent, zoom level, pitch, and boundaries of the Terrastories map.
+
+You can also set the map projection for your map to one of [the projections supported by Mapbox](https://docs.mapbox.com/help/glossary/projection/). The new Globe projection will be added when it is possible to do so.
+
+For online Terrastories maps, you can toggle on/off a realistic Mapbox 3D Terrain layer to view your maps in 3D. 3D Terrain adds another level of detail to the landscape, but requires more map and tile loading and therefore can impact the overall performance of Terrastories on your device.
 
 Setting these map properties can be done in the Terrastories `Theme` menu for a community when logged in as a user with admin permissions.
+
 ## Adding languages to Terrastories
 
 Terrastories uses internationalization to translate the application's core text, like the welcome page, sidebar, and administrative back end content. We have made it easy to add new languages to a Terrastories server without needing to touch any of the code.
