@@ -30,6 +30,9 @@ class Theme < ApplicationRecord
     :numericality=> true, allow_nil: true, :inclusion => {:in => 0..22, :message => "value should be between 0 and 22"}
   validates :pitch,
     :numericality=> true, allow_nil: true, :inclusion => {:in => 0..85, :message => "value should be between 0 and 85"}
+
+  enum map_projection: [:mercator, :albers, :equalEarth, :equirectangular, :lambertConformalConic, :naturalEarth, :winkelTripel] 
+
 end
 
 # == Schema Information
@@ -44,6 +47,7 @@ end
 #  mapbox_access_token :string
 #  mapbox_style_url    :string
 #  mapbox_3d           :boolean          default(FALSE), not null
+#  map_projection      :decimal
 #  ne_boundary_lat     :decimal(10, 6)
 #  ne_boundary_long    :decimal(10, 6)
 #  pitch               :decimal(10, 6)

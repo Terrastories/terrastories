@@ -15,16 +15,17 @@ class ThemeDashboard < Administrate::BaseDashboard
     sponsor_logos: Field::ActiveStorage.with_options({destroy_path: :admin_themes_path}),
     mapbox_style_url: Field::String,
     mapbox_access_token: Field::String,
+    map_projection: EnumField,
     mapbox_3d: Field::Boolean,
     center_lat: Field::Number,
     center_long: Field::Number,
+    zoom: Field::Number,
+    pitch: Field::Number,
+    bearing: Field::Number,
     sw_boundary_lat: Field::Number,
     sw_boundary_long: Field::Number,
     ne_boundary_lat: Field::Number,
-    ne_boundary_long: Field::Number,
-    zoom: Field::Number,
-    pitch: Field::Number,
-    bearing: Field::Number
+    ne_boundary_long: Field::Number
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -45,16 +46,17 @@ class ThemeDashboard < Administrate::BaseDashboard
   sponsor_logos
   mapbox_style_url
   mapbox_access_token
+  map_projection
   mapbox_3d
   center_lat
   center_long
+  zoom
+  pitch
+  bearing
   sw_boundary_lat
   sw_boundary_long
   ne_boundary_lat
   ne_boundary_long
-  zoom
-  pitch
-  bearing
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -65,16 +67,17 @@ class ThemeDashboard < Administrate::BaseDashboard
   sponsor_logos
   mapbox_style_url
   mapbox_access_token
+  map_projection
   mapbox_3d
   center_lat
   center_long
+  zoom
+  pitch
+  bearing
   sw_boundary_lat
   sw_boundary_long
   ne_boundary_lat
   ne_boundary_long
-  zoom
-  pitch
-  bearing
   ].freeze
 
   # COLLECTION_FILTERS
@@ -97,6 +100,6 @@ class ThemeDashboard < Administrate::BaseDashboard
   end
 
   def permitted_attributes
-    super + [:sponsor_logos => []]
+    super + [:sponsor_logos => [], map_projection: [:mercator, :albers, :equalEarth, :equirectangular, :lambertConformalConic, :naturalEarth, :winkelTripel]]
   end
 end

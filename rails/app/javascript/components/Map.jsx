@@ -24,6 +24,7 @@ export default class Map extends Component {
     mapboxStyle: PropTypes.string,
     mapboxAccessToken: PropTypes.string,
     mapbox3d: PropTypes.bool,
+    mapProjection: PropTypes.string,
     useLocalMapServer: PropTypes.bool,
     markerImgUrl: PropTypes.string,
     markerClusterImgUrl: PropTypes.string,
@@ -37,7 +38,8 @@ export default class Map extends Component {
         zoom: this.props.zoom,
         maxBounds: this.checkBounds(), // check for bounding box presence
         pitch: this.props.pitch,
-        bearing: this.props.bearing
+        bearing: this.props.bearing,
+        projection: this.props.mapProjection
     });
 
     this.map.on("load", () => {
@@ -109,8 +111,8 @@ export default class Map extends Component {
           'maxzoom': 14
         });
     
-        // add the DEM source as a terrain layer with exaggerated height
-        this.map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.5 });
+        // add the DEM source
+        this.map.setTerrain({ 'source': 'mapbox-dem' });
           
         // add a sky layer that will show when the map is highly pitched
         this.map.addLayer({
@@ -124,7 +126,9 @@ export default class Map extends Component {
         });
       }
 
+      // Add custom nav control components
       this.addHomeButton();
+      this.addCompassButton();
 
       // Attaches popups + events
       this.addMarkerClickHandler();
@@ -138,7 +142,18 @@ export default class Map extends Component {
       this.map.addControl(new mapboxgl.Minimap(), "top-right");
     }
 
-    this.map.addControl(new mapboxgl.NavigationControl());
+    this.map.addControl(new mapboxgl.NavigationControl({
+      //showCompass: false
+    }));
+
+    // Add rotate behavior for custom compass
+    this.map.on('rotate', () => {
+      const map = this.map;
+      const rotate = this.navControl ?
+          `scale(${1 / Math.pow(Math.cos(map.transform.pitch * (Math.PI / 180)), 0.5)}) rotateX(${map.transform.pitch}deg) rotateZ(${map.transform.angle * (180 / Math.PI)}deg)` :
+          `rotate(${map.transform.angle * (180 / Math.PI)}deg)`;
+      document.getElementsByClassName("mapboxgl-ctrl-compass")[0].firstChild.style.transform = rotate;
+    });
 
     // Change mouse pointer when hovering over ts-marker points
     this.map.on('mouseenter', STORY_POINTS_LAYER_ID, () => {
@@ -298,6 +313,43 @@ export default class Map extends Component {
     homeButton.addEventListener("click", () => {
       this.resetMapToCenter();
     });
+  }
+
+  // TODO: update this to JSX
+  createCompassButton() {
+    const compassButton = document.createElement("button");
+    compassButton.setAttribute("class", "mapboxgl-ctrl-compass");
+    compassButton.setAttribute("type", "button");
+    compassButton.setAttribute("aria-label", "Reset bearing");
+    const compassIcon = document.createElement("span");
+    compassIcon.setAttribute("class", "mapboxgl-ctrl-icon");
+    compassIcon.setAttribute("aria-hidden", "true");
+    compassButton.appendChild(compassIcon);
+    return compassButton;
+  }
+
+  addCompassButton() {
+    const compassButton = this.createCompassButton();
+    const navControl = document.getElementsByClassName(
+      "mapboxgl-ctrl-zoom-out"
+    )[0];
+    const compass = document.getElementsByClassName(
+      "mapboxgl-ctrl-compass"
+    )[0];
+    if (navControl) {
+      navControl.parentNode.insertBefore(compassButton, navControl.nextSibling);
+    }
+
+    let userBearing = 0
+    compassButton.addEventListener("click", () => {
+      if (this.map.getBearing() != 0) {
+          userBearing = this.map.getBearing();
+          this.map.resetNorth({duration: 1000});
+      } else {
+          this.map.rotateTo(userBearing, {duration: 1000});
+      }
+    });
+
   }
 
   closeActivePopup() {
