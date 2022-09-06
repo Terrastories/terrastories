@@ -37,6 +37,7 @@ en:
   search:
     clear: Clear search
     label: Search
+    heading: Search Results
     results: results
   filter:
     all: All

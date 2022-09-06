@@ -5,6 +5,8 @@ Rails.application.routes.draw do
       scope module: 'dashboard' do
         root to: 'stories#index', as: 'member_root'
 
+        get :search, to: "search#index"
+
         resources :users
         resources :speakers
         resources :places

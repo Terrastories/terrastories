@@ -1,0 +1,10 @@
+<% @results.each do |result| %>
+<div class="row">
+  <div class="cell"><%= highlight(result["term_match"], params[:search]) %></div>
+  <div class="cell cell--15 cell--right">
+    <%= link_to controller: result["table_name"].pluralize, action: "show", id: result["id"] do %>
+      <%= t("dashboard.actions.show_resource", name: t(result["table_name"])) %>
+    <% end %>
+  </div>
+</div>
+<% end %>

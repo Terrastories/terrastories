@@ -36,7 +36,7 @@
     <div class="content-main">
       <div class="observer-sentinel"><%# do not remove this element! %></div>
       <div class="top-bar">
-        <form class="search" role="search">
+        <form class="search" role="search" method="get" action=<%= search_path %>>
           <label for="search">
             <svg class="search__eyeglass-icon" role="img">
               <title>
@@ -45,7 +45,7 @@
               <use href="#icon-eyeglass" />
             </svg>
           </label>
-          <input placeholder=<%= t("search.label") %> class="search__input" type="search" id="search" name="search" />
+          <input placeholder=<%= t("search.label") %> class="search__input" type="search" id="search" name="search" value="<%= params[:search] %>" />
         </form>
         <div class="top-nav">
           <div class="user-nav">
