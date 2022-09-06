@@ -1,7 +1,7 @@
 module Dashboard
   class StoriesController < ApplicationController
     def index
-      @page = StoriesPage.new(community, params)
+      @page = StoriesPage.new(community, filter_params)
       @stories = @page.data
 
       respond_to do |format|
@@ -71,6 +71,16 @@ module Dashboard
         media: [],
         speaker_ids: [],
         place_ids: []
+      )
+    end
+
+    def filter_params
+      params.permit(
+        :place,
+        :speaker,
+        :visibility,
+        :limit,
+        :offset
       )
     end
   end
