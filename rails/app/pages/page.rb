@@ -10,7 +10,7 @@ class Page
   end
 
   def next_page_meta
-    ret ||= {}
+    ret ||= @meta.dup
     ret[:limit] = limit
     ret[:offset] = next_offset
     ret
