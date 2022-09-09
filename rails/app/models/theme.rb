@@ -27,7 +27,7 @@ class Theme < ApplicationRecord
   end
 
   def mapbox_token
-    if mapbox_access_token && !offline_mode?
+    if mapbox_access_token.present? && !offline_mode?
       mapbox_access_token
     else
       Rails.application.config.default_mapbox_token
@@ -35,7 +35,7 @@ class Theme < ApplicationRecord
   end
 
   def mapbox_style
-    if mapbox_style_url && !offline_mode?
+    if mapbox_style_url.present? && !offline_mode?
       mapbox_style_url
     else
       Rails.application.config.default_map_style
