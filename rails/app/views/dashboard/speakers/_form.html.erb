@@ -14,10 +14,12 @@
   <%= f.date_field :birthdate %>
 
   <%= f.label :birthplace_id %>
-  <%= f.select :birthplace_id, options_from_collection_for_select(community.places, 'id', 'name', @speaker.birthplace_id) %>
+  <%= f.collection_select :birthplace_id, community.places, :id, :name %>
 
   <%= f.label :story_ids %>
-  <%= f.select :story_ids, options_from_collection_for_select(community.stories, 'id', 'title', @speaker.stories.pluck(:id)), {}, {multiple: true} %>
+  <div class="checklist">
+  <%= f.collection_check_boxes :story_ids, community.stories, :id, :title %>
+  </div>
 
   <%= f.submit %>
 <% end %>

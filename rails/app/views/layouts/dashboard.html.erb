@@ -26,11 +26,16 @@
 
       <div class="settings">
         <% if current_user.admin? %>
-          <h5><%= t("dashboard.community_settings") %></h5>
-          <%= link_to t("users"), users_path %>
-          <%= link_to t("theme"), edit_theme_path %>
+          <h5 class="inline-padding"><%= t("dashboard.community_settings") %></h5>
+          <%= link_to t("users"), users_path, class: ("active-link" if params[:controller] == "dashboard/users") %>
+          <%= link_to t("theme"), edit_theme_path, class: ("active-link" if params[:controller] == "dashboard/theme") %>
         <% end %>
-        <div class="language-picker"><%= application_locales(request_path: request.env['PATH_INFO']) %></div>
+        <div class="language-picker">
+          <h5><%= t("language") %></h5>
+          <% I18n.available_locales.sort.each do |locale| %>
+            <%= link_to locale, url_for(locale: locale), class: "badge#{" selected" if locale == I18n.locale}", alt: locale == I18n.locale ? "#{locale} (#{t("selected_language")})" : locale %>
+          <% end %>
+        </div>
       </div>
     </div>
     <div class="content-main">

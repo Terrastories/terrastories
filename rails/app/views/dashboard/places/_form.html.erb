@@ -20,7 +20,9 @@
   <%= f.text_field :region %>
 
   <%= f.label :story_ids %>
-  <%= f.select :story_ids, options_from_collection_for_select(community.stories, 'id', 'title', @place.stories.pluck(:id)), {}, {multiple: true} %>
+  <div class="checklist">
+    <%= f.collection_check_boxes :story_ids, community.stories, :id, :title %>
+  </div>
 
   <%= f.label :lat %>
   <%= f.number_field :lat %>

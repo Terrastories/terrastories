@@ -5,19 +5,22 @@
 <% content_for(:main_heading) do %>
   <div class="columns">
   <h2><%= t("stories") %></h2>
-  <%= link_to t("new"), new_story_path, class: "btn" if policy(:story).new? %>
+  <%= link_to t("dashboard.actions.new"), new_story_path, class: "btn" if policy(:story).new? %>
   </div>
-  <div class="filters">
-    <%= form_tag stories_path, method: :get do %>
-      <%= label_tag :place, t("place") %>
-      <%= select_tag :place, options_for_select(community.stories.joins(:places).flat_map { |s| s.places.pluck(:name, :id) }.uniq, params[:place]), include_blank: t("filter.all") %>
-      <%= label_tag :speaker, t("speaker") %>
-      <%= select_tag :speaker, options_for_select(community.stories.joins(:speakers).flat_map { |s| s.speakers.pluck(:name, :id) }.uniq, params[:speaker]), include_blank: t("filter.all") %>
-      <%= label_tag :visibility, t("visibility") %>
-      <%= select_tag :visibility, options_for_select(Story.permission_levels.map { |k, v| [t("story.permissions.#{k}"), v]}, params[:visibility]), include_blank: t("filter.any") %>
-      <%= submit_tag :filter %>
-    <% end %>
-  </div>
+  <%= form_with url: stories_path, method: :get, class: "filters", local: true do |f| %>
+    <div>
+    <%= f.label :place %>
+    <%= f.collection_select :place, community.places, :id, :name, prompt: t("filter.all") %>
+    </div>
+    <div>
+    <%= f.label :speaker, t("speaker") %>
+    <%= f.collection_select :speaker, community.speakers, :id, :name, prompt: t("filter.all") %>
+    </div><div>
+    <%= f.label :visibility, t("visibility") %>
+    <%= f.select :visibility, Story.permission_levels.map { |k, v| [t("story_permissions.#{k}"), v]}, selected: params[:visibility], include_blank: t("filter.any") %>
+    </div><div>
+    <%= f.submit t("filter.label"), name: nil %></div>
+  <% end %>
 <% end %>
 
 <div class="infinite-scroll">

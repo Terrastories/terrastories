@@ -1,17 +1,13 @@
 .filters {
+  @include flexbox;
+  gap: 0.5rem;
+  align-items: flex-end;
+
   padding-bottom: 0.5rem;
 
   label {
-    @include ui-font;
-
-    font-size: .8rem;
-    font-weight: bold;
-  }
-
-  select {
-    display: inline-block;
-    max-width: max-content;
-    margin: 0;
-    padding: 0;
+    font-size: .7rem;
+    margin-bottom: 0.1rem;
+    display: block;
   }
 }

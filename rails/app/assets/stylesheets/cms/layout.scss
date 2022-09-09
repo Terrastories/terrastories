@@ -98,7 +98,7 @@ z-indicies:
 
   input.search__input[type=search] {
     border-radius: 100rem;
-    padding-left: 1.6rem;
+    padding: 0.25rem 1.6rem;
     width: 100%;
   }
 
@@ -117,7 +117,7 @@ z-indicies:
   background-color: $background;
   position: sticky;
   top: 2.5rem;
-  padding: 0 1rem;
+  padding: 0.25rem 1rem;
   z-index: 3;
 
   .columns {
