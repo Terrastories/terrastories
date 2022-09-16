@@ -5,7 +5,7 @@ form {
     font-weight: bold;
   }
 
-  input,
+  input:not([type=checkbox]),
   select,
   textarea {
     @include ui-font;

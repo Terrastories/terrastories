@@ -12,7 +12,7 @@
   <h4><%= t("dashboard.theme.welcome_screen") %></h4>
 
   <div class="two-columns">
-    <div class="two-column-left column-fixed-400">
+    <div class="two-columns-left column-fixed-400">
         <%= f.label :background_img %>
         <p><%= t("dashboard.theme.background_img") %></p>
         <%= f.file_field :background_img %>
@@ -23,7 +23,7 @@
   </div>
 
   <div class="two-columns">
-    <div class="two-column-left column-fixed-400">
+    <div class="two-columns-left column-fixed-400">
       <div class="input-group">
         <%= f.label :sponsor_logos %>
         <p><%= t("dashboard.theme.sponsor_logos") %></p>
@@ -31,7 +31,7 @@
       </div>
     </div>
 
-    <div class="two-column-right">
+    <div class="two-columns-right with-images-list">
       <% if @theme.sponsor_logos.any? %>
         <% @theme.sponsor_logos.each do |img| %>
           <span class="image-with-controls">
@@ -151,10 +151,6 @@ document.querySelectorAll('.delete-link').forEach(lnk => {
     lnk.parentNode.remove();
   });
 });
-
-// document.querySelectorAll('.delete-link').on('ajax:complete', function(e) {
-//   // document.querySelectorAll('#mySpinner').hide();
-// });
 
 const themeForm = document.querySelector("#themeForm");
 const zoomInput = themeForm.querySelector("#theme_zoom");

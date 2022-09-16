@@ -1,0 +1,17 @@
+.field_with_errors {
+  > label {
+    color: $dark-red;
+  }
+
+  > .error {
+    border: 1px solid $dark-red;
+  }
+}
+
+.errors {
+  border: 1px solid $dark-red;
+  padding: 1rem;
+  color: $dark-red;
+  background-color: lighten($dark-red, 50%);
+  margin-bottom: 0.5rem;
+}

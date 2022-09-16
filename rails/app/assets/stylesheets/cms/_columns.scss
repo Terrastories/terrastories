@@ -13,6 +13,11 @@
   @include order(2);
 }
 
+.two-columns-right.with-images-list {
+  @include flexbox;
+  gap: 1rem;
+}
+
 .column-fixed-350 {
   max-width: 350px;
   margin-right: 0.5rem;

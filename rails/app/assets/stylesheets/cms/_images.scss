@@ -11,12 +11,16 @@
   a {
     position: absolute;
     top: 5px;
-    right: 10px;
+    right: 5px;
 
     svg {
       visibility: hidden;
       max-height: 25px;
       max-width: 25px;
+
+      &:hover {
+        fill: $dark-red;
+      }
     }
   }
 
@@ -39,9 +43,10 @@
     svg {
       visibility: visible;
     }
+
     span.overlay {
       visibility: visible;
-      background-color: $white;
+      background-color: $off-white;
       height: 100%;
       width: 100%;
       position: absolute;
