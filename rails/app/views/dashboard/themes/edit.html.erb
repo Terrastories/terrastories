@@ -207,7 +207,7 @@ themeMap.addControl(nav, "top-right");
 themeForm.querySelector("input#unrestricted_bounds").addEventListener("click", (e) => {
   themeForm.querySelector(".unrestricted_bounds").classList.toggle("hidden", e.target.checked)
   if (e.target.checked) {
-    themeForm.querySelectorAll(".unrestricted_bounds input").forEach((item)=>{item.value = ""})
+    themeForm.querySelectorAll(".unrestricted_bounds input").forEach((item)=>{item.removeAttribute("value")})
   } else {
     let { _ne, _sw } = themeMap.getBounds();
     themeForm.querySelector("input#theme_ne_boundary_long").setAttribute("value", _ne.lng);
