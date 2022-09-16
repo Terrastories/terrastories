@@ -46,6 +46,10 @@ class Theme < ApplicationRecord
     Rails.application.config.offline_mode
   end
 
+  def all_boundaries_nil?
+    sw_boundary_long.nil? && sw_boundary_lat.nil? && ne_boundary_long.nil? && ne_boundary_lat.nil?
+  end
+
   private
 
   # validate bounding box if all four values are nil OR if all four values are numeric & in the proper range

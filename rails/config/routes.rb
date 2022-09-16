@@ -11,7 +11,7 @@ Rails.application.routes.draw do
         resources :speakers
         resources :places
         resources :stories
-        resource :theme, only: [:update, :edit] do
+        resource :theme, only: [:update, :edit, :show] do
           delete '/sponsor_logo/:id/delete', action: :delete_sponsor_logo, as: :delete_sponsor_logo
         end
       end

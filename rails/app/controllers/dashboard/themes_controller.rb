@@ -4,12 +4,16 @@ module Dashboard
       @theme = community.theme
     end
 
+    def show
+      redirect_to edit_theme_path
+    end
+
     def update
       @theme = community.theme
       if @theme.update(theme_params)
         redirect_to edit_theme_path
       else
-        flash[:error] = @theme.errors
+        render :edit
       end
     end
 
