@@ -47,7 +47,7 @@ class Place < ApplicationRecord
       RGeo::GeoJSON::Feature.new(
         RGeo::Cartesian.factory.point(long, lat),
         id,
-        "marker-symbol": name[0].downcase
+        "marker-symbol": name[0]&.downcase || "P"
       )
     ).to_json
   end
