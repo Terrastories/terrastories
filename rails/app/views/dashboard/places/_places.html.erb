@@ -1,9 +1,9 @@
 <% @places.each do |place| %>
   <%= link_to place_path(place), class: "card card--stacked" do %>
     <% if place.photo.attached? %>
-      <%= image_tag url_for(place.photo), class: "card__img" %>
+      <%= image_tag url_for(place.photo), class: "card__img", alt: place.name, title: place.name %>
     <% else %>
-      <%= image_tag asset_path("home-icon.svg"), class: "card__img", height: 150 %>
+      <%= image_tag asset_path("home-icon.svg"), class: "card__img", alt: place.name, title: place.name, height: 150 %>
     <% end %>
     <div>
     <h3>

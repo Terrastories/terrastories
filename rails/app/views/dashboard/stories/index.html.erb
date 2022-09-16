@@ -10,16 +10,16 @@
   <%= form_with url: stories_path, method: :get, class: "filters", local: true do |f| %>
     <div>
     <%= f.label :place %>
-    <%= f.collection_select :place, community.places, :id, :name, prompt: t("filter.all") %>
+    <%= f.collection_select :place, community.places, :id, :name, include_blank: t("filter.all"), selected: params[:place] %>
     </div>
     <div>
-    <%= f.label :speaker, t("speaker") %>
-    <%= f.collection_select :speaker, community.speakers, :id, :name, prompt: t("filter.all") %>
+    <%= f.label :speaker %>
+    <%= f.collection_select :speaker, community.speakers, :id, :name, include_blank: t("filter.all"), selected: params[:speaker] %>
     </div><div>
-    <%= f.label :visibility, t("visibility") %>
-    <%= f.select :visibility, Story.permission_levels.map { |k, v| [t("story_permissions.#{k}"), v]}, selected: params[:visibility], include_blank: t("filter.any") %>
-    </div><div>
-    <%= f.submit t("filter.label"), name: nil %></div>
+    <%= f.label :visibility %>
+    <%= f.select :visibility, Story.permission_levels.map { |k, v| [Story.human_attribute_name("permission_level.#{k}"), v]}, include_blank: t("filter.any"), selected: params[:visibility] %>
+    </div>
+    <%= f.submit t("filter.label"), name: nil %>
   <% end %>
 <% end %>
 
@@ -33,10 +33,10 @@
     <div data-infinite-scroll="pagination">
       <%#= Prev/Next Pagination Links for folks that don't use / have JavaScript %>
       <% if @page.meta[:offset] > 0 %>
-        <%= link_to "Prev", stories_url(request.query_parameters.merge(offset: @page.meta[:offset] - @page.meta[:limit])), rel: "prev" %>
+        <%= link_to t("list.prev"), stories_url(request.query_parameters.merge(offset: @page.meta[:offset] - @page.meta[:limit])), rel: "prev" %>
       <% end %>
       <% if @page.meta[:next_offset] %>
-        <%= link_to "Next", stories_url(request.query_parameters.merge(offset: @page.meta[:next_offset])), rel: "next" %>
+        <%= link_to t("list.next"), stories_url(request.query_parameters.merge(offset: @page.meta[:next_offset])), rel: "next" %>
       <% end %>
     </div>
   <% end %>

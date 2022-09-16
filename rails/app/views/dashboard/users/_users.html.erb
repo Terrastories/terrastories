@@ -7,7 +7,7 @@
     <% end %>
     <div><%= user.email %></div>
     <% if user.role %>
-      <div class="badge"><%= user.role %></div>
+      <div class="badge"><%= User.human_attribute_name("role.#{user.role}") %></div>
     <% end %>
   <% end %>
 <% end %>

@@ -1,12 +1,28 @@
 nl:
+  community: Gemeenschap
+  communities: Gemeenschap
+  media_link: Media Link
+  media_links: Media Links
+  places: Plaatsen
+  place: Plaats
+  speakers: Sprekers
+  speaker: Spreker
+  stories: Verhalen
+  story: Verhaal
+  theme: Thema
+  users: Gebruikers
+  user: Gebruiker
+
+  # Front End Translations
   admin_page: "Admin pagina"
   alphabetical: "A-Z"
   back_to_map: "Terug naar de kaart"
   back_to_welcome: "Terug naar Welkom pagina"
+  built_with_love: Built with ❤️ by
   close: "Sluit"
   community_search:
     title: "Zoek een community om te verkennen"
-    coming_soon: "Deze functie komt binnenkort. Vraag voor nu een uitnodiging aan voor een specifieke community."  
+    coming_soon: "Deze functie komt binnenkort. Vraag voor nu een uitnodiging aan voor een specifieke community."
   default: "standaard"
   enter: "Enter Site"
   filter_stories: "Verhalen filteren"
@@ -19,7 +35,6 @@ nl:
   language: "Taal"
   login: "Login"
   logout: "Logout"
-  map: "Is dit... een kaart?"
   most_recent: "Meest recente"
   no_media: Geen media beschikbaar
   password: "Paswoord"

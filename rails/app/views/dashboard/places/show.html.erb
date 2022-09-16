@@ -11,7 +11,7 @@
       <%= image_tag asset_path("home-icon.svg"), class: "img--rounded img--larger", alt: @place.name, title: @place.name %>
     <% end %>
     <h2>
-      <% if @place.region %>
+      <% if @place.region.present? %>
         <div class="small">
           <%= @place.region %>
         </div>
@@ -24,7 +24,7 @@
             <use href="#icon-speaker">
           </svg>
         <% end %>
-        <% if @place.type_of_place %>
+        <% if @place.type_of_place.present? %>
           <span class="badge"><%= @place.type_of_place %></span>
         <% end %>
       </div>
@@ -37,56 +37,58 @@
 </div>
 <% end %>
 
-<p><%= @place.description %></p>
-
 <div class="two-columns">
-<div class="two-columns-right column-fixed-350">
-<div id="static-map"></div>
-</div>
-<div class="two-columns-left">
-  <h4><%= t("stories") %></h4>
-
-  <div class="collection">
-    <% if @place.stories.empty? %>
-      <p><%= t("list.no_nested_results", resource: t("place").downcase, resources: t("stories").downcase) %></p>
-    <% else %>
-      <% @place.stories.each do |story| %>
-        <%= link_to story, class: "card" do %>
-          <div>
-            <h3>
-              <span class="card__heading--small"><%= story.topic %></span>
-              <%= story.title %>
-            </h3>
-
-            <% if story.language %>
-              <span class="badge"><%= story.language %></span>
-            <% end %>
-
-            <% if story.permission_level %>
-              <span class="badge"><%= t("story.permissions.#{story.permission_level}") %></span>
-            <% end %>
-
-            <p><%= story.desc %></p>
-          </div>
-        <% end %>
-      <% end %>
-    <% end %>
+  <div class="two-columns-left">
+    <p><%= @place.description %></p>
+  </div>
+  <div class="two-columns-right column-fixed-350">
+    <div id="static-map"></div>
   </div>
 </div>
+
+<h4><%= t("stories") %></h4>
+
+<div class="collection">
+  <% if @place.stories.empty? %>
+    <p><%= t("list.no_nested_results", resource: t("place").downcase, resources: t("stories").downcase) %></p>
+  <% else %>
+    <% @place.stories.each do |story| %>
+      <%= link_to story, class: "card" do %>
+        <div>
+          <h3>
+            <span class="card__heading--small"><%= story.topic %></span>
+            <%= story.title %>
+          </h3>
+
+          <% if story.language %>
+            <span class="badge"><%= story.language %></span>
+          <% end %>
+
+          <% if story.permission_level %>
+            <span class="badge"><%= Story.human_attribute_name("permission_level.#{story.permission_level}") %></span>
+          <% end %>
+
+          <p><%= story.desc %></p>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
 </div>
 
 <script type="text/javascript">
 let nameAudio = document.querySelector(".icon.audio");
 const audioPlayer = document.querySelector(".audio-player");
 
-nameAudio.addEventListener("click", function(e) {
-  nameAudio.classList.toggle("playing", audioPlayer.paused);
-  if (audioPlayer.paused) {
-    audioPlayer.play();
-  } else {
-    audioPlayer.pause();
-  }
-});
+if (nameAudio !== null) {
+  nameAudio.addEventListener("click", function(e) {
+    nameAudio.classList.toggle("playing", audioPlayer.paused);
+    if (audioPlayer.paused) {
+      audioPlayer.play();
+    } else {
+      audioPlayer.pause();
+    }
+  });
+}
 
 const staticMap = new mapboxgl.Map({
   accessToken: "<%= @community.theme.mapbox_token %>",

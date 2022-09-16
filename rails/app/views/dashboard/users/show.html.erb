@@ -13,7 +13,7 @@
   <h2>
     <%= @user.email %>
     <div class="small">
-      <span class="badge"><%= @user.role %></span>
+      <span class="badge"><%= User.human_attribute_name("role.#{@user.role}") %></span>
     </div>
   </h2>
   </div>

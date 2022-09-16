@@ -1,11 +1,11 @@
-<%= form_with model: @story, multipart: true, data: {remote: false} do |f| %>
+<%= form_with model: @story, multipart: true, data: {remote: false}, locale: true do |f| %>
   <%= render partial: "shared/form_errors", locals: { resource: @story } %>
 
   <%= f.label :title %>
   <%= f.text_field :title %>
 
   <%= f.label :desc %>
-  <%= f.text_field :desc %>
+  <%= f.text_area :desc, rows: 3 %>
 
   <%= f.label :language %>
   <%= f.text_field :language %>
@@ -36,7 +36,7 @@
   <%= f.collection_select :interviewer_id, community.speakers, :id, :name, include_blank: true %>
 
   <%= f.label :permission_level %>
-  <%= f.select :permission_level, Story.permission_levels.keys.map { |k| [t("story_permissions.#{k}"), k]} %>
+  <%= f.select :permission_level, Story.permission_levels.keys.map { |k| [Story.human_attribute_name("permission_level.#{k}"), k]} %>
 
   <%= f.submit %>
 <% end %>

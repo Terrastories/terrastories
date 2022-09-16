@@ -1,8 +1,24 @@
 en:
+  community: Community
+  communities: Communities
+  media_link: Media Link
+  media_links: Media Links
+  places: Places
+  place: Place
+  speakers: Speakers
+  speaker: Speaker
+  stories: Stories
+  story: Story
+  theme: Theme
+  users: Users
+  user: User
+
+  # Front End Translations
   admin_page: "Admin Page"
   alphabetical: A-Z
   back_to_map: "Back to Map"
   back_to_welcome: "Back to Welcome Page"
+  built_with_love: Built with ❤️ by
   close: Close
   community_search:
     title: "Search for a Community to Explore"
@@ -12,10 +28,10 @@ en:
   filter_stories: "Filter stories"
   forgot_password: "Forgot your password?"
   hello: Hello
+  introduction: Introduction
   intro:
     explanation: "Terrastories are audiovisual recordings of place-based storytelling. This offline-compatible application enables local communities to locate and map their own oral storytelling traditions about places of significant meaning or value to them."
     question: "What's a terrastory?"
-  introduction: Introduction
   language: Language
   login: Login
   logout: Logout

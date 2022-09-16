@@ -14,7 +14,7 @@
       <% end %>
 
       <% if @story.permission_level %>
-        <span class="badge"><%= t("story_permissions.#{@story.permission_level}") %></span>
+        <span class="badge"><%= Story.human_attribute_name("permission_level.#{@story.permission_level}") %></span>
       <% end %>
     </div>
   </h2>

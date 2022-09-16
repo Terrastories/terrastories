@@ -1,4 +1,4 @@
-en:
+nl:
   profile: Profile
   interviewer: Interviewer
   map:
@@ -15,22 +15,22 @@ en:
     back_to_app: Back to App
     community_settings: Community Settings
     headings:
-      new_resource: New %{name}
+      new_resource: Nieuw %{name}
     actions:
-      confirm: Are you sure?
-      destroy: Delete
-      edit: Edit
-      new: New
-      back: Back
+      confirm: Weet u het zeker?
+      destroy: Verwijder
+      edit: Bewerk
+      new: Nieuw
+      back: Terug
     theme:
       welcome_screen: Welcome Screen
       background_img: Customize the background image on the landing page of your community.
       sponsor_logos: Display sponsorship logos on your community page to thank your supporters.
   search:
-    clear: Clear search
-    label: Search
-    heading: Search Results
-    results: results
+    clear: Verwijder
+    label: Zoeken
+    heading: Zoeken resultaten
+    results: resultaten
   filter:
     all: All
     any: Any

@@ -23,7 +23,7 @@
             <use href="#icon-speaker">
           </svg>
         <% end %>
-        <% if @place.type_of_place %>
+        <% if @place.type_of_place.present? %>
           <span class="badge"><%= @place.type_of_place %></span>
         <% end %>
       </div>

@@ -10,8 +10,8 @@ class Story < ApplicationRecord
   belongs_to :interviewer, class_name: "Speaker", foreign_key: "interviewer_id", optional: true
   has_many :media_links
 
-  validates_presence_of :speakers, message: ': Your story must have at least one Speaker'
-  validates_presence_of :places, message: ': Your story must have a Place'
+  validates :speaker_ids, presence: true
+  validates :place_ids, presence: true
 
   def self.import_csv(file_contents, community)
     ApplicationController.helpers.csv_importer(file_contents, self, community)

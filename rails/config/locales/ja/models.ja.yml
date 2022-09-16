@@ -1,0 +1,107 @@
+ja:
+  errors:
+    messages:
+      map_bounds: All four bounding box values must be set, or left blank
+      invalid_latitude: value should be between -90 and 90
+      invalid_longitude: value should be between -180 and 180
+      invalid_zoom_level: value should be between 0 and 22
+      invalid_pitch: value should be 0 and 85
+      invalid_bearing: value should be between -180 and 180
+  helpers:
+    label:
+      place: プレース
+      speaker: スピーカー
+      visibility: Visibility
+  activerecord:
+    errors:
+      models:
+        place:
+          attributes:
+            name_audio:
+              content_type: content type is not in list
+            photo:
+              content_type: content type is not in list
+        story:
+          attributes:
+            place_ids:
+              blank: Your story must have a Place
+            speaker_ids:
+              blank: Your story must have at least one Speaker
+        theme:
+          attributes:
+            background_img:
+              content_type: content type is not in list
+            mapbox_access_token:
+              blank: is required when the Mapbox style URL is set.
+            mapbox_style_url:
+              blank: is required when the Mapbox access token is set.
+    # Used to auto-translate submit buttons
+    models:
+      community: コミュニティ
+      curriculum: Curriculum
+      user: ユーザー
+      place: place
+      speaker: スピーカー
+      story: ストーリー
+      theme: テーマ
+      media_link: メディアリンク
+    # Used for model-based form labels and other attribute displays
+    attributes:
+      place:
+        name: 名前
+        name_audio: Name Audio
+        description: 説明文
+        type_of_place: プレースタイプ
+        region: リージョン
+        long: 経度
+        lat: 緯度
+        story_ids: ストーリー
+        photo: フォト
+      speaker:
+        name: 名前
+        story_ids: ストーリー
+        photo: フォト
+        speaker_community: スピーカーのコミュニティ
+        birthdate: 生年月日
+        birthplace_id: どこで生まれた
+      story:
+        title: タイトル
+        desc: 説明
+        language: 言語
+        topic: トピック
+        date_interviewed: インタビュー日
+        media: メディア
+        speaker_ids: スピーカー
+        place_ids: プレース
+        interview_location_id: インタビュー場所
+        interviewer_id: インタビュアー
+        permission_level: パーミッションレベル
+      story/permission_level:
+        anonymous: 検索可能
+        user_only: メンバー
+        editor_only: 編集者
+      theme:
+        background_img: Background image
+        sponsor_logos: Sponsor logos
+        mapbox_style_url: Mapbox style URL
+        mapbox_access_token: Mapbox access token associated with the style
+        mapbox_3d: Activate 3D Terrain view for online map
+        center_lat: Latitude
+        center_long: Longitude
+        sw_boundary_lat: Min Latitude
+        sw_boundary_long: Min Longitude
+        ne_boundary_lat: Max Latitude
+        ne_boundary_long: Max Longitude
+        zoom: Zoom level
+        pitch: Pitch degree
+        bearing: Bearing degress
+      user:
+        email: Email
+        role: ロール
+        password: パスワード
+        photo: フォト
+      user/role:
+        admin: Administrator
+        editor: 編集者
+        member: メンバー
+        viewer: Viewer

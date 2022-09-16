@@ -1,6 +1,6 @@
-en:
+ja:
   profile: Profile
-  interviewer: Interviewer
+  interviewer: インタビュアー
   map:
     center: Map Center
     bounds: Map Bounds
@@ -15,27 +15,27 @@ en:
     back_to_app: Back to App
     community_settings: Community Settings
     headings:
-      new_resource: New %{name}
+      new_resource: "%{name}新規作成"
     actions:
-      confirm: Are you sure?
-      destroy: Delete
-      edit: Edit
-      new: New
-      back: Back
+      confirm: よろしいですか？
+      destroy: 削除
+      edit: 編集
+      new: 新規作成
+      back: 戻る
     theme:
       welcome_screen: Welcome Screen
       background_img: Customize the background image on the landing page of your community.
       sponsor_logos: Display sponsorship logos on your community page to thank your supporters.
   search:
-    clear: Clear search
-    label: Search
+    clear: クリア
+    label: 検索
     heading: Search Results
-    results: results
+    results: 結果
   filter:
     all: All
     any: Any
-    label: Filter
-    clear: Clear Filters
+    label: フィルタ
+    clear: クリアフィルタ
   list:
     prev: Prev
     next: Next
