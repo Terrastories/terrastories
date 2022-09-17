@@ -17,7 +17,7 @@ module Dashboard
 
     def not_authorized
       flash.alert = "You are not authorized to perform this action"
-      redirect_to root_url(subdomain: "our")
+      redirect_to root_path
     end
 
     private

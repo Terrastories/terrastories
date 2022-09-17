@@ -64,10 +64,10 @@
               <% if current_user.super_admin %>
               <% end %>
               <li><%= link_to t("profile"), edit_user_path(current_user) %></a></li>
-              <li><%= link_to t("logout"), destroy_user_session_url(subdomain: nil), method: :delete  %></li>
+              <li><%= link_to t("logout"), destroy_user_session_path, method: :delete  %></li>
             </ul>
           </div>
-          <%= link_to t("dashboard.back_to_app"), home_map_url(subdomain: nil) %>
+          <%= link_to t("dashboard.back_to_app"), home_map_path %>
         </div>
       </div>
       <main>
