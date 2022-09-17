@@ -1,0 +1,17 @@
+services:
+  rails:
+    image: ${DOCKER_IMAGE_NAME-terrastories}
+    build:
+      context: ./rails
+      args:
+        precompileassets: "not"
+    env_file:
+      - .env
+    command: scripts/server
+    restart: always
+    stdin_open: true
+    tty: true
+    ports:
+      - 3000:3000
+    expose:
+      - "3000"

@@ -70,4 +70,10 @@ Rails.application.configure do
 
   # Lets BetterErrors run properly in Docker
   BetterErrors::Middleware.allow_ip! "0.0.0.0/0"
+
+  # Offline Mode
+  if ENV["VIRTUAL_HOST"].present? || ENV["USE_LOCAL_MAP_SERVER"].present?
+    config.hosts << "terrastories.local"
+    config.hosts << /[a-zA-Z0-9-]*\.terrastories\.local/
+  end
 end

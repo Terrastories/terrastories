@@ -1,0 +1,83 @@
+services:
+  db:
+    profiles:
+      - offline
+      - dev
+    image: postgres:11
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: ${DB_USER_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  web:
+    profiles:
+      - dev
+    extends:
+      file: common-app.yaml
+      service: rails
+    depends_on:
+      - db
+    volumes:
+      - bundler:/usr/local/bundle
+      - ./rails:/api
+      - ./data/media:/media
+      - ./data/import/media:/api/import/media
+
+  nginx-proxy:
+    profiles:
+      - offline
+    image: jwilder/nginx-proxy:alpine
+    restart: always
+    ports:
+      - 80:80
+    depends_on:
+      - web
+      - db
+    environment:
+      - DEFAULT_HOST=terrastories.local
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./nginx/error_pages:/usr/share/nginx/html:ro
+      - ./nginx/vhost.d:/etc/nginx/vhost.d:ro
+      - ./nginx/unrestricted_file_size.conf:/etc/nginx/conf.d/unrestricted_file_size.conf:ro
+
+  localweb:
+    profiles:
+      - offline
+    extends:
+      file: common-app.yaml
+      service: rails
+    depends_on:
+      - db
+    volumes:
+      - bundler:/usr/local/bundle
+      - ./rails:/api
+      - ./data/media:/media
+      - ./data/import/media:/api/import/media
+    environment:
+      - VIRTUAL_HOST=terrastories.local
+      - CHOKIDAR_USEPOLLING=true
+      - USE_LOCAL_MAP_SERVER=true
+      - OFFLINE_MAP_STYLE=http://tileserver.terrastories.local/styles/terrastories-map/style.json
+
+  tileserver:
+    profiles:
+      - offline
+    restart: always
+    image: maptiler/tileserver-gl
+    command: "-p 8080"
+    ports:
+      - 8080:8080
+    expose:
+      - "8080"
+    volumes:
+      - ./tileserver/data:/data
+    environment:
+      - VIRTUAL_HOST=tileserver.terrastories.local
+      - VIRTUAL_PORT=8080
+
+volumes:
+  postgres_data:
+  bundler:
