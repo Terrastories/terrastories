@@ -4,7 +4,7 @@
 
 <% content_for(:main_heading) do %>
 <div class="avatar-card">
-  <span class="media-with-hover-controls rounded">
+  <span class="media-with-hover-controls rounded" data-replace-on-delete="<%= asset_path("speaker.png") %>">
     <% if @speaker.photo.attached? %>
       <%= image_tag @speaker.photo, alt: @speaker.name, title: @speaker.name %>
       <%= link_to speaker_photo_path(@speaker), class: "overlay delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm")}, remote: true do %>
