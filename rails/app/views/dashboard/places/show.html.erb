@@ -81,12 +81,21 @@ const audioPlayer = document.querySelector(".audio-player");
 
 if (nameAudio !== null) {
   nameAudio.addEventListener("click", function(e) {
-    nameAudio.classList.toggle("playing", audioPlayer.paused);
     if (audioPlayer.paused) {
       audioPlayer.play();
     } else {
       audioPlayer.pause();
     }
+  });
+
+  audioPlayer.addEventListener("play", function(e) {
+    nameAudio.classList.add("playing");
+  });
+  audioPlayer.addEventListener("pause", function(e) {
+    nameAudio.classList.remove("playing");
+  });
+  audioPlayer.addEventListener("ended", function(e) {
+    nameAudio.classList.remove("playing");
   });
 }
 
