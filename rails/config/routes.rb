@@ -21,6 +21,7 @@ Rails.application.routes.draw do
           delete '/media/:id/delete', action: :delete_media, as: :delete_media
         end
         resource :theme, only: [:update, :edit, :show] do
+          delete :background_img, action: :delete_background_img
           delete '/sponsor_logo/:id/delete', action: :delete_sponsor_logo, as: :delete_sponsor_logo
         end
       end

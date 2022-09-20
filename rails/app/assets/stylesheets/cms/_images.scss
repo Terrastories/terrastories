@@ -70,7 +70,7 @@
   }
 
   &:hover {
-    svg {
+    a:not(.overlay) svg {
       visibility: visible;
     }
 

@@ -18,7 +18,19 @@
         <%= f.file_field :background_img %>
     </div>
     <div class="two-columns-right">
-      <%= image_tag(@theme.background_img, width: 300)if @theme.background_img.attached? %>
+      <% if @theme.background_img.attached? %>
+        <span class="media-with-hover-controls">
+          <% if @theme.background_img.variable? %>
+          <%= image_tag(@theme.background_img.variant(resize_to_limit: [nil, 300])) %>
+          <% else %>
+          <%= image_tag(@theme.background_img, width: 300) %>
+          <% end %>
+          <span class="overlay"></span>
+          <%= link_to background_img_theme_path, class: "delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm")}, remote: true do %>
+            <svg><use href="#icon-cancel"></svg>
+          <% end %>
+        </span>
+      <% end %>
     </div>
   </div>
 
