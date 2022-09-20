@@ -50,5 +50,6 @@ es:
   sort_stories: "Ordenar las historias"
   speaker: "Orador"
   topic: "Tema"
+  video_unsupported: Lo sentimos, su navegador no admite videos incrustados.
   welcome: "Bienvenido/a"
   welcome_back: "Bienvenido/a de nuevo"

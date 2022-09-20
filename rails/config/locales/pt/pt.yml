@@ -50,5 +50,6 @@ pt:
   sort_stories: "Classificar histórias"
   speaker: "Orador"
   topic: "Assunto"
+  video_unsupported: Desculpe, seu navegador não suporta vídeos incorporados.
   welcome: "Bem vindo/a"
   welcome_back: "Bem vindo/a de volta"
