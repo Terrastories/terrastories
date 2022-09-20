@@ -126,5 +126,15 @@
       infiniteScrollObserver.observe(document.querySelector("[data-infinite-scroll=pagination]"))
     }
 
+    // Remote Deletion
+    document.querySelectorAll('.delete-link').forEach(lnk => {
+      lnk.addEventListener('ajax:beforeSend', function(e) {
+        lnk.parentNode.classList.add("deleting");
+      });
+
+      lnk.addEventListener('ajax:success', function(e, args) {
+        lnk.parentNode.remove();
+      });
+    });
   </script>
 </html>

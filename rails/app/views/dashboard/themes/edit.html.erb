@@ -142,16 +142,6 @@
 <% end %>
 
 <script>
-document.querySelectorAll('.delete-link').forEach(lnk => {
-  lnk.addEventListener('ajax:beforeSend', function(e) {
-    lnk.parentNode.classList.add("deleting");
-  });
-
-  lnk.addEventListener('ajax:success', function(e, args) {
-    lnk.parentNode.remove();
-  });
-});
-
 const themeForm = document.querySelector("#themeForm");
 const zoomInput = themeForm.querySelector("#theme_zoom");
 const zoomValue = themeForm.querySelector("#zoomValue");
