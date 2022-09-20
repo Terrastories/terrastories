@@ -39,6 +39,10 @@ class PlacePolicy < ApplicationPolicy
     user.admin? || user.editor?
   end
 
+  def delete_name_audio?
+    user.admin? || user.editor?
+  end
+
   class Scope < Scope
     def resolve_admin
       scope.where(community: user.community)

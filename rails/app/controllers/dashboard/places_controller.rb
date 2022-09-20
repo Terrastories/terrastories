@@ -63,6 +63,13 @@ module Dashboard
       head :ok
     end
 
+    def delete_name_audio
+      @place = authorize community.places.find(params[:place_id])
+      @place.name_audio.purge
+
+      head :ok
+    end
+
     private
 
     def place_params
