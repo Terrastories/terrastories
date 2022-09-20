@@ -22,6 +22,7 @@ pt:
       edit: Editar
       new: Novo
       back: Voltar
+      show_resource: Mostrar %{name}
     theme:
       welcome_screen: Welcome Screen
       background_img: Customize the background image on the landing page of your community.

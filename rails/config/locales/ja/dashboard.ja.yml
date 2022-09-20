@@ -22,6 +22,7 @@ ja:
       edit: 編集
       new: 新規作成
       back: 戻る
+      show_resource: "%{name}"
     theme:
       welcome_screen: Welcome Screen
       background_img: Customize the background image on the landing page of your community.
