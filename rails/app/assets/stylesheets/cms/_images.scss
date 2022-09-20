@@ -38,7 +38,7 @@
     visibility: collapse;
   }
 
-  a {
+  a:not(.overlay) {
     position: absolute;
     top: 5px;
     right: 5px;
@@ -76,13 +76,47 @@
 
     span.overlay {
       visibility: visible;
-      background-color: $off-white;
+      background-color: $transparent-white;
       height: 100%;
       width: 100%;
       position: absolute;
-      opacity: .5;
     }
 
+  }
+
+  &.rounded {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+
+    img {
+      width: 100px;
+      height: 100px;
+    }
+
+    a.overlay {
+      visibility: collapse;
+      position: absolute;
+      bottom: 0;
+      width: 100px;
+      height: 25px;
+      background-color: $transparent-white;
+      text-align: center;
+      color: $black;
+      font-size: small;
+
+      &:hover {
+        background-color: $transparent-white-hover;
+      }
+    }
+
+    &:hover {
+      a.overlay {
+        visibility: visible;
+      }
+    }
   }
 }
 

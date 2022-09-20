@@ -56,6 +56,13 @@ module Dashboard
       redirect_to speakers_path
     end
 
+    def delete_photo
+      @speaker = authorize community.speakers.find(params[:speaker_id])
+      @speaker.photo.purge
+
+      head :ok
+    end
+
     private
 
     def speaker_params

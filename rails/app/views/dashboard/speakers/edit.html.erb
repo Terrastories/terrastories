@@ -4,11 +4,16 @@
 
 <% content_for(:main_heading) do %>
 <div class="avatar-card">
-  <% if @speaker.photo.attached? %>
-    <%= image_tag @speaker.photo, class: "img--rounded img--larger", alt: @speaker.name, title: @speaker.name %>
-  <% else %>
-    <%= image_tag asset_path("speaker.png"), class: "img--rounded img--larger", alt: @speaker.name, title: @speaker.name %>
-  <% end %>
+  <span class="media-with-hover-controls rounded">
+    <% if @speaker.photo.attached? %>
+      <%= image_tag @speaker.photo, alt: @speaker.name, title: @speaker.name %>
+      <%= link_to speaker_photo_path(@speaker), class: "overlay delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm")}, remote: true do %>
+        <span><%= t("dashboard.actions.destroy") %></span>
+      <% end %>
+    <% else %>
+      <%= image_tag asset_path("speaker.png"), alt: @speaker.name, title: @speaker.name %>
+    <% end %>
+  </span>
   <h2>
     <% if @speaker.speaker_community %>
       <div class="small">
