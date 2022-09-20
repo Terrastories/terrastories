@@ -28,6 +28,26 @@ form {
     }
   }
 
+  .filename-list {
+    margin: 1rem auto;
+
+    .file-item {
+      background-color: $off-white;
+      margin: 0.5rem 0;
+      padding: 0.25rem 0.5rem;
+      border-radius: 5px;
+      width: max-content;
+      font-size: small;
+    }
+
+    .delete-link svg {
+      width: 1rem;
+      height: 1rem;
+      vertical-align: middle;
+      margin-left: 0.5rem;
+    }
+  }
+
   .input-group {
     margin: 0.5rem 0;
   }
