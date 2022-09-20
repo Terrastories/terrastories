@@ -7,7 +7,9 @@ Rails.application.routes.draw do
 
         get :search, to: "search#index"
 
-        resources :users
+        resources :users do
+          delete :photo, action: :delete_photo
+        end
         resources :speakers do
           delete :photo, action: :delete_photo
         end

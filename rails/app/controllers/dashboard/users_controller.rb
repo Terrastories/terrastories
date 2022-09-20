@@ -60,6 +60,13 @@ module Dashboard
       redirect_to users_path
     end
 
+    def delete_photo
+      @user = authorize community.users.find(params[:user_id])
+      @user.photo.purge
+
+      head :ok
+    end
+
     private
 
     def user_params

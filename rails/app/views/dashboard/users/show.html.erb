@@ -6,9 +6,9 @@
 <div class="columns">
   <div class="avatar-card">
   <% if @user.photo.attached? %>
-    <%= image_tag @user.photo, class: "img--rounded img--larger", alt: @user.email, title: @user.email %>
+    <%= image_tag @user.photo, class: "img--rounded img--mega", alt: @user.email, title: @user.email %>
   <% else %>
-    <%= image_tag asset_path("speaker.png"), class: "img--rounded img--larger", alt: @user.email, title: @user.email %>
+    <%= image_tag asset_path("speaker.png"), class: "img--rounded img--mega", alt: @user.email, title: @user.email %>
   <% end %>
   <h2>
     <%= @user.email %>

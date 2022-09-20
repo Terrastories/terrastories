@@ -36,6 +36,10 @@ class UserPolicy < ApplicationPolicy
     current_user.admin? && user != current_user
   end
 
+  def delete_photo?
+    edit?
+  end
+
   class Scope < Scope
     def resolve_admin
       if user.admin?
