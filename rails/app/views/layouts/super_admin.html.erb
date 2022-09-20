@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>">
+  <head>
+    <meta charset="utf-8">
+    <meta name="ROBOTS" content="NOODP">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <%= favicon_link_tag asset_path('favicon.ico'), rel: 'icon' %>
+    <title><%= yield :title %> - Terrastories</title>
+
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag 'dashboard', media: 'all' %>
+    <%= javascript_include_tag 'dashboard', media: 'all' %>
+  </head>
+
+  <body class="content-wrapper">
+    <%= render "shared/icons" %>
+    <div class="content-main">
+      <div class="observer-sentinel"><%# do not remove this element! %></div>
+      <div class="top-bar">
+        <div class="menu">
+          <%= image_tag "logocombo.svg", alt: "Terrastories", class: "logo" %>
+          <nav>
+            <%= link_to t("communities"), communities_path %>
+          </nav>
+        </div>
+        <div class="top-nav">
+          <div class="user-nav">
+            <%= current_user.email %>
+            <% if current_user.photo.attached? %>
+              <%= image_tag current_user.photo, class: "img img--rounded img--micro" %>
+            <% else %>
+              <%= image_tag asset_path("speaker.png"), class: "img img--rounded img--micro" %>
+            <% end %>
+            <ul class="dropdown" aria-label="submenu">
+              <li><%= link_to t("logout"), destroy_user_session_path, method: :delete  %></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <main>
+        <div class="page-heading">
+          <%= yield :main_heading %>
+        </div>
+        <div class="page-content">
+            <%= yield %>
+        </div>
+      </main>
+    </div>
+  </body>
+    <script type="text/javascript">
+    // Sticky Header Observer
+    const pageContentHeader = document.querySelector(".page-heading");
+    const sentinel = document.querySelector(".observer-sentinel");
+
+    const headerObserver = new IntersectionObserver(
+      (entries) => {
+        pageContentHeader.classList.toggle("sticky", !entries[0].isIntersecting )
+      }
+    );
+    headerObserver.observe(sentinel);
+
+    // Infinite Scroll
+    let hasInfiniteScroll = document.querySelector("[data-infinite-scroll]")
+
+    if (hasInfiniteScroll !== null) {
+      const infiniteScrollObserver = new IntersectionObserver(
+        (entries) => {
+          if (entries[0].isIntersecting) {
+            let next_page = entries[0].target.querySelector("a[rel=next]")
+            if (next_page == null) { return }
+
+            let url = next_page.href
+            fetch(url,
+              {
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Accept': 'application/json'
+                }
+              })
+              .then((response) => response.json())
+              .then(data => {
+                document.querySelector("[data-infinite-scroll=entries]").insertAdjacentHTML('beforeend', data.entries)
+                if (data.pagination == null) {
+                  next_page.remove()
+                } else {
+                  next_page.setAttribute("href", data.pagination)
+                }
+              })
+          }
+        }
+      );
+      infiniteScrollObserver.observe(document.querySelector("[data-infinite-scroll=pagination]"))
+    }
+
+    // Remote Deletion
+    document.querySelectorAll('.delete-link').forEach(lnk => {
+      lnk.addEventListener('ajax:beforeSend', function(e) {
+        lnk.parentNode.classList.add("deleting");
+      });
+
+      lnk.addEventListener('ajax:success', function(e, args) {
+        let replaceLink = lnk.parentNode.dataset.replaceOnDelete;
+
+        if (replaceLink !== undefined) {
+          lnk.parentNode.querySelector("img").setAttribute("src", replaceLink)
+          lnk.parentNode.classList.remove("deleting");
+        } else {
+          lnk.parentNode.remove();
+        }
+      });
+    });
+  </script>
+</html>

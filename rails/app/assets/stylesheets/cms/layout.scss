@@ -70,6 +70,29 @@ z-indicies:
     display: inline-block;
   }
 
+  .menu {
+    @include flexbox;
+
+    img.logo {
+      margin: .5rem;
+      height: calc(45px - 1rem);
+    }
+
+    nav {
+      margin-left: 1rem;
+      flex-direction: row;
+      align-items: stretch;
+      justify-content: center;
+
+      > a {
+        width: max-content;
+        display: block;
+        padding: 0 0.5rem;
+        text-decoration: none;
+      }
+    }
+  }
+
   .top-nav {
     @include flexbox;
     align-items: stretch;

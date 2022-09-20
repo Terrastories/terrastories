@@ -1,2 +1,22 @@
+<% content_for(:title) do %>
+  <%= @community.name %> | <%= t("community") %>
+<% end %>
 
-hey
+<% content_for :main_heading do %>
+<div class="columns">
+  <h2><%= @community.name %></h2>
+  <div class="actions">
+    <%= link_to t("dashboard.actions.edit"), edit_community_path(@community), class: "btn" if policy(@community).edit? %>
+    <%= link_to t("dashboard.actions.destroy"), community_path(@community), method: :delete, data: {confirm: t("dashboard.actions.confirm")}, class: "btn btn-danger" if policy(@community).destroy? %>
+  </div>
+</div>
+<% end %>
+
+<table>
+  <% @community.users.each do |user| %>
+  <tr>
+    <td><%= user.email %></td>
+    <td><%= User.human_attribute_name("role.#{user.role}") %></td>
+  </tr>
+  <% end %>
+</table>

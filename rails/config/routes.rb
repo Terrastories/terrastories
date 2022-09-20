@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do
     scope '/member' do
       scope module: 'dashboard' do
-        root to: 'stories#index', as: 'member_root'
+        get '/', to: 'communities#index', as: :super_admin_root, constraints: RoleRoutingConstraint.new { |user| user.super_admin }
+        get '/', to: 'stories#index', as: :member_root, constraints: RoleRoutingConstraint.new { |user| !user.super_admin }
 
         get :search, to: "search#index"
 
@@ -24,6 +25,7 @@ Rails.application.routes.draw do
           delete :background_img, action: :delete_background_img
           delete '/sponsor_logo/:id/delete', action: :delete_sponsor_logo, as: :delete_sponsor_logo
         end
+        resources :communities
       end
     end
 

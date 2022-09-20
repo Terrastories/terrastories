@@ -16,6 +16,10 @@
   }
   }
 
+  .row-link {
+    display: block;
+  }
+
   .cell {
     @include flex(1);
     flex-grow: 1;
