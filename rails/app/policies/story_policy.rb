@@ -35,6 +35,10 @@ class StoryPolicy < ApplicationPolicy
     user.admin? || user.editor?
   end
 
+  def delete_media?
+    user.admin? || user.editor?
+  end
+
   class Scope < Scope
     def resolve
       if user&.super_admin

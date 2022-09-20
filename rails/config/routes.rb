@@ -10,7 +10,9 @@ Rails.application.routes.draw do
         resources :users
         resources :speakers
         resources :places
-        resources :stories
+        resources :stories do
+          delete '/media/:id/delete', action: :delete_media, as: :delete_media
+        end
         resource :theme, only: [:update, :edit, :show] do
           delete '/sponsor_logo/:id/delete', action: :delete_sponsor_logo, as: :delete_sponsor_logo
         end

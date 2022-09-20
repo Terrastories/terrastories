@@ -19,6 +19,59 @@
   <%= f.label :media %>
   <%= f.file_field :media, multiple: true %>
 
+  <% if @story.persisted? %>
+  <div class="with-media-list">
+    <% if @story.media.attached? %>
+      <% @story.media.each do |media| %>
+        <% if media.image? %>
+          <span class="media-with-controls">
+            <% if media.variable? %>
+              <%= image_tag(media.variant(resize_to_limit: [150, 150])) %>
+            <% else %>
+              <%= image_tag(media, width: 150) %>
+            <% end %>
+            <%= link_to t("dashboard.actions.destroy"), story_delete_media_path(@story, media.signed_id), class: "delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm")}, remote: true %>
+          </span>
+        <% elsif media.video? %>
+          <span class="media-with-controls">
+            <% if media.previewable? %>
+              <video
+                controls
+                disablePictureInPicture
+                controlsList="nodownload"
+                id="video-player-<%= media.blob.id %>"
+                poster="<%= url_for(media.preview(resize_to_limit:[nil, 150])) %>"
+              >
+                <source src="<%= url_for(media) %>"/>
+                <%= t("video_unsupported") %>
+              </video>
+              <%= link_to t("dashboard.actions.destroy"), story_delete_media_path(@story, media.signed_id), class: "delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm")}, remote: true %>
+            <% end %>
+          </span>
+        <% elsif media.audio? %>
+          <span class="media-with-controls">
+            <audio id="audio-player-<%= media.blob.id %>"
+              controls
+              controlsList="nodownload"
+              ref="audio"
+            >
+              <source src="<%= url_for(media) %>" type="<%= media.blob.content_type %>" />
+            </audio>
+            <%= link_to t("dashboard.actions.destroy"), story_delete_media_path(@story, media.signed_id), class: "delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm")}, remote: true %>
+          </span>
+        <% elsif media.previewable? %>
+          <span class="media-with-controls">
+            <%= image_tag(media.preview(resize_to_limit:[150, 150])) %>
+            <%= link_to t("dashboard.actions.destroy"), story_delete_media_path(@story, media.signed_id), class: "delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm")}, remote: true %>
+        <% else %>
+          <%= media.filename %>
+          <%= link_to t("dashboard.actions.destroy"), story_delete_media_path(@story, media.signed_id), class: "delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm")}, remote: true %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+  <% end %>
+
   <%= f.label :speaker_ids %>
   <div class="checklist">
     <%= f.collection_check_boxes :speaker_ids, community.speakers, :id, :name %>

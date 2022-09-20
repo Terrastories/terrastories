@@ -56,6 +56,15 @@ module Dashboard
       redirect_to stories_path
     end
 
+    def delete_media
+      @story = authorize community.stories.find(params[:story_id])
+
+      media_blob = @story.media.blobs.find_signed(params[:id])
+      media_blob.attachments.each(&:purge)
+
+      head :ok
+    end
+
     private
 
     def story_params
