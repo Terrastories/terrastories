@@ -34,7 +34,7 @@
     <div class="two-columns-right with-images-list">
       <% if @theme.sponsor_logos.any? %>
         <% @theme.sponsor_logos.each do |img| %>
-          <span class="image-with-controls">
+          <span class="media-with-hover-controls">
             <%= image_tag(img, width: 150) %>
             <span class="overlay"></span>
             <%= link_to delete_sponsor_logo_theme_url(img.signed_id), class: "delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm")}, remote: true do %>

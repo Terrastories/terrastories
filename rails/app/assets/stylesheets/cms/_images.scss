@@ -1,4 +1,34 @@
-.image-with-controls {
+.with-media-list {
+  @include flexbox;
+  gap: 1.5rem;
+  margin: 1rem auto 2rem;
+  flex-wrap: wrap;
+
+  image, video, audio {
+    max-width: 300px;
+    max-height: 150px;
+  }
+}
+
+.media-with-controls {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  max-height: 150px;
+
+  video {
+    object-fit: contain;
+    width: 100%;
+  }
+
+  a {
+    position: absolute;
+    bottom: -1.2rem;
+  }
+}
+
+.media-with-hover-controls {
   position: relative;
   display: inline-flex;
   justify-content: center;
