@@ -133,7 +133,14 @@
       });
 
       lnk.addEventListener('ajax:success', function(e, args) {
-        lnk.parentNode.remove();
+        let replaceLink = lnk.parentNode.dataset.replaceOnDelete;
+
+        if (replaceLink !== undefined) {
+          lnk.parentNode.querySelector("img").setAttribute("src", replaceLink)
+          lnk.parentNode.classList.remove("deleting");
+        } else {
+          lnk.parentNode.remove();
+        }
       });
     });
   </script>
