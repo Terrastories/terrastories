@@ -56,6 +56,13 @@ module Dashboard
       redirect_to places_path
     end
 
+    def delete_photo
+      @place = authorize community.places.find(params[:place_id])
+      @place.photo.purge
+
+      head :ok
+    end
+
     private
 
     def place_params

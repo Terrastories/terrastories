@@ -6,9 +6,9 @@
 <div class="columns">
   <div class="avatar-card">
     <% if @place.photo.attached? %>
-      <%= image_tag @place.photo, class: "img--rounded img--larger", alt: @place.name, title: @place.name %>
+      <%= image_tag @place.photo, class: "img--rounded img--mega", alt: @place.name, title: @place.name %>
     <% else %>
-      <%= image_tag asset_path("home-icon.svg"), class: "img--rounded img--larger", alt: @place.name, title: @place.name %>
+      <%= image_tag asset_path("home-icon.svg"), class: "img--rounded img--mega", alt: @place.name, title: @place.name %>
     <% end %>
     <h2>
       <% if @place.region.present? %>

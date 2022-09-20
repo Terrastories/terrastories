@@ -4,11 +4,16 @@
 
 <% content_for(:main_heading) do %>
   <div class="avatar-card">
-    <% if @place.photo.attached? %>
-      <%= image_tag @place.photo, class: "img--rounded img--larger", alt: @place.name, title: @place.name %>
-    <% else %>
-      <%= image_tag asset_path("home-icon.svg"), class: "img--rounded img--larger", alt: @place.name, title: @place.name %>
-    <% end %>
+    <span class="media-with-hover-controls rounded" data-replace-on-delete="<%= asset_path("home-icon.svg") %>">
+      <% if @place.photo.attached? %>
+        <%= image_tag @place.photo, alt: @place.name, title: @place.name %>
+        <%= link_to place_photo_path(@place), class: "overlay delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm")}, remote: true do %>
+          <span><%= t("dashboard.actions.destroy") %></span>
+        <% end %>
+      <% else %>
+        <%= image_tag asset_path("home-icon.svg"), alt: @place.name, title: @place.name %>
+      <% end %>
+    </span>
     <h2>
       <% if @place.region %>
         <div class="small">

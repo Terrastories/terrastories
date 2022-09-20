@@ -11,7 +11,9 @@ Rails.application.routes.draw do
         resources :speakers do
           delete :photo, action: :delete_photo
         end
-        resources :places
+        resources :places do
+          delete :photo, action: :delete_photo
+        end
         resources :stories do
           delete '/media/:id/delete', action: :delete_media, as: :delete_media
         end
