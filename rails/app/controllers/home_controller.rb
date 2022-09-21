@@ -23,7 +23,7 @@ class HomeController < ApplicationController
   end
 
   helper_method def stories
-    policy_scope(Story)
+    policy_scope(current_community.stories)
   end
 
   private

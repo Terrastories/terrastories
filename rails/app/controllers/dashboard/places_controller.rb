@@ -1,7 +1,7 @@
 module Dashboard
   class PlacesController < ApplicationController
     def index
-      @page = PlacesPage.new(community, params)
+      @page = PlacesPage.new(community_places, params)
       @places = @page.data
 
       respond_to do |format|
@@ -16,12 +16,12 @@ module Dashboard
     end
 
     def new
-      authorize @place = community.places.new
+      authorize @place = community_places.new
     end
 
     def create
       authorize Place
-      @place = community.places.new(place_params)
+      @place = community_places.new(place_params)
 
       if @place.save
         redirect_to @place
@@ -31,15 +31,15 @@ module Dashboard
     end
 
     def show
-      @place = authorize community.places.find(params[:id])
+      @place = authorize community_places.find(params[:id])
     end
 
     def edit
-      @place = authorize community.places.find(params[:id])
+      @place = authorize community_places.find(params[:id])
     end
 
     def update
-      @place = authorize community.places.find(params[:id])
+      @place = authorize community_places.find(params[:id])
 
       if @place.update(place_params)
         redirect_to @place
@@ -49,7 +49,7 @@ module Dashboard
     end
 
     def destroy
-      @place = authorize community.places.find(params[:id])
+      @place = authorize community_places.find(params[:id])
 
       @place.destroy
 
@@ -57,20 +57,24 @@ module Dashboard
     end
 
     def delete_photo
-      @place = authorize community.places.find(params[:place_id])
+      @place = authorize community_places.find(params[:place_id])
       @place.photo.purge
 
       head :ok
     end
 
     def delete_name_audio
-      @place = authorize community.places.find(params[:place_id])
+      @place = authorize community_places.find(params[:place_id])
       @place.name_audio.purge
 
       head :ok
     end
 
     private
+
+    def community_places
+      policy_scope(community.places)
+    end
 
     def place_params
       params.require(:place).permit(

@@ -53,7 +53,7 @@
           <div class="small"><%= t("interviewer") %></div>
         </span>
       <% end %>
-      <% @story.speakers.each do |speaker| %>
+      <% policy_scope(@story.speakers).each do |speaker| %>
         <span class="card card--mini card--center card--noborder card--nogap">
           <% if speaker.photo.attached? %>
             <%= image_tag speaker.photo, class: "img--rounded img--large", alt: speaker.name, title: speaker.name %>

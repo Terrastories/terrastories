@@ -15,10 +15,13 @@
     <div>
     <%= f.label :speaker %>
     <%= f.collection_select :speaker, community.speakers, :id, :name, include_blank: t("filter.all"), selected: params[:speaker] %>
-    </div><div>
-    <%= f.label :visibility %>
-    <%= f.select :visibility, Story.permission_levels.map { |k, v| [Story.human_attribute_name("permission_level.#{k}"), v]}, include_blank: t("filter.any"), selected: params[:visibility] %>
     </div>
+    <% unless current_user.viewer? %>
+      <div>
+      <%= f.label :visibility %>
+      <%= f.select :visibility, Story.permission_levels.map { |k, v| [Story.human_attribute_name("permission_level.#{k}"), v]}, include_blank: t("filter.any"), selected: params[:visibility] %>
+      </div>
+    <% end %>
     <%= f.submit t("filter.label"), name: nil %>
   <% end %>
 <% end %>

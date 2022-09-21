@@ -1,6 +1,6 @@
 class StoriesPage < Page
-  def initialize(community, meta = {})
-    @community = community
+  def initialize(scoped_stories, meta = {})
+    @scoped_stories = scoped_stories
     @meta = meta
 
     @meta[:limit] ||= 10
@@ -10,7 +10,7 @@ class StoriesPage < Page
   end
 
   def relation
-    stories = @community.stories
+    stories = @scoped_stories
 
     stories = stories.joins(:places).where(places: {id: @meta[:place]}) if @meta[:place].present?
     stories = stories.joins(:speakers).where(speakers: {id: @meta[:speaker]}) if @meta[:speaker].present?

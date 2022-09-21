@@ -1,6 +1,6 @@
 class SpeakersPage < Page
-  def initialize(community, meta = {})
-    @community = community
+  def initialize(scoped_speakers, meta = {})
+    @scoped_speakers = scoped_speakers
     @meta = meta
 
     @meta[:limit] ||= 20
@@ -10,7 +10,7 @@ class SpeakersPage < Page
   end
 
   def relation
-    speakers = @community.speakers
+    speakers = @scoped_speakers
 
     speakers.order(@meta[:sort_by] => @meta[:sort_dir])
   end

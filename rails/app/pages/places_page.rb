@@ -1,6 +1,6 @@
 class PlacesPage < Page
-  def initialize(community, meta = {})
-    @community = community
+  def initialize(scoped_places, meta = {})
+    @scoped_places = scoped_places
     @meta = meta
 
     @meta[:limit] ||= 20
@@ -10,7 +10,7 @@ class PlacesPage < Page
   end
 
   def relation
-    places = @community.places
+    places = @scoped_places
 
     places.order(@meta[:sort_by] => @meta[:sort_dir])
   end

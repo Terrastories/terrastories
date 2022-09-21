@@ -1,7 +1,7 @@
 module Dashboard
   class StoriesController < ApplicationController
     def index
-      @page = StoriesPage.new(community, filter_params)
+      @page = StoriesPage.new(community_stories, filter_params)
       @stories = @page.data
 
       respond_to do |format|
@@ -16,12 +16,12 @@ module Dashboard
     end
 
     def new
-      authorize @story = community.stories.new
+      authorize @story = community_stories.new
     end
 
     def create
       authorize Story
-      @story = community.stories.new(story_params)
+      @story = community_stories.new(story_params)
 
       if @story.save
         redirect_to @story
@@ -31,15 +31,15 @@ module Dashboard
     end
 
     def show
-      @story = authorize community.stories.find(params[:id])
+      @story = authorize community_stories.find(params[:id])
     end
 
     def edit
-      @story = authorize community.stories.find(params[:id])
+      @story = authorize community_stories.find(params[:id])
     end
 
     def update
-      @story = authorize community.stories.find(params[:id])
+      @story = authorize community_stories.find(params[:id])
 
       if @story.update(story_params)
         redirect_to @story
@@ -49,7 +49,7 @@ module Dashboard
     end
 
     def destroy
-      @story = authorize community.stories.find(params[:id])
+      @story = authorize community_stories.find(params[:id])
 
       @story.destroy
 
@@ -57,7 +57,7 @@ module Dashboard
     end
 
     def delete_media
-      @story = authorize community.stories.find(params[:story_id])
+      @story = authorize community_stories.find(params[:story_id])
 
       media_blob = @story.media.blobs.find_signed(params[:id])
       media_blob.attachments.each(&:purge)
@@ -66,6 +66,10 @@ module Dashboard
     end
 
     private
+
+    def community_stories
+      policy_scope(community.stories)
+    end
 
     def story_params
       params.require(:story).permit(

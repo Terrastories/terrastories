@@ -1,7 +1,7 @@
 module Dashboard
   class SpeakersController < ApplicationController
     def index
-      @page = SpeakersPage.new(community, params)
+      @page = SpeakersPage.new(policy_scope(community.speakers), params)
       @speakers = @page.data
 
       respond_to do |format|
@@ -31,7 +31,7 @@ module Dashboard
     end
 
     def show
-      @speaker = community.speakers.find(params[:id])
+      @speaker = authorize community.speakers.find(params[:id])
     end
 
     def edit

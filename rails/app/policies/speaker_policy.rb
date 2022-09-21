@@ -19,8 +19,9 @@ class SpeakerPolicy < ApplicationPolicy
   end
 
   def show?
-    # anyone except super admins can view
-    !user.super_admin
+    return false if user.viewer?
+    return false if user.super_admin
+    true
   end
 
   def new?
@@ -44,6 +45,16 @@ class SpeakerPolicy < ApplicationPolicy
   end
 
   class Scope < Scope
+    def resolve
+      if user.viewer?
+        scope.joins(:stories).where(stories: {permission_level: :anonymous}).distinct
+      elsif user.member?
+        scope.joins(:stories).where(stories: {permission_level: [:anonymous, :user_only]}).distinct
+      else
+        scope.all
+      end
+    end
+
     def resolve_admin
       scope.where(community: user.community)
     end

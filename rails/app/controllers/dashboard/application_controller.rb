@@ -3,6 +3,7 @@ module Dashboard
     include Pundit::Authorization
 
     rescue_from Pundit::NotAuthorizedError, with: :not_authorized
+    rescue_from ActiveRecord::RecordNotFound, with: :not_found
 
     layout "dashboard"
 
@@ -17,6 +18,11 @@ module Dashboard
 
     def not_authorized
       flash.alert = "You are not authorized to perform this action"
+      redirect_to member_root_path
+    end
+
+    def not_found
+      flash.alert = "The resource you requested cannot be found"
       redirect_to member_root_path
     end
 
