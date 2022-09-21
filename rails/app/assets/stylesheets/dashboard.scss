@@ -5,6 +5,7 @@
 @import 'core/flexbox';
 @import 'core/spin';
 @import 'cms/layout';
+@import 'cms/tables';
 @import 'cms/columns';
 @import 'cms/search_filters';
 @import 'cms/forms';
@@ -27,4 +28,8 @@
 #static-map {
   min-height: 350px;
   min-width: 350px;
+}
+
+.metric {
+  font-size: 6rem;
 }

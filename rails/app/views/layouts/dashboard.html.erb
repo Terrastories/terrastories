@@ -18,10 +18,15 @@
     <div class="content-sidebar">
       <nav>
         <%= image_tag "logocombo.svg", alt: "Terrastories", class: "header--logo" %>
-        <h1><%= community.name %></h1>
-        <%= link_to t("stories"), stories_path, class: ("active-link" if params[:controller] == "dashboard/stories") %>
-        <%= link_to t("speakers"), speakers_path, class: ("active-link" if params[:controller] == "dashboard/speakers") %>
-        <%= link_to t("places"), places_path, class: ("active-link" if params[:controller] == "dashboard/places") %>
+        <% if current_user.super_admin %>
+          <%= link_to "Metrics", metrics_communities_path, class: ("active-link" if params[:controller] == "dashboard/communities" && params[:action] == "metrics_dashboard") %>
+          <%= link_to t("communities"), communities_path, class: ("active-link" if params[:controller] == "dashboard/communities" && params[:action] != "metrics_dashboard") %>
+        <% else %>
+          <h1><%= community.name %></h1>
+          <%= link_to t("stories"), stories_path, class: ("active-link" if params[:controller] == "dashboard/stories") %>
+          <%= link_to t("speakers"), speakers_path, class: ("active-link" if params[:controller] == "dashboard/speakers") %>
+          <%= link_to t("places"), places_path, class: ("active-link" if params[:controller] == "dashboard/places") %>
+        <% end %>
       </nav>
 
       <div class="settings">
@@ -41,17 +46,23 @@
     <div class="content-main">
       <div class="observer-sentinel"><%# do not remove this element! %></div>
       <div class="top-bar">
-        <form class="search" role="search" method="get" action=<%= search_path %>>
-          <label for="search">
-            <svg class="search__eyeglass-icon" role="img">
-              <title>
-                <%= t("search.label") %>
-              </title>
-              <use href="#icon-eyeglass" />
-            </svg>
-          </label>
-          <input placeholder=<%= t("search.label") %> class="search__input" type="search" id="search" name="search" value="<%= params[:search] %>" />
-        </form>
+        <% if current_user.super_admin %>
+          <div class="super-bar">
+            Super
+          </div>
+        <% else %>
+          <form class="search" role="search" method="get" action=<%= search_path %>>
+            <label for="search">
+              <svg class="search__eyeglass-icon" role="img">
+                <title>
+                  <%= t("search.label") %>
+                </title>
+                <use href="#icon-eyeglass" />
+              </svg>
+            </label>
+            <input placeholder=<%= t("search.label") %> class="search__input" type="search" id="search" name="search" value="<%= params[:search] %>" />
+          </form>
+        <% end %>
         <div class="top-nav">
           <div class="user-nav">
             <%= current_user.email %>

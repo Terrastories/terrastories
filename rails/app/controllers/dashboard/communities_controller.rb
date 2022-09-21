@@ -1,8 +1,15 @@
 module Dashboard
   class CommunitiesController < ApplicationController
-    layout 'super_admin'
-
     before_action :authenticate_super_admin!
+
+    def metrics_dashboard
+      render locals: {
+        places_count: Place.all.size,
+        stories_count: Story.all.size,
+        speakers_count: Speaker.all.size,
+        communities_count: Community.all.size
+      }
+    end
 
     def index
       @page = CommunitiesPage.new(meta_params)

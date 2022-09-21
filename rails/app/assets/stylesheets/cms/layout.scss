@@ -70,27 +70,10 @@ z-indicies:
     display: inline-block;
   }
 
-  .menu {
+  .super-bar {
     @include flexbox;
-
-    img.logo {
-      margin: .5rem;
-      height: calc(45px - 1rem);
-    }
-
-    nav {
-      margin-left: 1rem;
-      flex-direction: row;
-      align-items: stretch;
-      justify-content: center;
-
-      > a {
-        width: max-content;
-        display: block;
-        padding: 0 0.5rem;
-        text-decoration: none;
-      }
-    }
+    align-items: center;
+    margin-left: 1rem;
   }
 
   .top-nav {
