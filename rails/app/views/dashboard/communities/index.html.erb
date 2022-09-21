@@ -7,6 +7,13 @@
   <h2><%= t("communities") %></h2>
   <%= link_to t("dashboard.actions.new"), new_community_path, class: "btn" if policy(:community).new? %>
   </div>
+    <%= form_with url: communities_path, method: :get, class: "filters", local: true do |f| %>
+    <div>
+    <%= f.label :name %>
+    <%= f.text_field :name, value: params[:name] %>
+    </div>
+    <%= f.submit t("search.label"), name: nil %>
+  <% end %>
 <% end %>
 
 <div class="infinite-scroll">

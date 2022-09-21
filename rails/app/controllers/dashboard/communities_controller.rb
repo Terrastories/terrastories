@@ -12,7 +12,7 @@ module Dashboard
     end
 
     def index
-      @page = CommunitiesPage.new(meta_params)
+      @page = CommunitiesPage.new(filter_params)
       @communities = @page.data
 
       respond_to do |format|
@@ -66,6 +66,14 @@ module Dashboard
     end
 
     private
+
+    def filter_params
+      params.permit(
+        :limit,
+        :offset,
+        :name
+      )
+    end
 
     def authenticate_super_admin!
       raise Pundit::NotAuthorizedError unless current_user.super_admin
