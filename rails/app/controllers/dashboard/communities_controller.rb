@@ -5,7 +5,7 @@ module Dashboard
     before_action :authenticate_super_admin!
 
     def index
-      @page = CommunitiesPage.new(params)
+      @page = CommunitiesPage.new(meta_params)
       @communities = @page.data
 
       respond_to do |format|

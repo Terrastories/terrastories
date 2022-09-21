@@ -19,10 +19,10 @@
     <div data-infinite-scroll="pagination">
       <%#= Prev/Next Pagination Links for folks that don't use / have JavaScript %>
       <% if @page.meta[:offset] > 0 %>
-        <%= link_to "Prev", search_path(request.query_parameters.merge(offset: @page.meta[:offset] - @page.meta[:limit])), rel: "prev" %>
+        <%= link_to "Prev", communities_url(request.query_parameters.merge(offset: @page.meta[:offset] - @page.meta[:limit])), rel: "prev" %>
       <% end %>
       <% if @page.meta[:next_offset] %>
-        <%= link_to "Next", search_path(request.query_parameters.merge(offset: @page.meta[:next_offset])), rel: "next" %>
+        <%= link_to "Next", communities_url(request.query_parameters.merge(offset: @page.meta[:next_offset])), rel: "next" %>
       <% end %>
     </div>
   <% end %>
