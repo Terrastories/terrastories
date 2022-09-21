@@ -36,5 +36,12 @@ module Dashboard
     def community
       @community ||= current_user.community
     end
+
+    def meta_params
+      params.permit(
+        :limit,
+        :offset
+      )
+    end
   end
 end

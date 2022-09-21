@@ -1,7 +1,7 @@
 module Dashboard
   class SpeakersController < ApplicationController
     def index
-      @page = SpeakersPage.new(community_speakers, params)
+      @page = SpeakersPage.new(community_speakers, meta_params)
       @speakers = @page.data
 
       respond_to do |format|
