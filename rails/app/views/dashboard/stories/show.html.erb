@@ -80,18 +80,16 @@
             <%= image_tag(media, width: 400) %>
           <% end %>
         <% elsif media.video? %>
-          <% if media.previewable? %>
-            <video
-              controls
-              disablePictureInPicture
-              controlsList="nodownload"
-              id="video-player-<%= media.blob.id %>"
-              poster="<%= url_for(media.preview(resize_to_limit:[nil, 400])) %>"
-            >
-              <source src="<%= url_for(media) %>"/>
-              <%= t("video_unsupported") %>
-            </video>
-          <% end %>
+          <video
+            controls
+            disablePictureInPicture
+            controlsList="nodownload"
+            id="video-player-<%= media.blob.id %>"
+            poster="<%= url_for(media.preview(resize_to_limit:[nil, 400])) if media.previewable? %>"
+          >
+            <source src="<%= url_for(media) %>"/>
+            <%= t("video_unsupported") %>
+          </video>
         <% elsif media.audio? %>
           <audio id="audio-player-<%= media.blob.id %>"
             controls
