@@ -4,6 +4,7 @@ ARG precompileassets
 RUN apk --no-cache add --update \
     build-base \
     linux-headers \
+    less \
     nodejs \
     yarn \
     tzdata \
