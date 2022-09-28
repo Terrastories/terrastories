@@ -43,7 +43,6 @@ end
 #  id                :bigint           not null, primary key
 #  birthdate         :datetime
 #  name              :string
-#  photo             :string
 #  speaker_community :string
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
