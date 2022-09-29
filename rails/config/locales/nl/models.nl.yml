@@ -9,8 +9,10 @@ nl:
       invalid_bearing: value should be between -180 and 180
   helpers:
     label:
-      place: Plaats
-      speaker: Spreker
+      place:
+        one: Plaats
+      speaker:
+        one: Spreker
       visibility: Visibility
   activerecord:
     errors:

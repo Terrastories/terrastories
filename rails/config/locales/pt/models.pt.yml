@@ -9,8 +9,10 @@ pt:
       invalid_bearing: value should be between -180 and 180
   helpers:
     label:
-      place: Lugar
-      speaker: Orador
+      place:
+        one: Lugar
+      speaker:
+        one: Orador
       visibility: Visibility
   activerecord:
     errors:
