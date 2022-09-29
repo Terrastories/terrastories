@@ -26,7 +26,7 @@ es:
     theme:
       welcome_screen: Pantalla de Bienvenida
       background_img: Customize the background image on the landing page of your community.
-      sponsor_logos: Display sponsorship logos on your community page to thank your supporters.
+      sponsor_logos: Display logos on your community page. This could be your organization's logo, or that of a project sponsor. Multiple logos can be added.
   search:
     clear: Limpiar busqueda
     label: Buscar
