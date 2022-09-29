@@ -79,6 +79,16 @@
 
   p {
     margin: 1rem 0;
+    max-height: 200px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 10;
+    -webkit-box-orient: vertical;
+
+    // break-word is deprecated;
+    // but since folks are adding links
+    // as plain text, this will ensure it's visible.
+    word-wrap: break-word;
 
     &:last-child {
       margin-bottom: 0;
