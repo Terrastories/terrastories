@@ -50,11 +50,11 @@
               <%= story.title %>
             </h3>
 
-            <% if story.language %>
+            <% if story.language.present? %>
               <span class="badge"><%= story.language %></span>
             <% end %>
 
-            <% if story.permission_level %>
+            <% if story.permission_level.present? %>
               <span class="badge"><%= Story.human_attribute_name("permission_level.#{story.permission_level}") %></span>
             <% end %>
 
