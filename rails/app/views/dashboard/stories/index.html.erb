@@ -9,11 +9,11 @@
   </div>
   <%= form_with url: stories_path, method: :get, class: "filters", local: true do |f| %>
     <div>
-    <%= f.label :place %>
+    <%= f.label :place, t("place") %>
     <%= f.collection_select :place, community.places, :id, :name, include_blank: t("filter.all"), selected: params[:place] %>
     </div>
     <div>
-    <%= f.label :speaker %>
+    <%= f.label :speaker, t("speaker") %>
     <%= f.collection_select :speaker, community.speakers, :id, :name, include_blank: t("filter.all"), selected: params[:speaker] %>
     </div>
     <% unless current_user.viewer? %>
