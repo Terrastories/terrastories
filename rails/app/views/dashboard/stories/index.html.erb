@@ -22,7 +22,7 @@
       <%= f.select :visibility, Story.permission_levels.map { |k, v| [Story.human_attribute_name("permission_level.#{k}"), v]}, include_blank: t("filter.any"), selected: params[:visibility] %>
       </div>
     <% end %>
-    <%= f.submit t("filter.label"), name: nil %>
+    <%= f.submit t("filter.label"), name: nil, class: "filter" %>
   <% end %>
 <% end %>
 

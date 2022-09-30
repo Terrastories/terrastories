@@ -1,4 +1,4 @@
-<%= form_with model: @speaker, multipart: true, data: {remote: false}, class: "aligned" do |f| %>
+<%= form_with model: @speaker, multipart: true, data: {remote: false}, class: "form aligned" do |f| %>
   <%= render partial: "shared/form_errors", locals: { resource: @speaker } %>
 
   <%= f.label :name %>

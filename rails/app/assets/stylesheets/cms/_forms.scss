@@ -1,10 +1,10 @@
-form {
+form.form {
   @include ui-font;
 
   &.aligned {
     width: 50%;
 
-    input {
+    input:not([type=checkbox]):not([type=submit]), select {
       width: 100%;
     }
   }
@@ -43,7 +43,6 @@ form {
     border: none;
     padding: 0.5rem 1rem;
     cursor: pointer;
-    width: inherit;
   }
 
   .checklist {
@@ -93,9 +92,11 @@ form {
     @include flexbox;
     row-gap: 1rem;
     column-gap: 1rem;
-    input:not([type=checkbox]) {
+
+    input:not([type=checkbox]):not([type=submit]), select {
       min-width: 100px;
     }
+
     > * {
       @include flex(1);
       width: calc(50% - 2rem);

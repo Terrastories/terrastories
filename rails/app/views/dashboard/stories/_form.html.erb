@@ -1,4 +1,4 @@
-<%= form_with model: @story, multipart: true, data: {remote: false}, locale: true do |f| %>
+<%= form_with model: @story, multipart: true, class: "form", data: {remote: false}, locale: true do |f| %>
   <%= render partial: "shared/form_errors", locals: { resource: @story } %>
 
   <%= f.label :title %>
