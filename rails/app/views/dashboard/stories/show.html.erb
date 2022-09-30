@@ -31,11 +31,13 @@
     <section>
       <div id="static-map"></div>
       <% @story.places.each do |place| %>
-        <span class="badge"><%= place.name[0].upcase %></span>
-        <%= place.name %>
         <p>
-          <%= place.region %>
-          <%= place.type_of_place %>
+          <span class="badge"><%= place.name[0].upcase %></span>
+          <%= place.name %>
+        </p>
+        <p>
+          <% if place.region.present? %><span class="badge"><%= place.region %></span><% end %>
+          <% if place.type_of_place.present? %><span class="badge"><%= place.type_of_place %></span><% end %>
         </p>
       <% end %>
     </section>
