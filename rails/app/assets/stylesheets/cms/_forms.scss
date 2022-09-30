@@ -51,6 +51,10 @@ form {
 
   .input-group {
     margin: 0.5rem 0;
+
+    input[type=checkbox] + label {
+      display: inline-block
+    }
   }
 
   .side-by-side {

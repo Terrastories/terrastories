@@ -79,23 +79,23 @@
             <label><%= t("map.sw_corner") %></label>
             <div class="input-group">
               <%= f.label :sw_boundary_lat %>
-              <%= f.number_field :sw_boundary_lat, optional: true %>
+              <%= f.number_field :sw_boundary_lat, optional: true, value: @theme.sw_boundary_lat %>
             </div>
             <div class="input-group">
               <%= f.label :sw_boundary_long %>
-              <%= f.number_field :sw_boundary_long, optional: true %>
+              <%= f.number_field :sw_boundary_long, optional: true, value: @theme.sw_boundary_long %>
             </div>
           </div>
           <div>
             <label><%= t("map.ne_corner") %></label>
             <div class="input-group">
               <%= f.label :ne_boundary_lat %>
-              <%= f.number_field :ne_boundary_lat, optional: true %>
+              <%= f.number_field :ne_boundary_lat, optional: true, value: @theme.ne_boundary_lat %>
             </div>
 
             <div class="input-group">
               <%= f.label :ne_boundary_long %>
-              <%= f.number_field :ne_boundary_long, optional: true %>
+              <%= f.number_field :ne_boundary_long, optional: true, value: @theme.ne_boundary_long %>
             </div>
           </div>
         </div>
@@ -181,12 +181,11 @@ themeMap.on("moveend", (e) => {
   themeForm.querySelector("input#theme_center_lat").setAttribute("value", lat);
 
   if (!themeForm.querySelector("input#unrestricted_bounds").checked) {
-    console.log("updating bounds")
     let { _ne, _sw } = themeMap.getBounds();
-    themeForm.querySelector("input#theme_ne_boundary_long").setAttribute("value", _ne.lng);
-    themeForm.querySelector("input#theme_ne_boundary_lat").setAttribute("value", _ne.lat);
-    themeForm.querySelector("input#theme_sw_boundary_long").setAttribute("value", _sw.lng);
-    themeForm.querySelector("input#theme_sw_boundary_lat").setAttribute("value", _sw.lat);
+    themeForm.querySelector("input#theme_ne_boundary_long").value = _ne.lng;
+    themeForm.querySelector("input#theme_ne_boundary_lat").value = _ne.lat;
+    themeForm.querySelector("input#theme_sw_boundary_long").value = _sw.lng;
+    themeForm.querySelector("input#theme_sw_boundary_lat").value = _sw.lat;
   }
 });
 
@@ -212,11 +211,11 @@ themeForm.querySelector("input#unrestricted_bounds").addEventListener("click", (
   if (e.target.checked) {
     themeForm.querySelectorAll(".unrestricted_bounds input").forEach((item)=>{item.removeAttribute("value")})
   } else {
-    let { _ne, _sw } = themeMap.getBounds();
-    themeForm.querySelector("input#theme_ne_boundary_long").setAttribute("value", _ne.lng);
-    themeForm.querySelector("input#theme_ne_boundary_lat").setAttribute("value", _ne.lat);
-    themeForm.querySelector("input#theme_sw_boundary_long").setAttribute("value", _sw.lng);
-    themeForm.querySelector("input#theme_sw_boundary_lat").setAttribute("value", _sw.lat);
+    var { _ne, _sw } = themeMap.getBounds();
+    themeForm.querySelector("input#theme_ne_boundary_long").value = _ne.lng;
+    themeForm.querySelector("input#theme_ne_boundary_lat").value = _ne.lat;
+    themeForm.querySelector("input#theme_sw_boundary_long").value = _sw.lng;
+    themeForm.querySelector("input#theme_sw_boundary_lat").value = _sw.lat;
   }
 })
 
