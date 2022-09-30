@@ -1,0 +1,47 @@
+.import {
+  input[type=submit] {
+    margin-top: 1rem;
+    display: block;
+    color: $white;
+    background-color: $orange;
+    padding: 0.5rem 1rem;
+    border: none;
+  }
+
+  .table input[type=submit] {
+    margin: 0;
+  }
+
+  .file-drop {
+    max-width: 285px;
+  }
+
+  button.csv-download {
+    margin-bottom: 0.5rem;
+  }
+
+  table {
+    @include ui-font;
+    font-size: .8rem;
+    margin-bottom: 1rem;
+
+    tr {
+      display: table-row;
+    }
+
+    td, th {
+      border: 1px solid $off-white;
+      padding: 0.25rem 0.25rem;
+
+      select {
+        width: 100%;
+        border: none;
+      }
+    }
+
+    span.error_message {
+      font-size: .6rem;
+      color: $dark-red;
+    }
+  }
+}

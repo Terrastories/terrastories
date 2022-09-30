@@ -1,0 +1,18 @@
+<%= form_with model: record, method: "post", class: "tr", multipart: true do |f| %>
+  <%= f.hidden_field :dom_target, value: target %>
+
+  <% record.class.csv_headers.each do |header| %>
+    <span class="td" data-field-name="test<%= header %>">
+      <%- value = record.send(header) %>
+      <% if value.respond_to?(:attached?) %>
+        <%= value.attached? ? "Photo attached" : "Nothing attached" %>
+      <% else %>
+        <%= f.text_field header, value: value, class: "error" %>
+        <span class="error_message"><%= record.errors[header.to_sym].first %></span>
+      <% end %>
+    </span>
+  <% end %>
+  <span class="td">
+    <%= f.submit %>
+  </span>
+<% end %>

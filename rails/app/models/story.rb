@@ -1,4 +1,5 @@
 class Story < ApplicationRecord
+  include Importable
   MEDIA_PATH = Rails.env.test? ? 'spec/fixtures/media' : 'import/media'
 
   has_many :speaker_stories, inverse_of: :story
@@ -44,6 +45,13 @@ class Story < ApplicationRecord
   end
 
   enum permission_level: [:anonymous, :user_only, :editor_only]
+
+  EXCLUDE_ATTRIBUTES_FROM_IMPORT = [
+    "speaker_stories",
+    "media_attachments",
+    "media_links",
+    "media_blobs"
+  ]
 end
 
 # == Schema Information

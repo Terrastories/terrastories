@@ -1,0 +1,118 @@
+<% content_for(:title) do %>
+  <%= t("import") %>
+<% end %>
+
+<% content_for(:main_heading) do %>
+  <h2><%= t("import") %></h2>
+<% end %>
+
+<p>
+This import tool is provided for communities to populate stories, places, and
+speakers in bulk rather than needing to manually input one by one.
+</p>
+
+<%= link_to "Download sample", "https://drive.google.com/file/d/1Ir6TC5THEoQKk-98JZ5KpTjXd-R6yMmA/view" %>
+
+<p class="errors">
+Ensure your media is placed in the `data/import/media` folder before running
+import. Failure to do so will result in your data importing without images.
+</p>
+
+<p class="errors">
+If you are importing from an online instance, any media defined in your CSV
+will not be processed. You will need to manually add your media once import is
+completed.
+</p>
+
+<%= form_with url: import_path, method: :post, multipart: true, data: {remote: false}, class: "import" do |f| %>
+<div id="place">
+  <h4><%= t("places") %></h4>
+  <button class="csv-download" data-target="#places" data-filename="places.csv">Download Sample CSV</button>
+  <div class="two-columns">
+    <div class="two-columns-left file-drop">
+      <%= f.label :places_csv %>
+      <%= f.file_field :places_csv, accept: ".csv", data: {model: "place"} %>
+    </div>
+    <div class="two-columns-right">
+      Sample CSV
+      <table id="places">
+      <tr>
+        <% Place.csv_headers.each do |header| %>
+          <th data-field-value="<%= header %>"><%= header %></th>
+        <% end %>
+      <tr>
+      </table>
+    </div>
+  </div>
+  <div class="preview"></div>
+</div>
+<div id="speaker">
+  <h4><%= t("speakers") %></h4>
+  <button class="csv-download" data-target="#speakers" data-filename="speakers.csv">Download Sample CSV</button>
+  <div class="two-columns">
+    <div class="two-columns-left file-drop">
+      <%= f.label :speakers_csv %>
+      <%= f.file_field :speakers_csv, accept: ".csv", data: {model: "speaker"} %>
+    </div>
+    <div class="two-columns-right">
+      Sample CSV
+      <table id="speakers">
+      <tr>
+        <% Speaker.csv_headers.each do |header| %>
+          <th data-field-value="<%= header %>"><%= header %></th>
+        <% end %>
+      <tr>
+      </table>
+    </div>
+  </div>
+  <div class="preview"></div>
+</div>
+
+<div id="story">
+  <h4><%= t("stories") %></h4>
+  <button class="csv-download" data-target="#stories" data-filename="stories.csv">Download Sample CSV</button>
+  <div class="two-columns">
+    <div class="two-columns-left file-drop">
+    <%= f.label :stories_csv %>
+    <%= f.file_field :stories_csv, accept: ".csv", data: {model: "story"} %>
+    </div>
+    <div class="two-columns-right">
+      Sample CSV
+      <table id="stories">
+      <tr>
+        <% Story.csv_headers.each do |header| %>
+          <th data-field-value="<%= header %>"><%= header %></th>
+        <% end %>
+      <tr>
+      </table>
+    </div>
+  </div>
+  <div class="preview"></div>
+</div>
+
+<%= f.submit :import %>
+<% end %>
+
+<script type="text/javascript">
+document.querySelectorAll("input[type=file]").forEach(input => {
+  input.addEventListener("change", function(e) {
+    let file = e.target.files[0];
+    let model = e.target.dataset.model;
+
+    let formData = new FormData()
+    formData.append("file", file)
+    formData.append("model", model)
+
+    fetch("import/preview", {
+      method: "POST",
+      body: formData,
+      headers: {
+        'X-CSRF-Token': document.querySelector('meta[name=csrf-token]').content
+      }
+    }).then((resp) => resp.json())
+    .then(data => {
+      document.querySelector(`#${model} > div.preview`).innerHTML = data.headers
+    })
+  })
+})
+</script>

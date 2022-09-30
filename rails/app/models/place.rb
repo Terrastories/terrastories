@@ -1,4 +1,5 @@
 class Place < ApplicationRecord
+  include Importable
   MEDIA_PATH = Rails.env.test? ? 'spec/fixtures/media' : 'import/media'
 
   require 'csv'
@@ -51,6 +52,11 @@ class Place < ApplicationRecord
       )
     ).to_json
   end
+
+  EXCLUDE_ATTRIBUTES_FROM_IMPORT = [
+    "stories",
+    "interview_stories"
+  ]
 
   private
 

@@ -7,10 +7,14 @@
 .two-columns-left {
   @include flex(1);
   @include order(1);
+
+  overflow: scroll;
 }
 .two-columns-right {
   @include flex(1);
   @include order(2);
+
+  overflow: scroll;
 }
 
 .two-columns-right.with-images-list {

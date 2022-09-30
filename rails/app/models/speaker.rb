@@ -1,4 +1,5 @@
 class Speaker < ApplicationRecord
+  include Importable
   require 'csv'
 
   has_many :speaker_stories
@@ -34,6 +35,11 @@ class Speaker < ApplicationRecord
       csv << headers
     end
   end
+
+  EXCLUDE_ATTRIBUTES_FROM_IMPORT = [
+    "stories",
+    "speaker_stories"
+  ]
 end
 
 # == Schema Information

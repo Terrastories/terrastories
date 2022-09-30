@@ -30,6 +30,9 @@ Rails.application.routes.draw do
             get :metrics_dashboard, as: :metrics
           end
         end
+        resource :import, only: [:show, :create] do
+          post :preview
+        end
       end
     end
 
