@@ -6,11 +6,13 @@
       <%= image_tag asset_path("home-icon.svg"), class: "card__img", alt: place.name, title: place.name, height: 150 %>
     <% end %>
     <div>
-    <h3>
-      <% if place.region %><span class="card__heading--small"><%= place.region %></span><% end %>
-      <%= place.name %>
-    </h3>
-    <% if place.region %><span class="badge"><%= place.type_of_place %></span><% end %>
+      <h3>
+        <% if place.region.present? %>
+          <span class="card__heading--small"><%= place.region %></span>
+        <% end %>
+        <%= place.name %>
+      </h3>
+      <% if place.type_of_place.present? %><span class="badge"><%= place.type_of_place %></span><% end %>
     </div>
     <% if place.description.present? %><p><%= place.description %></p><% end %>
   <% end %>
