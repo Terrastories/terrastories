@@ -177,15 +177,15 @@ const themeMap = new mapboxgl.Map({
 themeMap.on("moveend", (e) => {
   let themeForm = document.querySelector("#themeForm");
   let { lng, lat } = e.target.getCenter();
-  themeForm.querySelector("input#theme_center_long").setAttribute("value", lng);
-  themeForm.querySelector("input#theme_center_lat").setAttribute("value", lat);
+  themeForm.querySelector("input#theme_center_long").value = lng.toFixed(5);
+  themeForm.querySelector("input#theme_center_lat").value = lat.toFixed(5);
 
   if (!themeForm.querySelector("input#unrestricted_bounds").checked) {
     let { _ne, _sw } = themeMap.getBounds();
-    themeForm.querySelector("input#theme_ne_boundary_long").value = _ne.lng;
-    themeForm.querySelector("input#theme_ne_boundary_lat").value = _ne.lat;
-    themeForm.querySelector("input#theme_sw_boundary_long").value = _sw.lng;
-    themeForm.querySelector("input#theme_sw_boundary_lat").value = _sw.lat;
+    themeForm.querySelector("input#theme_ne_boundary_long").value = _ne.lng.toFixed(5);
+    themeForm.querySelector("input#theme_ne_boundary_lat").value = _ne.lat.toFixed(5);
+    themeForm.querySelector("input#theme_sw_boundary_long").value = _sw.lng.toFixed(5);
+    themeForm.querySelector("input#theme_sw_boundary_lat").value = _sw.lat.toFixed(5);
   }
 });
 
@@ -212,10 +212,10 @@ themeForm.querySelector("input#unrestricted_bounds").addEventListener("click", (
     themeForm.querySelectorAll(".unrestricted_bounds input").forEach((item)=>{item.removeAttribute("value")})
   } else {
     var { _ne, _sw } = themeMap.getBounds();
-    themeForm.querySelector("input#theme_ne_boundary_long").value = _ne.lng;
-    themeForm.querySelector("input#theme_ne_boundary_lat").value = _ne.lat;
-    themeForm.querySelector("input#theme_sw_boundary_long").value = _sw.lng;
-    themeForm.querySelector("input#theme_sw_boundary_lat").value = _sw.lat;
+    themeForm.querySelector("input#theme_ne_boundary_long").value = _ne.lng.toFixed(5);
+    themeForm.querySelector("input#theme_ne_boundary_lat").value = _ne.lat.toFixed(5);
+    themeForm.querySelector("input#theme_sw_boundary_long").value = _sw.lng.toFixed(5);
+    themeForm.querySelector("input#theme_sw_boundary_lat").value = _sw.lat.toFixed(5);
   }
 })
 
