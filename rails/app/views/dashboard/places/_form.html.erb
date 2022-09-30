@@ -1,14 +1,14 @@
 <%= form_with model: @place, multipart: true, data: {remote: false} do |f| %>
   <%= render partial: "shared/form_errors", locals: { resource: @place } %>
 
-  <%= f.label :description %>
-  <%= f.text_field :description %>
-
   <%= f.label :name %>
   <%= f.text_field :name %>
 
   <%= f.label :name_audio %>
   <%= f.file_field :name_audio %>
+
+  <%= f.label :description %>
+  <%= f.text_area :description %>
 
   <% if @place.name_audio.attached? %>
   <ul class="filename-list">
