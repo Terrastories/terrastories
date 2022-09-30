@@ -5,7 +5,7 @@
     <% else %>
       <%= image_tag asset_path("speaker.png"), class: "card__img--circle" %>
     <% end %>
-    <div><%= user.email %></div>
+    <div class="card--wrap"><%= user.email %></div>
     <% if user.role %>
       <div class="badge"><%= User.human_attribute_name("role.#{user.role}") %></div>
     <% end %>

@@ -53,6 +53,10 @@
     justify-content: center;
   }
 
+  &--wrap {
+    word-break: break-word;
+  }
+
   &__img--circle {
     border-radius: 50%;
     width: 100%;
