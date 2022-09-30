@@ -49,7 +49,7 @@
       <div class="top-bar">
         <% if current_user.super_admin %>
           <div class="super-bar">
-            Super
+            Super Admin Dashboard
           </div>
         <% else %>
           <form class="search" role="search" method="get" action=<%= search_path %>>
@@ -79,7 +79,7 @@
               <li><%= link_to t("logout"), destroy_user_session_path, method: :delete  %></li>
             </ul>
           </div>
-          <%= link_to t("dashboard.back_to_app"), home_map_path %>
+          <%= link_to t("dashboard.back_to_app"), home_map_path unless current_user.super_admin %>
         </div>
       </div>
       <main>
