@@ -7,11 +7,11 @@
       </h3>
 
       <% if story.language.present? %>
-        <span class="badge"><%= story.language %></span>
+        <span class="badge badge-red"><%= story.language %></span>
       <% end %>
 
       <% if story.permission_level.present? %>
-        <span class="badge"><%= Story.human_attribute_name("permission_level.#{story.permission_level}") %></span>
+        <span class="badge badge-green"><%= Story.human_attribute_name("permission_level.#{story.permission_level}") %></span>
       <% end %>
 
     <p><%= story.desc %></p>
@@ -19,10 +19,12 @@
 
     <div>
       <span>
+        <% if story.places.any? %>
         <svg class="icon">
           <use href="#icon-location-pin">
         </svg>
         <%= story.places.map(&:name).join(", ") %>
+        <% end %>
       </span>
       <div class="avatars">
         <% story.speakers.each do |speaker| %>

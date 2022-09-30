@@ -11,11 +11,11 @@
     <%= @story.title %>
     <div class="small">
       <% if @story.language.present? %>
-        <span class="badge"><%= @story.language %></span>
+        <span class="badge badge-red"><%= @story.language %></span>
       <% end %>
 
       <% if @story.permission_level.present? %>
-        <span class="badge"><%= Story.human_attribute_name("permission_level.#{@story.permission_level}") %></span>
+        <span class="badge badge-green"><%= Story.human_attribute_name("permission_level.#{@story.permission_level}") %></span>
       <% end %>
     </div>
   </h2>
@@ -28,19 +28,23 @@
 
 <div class="two-columns">
   <div class="two-columns-right column-fixed-350">
-    <section>
-      <div id="static-map"></div>
-      <% @story.places.each do |place| %>
-        <p>
-          <span class="badge"><%= place.name[0].upcase %></span>
-          <%= place.name %>
-        </p>
-        <p>
-          <% if place.region.present? %><span class="badge"><%= place.region %></span><% end %>
-          <% if place.type_of_place.present? %><span class="badge"><%= place.type_of_place %></span><% end %>
-        </p>
-      <% end %>
-    </section>
+    <% if @story.places.any? %>
+      <section>
+        <div id="static-map"></div>
+        <% @story.places.each do |place| %>
+          <p>
+            <span class="badge badge-blue"><%= place.name[0].upcase %></span>
+            <%= place.name %>
+          </p>
+          <p>
+            <% if place.region.present? %>
+              <%= place.region %>
+            <% end %>
+            <% if place.type_of_place.present? %><span class="badge"><%= place.type_of_place %></span><% end %>
+          </p>
+        <% end %>
+      </section>
+    <% end %>
 
     <section class="collection">
       <% if @story.interviewer %>
