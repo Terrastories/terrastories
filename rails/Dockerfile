@@ -6,6 +6,7 @@ RUN apk --no-cache add --update \
     linux-headers \
     less \
     nodejs \
+    python2 \
     yarn \
     tzdata \
     postgresql-dev \
