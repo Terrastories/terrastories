@@ -1,17 +1,39 @@
 form {
   @include ui-font;
 
+  &.aligned {
+    width: 50%;
+
+    input {
+      width: 100%;
+    }
+  }
+
   label {
     font-weight: bold;
     display: block;
+    margin: 0.25rem 0;
   }
 
-  input:not([type=checkbox]),
+  input:not([type=checkbox]):not([type=submit]),
   select,
   textarea {
     @include ui-font;
     border: 1px solid $lighter-gray;
     display: block;
+    padding: 0.25rem;
+    margin-bottom: 0.5rem;
+    min-width: 280px;
+  }
+
+  input[type=submit] {
+    margin-top: 1rem;
+    background-color: $medium-orange;
+    color: $off-white;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    width: inherit;
   }
 
   .checklist {
@@ -61,7 +83,9 @@ form {
     @include flexbox;
     row-gap: 1rem;
     column-gap: 1rem;
-
+    input:not([type=checkbox]) {
+      min-width: 100px;
+    }
     > * {
       @include flex(1);
       width: calc(50% - 2rem);
