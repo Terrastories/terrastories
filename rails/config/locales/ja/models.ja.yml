@@ -51,7 +51,7 @@ ja:
     attributes:
       place:
         name: 名前
-        name_audio: Name Audio
+        name_audio: Placename Audio
         description: 説明文
         type_of_place: プレースタイプ
         region: リージョン

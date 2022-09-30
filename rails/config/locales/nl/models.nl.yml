@@ -51,7 +51,7 @@ nl:
     attributes:
       place:
         name: Naam
-        name_audio: Name Audio
+        name_audio: Placename Audio
         description: Omschrijving
         type_of_place: Soort plaats
         region: Regio

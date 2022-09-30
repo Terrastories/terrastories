@@ -51,7 +51,7 @@ es:
     attributes:
       place:
         name: Nombre
-        name_audio: Audio del Nombre
+        name_audio: Audio del Placename
         description: Descripción
         type_of_place: Tipo de lugar
         region: Región

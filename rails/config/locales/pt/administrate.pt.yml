@@ -20,7 +20,7 @@ pt:
         lat: Latitude
         long: Longitude
         name: Nome
-        name_audio: Áudio
+        name_audio: Áudio de Placename
         description: Descrição
         type_of_place: Tipo de lugar
         region: Região
