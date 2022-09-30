@@ -1,6 +1,7 @@
 pt:
   profile: Profile
   interviewer: Entrevistador
+  import: Import
   map:
     center: Centro do mapa
     bounds: Caixa delimitadora do mapa

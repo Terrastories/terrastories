@@ -1,6 +1,7 @@
 mat:
   profile: Profile
   interviewer: Interviewer
+  import: Import
   map:
     center: Map Center
     bounds: Map Bounds

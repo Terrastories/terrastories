@@ -1,6 +1,7 @@
 ja:
   profile: Profile
   interviewer: インタビュアー
+  import: Import
   map:
     center: Map Center
     bounds: Map Bounds
