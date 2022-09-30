@@ -13,6 +13,16 @@ form {
     font-weight: bold;
     display: block;
     margin: 0.25rem 0;
+    position: relative;
+
+    &.required {
+      &::before {
+        content: "*";
+        color: $red;
+        position: absolute;
+        left: -0.5rem;
+      }
+    }
   }
 
   input:not([type=checkbox]):not([type=submit]),
