@@ -58,25 +58,19 @@ Successfully tagged terrastories:latest
 
 ## Run the application
 
-Within Powershell, run:
+Within the terminal, run:
 
 ```
-docker-compose up
+docker compose --profile dev up
 ```
 
 If this fails, make sure all firewalls are turned off and you have a secure connection to the internet. If it continues to fail, check 
 the [common setup errors](#having-troubles-check-our-common-errors--gotchas) section. 
 
-This command should terminate with an output similar to:
+For the first time running Terrastories, you have to create and seed a database. To do so, enter this command:
 
 ```
-terrastories_e2e_1 exited with code 0
-```
-
-Open another Powershell window and run the following command to setup:
-
-```
-docker-compose exec web bin/setup
+docker compose exec web bin/setup
 ```
 
 This command runs a setup script that lives in bin/setup, which does:
@@ -94,7 +88,7 @@ Everytime you want to open and use the application, make sure you have docker de
 Powershell:
 
 ```
-docker-compose up
+docker compose --profile dev up
 ```
 
 You can view the running application at `localhost:3000`

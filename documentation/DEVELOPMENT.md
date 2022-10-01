@@ -83,15 +83,13 @@ Note: the above code is assuming your build is called `terrastories`. It may be 
 ## Running Terrastories in Offline Mode
 
 Terrastories offline mode is generally used in the field, when there is no access to the internet.
- 
-In those cases, before starting the server, add `USE_LOCAL_MAP_SERVER=true` to your .env file. Remove this variable to go back to using mapbox.
 
-In order to get the local tileserver map running, you will also need to generate an `MBtiles` dataset and place it in `tileserver/data/mbtiles/` with the filename `terrastories.mbtiles`, along with any fonts, sprites used in the map, and a `style.json` file that defines the appearance of the tiles. Please see the [customization guide](documentation/CUSTOMIZATION.md) for more information.
-
-And instead of running docker-compose up, run 
+To start Terrastories with the offline profile, run 
 
 ```bash
-script/run_offline_maps.sh
+docker compose --profile offline up
 ```
+
+In order to get the local tileserver map running, you will also need to generate an `MBtiles` dataset and place it in `tileserver/data/mbtiles/` with the filename `terrastories.mbtiles`, along with any fonts, sprites used in the map, and a `style.json` file that defines the appearance of the tiles. Please see the [customization guide](documentation/CUSTOMIZATION.md) for more information.
 
 For more information on running Terrastories in an offline environment, see [documentation/SETUP-OFFLINE.md](SETUP-OFFLINE.md)
