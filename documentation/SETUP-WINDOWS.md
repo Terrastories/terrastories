@@ -46,7 +46,7 @@ Navigate back to the `.env` file you created and replace where it says [your pk 
 Open Powershell and navigate to the terrastories repository and run:
 
 ```
-docker-compose build
+docker compose --profile dev build
 ```
 
 This will download and build all the docker images used in this project. Upon completion you should see output similar to:
