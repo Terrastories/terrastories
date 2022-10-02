@@ -4,7 +4,7 @@ $el-shadow: 0 1px 4px $lighter-gray;
   position: relative;
   width: 45%;
   max-width: 25rem;
-  height: 100vh;
+  height: 100%;
 
   &.onCanvas {
     .card {
@@ -42,7 +42,7 @@ $el-shadow: 0 1px 4px $lighter-gray;
 
   .card {
     position: absolute;
-    height: 100vh;
+    height: 100%;
     width: 100%;
     background: white;
     border: 1px solid $lightest-gray;
@@ -51,7 +51,7 @@ $el-shadow: 0 1px 4px $lighter-gray;
     background: $off-white;
     padding: 0.5rem;
     box-shadow: 3px 2px 3px transparentize($dark-gray, 0.9);
-    transition: left 0.20s ease-in-out;
+    transition: left 0.2s ease-in-out;
   }
 
   .bar {
@@ -74,7 +74,7 @@ $el-shadow: 0 1px 4px $lighter-gray;
     border-radius: 0 6px 6px 0;
     background: $dark-blue;
     box-shadow: 3px 2px 3px transparentize($dark-gray, 0.9);
-    transition: all 0.20s ease-in-out;
+    transition: all 0.2s ease-in-out;
   }
 
   .card--logo {
@@ -103,7 +103,8 @@ $el-shadow: 0 1px 4px $lighter-gray;
     font-family: sans-serif;
     margin-bottom: 0.75rem;
 
-    &-filter, &-sort {
+    &-filter,
+    &-sort {
       font-family: 'OpenSansCondensed';
       color: $default-text;
     }
@@ -183,9 +184,6 @@ $el-shadow: 0 1px 4px $lighter-gray;
 @include for-phone-only {
   .cardContainer {
     &.onCanvas {
-      width: 0;
-      height: 0;
-
       .closeMe {
         display: none;
       }
@@ -201,9 +199,7 @@ $el-shadow: 0 1px 4px $lighter-gray;
     }
 
     &.offCanvas {
-      width: 100vw;
-      height: 100vh;
-      max-width: none;
+      width: 100%;
 
       .card {
         top: 0;
@@ -236,7 +232,7 @@ $el-shadow: 0 1px 4px $lighter-gray;
         outline: none;
       }
 
-      -webkit-tap-highlight-color: rgba(0,0,0,0);
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
       -webkit-tap-highlight-color: transparent;
 
       &:after {

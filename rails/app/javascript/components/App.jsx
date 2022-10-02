@@ -343,7 +343,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <React.Fragment>
         <Map
           points={this.state.points}
           mapboxAccessToken={this.props.mapbox_access_token}
@@ -384,7 +384,7 @@ class App extends Component {
           itemOptions={this.state.itemOptions}
         />
         <IntroPopup />
-      </div>
+      </React.Fragment>
     );
   }
 }
