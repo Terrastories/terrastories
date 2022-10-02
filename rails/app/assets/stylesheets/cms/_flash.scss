@@ -1,0 +1,26 @@
+div.flash-messages {
+  position: absolute;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  z-index: 1000;
+}
+
+span.flash {
+  @include ui-font;
+
+  background-color: lighten($green, 40%);
+  padding: 1rem;
+  margin: 1rem;
+  border: 1px solid $dark-green;
+  opacity: 1;
+
+  &.flash-notice {
+    background-color: lighten($dark-blue, 60%);
+    border-color: $dark-blue;
+  }
+  &.flash-alert {
+    background-color: lighten($red, 35%);
+    border-color: $dark-red;
+  }
+}
