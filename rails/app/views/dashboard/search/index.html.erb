@@ -1,0 +1,26 @@
+<% content_for(:title) do %>
+  <%= t("search.label") %>
+<% end %>
+
+<% content_for(:main_heading) do %>
+<h2><%= t("search.heading") %></h2>
+<% end %>
+
+<div class="infinite-scroll">
+  <% if @results.empty? %>
+    <p><%= t("list.no_results", resources: t("search.heading").downcase) %></p>
+  <% else %>
+    <div data-infinite-scroll="entries" class="collection-table">
+      <%= render "results" %>
+    </div>
+    <div data-infinite-scroll="pagination">
+      <%#= Prev/Next Pagination Links for folks that don't use / have JavaScript %>
+      <% if @page.meta[:offset] > 0 %>
+        <%= link_to "Prev", search_path(request.query_parameters.merge(offset: @page.meta[:offset] - @page.meta[:limit])), rel: "prev" %>
+      <% end %>
+      <% if @page.meta[:next_offset] %>
+        <%= link_to "Next", search_path(request.query_parameters.merge(offset: @page.meta[:next_offset])), rel: "next" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

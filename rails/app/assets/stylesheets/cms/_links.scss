@@ -1,0 +1,133 @@
+nav {
+  @include flexbox();
+
+  flex-direction: column;
+  align-items: stretch;
+
+  h1 {
+    font-size: 1.25rem;
+    text-align: center;
+  }
+}
+
+nav > a,
+.settings > a {
+  line-height: 2.5rem;
+  padding-left: 10px;
+  color: $darker-gray;
+
+  &:hover {
+    background-color: $off-white;
+  }
+
+  &.active-link {
+    background-color: $light-blue;
+  }
+}
+
+.settings {
+  @include flexbox();
+
+  flex-direction: column;
+  align-items: stretch;
+
+  // This to allow heading to align with full-width
+  // link text.
+  .inline-padding {
+    padding-left: 1rem;
+  }
+
+  h5 {
+    font-size: .8rem;
+    color: $light-gray;
+    margin-bottom: .5rem;
+    text-transform: uppercase;
+  }
+
+  > a {
+    @include ui-font;
+    line-height: 1.5rem;
+    font-size: .8rem;
+    padding: .25rem 1rem;
+  }
+
+  .language-picker {
+    @include ui-font;
+    padding: 2rem 1rem 1rem;
+    font-size: .7rem;
+
+    a {
+      color: $text-color;
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      text-decoration: none;
+      text-transform: uppercase;
+      background-color: $lightest-gray;
+
+      &:hover {
+        background-color: $light-gray;
+      }
+
+      &.selected {
+        background-color: $orange;
+        color: $off-white;
+
+        &:hover {
+          background-color: $dark-orange;
+        }
+      }
+    }
+  }
+}
+
+.btn {
+  background-color: $orange;
+  color: $off-white;
+  padding: 0.5rem 1rem;
+}
+
+.btn-danger {
+  background-color: $dark-red;
+}
+
+.user-nav {
+  // act like a link
+  cursor: pointer;
+
+  // relative position so we can absolute position dropdown
+  position: relative;
+
+  .dropdown {
+    // hide by default
+    display: none;
+    visibility: hidden;
+
+    // use transition to ease
+    transition: all 0.5s ease;
+
+    // absolute positioned to container
+    position: absolute;
+    top: 100%;
+
+    // make it looks nice
+    width: 100%;
+    background-color: $white;
+    border-top: 1px solid $blue;
+  }
+
+  &:hover .dropdown {
+    display: block;
+    visibility: visible;
+
+    li a {
+      display: block;
+      padding: .5rem;
+      color: $text-color;
+      text-decoration: none;
+    }
+
+    li:hover {
+      background-color: $off-white;
+    }
+  }
+}

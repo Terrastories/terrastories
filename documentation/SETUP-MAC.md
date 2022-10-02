@@ -45,7 +45,7 @@ Navigate back to the `.env` file you created and replace where it says [your pk 
 Open your terminal and navigate to the terrastories repository and run:
 
 ```
-docker-compose build
+docker compose --profile dev build
 ```
 
 This will download and build all the docker images used in this project. Upon completion you should see output similar to:
@@ -60,22 +60,16 @@ Successfully tagged terrastories:latest
 Within the terminal, run:
 
 ```
-docker-compose up
+docker compose --profile dev up
 ```
 
 If this fails, make sure all firewalls are turned off and you have a secure connection to the internet. If it continues to fail, check 
 the [common setup errors](#having-troubles-check-our-common-errors--gotchas) section. 
 
-This command should terminate with an output similar to:
+For the first time running Terrastories, you have to create and seed a database. To do so, enter this command:
 
 ```
-terrastories_e2e_1 exited with code 0
-```
-
-Open another terminal and run the following command to setup:
-
-```
-docker-compose exec web bin/setup
+docker compose exec web bin/setup
 ```
 
 This command runs a setup script that lives in bin/setup, which does:
@@ -92,7 +86,7 @@ Enter `localhost:3000` into your internet browser to view the application/
 Everytime you want to open and use the application, make sure you have docker desktop running and run the following command in the terminal: 
 
 ```
-docker-compose up
+docker compose --profile dev up
 ```
 
 You can view the running application at `localhost:3000`

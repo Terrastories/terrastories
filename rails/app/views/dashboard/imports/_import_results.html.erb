@@ -1,0 +1,15 @@
+<h5><%= result_heading %> (<%= result.size %>)</h5>
+<table>
+<tr>
+  <% result.first.keys.each do |header| %>
+    <th><%= label_tag(header) %></th>
+  <% end %>
+</tr>
+<% result.each do |row| %>
+  <tr>
+    <% row.each do |_, v| %>
+      <td><%=v %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>

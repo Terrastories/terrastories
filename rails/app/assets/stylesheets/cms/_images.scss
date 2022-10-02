@@ -1,0 +1,161 @@
+.with-media-list {
+  @include flexbox;
+  gap: 1.5rem;
+  margin: 1rem auto 2rem;
+  flex-wrap: wrap;
+
+  image, video, audio {
+    max-width: 300px;
+    max-height: 150px;
+  }
+}
+
+.media-with-controls {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  max-height: 150px;
+
+  video {
+    object-fit: contain;
+    width: 100%;
+  }
+
+  a {
+    position: absolute;
+    bottom: -1.2rem;
+  }
+}
+
+.media-with-hover-controls {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  span.overlay {
+    visibility: collapse;
+  }
+
+  a:not(.overlay) {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+
+    svg {
+      visibility: hidden;
+      max-height: 25px;
+      max-width: 25px;
+
+      &:hover {
+        fill: $dark-red;
+      }
+    }
+  }
+
+  &.deleting {
+    background-color: $darker-gray;
+
+    &::after {
+      content: image-url('loading.png');
+      position: absolute;
+
+      @include spinner;
+    }
+
+    img {
+      opacity: 50%;
+    }
+  }
+
+  &:hover {
+    a:not(.overlay) svg {
+      visibility: visible;
+    }
+
+    span.overlay {
+      visibility: visible;
+      background-color: $transparent-white;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+    }
+
+  }
+
+  &.rounded {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+
+    img {
+      width: 100px;
+      height: 100px;
+    }
+
+    a.overlay {
+      visibility: collapse;
+      position: absolute;
+      bottom: 0;
+      width: 100px;
+      height: 25px;
+      background-color: $transparent-white;
+      text-align: center;
+      color: $black;
+      font-size: small;
+
+      &:hover {
+        background-color: $transparent-white-hover;
+      }
+    }
+
+    &:hover {
+      a.overlay {
+        visibility: visible;
+      }
+    }
+  }
+}
+
+.img {
+  vertical-align: middle;
+
+  &--rounded {
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+  }
+
+  &--micro {
+    height: 20px;
+    width: 20px;
+  }
+
+  &--mini {
+    height: 30px;
+    width: 30px;
+  }
+
+  &--small {
+    height: 40px;
+    width: 40px;
+  }
+
+  &--large {
+    height: 60px;
+    width: 60px;
+  }
+
+  &--larger {
+    height: 75px;
+    width: 75px;
+  }
+
+  &--mega {
+    height: 100px;
+    width: 100px;
+  }
+}

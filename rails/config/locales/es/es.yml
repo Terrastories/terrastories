@@ -1,8 +1,24 @@
 es:
+  community: Comunidad
+  communities: Comunidads
+  media_link: Enlace De Medios
+  media_links: Enlaces De Medios
+  places: Lugares
+  place: Lugar
+  speakers: Oradores
+  speaker: Orador
+  stories: Historias
+  story: Historia
+  theme: Tema
+  users: Usuarios
+  user: Usuario
+
+  # Front End Translations
   admin_page: "Página de administración"
   alphabetical: A-Z
   back_to_map: "Volver al Mapa"
   back_to_welcome: "Volver a la página de inicio"
+  built_with_love: Built with ❤️ by
   close: "Cerrar"
   community_search:
     title: "Search for a Community to Explore"
@@ -19,7 +35,6 @@ es:
   language: "Idioma"
   login: "Login"
   logout: "Logout"
-  map: "¿Esto es un …mapa?"
   most_recent: "Más reciente"
   no_media: No Media Available
   password: "Contraseña"
@@ -35,6 +50,6 @@ es:
   sort_stories: "Ordenar las historias"
   speaker: "Orador"
   topic: "Tema"
+  video_unsupported: Lo sentimos, su navegador no admite videos incrustados.
   welcome: "Bienvenido/a"
   welcome_back: "Bienvenido/a de nuevo"
-

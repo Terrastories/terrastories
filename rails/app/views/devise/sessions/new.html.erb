@@ -3,7 +3,7 @@
     <%= image_tag 'logocombo.svg', alt: 'Terrastories' %>
     <h1><%= t("welcome") %></h1>
 
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), locale: true) do |f| %>
       <% if flash.any? %>
         <div class="flashes">
           <% flash.each do |key, value| -%>
@@ -20,19 +20,19 @@
       </div>
 
       <div class="field">
-        <%= f.label :password, t("password") %>
+        <%= f.label :password %>
         <%= f.password_field :password, autocomplete: "off" %>
       </div>
 
       <% if devise_mapping.rememberable? -%>
         <div class="field">
           <%= f.check_box :remember_me %>
-          <%= f.label :remember_me, t("remember_me") %>
+          <%= f.label :remember_me %>
         </div>
       <% end -%>
 
       <div class="actions">
-        <%= f.submit "Log in", value: t("login") %>
+        <%= f.submit t("login") %>
       </div>
     <% end %>
 
@@ -44,7 +44,7 @@
     <%= render "devise/shared/links" %>
 
   </div>
-  <span class="built-with">Built with ❤️ by</span>
+  <span class="built-with"><%= t("built_with_love") %></span>
   <div class="logo">
     <%= image_tag "rubyforgood.png" %>
   </div>

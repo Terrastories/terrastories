@@ -20,10 +20,10 @@ pt:
         lat: Latitude
         long: Longitude
         name: Nome
-        name_audio: Áudio
+        name_audio: Áudio de Placename
         description: Descrição
         type_of_place: Tipo de lugar
-        region: Região   
+        region: Região
       theme:
         background_img: Imagen de fundo (para tela de boas-vindas)
         sponsor_logos: Logotipos de patrocinadores (para tela de boas-vindas)
@@ -38,7 +38,7 @@ pt:
         ne_boundary_long: NE caixa delimitadora, longite (opcional)
         zoom: Nivel de zoom do mapa (1 a 22)
         pitch: Grau de pitch do mapa (0 a 90)
-        bearing: Grau de rolamento do mapa (-180 a 180)  
+        bearing: Grau de rolamento do mapa (-180 a 180)
         display_resource: "Tema para Terrastories: %{community_name}"
       user:
         id: Id

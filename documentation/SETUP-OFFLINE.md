@@ -24,8 +24,6 @@ Create a fork of the Terrastories/terrastories repository. Now clone the reposit
 Using the source-code editor of your choice, open the terrastories repository. There, a file can be found called `.env.example`. 
 Copy the contents of this file into a newly created file called `.env` (Do not change .env.example!).
 
-Next, add a line at the bottom of the `.env` file with the content: `USE_LOCAL_MAP_SERVER=true`. (Remove this variable to go back to using online maps from Mapbox.)
-
 ### Step 2: preparing the offline map (tiles and styles)
 
 Terrastories in the "Field Kit" environment works by integrating map `tiles` and `styles`. Map tiles are square grids of spatial data consumed by the offline Tileserver, and can be in either raster (image) or vector format. Styles points the Terrastories tileserver to the tiles and in the case of vector data, gives style or symbology properties to the data (such as color, opacity, labels, visibility per zoom extent, and so on). Unlike the online environment (where Terrastories relies on Mapbox.com for all map content), each of these have to be made available to Terrastories in a file format.
@@ -78,15 +76,19 @@ You can define multiple `mbtiles` sources (vector as well as raster), and place 
 
 ## Setup and running the server
 
-Once you have prepped the environment and offline map content, you may proceed to [the standard guides per operating system](/README.md#setup) to follow the same process for building and starting Terrastories, with one exception:
-
-Instead of running the final step of `docker-compose up` to start Terrastories, run 
+Once you have prepped the environment and offline map content, you may proceed to [the standard guides per operating system](/README.md#setup) to follow the same process for building and starting Terrastories, with one exception: changing the Docker profile from `dev` to `offline`. So, you would run:
 
 ```bash
-script/run_offline_maps.sh
+docker compose --profile offline build
 ```
 
-It is possible to switch between offline and online by removing the `USE_LOCAL_MAP_SERVER=true` variable when Terrastories is down, so long as the other `.env` map variables (`MAPBOX_STYLE` and `MAPBOX_ACCESS_TOKEN`) are set. Just remember to use the right starting command for each environment (`docker-compose up` for online mode, `script/run_offline_maps.sh` for offline mode).
+and
+
+```bash
+docker compose --profile offline up
+```
+
+It is possible to switch between offline and online mode by switching the profile from `offline` to `dev`.
 
 Once you have started Terrastories, the next step will be to set up Terrastories communities and users. Please see the [community setup guide](COMMUNITY-SETUP.md) to proceed from here.
 

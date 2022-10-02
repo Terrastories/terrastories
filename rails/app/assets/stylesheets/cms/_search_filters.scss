@@ -1,0 +1,19 @@
+.filters {
+  @include flexbox;
+  @include ui-font;
+
+  gap: 0.5rem;
+  align-items: flex-end;
+
+  padding-bottom: 0.5rem;
+
+  label {
+    font-size: .7rem;
+    margin-bottom: 0.1rem;
+    display: block;
+  }
+
+  input, select {
+    border: 1px solid $lighter-gray;
+  }
+}

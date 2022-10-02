@@ -33,17 +33,19 @@ Setting these map properties can be done in the Terrastories `Theme` menu for a 
 
 Terrastories uses internationalization to translate the application's core text, like the welcome page, sidebar, and administrative back end content. We have made it easy to add new languages to a Terrastories server without needing to touch any of the code.
 
-To add a language to your Terrastories server, navigate to the `rails/config/locales/` directory. Within this directory, each language has it's own subdirectory, like `en` (English) or `pt` (Portuguese). Currently, there are three files in each (using Portuguese as an example):
+To add a language to your Terrastories server, navigate to the `rails/config/locales/` directory. Within this directory, each language has it's own subdirectory, like `en` (English) or `pt` (Portuguese). Currently, there are five files in each (using Portuguese as an example):
 
-1.  `pt.yml`
+1.  `dashboard.pt.yml`
 2.  `devise.pt.yml`
-3.  `administrate.pt.yml`
+3.  `models.pt.yml`
+4.  `pt.yml`
 
-`pt.yml` contains the custom text used in the Terrastories application. `devise.pt.yml` and `administrative.pt.yml` are used by the administrative back end.
 
-To set up a new language, create a new subdirectory in the `locales` folder. Let's assume you want to set up Papiamentu. Create a subdirectory called `pap` and copy over `en.yml` from the `en` folder. Rename it to `pap.yml`, change line 32 to `pap`, and translate each line of text in what follows.
+`pt.yml` contains the custom text used in the front-end of the Terrastories application. `devise.pt.yml` is used for the login screens. `dashboard.pt.yml`, `models.pt.yml` are used by the administrative content management system.
 
-For the `devise` and `administrate` files, there might be available translations already available online for common Western languages. If so, you can download these and place them in the directory, and make sure that the language code is consistent (for languages like Spanish and Portuguese, the language code might sometimes have a country-specific suffix like `pt-BR`). If translations are not available, do the same thing with these two files as translating `en.yml`.
+To set up a new language, create a new subdirectory in the `locales` folder. Let's assume you want to set up Papiamentu. Create a subdirectory called `pap` and copy over `en.yml` from the `en` folder. Rename it to `pap.yml`, change line 32 to `pap`, and translate each line of text in what follows. Do the same for `dashboard.pap.yml` and `models.pap.yml`. 
+
+For the `devise` files, there might be available translations already available online for common Western languages. If so, you can download these and place them in the directory, and make sure that the language code is consistent (for languages like Spanish and Portuguese, the language code might sometimes have a country-specific suffix like `pt-BR`). If translations are not available, do the same thing with these two files as translating `en.yml`.
 
 If you want to change the default language for Terrastories, set the language on line 21 in `rails/config/application.rb`. To set it to Papiamentu, change this line to `config.i18n.default_locale = :pap`
 
@@ -61,9 +63,7 @@ In the Terrastories administrative back end, it is possible to import data in bu
 
 ### Step 1: Prepare the CSVs
 
-First, download [this Terrastories data structure template](https://drive.google.com/file/d/1Ir6TC5THEoQKk-98JZ5KpTjXd-R6yMmA/view?usp=sharing) which has three different tabs, for Places, Speakers, and Stories. The idea is to populate the spreadsheet with your data, and to then save each tab in a CSV format (`Places.csv`, `Speakers,csv`, and `Stories.csv`).
-
-Note the sample data, and the order of the columns in the spreadsheet. For the CSV importer to work, you have to stick with the same column order. 
+First, download [this Terrastories data structure template](https://drive.google.com/file/d/1Ir6TC5THEoQKk-98JZ5KpTjXd-R6yMmA/view?usp=sharing) which has three different tabs, for Places, Speakers, and Stories. The idea is to populate the spreadsheet with your data, and to then save each tab in a CSV format (`Places.csv`, `Speakers.csv`, and `Stories.csv`).
 
 When imported, there will be links between different data types. To create these links, the content in the following fields has to match exactly:
 * The entries for `speaker_name` in the `Speakers` tab have to be the same as the entries for `speaker_name` in the `Stories` tab.
@@ -83,7 +83,7 @@ When you are done preparing your CSV spreadsheets and the media (photo, video) a
 
 ### Step 3: Import CSVs and media attachments into Terrastories
 
-Third, using the Administrative back end in Terrastories, use the import button at the bottom of the page and upload the CSV. The data should be imported in the following order: `Places`, `Speakers`, and then `Stories`.
+Third, using the Administrative content management system in Terrastories, navigate to the import screen and upload the CSVs there. 
 
 If you are uploading large media files (like videos), it may take a while for the spreadsheets to be processed. Do not navigate away from the page during this time.
 

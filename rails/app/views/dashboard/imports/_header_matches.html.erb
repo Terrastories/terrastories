@@ -1,0 +1,24 @@
+<p>
+  Map the headers in your CSV to the appropriate field in Terrastories.
+</p>
+<table>
+  <tr>
+    <% @required_headers.each do |header| %>
+      <th><%= label_tag(header) %></th>
+    <% end %>
+  </tr>
+  <tr>
+    <% @required_headers.each_with_index do |header, i| %>
+      <td>
+      <select name="<%= @model %>_headers[<%= header %>]">
+        <option></option>
+        <% @csv.each do |h| %>
+          <option value="<%= h %>" <%= h == @csv[i] ? "selected" : nil %>>
+            <%= h %>
+          </option>
+        <% end %>
+      </select>
+      </td>
+    <% end %>
+  </tr>
+</table>

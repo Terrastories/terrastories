@@ -1,0 +1,29 @@
+<% content_for(:title) do %>
+  <%= t("speakers") %>
+<% end %>
+
+<% content_for(:main_heading) do %>
+  <div class="columns">
+    <h2><%= t("speakers") %></h2>
+    <%= link_to t("dashboard.actions.new"), new_speaker_path, class: "btn" if policy(:speaker).new? %>
+  </div>
+<% end %>
+
+<div class="infinite-scroll">
+  <% if @speakers.empty? %>
+    <p><%= t("list.no_results", resources: t("speakers").downcase) %></p>
+  <% else %>
+    <div data-infinite-scroll="entries" class="collection">
+      <%= render "speakers" %>
+    </div>
+    <div data-infinite-scroll="pagination">
+      <%#= Prev/Next Pagination Links for folks that don't use / have JavaScript %>
+      <% if @page.meta[:offset] > 0 %>
+        <%= link_to "Prev", speakers_path(request.query_parameters.merge(offset: @page.meta[:offset] - @page.meta[:limit])), rel: "prev" %>
+      <% end %>
+      <% if @page.meta[:next_offset] %>
+        <%= link_to "Next", speakers_path(request.query_parameters.merge(offset: @page.meta[:next_offset])), rel: "next" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

@@ -20,10 +20,10 @@ es:
         lat: Latitud
         long: Longitud
         name: Nombre
-        name_audio: Audio
+        name_audio: Placename Audio
         description: Descripción
         type_of_place: Tipo de lugar
-        region: Región          
+        region: Región
       theme:
         background_img: Imagen de fondo (para la pantalla de bienvenida)
         sponsor_logos: Logotipos de patrocinadores (para la pantalla de bienvenida)

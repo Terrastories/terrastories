@@ -1,0 +1,127 @@
+<% content_for(:title) do %>
+  <%= t("import") %>
+<% end %>
+
+<% content_for(:main_heading) do %>
+  <h2>Review <%= t("import") %></h2>
+<% end %>
+
+<%= link_to "Start over", import_path %>
+<div class="import">
+  <% unless places.nil? %>
+    <section>
+      <h4><%= t("places") %></h4>
+      <p>Successfully imported <%= places[:successful] %></p>
+      <% if places[:duplicated_rows].present? %>
+        <%= render partial: "import_results", locals: {result_heading: "Duplicated Rows", result: places[:duplicated_rows]} %>
+      <% end %>
+
+      <% if places[:skipped_rows].present? %>
+        <%= render partial: "import_results", locals: {result_heading: "Skipped Rows", result: places[:skipped_rows]} %>
+      <% end %>
+
+      <% if places[:invalid_rows].present? %>
+        <h5>Invalid Rows (<%= places[:invalid_rows].size %>)</h5>
+        <button class="csv-download" data-target="#invalid-places" data-filename="terrastories-invalid-places.csv">Download Invalid Rows as CSV</button>
+        <table id="invalid-places">
+          <tr class="headers">
+            <% places[:invalid_rows].first[:attributes].keys.each do |header| %>
+              <th data-field-value="<%= header %>"><%= t(header) %></th>
+            <% end %>
+          </tr>
+          <% places[:invalid_rows].each_with_index do |row, i| %>
+            <tr>
+              <% row[:attributes].each do |header, value| %>
+                <td data-field-value="<%= value %>">
+                  <%= value %>
+                  <% if row[:errors].key?(header.to_sym) %>
+                    <br />
+                    <span class="error_message"><%= row[:errors][header.to_sym].first %></span>
+                  <% end %>
+                </td>
+              <% end %>
+            </tr>
+          <% end %>
+        </table>
+      <% end %>
+    </section>
+  <% end %>
+
+  <% unless speakers.nil? %>
+    <section>
+      <h4><%= t("speakers") %></h4>
+      <p>Successfully imported <%= speakers[:successful] %></p>
+      <% if speakers[:duplicated_rows].present? %>
+        <%= render partial: "import_results", locals: {result_heading: "Duplicated Rows", result: speakers[:duplicated_rows]} %>
+      <% end %>
+
+      <% if speakers[:skipped_rows].present? %>
+        <%= render partial: "import_results", locals: {result_heading: "Skipped Rows", result: speakers[:skipped_rows]} %>
+      <% end %>
+
+      <% if speakers[:invalid_rows].present? %>
+        <h5>Invalid Rows (<%= speakers[:invalid_rows].size %>)</h5>
+        <button class="csv-download" data-target="#invalid-speakers" data-filename="terrastories-invalid-speakers.csv">Download Invalid Rows as CSV</button>
+        <table id="invalid-speakers">
+          <tr class="headers">
+            <% speakers[:invalid_rows].first[:attributes].keys.each do |header| %>
+              <th data-field-value="<%= header %>"><%= t(header) %></th>
+            <% end %>
+          </tr>
+          <% speakers[:invalid_rows].each_with_index do |row, i| %>
+            <tr>
+              <% row[:attributes].each do |header, value| %>
+                <td data-field-value="<%= value %>">
+                  <%= value %>
+                  <% if row[:errors].key?(header.to_sym) %>
+                    <br />
+                    <span class="error_message"><%= row[:errors][header.to_sym].first %></span>
+                  <% end %>
+                </td>
+              <% end %>
+            </tr>
+          <% end %>
+        </table>
+      <% end %>
+    </section>
+  <% end %>
+
+  <% unless stories.nil? %>
+    <section>
+      <h4><%= t("stories") %></h4>
+      <p>Successfully imported <%= stories[:successful] %></p>
+      <% if stories[:duplicated_rows].present? %>
+        <%= render partial: "import_results", locals: {result_heading: "Duplicated Rows", result: stories[:duplicated_rows]} %>
+      <% end %>
+
+      <% if stories[:skipped_rows].present? %>
+        <%= render partial: "import_results", locals: {result_heading: "Skipped Rows", result: stories[:skipped_rows]} %>
+      <% end %>
+
+      <% if stories[:invalid_rows].present? %>
+        <h5>Invalid Rows (<%= stories[:invalid_rows].size %>)</h5>
+        <button class="csv-download" data-target="#invalid-stories" data-filename="terrastories-invalid-stories.csv">Download Invalid Rows as CSV</button>
+        <table id="invalid-stories">
+          <tr class="headers">
+            <% stories[:invalid_rows].first[:attributes].keys.each do |header| %>
+              <th data-field-value="<%= header %>"><%= t(header) %></th>
+            <% end %>
+          </tr>
+          <% stories[:invalid_rows].each_with_index do |row, i| %>
+            <tr>
+              <% row[:attributes].each do |header, value| %>
+                <td data-field-value="<%= value %>">
+                  <%= value %>
+                  <% if row[:errors].key?(header.to_sym) %>
+                    <br />
+                    <span class="error_message"><%= row[:errors][header.to_sym].first %></span>
+                  <% end %>
+                </td>
+              <% end %>
+            </tr>
+          <% end %>
+        </table>
+      <% end %>
+    </section>
+  <% end %>
+</div>

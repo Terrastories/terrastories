@@ -1,0 +1,18 @@
+table {
+  @include ui-font;
+  width: 80%;
+
+  thead {
+    font-weight: bold;
+    text-align: left;
+    border-bottom: 1px solid $dark-blue;
+  }
+
+  th, td {
+    padding: 0.25rem;
+  }
+
+  tbody tr:hover {
+    background-color: $off-white;
+  }
+}

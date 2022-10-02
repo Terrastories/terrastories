@@ -1,12 +1,28 @@
 pt:
+  community: Comunidade
+  communities: Comunidades
+  media_link: Link de Mídia
+  media_links: Links de Mídia
+  places: Lugares
+  place: Lugar
+  speakers: Oradores
+  speaker: Orador
+  stories: Histórias
+  story: História
+  theme: Tema
+  users: Usuários
+  user: Usuário
+
+  # Front End Translations
   admin_page: "Página de administração"
   alphabetical: "A-Z"
   back_to_map: "Volta ao mapa"
   back_to_welcome: "Voltar para a página de inicial"
+  built_with_love: Built with ❤️ by
   close: "Fechar"
   community_search:
     title: "Procure por uma Comunidade para explorar"
-    coming_soon: "Funcionalidade disponível em breve. Requisite um convite para uma comunidade específica."  
+    coming_soon: "Funcionalidade disponível em breve. Requisite um convite para uma comunidade específica."
   default: "padrão"
   enter: "Entrar"
   filter_stories: "Filtrar histórias"
@@ -15,15 +31,14 @@ pt:
   introduction: "Introdução"
   intro:
     question: "O que é uma Terrastory?"
-    explanation: "Terrastories são gravações audiovisuais de narrativas baseadas em locais. Este aplicativo compatível off-line permite que as comunidades locais localizem e mapeiem suas próprias tradições orais sobre lugares de importância ou valor significativo para elas."  
+    explanation: "Terrastories são gravações audiovisuais de narrativas baseadas em locais. Este aplicativo compatível off-line permite que as comunidades locais localizem e mapeiem suas próprias tradições orais sobre lugares de importância ou valor significativo para elas."
   language: "Idioma"
   login: "Login"
-  logout: "Logout"  
-  map: "Isto é um... mapa?"
+  logout: "Logout"
   most_recent: "Mais recente"
   no_media: "Esta mídia não está disponível"
   password: "Senha"
-  place_name: "Pronúncia do nome do lugar"  
+  place_name: "Pronúncia do nome do lugar"
   place_type: "Tipo de lugar"
   region: "Região"
   remember_me: "Lembre de mim"
@@ -31,9 +46,10 @@ pt:
   select_category: "Escolher categoria"
   select_option: "Escolher a opção"
   selected_language: "selecionado"
-  sign_up: "Inscrever-se"  
+  sign_up: "Inscrever-se"
   sort_stories: "Classificar histórias"
   speaker: "Orador"
   topic: "Assunto"
+  video_unsupported: Desculpe, seu navegador não suporta vídeos incorporados.
   welcome: "Bem vindo/a"
   welcome_back: "Bem vindo/a de volta"

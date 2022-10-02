@@ -1,4 +1,5 @@
 class Place < ApplicationRecord
+  include Importable
   MEDIA_PATH = Rails.env.test? ? 'spec/fixtures/media' : 'import/media'
 
   require 'csv'
@@ -6,23 +7,16 @@ class Place < ApplicationRecord
   has_and_belongs_to_many :stories
   has_one_attached :photo
   has_one_attached :name_audio
-  validate :photo_format
+  validates :photo, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'] }
   validates :name_audio, blob: { content_type: ['audio/mpeg', 'audio/wav'] }
-  validates :lat, numericality: { greater_than_or_equal_to:  -90, less_than_or_equal_to:  90 }, allow_blank: true
-  validates :long, numericality: { greater_than_or_equal_to: -180, less_than_or_equal_to: 180 }, allow_blank: true
+  validates :lat, numericality: { greater_than_or_equal_to:  -90, less_than_or_equal_to:  90, message: :invalid_latitude }, allow_blank: true
+  validates :long, numericality: { greater_than_or_equal_to: -180, less_than_or_equal_to: 180, message: :invalid_longitude}, allow_blank: true
   has_many :interview_stories, class_name: "Story", foreign_key: "interview_location_id"
 
   attr_reader :point_geojson
 
   def self.import_csv(filename, community)
     ApplicationController.helpers.csv_importer(filename, self, community)
-  end
-
-  def photo_format
-    return unless photo.attached?
-    return if photo.blob.content_type.start_with? 'image/'
-    photo.purge_later
-    errors.add(:photo, 'needs to be an image')
   end
 
   def photo_url
@@ -48,6 +42,21 @@ class Place < ApplicationRecord
       csv << headers
     end
   end
+
+  def static_map_markers
+    geo = RGeo::GeoJSON.encode(
+      RGeo::GeoJSON::Feature.new(
+        RGeo::Cartesian.factory.point(long, lat),
+        id,
+        "marker-symbol": name[0]&.downcase || "P"
+      )
+    ).to_json
+  end
+
+  EXCLUDE_ATTRIBUTES_FROM_IMPORT = [
+    "stories",
+    "interview_stories"
+  ]
 
   private
 

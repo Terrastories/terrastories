@@ -33,7 +33,11 @@ class UserPolicy < ApplicationPolicy
   end
 
   def destroy?
-    current_user.admin?
+    current_user.admin? && user != current_user
+  end
+
+  def delete_photo?
+    edit?
   end
 
   class Scope < Scope

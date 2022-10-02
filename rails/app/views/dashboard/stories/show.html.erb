@@ -1,0 +1,150 @@
+<% content_for(:title) do %>
+  <%= @story.title %> | <%= t("story") %>
+<% end %>
+
+<% content_for(:main_heading) do %>
+<div class="columns">
+  <h2>
+    <% if @story.topic.present? %>
+      <div class="small"><%= @story.topic %></div>
+    <% end %>
+    <%= @story.title %>
+    <div class="small">
+      <% if @story.language.present? %>
+        <span class="badge badge-red"><%= @story.language %></span>
+      <% end %>
+
+      <% if @story.permission_level.present? %>
+        <span class="badge badge-green"><%= Story.human_attribute_name("permission_level.#{@story.permission_level}") %></span>
+      <% end %>
+    </div>
+  </h2>
+  <div class="actions">
+    <%= link_to t("dashboard.actions.edit"), edit_story_path(@story), class: "btn" if policy(@story).edit? %>
+    <%= link_to t("dashboard.actions.destroy"), story_path(@story), method: :delete, data: {confirm: t("dashboard.actions.confirm")}, class: "btn btn-danger" if policy(@story).destroy? %>
+  </div>
+</div>
+<% end %>
+
+<div class="two-columns">
+  <div class="two-columns-right column-fixed-350">
+    <% if @story.places.any? %>
+      <section>
+        <div id="static-map"></div>
+        <% @story.places.each do |place| %>
+          <p>
+            <span class="badge badge-blue"><%= place.name[0].upcase %></span>
+            <%= place.name %>
+          </p>
+          <p>
+            <% if place.region.present? %>
+              <%= place.region %>
+            <% end %>
+            <% if place.type_of_place.present? %><span class="badge"><%= place.type_of_place %></span><% end %>
+          </p>
+        <% end %>
+      </section>
+    <% end %>
+
+    <section class="collection">
+      <% if @story.interviewer %>
+        <span class="card card--mini card--center card--noborder card--nogap">
+          <% if @story.interviewer.photo.attached? %>
+            <%= image_tag @story.interviewer.photo, class: "img--rounded img--large", alt: @story.interviewer.name, title: @story.interviewer.name %>
+          <% else %>
+            <%= image_tag asset_path("speaker.png"), class: "img--rounded img--large", alt: @story.interviewer.name, title: @story.interviewer.name %>
+          <% end %>
+
+          <div><%= @story.interviewer.name %></div>
+          <div class="small"><%= t("interviewer") %></div>
+        </span>
+      <% end %>
+      <% policy_scope(@story.speakers).each do |speaker| %>
+        <span class="card card--mini card--center card--noborder card--nogap">
+          <% if speaker.photo.attached? %>
+            <%= image_tag speaker.photo, class: "img--rounded img--large", alt: speaker.name, title: speaker.name %>
+          <% else %>
+            <%= image_tag asset_path("speaker.png"), class: "img--rounded img--large", alt: speaker.name, title: speaker.name %>
+          <% end %>
+
+          <div><%= speaker.name %></div>
+          <div class="small"><%= t("speaker") %></div>
+        </span>
+      <% end %>
+    </section>
+  </div>
+
+  <div class="two-columns-left">
+    <p><%= @story.desc %></p>
+
+    <% @story.media.each do |media| %>
+      <p class="media">
+        <% if media.image? %>
+          <% if media.variable? %>
+            <%= image_tag(media.variant(resize_to_limit: [nil, 400])) %>
+          <% else %>
+            <%= image_tag(media, width: 400) %>
+          <% end %>
+        <% elsif media.video? %>
+          <video
+            controls
+            disablePictureInPicture
+            controlsList="nodownload"
+            id="video-player-<%= media.blob.id %>"
+            poster="<%= url_for(media.preview(resize_to_limit:[nil, 400])) if media.previewable? %>"
+          >
+            <source src="<%= url_for(media) %>"/>
+            <%= t("video_unsupported") %>
+          </video>
+        <% elsif media.audio? %>
+          <audio id="audio-player-<%= media.blob.id %>"
+            controls
+            controlsList="nodownload"
+            ref="audio"
+          >
+            <source src="<%= url_for(media) %>" type="<%= media.blob.content_type %>" />
+          </audio>
+        <% elsif media.previewable? %>
+            <%= image_tag(media.preview(resize_to_limit:[150, 150])) %>
+        <% else %>
+          <%= media.filename %>
+        <% end %>
+      </p>
+    <% end %>
+  </div>
+</div>
+
+<script>
+const staticMap = new mapboxgl.Map({
+  accessToken: "<%= @community.theme.mapbox_token %>",
+  container: "static-map", // container ID
+  center: <%= @story.geo_center %>,
+  zoom: 2, // starting zoom
+  style: "<%= @community.theme.mapbox_style %>", // style URL or style object
+  interactive: false // don't allow map movement
+});
+
+staticMap.on("load", () => {
+  staticMap.addSource("points", {
+    "type": "geojson",
+    "data": <%= raw @story.static_map_markers %>
+  });
+
+  staticMap.addLayer({
+    type: "symbol",
+    id: "points",
+    source: "points",
+    layout: {
+      "icon-image": "rectangle-blue-2",
+      "icon-text-fit": "height",
+      "icon-text-fit-padding": [1,2,1,2],
+      "text-field": "{marker-symbol}",
+      "text-transform": "uppercase",
+      "text-font": ["Open Sans Bold"]
+    },
+    paint: {
+      "text-color": "#FFFFFF"
+    }
+  })
+});
+</script>

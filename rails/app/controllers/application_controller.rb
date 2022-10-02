@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   def default_url_options
-    { locale: I18n.locale }
+    { locale: set_locale }
   end
 
   private

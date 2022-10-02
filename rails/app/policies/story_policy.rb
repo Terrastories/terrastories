@@ -7,7 +7,7 @@ class StoryPolicy < ApplicationPolicy
   end
 
   def index?
-    user.admin? || user.editor?
+    !user.super_admin
   end
 
   def new?
@@ -35,20 +35,19 @@ class StoryPolicy < ApplicationPolicy
     user.admin? || user.editor?
   end
 
+  def delete_media?
+    user.admin? || user.editor?
+  end
+
   class Scope < Scope
     def resolve
-      if user&.super_admin
-        # this is so the admin page doesn't throw a nil error for super admins looking at community dashboard
-        stories = scope.all
-      elsif user&.editor? || user&.admin?
-        stories = scope.where(community: user.community).all
-      elsif user&.member?
-        stories = scope.where(community: user.community, permission_level: [:anonymous, :user_only])
+      if user.super_admin || user.admin? || user.editor?
+        scope.all
+      elsif user.member?
+        scope.where(permission_level: [:anonymous, :user_only])
       else
-        stories = scope.where(community: user.community, permission_level: :anonymous)
-      end
-
-      stories.eager_load(:speakers, :places)
+        scope.where(permission_level: :anonymous)
+      end.eager_load(:speakers, :places)
     end
 
     def resolve_admin

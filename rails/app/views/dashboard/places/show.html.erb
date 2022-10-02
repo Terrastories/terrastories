@@ -1,0 +1,134 @@
+<% content_for(:title) do %>
+  <%= @place.name %> | <%= t("place") %>
+<% end %>
+
+<% content_for(:main_heading) do %>
+<div class="columns">
+  <div class="avatar-card">
+    <% if @place.photo.attached? %>
+      <%= image_tag @place.photo, class: "img--rounded img--mega", alt: @place.name, title: @place.name %>
+    <% else %>
+      <%= image_tag asset_path("home-icon.svg"), class: "img--rounded img--mega", alt: @place.name, title: @place.name %>
+    <% end %>
+    <h2>
+      <% if @place.region.present? %>
+        <div class="small">
+          <%= @place.region %>
+        </div>
+      <% end %>
+      <%= @place.name %>
+      <% if @place.name_audio.attached? %>
+          <%= audio_tag url_for(@place.name_audio), class: "audio-player" %>
+          <svg class="icon audio">
+            <use href="#icon-speaker">
+          </svg>
+        <% end %>
+      <div class="small">
+        <% if @place.type_of_place.present? %>
+          <span class="badge badge-orange"><%= @place.type_of_place %></span>
+        <% end %>
+      </div>
+    </h2>
+  </div>
+  <div class="actions">
+    <%= link_to t("dashboard.actions.edit"), edit_place_path(@place), class: "btn" if policy(@place).edit? %>
+    <%= link_to t("dashboard.actions.destroy"), place_path(@place), method: :delete, data: {confirm: t("dashboard.actions.confirm")}, class: "btn btn-danger" if policy(@place).destroy? %>
+  </div>
+</div>
+<% end %>
+
+<div class="two-columns">
+  <div class="two-columns-left">
+    <p><%= @place.description %></p>
+  </div>
+  <div class="two-columns-right column-fixed-350">
+    <div id="static-map"></div>
+  </div>
+</div>
+
+<h4><%= t("stories") %></h4>
+
+<div class="collection">
+  <% if policy_scope(@place.stories).empty? %>
+    <p><%= t("list.no_nested_results", resource: t("place").downcase, resources: t("stories").downcase) %></p>
+  <% else %>
+    <% policy_scope(@place.stories).each do |story| %>
+      <%= link_to story, class: "card" do %>
+        <div>
+          <h3>
+            <span class="card__heading--small"><%= story.topic %></span>
+            <%= story.title %>
+          </h3>
+
+          <% if story.language.present? %>
+            <span class="badge"><%= story.language %></span>
+          <% end %>
+
+          <% if story.permission_level.present? %>
+            <span class="badge"><%= Story.human_attribute_name("permission_level.#{story.permission_level}") %></span>
+          <% end %>
+
+          <p><%= story.desc %></p>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+
+<script type="text/javascript">
+let nameAudio = document.querySelector(".icon.audio");
+const audioPlayer = document.querySelector(".audio-player");
+
+if (nameAudio !== null) {
+  nameAudio.addEventListener("click", function(e) {
+    if (audioPlayer.paused) {
+      audioPlayer.play();
+    } else {
+      audioPlayer.pause();
+    }
+  });
+
+  audioPlayer.addEventListener("play", function(e) {
+    nameAudio.classList.add("playing");
+  });
+  audioPlayer.addEventListener("pause", function(e) {
+    nameAudio.classList.remove("playing");
+  });
+  audioPlayer.addEventListener("ended", function(e) {
+    nameAudio.classList.remove("playing");
+  });
+}
+
+const staticMap = new mapboxgl.Map({
+  accessToken: "<%= @community.theme.mapbox_token %>",
+  container: "static-map", // container ID
+  center: [<%= @place.long %>, <%= @place.lat %>], // starting position [lng, lat]
+  zoom: 8, // starting zoom
+  style: "<%= @community.theme.mapbox_style %>", // style URL or style object
+  interactive: false
+});
+
+staticMap.on("load", () => {
+  staticMap.addSource("points", {
+    "type": "geojson",
+    "data": <%= raw @place.static_map_markers %>
+  });
+
+  staticMap.addLayer({
+    type: "symbol",
+    id: "points",
+    source: "points",
+    layout: {
+      "icon-image": "rectangle-blue-2",
+      "icon-text-fit": "height",
+      "icon-text-fit-padding": [1,2,1,2],
+      "text-field": "{marker-symbol}",
+      "text-transform": "uppercase",
+      "text-font": ["Open Sans Bold"]
+    },
+    paint: {
+      "text-color": "#FFFFFF"
+    }
+  })
+});
+</script>

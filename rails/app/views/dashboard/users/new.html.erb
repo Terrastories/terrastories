@@ -1,0 +1,9 @@
+<% content_for(:title) do %>
+  <%= t("dashboard.headings.new_resource", name: t("user")) %>
+<% end %>
+
+<% content_for(:main_heading) do %>
+<h2><%= t("dashboard.headings.new_resource", name: t("user")) %></h2>
+<% end %>
+
+<%= render "form" %>

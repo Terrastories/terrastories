@@ -1,0 +1,45 @@
+es:
+  profile: Profile
+  interviewer: Entrevistador
+  import: Import
+  map:
+    center: Centro del mapa
+    bounds: Cuadro delimitador del mapa
+    bounds_description: The boundaries of the map determine the extent of where you can scroll on the map. Unrestricted, the map will be infinitely scrollable.
+    sw_corner: SW cuadro delimitador
+    ne_corner: NE cuadro delimitador
+    unrestricted_bounds: Allow unrestricted bounds
+    online: Online Map Configuration
+    settings: Configuración del Mapa
+    settings_description: Customize your community's map settings.
+  dashboard:
+    back_to_app: Regresar a la aplicación
+    community_settings: Community Settings
+    headings:
+      new_resource: Nuevo %{name}
+    actions:
+      confirm: ¿Estás seguro?
+      destroy: Borrar
+      edit: Editar
+      new: Nuevo
+      back: Atrás
+      show_resource: Mostrar %{name}
+    theme:
+      welcome_screen: Pantalla de Bienvenida
+      background_img: Customize the background image on the landing page of your community.
+      sponsor_logos: Display logos on your community page. This could be your organization's logo, or that of a project sponsor. Multiple logos can be added.
+  search:
+    clear: Limpiar busqueda
+    label: Buscar
+    heading: Buscar resultados
+    results: resultados
+  filter:
+    all: Todos
+    any: Cualquier/a
+    label: Filtrar
+    clear: Limpiar filtros
+  list:
+    prev: Prev
+    next: Next
+    no_results: There are no %{resources} available.
+    no_nested_results: This %{resource} has no %{resources}.

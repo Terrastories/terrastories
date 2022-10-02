@@ -3,17 +3,21 @@ ARG precompileassets
 
 RUN apk --no-cache add --update \
     build-base \
+    linux-headers \
+    less \
     nodejs \
+    python2 \
     yarn \
     tzdata \
     postgresql-dev \
     postgresql-client \
     postgresql \
     libffi \
-    libxml2 \
-    libxslt \
+    libxml2-dev \
+    libxslt-dev \
     libc6-compat \
-    imagemagick && \
+    imagemagick \
+    ffmpeg && \
     gem update --system --no-document && \
     gem install bundler --no-document --force
 

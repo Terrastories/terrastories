@@ -1,8 +1,24 @@
 mat:
+  community: Gemeenschap
+  communities: Gemeenschappen
+  media_link: Media Link
+  media_links: Media Links
+  places: Plaatsen
+  place: Plaats
+  speakers: Sprekers
+  speaker: Spreker
+  stories: Verhalen
+  story: Verhaal
+  theme: Thema
+  users: Gebruikers
+  user: Gebruiker
+
+  # Front End Translations
   admin_page: "Admin pagina"
   alphabetical: "A-Z"
   back_to_map: "Go ko na kaita"
   back_to_welcome: "Go ko na bigi"
+  built_with_love: Built with ❤️ by
   close: "Tapa"
   community_search:
     title: "Zoek een community om te verkennen"
@@ -10,7 +26,7 @@ mat:
   default: "standaard"
   enter: "Ko a dendu"
   forgot_password: "I lasi yu paswoord?"
-  filter_stories: "Luku fini"  
+  filter_stories: "Luku fini"
   hello: "Odi"
   introduction: "Buta a kama"
   intro:
@@ -19,9 +35,8 @@ mat:
   language: "Tongo"
   login: "Skiif i ne"
   logout: "Sooto"
-  map: "A sondi aki... na wan kaita?"
   most_recent: "Moo nyu"
-  no_media: Geen media beschikbaar  
+  no_media: Geen media beschikbaar
   password: "Paswoord"
   place_type: "Sooti kamia"
   place_name: "Fa u kali a kamia aki"
@@ -35,5 +50,6 @@ mat:
   sort_stories: "Koowa di toli"
   speaker: "Takima"
   topic: "Onderwerp"
+  video_unsupported: Sorry, uw browser ondersteunt geen ingesloten video's.
   welcome: "Denda ko!"
   welcome_back: "Denda ko!"

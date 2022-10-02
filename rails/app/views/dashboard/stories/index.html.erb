@@ -1,0 +1,46 @@
+<% content_for(:title) do %>
+  <%= t("stories") %>
+<% end %>
+
+<% content_for(:main_heading) do %>
+  <div class="columns">
+  <h2><%= t("stories") %></h2>
+  <%= link_to t("dashboard.actions.new"), new_story_path, class: "btn" if policy(:story).new? %>
+  </div>
+  <%= form_with url: stories_path, method: :get, class: "filters", local: true do |f| %>
+    <div>
+    <%= f.label :place, t("place") %>
+    <%= f.collection_select :place, community.places, :id, :name, include_blank: t("filter.all"), selected: params[:place] %>
+    </div>
+    <div>
+    <%= f.label :speaker, t("speaker") %>
+    <%= f.collection_select :speaker, community.speakers, :id, :name, include_blank: t("filter.all"), selected: params[:speaker] %>
+    </div>
+    <% unless current_user.viewer? %>
+      <div>
+      <%= f.label :visibility %>
+      <%= f.select :visibility, Story.permission_levels.map { |k, v| [Story.human_attribute_name("permission_level.#{k}"), v]}, include_blank: t("filter.any"), selected: params[:visibility] %>
+      </div>
+    <% end %>
+    <%= f.submit t("filter.label"), name: nil, class: "filter" %>
+  <% end %>
+<% end %>
+
+<div class="infinite-scroll">
+  <% if @stories.empty? %>
+    <p><%= t("list.no_results", resources: t("stories").downcase) %></p>
+  <% else %>
+    <div data-infinite-scroll="entries" class="collection">
+    <%= render "stories" %>
+    </div>
+    <div data-infinite-scroll="pagination">
+      <%#= Prev/Next Pagination Links for folks that don't use / have JavaScript %>
+      <% if @page.meta[:offset] > 0 %>
+        <%= link_to t("list.prev"), stories_url(request.query_parameters.merge(offset: @page.meta[:offset] - @page.meta[:limit])), rel: "prev" %>
+      <% end %>
+      <% if @page.meta[:next_offset] %>
+        <%= link_to t("list.next"), stories_url(request.query_parameters.merge(offset: @page.meta[:next_offset])), rel: "next" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

@@ -60,7 +60,7 @@ Rails.application.configure do
 
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
-  config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+  # config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   # Check if we use Docker to allow docker ip through web-console
   if File.file?('/.dockerenv') == true
@@ -70,4 +70,10 @@ Rails.application.configure do
 
   # Lets BetterErrors run properly in Docker
   BetterErrors::Middleware.allow_ip! "0.0.0.0/0"
+
+  # Offline Mode
+  if ENV["VIRTUAL_HOST"].present? || ENV["USE_LOCAL_MAP_SERVER"].present?
+    config.hosts << "terrastories.local"
+    config.hosts << /[a-zA-Z0-9-]*\.terrastories\.local/
+  end
 end

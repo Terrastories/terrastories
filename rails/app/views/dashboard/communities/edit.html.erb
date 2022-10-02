@@ -1,0 +1,9 @@
+<% content_for(:title) do %>
+  <%= @community.name %>
+<% end %>
+
+<% content_for(:main_heading) do %>
+  <h2><%= @community.name %></h2>
+<% end %>
+
+<%= render "form" %>

@@ -1,0 +1,113 @@
+.collection {
+  @include flexbox;
+
+  flex-wrap: wrap;
+
+  gap: 20px;
+  margin-bottom: 1rem;
+}
+
+.card {
+  @include flex(1 0 300px);
+  @include flexbox;
+
+  flex-direction: column;
+  justify-content: space-between;
+  row-gap: 10px;
+  color: $text-color;
+  text-decoration: none;
+
+  max-width: 300px;
+
+  border-radius: 5px;
+  box-shadow: 0 0 10px $off-white;
+  padding: 1rem;
+
+  &--nogap {
+    gap: 0;
+  }
+
+  &:hover {
+    box-shadow: 0 0 10px $lighter-gray;
+  }
+
+  &--narrow {
+    @include flex(1 0 175px);
+    max-width: 175px;
+  }
+
+  &--mini {
+    @include flex(1 0 150px);
+    max-width: 150px;
+  }
+
+  &--center {
+    align-items: center;
+  }
+
+  &--stacked {
+    justify-content: flex-start;
+  }
+
+  &--middle {
+    justify-content: center;
+  }
+
+  &--wrap {
+    word-break: break-word;
+  }
+
+  &__img--circle {
+    border-radius: 50%;
+    width: 100%;
+  }
+
+  &__img {
+    max-width: 300px;
+  }
+
+  &__heading--small {
+    font-size: .9rem;
+    display: block;
+  }
+
+  &--noborder {
+    border-radius: none;
+    box-shadow: none;
+    padding: .5rem;
+
+    &:hover {
+      box-shadow: none;
+    }
+  }
+
+  p {
+    margin: 1rem 0;
+    max-height: 200px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 10;
+    -webkit-box-orient: vertical;
+
+    // break-word is deprecated;
+    // but since folks are adding links
+    // as plain text, this will ensure it's visible.
+    word-wrap: break-word;
+
+    &:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    &.narrow-spacing {
+      margin: 0;
+      line-height: .8rem;
+      font-size: .8rem;
+    }
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0;
+  }
+}

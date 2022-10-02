@@ -1,0 +1,11 @@
+<% @communities.each do |community| %>
+  <div class="row">
+    <div class="cell">
+      <%= link_to community.name, community, class: "row-link" %>
+    </div>
+    <div class="cell cell--15 cell--right">
+      <%= link_to t("dashboard.actions.edit"), edit_community_path(community) %>
+      <%= link_to t("dashboard.actions.destroy"), community_path(community), method: "delete", data: {confirm: t("dashboard.actions.confirm")} %>
+    </div>
+  </div>
+<% end %>

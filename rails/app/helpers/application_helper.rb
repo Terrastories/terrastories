@@ -10,7 +10,7 @@ module ApplicationHelper
   def link_to_with_locale(locale, request_path: nil)
     if request_path.present?
       maybe_locale, path = request_path[1..-1].split("/", 2)
-      if I18n.available_locales.include?(maybe_locale.to_sym)
+      if maybe_locale && I18n.available_locales.include?(maybe_locale.to_sym)
         "/#{locale}/#{path}"
       else
         "/#{locale}#{request_path}"

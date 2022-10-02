@@ -1,8 +1,24 @@
 ja:
+  community: コミュニティ
+  communities: コミュニティ
+  media_link: メディアリンク
+  media_links: メディアリンク
+  places: プレース
+  place: プレース
+  speakers: スピーカー
+  speaker: スピーカー
+  stories: ストーリー
+  story: ストーリー
+  theme: テーマ
+  users: ユーザー
+  user: ユーザー
+
+  # Front End Translations
   admin_page: "管理ページ"
   alphabetical: A-Z
   back_to_map: "マップに戻る"
   back_to_welcome: "入り口に戻る"
+  built_with_love: Built with ❤️ by
   close: "閉じる"
   community_search:
     title: "探索するコミュニティを検索する"
@@ -12,14 +28,13 @@ ja:
   filter_stories: "フィルタ"
   forgot_password: "パスワードを忘れましたか？"
   hello: "こんにちは"
+  introduction: "イントロダクション"
   intro:
     explanation: "Terrastories は地域に根ざした口伝を記録して保存するアプリケーションです。 地域に固有の、語り継がれてきたものごとを、場所と結びつけて地図上に表示できるのです。オフラインでも機能します。"
     question: "Terrastory とは？"
-  introduction: "イントロダクション"
   language: "言語"
   login: "ログイン"
   logout: "ログアウト"
-  map: "マップ"
   most_recent: "作成日時順"
   no_media: "利用可能なメディアがありません"
   password: "パスワード"
@@ -35,5 +50,6 @@ ja:
   sort_stories: "並べ替え"
   speaker: "スピーカー"
   topic: "トピック"
+  video_unsupported: 申し訳ありませんが、お使いのブラウザは埋め込み動画をサポートしていません。
   welcome: "いらっしゃい"
   welcome_back: "まいど！"

@@ -1,0 +1,37 @@
+<% content_for(:title) do %>
+  <%= @speaker.name %> | <%= t("speaker") %>
+<% end %>
+
+<% content_for(:main_heading) do %>
+<div class="avatar-card">
+  <span class="media-with-hover-controls rounded" data-replace-on-delete="<%= asset_path("speaker.png") %>">
+    <% if @speaker.photo.attached? %>
+      <%= image_tag @speaker.photo, alt: @speaker.name, title: @speaker.name %>
+      <%= link_to speaker_photo_path(@speaker), class: "overlay delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm")}, remote: true do %>
+        <span><%= t("dashboard.actions.destroy") %></span>
+      <% end %>
+    <% else %>
+      <%= image_tag asset_path("speaker.png"), alt: @speaker.name, title: @speaker.name %>
+    <% end %>
+  </span>
+  <h2>
+    <% if @speaker.speaker_community %>
+      <div class="small">
+        <%= @speaker.speaker_community %>
+      </div>
+    <% end %>
+    <%= @speaker.name %>
+    <div class="small separated">
+      <% if @speaker.birthdate %>
+        <span><%= l(@speaker.birthdate.to_date, format: :long) %></span>
+      <% end %>
+
+      <% if @speaker.birthplace %>
+        <span><%= @speaker.birthplace.name %></span>
+      <% end %>
+    </div>
+  </h2>
+</div>
+<% end %>
+
+<%= render "form" %>

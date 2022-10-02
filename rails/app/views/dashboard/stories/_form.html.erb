@@ -1,0 +1,93 @@
+<%= form_with model: @story, multipart: true, class: "form", data: {remote: false}, locale: true do |f| %>
+  <%= render partial: "shared/form_errors", locals: { resource: @story } %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :desc %>
+  <%= f.text_area :desc, rows: 3 %>
+
+  <%= f.label :language %>
+  <%= f.text_field :language %>
+
+  <%= f.label :topic %>
+  <%= f.text_field :topic %>
+
+  <%= f.label :date_interviewed %>
+  <%= f.date_field :date_interviewed %>
+
+  <%= f.label :media %>
+  <%= f.file_field :media, multiple: true %>
+
+  <% if @story.persisted? %>
+  <div class="with-media-list">
+    <% if @story.media.attached? %>
+      <% @story.media.each do |media| %>
+        <% if media.image? %>
+          <span class="media-with-controls">
+            <% if media.variable? %>
+              <%= image_tag(media.variant(resize_to_limit: [150, 150])) %>
+            <% else %>
+              <%= image_tag(media, width: 150) %>
+            <% end %>
+            <%= link_to t("dashboard.actions.destroy"), story_delete_media_path(@story, media.signed_id), class: "delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm")}, remote: true %>
+          </span>
+        <% elsif media.video? %>
+          <span class="media-with-controls">
+            <video
+              controls
+              disablePictureInPicture
+              controlsList="nodownload"
+              id="video-player-<%= media.blob.id %>"
+              poster="<%= url_for(media.preview(resize_to_limit:[nil, 150])) if media.previewable? %>"
+            >
+              <source src="<%= url_for(media) %>"/>
+              <%= t("video_unsupported") %>
+            </video>
+            <%= link_to t("dashboard.actions.destroy"), story_delete_media_path(@story, media.signed_id), class: "delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm")}, remote: true %>
+          </span>
+        <% elsif media.audio? %>
+          <span class="media-with-controls">
+            <audio id="audio-player-<%= media.blob.id %>"
+              controls
+              controlsList="nodownload"
+              ref="audio"
+            >
+              <source src="<%= url_for(media) %>" type="<%= media.blob.content_type %>" />
+            </audio>
+            <%= link_to t("dashboard.actions.destroy"), story_delete_media_path(@story, media.signed_id), class: "delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm")}, remote: true %>
+          </span>
+        <% elsif media.previewable? %>
+          <span class="media-with-controls">
+            <%= image_tag(media.preview(resize_to_limit:[150, 150])) %>
+            <%= link_to t("dashboard.actions.destroy"), story_delete_media_path(@story, media.signed_id), class: "delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm")}, remote: true %>
+        <% else %>
+          <%= media.filename %>
+          <%= link_to t("dashboard.actions.destroy"), story_delete_media_path(@story, media.signed_id), class: "delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm")}, remote: true %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+  <% end %>
+
+  <%= f.label :speaker_ids %>
+  <div class="checklist">
+    <%= f.collection_check_boxes :speaker_ids, community.speakers, :id, :name %>
+  </div>
+
+  <%= f.label :place_ids %>
+  <div class="checklist">
+    <%= f.collection_check_boxes :place_ids, community.places, :id, :name %>
+  </div>
+
+  <%= f.label :interview_location_id %>
+  <%= f.collection_select :interview_location_id, community.places, :id, :name, include_blank: true %>
+
+  <%= f.label :interviewer_id %>
+  <%= f.collection_select :interviewer_id, community.speakers, :id, :name, include_blank: true %>
+
+  <%= f.label :permission_level %>
+  <%= f.select :permission_level, Story.permission_levels.keys.map { |k| [Story.human_attribute_name("permission_level.#{k}"), k]} %>
+
+  <%= f.submit %>
+<% end %>

@@ -1,4 +1,5 @@
 class Story < ApplicationRecord
+  include Importable
   MEDIA_PATH = Rails.env.test? ? 'spec/fixtures/media' : 'import/media'
 
   has_many :speaker_stories, inverse_of: :story
@@ -10,8 +11,8 @@ class Story < ApplicationRecord
   belongs_to :interviewer, class_name: "Speaker", foreign_key: "interviewer_id", optional: true
   has_many :media_links
 
-  validates_presence_of :speakers, message: ': Your story must have at least one Speaker'
-  validates_presence_of :places, message: ': Your story must have a Place'
+  validates :speaker_ids, presence: true
+  validates :place_ids, presence: true
 
   def self.import_csv(file_contents, community)
     ApplicationController.helpers.csv_importer(file_contents, self, community)
@@ -25,7 +26,32 @@ class Story < ApplicationRecord
     end
   end
 
+  def geo_center
+    Geocoder::Calculations.geographic_center(places.map { |p| [p.lat, p.long] }).reverse
+  end
+
+  def static_map_markers
+    RGeo::GeoJSON.encode(
+      RGeo::GeoJSON::FeatureCollection.new(
+        places.map { |p|
+          RGeo::GeoJSON::Feature.new(
+            RGeo::Cartesian.factory.point(p.long, p.lat),
+            p.id,
+            "marker-symbol": p.name[0]
+          )
+        }
+      )
+    ).to_json
+  end
+
   enum permission_level: [:anonymous, :user_only, :editor_only]
+
+  EXCLUDE_ATTRIBUTES_FROM_IMPORT = [
+    "speaker_stories",
+    "media_attachments",
+    "media_links",
+    "media_blobs"
+  ]
 end
 
 # == Schema Information

@@ -1,0 +1,26 @@
+<%= form_with model: @community, multipart: true, data: {remote: false} do |f| %>
+  <%= render partial: "shared/form_errors", locals: { resource: @community } %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :country %>
+  <%= f.text_field :country %>
+
+  <%= f.label :locale %>
+  <%= f.text_field :locale %>
+
+  <% if @community.new_record? %>
+    <%= f.fields_for :users, User.new do |user_fields| %>
+      <%= user_fields.label :email %>
+      <%= user_fields.text_field :email %>
+
+      <%= user_fields.label :password %>
+      <%= user_fields.password_field :password %>
+
+      <%= user_fields.hidden_field :role, value: "admin" %>
+    <% end %>
+  <% end %>
+
+  <%= f.submit %>
+<% end %>

@@ -1,0 +1,23 @@
+<% content_for(:title) do %>
+  <%= @story.title %> | <%= t("story") %>
+<% end %>
+
+<% content_for(:main_heading) do %>
+  <h2>
+    <% if @story.topic.present? %>
+      <div class="small"><%= @story.topic %></div>
+    <% end %>
+    <%= @story.title %>
+    <div class="small">
+      <% if @story.language.present? %>
+        <span class="badge"><%= @story.language %></span>
+      <% end %>
+
+      <% if @story.permission_level.present? %>
+        <span class="badge"><%= Story.human_attribute_name("permission_level.#{@story.permission_level}") %></span>
+      <% end %>
+    </div>
+  </h2>
+<% end %>
+
+<%= render "form" %>

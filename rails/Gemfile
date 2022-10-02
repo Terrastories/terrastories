@@ -12,6 +12,7 @@ gem 'puma', '~> 4.3'
 gem 'pg', '>= 0.18', '< 2.0'
 # Already has rgeo
 gem 'rgeo-geojson'
+gem 'geocoder'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -46,7 +47,7 @@ gem 'font-awesome-rails', '~> 4.7'
 gem 'plyr-rails'
 
 # Use ActiveStorage variant
-gem 'mini_magick', '~> 4.8'
+gem 'image_processing'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

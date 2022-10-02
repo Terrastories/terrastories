@@ -1,0 +1,20 @@
+<% content_for(:title) do %>
+  <%= @user.email %> | <%= t("user") %>
+<% end %>
+
+<% content_for(:main_heading) do %>
+  <div class="avatar-card">
+    <span class="media-with-hover-controls rounded" data-replace-on-delete="<%= asset_path("speaker.png") %>">
+      <% if @user.photo.attached? %>
+        <%= image_tag @user.photo, alt: @user.email, title: @user.email %>
+        <%= link_to user_photo_path(@user), class: "overlay delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm")}, remote: true do %>
+          <span><%= t("dashboard.actions.destroy") %></span>
+        <% end %>
+      <% else %>
+        <%= image_tag asset_path("speaker.png"), alt: @user.email, title: @user.email %>
+      <% end %>
+    </span>
+  </div>
+<% end %>
+
+<%= render "form" %>

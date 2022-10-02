@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_14_120430) do
+ActiveRecord::Schema.define(version: 2022_09_28_202901) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,7 +97,6 @@ ActiveRecord::Schema.define(version: 2022_04_14_120430) do
 
   create_table "speakers", force: :cascade do |t|
     t.string "name"
-    t.string "photo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "birthdate"
@@ -127,7 +126,6 @@ ActiveRecord::Schema.define(version: 2022_04_14_120430) do
     t.datetime "updated_at", null: false
     t.string "mapbox_style_url"
     t.string "mapbox_access_token"
-    t.boolean "mapbox_3d", default: false
     t.decimal "center_lat", precision: 10, scale: 6
     t.decimal "center_long", precision: 10, scale: 6
     t.decimal "sw_boundary_lat", precision: 10, scale: 6
@@ -137,6 +135,7 @@ ActiveRecord::Schema.define(version: 2022_04_14_120430) do
     t.decimal "zoom", precision: 10, scale: 6
     t.decimal "pitch", precision: 10, scale: 6
     t.decimal "bearing", precision: 10, scale: 6
+    t.boolean "mapbox_3d", default: false
   end
 
   create_table "users", force: :cascade do |t|
