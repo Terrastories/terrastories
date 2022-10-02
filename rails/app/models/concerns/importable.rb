@@ -50,7 +50,7 @@ module Importable
     end
 
     def import
-      raise HeaderMismatchError unless (headers - @mapped_headers.values.reject(&:blank?)).empty?
+      raise HeaderMismatchError unless (@mapped_headers.values.reject(&:blank?) - headers).empty?
       parse
       save_importable_records
 
