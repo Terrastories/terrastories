@@ -1,6 +1,6 @@
 module Dashboard
   class ImportsController < ApplicationController
-    rescue_from FileImporter::HeaderMismatchError, with: :mapped_header_mismatch
+    rescue_from Importable::FileImporter::HeaderMismatchError, with: :mapped_header_mismatch
     def show
 
     end
@@ -55,7 +55,7 @@ module Dashboard
     end
 
     def mapped_header_mismatch
-      flash.alert = "Header Mismatch"
+      flash.alert = "Additional headers detected. Please verify your CSV headers against the resource you are importing."
       redirect_to import_path
     end
   end

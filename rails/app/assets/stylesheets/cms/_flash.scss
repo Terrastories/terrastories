@@ -15,6 +15,8 @@ span.flash {
   border: 1px solid $dark-green;
   opacity: 1;
 
+  max-width: 30vw;
+
   &.flash-notice {
     background-color: lighten($dark-blue, 60%);
     border-color: $dark-blue;
