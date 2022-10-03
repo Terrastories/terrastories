@@ -6,10 +6,6 @@
 
   <%= f.label :name_audio %>
   <%= f.file_field :name_audio %>
-
-  <%= f.label :description %>
-  <%= f.text_area :description, rows: 3 %>
-
   <% if @place.name_audio.attached? %>
   <ul class="filename-list">
   <li class="file-item">
@@ -20,6 +16,9 @@
   </li>
   </ul>
   <% end %>
+
+  <%= f.label :description %>
+  <%= f.text_area :description, rows: 3 %>
 
   <%= f.label :photo %>
   <%= f.file_field :photo %>
