@@ -15,6 +15,7 @@
 
   <body class="content-wrapper">
     <%= render "shared/icons" %>
+    <%= render "shared/flash_messages" %>
     <div class="content-sidebar">
       <nav>
         <%= image_tag "logocombo.svg", alt: "Terrastories", class: "header--logo" %>
@@ -163,5 +164,28 @@
         exportTableToCSV(e.target.dataset.target, e.target.dataset.filename)
       })
     })
+
+    // Fadeout Flash Messages after 4 seconds
+    setTimeout(function() {
+      setInterval(function () {
+        var fadeEffect = document.querySelectorAll('.flash').forEach(node => {
+          if (!node.style.opacity)
+            node.style.opacity = 1;
+
+          if (node.style.opacity > 0) {
+              node.style.opacity -= 0.1;
+          } else {
+            clearInterval(fadeEffect);
+
+            let parent = node.parentNode;
+            node.remove();
+
+            if (parent.childElementCount === 0) {
+              parent.remove();
+            }
+          }
+        });
+      }, 100);
+    }, 4000);
   </script>
 </html>
