@@ -79,23 +79,23 @@
             <label><%= t("map.sw_corner") %></label>
             <div class="input-group">
               <%= f.label :sw_boundary_lat %>
-              <%= f.number_field :sw_boundary_lat, optional: true, value: @theme.sw_boundary_lat %>
+              <%= f.text_field :sw_boundary_lat, optional: true, value: @theme.sw_boundary_lat %>
             </div>
             <div class="input-group">
               <%= f.label :sw_boundary_long %>
-              <%= f.number_field :sw_boundary_long, optional: true, value: @theme.sw_boundary_long %>
+              <%= f.text_field :sw_boundary_long, optional: true, value: @theme.sw_boundary_long %>
             </div>
           </div>
           <div>
             <label><%= t("map.ne_corner") %></label>
             <div class="input-group">
               <%= f.label :ne_boundary_lat %>
-              <%= f.number_field :ne_boundary_lat, optional: true, value: @theme.ne_boundary_lat %>
+              <%= f.text_field :ne_boundary_lat, optional: true, value: @theme.ne_boundary_lat %>
             </div>
 
             <div class="input-group">
               <%= f.label :ne_boundary_long %>
-              <%= f.number_field :ne_boundary_long, optional: true, value: @theme.ne_boundary_long %>
+              <%= f.text_field :ne_boundary_long, optional: true, value: @theme.ne_boundary_long %>
             </div>
           </div>
         </div>
@@ -105,10 +105,10 @@
         <legend><%= t("map.center") %></legend>
         <div class="side-by-side">
           <div class="input-group">
-          <%= f.label :center_lat %><%= f.number_field :center_lat %>
+          <%= f.label :center_lat %><%= f.text_field :center_lat %>
           </div>
           <div class="input-group">
-          <%= f.label :center_long %><%= f.number_field :center_long %>
+          <%= f.label :center_long %><%= f.text_field :center_long %>
           </div>
         </div>
 
