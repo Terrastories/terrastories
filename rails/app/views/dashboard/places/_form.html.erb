@@ -8,7 +8,7 @@
   <%= f.file_field :name_audio %>
 
   <%= f.label :description %>
-  <%= f.text_area :description %>
+  <%= f.text_area :description, rows: 3 %>
 
   <% if @place.name_audio.attached? %>
   <ul class="filename-list">
