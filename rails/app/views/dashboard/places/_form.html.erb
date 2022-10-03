@@ -36,10 +36,10 @@
   </div>
 
   <%= f.label :lat %>
-  <%= f.number_field :lat, step: "0.00001", min: -90, max: 90 %>
+  <%= f.text_field :lat %>
 
   <%= f.label :long %>
-  <%= f.number_field :long, step: "0.00001", min: -180, max: 180 %>
+  <%= f.text_field :long %>
 
   <%= f.submit %>
 <% end %>
