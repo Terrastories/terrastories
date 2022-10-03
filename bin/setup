@@ -1,0 +1,67 @@
+#!/bin/sh
+set -eu
+
+profile="dev"
+container="web"
+
+read -p "Setup for offline 'Field Kit' mode? (Yn) " offline
+
+if [ "$offline" == "y" ] || [ $offline == "Y" ]; then
+  container="localweb"
+  profile="offline"
+
+  if ! grep -q "terrastories.local" /etc/hosts; then
+    echo
+    echo "In order for offline Terrastories to work, you need to configure the"
+    echo "instance hostnames on your machine."
+    echo
+    echo "You can manually configure your /etc/hosts file, or you can provide"
+    echo "your password when prompted to automatically configure them."
+    echo
+    echo "Choose one:"
+    echo "  (1) Manual"
+    echo "  (2) Automatic"
+    echo
+    read -p "Your choice: " choice
+
+    if [ "$choice" -eq 2 ]; then
+      sudo -- sh -c "echo '# Added by Terrastories\n127.0.0.1 terrastories.local\n127.0.0.1 tileserver.terrastories.local\n# End of section' >> /private/etc/hosts"
+    else
+      echo
+      echo "In a new terminal, open /etc/hosts with appropriate write permissions"
+      echo "and add the following lines:"
+      echo
+      echo "  127.0.0.1 terrastories.local"
+      echo "  127.0.0.1 tileserver.terrastories.local"
+      echo
+      read -p "Please go make those changes now. Press any key to continue or q to quit. " -n 1 k
+      if [[ $k = "q" ]]; then
+        echo "\nQuitting..."
+        exit
+      fi
+    fi
+  fi
+fi
+
+# Copy .env.sample if .env does not exist
+if [ ! -f .env ]; then
+  cp .env.example .env
+fi
+
+## init db
+docker compose run --rm db postgres --version
+
+## start db
+docker compose up -d db
+
+## build app
+docker compose --profile $profile build
+
+## setup and seed database
+docker compose run --rm $container bin/rails db:migrate db:seed
+
+echo
+echo "Welcome to Terrastories!\n"
+echo "Boot up your Terrastories instance with the following command:"
+echo
+echo "docker compose --profile $profile up"
