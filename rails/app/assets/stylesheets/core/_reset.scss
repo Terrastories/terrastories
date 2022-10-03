@@ -46,3 +46,6 @@ table {
 * {
   box-sizing: border-box;
 }
+html, body, [data-react-class="App"] {
+  height: 100%;
+}
