@@ -1,5 +1,4 @@
 FROM ruby:2.5.9-alpine
-ARG precompileassets
 
 RUN apk --no-cache add --update \
     build-base \
@@ -32,7 +31,5 @@ COPY package.json yarn.lock /api/
 RUN yarn install
 
 COPY . /api
-
-RUN scripts/potential_asset_precompile.sh $precompileassets
 
 CMD ["scripts/server"]
