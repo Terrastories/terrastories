@@ -76,4 +76,6 @@ Rails.application.configure do
     config.hosts << "terrastories.local"
     config.hosts << /[a-zA-Z0-9-]*\.terrastories\.local/
   end
+
+  config.hosts << "rudo-ubuntu"
 end
