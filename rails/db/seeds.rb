@@ -44,7 +44,7 @@ laura = Speaker.find_or_create_by(name: "Laura Mosher", community: example_commu
 
 
 # Create Stories
-rfg2019_story = Story.find_or_create_by(title: "Ruby for Good 2018",
+rfg2019_story = Story.joins(:places, :speakers).find_or_create_by(title: "Ruby for Good 2018",
                     desc: "Ruby for Good 2018 team leads Miranda Wang and Jason Hinebaugh about why they wanted to help steward Terrastories.",
                     places: [rfg2018],
                     language: 'English',
@@ -55,7 +55,7 @@ rfg2019_story = Story.find_or_create_by(title: "Ruby for Good 2018",
                     community: example_community)
 
 
-matawai_story = Story.find_or_create_by(title: "Terrastories for the Matawai",
+matawai_story = Story.joins(:places, :speakers).find_or_create_by(title: "Terrastories for the Matawai",
                     desc: "Kalimar Maia and Rudo Kemper describe what it was like to bring Terrastories to the Matawai in Pusugrunu, Suriname for the first time, in 2018.",
                     places: [pusugrunu],
                     language: 'English',
@@ -65,7 +65,7 @@ matawai_story = Story.find_or_create_by(title: "Terrastories for the Matawai",
                     speakers: [rudo, kalimar],
                     community: example_community)
 
-rbtb2019_story = Story.find_or_create_by(title: "Ruby by the Bay 2019",
+rbtb2019_story = Story.joins(:places, :speakers).find_or_create_by(title: "Ruby by the Bay 2019",
                     desc: "Corinne Henk, Ruby by the Bay 2019 team lead, describes some of the challenges her team faced and what they managed to accomplish, in conversation with Rudo Kemper and Kalimar Maia.",
                     places: [rbtb2019],
                     language: 'English',
@@ -75,7 +75,7 @@ rbtb2019_story = Story.find_or_create_by(title: "Ruby by the Bay 2019",
                     speakers: [corinne, rudo, kalimar],
                     community: example_community)
 
-rbtb2020_story = Story.find_or_create_by(title: "Ruby by the Bay 2020",
+rbtb2020_story = Story.joins(:places, :speakers).find_or_create_by(title: "Ruby by the Bay 2020",
                     desc: "Ruby by the Bay 2020 team leads Ian Norris and Mae Beale on remotely stewarding a volunteer team from Ruby for Good, during the Covid-19 pandemic.",
                     places: [null_island],
                     language: 'English',
@@ -84,7 +84,7 @@ rbtb2020_story = Story.find_or_create_by(title: "Ruby by the Bay 2020",
                     speakers: [ian, mae],
                     community: example_community)
 
-atalm2022_story = Story.find_or_create_by(title: "ATALM 2022",
+atalm2022_story = Story.joins(:places, :speakers).find_or_create_by(title: "ATALM 2022",
                     desc: "Terrastories stewards Laura Mosher and Rudo Kemper on developing Terrastories for a project funded by the Association of Tribal Archives, Libraries, and Museums",
                     places: [null_island],
                     language: 'English',
