@@ -3,11 +3,21 @@
     <h2>Sign up</h2>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= devise_error_messages! %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="field">
+        <%= f.label :username %>
+        <%= f.text_field :username, autofocus: true, autocomplete: "username" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :name %>
+        <%= f.text_field :name, autocomplete: "name" %>
+      </div>
 
       <div class="field">
         <%= f.label :email %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <%= f.email_field :email, autocomplete: "email" %>
       </div>
 
       <div class="field">

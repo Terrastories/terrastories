@@ -98,6 +98,9 @@ mat:
         pitch: Pitch degree
         bearing: Bearing degress
       user:
+        login: Username or Email
+        name: Display Name
+        username: Username
         email: Email
         role: Rol
         password: Paswoord

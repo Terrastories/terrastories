@@ -6,6 +6,7 @@
       <p><%= t("community_search.coming_soon") %></p>
       <br/>
       <% if user_signed_in? %>
+        <%= link_to t("profile"), edit_registration_path(current_user) %> |
         <%= link_to t("logout"), destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
       <% else %>
         <%= link_to t("login"), new_user_session_path, :class => 'navbar-link'  %>
