@@ -97,6 +97,7 @@ es:
         zoom: Nivel de zoom
         pitch: Grado de tono
         bearing: Grado de orientación
+        map_projection: Establecer proyección para el mapa
       user:
         email: Correo electrónico
         role: Rol

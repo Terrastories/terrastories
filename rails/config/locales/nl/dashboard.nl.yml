@@ -12,7 +12,6 @@ nl:
     online: Online Map Configuration
     settings: Map Settings
     settings_description: Customize your community's map settings.
-    map_projection: Projectie instellen voor kaart
     projection:
       mercator: Mercator
       albers: Albers

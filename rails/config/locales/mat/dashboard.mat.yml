@@ -12,7 +12,6 @@ mat:
     online: Online Map Configuration
     settings: Map Settings
     settings_description: Customize your community's map settings.
-    map_projection: Set projection for map
     projection:
       mercator: Mercator
       albers: Albers
