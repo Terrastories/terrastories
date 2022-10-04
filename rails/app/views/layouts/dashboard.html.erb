@@ -76,7 +76,7 @@
             <ul class="dropdown" aria-label="submenu">
               <% if current_user.super_admin %>
               <% end %>
-              <li><%= link_to t("profile"), edit_user_path(current_user) %></a></li>
+              <li><%= link_to t("profile"), user_profile_path %></a></li>
               <li><%= link_to t("logout"), destroy_user_session_path, method: :delete  %></li>
             </ul>
           </div>

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
         get :search, to: "search#index"
 
+        get :profile, to: "users#profile", as: :user_profile
         resources :users do
           delete :photo, action: :delete_photo
         end

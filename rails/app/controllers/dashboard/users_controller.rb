@@ -41,6 +41,11 @@ module Dashboard
       @user = authorize community.users.find(params[:id])
     end
 
+    def profile
+      @user = current_user
+      render :edit
+    end
+
     def update
       @user = authorize community.users.find(params[:id])
 
