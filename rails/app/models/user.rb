@@ -26,6 +26,10 @@ class User < ApplicationRecord
     self.role ||= :viewer
   end
 
+  def display_name
+    name.presence || username
+  end
+
   # Override Devise authentication to allow lookup via username or email
   def self.find_first_by_auth_conditions(tainted_conditions)
     if (login = tainted_conditions.delete(:login))

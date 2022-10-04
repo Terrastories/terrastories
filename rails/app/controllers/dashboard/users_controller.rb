@@ -76,6 +76,8 @@ module Dashboard
 
     def user_params
       params.require(:user).permit(
+        :name,
+        :username,
         :email,
         :password,
         :role,

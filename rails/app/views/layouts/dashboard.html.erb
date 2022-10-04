@@ -67,9 +67,13 @@
         <% end %>
         <div class="top-nav">
           <div class="user-nav">
-            <%= current_user.email %>
+            <%= current_user.username %>
             <% if current_user.photo.attached? %>
-              <%= image_tag current_user.photo, class: "img img--rounded img--micro" %>
+              <% if current_user.photo.variable? %>
+                <%= image_tag current_user.photo.variant(resize_to_fill: [300, 300]), class: "img img--rounded img--mini" %>
+              <% else %>
+                <%= image_tag current_user.photo, class: "img img--rounded img--mini" %>
+              <% end %>
             <% else %>
               <%= image_tag asset_path("speaker.png"), class: "img img--rounded img--micro" %>
             <% end %>
