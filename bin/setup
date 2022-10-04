@@ -6,7 +6,7 @@ container="web"
 
 read -p "Setup for offline 'Field Kit' mode? (Yn) " offline
 
-if [ "$offline" == "y" ] || [ $offline == "Y" ]; then
+if [ "$offline" == "y" ] || [ "$offline" == "Y" ]; then
   container="localweb"
   profile="offline"
 
@@ -24,7 +24,7 @@ if [ "$offline" == "y" ] || [ $offline == "Y" ]; then
     echo
     read -p "Your choice: " choice
 
-    if [ "$choice" -eq 2 ]; then
+    if [ $choice -eq 2 ]; then
       sudo -- sh -c "echo '# Added by Terrastories\n127.0.0.1 terrastories.local\n127.0.0.1 tileserver.terrastories.local\n# End of section' >> /private/etc/hosts"
     else
       echo
@@ -35,7 +35,7 @@ if [ "$offline" == "y" ] || [ $offline == "Y" ]; then
       echo "  127.0.0.1 tileserver.terrastories.local"
       echo
       read -p "Please go make those changes now. Press any key to continue or q to quit. " -n 1 k
-      if [[ $k = "q" ]]; then
+      if [[ "$k" = "q" ]]; then
         echo "\nQuitting..."
         exit
       fi
