@@ -1,8 +1,8 @@
 <%= form_with model: @speaker, multipart: true, data: {remote: false}, class: "form aligned" do |f| %>
   <%= render partial: "shared/form_errors", locals: { resource: @speaker } %>
 
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+  <%= f.label :name, class: "required" %>
+  <%= f.text_field :name, required: true %>
 
   <%= f.label :photo %>
   <%= f.file_field :photo %>

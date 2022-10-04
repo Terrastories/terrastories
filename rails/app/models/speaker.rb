@@ -8,6 +8,8 @@ class Speaker < ApplicationRecord
   belongs_to :birthplace, class_name: "Place",  optional: true
   has_one_attached :photo
 
+  validates :name, presence: true
+
   # photo
   def picture_url
     if photo.attached?
