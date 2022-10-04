@@ -184,6 +184,8 @@ $el-shadow: 0 1px 4px $lighter-gray;
 @include for-phone-only {
   .cardContainer {
     &.onCanvas {
+      width: 0;
+
       .closeMe {
         display: none;
       }
