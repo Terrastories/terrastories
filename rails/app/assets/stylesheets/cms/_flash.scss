@@ -3,7 +3,6 @@ div.flash-messages {
   width: 100%;
   display: grid;
   place-items: center;
-  z-index: 1000;
 }
 
 span.flash {
@@ -14,6 +13,7 @@ span.flash {
   margin: 1rem;
   border: 1px solid $dark-green;
   opacity: 1;
+  z-index: 1000;
 
   max-width: 30vw;
 
