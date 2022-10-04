@@ -1,8 +1,8 @@
 <%= form_with model: @story, multipart: true, class: "form", data: {remote: false}, locale: true do |f| %>
   <%= render partial: "shared/form_errors", locals: { resource: @story } %>
 
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+  <%= f.label :title, class: "required" %>
+  <%= f.text_field :title, required: true %>
 
   <%= f.label :desc %>
   <%= f.text_area :desc, rows: 3 %>
@@ -70,14 +70,14 @@
   </div>
   <% end %>
 
-  <%= f.label :speaker_ids %>
+  <%= f.label :speaker_ids, class: "required" %>
   <div class="checklist">
-    <%= f.collection_check_boxes :speaker_ids, community.speakers, :id, :name %>
+    <%= f.collection_check_boxes :speaker_ids, community.speakers, :id, :name, required: true %>
   </div>
 
-  <%= f.label :place_ids %>
+  <%= f.label :place_ids, class: "required" %>
   <div class="checklist">
-    <%= f.collection_check_boxes :place_ids, community.places, :id, :name %>
+    <%= f.collection_check_boxes :place_ids, community.places, :id, :name, required: true %>
   </div>
 
   <%= f.label :interview_location_id %>
