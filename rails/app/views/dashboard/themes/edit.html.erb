@@ -125,6 +125,9 @@
       <%= f.label :bearing %>
       <span id="bearingValue"><%= @theme.bearing %></span>
       <%= f.range_field :bearing, min: -180, max: 180 %>
+
+      <%= f.label :map_projection %>
+      <%= f.select :map_projection, [:mercator, :albers, :equalEarth, :equirectangular, :lambertConformalConic, :naturalEarth, :winkelTripel] %>
     </div>
 
     <div class="two-columns-right">

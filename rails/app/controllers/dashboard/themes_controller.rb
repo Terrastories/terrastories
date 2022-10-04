@@ -49,6 +49,7 @@ module Dashboard
         :zoom,
         :pitch,
         :bearing,
+        :map_projection,
         sponsor_logos: []
       )
     end
