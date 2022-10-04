@@ -76,7 +76,7 @@ You can define multiple `mbtiles` sources (vector as well as raster), and place 
 
 ## Setup and running the server
 
-Once you have prepped the environment and offline map content, you may proceed to [the standard guides per operating system](/README.md#setup) to follow the same process for building and starting Terrastories, with one exception: changing the Docker profile from `dev` to `offline`. So, you would run:
+Once you have prepped the environment and offline map content, you may proceed to [the standard guides per operating system](/README.md#install-terrastories) to follow the same process for building and starting Terrastories, with one exception: changing the Docker profile from `dev` to `offline`. So, you would run:
 
 ```bash
 docker compose --profile offline build
