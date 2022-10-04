@@ -173,6 +173,7 @@ const themeMap = new mapboxgl.Map({
   pitch: <%= @theme.pitch  || 0 %>, // starting pitch
   bearing: <%= @theme.bearing  || 0 %>, // starting bearing
   style: "<%= @theme.mapbox_style %>", // style URL or style object
+  projection: "<%= @theme.map_projection %>",
   hash: false,
   cooperativeGestures: true
 });
