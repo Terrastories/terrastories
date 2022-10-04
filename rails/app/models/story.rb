@@ -11,6 +11,7 @@ class Story < ApplicationRecord
   belongs_to :interviewer, class_name: "Speaker", foreign_key: "interviewer_id", optional: true
   has_many :media_links
 
+  validates :title, presence: true
   validates :speaker_ids, presence: true
   validates :place_ids, presence: true
 
