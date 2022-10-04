@@ -119,7 +119,7 @@ const staticMap = new mapboxgl.Map({
   accessToken: "<%= @community.theme.mapbox_token %>",
   container: "static-map", // container ID
   center: <%= @story.geo_center %>,
-  zoom: 2, // starting zoom
+  zoom: 8, // starting zoom
   style: "<%= @community.theme.mapbox_style %>", // style URL or style object
   interactive: false // don't allow map movement
 });

@@ -4,7 +4,9 @@ form.form {
   &.aligned {
     width: 50%;
 
-    input:not([type=checkbox]):not([type=submit]), select {
+    input:not([type=checkbox]):not([type=submit]),
+    select,
+    textarea {
       width: 100%;
     }
   }

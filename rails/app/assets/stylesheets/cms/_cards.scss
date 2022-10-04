@@ -60,6 +60,7 @@
   &__img--circle {
     border-radius: 50%;
     width: 100%;
+    aspect-ratio: 1;
   }
 
   &__img {
@@ -109,5 +110,6 @@
   h3 {
     font-size: 1.25rem;
     margin-bottom: 0;
+    word-wrap: break-word;
   }
 }
