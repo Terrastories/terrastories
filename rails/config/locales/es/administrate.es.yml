@@ -30,6 +30,7 @@ es:
         mapbox_style_url: URL de estilo Mapbox (para mapas en línea)
         mapbox_access_token: Token de acceso a Mapbox asociado al estilo
         mapbox_3d: Activar la vista de terreno 3D para el mapa en línea
+        map_projection: Establecer proyección para el mapa
         center_lat: Centro del mapa, latitud
         center_long: Centro del mapa, longitud
         sw_boundary_lat: SW cuadro delimitador, latitud (opcional)

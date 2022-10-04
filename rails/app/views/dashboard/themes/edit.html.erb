@@ -125,6 +125,9 @@
       <%= f.label :bearing %>
       <span id="bearingValue"><%= @theme.bearing %></span>
       <%= f.range_field :bearing, min: -180, max: 180 %>
+
+      <%= f.label :map_projection %>
+      <%= f.select :map_projection, t("map.projection").map { |k, v| [v, k] } %>
     </div>
 
     <div class="two-columns-right">
@@ -170,6 +173,7 @@ const themeMap = new mapboxgl.Map({
   pitch: <%= @theme.pitch  || 0 %>, // starting pitch
   bearing: <%= @theme.bearing  || 0 %>, // starting bearing
   style: "<%= @theme.mapbox_style %>", // style URL or style object
+  projection: "<%= @theme.map_projection %>",
   hash: false,
   cooperativeGestures: true
 });

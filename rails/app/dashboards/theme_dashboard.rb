@@ -24,7 +24,8 @@ class ThemeDashboard < Administrate::BaseDashboard
     ne_boundary_long: Field::Number,
     zoom: Field::Number,
     pitch: Field::Number,
-    bearing: Field::Number
+    bearing: Field::Number,
+    map_projection: EnumField
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -55,6 +56,7 @@ class ThemeDashboard < Administrate::BaseDashboard
   zoom
   pitch
   bearing
+  map_projection
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -75,6 +77,7 @@ class ThemeDashboard < Administrate::BaseDashboard
   zoom
   pitch
   bearing
+  map_projection
   ].freeze
 
   # COLLECTION_FILTERS
@@ -97,6 +100,6 @@ class ThemeDashboard < Administrate::BaseDashboard
   end
 
   def permitted_attributes
-    super + [:sponsor_logos => []]
+    super + [:sponsor_logos => [], map_projection: [:mercator, :albers, :equalEarth, :equirectangular, :lambertConformalConic, :naturalEarth, :winkelTripel]]
   end
 end

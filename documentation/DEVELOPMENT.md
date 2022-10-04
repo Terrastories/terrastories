@@ -90,6 +90,6 @@ To start Terrastories with the offline profile, run
 docker compose --profile offline up
 ```
 
-In order to get the local tileserver map running, you will also need to generate an `MBtiles` dataset and place it in `tileserver/data/mbtiles/` with the filename `terrastories.mbtiles`, along with any fonts, sprites used in the map, and a `style.json` file that defines the appearance of the tiles. Please see the [customization guide](documentation/CUSTOMIZATION.md) for more information.
+In order to get the local tileserver map running, you will also need to generate an `MBtiles` dataset and place it in `tileserver/data/mbtiles/` with the filename `terrastories.mbtiles`, along with any fonts, sprites used in the map, and a `style.json` file that defines the appearance of the tiles. Please see the [customization guide](CUSTOMIZATION.md) for more information.
 
-For more information on running Terrastories in an offline environment, see [documentation/SETUP-OFFLINE.md](SETUP-OFFLINE.md)
+For more information on running Terrastories in an offline environment, see [SETUP-OFFLINE.md](SETUP-OFFLINE.md)

@@ -136,6 +136,7 @@ ActiveRecord::Schema.define(version: 2022_09_28_202901) do
     t.decimal "pitch", precision: 10, scale: 6
     t.decimal "bearing", precision: 10, scale: 6
     t.boolean "mapbox_3d", default: false
+    t.integer "map_projection", default: 0
   end
 
   create_table "users", force: :cascade do |t|

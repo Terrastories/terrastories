@@ -96,7 +96,8 @@ ja:
         ne_boundary_long: Max Longitude
         zoom: Zoom level
         pitch: Pitch degree
-        bearing: Bearing degress
+        bearing: Bearing degrees
+        map_projection: Set projection for map
       user:
         email: Email
         role: ロール

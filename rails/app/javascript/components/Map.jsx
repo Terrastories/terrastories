@@ -24,6 +24,7 @@ export default class Map extends Component {
     mapboxStyle: PropTypes.string,
     mapboxAccessToken: PropTypes.string,
     mapbox3d: PropTypes.bool,
+    mapProjection: PropTypes.string,
     useLocalMapServer: PropTypes.bool,
     markerImgUrl: PropTypes.string,
     markerClusterImgUrl: PropTypes.string,
@@ -37,7 +38,8 @@ export default class Map extends Component {
         zoom: this.props.zoom,
         maxBounds: this.checkBounds(), // check for bounding box presence
         pitch: this.props.pitch,
-        bearing: this.props.bearing
+        bearing: this.props.bearing,
+        projection: this.props.mapProjection
     });
 
     this.map.on("load", () => {
@@ -109,8 +111,8 @@ export default class Map extends Component {
           'maxzoom': 14
         });
     
-        // add the DEM source as a terrain layer with exaggerated height
-        this.map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.5 });
+        // add the DEM source as a terrain layer
+        this.map.setTerrain({ 'source': 'mapbox-dem' });
           
         // add a sky layer that will show when the map is highly pitched
         this.map.addLayer({
