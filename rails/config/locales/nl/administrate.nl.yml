@@ -16,6 +16,26 @@ nl:
           editor_only: "Editor"
           admin_only: "Admin"
       theme:
+        background_img: Background image (for welcome screen)
+        sponsor_logos: Sponsor logos (for welcome screen)
+        mapbox_style_url: Mapbox style URL (for online maps)
+        mapbox_access_token: Mapbox access token associated with the style
+        mapbox_3d: Activate 3D Terrain view for online map
+        map_projection: Projectie instellen voor kaart
+        center_lat: Map center, latitude
+        center_long: Map center, longitude
+        sw_boundary_lat: SW bounding box, latitude (optional)
+        sw_boundary_long: SW bounding box, longitude (optional)
+        ne_boundary_lat: NE bounding box, latitude (optional)
+        ne_boundary_long: NE bounding box, longitude (optional)
+        background_img: Background Image
+        sponsor_logos: Sponsor Logos
+        mapbox_style_url: Mapbox Style URL
+        mapbox_access_token: Mapbox access token associated with the style
+        mapbox_3d: Activate 3D Terrain view for online map
+        zoom: Zoom level
+        pitch: Pitch degree
+        bearing: Bearing degree
         display_resource: "Thema voor Terrastories: %{community_name}"
   administrate:
     actions:

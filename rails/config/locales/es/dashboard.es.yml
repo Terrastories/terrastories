@@ -12,6 +12,15 @@ es:
     online: Online Map Configuration
     settings: Configuración del Mapa
     settings_description: Customize your community's map settings.
+    map_projection: Establecer proyección para el mapa
+    projection:
+      mercator: Mercator
+      albers: Albers
+      equalEarth: Equal Earth
+      equirectangular: Equirectangular
+      lambertConformalConic: Lambert Comformal Conic
+      naturalEarth: Natural Earth
+      winkelTripel: Winkel Tripel
   dashboard:
     back_to_app: Regresar a la aplicación
     community_settings: Community Settings
