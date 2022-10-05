@@ -35,7 +35,7 @@ es:
     theme:
       welcome_screen: Pantalla de Bienvenida
       background_img: Personaliza la imagen de fondo en la página principal de tu comunidad.
-      sponsor_logos: Muestra logotipos en la página de tu comunidad. Esto puede ser el logo de tu organización, o el del proyecto de un patrocinador. Se pueden agregar múltiples logotipos.
+      sponsor_logos: Muestra logotipos en la página de tu comunidad. Esto puede ser el logo de tu organización, o del proyecto de un patrocinador. Se pueden agregar múltiples logotipos.
   search:
     clear: Limpiar búsqueda
     label: Buscar
