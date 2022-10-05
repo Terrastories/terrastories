@@ -1,46 +1,46 @@
 es:
   errors:
     messages:
-      map_bounds: All four bounding box values must be set, or left blank
-      invalid_latitude: value should be between -90 and 90
-      invalid_longitude: value should be between -180 and 180
-      invalid_zoom_level: value should be between 0 and 22
-      invalid_pitch: value should be 0 and 85
-      invalid_bearing: value should be between -180 and 180
+      map_bounds: Se deben asignar todos los valores limitantes de la caja, o dejar en blanco
+      invalid_latitude: el valor debe estar entre -90 y 90
+      invalid_longitude: el valor debe estar entre -180 y 180
+      invalid_zoom_level: el valor debe estar entre 0 y 22
+      invalid_pitch: el valor debe estar entre 0 y 85
+      invalid_bearing: el valor debe estar entre -180 y 180
   helpers:
     label:
       place:
         one: Lugar
       speaker:
         one: Orador
-      visibility: Visibility
+      visibility: Visibilidad
   activerecord:
     errors:
       models:
         place:
           attributes:
             name_audio:
-              content_type: content type no está incluido en la lista
+              content_type: tipo de contenido no incluido en la lista
             photo:
-              content_type: content type no está incluido en la lista
+              content_type: tipo de contenido no incluido en la lista
         story:
           attributes:
             place_ids:
-              blank: Your story must have a Place
+              blank: Tu historia debe tener un Lugar
             speaker_ids:
-              blank: Your story must have at least one Speaker
+              blank: Tu historia deber tener al menos un Orador
         theme:
           attributes:
             background_img:
-              content_type: content type no está incluido en la lista
+              content_type: tipo de contenido no incluido en la lista
             mapbox_access_token:
-              blank: is required when the Mapbox style URL is set.
+              blank: es requerido cuando se configura la URL de estilo Mapbox.
             mapbox_style_url:
-              blank: is required when the Mapbox access token is set.
+              blank: es requerido cuando se configura el token de acceso Mapbox.
     # Used to auto-translate submit buttons
     models:
       community: Comunidad
-      curriculum: Curriculum
+      curriculum: Currículo
       user: Usuario
       place: Lugar
       speaker: Orador
@@ -51,7 +51,7 @@ es:
     attributes:
       place:
         name: Nombre
-        name_audio: Audio del Placename
+        name_audio: Audio del Nombre del Lugar
         description: Descripción
         type_of_place: Tipo de lugar
         region: Región
@@ -64,7 +64,7 @@ es:
         story_ids: Historias
         photo: Foto
         speaker_community: Comunidad del Orador
-        birthdate: Fecha de cumpleaños
+        birthdate: Fecha de nacimiento
         birthplace_id: Lugar de nacimiento
       story:
         title: Título
@@ -79,7 +79,7 @@ es:
         interviewer_id: Entrevistador
         permission_level: Nivel de permisos
       story/permission_level:
-        anonymous: "Buscable"
+        anonymous: Anónimo
         user_only: "Miembro/a"
         editor_only: "Editor/a"
       theme:
