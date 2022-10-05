@@ -1,6 +1,6 @@
 es:
   community: Comunidad
-  communities: Comunidads
+  communities: Comunidades
   media_link: Enlace De Medios
   media_links: Enlaces De Medios
   places: Lugares
@@ -18,12 +18,12 @@ es:
   alphabetical: A-Z
   back_to_map: "Volver al Mapa"
   back_to_welcome: "Volver a la página de inicio"
-  built_with_love: Built with ❤️ by
+  built_with_love: Construido con ❤️ por
   close: "Cerrar"
   community_search:
-    title: "Search for a Community to Explore"
-    coming_soon: "This feature is coming soon. For now, please request an invite to a specific community."
-  default: "default"
+    title: "Busca una comunidad para explorar"
+    coming_soon: "Esta característica estará disponible pronto. Por ahora, solicita por favor una invitación a una comunidad en específico."
+  default: "Predeterminado"
   enter: "Ingresar"
   filter_stories: "Filtrar historias"
   forgot_password: "¿Olvidaste tu contraseña?"
@@ -33,10 +33,10 @@ es:
     question: "¿Qué es una terrastory?"
     explanation: "Terrastories son grabaciones audiovisuales de historias autóctonas. Esta aplicación compatible offline permite a las comunidades locales ubicar en un mapa sus narraciones tradicionales sobre los lugares que representan un valor significativo para ellos."
   language: "Idioma"
-  login: "Login"
-  logout: "Logout"
+  login: "Iniciar sesión"
+  logout: "Cerrar sesión"
   most_recent: "Más reciente"
-  no_media: No Media Available
+  no_media: Sin medios disponibles
   password: "Contraseña"
   place_name: "Pronunciación del nombre del lugar"
   place_type: "Tipo de lugar"
