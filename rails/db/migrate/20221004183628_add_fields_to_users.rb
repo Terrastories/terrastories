@@ -1,4 +1,4 @@
-class AddFieldsToUsers < ActiveRecord::Migration[6.1]
+class AddFieldsToUsers < ActiveRecord::Migration[6.0]
   def up
     # don't set default/null when adding column to avoid excessive writes
     add_column :users, :username, :string
