@@ -1,28 +1,28 @@
 es:
   profile: Profile
   interviewer: Entrevistador
-  import: Import
+  import: Importar
   map:
     center: Centro del mapa
     bounds: Cuadro delimitador del mapa
-    bounds_description: The boundaries of the map determine the extent of where you can scroll on the map. Unrestricted, the map will be infinitely scrollable.
+    bounds_description: Los límites del mapa determinan la extensión de dónde puedes hacer scroll sobre el mapa. Sin restricción, el mapa tendrá scroll infinito.
     sw_corner: SW cuadro delimitador
     ne_corner: NE cuadro delimitador
-    unrestricted_bounds: Allow unrestricted bounds
-    online: Online Map Configuration
+    unrestricted_bounds: Permite límites sin restricción
+    online: Configuración de Mapa en línea
     settings: Configuración del Mapa
-    settings_description: Customize your community's map settings.
+    settings_description: Personaliza las configuraciones del mapa de tu comunidad.
     projection:
       mercator: Mercator
       albers: Albers
-      equalEarth: Equal Earth
+      equalEarth: Tierra igual
       equirectangular: Equirectangular
-      lambertConformalConic: Lambert Comformal Conic
-      naturalEarth: Natural Earth
+      lambertConformalConic: Cónica conforme de Lambert
+      naturalEarth: Tierra natural
       winkelTripel: Winkel Tripel
   dashboard:
     back_to_app: Regresar a la aplicación
-    community_settings: Community Settings
+    community_settings: Configuraciones de la comunidad
     headings:
       new_resource: Nuevo %{name}
     actions:
@@ -34,10 +34,10 @@ es:
       show_resource: Mostrar %{name}
     theme:
       welcome_screen: Pantalla de Bienvenida
-      background_img: Customize the background image on the landing page of your community.
-      sponsor_logos: Display logos on your community page. This could be your organization's logo, or that of a project sponsor. Multiple logos can be added.
+      background_img: Personaliza la imagen de fondo en la página principal de tu comunidad.
+      sponsor_logos: Muestra logotipos en la página de tu comunidad. Esto puede ser el logo de tu organización, o el del proyecto de un patrocinador. Se pueden agregar múltiples logotipos.
   search:
-    clear: Limpiar busqueda
+    clear: Limpiar búsqueda
     label: Buscar
     heading: Buscar resultados
     results: resultados
@@ -47,7 +47,7 @@ es:
     label: Filtrar
     clear: Limpiar filtros
   list:
-    prev: Prev
-    next: Next
-    no_results: There are no %{resources} available.
-    no_nested_results: This %{resource} has no %{resources}.
+    prev: Ant
+    next: Sig
+    no_results: No hay %{resources} disponibles.
+    no_nested_results: Este %{resource} no tiene %{resources}.
