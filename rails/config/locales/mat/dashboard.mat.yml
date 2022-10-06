@@ -1,17 +1,17 @@
 mat:
-  profile: Profile
+  profile: Profiel
   interviewer: Interviewer
-  import: Import
+  import: Importeer
   map:
-    center: Map Center
-    bounds: Map Bounds
-    bounds_description: The boundaries of the map determine the extent of where you can scroll on the map. Unrestricted, the map will be infinitely scrollable.
-    sw_corner: Southwest Corner
-    ne_corner: Northeast Corner
-    unrestricted_bounds: Allow unrestricted bounds
-    online: Online Map Configuration
-    settings: Map Settings
-    settings_description: Customize your community's map settings.
+    center: Kaart Center
+    bounds: Kaartgrenzen
+    bounds_description: De grenzen van de kaart bepalen de mate waarin u op de kaart kunt scrollen. Zonder grenzen, de kaart is onbeperkt scrollbaar.
+    sw_corner: Zuidwest Hoek
+    ne_corner: Noordoost Hoek
+    unrestricted_bounds: Onbeperkte grenzen toestaan
+    online: Online Kaartconfiguratie
+    settings: Kaartconfiguratie
+    settings_description: Pas de kaartinstellingen van uw community aan.
     projection:
       mercator: Mercator
       albers: Albers
@@ -21,8 +21,8 @@ mat:
       naturalEarth: Natural Earth
       winkelTripel: Winkel Tripel
   dashboard:
-    back_to_app: Back to App
-    community_settings: Community Settings
+    back_to_app: Terug naar App
+    community_settings: Gemeenschap instellingen
     headings:
       new_resource: Nieuw %{name}
     actions:
@@ -33,21 +33,21 @@ mat:
       back: Terug
       show_resource: Toon %{name}
     theme:
-      welcome_screen: Welcome Screen
-      background_img: Customize the background image on the landing page of your community.
-      sponsor_logos: Display logos on your community page. This could be your organization's logo, or that of a project sponsor. Multiple logos can be added.
+      welcome_screen: Welkomscherm
+      background_img: Pas de achtergrondafbeelding op de bestemmingspagina van uw community aan.
+      sponsor_logos: Geef logo's weer op uw communitypagina. Dit kan het logo van uw organisatie zijn, of dat van een projectsponsor. Er kunnen meerdere logo's worden toegevoegd.
   search:
     clear: Verwijder
     label: Zoeken
     heading: Zoeken resultaten
     results: resultaten
   filter:
-    all: All
-    any: Any
+    all: Alles
+    any: Ieder
     label: Filter
-    clear: Clear Filters
+    clear: Filters wissen
   list:
-    prev: Prev
-    next: Next
-    no_results: There are no %{resources} available.
-    no_nested_results: This %{resource} has no %{resources}.
+    prev: Vorig
+    next: Volgende
+    no_results: Er zijn geen %{resources} beschikbaar.
+    no_nested_results: Deze %{resource} heeft geen %{resources}.
