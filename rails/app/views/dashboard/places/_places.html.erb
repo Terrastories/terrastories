@@ -1,7 +1,11 @@
 <% @places.each do |place| %>
   <%= link_to place_path(place), class: "card card--stacked" do %>
     <% if place.photo.attached? %>
-      <%= image_tag url_for(place.photo), class: "card__img", alt: place.name, title: place.name %>
+      <% if place.photo.variable? %>
+        <%= image_tag place.photo.variant(resize_to_limit: [nil, 300]), class: "card__img", alt: place.name, title: place.name %>
+      <% else %>
+        <%= image_tag place.photo, class: "card__img", alt: place.name, title: place.name %>
+      <% end %>
     <% else %>
       <%= image_tag asset_path("home-icon.svg"), class: "card__img", alt: place.name, title: place.name, height: 150 %>
     <% end %>

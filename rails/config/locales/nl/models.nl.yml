@@ -99,6 +99,9 @@ nl:
         bearing: Bearing degrees
         map_projection: Projectie instellen voor kaart
       user:
+        login: Username or Email
+        name: Display Name
+        username: Username
         email: Email
         role: Rol
         password: Paswoord

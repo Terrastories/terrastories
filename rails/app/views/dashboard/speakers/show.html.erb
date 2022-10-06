@@ -6,7 +6,11 @@
 <div class="columns">
   <div class="avatar-card">
     <% if @speaker.photo.attached? %>
-      <%= image_tag @speaker.photo, class: "img--rounded img--mega", alt: @speaker.name, title: @speaker.name %>
+      <% if @speaker.photo.variable? %>
+        <%= image_tag @speaker.photo.variant(resize_to_fill: [300, 300]), class: "img--rounded img--mega", alt: @speaker.name, title: @speaker.name %>
+      <% else %>
+        <%= image_tag @speaker.photo, class: "img--rounded img--mega", alt: @speaker.name, title: @speaker.name %>
+      <% end %>
     <% else %>
       <%= image_tag asset_path("speaker.png"), class: "img--rounded img--mega", alt: @speaker.name, title: @speaker.name %>
     <% end %>

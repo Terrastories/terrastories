@@ -30,7 +30,11 @@
         <% story.speakers.each do |speaker| %>
           <span class="tooltip">
             <% if speaker.photo.attached? %>
-              <%= image_tag speaker.photo, class: "img--rounded img--mini", alt: speaker.name, title: speaker.name %>
+              <% if speaker.photo.variable? %>
+                <%= image_tag speaker.photo.variant(resize_to_fill: [100, 100]), class: "img--rounded img--mini" %>
+              <% else %>
+                <%= image_tag speaker.photo, class: "img--rounded img--mini", alt: speaker.name, title: speaker.name %>
+              <% end %>
             <% else %>
               <%= image_tag asset_path("speaker.png"), class: "img--rounded img--mini", alt: speaker.name, title: speaker.name %>
             <% end %>

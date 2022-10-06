@@ -99,6 +99,9 @@ es:
         bearing: Grado de orientación
         map_projection: Establecer proyección para el mapa
       user:
+        login: Username or Email
+        name: Display Name
+        username: Username
         email: Correo electrónico
         role: Rol
         password: Contraseña

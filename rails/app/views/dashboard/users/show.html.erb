@@ -1,17 +1,27 @@
 <% content_for(:title) do %>
-  <%= @user.email %> | <%= t("user") %>
+  <%= @user.display_name %> | <%= t("user") %>
 <% end %>
 
 <% content_for(:main_heading) do %>
 <div class="columns">
   <div class="avatar-card">
   <% if @user.photo.attached? %>
-    <%= image_tag @user.photo, class: "img--rounded img--mega", alt: @user.email, title: @user.email %>
+    <% if @user.photo.variable? %>
+      <%= image_tag @user.photo.variant(resize_to_fill: [300, 300]), class: "img--rounded img--mega", alt: @user.display_name, title: @user.display_name %>
+    <% else %>
+      <%= image_tag @user.photo, class: "img--rounded img--mega", alt: @user.display_name, title: @user.display_name %>
+    <% end %>
   <% else %>
-    <%= image_tag asset_path("speaker.png"), class: "img--rounded img--mega", alt: @user.email, title: @user.email %>
+    <%= image_tag asset_path("speaker.png"), class: "img--rounded img--mega", alt: @user.display_name, title: @user.display_name %>
   <% end %>
   <h2>
-    <%= @user.email %>
+    <div class="small">
+      <% if @user.name.present? %>
+        <%= @user.username %> //
+      <% end %>
+      <%= @user.email %>
+    </div>
+    <%= @user.display_name %>
     <div class="small">
       <span class="badge"><%= User.human_attribute_name("role.#{@user.role}") %></span>
     </div>
