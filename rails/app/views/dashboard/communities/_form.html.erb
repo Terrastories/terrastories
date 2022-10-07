@@ -1,8 +1,8 @@
-<%= form_with model: @community, multipart: true, data: {remote: false} do |f| %>
+<%= form_with model: @community, multipart: true, data: {remote: false}, class: "form" do |f| %>
   <%= render partial: "shared/form_errors", locals: { resource: @community } %>
 
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+  <%= f.label :name, class: "required" %>
+  <%= f.text_field :name, required: true %>
 
   <%= f.label :country %>
   <%= f.text_field :country %>
@@ -12,11 +12,14 @@
 
   <% if @community.new_record? %>
     <%= f.fields_for :users, User.new do |user_fields| %>
-      <%= user_fields.label :username %>
-      <%= user_fields.text_field :username %>
+      <%= user_fields.label :username, class: "required" %>
+      <%= user_fields.text_field :username, required: true %>
 
-      <%= user_fields.label :password %>
-      <%= user_fields.password_field :password %>
+      <%= user_fields.label :password, class: "required" %>
+      <%= user_fields.password_field :password, required: true %>
+
+      <%= user_fields.label :email %>
+      <%= user_fields.text_field :email %>
 
       <%= user_fields.hidden_field :role, value: "admin" %>
     <% end %>
