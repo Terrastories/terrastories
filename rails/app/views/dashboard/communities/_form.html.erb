@@ -12,8 +12,8 @@
 
   <% if @community.new_record? %>
     <%= f.fields_for :users, User.new do |user_fields| %>
-      <%= user_fields.label :email %>
-      <%= user_fields.text_field :email %>
+      <%= user_fields.label :username %>
+      <%= user_fields.text_field :username %>
 
       <%= user_fields.label :password %>
       <%= user_fields.password_field :password %>
