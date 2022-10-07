@@ -127,7 +127,6 @@ export default class Map extends Component {
       }
 
       if(!this.props.useLocalMapServer && this.props.mapProjection == "globe") {
-        console.log(this.props.mapProjection);
         this.map.setFog({
           'horizon-blend': 0.02,
           'star-intensity': 0.15,
