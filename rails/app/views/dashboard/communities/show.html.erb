@@ -19,14 +19,14 @@
 <table>
   <thead>
     <tr>
-      <th><%= User.human_attribute_name("email") %></th>
+      <th><%= User.human_attribute_name("username") %></th>
       <th><%= User.human_attribute_name("role") %></th>
     </tr>
   </thead>
   <tbody>
     <% @community.users.each do |user| %>
       <tr>
-        <td><%= user.email %></td>
+        <td><%= user.username %></td>
         <td><%= User.human_attribute_name("role.#{user.role}") %></td>
       </tr>
     <% end %>
