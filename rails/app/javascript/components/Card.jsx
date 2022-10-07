@@ -17,6 +17,7 @@ class Card extends Component {
     clearFilteredStories: PropTypes.func,
     handleFilter: PropTypes.func,
     user: PropTypes.object,
+    displayName: PropTypes.object,
     stories: PropTypes.array,
     handleStoriesChanged: PropTypes.func,
     onStoryClick: PropTypes.func,
@@ -46,14 +47,14 @@ class Card extends Component {
     if (this.props.user && this.props.user.role === 'admin') {
       return (
         <ul>
-          <li>{I18n.t("hello")} {this.props.user.name ? this.props.user.name : this.props.user.username} (<a href={`/${I18n.currentLocale()}`}>{I18n.t("back_to_welcome")}</a>)</li>
+          <li>{I18n.t("hello")} {this.props.displayName} (<a href={`/${I18n.currentLocale()}`}>{I18n.t("back_to_welcome")}</a>)</li>
           <li><a href={`/admin?locale=${I18n.currentLocale()}`}>{I18n.t("admin_page")}</a></li>
         </ul>
       );
     } else if (this.props.user) {
       return (
         <ul>
-          <li>{I18n.t("hello")} {this.props.user.name ? this.props.user.name : this.props.user.username} (<a href={`/${I18n.currentLocale()}`}>{I18n.t("back_to_welcome")}</a>)</li>
+          <li>{I18n.t("hello")} {this.props.user.displayName} (<a href={`/${I18n.currentLocale()}`}>{I18n.t("back_to_welcome")}</a>)</li>
         </ul>
       );
     } else {

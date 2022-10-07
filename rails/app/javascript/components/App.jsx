@@ -379,6 +379,7 @@ class App extends Component {
           onStoryClick={this.handleStoryClick}
           logo_path={this.props.logo_path}
           user={this.props.user}
+          displayName={this.props.display_name}
           filterCategory={this.state.filterCategory}
           filterItem={this.state.filterItem}
           handleFilterCategoryChange={this.handleFilterCategoryChange}
