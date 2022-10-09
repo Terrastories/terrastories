@@ -1,0 +1,110 @@
+zh:
+  errors:
+    messages:
+      map_bounds: 必须设置所有四个值，或者留空
+      invalid_latitude: 数值应该在-90和90之间
+      invalid_longitude: 数值应在-180和180之间
+      invalid_zoom_level: 数值应该在0和22之间
+      invalid_pitch: 数值应在0和85之间
+      invalid_bearing: 值应在-180和180之间
+  helpers:
+    label:
+      place:
+        one: 地点
+      speaker:
+        one: 演讲者
+      visibility: 可见性
+  activerecord:
+    errors:
+      models:
+        place:
+          attributes:
+            name_audio:
+              content_type: 内容类型不在列表中
+            photo:
+              content_type: 内容类型不在列表中
+        story:
+          attributes:
+            place_ids:
+              blank: 您的故事中必须有一个地点
+            speaker_ids:
+              blank: 您的故事中必须至少有一个演讲者
+        theme:
+          attributes:
+            background_img:
+              content_type: 内容类型不在列表中
+            mapbox_access_token:
+              blank: 在Mapbox样式URL设置后是必填的。
+            mapbox_style_url:
+              blank: 在Mapbox访问令牌设置后是必填的。
+    # Used to auto-translate submit buttons
+    models:
+      community: 社区
+      curriculum: Curriculum
+      user: 用户
+      place: 地点
+      speaker: 演讲者
+      story: 故事
+      theme: 主题
+      media_link: 媒体链接
+    # Used for model-based form labels and other attribute displays
+    attributes:
+      place:
+        name: 名称
+        name_audio: 地点名称的音频
+        description: 描述
+        type_of_place: 地点类型
+        region: 区域
+        long: 经度
+        lat: 纬度
+        story_ids: 故事
+        photo: 照片
+      speaker:
+        name: 姓名
+        story_ids: 故事
+        photo: 照片
+        speaker_community: 演讲者的社区
+        birthdate: 出生日期
+        birthplace_id: 出生地
+      story:
+        title: 标题
+        desc: 描述
+        language: 语言
+        topic: 主题
+        date_interviewed: 采访日期
+        media: 媒体
+        speaker_ids: 演讲者
+        place_ids: 场所
+        interview_location_id: 采访地点
+        interviewer_id: 采访者
+        permission_level: 许可级别
+      story/permission_level:
+        anonymous: 匿名
+        user_only: 会员
+        editor_only: 编辑
+      theme:
+        background_img: 背景图片
+        sponsor_logos: 赞助商标志
+        mapbox_style_url: Mapbox风格URL
+        mapbox_access_token: 与风格关联的Mapbox访问令牌
+        mapbox_3d: 激活在线地图的3D地形视图
+        center_lat: 纬度
+        center_long: 经度
+        sw_boundary_lat: 最小纬度
+        sw_boundary_long: 最小经度
+        ne_boundary_lat: 最大纬度
+        ne_boundary_long: 最大经度
+        zoom: 缩放级别
+        pitch: 俯仰度
+        bearing: 轴承度
+        map_projection: 设置地图投影
+      user:
+        email: 邮箱
+        role: 角色
+        password: 密码
+        photo: 照片
+      user/role:
+        admin: 管理员
+        editor: 编辑
+        member: 会员
+        viewer: 查看者

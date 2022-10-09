@@ -1,0 +1,98 @@
+zh:
+  activerecord:
+    attributes:
+      user:
+        confirmation_sent_at: 密码确认发送时间
+        confirmation_token: 密码确认令牌
+        confirmed_at: 密码确认时间
+        created_at: 创建日期
+        current_password: 当前密码
+        current_sign_in_at: 当前登录时间
+        current_sign_in_ip: 当前登录的IP地址
+        email: 电子邮件
+        encrypted_password: 加密的密码
+        failed_attempts: 登录尝试失败次数
+        last_sign_in_at: 最后一次登录时间
+        last_sign_in_ip: 最后登录的IP地址
+        locked_at: 锁定时间
+        password: 密码
+        password_confirmation: 再次输入密码
+        remember_created_at: 记住我时间
+        remember_me: 记住我
+        reset_password_sent_at: 密码重置发送时间
+        reset_password_token: 用于重置密码的令牌
+        sign_in_count: 登录次数
+        unconfirmed_email: 电子邮件未验证
+        unlock_token: 解锁令牌
+        updated_at: 更新日期
+    models:
+      user: 用户
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "不能为空"
+  devise:
+    confirmations:
+      confirmed: "您的电子邮件地址已被成功确认。"
+      new:
+        resend_confirmation_instructions: "重新发送的账户确认邮件"
+      send_instructions: "您将在几分钟后收到一封电子邮件，其中包含如何确认您的电子邮件地址的说明。"
+      send_paranoid_instructions: "如果您的电子邮件地址存在于我们的数据库中，您将在几分钟后收到一封电子邮件，其中有关于如何确认您的电子邮件地址的说明。"
+    failure:
+      already_authenticated: "您已经登录了。"
+      inactive: "您的账户还没有被激活。"
+      invalid: "无效的%{authentication_keys}或密码。"
+      locked: "您的账户已被锁定。"
+      last_attempt: "在您的账户被锁定之前，您还有一次尝试的机会。"
+      not_found_in_database: "无效的%{authentication_keys}或密码。"
+      timeout: "您的会话已过期。请再次登录以继续。"
+      unauthenticated: "请用社区账户登录。"
+      unconfirmed: "您必须在继续之前确认您的电子邮件地址。"
+    mailer:
+      confirmation_instructions:
+        subject: "确认说明"
+      reset_password_instructions:
+        subject: "重置密码说明"
+      unlock_instructions:
+        subject: "解锁说明"
+      email_changed:
+        subject: "电子邮件已更改"
+      password_change:
+        subject: "密码已更改"
+    omniauth_callbacks:
+      failure: "由于\"%{reason}\"，无法从%{kind}认证您。"
+      success: "成功地从%{kind}账户进行了认证。"
+    passwords:
+      no_token: "如果您不是来自于密码重置邮件，您就不能访问这个页面。如果您确实来自密码重置邮件，请确保使用了提供的完整URL。"
+      send_instructions: "您将在几分钟内收到一封电子邮件，其中有关于如何重置密码的说明。"
+      send_paranoid_instructions: "如果您的电子邮件地址存在于我们的数据库中，您将在几分钟后在您的电子邮件地址收到一个密码恢复链接。"
+      updated: "您的密码已被成功更改。您现在已经登录了。"
+      updated_not_active: "您的密码已被成功更改。"
+    registrations:
+      destroyed: "再见！您的账户已被成功删除，我们希望很快再见到您。"
+      signed_up: "欢迎! 您已经注册成功。"
+      signed_up_but_inactive: "您已经注册成功。然而，我们无法让您登录，因为您的账户还没有激活。"
+      signed_up_but_locked: "您已经成功注册。然而，我们无法登录，因为您的账户被锁定。"
+      signed_up_but_unconfirmed: "一条带有确认链接的信息已经发送到您的电子邮件地址，请按照链接来激活您的账户。"
+      update_needs_confirmation: "您成功更新了您的账户，但我们需要验证您的新电子邮件地址。请检查您的电子邮件，并按照确认链接来确认您的新电子邮件地址。"
+      updated: "您的账户已被成功更新。"
+    sessions:
+      signed_in: "登录成功"
+      signed_out: "登出成功"
+      already_signed_out: "登出成功"
+    unlocks:
+      send_instructions: "您将会收到一封电子邮件，说明如何在几分钟内解锁您的账户。"
+      send_paranoid_instructions: "如果您的账户存在，您将会收到一封电子邮件，说明如何在几分钟内解锁它。"
+      unlocked: "您的账户已经成功解锁，请登录以继续。"
+  errors:
+    messages:
+      already_confirmed: "已经确认，请尝试登录"
+      confirmation_period_expired: "需要在%{period}内确认，请申请新的确认"
+      expired: "已经过期，请申请一个新的"
+      not_found: "未找到"
+      not_locked: "没有被锁定"
+      not_saved:
+        one: "1个错误阻止了%{resource}被保存:"
+        other: "%{count}个错误阻止了%{resource}被保存:"
