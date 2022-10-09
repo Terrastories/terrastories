@@ -1,0 +1,55 @@
+en:
+  community: Community
+  communities: Communities
+  media_link: Media Link
+  media_links: Media Links
+  places: Places
+  place: Place
+  speakers: Speakers
+  speaker: Speaker
+  stories: Stories
+  story: Story
+  theme: Theme
+  users: Users
+  user: User
+
+  # Front End Translations
+  admin_page: "Admin Page"
+  alphabetical: A-Z
+  back_to_map: "Back to Map"
+  back_to_welcome: "Back to Welcome Page"
+  built_with_love: Built with ❤️ by
+  close: Close
+  community_search:
+    title: "Search for a Community to Explore"
+    coming_soon: "This feature is coming soon. For now, please request an invite to a specific community."
+  default: default
+  enter: "Enter Site"
+  filter_stories: "Filter stories"
+  forgot_password: "Forgot your password?"
+  hello: Hello
+  introduction: Introduction
+  intro:
+    explanation: "Terrastories are audiovisual recordings of place-based storytelling. This offline-compatible application enables local communities to locate and map their own oral storytelling traditions about places of significant meaning or value to them."
+    question: "What's a terrastory?"
+  language: Language
+  login: Login
+  logout: Logout
+  most_recent: "Most recent"
+  no_media: No Media Available
+  password: Password
+  place_name: "Place name pronunciation"
+  place_type: "Type of place"
+  region: Region
+  remember_me: "Remember me"
+  reversed_alphabetical: Z-A
+  select_category: "Select category"
+  select_option: "Select option"
+  selected_language: "selected"
+  sign_up: "Sign up"
+  sort_stories: "Sort stories"
+  speaker: Speaker
+  topic: Topic
+  video_unsupported: Sorry, your browser doesn't support embedded videos.
+  welcome: Welcome
+  welcome_back: "Welcome back"

@@ -1,0 +1,114 @@
+en:
+  errors:
+    messages:
+      map_bounds: All four bounding box values must be set, or left blank
+      invalid_latitude: value should be between -90 and 90
+      invalid_longitude: value should be between -180 and 180
+      invalid_zoom_level: value should be between 0 and 22
+      invalid_pitch: value should be 0 and 85
+      invalid_bearing: value should be between -180 and 180
+      invalid_username_format: cannot contain spaces
+  helpers:
+    label:
+      place:
+        one: Place
+      speaker:
+        one: Speaker
+      visibility: Visibility
+  activerecord:
+    errors:
+      models:
+        place:
+          attributes:
+            name_audio:
+              content_type: content type is not in list
+            photo:
+              content_type: content type is not in list
+        story:
+          attributes:
+            place_ids:
+              blank: Your story must have a Place
+            speaker_ids:
+              blank: Your story must have at least one Speaker
+        theme:
+          attributes:
+            background_img:
+              content_type: content type is not in list
+            mapbox_access_token:
+              blank: is required when the Mapbox style URL is set.
+            mapbox_style_url:
+              blank: is required when the Mapbox access token is set.
+    # Used to auto-translate submit buttons
+    models:
+      community: Community
+      curriculum: Curriculum
+      user: User
+      place: Place
+      speaker: Speaker
+      story: Story
+      theme: Theme
+      media_link: Media Link
+    # Used for model-based form labels and other attribute displays
+    attributes:
+      place:
+        name: Name
+        name_audio: Placename Audio
+        description: Description
+        type_of_place: Type of Place
+        region: Region
+        long: Longitude
+        lat: Latitude
+        story_ids: Stories
+        photo: Photo
+      speaker:
+        name: Name
+        story_ids: Stories
+        photo: Photo
+        speaker_community: Speaker's Community
+        birthdate: Date of Birth
+        birthplace_id: Born Where
+      story:
+        title: Title
+        desc: Description
+        language: Language
+        topic: Topic
+        date_interviewed: Date interviewed
+        media: Media
+        speaker_ids: Speakers
+        place_ids: Places
+        interview_location_id: Interview location
+        interviewer_id: Interviewer
+        permission_level: Permission level
+      story/permission_level:
+        anonymous: Anonymous
+        user_only: Member
+        editor_only: Editor
+      theme:
+        background_img: Background image
+        sponsor_logos: Sponsor logos
+        mapbox_style_url: Mapbox style URL
+        mapbox_access_token: Mapbox access token associated with the style
+        mapbox_3d: Activate 3D Terrain view for online map
+        center_lat: Latitude
+        center_long: Longitude
+        sw_boundary_lat: Min Latitude
+        sw_boundary_long: Min Longitude
+        ne_boundary_lat: Max Latitude
+        ne_boundary_long: Max Longitude
+        zoom: Zoom level
+        pitch: Pitch degree
+        bearing: Bearing degrees
+        map_projection: Set projection for map
+      user:
+        login: Username or Email
+        name: Display Name
+        username: Username
+        email: Email
+        role: Role
+        password: Password
+        photo: Photo
+      user/role:
+        admin: Administrator
+        editor: Editor
+        member: Member
+        viewer: Viewer
