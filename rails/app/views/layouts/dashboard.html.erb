@@ -40,7 +40,10 @@
         <div class="language-picker">
           <h5><%= t("language") %></h5>
           <% I18n.available_locales.sort.each do |locale| %>
-            <%= link_to locale, url_for(locale: locale), class: "badge#{" selected" if locale == I18n.locale}", alt: locale == I18n.locale ? "#{locale} (#{t("selected_language")})" : locale %>
+            <span class="tooltip">
+              <%= link_to locale, url_for(locale: locale), class: "badge#{" selected" if locale == I18n.locale}", alt: locale == I18n.locale ? "#{locale} (#{t("selected_language")})" : locale %>
+              <span class="tooltip-text"><%= t("languages.#{locale}")%></span>
+            </span>
           <% end %>
         </div>
       </div>
