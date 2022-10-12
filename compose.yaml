@@ -35,7 +35,7 @@ services:
     ports:
       - 80:80
     depends_on:
-      - web
+      - localweb
       - db
     environment:
       - DEFAULT_HOST=terrastories.local
