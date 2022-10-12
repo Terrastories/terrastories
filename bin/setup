@@ -25,7 +25,7 @@ if [ "$offline" = "y" ] || [ "$offline" = "Y" ]; then
     read -p "Your choice: " choice
 
     if [ $choice -eq 2 ]; then
-      sudo -- sh -c "echo '# Added by Terrastories\n127.0.0.1 terrastories.local\n127.0.0.1 tileserver.terrastories.local\n# End of section' >> /private/etc/hosts"
+      sudo -- sh -c "echo '# Added by Terrastories\n127.0.0.1 terrastories.local\n127.0.0.1 tileserver.terrastories.local\n# End of section' >> /etc/hosts"
     else
       echo
       echo "In a new terminal, open /etc/hosts with appropriate write permissions"
