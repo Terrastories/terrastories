@@ -6,7 +6,7 @@ container="web"
 
 read -p "Setup for offline 'Field Kit' mode? (Yn) " offline
 
-if [ "$offline" == "y" ] || [ "$offline" == "Y" ]; then
+if [ "$offline" = "y" ] || [ "$offline" = "Y" ]; then
   container="localweb"
   profile="offline"
 
@@ -58,7 +58,7 @@ docker compose up -d db
 docker compose --profile $profile build
 
 ## setup and seed database
-docker compose run --rm $container bin/rails db:migrate db:seed
+docker compose --profile $profile run --rm $container bin/rails db:migrate db:seed
 
 echo
 echo "Welcome to Terrastories!\n"
