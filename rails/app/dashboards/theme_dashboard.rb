@@ -100,6 +100,6 @@ class ThemeDashboard < Administrate::BaseDashboard
   end
 
   def permitted_attributes
-    super + [:sponsor_logos => [], map_projection: [:mercator, :albers, :equalEarth, :equirectangular, :lambertConformalConic, :naturalEarth, :winkelTripel]]
+    super + [:sponsor_logos => [], map_projection: [:mercator, :albers, :equalEarth, :equirectangular, :lambertConformalConic, :naturalEarth, :winkelTripel, :globe]]
   end
 end

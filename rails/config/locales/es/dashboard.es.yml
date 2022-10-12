@@ -20,6 +20,7 @@ es:
       lambertConformalConic: Cónica conforme de Lambert
       naturalEarth: Tierra natural
       winkelTripel: Winkel Tripel
+      globe: Globo
   dashboard:
     back_to_app: Regresar a la aplicación
     community_settings: Configuraciones de la comunidad
