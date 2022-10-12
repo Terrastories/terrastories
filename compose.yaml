@@ -53,12 +53,18 @@ services:
       service: rails
     depends_on:
       - db
+    ports:
+      - 3030:3030
+    expose:
+      - "3030"
     volumes:
       - bundler:/usr/local/bundle
       - ./rails:/api
       - ./data/media:/media
       - ./data/import/media:/api/import/media
     environment:
+      - PORT=3030
+      - VIRTUAL_PORT=3030
       - VIRTUAL_HOST=terrastories.local
       - CHOKIDAR_USEPOLLING=true
       - USE_LOCAL_MAP_SERVER=true
