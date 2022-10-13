@@ -64,13 +64,15 @@ For the first time running Terrastories, you have to create and seed a database.
 
 ```
 docker compose exec web bin/setup
+docker compose exec web bin/rake db:seed
 ```
 
-This command runs a setup script that lives in bin/setup, which does:
+These command runs a setup script that lives in bin/setup, which does:
 
 - install ruby gems
 - install javascript packages
 - setup database
+- seed sample data
 See the script file for the details.
 
 Enter `localhost:3000` into your internet browser to view the application/
