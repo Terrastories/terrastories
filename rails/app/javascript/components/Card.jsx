@@ -17,7 +17,6 @@ class Card extends Component {
     clearFilteredStories: PropTypes.func,
     handleFilter: PropTypes.func,
     user: PropTypes.object,
-    displayName: PropTypes.object,
     stories: PropTypes.array,
     handleStoriesChanged: PropTypes.func,
     onStoryClick: PropTypes.func,
