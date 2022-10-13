@@ -27,9 +27,6 @@ RUN bundle config set --local path /usr/local/bundle && \
     bundle config build.nokogiri --use-system-libraries && \
     bundle install
 
-COPY package.json yarn.lock /api/
-RUN yarn
-
 COPY . /api
 
 CMD ["scripts/server"]

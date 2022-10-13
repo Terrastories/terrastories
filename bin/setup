@@ -60,8 +60,11 @@ docker compose --profile $profile build
 ## setup and seed database
 docker compose --profile $profile run --rm $container bin/rails db:migrate db:seed
 
+## run yarn
+docker compose --profile $profile run --rm $container yarn
+
 echo
-echo "Welcome to Terrastories!\n"
+echo "Welcome to Terrastories!"
 echo "Boot up your Terrastories instance with the following command:"
 echo
 echo "docker compose --profile $profile up"
