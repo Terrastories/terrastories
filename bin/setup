@@ -65,6 +65,15 @@ docker compose --profile $profile run --rm $container yarn
 
 echo
 echo "Welcome to Terrastories!"
+echo
+
+if [[ "$profile" = "dev" ]]; then
+  echo "!! Note: Terrastories requires a Mapbox Access Token for the mapping capabilities to work."
+  echo "         Please update the \`/rails/.env\` file with a valid Mapbox access token."
+  echo "         Ask a steward for help if you are unsure or need one provided."
+  echo
+fi
 echo "Boot up your Terrastories instance with the following command:"
 echo
-echo "docker compose --profile $profile up"
+echo "  docker compose --profile $profile up"
+echo
