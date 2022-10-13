@@ -10,7 +10,3 @@ services:
     restart: always
     stdin_open: true
     tty: true
-    ports:
-      - 3000:3000
-    expose:
-      - "3000"

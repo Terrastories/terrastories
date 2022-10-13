@@ -21,6 +21,10 @@ services:
       service: rails
     depends_on:
       - db
+    ports:
+      - 3000:3000
+    expose:
+      - "3000"
     volumes:
       - bundler:/usr/local/bundle
       - ./rails:/api
