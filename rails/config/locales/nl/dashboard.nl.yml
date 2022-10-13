@@ -20,6 +20,7 @@ nl:
       lambertConformalConic: Lambert Comformal Conic
       naturalEarth: Natural Earth
       winkelTripel: Winkel Tripel
+      globe: Wereldbol
   dashboard:
     back_to_app: Terug naar App
     community_settings: Gemeenschap instellingen

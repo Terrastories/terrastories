@@ -1,3 +1,8 @@
+// this handler function is implemented here because mapbox-gl-rails uses modern css syntax which sass can't interpet.
+@function rgb($args...) {
+  @return r#{g}#{b}(#{$args})
+}
+
 @import 'core/reset';
 @import 'core/variables';
 @import 'core/colors';

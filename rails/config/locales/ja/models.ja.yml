@@ -99,6 +99,9 @@ ja:
         bearing: Bearing degrees
         map_projection: Set projection for map
       user:
+        login: Username or Email
+        name: Display Name
+        username: Username
         email: Email
         role: ロール
         password: パスワード

@@ -1,9 +1,13 @@
 <% @speakers.each do |speaker| %>
   <%= link_to speaker, class: "card card--narrow card--stacked card--center" do %>
     <% if speaker.photo.attached? %>
-      <%= image_tag url_for(speaker.photo), class: "card__img--circle" %>
+      <% if speaker.photo.variable? %>
+        <%= image_tag speaker.photo.variant(resize_to_fill: [300, 300]), class: "card__img--circle", alt: speaker.name, title: speaker.name %>
+      <% else %>
+        <%= image_tag speaker.photo, class: "card__img--circle", alt: speaker.name, title: speaker.name %>
+      <% end %>
     <% else %>
-      <%= image_tag asset_path("speaker.png"), class: "card__img--circle" %>
+      <%= image_tag asset_path("speaker.png"), class: "card__img--circle", alt: speaker.name, title: speaker.name %>
     <% end %>
     <div><%= speaker.name %></div>
     <% if speaker.speaker_community.present? %>

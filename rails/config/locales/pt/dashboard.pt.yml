@@ -21,6 +21,7 @@ pt:
       lambertConformalConic: Lambert Comformal Conic
       naturalEarth: Natural Earth
       winkelTripel: Winkel Tripel
+      globe: Globo
   dashboard:
     back_to_app: Back to App
     community_settings: Community Settings

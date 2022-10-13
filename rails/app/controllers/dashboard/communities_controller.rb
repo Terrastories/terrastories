@@ -85,6 +85,7 @@ module Dashboard
         :country,
         :locale,
         users_attributes: [
+          :username,
           :email,
           :password,
           :role

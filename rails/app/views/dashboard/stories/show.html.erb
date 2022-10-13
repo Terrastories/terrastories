@@ -50,7 +50,11 @@
       <% if @story.interviewer %>
         <span class="card card--mini card--center card--noborder card--nogap">
           <% if @story.interviewer.photo.attached? %>
-            <%= image_tag @story.interviewer.photo, class: "img--rounded img--large", alt: @story.interviewer.name, title: @story.interviewer.name %>
+            <% if @story.interviewer.photo.variable? %>
+              <%= image_tag  @story.interviewer.photo.variant(resize_to_fill: [300, 300]), class: "img--rounded img--large", alt: @story.interviewer.name, title: @story.interviewer.name %>
+            <% else %>
+              <%= image_tag  @story.interviewer.photo, class: "img--rounded img--large", alt: @story.interviewer.name, title: @story.interviewer.name %>
+            <% end %>
           <% else %>
             <%= image_tag asset_path("speaker.png"), class: "img--rounded img--large", alt: @story.interviewer.name, title: @story.interviewer.name %>
           <% end %>
@@ -62,7 +66,11 @@
       <% policy_scope(@story.speakers).each do |speaker| %>
         <span class="card card--mini card--center card--noborder card--nogap">
           <% if speaker.photo.attached? %>
-            <%= image_tag speaker.photo, class: "img--rounded img--large", alt: speaker.name, title: speaker.name %>
+            <% if speaker.photo.variable? %>
+              <%= image_tag speaker.photo.variant(resize_to_fill: [300, 300]), class: "img--rounded img--large", alt: speaker.name, title: speaker.name %>
+            <% else %>
+              <%= image_tag speaker.photo, class: "img--rounded img--large", alt: speaker.name, title: speaker.name %>
+            <% end %>
           <% else %>
             <%= image_tag asset_path("speaker.png"), class: "img--rounded img--large", alt: speaker.name, title: speaker.name %>
           <% end %>

@@ -1,11 +1,15 @@
 <% @users.each do |user| %>
   <%= link_to user, class: "card card--narrow card--center" do %>
     <% if user.photo.attached? %>
-      <%= image_tag url_for(user.photo), class: "card__img--circle" %>
+      <% if user.photo.variable? %>
+        <%= image_tag user.photo.variant(resize_to_fill: [300, 300]), class: "card__img--circle", alt: user.display_name, title: user.display_name %>
+      <% else %>
+        <%= image_tag user.photo, class: "card__img--circle", alt: user.display_name, title: user.display_name %>
+      <% end %>
     <% else %>
-      <%= image_tag asset_path("speaker.png"), class: "card__img--circle" %>
+      <%= image_tag asset_path("speaker.png"), class: "card__img--circle", alt: user.display_name, title: user.display_name %>
     <% end %>
-    <div class="card--wrap"><%= user.email %></div>
+    <div class="card--wrap"><%= user.display_name %></div>
     <% if user.role %>
       <div class="badge"><%= User.human_attribute_name("role.#{user.role}") %></div>
     <% end %>

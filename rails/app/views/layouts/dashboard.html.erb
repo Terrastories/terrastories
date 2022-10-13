@@ -40,7 +40,10 @@
         <div class="language-picker">
           <h5><%= t("language") %></h5>
           <% I18n.available_locales.sort.each do |locale| %>
-            <%= link_to locale, url_for(locale: locale), class: "badge#{" selected" if locale == I18n.locale}", alt: locale == I18n.locale ? "#{locale} (#{t("selected_language")})" : locale %>
+            <span class="tooltip">
+              <%= link_to locale, url_for(locale: locale), class: "badge#{" selected" if locale == I18n.locale}", alt: locale == I18n.locale ? "#{locale} (#{t("selected_language")})" : locale %>
+              <span class="tooltip-text"><%= t("languages.#{locale}")%></span>
+            </span>
           <% end %>
         </div>
       </div>
@@ -67,16 +70,20 @@
         <% end %>
         <div class="top-nav">
           <div class="user-nav">
-            <%= current_user.email %>
+            <%= current_user.username %>
             <% if current_user.photo.attached? %>
-              <%= image_tag current_user.photo, class: "img img--rounded img--micro" %>
+              <% if current_user.photo.variable? %>
+                <%= image_tag current_user.photo.variant(resize_to_fill: [300, 300]), class: "img img--rounded img--mini" %>
+              <% else %>
+                <%= image_tag current_user.photo, class: "img img--rounded img--mini" %>
+              <% end %>
             <% else %>
               <%= image_tag asset_path("speaker.png"), class: "img img--rounded img--micro" %>
             <% end %>
             <ul class="dropdown" aria-label="submenu">
               <% if current_user.super_admin %>
               <% end %>
-              <li><%= link_to t("profile"), edit_user_path(current_user) %></a></li>
+              <li><%= link_to t("profile"), user_profile_path %></a></li>
               <li><%= link_to t("logout"), destroy_user_session_path, method: :delete  %></li>
             </ul>
           </div>

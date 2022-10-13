@@ -6,7 +6,11 @@
 <div class="avatar-card">
   <span class="media-with-hover-controls rounded" data-replace-on-delete="<%= asset_path("speaker.png") %>">
     <% if @speaker.photo.attached? %>
-      <%= image_tag @speaker.photo, alt: @speaker.name, title: @speaker.name %>
+      <% if @speaker.photo.variable? %>
+        <%= image_tag @speaker.photo.variant(resize_to_fill: [300, 300]), alt: @speaker.name, title: @speaker.name %>
+      <% else %>
+        <%= image_tag @speaker.photo %>
+      <% end %>
       <%= link_to speaker_photo_path(@speaker), class: "overlay delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm")}, remote: true do %>
         <span><%= t("dashboard.actions.destroy") %></span>
       <% end %>
