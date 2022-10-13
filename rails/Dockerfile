@@ -28,7 +28,7 @@ RUN bundle config set --local path /usr/local/bundle && \
     bundle install
 
 COPY package.json yarn.lock /api/
-RUN yarn install
+RUN yarn
 
 COPY . /api
 
