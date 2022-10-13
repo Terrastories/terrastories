@@ -4,7 +4,7 @@ set -eu
 profile="dev"
 container="web"
 
-read -p "Setup for offline 'Field Kit' mode? (Yn) " offline
+read -p "Setup for offline 'Field Kit' mode? [y/n] " offline
 
 if [ "$offline" = "y" ] || [ "$offline" = "Y" ]; then
   container="localweb"

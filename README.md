@@ -31,7 +31,7 @@ Learn more about Terrastories at [https://terrastories.io/](https://terrastories
 
 Before you install Terrastories, you should consider the hosting environment for the application. Will it be hosted on an online server? If so, you are likely going to need to set up Terrastories on a Linux server. Are you installing Terrastories on your local machine, either for development or for demoing the app? Depending on what operating system you use, there are different setup guides, below. Lastly, if you are installing Terrastories to work fully offline (i.e. no online maps), there is a special guide for that use case as well.
 
-### Prerequistes
+### Prerequisites
 
 #### Docker
 Local development and offline mode both require Docker to be installed.
