@@ -27,6 +27,8 @@ environment. Always use the rails container instead.**
 Any changes to source files should be made directly in your local filesystem under the
 `/opt/terrastories` directory using your preferred editing tools.
 
+If you are working in an internet-connected environment, you will need to add a valid Mapbox access token to your `.env` file in order for the Terrastories map to work (whether it is in the `dev` or `offline` profile). Alternatively, you may add an access token (and Mapbox map style) for a community via the Themes dashboard in the administrative menu, to get a map to work for that specific community only.
+
 ### ESLint
 
 We use ESLint with Airbnb community style-guide for linting JavaScript and JSX for files under app/javascript.
