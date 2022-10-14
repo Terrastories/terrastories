@@ -1,55 +1,55 @@
-en:
-  community: Community
-  communities: Communities
-  media_link: Media Link
-  media_links: Media Links
-  places: Places
-  place: Place
-  speakers: Speakers
-  speaker: Speaker
-  stories: Stories
-  story: Story
-  theme: Theme
-  users: Users
-  user: User
+sw:
+  community: Jumuiya
+  communities: Jumuiya
+  media_link: Kiungo cha Media
+  media_links: Viungo cha Media
+  places: Maeneo
+  place: Eneo
+  speakers: Wazungumzaji
+  speaker: Mzungumzaji
+  stories: Hadithi
+  story: Hadithi
+  theme: Mandhari
+  users: Watumiaji
+  user: Mtumiaji
 
   # Front End Translations
-  admin_page: "Admin Page"
+  admin_page: "Ukurasa wa Msimamizi"
   alphabetical: A-Z
-  back_to_map: "Back to Map"
-  back_to_welcome: "Back to Welcome Page"
-  built_with_love: Built with ❤️ by
-  close: Close
+  back_to_map: "Rudi kwenye Ramani"
+  back_to_welcome: "Rudi kwenye Ukurasa wa Karibu"
+  built_with_love: Imeundwa kwa ❤️ na
+  close: Funga
   community_search:
-    title: "Search for a Community to Explore"
-    coming_soon: "This feature is coming soon. For now, please request an invite to a specific community."
-  default: default
-  enter: "Enter Site"
-  filter_stories: "Filter stories"
-  forgot_password: "Forgot your password?"
+    title: "Tafuta Jumuiya ya Tafiti"
+    coming_soon: "Kipengele hiki kinakuja hivi karibuni. Kwa sasa, tafadhali omba mwaliko kwa jumuiya mahususi."
+  default: chaguo-msingi
+  enter: "Ingiza Tovuti"
+  filter_stories: "Chuja hadithi"
+  forgot_password: "Umesahau nenosiri yako?"
   hello: Hello
-  introduction: Introduction
+  introduction: Utangulizi
   intro:
-    explanation: "Terrastories are audiovisual recordings of place-based storytelling. This offline-compatible application enables local communities to locate and map their own oral storytelling traditions about places of significant meaning or value to them."
-    question: "What's a terrastory?"
-  language: Language
-  login: Login
-  logout: Logout
-  most_recent: "Most recent"
-  no_media: No Media Available
-  password: Password
-  place_name: "Place name pronunciation"
-  place_type: "Type of place"
-  region: Region
-  remember_me: "Remember me"
+    explanation: "Terrastories ni rekodi za sauti na taswira za usimulizi wa hadithi unaotegemea mahali. Programu hii inayotumika nje ya mtandao huwezesha jamii za wenyeji kupata na kuweka ramani mila zao za kusimulia hadithi kuhusu maeneo yenye maana au thamani kubwa kwao."
+    question: "Terrastory ni nini?"
+  language: Lugha
+  login: Ingia
+  logout: Ondoka
+  most_recent: "Hivi karibuni"
+  no_media: Hakuna Media ya Kusimulia Hadithi
+  password: Nenosiri
+  place_name: "Matamshi ya jina la mahali"
+  place_type: "Aina ya eneo"
+  region: Eneo
+  remember_me: "Nikumbuke"
   reversed_alphabetical: Z-A
-  select_category: "Select category"
-  select_option: "Select option"
-  selected_language: "selected"
-  sign_up: "Sign up"
-  sort_stories: "Sort stories"
-  speaker: Speaker
-  topic: Topic
-  video_unsupported: Sorry, your browser doesn't support embedded videos.
-  welcome: Welcome
-  welcome_back: "Welcome back"
+  select_category: "Chagua kategoria"
+  select_option: "Chagua chaguo"
+  selected_language: "iliyochaguliwa"
+  sign_up: "Jisajili"
+  sort_stories: "Panga hadithi"
+  speaker: Mzungumzaji  
+  topic: Mada
+  video_unsupported: Samahani, kivinjari chako hakitumii video zilizopachikwa.
+  welcome: Karibu   
+  welcome_back: "Karibu tena"
