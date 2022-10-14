@@ -1,0 +1,141 @@
+zh:
+  helpers:
+    label:
+      speaker:
+        name: 姓名
+        speaker_community: 演讲者的社区
+        birthdate: 生日
+        birthplace: 出生地
+        story_ids: 故事
+      story:
+        desc: 描述
+        interviewer: 采访者
+        video_unsupported: 对不起，您的浏览器不支持嵌入式视频。
+        permissions:
+          anonymous: "可搜索"
+          user_only: "会员"
+          editor_only: "编辑"
+          admin_only: "管理员"
+        place_ids: 地点
+        speaker_ids: 演讲人
+      place:
+        lat: 纬度
+        long: 经度
+        name: 名称
+        name_audio: 地点名称的音频
+        description: 描述
+        type_of_place: 地点类型
+        region: 区域
+        story_ids: 故事
+      theme:
+        background_img: 背景图片（用于欢迎屏幕）
+        sponsor_logos: 赞助商的标志（用于欢迎屏幕）
+        mapbox_style_url: Mapbox风格的URL（用于在线地图）
+        mapbox_access_token: 与风格相关的Mapbox访问令牌
+        mapbox_3d: 激活在线地图的3D地形视图
+        map_projection: 设置地图的投影
+        center_lat: 地图中心，纬度
+        center_long: 地图中心，经度
+        sw_boundary_lat: 西南边界箱，纬度（可选）
+        sw_boundary_long: 西南边界框，经度（可选）
+        ne_boundary_lat: 东北边界框，纬度（可选）
+        ne_boundary_long: 东北界边框，经度（可选）
+        background_img: 背景图片
+        sponsor_logos: 赞助商图标
+        mapbox_style_url: Mapbox风格的URL
+        mapbox_access_token: 与风格相关的Mapbox访问令牌
+        mapbox_3d: 激活在线地图的3D地形视图
+        zoom: 缩放级别
+        pitch: 俯仰度
+        bearing: 轴承度
+        display_resource: "Terrastories主题：%{community_name}"
+      user:
+        id: Id
+        email: 邮箱
+        role: 角色
+  administrate:
+    actions:
+      confirm: 您确定吗？
+      destroy: 删除
+      edit: 编辑
+      edit_resource: 编辑 %{name}
+      show_resource: 显示 %{name}
+      new_resource: 新建 %{name}
+      back: 返回
+    communities: 社区
+    community: 社区
+    controller:
+      create:
+        success: "%{resource}被成功创建。"
+      destroy:
+        success: "%{resource}被成功销毁。"
+      update:
+        success: "%{resource}被成功更新。"
+    curriculum: Curriculum
+    curriculums: Curricula
+    curriculum_story: Curriculum 故事
+    curriculum_stories: Curriculum 故事
+    fields:
+      has_many:
+        more: 结果 %{count} / 总共 %{total_count}
+        none: 无
+      nested_has_many:
+        add: 添加
+        remove: 删除
+    file_to_update: 要更新的文件
+    form:
+      error: 错误
+      errors: "%{pluralized_errors}阻止了%{resource_name}被保存:"
+    import_button: 导入 %{resource}
+    places: 地点
+    place: 地点
+    search:
+      clear: 清除搜索
+      label: "搜索 %{resource}"
+      results: "结果"
+    speakers: 演讲者
+    speaker: 演讲者
+    stories: 故事
+    story: 故事
+    theme: 主题
+    themes: 主题
+    users: 用户
+    user: 用户
+    media_link: 媒体链接
+    media_links: 媒体链接
+    table_columns:
+      user:
+        id: Id
+        email: 邮箱
+        role: 角色
+      speaker:
+        id: Id
+        photo: 照片
+        name: 姓名
+        birthdate: 出生日期
+        birthplace: 出生地
+        speaker_community: 社区
+      story:
+        id: Id
+        title: 标题
+        desc: 描述
+        language: 语言
+        speakers: 演讲者
+        interview_location: 采访地点
+        interviewer: 采访者
+        date_interviewed: 受访日期
+        places: 地点
+        permission_level: 许可级别
+      place:
+        id: Id
+        name: 名称
+        description: 描述
+        type_of_place: 地点类型
+        region: 区域
+        long: 经度
+        lat: 纬度
+        stories: 故事
+        photo: 照片
+        name_audio: 地点名称的音频
+    navigation:
+      back_to_app: 返回应用

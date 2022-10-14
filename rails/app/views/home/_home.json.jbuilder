@@ -22,8 +22,10 @@ json.stories stories do |story|
   json.permission_level story.permission_level == "anonymous" ? "anonymous" : "restricted"
   json.topic story.topic
 end
+json.user do 
+  json.(current_user, :role, :display_name)
+end
 json.logo_path image_path("logocombo.svg")
-json.user current_user
 json.mapbox_access_token @theme.mapbox_token
 json.mapbox_style @theme.mapbox_style
 json.mapbox_3d @theme.mapbox_3d

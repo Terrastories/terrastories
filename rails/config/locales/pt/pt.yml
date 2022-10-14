@@ -13,12 +13,20 @@ pt:
   users: Usuários
   user: Usuário
 
+  languages:
+    en: Inglês
+    es: Espanhol
+    ja: japonês
+    mat: Holandês
+    nl: Holandês
+    pt: Português
+
   # Front End Translations
   admin_page: "Página de administração"
   alphabetical: "A-Z"
   back_to_map: "Volta ao mapa"
   back_to_welcome: "Voltar para a página de inicial"
-  built_with_love: Built with ❤️ by
+  built_with_love: Construído com ❤️ por
   close: "Fechar"
   community_search:
     title: "Procure por uma Comunidade para explorar"

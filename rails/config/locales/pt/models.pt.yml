@@ -97,6 +97,7 @@ pt:
         zoom: Nivel de zoom
         pitch: Grau de pitch
         bearing: Grau de rolamento
+        map_projection: Definir projeção para o mapa
       user:
         login: Username or Email
         name: Display Name

@@ -13,6 +13,14 @@ ja:
   users: ユーザー
   user: ユーザー
 
+  languages:
+    en: 英語
+    es: スペイン語
+    ja: 日本
+    mat: オランダの
+    nl: オランダの
+    pt: ポルトガル語
+
   # Front End Translations
   admin_page: "管理ページ"
   alphabetical: A-Z

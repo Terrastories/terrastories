@@ -126,6 +126,16 @@ export default class Map extends Component {
         });
       }
 
+      if(!this.props.useLocalMapServer && this.props.mapProjection == "globe") {
+        this.map.setFog({
+          'horizon-blend': 0.02,
+          'star-intensity': 0.15,
+          'color': '#ffffff',
+          'high-color': '#008cff',
+          'space-color': '#000000'
+      });
+      } 
+
       this.addHomeButton();
 
       // Attaches popups + events

@@ -67,7 +67,7 @@ class Theme < ApplicationRecord
     errors.add(:ne_boundary_long, :invalid_longitude) unless (-180..180).include?(ne_boundary_long)
   end
 
-  enum map_projection: [:mercator, :albers, :equalEarth, :equirectangular, :lambertConformalConic, :naturalEarth, :winkelTripel] 
+  enum map_projection: [:mercator, :albers, :equalEarth, :equirectangular, :lambertConformalConic, :naturalEarth, :winkelTripel, :globe] 
 end
 
 # == Schema Information
