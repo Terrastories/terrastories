@@ -1,0 +1,55 @@
+sw:
+  community: Jumuiya
+  communities: Jumuiya
+  media_link: Kiungo cha Media
+  media_links: Viungo cha Media
+  places: Maeneo
+  place: Eneo
+  speakers: Wazungumzaji
+  speaker: Mzungumzaji
+  stories: Hadithi
+  story: Hadithi
+  theme: Mandhari
+  users: Watumiaji
+  user: Mtumiaji
+
+  # Front End Translations
+  admin_page: "Ukurasa wa Msimamizi"
+  alphabetical: A-Z
+  back_to_map: "Rudi kwenye Ramani"
+  back_to_welcome: "Rudi kwenye Ukurasa wa Karibu"
+  built_with_love: Imeundwa kwa ❤️ na
+  close: Funga
+  community_search:
+    title: "Tafuta Jumuiya ya Tafiti"
+    coming_soon: "Kipengele hiki kinakuja hivi karibuni. Kwa sasa, tafadhali omba mwaliko kwa jumuiya mahususi."
+  default: chaguo-msingi
+  enter: "Ingiza Tovuti"
+  filter_stories: "Chuja hadithi"
+  forgot_password: "Umesahau nenosiri yako?"
+  hello: Hello
+  introduction: Utangulizi
+  intro:
+    explanation: "Terrastories ni rekodi za sauti na taswira za usimulizi wa hadithi unaotegemea mahali. Programu hii inayotumika nje ya mtandao huwezesha jamii za wenyeji kupata na kuweka ramani mila zao za kusimulia hadithi kuhusu maeneo yenye maana au thamani kubwa kwao."
+    question: "Terrastory ni nini?"
+  language: Lugha
+  login: Ingia
+  logout: Ondoka
+  most_recent: "Hivi karibuni"
+  no_media: Hakuna Media ya Kusimulia Hadithi
+  password: Nenosiri
+  place_name: "Matamshi ya jina la mahali"
+  place_type: "Aina ya eneo"
+  region: Eneo
+  remember_me: "Nikumbuke"
+  reversed_alphabetical: Z-A
+  select_category: "Chagua kategoria"
+  select_option: "Chagua chaguo"
+  selected_language: "iliyochaguliwa"
+  sign_up: "Jisajili"
+  sort_stories: "Panga hadithi"
+  speaker: Mzungumzaji  
+  topic: Mada
+  video_unsupported: Samahani, kivinjari chako hakitumii video zilizopachikwa.
+  welcome: Karibu   
+  welcome_back: "Karibu tena"

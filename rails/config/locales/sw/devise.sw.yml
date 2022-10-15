@@ -1,0 +1,64 @@
+# Additional translations at https://github.com/plataformatec/devise/wiki/I18n
+
+sw:
+  devise:
+    confirmations:
+      confirmed: "Barua pepe yako imethibitishwa."
+      send_instructions: "Utapokea barua pepe yenye maagizo ya jinsi ya kuthibitisha anwani yako ya barua pepe baada ya dakika chache."
+      send_paranoid_instructions: "Ikiwa anwani yako ya barua pepe iko kwenye hifadhidata yetu, utapokea barua pepe yenye maagizo ya jinsi ya kuthibitisha anwani yako ya barua pepe baada ya dakika chache."
+    failure:
+      already_authenticated: "Tayari umeingia."
+      inactive: "Akaunti yako bado haijaamilishwa."
+      invalid: "Invalid %{authentication_keys} or password."
+      locked: "Akaunti yako imefungwa."
+      last_attempt: "Una jaribio moja zaidi kabla ya akaunti yako kufungwa."
+      not_found_in_database: "Invalid %{authentication_keys} or password."
+      timeout: "Kipindi chako kimekwisha. Tafadhali ingia tena ili kuendelea."
+      unauthenticated: "Tafadhali ingia kwa akaunti ya jumuiya."
+      unconfirmed: "Lazima uthibitishe anwani yako ya barua pepe kabla ya kuendelea."
+    mailer:
+      confirmation_instructions:
+        subject: "Maagizo ya uthibitisho"
+      reset_password_instructions:
+        subject: "Weka upya maagizo ya nenosiri"
+      unlock_instructions:
+        subject: "Fungua maagizo"
+      email_changed:
+        subject: "Barua pepe Imebadilishwa"
+      password_change:
+        subject: "Nenosiri Limebadilishwa"
+    omniauth_callbacks:
+      failure: 'Haikuweza kukuthibitisha kutoka kwa %{kind} kwa sababu "%{reason}".'
+      success: "Imethibitishwa kutoka kwa akaunti %{kind}."
+    passwords:
+      no_token: "Huwezi kufikia ukurasa huu bila kuja kutoka kwa barua pepe ya kuweka upya nenosiri. Ikiwa umetoka kwa barua pepe ya kuweka upya nenosiri, tafadhali hakikisha kuwa umetumia URL kamili iliyotolewa."
+      send_instructions: "Utapokea barua pepe yenye maagizo ya jinsi ya kuweka upya nenosiri lako baada ya dakika chache."
+      send_paranoid_instructions: "Ikiwa anwani yako ya barua pepe ipo katika hifadhidata yetu, utapokea kiungo cha kurejesha nenosiri kwenye anwani yako ya barua pepe baada ya dakika chache."
+      updated: "Nenosiri lako limebadilishwa. Sasa umeingia."
+      updated_not_active: "Nenosiri lako limebadilishwa."
+    registrations:
+      destroyed: "Kwaheri! Akaunti yako imeghairiwa. Tunatumai kukuona tena hivi karibuni."
+      signed_up: "Karibu! Umefaulu kujiandikisha."
+      signed_up_but_inactive: "Umefaulu kujiandikisha. Hata hivyo, hatukuweza kukuingiza kwa sababu akaunti yako bado haijaamilishwa."
+      signed_up_but_locked: "Umefaulu kujiandikisha. Hata hivyo, hatukuweza kukuingiza kwa sababu akaunti yako imefungwa."
+      signed_up_but_unconfirmed: "Ujumbe ulio na kiungo cha uthibitishaji umetumwa kwa anwani yako ya barua pepe. Tafadhali fuata kiungo ili kuwezesha akaunti yako."
+      update_needs_confirmation: "Ulisasisha akaunti yako kwa mafanikio, lakini tunahitaji kuthibitisha anwani yako mpya ya barua pepe. Tafadhali angalia barua pepe yako na ufuate kiungo cha uthibitishaji ili kuthibitisha anwani yako mpya ya barua pepe."
+      updated: "Akaunti yako imesasishwa."
+    sessions:
+      signed_in: "Umeingia katika akaunti."
+      signed_out: "Umeondoka kwenye akaunti."
+      already_signed_out: "Umeondoka kwenye akaunti."
+    unlocks:
+      send_instructions: "Utapokea barua pepe yenye maagizo ya jinsi ya kufungua akaunti yako baada ya dakika chache."
+      send_paranoid_instructions: "Ikiwa akaunti yako ipo, utapokea barua pepe yenye maelekezo ya jinsi ya kuifungua baada ya dakika chache."
+      unlocked: "Akaunti yako imefunguliwa. Tafadhali ingia ili kuendelea."
+  errors:
+    messages:
+      already_confirmed: "tayari imethibitishwa, tafadhali jaribu kuingia"
+      confirmation_period_expired: "inahitaji kuthibitishwa ndani ya %{period}, tafadhali omba mpya"
+      expired: "muda wake umeisha, tafadhali omba mpya"
+      not_found: "haipatikani"
+      not_locked: "haikuwa imefungwa"
+      not_saved:
+        one: "Hitilafu 1 ilikataza %{resource} hii kuhifadhiwa:"
+        other: "Hitilafu %{count} zilikataza %{resource} hii kuhifadhiwa:"
