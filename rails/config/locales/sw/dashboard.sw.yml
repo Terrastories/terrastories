@@ -20,6 +20,7 @@ sw:
       lambertConformalConic: Lambert Comformal Conic
       naturalEarth: Natural Earth
       winkelTripel: Winkel Tripel
+      globe: Globe
   dashboard:
     back_to_app: Rudi kwenye Programu
     community_settings: Mipangilio ya Jumuiya
