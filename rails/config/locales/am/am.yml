@@ -1,0 +1,63 @@
+am:
+  community: ማህበረሰብ
+  communities: ማህበረሰቦች
+  media_link: የሚዲያ ማስፈንጠሪያ
+  media_links: የሚዲያ ማስፈንጠሪያዎች
+  places: ቦታዎች
+  place: ቦታ
+  speakers: ተናጋሪዎች
+  speaker: ተናጋሪ
+  stories: ታሪኮች
+  story: ታሪክ
+  theme: ገጽታ
+  users: ተጠቃሚዎች
+  user: ተጠቃሚ
+
+  languages:
+    en: እንግሊዝኛ
+    es: ስፓኒሽ
+    ja: ጃፓንኛ
+    mat: ደችኛ
+    nl: ደችኛ
+    pt: ፖርቹጋልኛ
+
+  # Front End Translations
+  admin_page: "የአስተዳዳሪ ገጽ"
+  alphabetical: A-Z
+  back_to_map: "ወደ ካርታ ተመለስ"
+  back_to_welcome: "ወደ የእንኳን ደህና መጡ ገጽ ተመለስ"
+  built_with_love: በ ❤️ የተሰራ በ 
+  close: ዝጋ
+  community_search:
+    title: "ለማጥናት ማህበረሰብ ፈልግ"
+    coming_soon: "ይህ ባህሪ በቅርቡ ይመጣል። ለአሁን፣ እባክዎ አንድ የተወሰነ ማህበረሰብ ግብዣ ይጠይቁ።"
+  default: ነባሪ
+  enter: "ጣቢያ ይግቡ"
+  filter_stories: "ታሪኮችን አጣራ"
+  forgot_password: "የይለፍ ቃልዎን ረሱ?"
+  hello: ጤና ይስጥልኝ
+  introduction: መግቢያ
+  intro:
+    explanation: "Terrastories በቦታ ላይ የተመሰረተ የድምጽና ምስል ታሪክ ቅጂዎች ናቸው። ይህ ከመስመር ውጭም የሚያገለግል መተግበሪያ የአካባቢ ማህበረሰቦች ለእነርሱ ጠቃሚ ትርጉም ወይም ዋጋ ያላቸውን ቦታዎች የራሳቸውን የቃል ታሪኮች ወጎች እንዲፈልጉ እና እንዲያዘጋጁ ያስችላቸዋል።"
+    question: "ቴራስቶሪ ምንድን ነው?"
+  language: ቋንቋ
+  login: ግባ
+  logout: ውጣ
+  most_recent: "የቅርብ ጊዜ"
+  no_media: ምንም ሚዲያ የለም
+  password: የይለፍ ቃል
+  place_name: "የቦታ ስም አጠራር"
+  place_type: "የቦታ አይነት"
+  region: ክልል
+  remember_me: "አስታውሰኝ"
+  reversed_alphabetical: Z-A
+  select_category: "ምድብ ይምረጡ"
+  select_option: "አማራጭ ይምረጡ"
+  selected_language: "ተመርጧል"
+  sign_up: "ይመዝገቡ"
+  sort_stories: "ታሪኮችን ደርድር"
+  speaker: ተናጋሪ
+  topic: ርዕስ
+  video_unsupported: ይቅርታ፣ የድረ ገጽ አሳሽዎ የተካተቱ ቪዲዮዎችን አያስተናግድም።
+  welcome: እንኳን በደህና መጡ
+  welcome_back: "እንኳን በደህና ተመለሱ"
