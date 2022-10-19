@@ -1,0 +1,54 @@
+am:
+  profile: መገለጫ
+  interviewer: ጠያቂ
+  import: አስመጣ
+  map:
+    center: የካርታ ማዕከል
+    bounds: የካርታ ወሰን
+    bounds_description: የካርታው ወሰኖች በካርታው ላይ ማዟዟር የሚችሉበትን መጠን ይወስናሉ። ካልተገደበ፣ ካርታው ወሰን ሳይኖረው ማዟዟር የሚቻል ይሆናል።
+    sw_corner: ደቡብ ምዕራብ ጥግ
+    ne_corner: ሰሜን ምስራቅ ጥግ
+    unrestricted_bounds: ያልተገደበ ወሰን ፍቀድ
+    online: የኦንላይን ካርታ ውቅር
+    settings: የካርታ ቅንብሮች
+    settings_description: የማህበረሰቡን የካርታ ቅንጅቶችን አብጅ።
+    projection:
+      mercator: መርኬተር
+      albers: አልበርስ
+      equalEarth: እኩል ምድር
+      equirectangular: እኩል አራትማዕዘን
+      lambertConformalConic: ላምበርት ኮንፎርማል ኮኒክ
+      naturalEarth: የተፈጥሮ ምድር
+      winkelTripel: ዊንክል ትራይፕል
+      globe: ሉል
+  dashboard:
+    back_to_app: ወደ መተግበሪያ ተመለስ
+    community_settings: የማህበረሰብ ቅንብሮች
+    headings:
+      new_resource: አዲስ %{name}
+    actions:
+      confirm: እርግጠኛ ነዎት?
+      destroy: ሰርዝ
+      edit: አስተካክል
+      new: አዲስ
+      back: ተመለስ
+      show_resource: "%{name} አሳይ"
+    theme:
+      welcome_screen: የእንኳን ደህና መጣችሁ ገጽ
+      background_img: በማህበረሰብዎ ማረፊያ ገጽ ላይ ያለውን የጀርባ ምስል ያብጁ።
+      sponsor_logos: በማህበረሰብ ገጽዎ ላይ አርማዎችን ያሳዩ። ይህ የድርጅትዎ አርማ ወይም የፕሮጀክት ስፖንሰር አርማ ሊሆን ይችላል። በርካታ አርማዎችን ማከል ይቻላል።
+  search:
+    clear: ፍለጋን አጽዳ
+    label: ፈልግ
+    heading: የፍለጋ ውጤቶች
+    results: ውጤቶች
+  filter:
+    all: ሁሉም
+    any: ማንኛውም
+    label: ማጣሪያ
+    clear: ማጣሪያዎችን አጽዳ
+  list:
+    prev: ቀዳሚ
+    next: ቀጣይ
+    no_results: የሚገኙ ምንም %{resources} የሉም።
+    no_nested_results: ይህ %{resource} %{resources} የለውም።
