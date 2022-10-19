@@ -4,41 +4,85 @@ set -eu
 profile="dev"
 container="web"
 
+Green='\033[0;32m'
+Purple='\033[0;35m'
+BoldGreen='\033[1;32m'
+BoldPurple='\033[1;35m'
+ColorOff='\033[00m'
+
+echo -e "${BoldPurple}Configure for Offline Field Kit${ColorOff}"
+
+echo
+echo "Field Kit mode runs 'offline' or disconnected from the internet."
+echo
+
 read -p "Setup for offline 'Field Kit' mode? [y/n] " offline
 
 if [ "$offline" = "y" ] || [ "$offline" = "Y" ]; then
   container="localweb"
   profile="offline"
 
+  if [ ! -f tileserver/data/styles/style.json ]; then
+    echo
+    echo -e "${Purple}==> Configure Local Tileserver${ColorOff}"
+    echo "A local Tileserver is required to run offline. You can use the"
+    echo "Terrastories default offline map tiles, or you can generate your own."
+    echo
+
+    read -p "Use default offline map tiles? This will overwrite any files already in tileserver/data [y/n] " default
+    if [ "$default" = "y" ] || [ "$default" = "Y" ]; then
+      echo
+      printf "Downloading and configuring default offline tiles..."
+      if [ ! -f tmp ]; then
+        git clone --quiet "https://github.com/Terrastories/default-offline-map/" tmp
+      fi
+      cp -r tmp/fonts/* tileserver/data/fonts
+      cp tmp/sprites/* tileserver/data/sprites
+      cp tmp/styles/* tileserver/data/styles
+      rm -rf tmp
+      curl -fsSL "https://bit.ly/39EdYoQ" -o "tileserver/data/mbtiles/tiles.mbtiles" --create-dirs
+      echo -e "...${Green}done!${ColorOff}"
+    fi
+  fi
+
   if ! grep -q "terrastories.local" /etc/hosts; then
     echo
-    echo "In order for offline Terrastories to work, you need to configure the"
-    echo "instance hostnames on your machine."
+    echo -e "${Purple}==> Configure terrastories.local Domain${ColorOff}"
+    echo "By default, offline Terrastories field kis is accessible via localhost"
+    echo "or a local IP on the host machine. To faciliate easier access, you can"
+    echo "configure our custom terrastories.local domain to access Terrastories."
     echo
-    echo "You can manually configure your /etc/hosts file, or you can provide"
-    echo "your password when prompted to automatically configure them."
+    echo "This can be done manually by editing your /etc/hosts file, or you can"
+    echo "provide your password when prompted to automatically configure them."
     echo
     echo "Choose one:"
     echo "  (1) Manual"
     echo "  (2) Automatic"
+    echo "  (3) Skip configuration"
     echo
     read -p "Your choice: " choice
 
     if [ $choice -eq 2 ]; then
-      sudo -- sh -c "echo '# Added by Terrastories\n127.0.0.1 terrastories.local\n127.0.0.1 tileserver.terrastories.local\n# End of section' >> /etc/hosts"
-    else
+      echo
+      printf "Automatically configuring terrastories.local..."
+      sudo -- sh -c "echo '# Added by Terrastories\n127.0.0.1 terrastories.local\n# End of section' >> /etc/hosts"
+      echo -e "...${Green}done!${ColorOff}"
+    elif [ $choice -eq 1 ]; then
       echo
       echo "In a new terminal, open /etc/hosts with appropriate write permissions"
-      echo "and add the following lines:"
+      echo "and add the following line:"
       echo
       echo "  127.0.0.1 terrastories.local"
-      echo "  127.0.0.1 tileserver.terrastories.local"
       echo
       read -p "Please go make those changes now. Press any key to continue or q to quit. " -n 1 k
       if [[ "$k" = "q" ]]; then
-        echo "\nQuitting..."
+        echo
+        echo "Quitting..."
         exit
       fi
+    else
+      echo
+      echo "Skipping configuration"
     fi
   fi
 fi
@@ -47,6 +91,41 @@ fi
 if [ ! -f .env ]; then
   cp .env.example .env
 fi
+
+# Local network access
+hostname=$(hostname)
+echo
+echo -e "${BoldPurple}Configure Network Access${ColorOff}"
+echo "By default, Terrastories can only be accessed by the machine hosting Terrastories."
+echo
+echo "Local Network Access is available for machines on the same network as the"
+echo "host machine using your host machine's hostname: $hostname."
+echo
+echo "Broader Network Access is available if you are familiar with networking"
+echo "or reverse proxying services such as ngrok, localtunnel, serveo, etc."
+echo
+echo "Would you like to enable network access?"
+echo "  (1) Yes, local network access using my hostname: $hostname"
+echo "  (2) Yes, broader network access using a custom hostname"
+echo "  (3) No, I only plan on using my machine"
+echo
+read -p "Your choice: " addhosts
+if [ $addhosts -eq 1 ]; then
+  grep -v "HOST_HOSTNAME" .env > .envnew; mv .envnew .env
+  echo "HOST_HOSTNAME=$hostname" >> .env
+elif [ $addhosts -eq 2 ]; then
+  echo
+  read -p "Specify hostname: [$hostname] " hosts
+
+  grep -v "HOST_HOSTNAME" .env > .envnew; mv .envnew .env
+  echo "HOST_HOSTNAME=${hosts:-$hostname}" >> .env
+else
+  echo
+  echo "Network access is disabled."
+fi
+
+echo
+echo "You may manage your hostname at any time in your .env file."
 
 ## init db
 docker compose run --rm db postgres --version
@@ -64,12 +143,13 @@ docker compose --profile $profile run --rm $container bin/rails db:migrate db:se
 docker compose --profile $profile run --rm $container yarn
 
 echo
-echo "Welcome to Terrastories!"
+echo -e "${BoldGreen}Welcome to Terrastories!$ColorOff"
 echo
 
 if [[ "$profile" = "dev" ]]; then
   echo "!! Note: Terrastories requires a Mapbox Access Token for the mapping capabilities to work."
-  echo "         Please update the \`/rails/.env\` file with a valid Mapbox access token."
+  echo "         Please update the \`.env\` file with a valid Mapbox access token or configure one"
+  echo "         in your Community's Theme settings."
   echo "         Ask a steward for help if you are unsure or need one provided."
   echo
 fi
