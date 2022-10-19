@@ -34,7 +34,7 @@ services:
   nginx-proxy:
     profiles:
       - offline
-    image: jwilder/nginx-proxy:alpine
+    image: nginxproxy/nginx-proxy:latest
     restart: always
     ports:
       - 80:80
@@ -69,25 +69,30 @@ services:
     environment:
       - PORT=3030
       - VIRTUAL_PORT=3030
-      - VIRTUAL_HOST=terrastories.local
+      - VIRTUAL_HOST=terrastories.local,${HOST_HOSTNAME}
+      - VIRTUAL_PATH=/
       - CHOKIDAR_USEPOLLING=true
       - USE_LOCAL_MAP_SERVER=true
-      - OFFLINE_MAP_STYLE=http://tileserver.terrastories.local/styles/terrastories-map/style.json
+      - OFFLINE_MAP_STYLE=/tileserver/styles/terrastories-map/style.json
 
   tileserver:
     profiles:
       - offline
     restart: always
     image: maptiler/tileserver-gl
-    command: "-p 8080"
+    command: "--port 8080 --public_url http://${HOST_HOSTNAME-terrastories.local}/tileserver/"
     ports:
       - 8080:8080
     expose:
       - "8080"
+    env_file:
+      - .env
     volumes:
       - ./tileserver/data:/data
     environment:
-      - VIRTUAL_HOST=tileserver.terrastories.local
+      - VIRTUAL_HOST=terrastories.local,${HOST_HOSTNAME}
+      - VIRTUAL_PATH=/tileserver/
+      - VIRTUAL_DEST=/
       - VIRTUAL_PORT=8080
 
 volumes:
