@@ -26,6 +26,8 @@ services:
       - 3000:3000
     expose:
       - "3000"
+    environment:
+      - CHECK_BUNDLER=yes
     volumes:
       - bundler:/usr/local/bundle
       - ./rails:/api

@@ -1,5 +1,10 @@
 #!/bin/sh
 
+if [ "$CHECK_BUNDLER" = "yes" ]
+then
+  bundle check || bundle install
+fi
+
 rm -f tmp/pids/server.pid
 
 echo "Starting Rails Server..."
