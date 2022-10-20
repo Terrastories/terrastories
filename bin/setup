@@ -48,7 +48,7 @@ if [ "$offline" = "y" ] || [ "$offline" = "Y" ]; then
   if ! grep -q "terrastories.local" /etc/hosts; then
     echo
     echo -e "${Purple}==> Configure terrastories.local Domain${ColorOff}"
-    echo "By default, offline Terrastories field kis is accessible via localhost"
+    echo "By default, offline Terrastories field kit is accessible via localhost"
     echo "or a local IP on the host machine. To faciliate easier access, you can"
     echo "configure our custom terrastories.local domain to access Terrastories."
     echo
@@ -150,7 +150,7 @@ if [[ "$profile" = "dev" ]]; then
   echo "!! Note: Terrastories requires a Mapbox Access Token for the mapping capabilities to work."
   echo "         Please update the \`.env\` file with a valid Mapbox access token or configure one"
   echo "         in your Community's Theme settings."
-  echo "         Ask a steward for help if you are unsure or need one provided."
+  echo "         Ask a Terrastories steward for help if you are unsure or need one provided."
   echo
 fi
 echo "Boot up your Terrastories instance with the following command:"
