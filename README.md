@@ -29,7 +29,7 @@ Learn more about Terrastories at [https://terrastories.io/](https://terrastories
 
 ## Install Terrastories
 
-Before you install Terrastories, you should consider the hosting environment for the application. Will it be hosted on an online server? If so, you are likely going to need to set up Terrastories on a Linux server. Are you installing Terrastories on your local machine, either for development or for demoing the app? Depending on what operating system you use, there are different setup guides, below. Lastly, if you are installing Terrastories to work fully offline (i.e. no online maps), there is a special guide for that use case as well.
+Terrastories can be set up for different hosting environments, including online, local (development), or offline "field kit". For local or offline hosting, there is a convenience script that walks you through all of the steps, or you can choose to follow the more granular guides for the various environments and operating systems.
 
 ### Prerequisites
 
@@ -44,7 +44,7 @@ Download and install [Docker](https://www.docker.com/products/docker-desktop/) f
 
 If you plan on running Terrastories offline, you'll need to configure local tiles for offline use.
 
-A default, open-license map for using offline with Terrastories is available at https://github.com/terrastories/default-offline/tiles. Download these files and place them in the `tileserver/data` directory, and they should work when you load Terrastories in Field Kit mode.
+A default, open-license map for using offline with Terrastories is available at https://github.com/terrastories/default-offline/tiles. You will have the option of downloading these using the setup script below. Alternatively, you can manually download these files and place them in the `tileserver/data` directory, and they should work when you load Terrastories in Field Kit mode.
 
 ### Setup
 
