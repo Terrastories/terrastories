@@ -37,26 +37,26 @@ Please check [ESLint editor-integrations page](https://eslint.org/docs/user-guid
 
 ### Tests
 
-You can run RSpec and e2e tests with
+You can run RSpec tests with
 
 ```
-script/test.sh
+    docker-compose exec web rspec
 ```
 
-We also support Javascript unit testing, with Enzyme for snapshots. 
+We also support Javascript unit testing, with Enzyme for snapshots.
 
 ```
-    docker-compose exec web yarn test 
+    docker-compose exec web yarn test
 ```
 
 ## Backup and restore the Terrastories database
 
-Terrastories stores Places, Speakers, and Stories in a database (Postgres DB). it is possible to back these data up and restore them by running lines of code in a bash terminal. 
+Terrastories stores Places, Speakers, and Stories in a database (Postgres DB). it is possible to back these data up and restore them by running lines of code in a bash terminal.
 
 Backup the DB with:
 
 ```
-docker run --rm -v "terrastories_postgres_data:/pgdata" busybox tar -cvzf - -C /pgdata . >db-backup.tgz 
+docker run --rm -v "terrastories_postgres_data:/pgdata" busybox tar -cvzf - -C /pgdata . >db-backup.tgz
 ```
 
 Restore a backup with:
@@ -86,7 +86,7 @@ Note: the above code is assuming your build is called `terrastories`. It may be 
 
 Terrastories offline mode is generally used in the field, when there is no access to the internet.
 
-To start Terrastories with the offline profile, run 
+To start Terrastories with the offline profile, run
 
 ```bash
 docker compose --profile offline up
