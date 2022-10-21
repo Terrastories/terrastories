@@ -14,26 +14,29 @@
 # Configure Using Gemfile
 # gem 'pg'
 #
-default: &default
-  adapter: postgresql
-  encoding: unicode
-  # For details on connection pooling, see Rails configuration guide
-  # http://guides.rubyonrails.org/configuring.html#database-pooling
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: postgres
-  host: <%= ENV['DB_HOST'] %>
-  password: <%= ENV['DB_USER_PASSWORD'] %>
-
+# default: &default
+#   adapter: postgresql
+#   encoding: unicode
+#   # For details on connection pooling, see Rails configuration guide
+#   # http://guides.rubyonrails.org/configuring.html#database-pooling
+#   pool: <%%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
-  url: <%= ENV['DATABASE_URL'] %>
+  adapter: postgresql
+  host: db
+  username: postgres
+  password: postgres
+  database: terrastories-dev
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  <<: *default
-  database: app_test
+  adapter: postgresql
+  host: db
+  username: postgres
+  password: postgres
+  database: terrastories-test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is

@@ -79,10 +79,10 @@ end
 #  bearing             :decimal(10, 6)
 #  center_lat          :decimal(10, 6)
 #  center_long         :decimal(10, 6)
+#  map_projection      :integer          default("mercator")
+#  mapbox_3d           :boolean          default(FALSE)
 #  mapbox_access_token :string
 #  mapbox_style_url    :string
-#  mapbox_3d           :boolean          default(FALSE), not null
-#  map_projection      :decimal
 #  ne_boundary_lat     :decimal(10, 6)
 #  ne_boundary_long    :decimal(10, 6)
 #  pitch               :decimal(10, 6)

@@ -4,6 +4,6 @@ proxy_no_cache 1;
 proxy_cache_bypass 1;
 
 error_page 502 503 504 /loading.html;
-location = /loading.html {
+location ~ ^([a-z]+)?/loading.html {
   root /usr/share/nginx/html;
 }

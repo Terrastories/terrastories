@@ -18,7 +18,7 @@
 
 ## About Terrastories
 
-**Terrastories** is a geostorytelling application built to enable indigenous and other local communities to locate and map their own oral storytelling traditions about places of significant meaning or value to them. Community members can add places and stories through a user-friendly interface, and make decisions about designating certain stories as private or restricted. It is a dockerized Rails app that uses [**Mapbox**](https://mapbox.com) to help users locate content geographically on an interactive map. Terrastories is designed to be entirely offline-compatible, so that remote communities can access the application entirely without needing internet connectivity. 
+**Terrastories** is a geostorytelling application built to enable indigenous and other local communities to locate and map their own oral storytelling traditions about places of significant meaning or value to them. Community members can add places and stories through a user-friendly interface, and make decisions about designating certain stories as private or restricted. It is a dockerized Rails app that uses [**Mapbox**](https://mapbox.com) to help users locate content geographically on an interactive map. Terrastories is designed to be entirely offline-compatible, so that remote communities can access the application entirely without needing internet connectivity.
 
 The Terrastories interface is principally composed of an interactive map and a sidebar with media content. Users can explore the map and click on activated points to see the stories associated with those points. Alternatively, users can interact with the sidebar and click on stories to see where in the landscape these narratives took place. Through an administrative back end, users can also add, edit, and remove stories, or set them as restricted so that they are viewable only with a special login. Users can design and customize the content of the interactive map entirely, and the interface itself is customizable with a color scheme and design reflecting the style of the community.
 
@@ -29,20 +29,47 @@ Learn more about Terrastories at [https://terrastories.io/](https://terrastories
 
 ## Install Terrastories
 
-Before you install Terrastories, you should consider the hosting environment for the application. Will it be hosted on an online server? If so, you are likely going to need to set up Terrastories on a Linux server. Are you installing Terrastories on your local machine, either for development or for demoing the app? Depending on what operating system you use, there are different setup guides, below. Lastly, if you are installing Terrastories to work fully offline (i.e. no online maps), there is a special guide for that use case as well.
+Terrastories can be set up for different hosting environments, including online, local (development), or offline "field kit". For local or offline hosting, there is a convenience script that walks you through all of the steps, or you can choose to follow the more granular guides for the various environments and operating systems.
 
-To install and run a streamlined version of Terrastories with access to an online map on Mapbox.com, visit one of these links:
+### Prerequisites
+
+#### Docker
+Local development and offline mode both require Docker to be installed.
+
+Download and install [Docker](https://www.docker.com/products/docker-desktop/) for your platform.
+
+> NOTE: Windows requires WSL 2.0 or virtualization in order to work.
+
+#### Tileserver (Offline "Field Kit" Mode)
+
+If you plan on running Terrastories offline, you'll need to configure local tiles for offline use.
+
+A default, open-license map for using offline with Terrastories is available at https://github.com/terrastories/default-offline/tiles. You will have the option of downloading these using the setup script below. Alternatively, you can manually download these files and place them in the `tileserver/data` directory, and they should work when you load Terrastories in Field Kit mode.
+
+### Setup
+
+1. Clone this repository
+1. Run
+   ```sh
+   $ ./bin/setup
+   ```
+   and follow the prompts.
+
+### Issues?
+
+Review more granular setup options for your platform below:
+
 1. [Setup for Mac](documentation/SETUP-MAC.md)
 2. [Setup for Windows](documentation/SETUP-WINDOWS.md)
 3. [Setup for Linux](documentation/SETUP-LINUX.md)
 
-To install and run Terrastories for offline "Field Kit" usage, visit:
+Or for offline "Field Kit" usage, visit:
 
 4. [Setup for offline](documentation/SETUP-OFFLINE.md)
 
 ## Setting up Communities and Users
 
-Terrastories is built to host multiple communities with their own maps and stories on one Terrastories application. The communities' data is protected and accessible only through their own  user credentials, with different layers of permissions like viewing, editing, and changing settings for the whole community. 
+Terrastories is built to host multiple communities with their own maps and stories on one Terrastories application. The communities' data is protected and accessible only through their own  user credentials, with different layers of permissions like viewing, editing, and changing settings for the whole community.
 
 Terrastories is set up in this way to enable multiple communities to leverage one hosting environment (online or offline) instead of having to set up a dedicated server, while retaining sovereignty over their data. In the future we will make it possible to enable selective sharing between communities across Terrastories, when desired.
 
@@ -54,7 +81,7 @@ To set up Terrastories with a custom map, languages, visual assets, and to impor
 
 ## Demo and Tutorials
 
-In anticipation of the Terrastories technical session taking place at the 2020 Indigenous Mapping Workshop, we prepared three self-guided tutorials along with video walkthroughs per tutorial. We also put together a comprehensive video showing the application's core features, and a live demo to explore. 
+In anticipation of the Terrastories technical session taking place at the 2020 Indigenous Mapping Workshop, we prepared three self-guided tutorials along with video walkthroughs per tutorial. We also put together a comprehensive video showing the application's core features, and a live demo to explore.
 
 These can be found on the [Terrastories website](https://terrastories.io/tutorials/).
 
@@ -100,4 +127,4 @@ Try to keep your PRs limited to one particular issue and don't make changes that
 Sometimes we want to get a PR up there and going so that other people can review it or provide feedback, but maybe it's incomplete. This is OK, but if you do it, please tag your PR with an  `in-progress`  label so that we know not to review / merge it.
 
 ### Becoming a Core Steward
-Users that are frequent contributors and are involved in discussion may be given direct Contributor access to the Repo so they can submit Pull Requests directly, instead of Forking first. You can join us in Slack [here](https://t.co/kUtI3lnpW1), and find us in the channel #terrastories! :) 
+Users that are frequent contributors and are involved in discussion may be given direct Contributor access to the Repo so they can submit Pull Requests directly, instead of Forking first. You can join us in Slack [here](https://t.co/kUtI3lnpW1), and find us in the channel #terrastories! :)

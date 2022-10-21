@@ -3,17 +3,9 @@ services:
     image: ${DOCKER_IMAGE_NAME-terrastories}
     build:
       context: ./rails
-      args:
-        precompileassets: "not"
-    environment:
-      DATABASE_URL: postgres://${DB_USERNAME-postgres}:${DB_USER_PASSWORD-postgres}@${DB_HOST-db}/${DB_NAME-app-development}
-      DEFAULT_MAPBOX_TOKEN: ${MAPBOX_ACCESS_TOKEN-pk.ey}
-      DEFAULT_MAPBOX_STYLE: ${MAPBOX_STYLE-mapbox://styles/mapbox/streets-v11}
+    env_file:
+      - .env
     command: scripts/server
     restart: always
     stdin_open: true
     tty: true
-    ports:
-      - 3000:3000
-    expose:
-      - "3000"
