@@ -14,12 +14,15 @@ am:
   user: ተጠቃሚ
 
   languages:
+    am: አማርኛ
     en: እንግሊዝኛ
     es: ስፓኒሽ
     ja: ጃፓንኛ
-    mat: ደችኛ
+    mat: ማታዋይ
     nl: ደችኛ
     pt: ፖርቹጋልኛ
+    sw: ስዋሕሊ
+    zh: ቻይንኛ
 
   # Front End Translations
   admin_page: "የአስተዳዳሪ ገጽ"

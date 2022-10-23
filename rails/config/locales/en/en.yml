@@ -14,12 +14,15 @@ en:
   user: User
 
   languages:
+    am: Amharic
     en: English
     es: Spanish
     ja: Japanese
-    mat: Dutch
+    mat: Matawai
     nl: Dutch
-    pt: Portugues
+    pt: Portuguese
+    sw: Swahili
+    zh: Chinese
 
   # Front End Translations
   admin_page: "Admin Page"

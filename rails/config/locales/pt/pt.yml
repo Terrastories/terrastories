@@ -14,12 +14,15 @@ pt:
   user: Usuário
 
   languages:
+    am: Amárico
     en: Inglês
     es: Espanhol
-    ja: japonês
-    mat: Holandês
+    ja: Japonês
+    mat: Matawai
     nl: Holandês
     pt: Português
+    sw: Suaíli
+    zh: Chinês
 
   # Front End Translations
   admin_page: "Página de administração"

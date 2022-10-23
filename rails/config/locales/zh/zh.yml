@@ -13,6 +13,17 @@ zh:
   users: 用户
   user: 用户
 
+  languages:
+    am: 阿姆哈拉語
+    en: 英語
+    es: 西班牙語
+    ja: 日本人
+    mat: 馬塔懷
+    nl: 荷蘭語
+    pt: 葡萄牙語
+    sw: 斯瓦希里語
+    zh: 中國人
+
   # Front End Translations
   admin_page: "管理页面"
   alphabetical: A-Z
