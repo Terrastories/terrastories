@@ -13,6 +13,17 @@ sw:
   users: Watumiaji
   user: Mtumiaji
 
+  languages:
+    am: Kiamhari
+    en: Kiingereza
+    es: Kihispania
+    ja: Kijapani
+    mat: Kimatawai
+    nl: Kiholanzi
+    pt: Kireno
+    sw: Kiswahili
+    zh: Kichina
+
   # Front End Translations
   admin_page: "Ukurasa wa Msimamizi"
   alphabetical: A-Z

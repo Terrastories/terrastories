@@ -14,12 +14,15 @@ mat:
   user: Gebruiker
 
   languages:
-    en: Engels
-    es: Spaans
+    am: Amhaars
+    en: Ingris
+    es: Spanjoro
     ja: Japans
-    mat: Nederlands
-    nl: Nederlands
-    pt: Portugees
+    mat: Bakaa
+    nl: Matawai
+    pt: Potogisi
+    sw: Swahili
+    zh: Snesi
 
   # Front End Translations
   admin_page: "Admin pagina"
