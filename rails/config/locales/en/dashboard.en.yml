@@ -21,6 +21,8 @@ en:
       naturalEarth: Natural Earth
       winkelTripel: Winkel Tripel
   dashboard:
+    communities:
+      last_updated_on: Last updated on %{last_updated_on}
     back_to_app: Back to App
     community_settings: Community Settings
     headings:

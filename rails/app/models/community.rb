@@ -13,6 +13,17 @@ class Community < ApplicationRecord
   def create_theme
     build_theme
   end
+
+  def associated_updated_at
+    [users.order(updated_at: :desc).first,
+      places.order(updated_at: :desc).first,
+      stories.order(updated_at: :desc).first,
+      speakers.order(updated_at: :desc).first,
+      theme, self]
+      .compact
+      .map { |x| x.updated_at  }
+      .max
+  end
 end
 
 # == Schema Information
