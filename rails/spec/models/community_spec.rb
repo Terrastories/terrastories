@@ -35,4 +35,20 @@ RSpec.describe Community, type: :model do
       expect(Place.all.pluck(:id)).not_to include(place.id)
     end
   end
+
+  describe "associated_updated_at" do
+    it "returns the latest updated at timestamp" do
+      community = FactoryBot.create(:community, updated_at: 1.day.ago)
+      speaker = FactoryBot.create(:speaker, community: community)
+      place = FactoryBot.create(:place, community: community)
+      story = FactoryBot.create(:story, community: community, speakers: [speaker], places: [place])
+
+      expect(community.associated_updated_at).to eq(story.updated_at)
+
+    end
+
+    it "handles nil" do
+      expect { community.associated_updated_at }.not_to raise_error
+    end
+  end
 end
