@@ -1,0 +1,67 @@
+pu:
+  community: ਭਾਈਚਾਰਾ
+  communities: ਭਾਈਚਾਰੇ
+  media_link: ਮੀਡੀਆ ਲਿੰਕ
+  media_links: ਮੀਡੀਆ ਲਿੰਕ
+  places: ਸਥਾਨ
+  place: ਸਥਾਨ
+  speakers: ਸਪੀਕਰ
+  speaker: ਸਪੀਕਰ
+  stories: ਕਹਾਣੀਆਂ
+  story: ਕਹਾਣੀ
+  theme: ਥੀਮ
+  users: ਉਪਭੋਗਤਾ
+  user: ਉਪਭੋਗਤਾ
+
+  languages:
+    am: Amharic
+    en: English
+    es: Spanish
+    ja: Japanese
+    mat: Matawai
+    nl: Dutch
+    pt: Portuguese
+    sw: Swahili
+    zh: Chinese
+    pu: Punjabi
+
+  # Front End Translations
+   admin_page: "ਪ੍ਰਬੰਧਕ ਪੰਨਾ"
+   alphabetical: A-Z
+   back_to_map: "ਨਕਸ਼ੇ 'ਤੇ ਵਾਪਸ"
+   back_to_welcome: "ਵਾਪਸ ਸੁਆਗਤ ਪੰਨੇ 'ਤੇ"
+   build_with_love: ❤️ ਦੁਆਰਾ ਬਣਾਇਆ ਗਿਆ
+   close: ਬੰਦ ਕਰੋ
+  ਭਾਈਚਾਰੇ_ਖੋਜ:
+    title: "ਪੜਚੋਲ ਕਰਨ ਲਈ ਇੱਕ ਭਾਈਚਾਰਾ ਖੋਜੋ"
+    coming_soon: "ਇਹ ਵਿਸ਼ੇਸ਼ਤਾ ਜਲਦੀ ਹੀ ਆ ਰਹੀ ਹੈ। ਫਿਲਹਾਲ, ਕਿਰਪਾ ਕਰਕੇ ਕਿਸੇ ਖਾਸ ਭਾਈਚਾਰੇ ਨੂੰ ਸੱਦਾ ਦੇਣ ਦੀ ਬੇਨਤੀ ਕਰੋ।"
+  default: ਡਿਫਾਲਟ
+  enter: "ਸਾਈਟ ਦਰਜ ਕਰੋ"
+  filter_stories: "ਕਹਾਣੀਆਂ ਨੂੰ ਫਿਲਟਰ ਕਰੋ"
+  forgot_password: "ਆਪਣਾ ਪਾਸਵਰਡ ਭੁੱਲ ਗਏ?"
+  hello: ਸਤ ਸ੍ਰੀ ਅਕਾਲ
+  introduction: ਜਾਣ-ਪਛਾਣ
+  intro:
+    explanation: "ਟੈਰੇਸਟ੍ਰੀਜ਼ ਸਥਾਨ-ਅਧਾਰਿਤ ਕਹਾਣੀ ਸੁਣਾਉਣ ਦੀਆਂ ਆਡੀਓ-ਵਿਜ਼ੁਅਲ ਰਿਕਾਰਡਿੰਗਾਂ ਹਨ। ਇਹ ਔਫਲਾਈਨ-ਅਨੁਕੂਲ ਐਪਲੀਕੇਸ਼ਨ ਸਥਾਨਕ ਭਾਈਚਾਰਿਆਂ ਨੂੰ ਉਹਨਾਂ ਲਈ ਮਹੱਤਵਪੂਰਨ ਅਰਥ ਜਾਂ ਮੁੱਲ ਵਾਲੇ ਸਥਾਨਾਂ ਬਾਰੇ ਉਹਨਾਂ ਦੀਆਂ ਆਪਣੀਆਂ ਮੌਖਿਕ ਕਹਾਣੀ ਸੁਣਾਉਣ ਦੀਆਂ ਪਰੰਪਰਾਵਾਂ ਦਾ ਪਤਾ ਲਗਾਉਣ ਅਤੇ ਉਹਨਾਂ ਦਾ ਨਕਸ਼ਾ ਬਣਾਉਣ ਦੇ ਯੋਗ ਬਣਾਉਂਦਾ ਹੈ।"
+    question: "ਟੈਰੇਸਟਰੀ ਕੀ ਹੈ?"
+  language: ਭਾਸ਼ਾ
+  login: ਲਾਗਇਨ
+  logout: ਲਾਗਆਉਟ
+  most_recent: "ਸਭ ਤੋਂ ਤਾਜ਼ਾ"
+  no_media: ਕੋਈ ਮੀਡੀਆ ਉਪਲਬਧ ਨਹੀਂ ਹੈ
+  password: ਪਾਸਵਰਡ
+  place_name: "ਸਥਾਨ ਦੇ ਨਾਮ ਦਾ ਉਚਾਰਨ"
+  place_type: "ਜਗ੍ਹਾ ਦੀ ਕਿਸਮ"
+  region: ਖੇਤਰ
+  remember_me: "ਮੈਨੂੰ ਯਾਦ ਰੱਖੋ"
+  reversed_alphabetical: Z-A
+  select_category: "ਸ਼੍ਰੇਣੀ ਚੁਣੋ"
+  select_option: "ਚੋਣ ਵਿਕਲਪ"
+  selected_language: "ਚੁਣੀ ਗਈ"
+  sign_up: "ਸਾਈਨ ਅੱਪ ਕਰੋ"
+  sort_stories: "ਕਹਾਣੀਆਂ ਨੂੰ ਛਾਂਟੋ"
+  speaker: ਸਪੀਕਰ
+  topic: ਵਿਸ਼ਾ
+  video_unsupported: ਮਾਫ਼ ਕਰਨਾ, ਤੁਹਾਡਾ ਬ੍ਰਾਊਜ਼ਰ ਏਮਬੈਡ ਕੀਤੇ ਵੀਡੀਓਜ਼ ਦਾ ਸਮਰਥਨ ਨਹੀਂ ਕਰਦਾ।
+  welcome: ਜੀ ਆਇਆਂ ਨੂੰ
+  welcome_back: "ਜੀ ਆਇਆਂ ਨੂੰ"
