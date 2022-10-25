@@ -1,42 +1,42 @@
 pt:
   errors:
     messages:
-      map_bounds: All four bounding box values must be set, or left blank
-      invalid_latitude: value should be between -90 and 90
-      invalid_longitude: value should be between -180 and 180
-      invalid_zoom_level: value should be between 0 and 22
-      invalid_pitch: value should be 0 and 85
-      invalid_bearing: value should be between -180 and 180
+      map_bounds: Os valores das quatro caixas delimitadoras devem ser determinados, ou deixados vazios
+      invalid_latitude: valores devem ser entre -90 e 90
+      invalid_longitude: valores devem ser entre -180 e 180
+      invalid_zoom_level: valores devem ser entre 0 e 22
+      invalid_pitch: valores devem ser entre 0 e 85
+      invalid_bearing: valores devem ser entre -180 e 180
   helpers:
     label:
       place:
         one: Lugar
       speaker:
         one: Orador
-      visibility: Visibility
+      visibility: Visibilidade
   activerecord:
     errors:
       models:
         place:
           attributes:
             name_audio:
-              content_type: content type is not in list
+              content_type: o tipo de conteúdo não está na lista
             photo:
-              content_type: content type is not in list
+              content_type: o tipo de conteúdo não está na lista
         story:
           attributes:
             place_ids:
-              blank: Your story must have a Place
+              blank: Sua história deve ter um Lugar
             speaker_ids:
-              blank: Your story must have at least one Speaker
+              blank: Sua história deve ter um Orador
         theme:
           attributes:
             background_img:
-              content_type: content type is not in list
+              content_type: o tipo de conteúdo não está na lista
             mapbox_access_token:
-              blank: is required when the Mapbox style URL is set.
+              blank: é requirido quando a URL de estilo Mapbox é determinada.
             mapbox_style_url:
-              blank: is required when the Mapbox access token is set.
+              blank: é requirido quando o token de acesso Mapbox é determinado.
     # Used to auto-translate submit buttons
     models:
       community: Comunidade
@@ -51,7 +51,7 @@ pt:
     attributes:
       place:
         name: Nome
-        name_audio: Placename Áudio
+        name_audio: Áudio do nome do lugar
         description: Descrição
         type_of_place: Tipo de lugar
         region: Região
@@ -65,11 +65,11 @@ pt:
         photo: Foto
         speaker_community: Comunidade de palestrantes
         birthdate: Data de nascimento
-        birthplace_id: Nasceu onde
+        birthplace_id: Local de Nascimento
       story:
         title: Título
         desc: Descrição
-        language: Linguagem
+        language: Idioma
         topic: Assunto
         date_interviewed: Data da entrevista
         media: Mídia
@@ -79,25 +79,25 @@ pt:
         interviewer_id: Entrevistador
         permission_level: Nível de permissão
       story/permission_level:
-        anonymous: Pesquisável
+        anonymous: Anônimo
         user_only: Membro
         editor_only: Editor/a
       theme:
-        background_img: Imagen de fundo
+        background_img: Imagem de fundo
         sponsor_logos: Logotipos de patrocinadores
-        mapbox_style_url: URL do estilo Mapbox
-        mapbox_access_token: Token de acesso do Mapbox associado ao estilo
+        mapbox_style_url: URL de estilo Mapbox
+        mapbox_access_token: Token de acesso Mapbox associado ao estilo
         mapbox_3d: Ative a visualização 3D do terreno para o mapa online
         center_lat: Latitude
         center_long: Longitude
-        sw_boundary_lat: Min Latitude
-        sw_boundary_long: Min Longitude
-        ne_boundary_lat: Max Latitude
-        ne_boundary_long: Max Longitude
+        sw_boundary_lat: Latitude Mínima
+        sw_boundary_long: Longitude Mínima
+        ne_boundary_lat: Latitude Máxima
+        ne_boundary_long: Longitude Máxima
         zoom: Nivel de zoom
         pitch: Grau de pitch
         bearing: Grau de rolamento
-        map_projection: Definir projeção para o mapa
+        map_projection: Determine uma projeção para o mapa
       user:
         login: Username or Email
         name: Display Name
