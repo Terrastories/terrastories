@@ -1,0 +1,54 @@
+sw:
+  profile: Wasifu
+  interviewer: Mhojaji
+  import: Ingiza
+  map:
+    center: Kituo cha Ramani
+    bounds: Mipaka ya Ramani
+    bounds_description: Mipaka ya ramani huamua kiwango ambacho unaweza kusogeza kwenye ramani. Bila vikwazo, ramani itakuwa inayoweza kusogezwa kabisa.
+    sw_corner: Kona ya Kusini Magharibi
+    ne_corner: Kona ya Kaskazini Mashariki
+    unrestricted_bounds: Ruhusu mipaka isiyo na kikomo
+    online: Umbo la Ramani ya Mtandaoni
+    settings: Mipangilio ya Ramani
+    settings_description: Geuza mipangilio ya ramani ya jumuiya yako kukufaa.
+    projection:
+      mercator: Mercator
+      albers: Albers
+      equalEarth: Equal Earth
+      equirectangular: Equirectangular
+      lambertConformalConic: Lambert Comformal Conic
+      naturalEarth: Natural Earth
+      winkelTripel: Winkel Tripel
+      globe: Globe
+  dashboard:
+    back_to_app: Rudi kwenye Programu
+    community_settings: Mipangilio ya Jumuiya
+    headings:
+      new_resource: New %{name}
+    actions:
+      confirm: Una uhakika?
+      destroy: Futa
+      edit: Hariri
+      new: Mpya
+      back: Rudi
+      show_resource: Show %{name}
+    theme:
+      welcome_screen: Skrini ya Kukaribisha
+      background_img: Geuza kukufaa picha ya usuli kwenye ukurasa wa kutua wa jumuiya yako.
+      sponsor_logos: Onyesha nembo kwenye ukurasa wako wa jumuiya. Hii inaweza kuwa nembo ya shirika lako au ya mfadhili wa mradi. Nembo nyingi zinaweza kuongezwa.
+  search:
+    clear: Futa utafutaji
+    label: Tafuta
+    heading: Matokeo ya Utafutaji
+    results: matokeo
+  filter:
+    all: Zote
+    any: Yoyote
+    label: Chuja
+    clear: Futa chujio
+  list:
+    prev: Iliyotangulia
+    next: Inayofuata
+    no_results: Hakuna %{resources} zinazopatikana.
+    no_nested_results: This %{resource} has no %{resources}.

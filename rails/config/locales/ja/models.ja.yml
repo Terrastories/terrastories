@@ -95,7 +95,7 @@ ja:
         ne_boundary_lat: Max Latitude
         ne_boundary_long: Max Longitude
         zoom: Zoom level
-        pitch: Pitch degree
+        pitch: Pitch degrees
         bearing: Bearing degrees
         map_projection: Set projection for map
       user:

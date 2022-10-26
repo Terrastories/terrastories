@@ -4,13 +4,14 @@ services:
       - offline
       - dev
     image: postgres:11
+    restart: always
     ports:
       - 5432:5432
     environment:
-      - POSTGRES_USER=${DB_USERNAME}
-      - POSTGRES_PASSWORD=${DB_USER_PASSWORD}
-      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USERNAME-postgres}
+      - POSTGRES_PASSWORD=${DB_USER_PASSWORD-postgres}
     volumes:
+      - ./postgresql/:/docker-entrypoint-initdb.d/
       - postgres_data:/var/lib/postgresql/data
 
   web:
@@ -21,6 +22,12 @@ services:
       service: rails
     depends_on:
       - db
+    ports:
+      - 3000:3000
+    expose:
+      - "3000"
+    environment:
+      - CHECK_BUNDLER=yes
     volumes:
       - bundler:/usr/local/bundle
       - ./rails:/api
@@ -30,12 +37,12 @@ services:
   nginx-proxy:
     profiles:
       - offline
-    image: jwilder/nginx-proxy:alpine
+    image: nginxproxy/nginx-proxy:latest
     restart: always
     ports:
       - 80:80
     depends_on:
-      - web
+      - localweb
       - db
     environment:
       - DEFAULT_HOST=terrastories.local
@@ -53,31 +60,42 @@ services:
       service: rails
     depends_on:
       - db
+    ports:
+      - 3030:3030
+    expose:
+      - "3030"
     volumes:
       - bundler:/usr/local/bundle
       - ./rails:/api
       - ./data/media:/media
       - ./data/import/media:/api/import/media
     environment:
-      - VIRTUAL_HOST=terrastories.local
+      - PORT=3030
+      - VIRTUAL_PORT=3030
+      - VIRTUAL_HOST=terrastories.local,${HOST_HOSTNAME}
+      - VIRTUAL_PATH=/
       - CHOKIDAR_USEPOLLING=true
       - USE_LOCAL_MAP_SERVER=true
-      - OFFLINE_MAP_STYLE=http://tileserver.terrastories.local/styles/terrastories-map/style.json
+      - OFFLINE_MAP_STYLE=/tileserver/styles/terrastories-map/style.json
 
   tileserver:
     profiles:
       - offline
     restart: always
     image: maptiler/tileserver-gl
-    command: "-p 8080"
+    command: "--port 8080 --public_url http://${HOST_HOSTNAME-terrastories.local}/tileserver/"
     ports:
       - 8080:8080
     expose:
       - "8080"
+    env_file:
+      - .env
     volumes:
       - ./tileserver/data:/data
     environment:
-      - VIRTUAL_HOST=tileserver.terrastories.local
+      - VIRTUAL_HOST=terrastories.local,${HOST_HOSTNAME}
+      - VIRTUAL_PATH=/tileserver/
+      - VIRTUAL_DEST=/
       - VIRTUAL_PORT=8080
 
 volumes:

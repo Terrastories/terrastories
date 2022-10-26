@@ -1,0 +1,66 @@
+zh:
+  community: 社区
+  communities: 社区
+  media_link: 媒体链接
+  media_links: 媒体链接
+  places: 地点
+  place: 地点
+  speakers: 演讲人
+  speaker: 演讲人
+  stories: 故事
+  story: 故事
+  theme: 主题
+  users: 用户
+  user: 用户
+
+  languages:
+    am: 阿姆哈拉語
+    en: 英語
+    es: 西班牙語
+    ja: 日本人
+    mat: 馬塔懷
+    nl: 荷蘭語
+    pt: 葡萄牙語
+    sw: 斯瓦希里語
+    zh: 中國人
+
+  # Front End Translations
+  admin_page: "管理页面"
+  alphabetical: A-Z
+  back_to_map: "返回地图"
+  back_to_welcome: "返回欢迎页"
+  built_with_love: Built with ❤️ by
+  close: 关闭
+  community_search:
+    title: "搜索要探索的社区"
+    coming_soon: "此功能即将推出。目前请向特定社区申请邀请。"
+  default: 默认
+  enter: "进入网站"
+  filter_stories: "筛选故事"
+  forgot_password: "忘记密码？"
+  hello: 您好
+  introduction: 简介
+  intro:
+    explanation: "Terrastories是基于地点的的视听故事记录。这个可以离线使用的应用程序使当地社区能够定位和绘制对他们有重要意义或价值的地方的口头故事传统。"
+    question: "Terrastory是什么?"
+  language: 语言
+  login: 登录
+  logout: 注销
+  most_recent: "最近"
+  no_media: 没有可用的媒体
+  password: 密码
+  place_name: "地名读音"
+  place_type: "地点类型"
+  region: 地区
+  remember_me: "记住我"
+  reversed_alphabetical: Z-A
+  select_category: "选择类别"
+  select_option: "选择选项"
+  selected_language: "已选择"
+  sign_up: "注册"
+  sort_stories: "故事排序"
+  speaker: 演讲人
+  topic: 主题
+  video_unsupported: 对不起，您的浏览器不支持嵌入式视频。
+  welcome: 欢迎
+  welcome_back: "欢迎回来"

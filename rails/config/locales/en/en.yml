@@ -13,6 +13,17 @@ en:
   users: Users
   user: User
 
+  languages:
+    am: Amharic
+    en: English
+    es: Spanish
+    ja: Japanese
+    mat: Matawai
+    nl: Dutch
+    pt: Portuguese
+    sw: Swahili
+    zh: Chinese
+
   # Front End Translations
   admin_page: "Admin Page"
   alphabetical: A-Z

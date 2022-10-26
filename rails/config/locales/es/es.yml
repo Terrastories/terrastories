@@ -13,6 +13,17 @@ es:
   users: Usuarios
   user: Usuario
 
+  languages:
+    am: Amárico
+    en: Inglés
+    es: Español
+    ja: Japonés
+    mat: Matawai
+    nl: Holandés
+    pt: Portugués
+    sw: Swahili
+    zh: Chino
+
   # Front End Translations
   admin_page: "Página de administración"
   alphabetical: A-Z

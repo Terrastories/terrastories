@@ -1,0 +1,64 @@
+# Additional translations at https://github.com/plataformatec/devise/wiki/I18n
+
+am:
+  devise:
+    confirmations:
+      confirmed: "የኢሜይል አድራሻዎ በተሳካ ሁኔታ ተረጋግጧል።"
+      send_instructions: "የኢሜይል አድራሻዎን እንዴት ማረጋገጥ እንደሚችሉ መመሪያዎችን የያዘ ኢሜይል በጥቂት ደቂቃዎች ውስጥ ይደርስዎታል።"
+      send_paranoid_instructions: "የኢሜል አድራሻዎ በመረጃ ቋታችን ውስጥ ካለ ከጥቂት ደቂቃዎች በኋላ የኢሜል አድራሻዎን እንዴት ማረጋገጥ እንደሚችሉ መመሪያዎችን የያዘ ኢሜል ይደርስዎታል።"
+    failure:
+      already_authenticated: "ቀድሞውንም ገብተዋል።"
+      inactive: "የእርስዎ መለያ እስካሁን አልነቃም።"
+      invalid: "ልክ ያልሆነ %{authentication_keys} ወይም የይለፍ ቃል።"
+      locked: "መለያዎ ተቆልፏል።"
+      last_attempt: "መለያዎ ከመቆለፉ በፊት አንድ ተጨማሪ ሙከራ አለዎት።"
+      not_found_in_database: "ልክ ያልሆነ %{authentication_keys} ወይም የይለፍ ቃል።"
+      timeout: "ቆይታዎ ጊዜ አልፎበታል። ለመቀጠል እባክዎ እንደገና ይግቡ።"
+      unauthenticated: "እባክዎ በማህበረሰብ መለያ ይግቡ።"
+      unconfirmed: "ከመቀጠልዎ በፊት የኢሜይል አድራሻዎን ማረጋገጥ አለብዎት።"
+    mailer:
+      confirmation_instructions:
+        subject: "የማረጋገጫ መመሪያዎች"
+      reset_password_instructions:
+        subject: "የይለፍ ቃል ዳግም ማስጀመሪያ መመሪያዎች"
+      unlock_instructions:
+        subject: "የመክፈቻ መመሪያዎች"
+      email_changed:
+        subject: "ኢሜይል ተቀይሯል።"
+      password_change:
+        subject: "የይለፍ ቃል ተቀይሯል።"
+    omniauth_callbacks:
+      failure: "በዚህ %{kind} ማረጋገጥ አልተቻለም ምክንያቱም \"%{reason}\"."
+      success: "በዚህ %{kind} መለያዎ በተሳካ ሁኒታ ተረጋግጧል።"
+    passwords:
+      no_token: "ከይለፍ ቃል ዳግም ማስጀመሪያ ኢሜይል ሳይመጡ ይህን ገጽ መድረስ አይችሉም። ከይለፍ ቃል ዳግም ማስጀመሪያ ኢሜይል የመጡ ከሆነ፣ እባክህ የቀረበውን ሙሉ ማስፈንጠሪያ መጠቀምዎን ያረጋግጡ።"
+      send_instructions: "የይለፍ ቃልዎን እንዴት ዳግም እንደሚያስጀምሩ መመሪያዎችን የያዘ ኢሜይል በጥቂት ደቂቃዎች ውስጥ ይደርስዎታል።"
+      send_paranoid_instructions: "የኢሜል አድራሻዎ በመረጃ ቋታችን ውስጥ ካለ ከጥቂት ደቂቃዎች በኋላ የይለፍ ቃል መልሶ ማግኛ ማስፈንጠሪያ በኢሜል አድራሻዎ ውስጥ ይደርሰዎታል።"
+      updated: "የይለፍ ቃልህ በተሳካ ሁኔታ ተለውጧል። አሁን በመለያዎ ገብተዋል።"
+      updated_not_active: "የይለፍ ቃልዎ በተሳካ ሁኔታ ተቀይሯል።"
+    registrations:
+      destroyed: "ሰላም! መለያዎ በተሳካ ሁኔታ ተሰርዟል። በቅርቡ እንደገና እንደምናገኝ ተስፋ እናደርጋለን።"
+      signed_up: "እንኳን በደህና መጡ! በተሳካ ሁኔታ ተመዝግበዋል።"
+      signed_up_but_inactive: "በተሳካ ሁኔታ ተመዝግበዋል። ነገር ግን፣ መለያዎ እስካሁን ስላልነቃ ልናስገባዎ አልቻልንም።"
+      signed_up_but_locked: "በተሳካ ሁኔታ ተመዝግበዋል። ነገር ግን መለያዎ ስለተቆለፈ ልናስገባዎ አልቻልንም።"
+      signed_up_but_unconfirmed: "የማረጋገጫ ማስፈንጠሪያ የያዘ መልእክት ወደ ኢሜይል አድራሻዎ ተልኳል። እባክዎ መለያዎን ለማንቃት ማስፈንጠሪያውን ይክተሉ።"
+      update_needs_confirmation: "መለያዎን በተሳካ ሁኔታ አዘምነዋል፣ ነገር ግን አዲሱን የኢሜይል አድራሻዎን ማረጋገጥ አለብን። አዲሱን የኢሜል አድራሻዎን ለማረጋገጥ እባክዎ በኢሜይልዎ የተላከውን የማረጋገጫ ማስፈንጠሪያ ይከተሉ።"
+      updated: "መለያዎ በተሳካ ሁኔታ ዘምኗል።"
+    sessions:
+      signed_in: "በተሳካ ሁኔታ ገብተዋል።"
+      signed_out: "በተሳካ ሁኔታ ዘግተው ወጥተዋል።"
+      already_signed_out: "በተሳካ ሁኔታ ዘግተው ወጥተዋል።"
+    unlocks:
+      send_instructions: "መለያዎን እንዴት እንደሚከፍቱ የያዘ መመሪያ በጥቂት ደቂቃዎች ውስጥ በኢሜይልዎ ይደርስዎታል።"
+      send_paranoid_instructions: "መለያዎ ካለ እንዴት እንደሚከፍቱ የያዘ መመሪያ በጥቂት ደቂቃዎች ውስጥ በኢሜይል ይደርስዎታል።"
+      unlocked: "መለያዎ በተሳካ ሁኔታ ተከፍቷል። ለመቀጠል እባክዎ ይግቡ።"
+  errors:
+    messages:
+      already_confirmed: "አስቀድሞ ተረጋግጧል፣ እባክዎ ለመግባት ይሞክሩ"
+      confirmation_period_expired: "በ %{period} ውስጥ መረጋገጥ አለበት፤ እባክዎ አዲስ ይጠይቁ"
+      expired: "ጊዜው አልፎበታል፤ እባክዎ አዲስ ይጠይቁ"
+      not_found: "አልተገኘም"
+      not_locked: "አልተቆለፈም።"
+      not_saved:
+        one: "1 ስህተት ይህንን %{resource} ከመመዝገብ ከልክሎታል፡"
+        other: "%{count} ስህተቶች ይህንን %{resource} ከመመዝገብ ከልክሎታል፡"

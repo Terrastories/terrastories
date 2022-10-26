@@ -28,7 +28,7 @@ _**Note:** when using Mapbox.com maps with Terrastories, you are subject to Mapb
 
 It is possible to set a custom map extent, zoom level, pitch, and boundaries of the Terrastories map.
 
-You can also set the map projection for your map to one of [the projections supported by Mapbox](https://docs.mapbox.com/help/glossary/projection/). The new Globe projection will be added when it is possible to do so.
+You can also set the map projection for your map to one of [the projections supported by Mapbox](https://docs.mapbox.com/help/glossary/projection/).
 
 For online Terrastories maps, you can toggle on/off a realistic Mapbox 3D Terrain layer to view your maps in 3D. 3D Terrain adds another level of detail to the landscape, but requires more map and tile loading and therefore can impact the overall performance of Terrastories on your device.
 

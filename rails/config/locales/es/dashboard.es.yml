@@ -20,6 +20,7 @@ es:
       lambertConformalConic: Cónica conforme de Lambert
       naturalEarth: Tierra natural
       winkelTripel: Winkel Tripel
+      globe: Globo
   dashboard:
     communities:
       last_updated_on: Última actualización el %{last_updated_on}

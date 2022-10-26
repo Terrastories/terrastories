@@ -13,12 +13,23 @@ mat:
   users: Gebruikers
   user: Gebruiker
 
+  languages:
+    am: Amhaars
+    en: Ingris
+    es: Spanjoro
+    ja: Japans
+    mat: Bakaa
+    nl: Matawai
+    pt: Potogisi
+    sw: Swahili
+    zh: Snesi
+
   # Front End Translations
   admin_page: "Admin pagina"
   alphabetical: "A-Z"
   back_to_map: "Go ko na kaita"
   back_to_welcome: "Go ko na bigi"
-  built_with_love: Built with ❤️ by
+  built_with_love: Meki ku ❤️ fu
   close: "Tapa"
   community_search:
     title: "Zoek een community om te verkennen"

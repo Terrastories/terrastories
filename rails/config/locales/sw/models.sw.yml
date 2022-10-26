@@ -1,0 +1,114 @@
+sw:
+  errors:
+    messages:
+      map_bounds: Thamani zote nne za kisanduku cha kufunga lazima ziwekwe au ziachwe wazi
+      invalid_latitude: thamani inapaswa kuwa kati ya -90 na 90
+      invalid_longitude: thamani inapaswa kuwa kati ya -180 na 180
+      invalid_zoom_level: thamani inapaswa kuwa kati ya 0 na 22
+      invalid_pitch: thamani inapaswa kuwa 0 na 85
+      invalid_bearing: thamani inapaswa kuwa kati ya -180 na 180
+      invalid_username_format: haiwezi kuwa na nafasi
+  helpers:
+    label:
+      place:
+        one: Eneo
+      speaker:
+        one: Mzungumzaji
+      visibility: Mwonekano
+  activerecord:
+    errors:
+      models:
+        place:
+          attributes:
+            name_audio:
+              content_type: aina ya maudhui haipo kwenye orodha
+            photo:
+              content_type: aina ya maudhui haipo kwenye orodha
+        story:
+          attributes:
+            place_ids:
+              blank: Hadithi yako lazima iwe na Eneo
+            speaker_ids:
+              blank: Hadithi yako lazima iwe na angalau Mzungumzaji mmoja
+        theme:
+          attributes:
+            background_img:
+              content_type: aina ya maudhui haipo kwenye orodha
+            mapbox_access_token:
+              blank: inahitajika wakati URL ya mtindo wa Mapbox imewekwa.
+            mapbox_style_url:
+              blank: inahitajika wakati tokeni ya ufikiaji ya Mapbox imewekwa.
+    # Used to auto-translate submit buttons
+    models:
+      community: Jumuiya
+      curriculum: Mtaala
+      user: Mtumiaji
+      place: Eneo
+      speaker: Mzungumzaji
+      story: Hadithi
+      theme: Mandhari
+      media_link: Kiungo cha Media
+    # Used for model-based form labels and other attribute displays
+    attributes:
+      place:
+        name: Jina
+        name_audio: Sauti ya Jina la Eneo
+        description: Maelezo
+        type_of_place: Aina ya Eneo
+        region: Eneo
+        long: Longitude
+        lat: Latitude
+        story_ids: Hadithi
+        photo: Picha
+      speaker:
+        name: Jina
+        story_ids: Hadithi
+        photo: Picha
+        speaker_community: Jumuiya ya Mzungumzaji
+        birthdate: Tarehe ya kuzaliwa
+        birthplace_id: Kuzaliwa wapi
+      story:
+        title: Kichwa
+        desc: Maelezo
+        language: Lugha
+        topic: Mada
+        date_interviewed: Tarehe ya kuhojiwa
+        media: Media
+        speaker_ids: Wanazungumzaji
+        place_ids: Maeneo
+        interview_location_id: Mahali pa mahojiano
+        interviewer_id: Mhojaji
+        permission_level: Kiwango cha ruhusa
+      story/permission_level:
+        anonymous: Asiyejulikana
+        user_only: Mwanachama
+        editor_only: Mhariri
+      theme:
+        background_img: Picha ya usuli
+        sponsor_logos: Nembo za wafadhili
+        mapbox_style_url: URL ya mtindo wa kisanduku cha ramani
+        mapbox_access_token: Ishara ya ufikiaji ya kisanduku cha ramani inayohusishwa na mtindo
+        mapbox_3d: Wezesha mwonekano wa 3D Terrain kwa ramani ya mtandaoni
+        center_lat: Latitude
+        center_long: Longitude
+        sw_boundary_lat: Min Latitude
+        sw_boundary_long: Min Longitude
+        ne_boundary_lat: Max Latitude
+        ne_boundary_long: Max Longitude
+        zoom: Zoom level
+        pitch: Pitch degree
+        bearing: Bearing degrees
+        map_projection: Set projection for map
+      user:
+        login: Jina la mtumiaji au Barua pepe
+        name: Jina la Kuonyesha
+        username: Jina la mtumiaji
+        email: Barua pepe
+        role: Jukumu
+        password: Nenosiri
+        photo: Picha
+      user/role:
+        admin: Administrator
+        editor: Mhariri
+        member: Mwanachama
+        viewer: Mtazamaji

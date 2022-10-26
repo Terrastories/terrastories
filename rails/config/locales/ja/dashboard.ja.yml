@@ -20,6 +20,7 @@ ja:
       lambertConformalConic: Lambert Comformal Conic
       naturalEarth: Natural Earth
       winkelTripel: Winkel Tripel
+      globe: Globe
   dashboard:
     communities:
       last_updated_on: 最終更新日 %{last_updated_on}

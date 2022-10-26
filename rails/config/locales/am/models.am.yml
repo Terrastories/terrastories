@@ -1,0 +1,114 @@
+am:
+  errors:
+    messages:
+      map_bounds: አራቱም የወሰን ሳጥን እሴቶች መቀመጥ አለባቸው ወይም ባዶ መተው አለባቸው
+      invalid_latitude: ዋጋው በ -90 እና 90 መካከል መሆን አለበት
+      invalid_longitude: ዋጋው በ -180 እና 180 መካከል መሆን አለበት
+      invalid_zoom_level: ዋጋው በ 0 እና 22 መካከል መሆን አለበት
+      invalid_pitch: ዋጋው በ 0 እና 85 መሆን አለበት
+      invalid_bearing: ዋጋው በ -180 እና 180 መካከል መሆን አለበት
+      invalid_username_format: ክፍተቶችን ሊይዝ አይችልም
+  helpers:
+    label:
+      place:
+        one: ቦታ
+      speaker:
+        one: ተናጋሪ
+      visibility: ታይነት
+  activerecord:
+    errors:
+      models:
+        place:
+          attributes:
+            name_audio:
+              content_type: የይዘት አይነት በዝርዝሩ ውስጥ የለም
+            photo:
+              content_type: የይዘት አይነት በዝርዝሩ ውስጥ የለም
+        story:
+          attributes:
+            place_ids:
+              blank: ታሪክዎ ቦታ ሊኖረው ይገባል።
+            speaker_ids:
+              blank: ታሪክዎ ቢያንስ አንድ ተናጋሪ ሊኖረው ይገባል።
+        theme:
+          attributes:
+            background_img:
+              content_type: የይዘት አይነት በዝርዝሩ ውስጥ የለም
+            mapbox_access_token:
+              blank: የማፕቦክስ ዓይነት ማስፈንጠሪያ ሲዘጋጅ ያስፈልጋል።
+            mapbox_style_url:
+              blank: የማፕቦክስ ዓይነት ማግኛ ቃል ሲዘጋጅ ያስፈልጋል።
+    # Used to auto-translate submit buttons
+    models:
+      community: ማህበረሰብ
+      curriculum: የአቀራረብ ሥርዓት
+      user: ተጠቃሚ
+      place: ቦታ
+      speaker: ተናጋሪ
+      story: ታሪክ
+      theme: ገጽታ
+      media_link: የሚዲያ አገናኝ
+    # Used for model-based form labels and other attribute displays
+    attributes:
+      place:
+        name: ስም
+        name_audio: የቦታ ስም ድምጽ
+        description: መግለጫ
+        type_of_place: የቦታ ዓይነት
+        region: ክልል
+        long: ኬንትሮስ
+        lat: ኬክሮስ
+        story_ids: ታሪኮች
+        photo: ፎቶ
+      speaker:
+        name: ስም
+        story_ids: ታሪኮች
+        photo: ፎቶ
+        speaker_community: የተናጋሪው ማህበረሰብ
+        birthdate: የትውልድ ቀን
+        birthplace_id: የትውልድ ቦታ
+      story:
+        title: ርዕስ
+        desc: መግለጫ
+        language: ቋንቋ
+        topic:  ርዕሰ ጉዳይ
+        date_interviewed: ቃለ መጠይቅ የተደረገበት ቀን
+        media: ሚዲያ
+        speaker_ids: ተናጋሪዎች
+        place_ids: ቦታዎች
+        interview_location_id: የቃለ መጠይቅ ቦታ
+        interviewer_id: ጠያቂ
+        permission_level: የፍቃድ ደረጃ
+      story/permission_level:
+        anonymous: ስም የለሽ
+        user_only: አባል
+        editor_only: አርታዒ
+      theme:
+        background_img: የጀርባ ምስል
+        sponsor_logos: የስፖንሰር አርማዎች
+        mapbox_style_url: የማፕቦክስ ዓይነት ዩአርኤል
+        mapbox_access_token: ከዓይነቱ ጋር የተያያዘ የማፕ ቦክስ መዳረሻ ቃል 
+        mapbox_3d: ለኦንላይን ካርታ የ3ዲ የመሬት አቀማመጥ እይታን ይተግብሩ
+        center_lat: ኬክሮስ
+        center_long: ኬንትሮስ
+        sw_boundary_lat: ዝቅተኛው ኬክሮስ
+        sw_boundary_long: ዝቅተኛው ኬንትሮስ
+        ne_boundary_lat: ከፍተኛው ኬክሮስ
+        ne_boundary_long: ከፍተኛ ኬንትሮስ
+        zoom: የማጉላት ደረጃ
+        pitch: የአቀማመጥ ደረጃ
+        bearing: የአቅጣጫ ደረጃ
+        map_projection: ለካርታ አቀራረብ አዘጋጅ
+      user:
+        login: የተጠቃሚ ስም ወይም ኢሜይል
+        name: መጠሪያ ስም
+        username: የተጠቃሚ ስም
+        email: ኢሜይል
+        role: ሚና
+        password: የይለፍ ቃል
+        photo: ፎቶ
+      user/role:
+        admin: አስተዳዳሪ
+        editor: አርታዒ
+        member: አባል
+        viewer: ተመልካች

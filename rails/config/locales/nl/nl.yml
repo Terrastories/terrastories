@@ -13,6 +13,17 @@ nl:
   users: Gebruikers
   user: Gebruiker
 
+  languages:
+    am: Amhaars
+    en: Engels
+    es: Spaans
+    ja: Japans
+    mat: Matawai
+    nl: Nederlands
+    pt: Portugees
+    sw: Swahili
+    zh: Chinees
+
   # Front End Translations
   admin_page: "Admin pagina"
   alphabetical: "A-Z"
