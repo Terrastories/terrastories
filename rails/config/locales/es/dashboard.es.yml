@@ -22,6 +22,8 @@ es:
       winkelTripel: Winkel Tripel
       globe: Globo
   dashboard:
+    communities:
+      last_updated_on: Última actualización el %{last_updated_on}
     back_to_app: Regresar a la aplicación
     community_settings: Configuraciones de la comunidad
     headings:

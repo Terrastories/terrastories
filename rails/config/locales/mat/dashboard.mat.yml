@@ -23,6 +23,8 @@ mat:
       globe: Wereldbol
   dashboard:
     back_to_app: Terug naar App
+    communities:
+      last_updated_on: Laatst bijgewerkt op %{last_updated_on}
     community_settings: Gemeenschap instellingen
     headings:
       new_resource: Nieuw %{name}
