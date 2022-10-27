@@ -31,11 +31,6 @@ gem 'rails-i18n'
 gem 'devise'
 gem 'devise-i18n'
 gem 'pundit'
-gem 'administrate', '~> 0.14'
-gem 'administrate-field-active_storage'
-gem "administrate-field-nested_has_many"
-gem "administrate-field-scoped_has_many"
-gem "administrate-field-scoped_belongs_to"
 
 # Enable Webpack for javascript application code
 gem 'webpacker', '~> 3.5'
