@@ -42,43 +42,4 @@ Rails.application.routes.draw do
     get 'home', to: 'home#index', as: "home_map"
     get "search", to: "home#community_search_index", as: "community_search"
   end
-
-  namespace :admin do
-    resources :communities
-    resources :users
-    resources :curriculums
-    resources :speakers do
-      collection do
-        post :import_csv
-        get  :import_page
-        get  :export_sample_csv
-      end
-    end
-    resources :stories do
-      collection do
-        post :import_csv
-        get  :export_sample_csv
-        get  :import_page
-      end
-    end
-    resources :places do
-      collection do
-        post :import_csv
-        get  :import_page
-        get  :export_sample_csv
-      end
-    end
-    delete :places_destroy_name_audio, to: 'places#destroy_name_audio'
-
-    resources :curriculum_stories
-    resources :themes
-    # resources :media_links
-
-    root to: "communities#show"
-  end
-
-    delete '/admin/places' => 'places#delete'
-    delete '/admin/stories' => 'admin/stories#delete'
-    delete '/admin/themes' => 'admin/themes#delete'
-    delete '/admin/speakers' => 'admin/speakers#delete'
 end
