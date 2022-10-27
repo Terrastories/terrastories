@@ -27,9 +27,9 @@ pt:
   # Front End Translations
   admin_page: "Página de administração"
   alphabetical: "A-Z"
-  back_to_map: "Volta ao mapa"
-  back_to_welcome: "Voltar para a página de inicial"
-  built_with_love: Construído com ❤️ por
+  back_to_map: "Voltar ao mapa"
+  back_to_welcome: "Voltar para página inicial"
+  built_with_love: Feito com ❤️ por
   close: "Fechar"
   community_search:
     title: "Procure por uma Comunidade para explorar"
@@ -42,7 +42,7 @@ pt:
   introduction: "Introdução"
   intro:
     question: "O que é uma Terrastory?"
-    explanation: "Terrastories são gravações audiovisuais de narrativas baseadas em locais. Este aplicativo compatível off-line permite que as comunidades locais localizem e mapeiem suas próprias tradições orais sobre lugares de importância ou valor significativo para elas."
+    explanation: "Terrastories são gravações audiovisuais de narrativas baseadas em lugares. Este aplicativo é compatível off-line e permite que comunidades localizem e mapeiem suas próprias tradições orais sobre lugares de importância ou de valor significativo."
   language: "Idioma"
   login: "Login"
   logout: "Logout"
@@ -52,15 +52,15 @@ pt:
   place_name: "Pronúncia do nome do lugar"
   place_type: "Tipo de lugar"
   region: "Região"
-  remember_me: "Lembre de mim"
+  remember_me: "Lembre-me"
   reversed_alphabetical: "Z-A"
   select_category: "Escolher categoria"
-  select_option: "Escolher a opção"
+  select_option: "Escolher opção"
   selected_language: "selecionado"
   sign_up: "Inscrever-se"
-  sort_stories: "Classificar histórias"
+  sort_stories: "Ordenar histórias"
   speaker: "Orador"
   topic: "Assunto"
-  video_unsupported: Desculpe, seu navegador não suporta vídeos incorporados.
-  welcome: "Bem vindo/a"
-  welcome_back: "Bem vindo/a de volta"
+  video_unsupported: Seu navegador não consegue ter vídeos inseridos.
+  welcome: "Bem vinde"
+  welcome_back: "Bem vinde de volta"

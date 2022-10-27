@@ -1,18 +1,17 @@
 pt:
-  profile: Profile
+  profile: Perfil
   interviewer: Entrevistador
-  import: Import
+  import: Importar
   map:
     center: Centro do mapa
     bounds: Caixa delimitadora do mapa
-    bounds_description: The boundaries of the map determine the extent of where you can scroll on the map. Unrestricted, the map will be infinitely scrollable.
-    sw_corner: SW caixa delimitadora
-    ne_corner: NE caixa delimitadora
-    unrestricted_bounds: Allow unrestricted bounds
-    online: Online Map Configuration
-    settings: Map Settings
-    settings_description: Customize your community's map settings.
-    map_projection: Definir projeção para o mapa
+    bounds_description: Os limites do mapa determinam a extensão até onde é possível ir no mapa. Se não houver restrições, o mapa pode ser infinito.
+    sw_corner: Caixa delimitadora sudoeste
+    ne_corner: Caixa delimitadora nordeste
+    unrestricted_bounds: Permitir caixas delimitadoras irrestritas
+    online: Configuração de mapa online
+    settings: Configurações do mapa
+    settings_description: Customize as configurações do mapa de sua comunidade
     projection:
       mercator: Mercator
       albers: Albers
@@ -25,33 +24,33 @@ pt:
   dashboard:
     communities:
       last_updated_on: Última atualização em %{last_updated_on}
-    back_to_app: Back to App
-    community_settings: Community Settings
+    back_to_app: Volte para o aplicativo
+    community_settings: Configurações de comunidade
     headings:
       new_resource: Novo %{name}
     actions:
       confirm: Você tem certeza?
-      destroy: Apagar
+      destroy: Deletar
       edit: Editar
       new: Novo
       back: Voltar
       show_resource: Mostrar %{name}
     theme:
-      welcome_screen: Welcome Screen
-      background_img: Customize the background image on the landing page of your community.
-      sponsor_logos: Display logos on your community page. This could be your organization's logo, or that of a project sponsor. Multiple logos can be added.
+      welcome_screen: Tela de boas-vindas
+      background_img: Customize a imagem de fundo da tela inicial de sua comunidade.
+      sponsor_logos: Mostre logos na página de sua comunidade. Pode ser o logo de sua organização ou o logo de um patrocinador. Multiplos logos podem ser adicionados.
   search:
     clear: Limpar pesquisa
     label: Pesquisa
-    heading: Pesquisa resultados
+    heading: Resultados da pesquisa
     results: resultados
   filter:
-    all: All
-    any: Any
-    label: Filter
-    clear: Clear Filters
+    all: Todos
+    any: Qualquer um
+    label: Filtrar
+    clear: Limpar filtros
   list:
     prev: Prev
-    next: Next
-    no_results: There are no %{resources} available.
-    no_nested_results: This %{resource} has no %{resources}.
+    next: Prox
+    no_results: Não há nenhum %{resources} disponível.
+    no_nested_results: Este %{resource} não contém nenhum %{resources}.
