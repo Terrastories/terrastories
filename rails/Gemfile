@@ -23,10 +23,27 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-gem 'rails-i18n'
+# Use devise for authentication
 gem 'devise'
-gem 'devise-i18n'
+
+# Use pundit for policy based authorization
 gem 'pundit'
+
+# Internationalization
+gem 'rails-i18n'
+gem 'devise-i18n'
+
+# Internationalization in JS
+gem 'i18n-js'
+
+# Mapbox GL rendering library
+gem 'mapbox-gl-rails', '~> 2.9.0'
+
+# S3 backed Active Storage
+gem 'aws-sdk-s3'
+
+# ActiveStorage Validation
+gem 'activestorage-validator'
 
 # Enable Webpack for javascript application code
 gem 'webpacker', '~> 3.5'
@@ -40,9 +57,6 @@ gem 'image_processing'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
-# Internationalization in JS
-gem 'i18n-js'
 
 # Reduces boot times through caching; required in config/boot.rb
 # gem 'bootsnap', '>= 1.1.0', require: false
@@ -83,7 +97,3 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-gem 'mapbox-gl-rails', '~> 2.9.0'
-gem 'aws-sdk-s3'
-gem 'activestorage-validator'
