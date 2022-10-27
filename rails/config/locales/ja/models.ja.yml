@@ -7,13 +7,59 @@ ja:
       invalid_zoom_level: value should be between 0 and 22
       invalid_pitch: value should be 0 and 85
       invalid_bearing: value should be between -180 and 180
+      invalid_username_format: cannot contain spaces
   helpers:
     label:
-      place:
-        one: プレース
+      visibility: Visibility
       speaker:
         one: スピーカー
-      visibility: Visibility
+        name: 名前
+        speaker_community: スピーカーのコミュニティ
+        birthdate: 生年月日
+        birthplace: どこで生まれた
+        story_ids: ストーリー
+      story:
+        desc: 説明
+        interviewer: インタビュアー
+        video_unsupported: 申し訳ありませんが、お使いのブラウザは埋め込み動画をサポートしていません。
+        permissions:
+          anonymous: "検索可能"
+          user_only: "メンバー"
+          editor_only: "編集者"
+          admin_only: "管理者"
+        place_ids: プレース
+        speaker_ids: スピーカー
+      place:
+        one: プレース
+        name: "名前"
+        description: "説明文"
+        type_of_place: "プレースタイプ"
+        region: "リージョン"
+        long: "経度"
+        lat: "緯度"
+        stories: "ストーリー"
+        photo: "フォト"
+      theme:
+        background_img: Background Image
+        sponsor_logos: Sponsor Logos
+        mapbox_style_url: Mapbox Style URL
+        mapbox_access_token: Mapbox access token associated with the style
+        mapbox_3d: Activate 3D Terrain view for online map
+        map_projection: Set projection for map
+        center_lat: Map center, latitude
+        center_long: Map center, longitude
+        sw_boundary_lat: SW bounding box, latitude (optional)
+        sw_boundary_long: SW bounding box, longitude (optional)
+        ne_boundary_lat: NE bounding box, latitude (optional)
+        ne_boundary_long: NE bounding box, longitude (optional)
+        zoom: Zoom level
+        pitch: Pitch degree
+        bearing: Bearing degree
+        display_resource: "のテーマ Terrastories: %{community_name}"
+      user:
+        id: Id
+        email: Email
+        role: Role
   activerecord:
     errors:
       models:

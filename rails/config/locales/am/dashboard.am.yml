@@ -22,6 +22,8 @@ am:
       winkelTripel: ዊንክል ትራይፕል
       globe: ሉል
   dashboard:
+    communities:
+      last_updated_on: Last updated on %{last_updated_on}
     back_to_app: ወደ መተግበሪያ ተመለስ
     community_settings: የማህበረሰብ ቅንብሮች
     headings:

@@ -10,11 +10,56 @@ am:
       invalid_username_format: ክፍተቶችን ሊይዝ አይችልም
   helpers:
     label:
-      place:
-        one: ቦታ
+      visibility: ታይነት
       speaker:
         one: ተናጋሪ
-      visibility: ታይነት
+        name: ስም
+        speaker_community: የተናጋሪው ማህበረሰብ
+        birthdate: የትውልድ ቀን
+        birthplace: የትውልድ ቦታ
+        story_ids: ታሪኮች
+      story:
+        desc: መግለጫ
+        interviewer: ጠያቂ
+        video_unsupported: ይቅርታ፣ የድረ ገጽ አሳሽዎ የተካተቱ ቪዲዮዎችን አያስተናግድም።
+        permissions:
+          anonymous: "ተፈላጊ"
+          user_only: "አባል"
+          editor_only: "አርታዒ"
+          admin_only: "አስተዳዳሪ"
+        place_ids: ቦታዎች
+        speaker_ids: ተናጋሪዎች
+      place:
+        one: ቦታ
+        lat: ኬክሮስ
+        long: ኬንትሮስ
+        name: ስም
+        name_audio: የቦታ ስም ድምጽ
+        description: መግለጫ
+        type_of_place: የቦታ አይነት
+        region: ክልል
+        story_ids: ታሪኮች
+      theme:
+        background_img: የጀርባ ምስል
+        sponsor_logos: የስፖንሰር አርማዎች
+        mapbox_style_url: የማፕ ቦክስ ዓይነት ዩአርኤል
+        mapbox_access_token: ከዓይነቱ ጋር የተያያዘ የማፕ ቦክስ መዳረሻ ቃል
+        mapbox_3d: ለኦንላይን ካርታ የ3ዲ የመሬት አቀማመጥ እይታን ይተግብሩ
+        map_projection: ለካርታ ትንበያ አዘጋጅ
+        center_lat: የካርታ ማዕከል፣ ኬክሮስ
+        center_long: የካርታ ማዕከል፣ ኬንትሮስ
+        sw_boundary_lat: ደቡብ ምዕራብ ማሰሪያ ሳጥን፣ ኬክሮስ (አማራጭ)
+        sw_boundary_long: ደቡብ ምዕራብ ማሰሪያ ሳጥን፣ ኬንትሮስ (አማራጭ)
+        ne_boundary_lat: ሰሜን ምስራቅ ማሰሪያ ሳጥን፣ ኬክሮስ (አማራጭ)
+        ne_boundary_long: ሰሜን ምስራቅ ማሰሪያ ሳጥን፣ ኬንትሮስ (አማራጭ)
+        zoom: የማጉላት ደረጃ
+        pitch: የአቀማመጥ ደረጃ
+        bearing: የአቅጣጫ ደረጃ
+        display_resource: "Terrastories ገጽታ: %{community_name}"
+      user:
+        id: መለያ
+        email: ኢሜይል
+        role: ሚና
   activerecord:
     errors:
       models:
@@ -87,7 +132,7 @@ am:
         background_img: የጀርባ ምስል
         sponsor_logos: የስፖንሰር አርማዎች
         mapbox_style_url: የማፕቦክስ ዓይነት ዩአርኤል
-        mapbox_access_token: ከዓይነቱ ጋር የተያያዘ የማፕ ቦክስ መዳረሻ ቃል 
+        mapbox_access_token: ከዓይነቱ ጋር የተያያዘ የማፕ ቦክስ መዳረሻ ቃል
         mapbox_3d: ለኦንላይን ካርታ የ3ዲ የመሬት አቀማመጥ እይታን ይተግብሩ
         center_lat: ኬክሮስ
         center_long: ኬንትሮስ

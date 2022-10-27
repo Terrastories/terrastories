@@ -22,6 +22,8 @@ zh:
       winkelTripel: Winkel Tripel
       globe: Globe
   dashboard:
+    communities:
+      last_updated_on: Last updated on %{last_updated_on}
     back_to_app: 返回到应用
     community_settings: 社区设置
     headings:

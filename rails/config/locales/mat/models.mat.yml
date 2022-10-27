@@ -7,13 +7,64 @@ mat:
       invalid_zoom_level: de waarde moet tussen 0 en 22 zijn
       invalid_pitch: de waarde moet tussen 0 en 85 zijn
       invalid_bearing: de waarde moet tussen -180 en 180 zijn
+      invalid_username_format: cannot contain spaces
   helpers:
     label:
-      place:
-        one: Plaats
+      visibility: Zichtbaarheid
       speaker:
         one: Spreker
-      visibility: Zichtbaarheid
+        name: Naam
+        speaker_community: Sprekersgemeenschap
+        birthdate: Geboortedatum
+        birthplace: Waar geboren
+        story_ids: Verhalen
+      story:
+        desc: Beschrijving
+        interviewer: Interviewer
+        video_unsupported: Sorry, uw browser ondersteunt geen ingesloten video's.
+        permissions:
+          anonymous: "Doorzoekbaar"
+          user_only: "Lid"
+          editor_only: "Editor"
+          admin_only: "Admin"
+        place_ids: Plaatsen
+        speaker_ids: Sprekers
+      place:
+        one: Plaats
+        lat: Breedtegraad
+        long: Lengtegraad
+        name: Naam
+        name_audio: Placename Audio
+        description: Omschrijving
+        type_of_place: Soort plaats
+        region: Regio
+        story_ids: Sprekers
+      theme:
+        background_img: Background image (for welcome screen)
+        sponsor_logos: Sponsor logos (for welcome screen)
+        mapbox_style_url: Mapbox style URL (for online maps)
+        mapbox_access_token: Mapbox access token associated with the style
+        mapbox_3d: Activate 3D Terrain view for online map
+        map_projection: Set projection for map
+        center_lat: Map center, latitude
+        center_long: Map center, longitude
+        sw_boundary_lat: SW bounding box, latitude (optional)
+        sw_boundary_long: SW bounding box, longitude (optional)
+        ne_boundary_lat: NE bounding box, latitude (optional)
+        ne_boundary_long: NE bounding box, longitude (optional)
+        background_img: Background Image
+        sponsor_logos: Sponsor Logos
+        mapbox_style_url: Mapbox Style URL
+        mapbox_access_token: Mapbox access token associated with the style
+        mapbox_3d: Activate 3D Terrain view for online map
+        zoom: Zoom level
+        pitch: Pitch degree
+        bearing: Bearing degree
+        display_resource: "Thema voor Terrastories: %{community_name}"
+      user:
+        id: Id
+        email: Email
+        role: Rol
   activerecord:
     errors:
       models:
