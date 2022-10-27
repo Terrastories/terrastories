@@ -221,10 +221,6 @@ GEM
       bundler (>= 1.15.0)
       railties (= 6.1.7)
       sprockets-rails (>= 2.0.0)
-    rails-controller-testing (1.0.5)
-      actionpack (>= 5.0.1.rc1)
-      actionview (>= 5.0.1.rc1)
-      activesupport (>= 5.0.1.rc1)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -367,7 +363,6 @@ DEPENDENCIES
   puma (~> 4.3)
   pundit
   rails (~> 6.1.0)
-  rails-controller-testing
   rails-i18n
   react-rails
   rgeo-geojson
