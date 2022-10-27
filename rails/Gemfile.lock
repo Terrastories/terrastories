@@ -62,8 +62,6 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
-    acts-as-taggable-on (5.0.0)
-      activerecord (>= 4.2.8)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     annotate (3.2.0)
@@ -352,7 +350,6 @@ PLATFORMS
 
 DEPENDENCIES
   activestorage-validator
-  acts-as-taggable-on (~> 5.0)
   annotate
   aws-sdk-s3
   better_errors

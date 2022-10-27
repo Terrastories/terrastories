@@ -17,8 +17,6 @@ gem 'geocoder'
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'terser'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-gem 'acts-as-taggable-on', '~> 5.0'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
