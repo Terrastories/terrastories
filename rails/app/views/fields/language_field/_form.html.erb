@@ -1,6 +1,0 @@
-<div class="field-unit__label">
-  <%= f.label field.attribute %>
-</div>
-<div class="field-unit__field awesomplete">
-  <%= f.text_field field.attribute, class: %(awesomplete), "data-list": field.candidates(current_user.community_id).join(','), "data-minchars": 1 %>
-</div>

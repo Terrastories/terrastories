@@ -22,6 +22,8 @@ sw:
       winkelTripel: Winkel Tripel
       globe: Globe
   dashboard:
+    communities:
+      last_updated_on: Last updated on %{last_updated_on}
     back_to_app: Rudi kwenye Programu
     community_settings: Mipangilio ya Jumuiya
     headings:

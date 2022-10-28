@@ -10,11 +10,56 @@ sw:
       invalid_username_format: haiwezi kuwa na nafasi
   helpers:
     label:
-      place:
-        one: Eneo
+      visibility: Mwonekano
       speaker:
         one: Mzungumzaji
-      visibility: Mwonekano
+        name: Jina
+        speaker_community: Jumuiya ya mzungumzaji
+        birthdate: Tarehe ya kuzaliwa
+        birthplace: Pahali pa kuzaliwa
+        story_ids: Hadithi
+      story:
+        desc: Maelezo
+        interviewer: Mhojaji
+        video_unsupported: Samahani, kivinjari chako hakitumii video zilizopachikwa.
+        permissions:
+          anonymous: "Inaweza kutafutwa"
+          user_only: "Mwanachama"
+          editor_only: "Mhariri"
+          admin_only: "Msimamizi"
+        place_ids: Maeneo
+        speaker_ids: Wazungumzaji
+      place:
+        one: Eneo
+        lat: Latitudo
+        long: Longitudo
+        name: Jina
+        name_audio: Sauti ya Jina la mahali
+        description: Maelezo
+        type_of_place: Aina ya mahali
+        region: Eneo
+        story_ids: Hadithi
+      theme:
+        background_img: Picha ya Mandharinyuma
+        sponsor_logos: Nembo za wafadhili
+        mapbox_style_url: URL ya Mtindo wa Mapbox
+        mapbox_access_token: Tokeni ya ufikiaji ya kisanduku cha ramani inayohusishwa na mtindo
+        mapbox_3d: Washa mwonekano wa 3D kwa ramani ya mtandaoni
+        map_projection: Weka makadirio ya ramani
+        center_lat: Kituo cha ramani, latitudo
+        center_long: Kituo cha ramani, longitudo
+        sw_boundary_lat: Sanduku la kufunga la SW, latitudo (si lazima)
+        sw_boundary_long: Sanduku la kufunga la SW, longitudo (si lazima)
+        ne_boundary_lat: Sanduku la kufunga la NE, latitudo (si lazima)
+        ne_boundary_long: Sanduku la kufunga la NE, longitudo (si lazima)
+        zoom: Kiwango cha kukuza
+        pitch: Kiwango cha lami
+        bearing: Digrii ya ulaini
+        display_resource: "Mandhari ya Terrastories: %{community_name}"
+      user:
+        id: Id
+        email: Barua pepe
+        role: Jukumu
   activerecord:
     errors:
       models:

@@ -7,13 +7,59 @@ pt:
       invalid_zoom_level: valores devem ser entre 0 e 22
       invalid_pitch: valores devem ser entre 0 e 85
       invalid_bearing: valores devem ser entre -180 e 180
+      invalid_username_format: cannot contain spaces
   helpers:
     label:
-      place:
-        one: Lugar
+      visibility: Visibilidade
       speaker:
         one: Orador
-      visibility: Visibilidade
+        name: Nome
+        speaker_community: Comunidade de palestrantes
+        birthdate: Data de nascimento
+        birthplace: Local de nascimento
+        story_ids: Histórias
+      story:
+        desc: Descrição
+        interviewer: Entrevistador
+        video_unsupported: Seu navegador não consegue ter vídeos inseridos.
+        permissions:
+          anonymous: "Pesquisável"
+          user_only: "Membro"
+          editor_only: "Editor/a"
+          admin_only: "Administrador/a"
+        place_ids: Lugares
+        speaker_ids: Oradores
+      place:
+        one: Lugar
+        lat: Latitude
+        long: Longitude
+        name: Nome
+        name_audio: Áudio do nome do lugar
+        description: Descrição
+        type_of_place: Tipo de lugar
+        region: Região
+        story_ids: Histórias
+      theme:
+        background_img: Imagem de fundo (para tela de boas-vindas)
+        sponsor_logos: Logotipos de patrocinadores (para tela de boas-vindas)
+        mapbox_style_url: URL de estilo Mapbox (para mapas online)
+        mapbox_access_token: Token de acesso Mapbox associado ao estilo
+        mapbox_3d: Ative a visualização 3D do terreno para o mapa online
+        map_projection: Definir projeção para o mapa
+        center_lat: Centro do mapa, latitude
+        center_long: Centro do mapa, longitude
+        sw_boundary_lat: Caixa delimitadora sudoeste, latitude (opcional)
+        sw_boundary_long: Caixa delimitadora sudoeste, longitude (opcional)
+        ne_boundary_lat: Caixa delimitadora nordeste, latitude (opcional)
+        ne_boundary_long: Caixa delimitadora nordeste, longitude (opcional)
+        zoom: Nivel de zoom do mapa (1 a 22)
+        pitch: Grau de pitch do mapa (0 a 90)
+        bearing: Grau de rolamento do mapa (-180 a 180)
+        display_resource: "Tema para Terrastories: %{community_name}"
+      user:
+        id: Id
+        email: Email
+        role: Função
   activerecord:
     errors:
       models:
