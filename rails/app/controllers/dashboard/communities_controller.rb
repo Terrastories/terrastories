@@ -71,7 +71,9 @@ module Dashboard
       params.permit(
         :limit,
         :offset,
-        :name
+        :name,
+        :sort_by,
+        :sort_dir
       )
     end
 
