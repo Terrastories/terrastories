@@ -54,3 +54,8 @@ pt:
     next: Prox
     no_results: Não há nenhum %{resources} disponível.
     no_nested_results: Este %{resource} não contém nenhum %{resources}.
+  sort:
+    label: "Ordenar por:"
+    name: alfabética
+    created_at: data da criação
+    updated_at: data da última atualização

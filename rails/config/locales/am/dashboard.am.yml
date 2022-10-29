@@ -54,3 +54,8 @@ am:
     next: ቀጣይ
     no_results: የሚገኙ ምንም %{resources} የሉም።
     no_nested_results: ይህ %{resource} %{resources} የለውም።
+  sort:
+    label: የተደረደረው በ፡
+    name: ፊደላት
+    created_at: ቀን ተፈጠረ
+    updated_at: ቀን የዘመነ

@@ -54,3 +54,8 @@ ja:
     next: Next
     no_results: There are no %{resources} available.
     no_nested_results: This %{resource} has no %{resources}.
+  sort:
+    label: "並び替え："
+    name: アルファベット順
+    created_at: 作成日
+    updated_at: 最終更新日
