@@ -13,17 +13,18 @@ pu:
   users: ਉਪਭੋਗਤਾ
   user: ਉਪਭੋਗਤਾ
 
-  languages:
-    am: Amharic
-    en: English
-    es: Spanish
-    ja: Japanese
-    mat: Matawai
-    nl: Dutch
-    pt: Portuguese
-    sw: Swahili
-    zh: Chinese
-    pu: Punjabi
+    ਭਾਸ਼ਾਵਾਂ::
+    am: ਅਮਹਾਰਿਕ
+    en: ਅੰਗਰੇਜ਼ੀ
+    es: ਸਪੇਨੀ
+    hi: ਹਿੰਦੀ
+    ja: ਜਾਪਾਨੀ
+    mat: ਮਤਵੈ
+    nl: ਡੱਚ
+    pt: ਪੁਰਤਗਾਲੀ
+    sw: ਸਵਾਹਿਲੀ
+    zh: ਚੀਨੀ
+    pu: ਪੰਜਾਬੀ
 
   # Front End Translations
    admin_page: "ਪ੍ਰਬੰਧਕ ਪੰਨਾ"
