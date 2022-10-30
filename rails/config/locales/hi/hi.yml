@@ -14,17 +14,18 @@ hi:
   user: प्रयोक्ता
 
   भाषाओं:
-    am: Amharic
-    en: English
-    es: Spanish
-    ja: Japanese
-    mat: Matawai
-    nl: Dutch
-    pt: Portuguese
-    sw: Swahili
-    zh: Chinese
-    hi: Hindi 
-
+    am: अम्हारिक्
+    en: अंग्रेज़ी
+    es: स्पैनिश
+    ja: जापानी
+    mat: मटावाइ
+    nl: डच
+    pt: पुर्तगाली
+    sw: स्‍वाहि‍ली
+    zh: चीनी
+    hi: हिन्दी
+    pu: पंजाबी
+    
   # Front End Translations
   admin_page: "व्यवस्थापक पृष्ठ"
   alphabetical: वर्णमाला क्रम (A-Z)
