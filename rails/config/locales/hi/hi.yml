@@ -1,0 +1,68 @@
+hi:
+  community: समुदाय
+  communities: समुदायों
+  media_link: मीडिया लिंक
+  media_links: मीडिया कड़ियाँ
+  places: स्थानों
+  place: स्थान
+  speakers: वक्ताओं
+  speaker: वक्ता
+  stories: कहानियों
+  story: कहानी
+  theme: विषय
+  users: उपयोगकर्ताओं
+  user: प्रयोक्ता
+
+  भाषाओं:
+    am: अम्हारिक्
+    en: अंग्रेज़ी
+    es: स्पैनिश
+    ja: जापानी
+    mat: मटावाइ
+    nl: डच
+    pt: पुर्तगाली
+    sw: स्‍वाहि‍ली
+    zh: चीनी
+    hi: हिन्दी
+    pu: पंजाबी
+    
+  # Front End Translations
+  admin_page: "व्यवस्थापक पृष्ठ"
+  alphabetical: वर्णमाला क्रम (A-Z)
+  back_to_map: "मानचित्र पर वापस जाएं"
+  back_to_welcome: "स्वागत पृष्ठ पर वापस जाएं"
+  built_with_love: द्वारा प्यार से निर्मित
+  close: बंद करना
+  community_search:
+    title: "एक्सप्लोर करने के लिए एक समुदाय खोजें"
+    coming_soon: "यह सुविधा जल्द ही आ रही है। अभी के लिए, कृपया किसी विशिष्ट समुदाय के लिए आमंत्रण का अनुरोध करें।"
+  default: चूक
+  enter: "वेबसाइट में प्रवेश करें"
+  filter_stories: "कहानियों को फ़िल्टर करें"
+  forgot_password: "पासवर्ड भूल गए हैं?"
+  hello: नमस्ते
+  introduction: परिचय
+  intro:
+    explanation: "टेरास्टोरी स्थान-आधारित कहानी कहने की दृश्य-श्रव्य रिकॉर्डिंग हैं। यह ऑफ़लाइन-संगत एप्लिकेशन स्थानीय समुदायों को उनके लिए महत्वपूर्ण अर्थ या मूल्य के स्थानों के बारे में अपनी मौखिक कहानी कहने की परंपराओं का पता लगाने और उन्हें मैप करने में सक्षम बनाता है।"
+    question: "terrastory क्या है??"
+  language: भाषा
+  login: लॉग इन करें
+  logout: लॉग आउट
+  most_recent: "अभी हाल में ही"
+  no_media: कोई मीडिया उपलब्ध नहीं
+  password: पासवर्ड
+  place_name: "स्थान का नाम उच्चारण"
+  place_type: "स्थान का प्रकार"
+  region: क्षेत्र
+  remember_me: "मुझे याद रखें"
+  reversed_alphabetical: वर्णमाला क्रम उल्टा (Z-A)
+  select_category: "श्रेणी चुनना"
+  select_option: "विकल्प चुनें"
+  selected_language: "चयनित"
+  sign_up: "साइन अप करें"
+  sort_stories: "कहानियों को क्रमबद्ध करें"
+  speaker: वक्ता
+  topic: विषय 
+  video_unsupported: क्षमा करें, आपका ब्राउज़र एम्बेड किए गए वीडियो का समर्थन नहीं करता है।
+  welcome: स्वागत हे
+  welcome_back: "फिर से स्वागत"
