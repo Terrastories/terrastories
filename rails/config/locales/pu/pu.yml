@@ -13,7 +13,7 @@ pu:
   users: ਉਪਭੋਗਤਾ
   user: ਉਪਭੋਗਤਾ
 
-    ਭਾਸ਼ਾਵਾਂ::
+  languages:
     am: ਅਮਹਾਰਿਕ
     en: ਅੰਗਰੇਜ਼ੀ
     es: ਸਪੇਨੀ
@@ -27,13 +27,13 @@ pu:
     pu: ਪੰਜਾਬੀ
 
   # Front End Translations
-   admin_page: "ਪ੍ਰਬੰਧਕ ਪੰਨਾ"
-   alphabetical: A-Z
-   back_to_map: "ਨਕਸ਼ੇ 'ਤੇ ਵਾਪਸ"
-   back_to_welcome: "ਵਾਪਸ ਸੁਆਗਤ ਪੰਨੇ 'ਤੇ"
-   build_with_love: ❤️ ਦੁਆਰਾ ਬਣਾਇਆ ਗਿਆ
-   close: ਬੰਦ ਕਰੋ
-  ਭਾਈਚਾਰੇ_ਖੋਜ:
+  admin_page: "ਪ੍ਰਬੰਧਕ ਪੰਨਾ"
+  alphabetical: A-Z
+  back_to_map: "ਨਕਸ਼ੇ 'ਤੇ ਵਾਪਸ"
+  back_to_welcome: "ਵਾਪਸ ਸੁਆਗਤ ਪੰਨੇ 'ਤੇ"
+  build_with_love: ❤️ ਦੁਆਰਾ ਬਣਾਇਆ ਗਿਆ
+  close: ਬੰਦ ਕਰੋ
+  community_search:
     title: "ਪੜਚੋਲ ਕਰਨ ਲਈ ਇੱਕ ਭਾਈਚਾਰਾ ਖੋਜੋ"
     coming_soon: "ਇਹ ਵਿਸ਼ੇਸ਼ਤਾ ਜਲਦੀ ਹੀ ਆ ਰਹੀ ਹੈ। ਫਿਲਹਾਲ, ਕਿਰਪਾ ਕਰਕੇ ਕਿਸੇ ਖਾਸ ਭਾਈਚਾਰੇ ਨੂੰ ਸੱਦਾ ਦੇਣ ਦੀ ਬੇਨਤੀ ਕਰੋ।"
   default: ਡਿਫਾਲਟ

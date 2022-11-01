@@ -13,7 +13,7 @@ hi:
   users: उपयोगकर्ताओं
   user: प्रयोक्ता
 
-  भाषाओं:
+  languages:
     am: अम्हारिक्
     en: अंग्रेज़ी
     es: स्पैनिश
@@ -25,7 +25,7 @@ hi:
     zh: चीनी
     hi: हिन्दी
     pu: पंजाबी
-    
+
   # Front End Translations
   admin_page: "व्यवस्थापक पृष्ठ"
   alphabetical: वर्णमाला क्रम (A-Z)
@@ -62,7 +62,7 @@ hi:
   sign_up: "साइन अप करें"
   sort_stories: "कहानियों को क्रमबद्ध करें"
   speaker: वक्ता
-  topic: विषय 
+  topic: विषय
   video_unsupported: क्षमा करें, आपका ब्राउज़र एम्बेड किए गए वीडियो का समर्थन नहीं करता है।
   welcome: स्वागत हे
   welcome_back: "फिर से स्वागत"
