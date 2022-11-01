@@ -1,16 +1,5 @@
-module Dashboard
+module SuperAdmin
   class CommunitiesController < ApplicationController
-    before_action :authenticate_super_admin!
-
-    def metrics_dashboard
-      render locals: {
-        places_count: Place.all.size,
-        stories_count: Story.all.size,
-        speakers_count: Speaker.all.size,
-        communities_count: Community.all.size
-      }
-    end
-
     def index
       @page = CommunitiesPage.new(filter_params)
       @communities = @page.data
@@ -71,14 +60,8 @@ module Dashboard
       params.permit(
         :limit,
         :offset,
-        :name,
-        :sort_by,
-        :sort_dir
+        :name
       )
-    end
-
-    def authenticate_super_admin!
-      raise Pundit::NotAuthorizedError unless current_user.super_admin
     end
 
     def community_params

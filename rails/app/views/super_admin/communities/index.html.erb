@@ -14,15 +14,6 @@
     </div>
     <%= f.submit t("search.label"), name: nil %>
   <% end %>
-
-  <div>
-    <%= t("sort.label") %>
-    <%= link_to t("sort.updated_at"), communities_url(request.query_parameters.merge(sort_by: "updated_at", sort_dir: "desc")) %>
-    |
-    <%= link_to t("sort.created_at"), communities_url(request.query_parameters.merge(sort_by: "created_at", sort_dir: "desc")) %>
-    |
-    <%= link_to t("sort.name"), communities_url(request.query_parameters.merge(sort_by: "name", sort_dir: "asc")) %>
-  </div>
 <% end %>
 
 <div class="infinite-scroll">
