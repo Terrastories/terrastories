@@ -62,8 +62,6 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
-    acts-as-taggable-on (5.0.0)
-      activerecord (>= 4.2.8)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     annotate (3.2.0)
@@ -126,10 +124,6 @@ GEM
       devise (>= 4.8.0)
     diff-lcs (1.5.0)
     docile (1.4.0)
-    dotenv (2.7.6)
-    dotenv-rails (2.7.6)
-      dotenv (= 2.7.6)
-      railties (>= 3.2)
     erubi (1.11.0)
     execjs (2.8.1)
     factory_bot (6.2.1)
@@ -138,8 +132,6 @@ GEM
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
     ffi (1.15.5)
-    font-awesome-rails (4.7.0.8)
-      railties (>= 3.2, < 8.0)
     formatador (1.1.0)
     geocoder (1.7.5)
     globalid (1.0.0)
@@ -229,10 +221,6 @@ GEM
       bundler (>= 1.15.0)
       railties (= 6.1.7)
       sprockets-rails (>= 2.0.0)
-    rails-controller-testing (1.0.5)
-      actionpack (>= 5.0.1.rc1)
-      actionview (>= 5.0.1.rc1)
-      activesupport (>= 5.0.1.rc1)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -352,7 +340,6 @@ PLATFORMS
 
 DEPENDENCIES
   activestorage-validator
-  acts-as-taggable-on (~> 5.0)
   annotate
   aws-sdk-s3
   better_errors
@@ -362,9 +349,7 @@ DEPENDENCIES
   capybara (>= 2.15, < 4.0)
   devise
   devise-i18n
-  dotenv-rails
   factory_bot_rails
-  font-awesome-rails (~> 4.7)
   geocoder
   guard-rspec
   i18n-js
@@ -378,7 +363,6 @@ DEPENDENCIES
   puma (~> 4.3)
   pundit
   rails (~> 6.1.0)
-  rails-controller-testing
   rails-i18n
   react-rails
   rgeo-geojson

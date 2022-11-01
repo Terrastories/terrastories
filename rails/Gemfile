@@ -3,8 +3,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.9'
 
-gem "dotenv-rails", require: "dotenv/rails-now", group: %i[development test]
-
 gem 'rails', '~> 6.1.0'
 # Use Puma as the app server
 gem 'puma', '~> 4.3'
@@ -17,8 +15,6 @@ gem 'geocoder'
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'terser'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-gem 'acts-as-taggable-on', '~> 5.0'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
@@ -27,16 +23,31 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-gem 'rails-i18n'
+# Use devise for authentication
 gem 'devise'
-gem 'devise-i18n'
+
+# Use pundit for policy based authorization
 gem 'pundit'
+
+# Internationalization
+gem 'rails-i18n'
+gem 'devise-i18n'
+
+# Internationalization in JS
+gem 'i18n-js'
+
+# Mapbox GL rendering library
+gem 'mapbox-gl-rails', '~> 2.9.0'
+
+# S3 backed Active Storage
+gem 'aws-sdk-s3'
+
+# ActiveStorage Validation
+gem 'activestorage-validator'
 
 # Enable Webpack for javascript application code
 gem 'webpacker', '~> 3.5'
 gem 'react-rails'
-
-gem 'font-awesome-rails', '~> 4.7'
 
 # plyr-rails gem is the integration of plyr.io javascript library for your Rails 4 and Rails 5 application.
 gem 'plyr-rails'
@@ -46,9 +57,6 @@ gem 'image_processing'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
-# Internationalization in JS
-gem 'i18n-js'
 
 # Reduces boot times through caching; required in config/boot.rb
 # gem 'bootsnap', '>= 1.1.0', require: false
@@ -85,13 +93,7 @@ group :test do
   # Factories for creating database entities for testing
   gem 'factory_bot_rails'
   gem 'simplecov', require: false
-  # Gem with utilities to test controllers
-  gem 'rails-controller-testing'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-gem 'mapbox-gl-rails', '~> 2.9.0'
-gem 'aws-sdk-s3'
-gem 'activestorage-validator'
