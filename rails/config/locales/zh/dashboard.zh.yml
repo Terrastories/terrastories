@@ -54,3 +54,8 @@ zh:
     next: 下一页
     no_results: 此%{resources}不可用。
     no_nested_results: 此%{resource}没有%{resources}。
+  sort:
+    label: 排序方式：
+    name: 按字母顺序
+    created_at: 创建日期
+    updated_at: 上次更新日期

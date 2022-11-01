@@ -54,3 +54,8 @@ nl:
     next: Volgende
     no_results: Er zijn geen %{resources} beschikbaar.
     no_nested_results: Deze %{resource} heeft geen %{resources}.
+  sort:
+    label: "Sorteer op:"
+    name: alfabetisch
+    created_at: datum gecreeërd
+    updated_at: datum laatst bijgewerkt

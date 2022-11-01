@@ -54,3 +54,8 @@ es:
     next: Sig
     no_results: No hay %{resources} disponibles.
     no_nested_results: Este %{resource} no tiene %{resources}.
+  sort:
+    label: "Ordenar por:"
+    name: alfabético
+    created_at: fecha de creación
+    updated_at: fecha de última actualización

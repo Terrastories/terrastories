@@ -54,3 +54,8 @@ sw:
     next: Inayofuata
     no_results: Hakuna %{resources} zinazopatikana.
     no_nested_results: This %{resource} has no %{resources}.
+  sort:
+    label: "Panga kwa:"
+    name: kialfabeti
+    created_at: tarehe iliyoundwa
+    updated_at: tarehe ya sasisho la mwisho

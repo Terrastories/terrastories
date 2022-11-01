@@ -2,10 +2,18 @@ class CommunitiesPage < Page
   def initialize(meta = {})
     @meta = meta
 
+    unless %w(name created_at updated_at).include? @meta[:sort_by]
+      @meta[:sort_by] = nil
+    end
+
+    unless %w(asc desc).include? @meta[:sort_dir]
+      @meta[:sort_dir] = nil
+    end
+
     @meta[:limit] ||= 20
     @meta[:offset] ||= 0
-    @meta[:sort_by] ||= "name"
-    @meta[:sort_dir] ||= "asc"
+    @meta[:sort_by] ||= "updated_at"
+    @meta[:sort_dir] ||= "desc"
   end
 
   def relation
