@@ -1,6 +1,7 @@
 module Dashboard
   class ApplicationController < ActionController::Base
     include Pundit::Authorization
+    include Locale
 
     rescue_from Pundit::NotAuthorizedError, with: :not_authorized
     rescue_from ActiveRecord::RecordNotFound, with: :not_found
@@ -8,11 +9,6 @@ module Dashboard
     layout "dashboard"
 
     before_action :authenticate_user!
-    before_action :set_locale
-
-    def default_url_options
-      { locale: params[:locale] || I18n.locale }
-    end
 
     protected
 
@@ -27,10 +23,6 @@ module Dashboard
     end
 
     private
-
-    def set_locale
-      I18n.locale = params[:locale] || I18n.default_locale
-    end
 
     helper_method :community
     def community

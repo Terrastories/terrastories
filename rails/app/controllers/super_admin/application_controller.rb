@@ -1,6 +1,7 @@
 module SuperAdmin
   class ApplicationController < ActionController::Base
     include Pundit::Authorization
+    include Locale
 
     rescue_from Pundit::NotAuthorizedError, with: :not_authorized
     rescue_from ActiveRecord::RecordNotFound, with: :not_found
@@ -9,11 +10,6 @@ module SuperAdmin
 
     before_action :authenticate_user!
     before_action :authenticate_super_admin!
-    before_action :set_locale
-
-    def default_url_options
-      { locale: params[:locale] || I18n.locale }
-    end
 
     protected
 
@@ -31,10 +27,6 @@ module SuperAdmin
 
     def authenticate_super_admin!
       raise Pundit::NotAuthorizedError unless current_user.super_admin
-    end
-
-    def set_locale
-      I18n.locale = params[:locale] || I18n.default_locale
     end
 
     def meta_params
