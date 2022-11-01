@@ -51,6 +51,8 @@ ActiveRecord::Schema.define(version: 2022_11_07_214122) do
     t.datetime "updated_at", null: false
     t.integer "theme_id"
     t.boolean "beta", default: false
+    t.boolean "public", default: false, null: false
+    t.index ["public"], name: "index_communities_on_public"
   end
 
   create_table "curriculum_stories", force: :cascade do |t|

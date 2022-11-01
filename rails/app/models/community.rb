@@ -48,7 +48,12 @@ end
 #  country    :string
 #  locale     :string
 #  name       :string
+#  public     :boolean          default(FALSE), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  theme_id   :integer
+#
+# Indexes
+#
+#  index_communities_on_public  (public)
 #
