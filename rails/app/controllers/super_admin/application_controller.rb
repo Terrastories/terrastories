@@ -15,12 +15,12 @@ module SuperAdmin
 
     def not_authorized
       flash.alert = "You are not authorized to perform this action"
-      redirect_to member_root_path
+      redirect_to super_admin_root_path
     end
 
     def not_found
       flash.alert = "The resource you requested cannot be found"
-      redirect_to member_root_path
+      redirect_to super_admin_root_path
     end
 
     private
