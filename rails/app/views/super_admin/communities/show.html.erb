@@ -12,7 +12,7 @@
 </div>
 <% end %>
 
-<%= render partial: "metrics", locals: {stories_count: @community.stories.size, speakers_count: @community.speakers.size, places_count: @community.places.size, users_count: @community.users.size}} %>
+<%= render partial: "super_admin/metrics/metrics", locals: {stories_count: @community.stories.size, speakers_count: @community.speakers.size, places_count: @community.places.size, users_count: @community.users.size} %>
 
 <h3><%= t("users") %></h3>
 

@@ -14,7 +14,6 @@
     </div>
     <%= f.submit t("search.label"), name: nil %>
   <% end %>
-
   <div>
     <%= t("sort.label") %>
     <%= link_to t("sort.updated_at"), communities_url(request.query_parameters.merge(sort_by: "updated_at", sort_dir: "desc")) %>

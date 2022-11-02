@@ -1,4 +1,4 @@
-module Dashboard
+module SuperAdmin
   class ApplicationController < ActionController::Base
     include Pundit::Authorization
     include Locale
@@ -9,24 +9,24 @@ module Dashboard
     layout "dashboard"
 
     before_action :authenticate_user!
+    before_action :authenticate_super_admin!
 
     protected
 
     def not_authorized
       flash.alert = "You are not authorized to perform this action"
-      redirect_to member_root_path
+      redirect_to super_admin_root_path
     end
 
     def not_found
       flash.alert = "The resource you requested cannot be found"
-      redirect_to member_root_path
+      redirect_to super_admin_root_path
     end
 
     private
 
-    helper_method :community
-    def community
-      @community ||= current_user.community
+    def authenticate_super_admin!
+      raise Pundit::NotAuthorizedError unless current_user.super_admin
     end
 
     def meta_params

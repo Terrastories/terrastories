@@ -20,8 +20,8 @@
       <nav>
         <%= image_tag "logocombo.svg", alt: "Terrastories", class: "header--logo" %>
         <% if current_user.super_admin %>
-          <%= link_to "Metrics", metrics_communities_path, class: ("active-link" if params[:controller] == "dashboard/communities" && params[:action] == "metrics_dashboard") %>
-          <%= link_to t("communities"), communities_path, class: ("active-link" if params[:controller] == "dashboard/communities" && params[:action] != "metrics_dashboard") %>
+          <%= link_to "Metrics", metrics_path, class: ("active-link" if params[:controller] == "dashboard/metrics") %>
+          <%= link_to t("communities"), communities_path, class: ("active-link" if params[:controller] == "dashboard/communities") %>
         <% else %>
           <h1><%= community.name %></h1>
           <%= link_to t("stories"), stories_path, class: ("active-link" if params[:controller] == "dashboard/stories") %>
