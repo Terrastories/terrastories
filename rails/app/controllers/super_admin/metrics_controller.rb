@@ -1,0 +1,12 @@
+module SuperAdmin
+  class MetricsController < ApplicationController
+    def show
+      render locals: {
+        places_count: Place.all.size,
+        stories_count: Story.all.size,
+        speakers_count: Speaker.all.size,
+        communities_count: Community.all.size
+      }
+    end
+  end
+end
