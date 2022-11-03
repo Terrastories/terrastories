@@ -53,6 +53,10 @@ development:
     watch_options:
       ignored: /node_modules/
 
+offline:
+  <<: *default
+  compile: false
+  cache_manifest: true
 
 test:
   <<: *default

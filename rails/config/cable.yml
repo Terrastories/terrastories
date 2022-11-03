@@ -1,6 +1,9 @@
 development:
   adapter: async
 
+offline:
+  adapter: async
+
 test:
   adapter: test
 
