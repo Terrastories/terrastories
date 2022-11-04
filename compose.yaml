@@ -73,7 +73,7 @@ services:
       - RAILS_ENV=${RAILS_ENV-development}
       - PORT=3030
       - VIRTUAL_PORT=3030
-      - VIRTUAL_HOST=terrastories.local,${HOST_HOSTNAME}
+      - VIRTUAL_HOST=terrastories.local,${HOST_HOSTNAME-terrastories.local}
       - VIRTUAL_PATH=/
       - CHOKIDAR_USEPOLLING=true
       - USE_LOCAL_MAP_SERVER=true
@@ -94,7 +94,7 @@ services:
     volumes:
       - ./tileserver/data:/data
     environment:
-      - VIRTUAL_HOST=terrastories.local,${HOST_HOSTNAME}
+      - VIRTUAL_HOST=terrastories.local,${HOST_HOSTNAME-terrastories.local}
       - VIRTUAL_PATH=/tileserver/
       - VIRTUAL_DEST=/
       - VIRTUAL_PORT=8080
