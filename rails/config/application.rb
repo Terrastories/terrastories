@@ -22,9 +22,11 @@ module App
     # Setup i18n Module
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '*', '*.{rb,yml}').to_s]
     config.i18n.available_locales = Dir[Rails.root.join('config','locales', '*')].map {|f| File.basename(f).to_sym }
-    # By default, locales will fallback to default locale, unless otherwise specified.
     config.i18n.default_locale = :en
-    config.i18n.fallbacks = { mat: [:nl, :en] }
+    # Set default locale fallback to :en
+    config.i18n.fallbacks.defaults = [:en]
+    # and configure language-specific fallbacks when needed
+    config.i18n.fallbacks.map = {mat: [:nl, :en]}
 
     # Don't replace existing images on upload for has_many_attached
     config.active_storage.replace_on_assign_to_many = false
