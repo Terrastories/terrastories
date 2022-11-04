@@ -5,7 +5,6 @@ class RoleRoutingConstraint
 
   def matches?(request)
     user = current_user(request)
-    puts user
     user.present? && @block.call(user)
   end
 
