@@ -55,6 +55,10 @@ gem 'plyr-rails'
 # Use ActiveStorage variant
 gem 'image_processing'
 
+# Use Flipper for feature flags
+gem 'flipper'
+gem 'flipper-active_record'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
