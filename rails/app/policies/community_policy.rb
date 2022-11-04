@@ -10,7 +10,11 @@ class CommunityPolicy < ApplicationPolicy
   end
 
   def show?
-    true
+    return true if user.super_admin
+    return true if user.admin? &&
+      (Flipper.enabled?(:split_settings, community) || Flipper.enabled?(:public_community, community))
+
+    false
   end
 
   def new?
@@ -22,7 +26,8 @@ class CommunityPolicy < ApplicationPolicy
   end
 
   def edit?
-    user.super_admin || user.admin?
+    user.super_admin || (user.admin? &&
+      (Flipper.enabled?(:split_settings, community) || Flipper.enabled?(:public_community, community)))
   end
 
   def update?
