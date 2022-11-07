@@ -1,0 +1,47 @@
+<% content_for(:title) do %>
+  Features
+<% end %>
+
+<% content_for :main_heading do %>
+<div class="columns">
+  <h2>Feature Flags</h2>
+  <%= link_to t("dashboard.actions.new"), new_feature_path, class: "btn" %>
+<% end %>
+
+<table>
+<thead>
+  <th>Feature</th>
+  <th>Status</th>
+  <th>Enabled for</th>
+  <th></th>
+</thead>
+<tbody>
+<% @features.each do |feature| %>
+  <tr>
+    <td><%= feature.key %></td>
+    <td>
+      <span class="badge badge__state badge__state-<%= feature.state %>"><%= feature.state_status %></span>
+    </td>
+    <td>
+      <% if feature.enabled? %>
+        <span class="badge badge__state-all">Everyone</span>
+      <% end %>
+      <% feature.groups.each do |group| %>
+        <span class="badge badge__state-group"><%= group.name %></span>
+      <% end %>
+      <% if feature.actors_value.any? %>
+        <span class="badge badge__state-community">community</span>
+      <% end %>
+    </td>
+    <td>
+      <%= link_to "View", feature_path(feature.key) %>
+      <% if feature.enabled? %>
+        <%= link_to "Disable", feature_disable_path(feature.key), method: :post, data: {confirm: "Are you sure you want to disable this feature for everyone?"} %>
+      <% else %>
+        <%= link_to "Enable", feature_enable_path(feature.key), method: :post, data: {confirm: "Are you sure you want to enable this feature for everyone?"} %>
+      <% end %>
+    </td>
+  </tr>
+<% end %>
+</tbody>
+</table>

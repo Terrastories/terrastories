@@ -1,0 +1,9 @@
+<% content_for(:title) do %>
+  Feature Flags
+<% end %>
+
+<% content_for :main_heading do %>
+  <h2>Edit Feature Flag: <%= @feature.key %></h2>
+<% end %>
+
+<%= render partial: "form" %>

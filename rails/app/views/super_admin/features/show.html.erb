@@ -1,0 +1,84 @@
+<% content_for(:title) do %>
+  <%= @feature.key %> | Feature Flags
+<% end %>
+
+<% content_for :main_heading do %>
+  <div class="columns">
+  <h2>
+    <div class="small">
+      <span class="badge badge__state-<%= @feature.feature.state %>">
+        <% if @feature.feature.on? %>
+          Enabled for everyone
+        <% elsif @feature.feature.conditional? %>
+          Enabled for some
+        <% else %>
+          Disabled for all
+        <% end %>
+      </span>
+    </div>
+    Feature: <%= @feature.key %>
+  </h2>
+    <div class="actions">
+      <%= link_to "Edit", edit_feature_path(@feature.key), class: "btn" %>
+      <%= link_to "Delete", feature_path(@feature.key), class: "btn btn-danger", method: :delete, data: {confirm: "Are you sure you want to remove this feature? If any flags still exist in the code, removing this feature effectively disables the feature."} %>
+    </div>
+  </div>
+<% end %>
+
+<% if @feature.description.present? %>
+  <p><%= @feature.description %></p>
+<% end %>
+
+<div class="two-columns columns-50-50">
+  <div>
+    <h4>Communities</h4>
+    <% if @feature.actors.any? %>
+      <p>Enable this feature directly on a <%= link_to "Community", communities_path %>.</p>
+      <p><%= link_to "Enable for everyone", feature_enable_path(@feature.key), class: "btn", method: :post, data: {confirm: "Are you sure you want to disable this feature for everyone?"} %></p>
+      <table><tbody>
+        <% @feature.actors.each do |actor| %>
+          <tr>
+            <td><%= link_to actor.name, actor %></td>
+            <td>
+              <%= link_to "Disable", feature_disable_path(@feature.key, community_id: actor.id), method: :post %>
+            </td>
+          </tr>
+        <% end %>
+      <tbody></table>
+    <% else %>
+      <% if @feature.enabled? %>
+        <p>This feature is enabled for all communities.</p>
+        <p><%= link_to "Disable for everyone", feature_disable_path(@feature.key), class: "btn", method: :post, data: {confirm: "Are you sure you want to disable this feature for everyone?"} %></p>
+      <% else %>
+        <p>Enable or disable this feature on a <%= link_to "Community", communities_path %>.</p>
+        <p><%= link_to "Enable for everyone", feature_enable_path(@feature.key), class: "btn", method: :post, data: {confirm: "Are you sure you want to enable this feature for everyone?"} %></p>
+      <% end %>
+    <% end %>
+  </div>
+  <div>
+    <h4>Groups</h4>
+    <% if @feature.all_groups.any? %>
+      <table><tbody>
+        <% @feature.all_groups.each do |group| %>
+          <tr>
+            <td><%= group.name %></td>
+            <td>
+              <% if @feature.groups.include?(group) %>
+                <span class="badge badge__state badge__state-on">Enabled</span>
+              <% else %>
+                <span class="badge badge__state badge__state-disabled">Disabled</span>
+              <% end %>
+            </td>
+            <td>
+              <% if @feature.groups.include?(group) %>
+                <%= link_to "Disable", feature_disable_path(@feature.key, group: group.name), method: :post %>
+              <% else %>
+                <%= link_to "Enable", feature_enable_path(@feature.key, group: group.name), method: :post %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      <tbody></table>
+    <% end %>
+  </div>
+</div>

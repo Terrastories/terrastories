@@ -1,26 +1,26 @@
 <div class="collection">
   <% if local_assigns[:communities_count] %>
-    <div class="card card--center">
+    <div class="card card--center card--metrics">
       <span class="metric"><%= local_assigns[:communities_count] %></span>
       <h3><%= t("communities") %></h3>
     </div>
   <% end %>
-  <div class="card card--center">
+  <div class="card card--center card--metrics">
     <span class="metric"><%= local_assigns[:stories_count] %></span>
     <h3><%= t("stories") %></h3>
   </div>
 
-  <div class="card card--center">
+  <div class="card card--center card--metrics">
     <span class="metric"><%= local_assigns[:places_count] %></span>
     <h3><%= t("places") %></h3>
   </div>
 
-  <div class="card card--center">
+  <div class="card card--center card--metrics">
     <span class="metric"><%= local_assigns[:speakers_count] %></span>
     <h3><%= t("speakers") %></h3>
   </div>
 
-  <div class="card card--center">
+  <div class="card card--center card--metrics">
     <span class="metric"><%= local_assigns[:users_count] %></span>
     <h3><%= t("users") %></h3>
   </div>

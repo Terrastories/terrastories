@@ -14,21 +14,72 @@
 
 <%= render partial: "super_admin/metrics/metrics", locals: {stories_count: @community.stories.size, speakers_count: @community.speakers.size, places_count: @community.places.size, users_count: @community.users.size} %>
 
-<h3><%= t("users") %></h3>
-
-<table>
-  <thead>
-    <tr>
-      <th><%= User.human_attribute_name("username") %></th>
-      <th><%= User.human_attribute_name("role") %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @community.users.each do |user| %>
+<div class="two-columns columns-50-50">
+<div>
+  <h3>Features</h3>
+  <table>
+    <thead>
       <tr>
-        <td><%= user.username %></td>
-        <td><%= User.human_attribute_name("role.#{user.role}") %></td>
+        <th>Feature</th>
+        <th>Status</th>
+        <th>Groups</th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% Flipper.features.each do |feature| %>
+        <tr>
+          <td><%= feature.name %></td>
+          <td>
+            <% if feature.enabled?(@community) %>
+              <span class="badge badge__state badge__state-on">Enabled</span>
+            <% else %>
+              <span class="badge badge__state badge__state-off">Disabled</span>
+            <% end %>
+          </td>
+          <td>
+            <% if feature.enabled? %>
+              <span class="badge badge__state badge__state-on">Everyone</span>
+            <% else %>
+              <span class="badge badge__state badge__state-<%= feature.actors_value.include?(@community.flipper_id) ? 'on' : 'disabled' %>">self</span>
+              <% @community.feature_groups.each do |group| %>
+                <span class="badge badge__state badge__state-<%= feature.groups.map(&:name).include?(group) ? 'on' : 'disabled' %>"><%= group %></span>
+              <% end %>
+            <% end %>
+          </td>
+          <td>
+            <% if feature.enabled?(@community) %>
+              <% if feature.enabled_gate_names.include?(:actor) && feature.actors_value.include?(@community.flipper_id) %>
+                <%= link_to "Disable", feature_disable_path(feature.key, community_id: @community.id), method: :post %>
+              <% else %>
+                can't be disabled individually
+              <% end %>
+            <% else %>
+              <%= link_to "Enable", feature_enable_path(feature.key, community_id: @community.id), method: :post %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<div>
+  <h3><%= t("users") %></h3>
+  <table>
+    <thead>
+      <tr>
+        <th><%= User.human_attribute_name("username") %></th>
+        <th><%= User.human_attribute_name("role") %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @community.users.each do |user| %>
+        <tr>
+          <td><%= user.username %></td>
+          <td><%= User.human_attribute_name("role.#{user.role}") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+</div>

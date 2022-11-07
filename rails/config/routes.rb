@@ -35,6 +35,10 @@ Rails.application.routes.draw do
 
       resource :metrics, only: :show
       resources :communities
+      resources :features do
+        post :enable
+        post :disable
+      end
     end
 
     devise_for :users, :controllers => { registrations: 'registrations' }

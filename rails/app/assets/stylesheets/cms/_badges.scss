@@ -26,4 +26,36 @@
   &-blue {
     background-color: $blue;
   }
+
+  &__state {
+    display: inline-block;
+
+    &-on {
+      background-color: $green;
+    }
+
+    &-conditional {
+      background-color: $yellow;
+    }
+
+    &-off {
+      background-color: $red;
+    }
+
+    &-disabled {
+      background-color: $light-gray;
+    }
+
+    &-group {
+      background-color: $blue;
+    }
+
+    &-community {
+      background-color: $orange;
+    }
+
+    &-all {
+      background-color: $green;
+    }
+  }
 }

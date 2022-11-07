@@ -24,6 +24,19 @@ class Community < ApplicationRecord
       .map { |x| x.updated_at  }
       .max
   end
+
+  # Flipper Feature Groups
+  # See config/initializers/flipper.rb to view registered groups
+  def feature_groups
+    Flipper.groups.each_with_object([]) do |group, arr|
+      arr << group.name if self.respond_to?(group.name) ? self.send(group.name) : self.send("#{group.name}_group?")
+    end
+  end
+
+  # Flipper `developers` group conditions
+  def developers_group?
+    name.match?("Ruby for Good")
+  end
 end
 
 # == Schema Information

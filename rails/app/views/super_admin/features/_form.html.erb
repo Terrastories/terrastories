@@ -1,0 +1,11 @@
+<%= form_with model: @feature, local: true, url: features_path, class: "form aligned" do |f| %>
+  <% if @feature.new_record? %>
+    <%= f.label :key, "Name", class: "required" %>
+    <%= f.text_field :key, placeholder: "my_feature_name" %>
+    <p class="small">Feature names should be lower snake-case: e.g. cool_feature, cool</p>
+  <% end %>
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+
+  <%= f.submit %>
+<% end %>
