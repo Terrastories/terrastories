@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_04_205654) do
+ActiveRecord::Schema.define(version: 2022_11_07_214122) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2022_11_04_205654) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "theme_id"
+    t.boolean "beta", default: false
   end
 
   create_table "curriculum_stories", force: :cascade do |t|

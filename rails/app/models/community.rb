@@ -44,6 +44,7 @@ end
 # Table name: communities
 #
 #  id         :bigint           not null, primary key
+#  beta       :boolean          default(FALSE)
 #  country    :string
 #  locale     :string
 #  name       :string
