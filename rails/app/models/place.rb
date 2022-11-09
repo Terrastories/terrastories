@@ -9,7 +9,7 @@ class Place < ApplicationRecord
   has_one_attached :name_audio
   validates :name, presence: true
   validates :photo, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'] }
-  validates :name_audio, blob: { content_type: ['audio/mpeg', 'audio/wav'] }
+  validates :name_audio, blob: { content_type: ['audio/mpeg', 'audio/wav', 'audio/m4a'] }
   validates :lat, numericality: { greater_than_or_equal_to:  -90, less_than_or_equal_to:  90, message: :invalid_latitude }, allow_blank: true
   validates :long, numericality: { greater_than_or_equal_to: -180, less_than_or_equal_to: 180, message: :invalid_longitude}, allow_blank: true
   has_many :interview_stories, class_name: "Story", foreign_key: "interview_location_id"
