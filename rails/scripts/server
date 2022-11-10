@@ -7,5 +7,10 @@ fi
 
 rm -f tmp/pids/server.pid
 
+if [[ "$AUTO_RUN_MIGRATIONS" == "on" ]];
+then
+  bundle exec rails db:prepare
+fi
+
 echo "Starting Rails Server..."
 bundle exec rails server --binding 0.0.0.0
