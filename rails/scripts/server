@@ -7,9 +7,9 @@ fi
 
 rm -f tmp/pids/server.pid
 
-if [[ "$RAILS_ENV" == "offline" ]];
+if [[ "$AUTO_RUN_MIGRATIONS" == "on" ]];
 then
-  bundle exec rake assets:precompile
+  bundle exec rails db:prepare
 fi
 
 echo "Starting Rails Server..."

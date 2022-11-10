@@ -38,12 +38,6 @@ test:
   password: postgres
   database: terrastories-test
 
-offline:
-  adapter: postgresql
-  host: db
-  username: postgres
-  password: postgres
-  database: terrastories-dev # share with dev for ease of setup
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
 # ever seen by anyone, they now have access to your database.
@@ -65,3 +59,6 @@ offline:
 #
 production:
   url: <%= ENV['DATABASE_URL'] %>
+
+offline:
+  url: <%= ENV.fetch('DATABASE_URL', 'postgresql://postgres:postgres@host.docker.internal:5432/terrastories-dev') %>
