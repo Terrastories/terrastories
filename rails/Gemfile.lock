@@ -132,6 +132,10 @@ GEM
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
     ffi (1.15.5)
+    flipper (0.25.3)
+    flipper-active_record (0.25.3)
+      activerecord (>= 4.2, < 8)
+      flipper (~> 0.25.3)
     formatador (1.1.0)
     geocoder (1.7.5)
     globalid (1.0.0)
@@ -350,6 +354,8 @@ DEPENDENCIES
   devise
   devise-i18n
   factory_bot_rails
+  flipper
+  flipper-active_record
   geocoder
   guard-rspec
   i18n-js

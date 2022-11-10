@@ -93,6 +93,7 @@ en:
       story: Story
       theme: Theme
       media_link: Media Link
+      flipper_feature: Feature
     # Used for model-based form labels and other attribute displays
     attributes:
       place:

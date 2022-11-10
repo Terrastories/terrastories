@@ -29,6 +29,17 @@
   margin-right: 0.5rem;
 }
 
+.columns-50-50 {
+  min-width: 50%;
+  row-gap: 10px;
+
+  > * {
+    width: 100%;
+  }
+  p {
+    padding-bottom: 1rem;
+  }
+}
 
 @media (min-width: "1180px") {
   .two-columns {

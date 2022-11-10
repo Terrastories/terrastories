@@ -1,0 +1,18 @@
+<% content_for(:title) do %>
+  <%= t("dashboard.community.settings") %>
+<% end %>
+
+<% content_for(:main_heading) do %>
+  <h2><%= t("dashboard.community.settings") %></h2>
+<% end %>
+
+<%= form_with model: @community, url: community_settings_path, data: {remote: false}, class: "form aligned" do |f| %>
+  <%# Community Beta / Experimental Features %>
+  <h4><%= t("dashboard.community.beta_access") %></h4>
+  <div class="input-group">
+    <%= f.check_box :beta, checked: @community.beta %>
+    <%= f.label :beta %>
+  </div>
+
+  <%= f.submit %>
+<% end %>
