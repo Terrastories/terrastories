@@ -1,8 +1,7 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  # Include default devise modules. Others available are: :registerable,
+  # :recoverable, :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :rememberable, :trackable, :validatable
   attr_accessor :login
 
   belongs_to :community, optional: true
@@ -72,7 +71,7 @@ end
 #
 # Indexes
 #
-#  index_users_on_email                 (email) UNIQUE
+#  index_users_on_email                 (email)
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #  index_users_on_username              (username) UNIQUE
 #
