@@ -60,7 +60,7 @@ if ! grep -q "terrastories.local" /etc/hosts; then
   elif [ $choice -eq 1 ]; then
     echo
     printf "Automatically configuring terrastories.local as a host..."
-    #sudo -- sh -c "echo '# Added by Terrastories\n192.168.0.1 terrastories.local\n# End of section' >> /etc/hosts"
+    sudo -- sh -c "echo '# Added by Terrastories\n192.168.0.1 terrastories.local\n# End of section' >> /etc/hosts"
     echo -e "...${Green}done!${ColorOff}"
     echo
     if [ -f /etc/NetworkManager/system-connections/Hotspot.nmconnection ]; then
