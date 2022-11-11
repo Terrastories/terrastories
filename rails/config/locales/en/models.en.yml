@@ -11,6 +11,9 @@ en:
   helpers:
     label:
       visibility: Visibility
+      community:
+        public: Enable public interface
+        beta: Enable experimental beta features
       speaker:
         one: Speaker
         name: Name

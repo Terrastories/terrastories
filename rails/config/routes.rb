@@ -5,8 +5,9 @@ Rails.application.routes.draw do
       root to: "stories#index", as: :member_root
 
       get :search, to: "search#index"
-
       get :profile, to: "users#profile", as: :user_profile
+
+      resource :community, only: [:show, :update], as: :community_settings
       resources :users do
         delete :photo, action: :delete_photo
       end

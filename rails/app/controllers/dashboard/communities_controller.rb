@@ -8,13 +8,16 @@ module Dashboard
       @community = authorize current_user.community
 
       @community.update(community_params)
+
+      redirect_to community_settings_path
     end
 
     private
 
     def community_params
       params.require(:community).permit(
-        :beta
+        :beta,
+        :public
       )
     end
   end

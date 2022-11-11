@@ -7,6 +7,15 @@
 <% end %>
 
 <%= form_with model: @community, url: community_settings_path, data: {remote: false}, class: "form aligned" do |f| %>
+  <% if Flipper.enabled?(:public_communities, @community) %>
+    <%# Community Public %>
+    <h4><%= t("dashboard.community.make_public") %></h4>
+    <div class="input-group">
+      <%= f.check_box :public, checked: @community.public %>
+      <%= f.label :public %>
+    </div>
+  <% end %>
+
   <%# Community Beta / Experimental Features %>
   <h4><%= t("dashboard.community.beta_access") %></h4>
   <div class="input-group">

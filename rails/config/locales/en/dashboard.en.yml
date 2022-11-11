@@ -26,6 +26,9 @@ en:
       last_updated_on: Last updated on %{last_updated_on}
     back_to_app: Back to App
     community_settings: Community Settings
+    community:
+      settings: Settings
+      make_public: Public exploration of your community
     headings:
       new_resource: New %{name}
     actions:
