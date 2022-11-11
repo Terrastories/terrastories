@@ -1,0 +1,21 @@
+en:
+  onboard:
+    start:
+      welcome: Welcome to Terrastories!
+      introduction:
+        It looks like you are setting up Terrastories for offline use for the first time.
+        This wizard will walk you through setting up your Community.
+      begin: Begin
+    community:
+      show:
+        create: Create your community
+        name: Community Name
+        finish: Finish Setup
+    account:
+      show:
+        create: Create your admin account
+        username: Username
+        email: Email
+        password: Password
+        name: Your name
+        next: Next

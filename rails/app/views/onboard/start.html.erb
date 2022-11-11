@@ -1,0 +1,21 @@
+<div class="onboarding">
+  <div class="onboarding-card">
+    <%= image_tag 'logocombo.svg', alt: 'Terrastories' %>
+
+    <h2><%= t(".welcome") %></h2>
+
+    <p><%= t(".introduction") %></p>
+
+    <%= link_to t(".begin"), onboard_admin_account_path, class: "button" %>
+
+    <div class="language-picker">
+      <%= t("language") %>:
+      <%= application_locales %>
+    </div>
+  </div>
+
+  <span class="built-with"><%= t("built_with_love") %></span>
+  <div class="logo">
+    <%= image_tag "rubyforgood.png" %>
+  </div>
+</div>

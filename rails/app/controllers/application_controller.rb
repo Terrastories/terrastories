@@ -12,14 +12,22 @@ class ApplicationController < ActionController::Base
   private
 
   def set_community
-    # skip if user is not authenticated
-    return unless current_user
+    if offline_community?
+      @community ||= Community.first
+    else
+      # skip if user is not authenticated
+      return unless current_user
 
-    @community ||= current_user.community
+      @community ||= current_user.community
+    end
   end
 
   def current_community
     @community
+  end
+
+  def offline_community?
+    Rails.application.config.offline_mode
   end
 
   def user_not_authorized

@@ -2,8 +2,10 @@
 class HomeController < ApplicationController
   before_action :set_theme, except: :community_search_index
 
+  skip_before_action :authenticate_user!, if: :offline_community?
+
   def index
-    if current_user.super_admin
+    if current_user&.super_admin
       raise Pundit::NotAuthorizedError
     end
   end
