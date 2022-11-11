@@ -1,9 +1,8 @@
 name: push-docker-production
 
 on:
-  push:
-    branches:
-      - master
+  release:
+    types: [created]
 
 jobs:
   build-push-docker:
@@ -18,10 +17,30 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: Build and push
+      - name: Build and push latest
         uses: docker/build-push-action@v3
         with:
           context: "{{defaultContext}}:rails"
           push: true
           platforms: linux/amd64,linux/arm64,linux/arm/v7
           tags: terrastories/terrastories:latest
+      - name: Get the Ref
+        id: get-ref
+        uses: ankitvgupta/ref-to-tag-action@master
+        with:
+          ref: ${{ github.ref }}
+          head_ref: ${{ github.head_ref }}
+      - name: Build and push version
+        uses: docker/build-push-action@v3
+        with:
+          context: "{{defaultContext}}:rails"
+          push: true
+          platforms: linux/amd64,linux/arm64,linux/arm/v7
+          tags: "terrastories/terrastories:${{steps.get-ref.outputs.tag}}"
+      - name: Docker Hub Description
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          repository: terrastories/terrastories
+          short-description: 'Tool to generate icons for use in Mapeo, or any other tool. Currently, the tool generates icons in an SVG format ready to be used in a Mapeo configuration.'
