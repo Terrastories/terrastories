@@ -19,7 +19,6 @@ class SpeakerPolicy < ApplicationPolicy
   end
 
   def show?
-    return false if user.viewer?
     return false if user.super_admin
     true
   end
