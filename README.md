@@ -1,5 +1,7 @@
 ![Terrastories](https://www.amazonteam.org/wp-content/uploads/2018/09/logo-1170x164.png)
 
+![Docker Hub Image](https://github.com/terrastories/terrastories/actions/push-docker-production.yml/badge.svg)
+
 ## Table of Contents
 
 1. [About Terrastories](#about-terrastories)
