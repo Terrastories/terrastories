@@ -1,4 +1,4 @@
-<div class="welcome" style="background-image: url(<%= @theme.background_img.attached? ? url_for(@theme.background_img) : asset_path('welcome-bg.jpg') %>)" >
+<div class="welcome" style="background-image: url('<%= @community.background_img.attached? ? url_for(@community.background_img) : asset_path('welcome-bg.jpg') %>')" >
   <div class="welcome-card">
     <%= image_tag 'logocombo.svg', alt: 'Terrastories' %>
     <% if user_signed_in? %>
@@ -26,12 +26,10 @@
       <%= application_locales %>
     </div>
   </div>
-  <% if @theme %>
+  <% if @community.sponsor_logos.attached? %>
     <div class="logo">
-      <% if @theme %>
-        <% @theme.sponsor_logos.each do |logo| %>
-          <%= image_tag logo %>
-        <% end %>
+      <% @community.sponsor_logos.each do |logo| %>
+        <%= image_tag logo %>
       <% end %>
     </div>
   <% end %>

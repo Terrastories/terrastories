@@ -3,12 +3,11 @@ class Theme < ApplicationRecord
 
   belongs_to :community, touch: true
 
-  has_one_attached :background_img
-  has_many_attached :sponsor_logos
-  after_initialize :set_map_defaults
+  # TODO: Once Feature: split_settings is enabled for everyoen
+  # we can remove nested attributes.
+  accepts_nested_attributes_for :community
 
-  validates :background_img, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'] }
-  validates :sponsor_logos, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'], size_range: 1..5.megabytes }
+  after_initialize :set_map_defaults
 
   validates :mapbox_access_token, presence: true, unless: -> { mapbox_style_url.blank? }
   validates :mapbox_style_url, presence: true, unless: -> { mapbox_access_token.blank? }

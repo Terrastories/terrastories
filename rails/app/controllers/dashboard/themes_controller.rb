@@ -36,7 +36,6 @@ module Dashboard
 
     def theme_params
       params.require(:theme).permit(
-        :background_img,
         :mapbox_style_url,
         :mapbox_access_token,
         :mapbox_3d,
@@ -50,7 +49,11 @@ module Dashboard
         :pitch,
         :bearing,
         :map_projection,
-        sponsor_logos: []
+        community_attributes: [
+          :id,
+          :background_img,
+          sponsor_logos: []
+        ]
       )
     end
   end

@@ -7,6 +7,57 @@
 <% end %>
 
 <%= form_with model: @community, url: community_settings_path, data: {remote: false}, class: "form aligned" do |f| %>
+  <% if Flipper.enabled?(:split_settings, @community) %>
+    <h4><%= t("dashboard.theme.welcome_screen") %></h4>
+
+    <div class="two-columns">
+      <div class="two-columns-left column-fixed-400">
+          <%= f.label :background_img %>
+          <p><%= t("dashboard.theme.background_img") %></p>
+          <%= f.file_field :background_img %>
+      </div>
+      <div class="two-columns-right">
+        <% if @community.background_img.attached? %>
+          <span class="media-with-hover-controls">
+            <% if @community.background_img.variable? %>
+            <%= image_tag(@community.background_img.variant(resize_to_limit: [nil, 300])) %>
+            <% else %>
+            <%= image_tag(@community.background_img, width: 300) %>
+            <% end %>
+            <span class="overlay"></span>
+            <%= link_to background_img_theme_path, class: "delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm")}, remote: true do %>
+              <svg><use href="#icon-cancel"></svg>
+            <% end %>
+          </span>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="two-columns">
+      <div class="two-columns-left column-fixed-400">
+        <div class="input-group">
+          <%= f.label :sponsor_logos %>
+          <p><%= t("dashboard.theme.sponsor_logos") %></p>
+          <%= f.file_field :sponsor_logos, multiple: true %>
+        </div>
+      </div>
+
+      <div class="two-columns-right with-images-list">
+        <% if @community.sponsor_logos.any? %>
+          <% @community.sponsor_logos.each do |img| %>
+            <span class="media-with-hover-controls">
+              <%= image_tag(img, width: 150) %>
+              <span class="overlay"></span>
+              <%= link_to delete_sponsor_logo_theme_url(img.signed_id), class: "delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm")}, remote: true do %>
+                <svg><use href="#icon-cancel"></svg>
+              <% end %>
+            </span>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
   <% if Flipper.enabled?(:public_communities, @community) %>
     <%# Community Public %>
     <h4><%= t("dashboard.community.make_public") %></h4>

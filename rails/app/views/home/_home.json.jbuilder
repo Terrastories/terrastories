@@ -28,19 +28,20 @@ if current_user
   end
 end
 json.logo_path image_path("logocombo.svg")
-json.mapbox_access_token @theme.mapbox_token
-json.mapbox_style @theme.mapbox_style
-json.mapbox_3d @theme.mapbox_3d
-json.map_projection @theme.map_projection
-json.use_local_map_server @theme.offline_mode?
-json.center_lat @theme.center_lat
-json.center_long @theme.center_long
-json.sw_boundary_lat @theme.sw_boundary_lat
-json.sw_boundary_long @theme.sw_boundary_long
-json.ne_boundary_lat @theme.ne_boundary_lat
-json.ne_boundary_long @theme.ne_boundary_long
-json.zoom @theme.zoom.to_f
-json.pitch @theme.pitch.to_f
-json.bearing @theme.bearing
+
+json.mapbox_access_token @community.theme.mapbox_token
+json.mapbox_style @community.theme.mapbox_style
+json.mapbox_3d @community.theme.mapbox_3d
+json.map_projection @community.theme.map_projection
+json.use_local_map_server @community.theme.offline_mode?
+json.center_lat @community.theme.center_lat
+json.center_long @community.theme.center_long
+json.sw_boundary_lat @community.theme.sw_boundary_lat
+json.sw_boundary_long @community.theme.sw_boundary_long
+json.ne_boundary_lat @community.theme.ne_boundary_lat
+json.ne_boundary_long @community.theme.ne_boundary_long
+json.zoom @community.theme.zoom.to_f
+json.pitch @community.theme.pitch.to_f
+json.bearing @community.theme.bearing
 json.marker_image_url image_url("place-marker.png")
 json.marker_cluster_image_url image_url("place-marker-cluster.png")

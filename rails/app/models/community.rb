@@ -1,4 +1,7 @@
 class Community < ApplicationRecord
+  has_one_attached :background_img
+  has_many_attached :sponsor_logos
+
   has_many :users, dependent: :nullify
   has_many :places, dependent: :destroy
   has_many :stories, dependent: :destroy
@@ -9,6 +12,9 @@ class Community < ApplicationRecord
   after_create :create_theme, if: -> { theme.nil? }
 
   accepts_nested_attributes_for :users, limit: 1
+
+  validates :background_img, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'] }
+  validates :sponsor_logos, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'], size_range: 1..5.megabytes }
 
   def associated_updated_at
     [users.order(updated_at: :desc).first,
