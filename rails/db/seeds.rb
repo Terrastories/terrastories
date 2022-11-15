@@ -19,11 +19,6 @@ end
 example_community = Community.find_or_create_by!(name: "Ruby for Good") do |community|
   community.country = "Global"
   community.locale = "en"
-  community.theme = Theme.create! do |theme|
-    theme.active = true
-    theme.sponsor_logos.attach(io: File.open('app/assets/images/rubyforgood.png'), filename: 'rubyforgood.png')
-    theme.background_img.attach(io: File.open('app/assets/images/welcome-bg.jpg'), filename: 'welcome-bg.jpg')
-  end
 end
 
 # Create Places
