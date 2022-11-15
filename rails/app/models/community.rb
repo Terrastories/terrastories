@@ -4,15 +4,11 @@ class Community < ApplicationRecord
   has_many :stories, dependent: :destroy
   has_many :speakers, dependent: :destroy
 
-  belongs_to :theme, autosave: true, dependent: :destroy
+  has_one :theme, dependent: :destroy
 
-  after_initialize :create_theme, if: -> { theme.nil? }
+  after_create :create_theme, if: -> { theme.nil? }
 
   accepts_nested_attributes_for :users, limit: 1
-
-  def create_theme
-    build_theme
-  end
 
   def associated_updated_at
     [users.order(updated_at: :desc).first,

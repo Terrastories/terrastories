@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_15_184637) do
+ActiveRecord::Schema.define(version: 2022_11_15_190426) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -166,6 +166,7 @@ ActiveRecord::Schema.define(version: 2022_11_15_184637) do
     t.decimal "bearing", precision: 10, scale: 6
     t.boolean "mapbox_3d", default: false
     t.integer "map_projection", default: 0
+    t.bigint "community_id", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -196,4 +197,5 @@ ActiveRecord::Schema.define(version: 2022_11_15_184637) do
   add_foreign_key "curriculum_stories", "curriculums"
   add_foreign_key "curriculum_stories", "stories"
   add_foreign_key "curriculums", "users"
+  add_foreign_key "themes", "communities"
 end

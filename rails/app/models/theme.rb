@@ -1,9 +1,10 @@
 class Theme < ApplicationRecord
   include MapConfigurable
 
+  belongs_to :community, touch: true
+
   has_one_attached :background_img
   has_many_attached :sponsor_logos
-  has_one :community
   after_initialize :set_map_defaults
 
   validates :background_img, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'] }
@@ -67,7 +68,7 @@ class Theme < ApplicationRecord
     errors.add(:ne_boundary_long, :invalid_longitude) unless (-180..180).include?(ne_boundary_long)
   end
 
-  enum map_projection: [:mercator, :albers, :equalEarth, :equirectangular, :lambertConformalConic, :naturalEarth, :winkelTripel, :globe] 
+  enum map_projection: [:mercator, :albers, :equalEarth, :equirectangular, :lambertConformalConic, :naturalEarth, :winkelTripel, :globe]
 end
 
 # == Schema Information
@@ -91,4 +92,9 @@ end
 #  zoom                :decimal(10, 6)
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
+#  community_id        :bigint           not null
+#
+# Foreign Keys
+#
+#  fk_rails_...  (community_id => communities.id)
 #
