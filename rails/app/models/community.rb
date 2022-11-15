@@ -48,7 +48,6 @@ end
 #  slug       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  theme_id   :integer
 #
 # Indexes
 #
