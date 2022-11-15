@@ -16,17 +16,6 @@ class Community < ApplicationRecord
   validates :background_img, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'] }
   validates :sponsor_logos, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'], size_range: 1..5.megabytes }
 
-  def associated_updated_at
-    [users.order(updated_at: :desc).first,
-      places.order(updated_at: :desc).first,
-      stories.order(updated_at: :desc).first,
-      speakers.order(updated_at: :desc).first,
-      theme, self]
-      .compact
-      .map { |x| x.updated_at  }
-      .max
-  end
-
   # Flipper Feature Groups
   # See config/initializers/flipper.rb to view registered groups
   def feature_groups
