@@ -49,6 +49,7 @@ end
 #  locale     :string
 #  name       :string
 #  public     :boolean          default(FALSE), not null
+#  slug       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  theme_id   :integer
@@ -56,4 +57,5 @@ end
 # Indexes
 #
 #  index_communities_on_public  (public)
+#  index_communities_on_slug    (slug)
 #
