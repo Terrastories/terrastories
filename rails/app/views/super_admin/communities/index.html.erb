@@ -3,25 +3,26 @@
 <% end %>
 
 <% content_for :main_heading do %>
-<div class="columns">
-  <h2><%= t("communities") %></h2>
-  <%= link_to t("dashboard.actions.new"), new_community_path, class: "btn" if policy(:community).new? %>
+  <div class="columns">
+    <h2><%= t("communities") %></h2>
+    <%= link_to t("dashboard.actions.new"), new_community_path, class: "btn" if policy(:community).new? %>
   </div>
-    <%= form_with url: communities_path, method: :get, class: "filters", local: true do |f| %>
+
+  <%= form_with url: communities_path, method: :get, class: "filters", local: true do |f| %>
     <div>
     <%= f.label :name %>
     <%= f.text_field :name, value: params[:name] %>
     </div>
+    <div>
+    <%= f.label :sort_by, t("sort.label") %>
+    <%= f.select :sort_by, CommunitiesPage::SORTABLE_BY.map { |s| [t("sort.#{s}"), s] }, selected: @page.meta[:sort_by] %>
+    </div>
+    <div>
+    <%= f.label :sort_dir, t("sort.direction") %>
+    <%= f.select :sort_dir, %w(asc desc), selected: @page.meta[:sort_dir] %>
+    </div>
     <%= f.submit t("search.label"), name: nil %>
   <% end %>
-  <div>
-    <%= t("sort.label") %>
-    <%= link_to t("sort.updated_at"), communities_url(request.query_parameters.merge(sort_by: "updated_at", sort_dir: "desc")) %>
-    |
-    <%= link_to t("sort.created_at"), communities_url(request.query_parameters.merge(sort_by: "created_at", sort_dir: "desc")) %>
-    |
-    <%= link_to t("sort.name"), communities_url(request.query_parameters.merge(sort_by: "name", sort_dir: "asc")) %>
-  </div>
 <% end %>
 
 <div class="infinite-scroll">

@@ -1,19 +1,13 @@
 class CommunitiesPage < Page
+  SORTABLE_BY = %w(name created_at updated_at)
+
   def initialize(meta = {})
     @meta = meta
 
-    unless %w(name created_at updated_at).include? @meta[:sort_by]
-      @meta[:sort_by] = nil
-    end
-
-    unless %w(asc desc).include? @meta[:sort_dir]
-      @meta[:sort_dir] = nil
-    end
-
     @meta[:limit] ||= 20
     @meta[:offset] ||= 0
-    @meta[:sort_by] ||= "updated_at"
-    @meta[:sort_dir] ||= "desc"
+    @meta[:sort_by] = sort_by
+    @meta[:sort_dir] = sort_dir
   end
 
   def relation
@@ -21,6 +15,16 @@ class CommunitiesPage < Page
 
     communities = communities.where("name ILIKE :name", name: "%#{@meta[:name]}%") if @meta[:name].present?
 
-    communities.order(@meta[:sort_by] => @meta[:sort_dir])
+    communities.order(sort_by => sort_dir)
+  end
+
+  private
+
+  def sort_by
+    SORTABLE_BY.include?(@meta[:sort_by]) ? @meta[:sort_by] : "updated_at"
+  end
+
+  def sort_dir
+    %w(asc desc).include?(@meta[:sort_dir]) ? @meta[:sort_dir] : "desc"
   end
 end

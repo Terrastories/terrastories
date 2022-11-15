@@ -58,7 +58,8 @@ en:
     no_results: There are no %{resources} available.
     no_nested_results: This %{resource} has no %{resources}.
   sort:
-    label: "Sort by:"
+    label: Sort by
+    direction: Sort dir
     name: alphabetical
     created_at: date created
     updated_at: date last updated
