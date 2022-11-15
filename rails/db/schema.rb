@@ -50,8 +50,8 @@ ActiveRecord::Schema.define(version: 2022_11_11_181730) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "theme_id"
-    t.boolean "beta", default: false
     t.boolean "public", default: false, null: false
+    t.boolean "beta", default: false
     t.index ["public"], name: "index_communities_on_public"
   end
 

@@ -41,9 +41,9 @@ class StoryPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      if user.super_admin || user.admin? || user.editor?
+      if user&.super_admin || user&.admin? || user&.editor?
         scope.all
-      elsif user.member?
+      elsif user&.member?
         scope.where(permission_level: [:anonymous, :user_only])
       else
         scope.where(permission_level: :anonymous)

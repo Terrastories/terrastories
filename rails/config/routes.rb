@@ -46,5 +46,11 @@ Rails.application.routes.draw do
     root to: 'welcome#index'
     get 'home', to: 'home#index', as: "home_map"
     get "search", to: "home#community_search_index", as: "community_search"
+
+    get :onboard, to: "onboard#start", as: :start_onboarding
+    namespace :onboard do
+      resource :community, controller: :community, only: [:show, :create], as: :community
+      resource :account, controller: :account, only: [:show, :create], as: :admin_account
+    end
   end
 end

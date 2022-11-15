@@ -45,7 +45,7 @@ class SpeakerPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      if user.viewer?
+      if Rails.application.config.offline_mode || user.viewer?
         scope.joins(:stories).where(stories: {permission_level: :anonymous}).distinct
       elsif user.member?
         scope.joins(:stories).where(stories: {permission_level: [:anonymous, :user_only]}).distinct

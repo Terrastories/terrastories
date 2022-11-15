@@ -8,3 +8,7 @@ if ENV["USE_LOCAL_MAP_SERVER"].present?
   # and override default map style
   Rails.application.config.default_map_style = ENV["OFFLINE_MAP_STYLE"]
 end
+
+if Rails.env.offline?
+  Rails.application.config.offline_mode = true
+end
