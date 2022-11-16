@@ -19,6 +19,7 @@ end
 example_community = Community.find_or_create_by!(name: "Ruby for Good") do |community|
   community.country = "Global"
   community.locale = "en"
+  community.sponsor_logos.attach(io: File.open('app/assets/images/rubyforgood.png'), filename: 'rubyforgood.png')
   community.background_img.attach(io: File.open('app/assets/images/welcome-bg.jpg'), filename: 'welcome-bg.jpg')
 end
 
