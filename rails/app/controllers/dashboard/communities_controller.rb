@@ -17,7 +17,9 @@ module Dashboard
     def community_params
       params.require(:community).permit(
         :beta,
-        :public
+        :public,
+        :background_img,
+        sponsor_logos: []
       )
     end
   end
