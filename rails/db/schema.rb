@@ -196,5 +196,4 @@ ActiveRecord::Schema.define(version: 2022_11_15_194753) do
   add_foreign_key "curriculum_stories", "curriculums"
   add_foreign_key "curriculum_stories", "stories"
   add_foreign_key "curriculums", "users"
-  add_foreign_key "themes", "communities"
 end

@@ -93,7 +93,3 @@ end
 #  updated_at          :datetime         not null
 #  community_id        :bigint           not null
 #
-# Foreign Keys
-#
-#  fk_rails_...  (community_id => communities.id)
-#
