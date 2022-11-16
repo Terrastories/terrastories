@@ -28,7 +28,7 @@
               <%= image_tag(@theme.community.background_img, width: 300) %>
               <% end %>
               <span class="overlay"></span>
-              <%= link_to background_img_theme_path, class: "delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm")}, remote: true do %>
+              <%= link_to background_img_community_settings_path, class: "delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm")}, remote: true do %>
                 <svg><use href="#icon-cancel"></svg>
               <% end %>
             </span>
@@ -51,7 +51,7 @@
               <span class="media-with-hover-controls">
                 <%= image_tag(img, width: 150) %>
                 <span class="overlay"></span>
-                <%= link_to delete_sponsor_logo_theme_url(img.signed_id), class: "delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm")}, remote: true do %>
+                <%= link_to delete_sponsor_logo_community_settings_url(img.signed_id), class: "delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm")}, remote: true do %>
                   <svg><use href="#icon-cancel"></svg>
                 <% end %>
               </span>

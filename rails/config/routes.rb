@@ -7,7 +7,10 @@ Rails.application.routes.draw do
       get :search, to: "search#index"
       get :profile, to: "users#profile", as: :user_profile
 
-      resource :community, only: [:show, :update], as: :community_settings
+      resource :community, only: [:show, :update], as: :community_settings do
+        delete :background_img, action: :delete_background_img
+        delete '/sponsor_logo/:id/delete', action: :delete_sponsor_logo, as: :delete_sponsor_logo
+      end
       resources :users do
         delete :photo, action: :delete_photo
       end
@@ -21,10 +24,7 @@ Rails.application.routes.draw do
       resources :stories do
         delete '/media/:id/delete', action: :delete_media, as: :delete_media
       end
-      resource :theme, only: [:update, :edit, :show] do
-        delete :background_img, action: :delete_background_img
-        delete '/sponsor_logo/:id/delete', action: :delete_sponsor_logo, as: :delete_sponsor_logo
-      end
+      resource :theme, only: [:update, :edit, :show]
       resource :import, only: [:show, :create] do
         post :preview
       end

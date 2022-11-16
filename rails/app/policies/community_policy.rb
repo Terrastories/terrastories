@@ -34,6 +34,10 @@ class CommunityPolicy < ApplicationPolicy
     edit?
   end
 
+  def delete_attachments?
+    user.admin?
+  end
+
   def destroy?
     user.super_admin
   end
