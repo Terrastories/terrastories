@@ -25,7 +25,7 @@ es:
     zh: Chino
 
   # Front End Translations
-  admin_page: "Página de administración"
+  member_dashboard: "Tablero de Miembros"
   alphabetical: A-Z
   back_to_map: "Volver al Mapa"
   back_to_welcome: "Volver a la página de inicio"

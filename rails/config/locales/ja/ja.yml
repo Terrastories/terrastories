@@ -25,7 +25,7 @@ ja:
     zh: 中国語
 
   # Front End Translations
-  admin_page: "管理ページ"
+  member_dashboard: "管理ページ"
   alphabetical: A-Z
   back_to_map: "マップに戻る"
   back_to_welcome: "入り口に戻る"
