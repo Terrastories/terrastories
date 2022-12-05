@@ -1,5 +1,7 @@
 # Code of conduct
 
+*This code of conduct is attributed to Ruby for Good, where Terrastories was first created. We continue to stand by this code of conduct although some of the details are no longer relevant to Terrastories.*
+
 Like the technical community as a whole, the Ruby for Good team and community is made up of a mixture of professionals and volunteers from all over the world, working on every aspect of the mission - including mentorship, teaching, and connecting people.
 
 Diversity is one of our huge strengths, but it can also lead to communication issues and unhappiness. To that end, we have a few ground rules that we ask people to adhere to when they're participating within this community and project. These rules apply equally to founders, mentors and those seeking help and guidance.
@@ -22,7 +24,6 @@ Be careful in the words that you choose. We are a community of professionals, an
 - Unwelcome sexual attention.
 - Advocating for, or encouraging, any of the above behavior.
 - Repeated harassment of others. In general, if someone asks you to stop, then stop.
-- If you believe someone is violating the code of conduct, we ask that you report it by emailing [Teresa Finn](mailto:teresa@rubyforgood.org) or [Kalimar Maia](mailto:kalimar@rubyforgood.org). Any email received will be kept confidential.
 
 When we disagree, try to understand why. Disagreements, both social and technical, happen all the time and Ruby is no exception. It is important that we resolve disagreements and differing views constructively. Remember that we're different. The strength of Ruby comes from its varied community, people from a wide range of backgrounds. Different people have different perspectives on issues. Being unable to understand why someone holds a viewpoint doesn't mean that they're wrong. Don't forget that it is human to err and blaming each other doesn't get us anywhere, rather offer to help resolving issues and to help learn from mistakes.
 

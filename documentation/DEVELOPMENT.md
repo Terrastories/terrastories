@@ -2,11 +2,13 @@
 
 ## Table of Contents
 
-1. [Setting up your development environment](#setting-up-your-development-environment)
-
-2. [Back up and restore Terrastories database](#backup-and-restore-the-Terrastories-database)
-
-3. [Running Terrastories in offline mode](#running-terrastories-in-offline-mode)
+- [Developing with Terrastories](#developing-with-terrastories)
+  - [Table of Contents](#table-of-contents)
+  - [Setting up your Development Environment](#setting-up-your-development-environment)
+    - [ESLint](#eslint)
+    - [Tests](#tests)
+  - [Backup and restore the Terrastories database](#backup-and-restore-the-terrastories-database)
+  - [Running Terrastories in Offline Mode](#running-terrastories-in-offline-mode)
 
 ## Setting up your Development Environment
 
@@ -14,7 +16,7 @@ Most developer contributions will be focused on the rails app. Because this proj
 docker, we already have a uniform ruby/rails development environment in our rails docker
 image. Any time you need to run a rails command you should do so from a running docker
 container to take advantage of this consistent environment. Use the following command to
-open a bash console on the rails container:
+open a bash console on the rails container (use `localweb` instead of `web` if you are developing for offline):
 
 ```
 $ docker-compose exec web /bin/bash
@@ -91,7 +93,5 @@ To start Terrastories with the offline profile, run
 ```bash
 docker compose --profile offline up
 ```
-
-In order to get the local tileserver map running, you will also need to generate an `MBtiles` dataset and place it in `tileserver/data/mbtiles/` with the filename `terrastories.mbtiles`, along with any fonts, sprites used in the map, and a `style.json` file that defines the appearance of the tiles. Please see the [customization guide](CUSTOMIZATION.md) for more information.
 
 For more information on running Terrastories in an offline environment, see [SETUP-OFFLINE.md](SETUP-OFFLINE.md)
