@@ -10,9 +10,9 @@ The Terrastories interface is principally composed of an interactive map and a s
 
 By means of a content management system, users with the right level of access can also explore, add, edit, remove, and import stories, or set them as restricted so that they are viewable only with a special login. Users can design and customize the content of the interactive map entirely.
 
-Learn more about Terrastories at [https://terrastories.app/](https://terrastories.app/). 
+Learn more about Terrastories on [our website](https://terrastories.app/). 
 
-*The remainder of the documentation on Github is for developers. For documentation on using or installing Terrastories, please visit the Terrastories Support Materials at [https://docs.terrastories.app/](https://docs.terrastories.app/)*
+*The remainder of the documentation on Github is for developers. For documentation on using or installing Terrastories, please visit the Terrastories Support Materials at **[https://docs.terrastories.app/](https://docs.terrastories.app/)***
 
 ![](documentation/terrastories.gif)
 ###### *Terrastories: Matawai Konde 1.0 (October 2018)*
@@ -54,7 +54,7 @@ If you are developing with an online (Mapbox) map, you will need to provide an a
 Review more granular setup options in the [Setup](documentation/SETUP.md) documentation.
 ## Developing with Terrastories
 
-To find out how to develop with the Terrastories app, read our [developer guide](documentation/DEVELOPMENT.md) and check out our [Developer Community](https://terrastories.io/community/) pages on the Terrastories website.
+To find out how to develop with the Terrastories app, read our [developer guide](documentation/DEVELOPMENT.md) and check out our [Developer Community](https://terrastories.app/community/) pages on the Terrastories website.
 
 For a general overview of the application as well as a Vision statement and Roadmap, please see our [Wiki](https://github.com/Terrastories/terrastories/wiki).
 
