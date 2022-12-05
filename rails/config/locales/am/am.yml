@@ -25,7 +25,7 @@ am:
     zh: ቻይንኛ
 
   # Front End Translations
-  admin_page: "የአስተዳዳሪ ገጽ"
+  member_dashboard: "የአስተዳዳሪ ገጽ"
   alphabetical: A-Z
   back_to_map: "ወደ ካርታ ተመለስ"
   back_to_welcome: "ወደ የእንኳን ደህና መጡ ገጽ ተመለስ"

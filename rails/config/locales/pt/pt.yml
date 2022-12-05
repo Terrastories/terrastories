@@ -25,7 +25,7 @@ pt:
     zh: Chinês
 
   # Front End Translations
-  admin_page: "Página de administração"
+  member_dashboard: "Painel de Membros"
   alphabetical: "A-Z"
   back_to_map: "Voltar ao mapa"
   back_to_welcome: "Voltar para página inicial"

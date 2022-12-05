@@ -27,7 +27,7 @@ pu:
     pu: ਪੰਜਾਬੀ
 
   # Front End Translations
-  admin_page: "ਪ੍ਰਬੰਧਕ ਪੰਨਾ"
+  member_dashboard: "ਪ੍ਰਬੰਧਕ ਪੰਨਾ"
   alphabetical: A-Z
   back_to_map: "ਨਕਸ਼ੇ 'ਤੇ ਵਾਪਸ"
   back_to_welcome: "ਵਾਪਸ ਸੁਆਗਤ ਪੰਨੇ 'ਤੇ"

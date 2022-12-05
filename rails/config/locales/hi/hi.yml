@@ -27,7 +27,7 @@ hi:
     pu: पंजाबी
 
   # Front End Translations
-  admin_page: "व्यवस्थापक पृष्ठ"
+  member_dashboard: "व्यवस्थापक पृष्ठ"
   alphabetical: वर्णमाला क्रम (A-Z)
   back_to_map: "मानचित्र पर वापस जाएं"
   back_to_welcome: "स्वागत पृष्ठ पर वापस जाएं"
