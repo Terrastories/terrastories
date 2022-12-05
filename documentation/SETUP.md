@@ -6,7 +6,8 @@
   - [Table of Contents](#table-of-contents)
   - [Setup Docker](#setup-docker)
   - [Setup the application](#setup-the-application)
-  - [Run the application](#run-the-application)
+  - [Build the application using our script (option 1)](#build-the-application-using-our-script-option-1)
+  - [Build the application step by step (option 2)](#build-the-application-step-by-step-option-2)
   - [Using the application regularly](#using-the-application-regularly)
   - [Setup for offline](#setup-for-offline)
   - [Having troubles? Check our common errors \& gotchas](#having-troubles-check-our-common-errors--gotchas)
@@ -31,37 +32,59 @@ Setup instructions for Docker: https://docs.docker.com/engine/install/
 
     *Note: if you are developing for offline (e.g. using TileServer-GL to serve tiles, you will not need to provide a Mapbox access token.*
 
-3. Open your terminal and navigate to the terrastories repository and run:
+## Build the application using our script (option 1)
 
-    ```
-    docker compose --profile dev build
-    ```
+Run
+   ```sh
+   $ ./bin/setup
+   ```
+and follow the prompts.
 
-    (Or, run `docker compose --profile offline build` if you are developing for offline.)
+Upon completion you should see output similar to:
+
+  ```
+  Successfully tagged terrastories:latest
+  ```
+
+Next, within the terminal, run:
+
+  ```sh
+  $ docker compose --profile dev up
+  ```
+
+(If you are building for offline, run this command with `--profile offline` instead.)
+
+Enter `localhost:3000` into your internet browser to view the application.
+## Build the application step by step (option 2)
+
+Open your terminal and navigate to the terrastories repository and run:
+
+   ```sh
+  $ docker compose --profile dev build
+  ```
+
+(If you are building for offline, run this command with `--profile offline` instead.)
     
-    This will download and build all the docker images used in this project. Upon completion you should see output similar to:
+This will download and build all the docker images used in this project. Upon completion you should see output similar to:
 
-    ```
-    ...
-    Successfully tagged terrastories:latest
-    ```
+  ```
+  Successfully tagged terrastories:latest
+  ```
 
-## Run the application
+Next, within the terminal, run:
 
-Within the terminal, run:
-
-```
-docker compose --profile dev up
-```
+  ```sh
+  $ docker compose --profile dev up
+  ```
 
 If this fails, make sure all firewalls are turned off and you have a secure connection to the internet. If it continues to fail, check 
 the [common setup errors](#having-troubles-check-our-common-errors--gotchas) section. 
 
 For the first time running Terrastories, it may download some additional dependencies. Additionally, you have to create and seed a database. To do so, enter this command in a different terminal while Terrastories is running (and is listening at port 3000):
 
-```
-docker compose exec web bin/setup
-```
+  ```sh
+  $ docker compose exec web bin/setup
+  ```
 
 This command runs a setup script that lives in bin/setup, which does:
 
@@ -74,13 +97,15 @@ See the script file for the details.
 
 Enter `localhost:3000` into your internet browser to view the application.
 
+*Note: if you building Terrastories for a specific hosting environment, you may still need to take some additional steps like adding an alias to your hosts file, or downloading offline map tiles. For more information on setting up Terrastories for different hosting environments, see [this page](https://docs.terrastories.app/setting-up-a-terrastories-server/hosting-environments) on the Terrastories Support Materials website.*
+
 ## Using the application regularly
 
 Everytime you want to open and use the application, make sure you have docker desktop running and run the following command in the terminal: 
 
-```
-docker compose --profile dev up
-```
+  ```sh
+  $ docker compose --profile dev up
+  ```
 
 You can view the running application at `localhost:3000`
 
