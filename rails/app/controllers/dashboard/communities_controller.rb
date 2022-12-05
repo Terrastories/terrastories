@@ -19,6 +19,13 @@ module Dashboard
       head :ok
     end
 
+    def delete_display_image
+      @community = authorize current_user.community, :delete_attachments?
+      @community.display_image.purge
+
+      head :ok
+    end
+
     def delete_sponsor_logo
       @community = authorize current_user.community, :delete_attachments?
       logo_blob = @community.sponsor_logos.blobs.find_signed(params[:id])
@@ -34,6 +41,7 @@ module Dashboard
         :beta,
         :public,
         :background_img,
+        :display_image,
         sponsor_logos: []
       )
     end

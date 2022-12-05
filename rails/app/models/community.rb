@@ -1,4 +1,5 @@
 class Community < ApplicationRecord
+  has_one_attached :display_image
   has_one_attached :background_img
   has_many_attached :sponsor_logos
 

@@ -65,6 +65,29 @@
       <%= f.check_box :public, checked: current_community.public %>
       <%= f.label :public %>
     </div>
+
+    <div class="two-columns">
+      <div class="two-columns-left column-fixed-400">
+          <%= f.label :display_image %>
+          <p><%= t("dashboard.theme.display_image") %></p>
+          <%= f.file_field :display_image %>
+      </div>
+      <div class="two-columns-right">
+        <% if @community.display_image.attached? %>
+          <span class="media-with-hover-controls">
+            <% if @community.display_image.variable? %>
+            <%= image_tag(@community.display_image.variant(resize_to_limit: [nil, 300])) %>
+            <% else %>
+            <%= image_tag(@community.display_image, width: 300) %>
+            <% end %>
+            <span class="overlay"></span>
+            <%= link_to display_image_community_settings_path, class: "delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm")}, remote: true do %>
+              <svg><use href="#icon-cancel"></svg>
+            <% end %>
+          </span>
+        <% end %>
+      </div>
+    </div>
   <% end %>
 
   <%# Community Beta / Experimental Features %>

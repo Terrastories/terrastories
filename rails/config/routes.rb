@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
       resource :community, only: [:show, :update], as: :community_settings do
         delete :background_img, action: :delete_background_img
+        delete :display_image, action: :delete_display_image
         delete '/sponsor_logo/:id/delete', action: :delete_sponsor_logo, as: :delete_sponsor_logo
       end
       resources :users do
