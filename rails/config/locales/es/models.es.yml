@@ -11,6 +11,9 @@ es:
   helpers:
     label:
       visibility: Visibilidad
+      community:
+        background_img: Imagen de fondo
+        sponsor_logos: Logos del patrocinador
       speaker:
         one: Orador
         name: Nombre
