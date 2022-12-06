@@ -37,7 +37,7 @@
           <%= link_to t("users"), users_path, class: ("active-link" if params[:controller] == "dashboard/users") %>
           <%= link_to t("theme"), edit_theme_path, class: ("active-link" if params[:controller] == "dashboard/theme") %>
           <%= link_to t("import"), import_path, class: ("active-link" if params[:controller] == "dashboard/import") %>
-          <% if Flipper.enabled?(:public_communities, community) || Flipper.enabled?(:split_settings) %>
+          <% if Flipper.enabled?(:public_communities, community) || Flipper.enabled?(:split_settings, community) %>
             <%= link_to t("community.settings"), community_settings_path, class: ("active-link" if params[:controller] == "dashboard/community") %>
           <% end %>
         <% end %>

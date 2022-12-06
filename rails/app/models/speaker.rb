@@ -4,7 +4,7 @@ class Speaker < ApplicationRecord
 
   has_many :speaker_stories
   has_many :stories, through: :speaker_stories
-  belongs_to :community
+  belongs_to :community, touch: true
   belongs_to :birthplace, class_name: "Place",  optional: true
   has_one_attached :photo
 

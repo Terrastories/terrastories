@@ -9,54 +9,58 @@
 <%= render partial: "shared/form_errors", locals: {resource: @theme} %>
 
 <%= form_with model: @theme, method: :patch, multipart: true, class: "form", data: {remote: false}, url: theme_path, id: "themeForm", locale: true do |f| %>
-  <h4><%= t("dashboard.theme.welcome_screen") %></h4>
+  <% unless Flipper.enabled?(:split_settings, community) %>
+    <h4><%= t("dashboard.theme.welcome_screen") %></h4>
 
-  <div class="two-columns">
-    <div class="two-columns-left column-fixed-400">
-        <%= f.label :background_img %>
-        <p><%= t("dashboard.theme.background_img") %></p>
-        <%= f.file_field :background_img %>
-    </div>
-    <div class="two-columns-right">
-      <% if @theme.background_img.attached? %>
-        <span class="media-with-hover-controls">
-          <% if @theme.background_img.variable? %>
-          <%= image_tag(@theme.background_img.variant(resize_to_limit: [nil, 300])) %>
-          <% else %>
-          <%= image_tag(@theme.background_img, width: 300) %>
+    <%= f.fields_for :community do |c| %>
+      <div class="two-columns">
+        <div class="two-columns-left column-fixed-400">
+            <%= c.label :background_img %>
+            <p><%= t("dashboard.theme.background_img") %></p>
+            <%= c.file_field :background_img %>
+        </div>
+        <div class="two-columns-right">
+          <% if @theme.community.background_img.attached? %>
+            <span class="media-with-hover-controls">
+              <% if @theme.community.background_img.variable? %>
+              <%= image_tag(@theme.community.background_img.variant(resize_to_limit: [nil, 300])) %>
+              <% else %>
+              <%= image_tag(@theme.community.background_img, width: 300) %>
+              <% end %>
+              <span class="overlay"></span>
+              <%= link_to background_img_community_settings_path, class: "delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm")}, remote: true do %>
+                <svg><use href="#icon-cancel"></svg>
+              <% end %>
+            </span>
           <% end %>
-          <span class="overlay"></span>
-          <%= link_to background_img_theme_path, class: "delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm")}, remote: true do %>
-            <svg><use href="#icon-cancel"></svg>
-          <% end %>
-        </span>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="two-columns">
-    <div class="two-columns-left column-fixed-400">
-      <div class="input-group">
-        <%= f.label :sponsor_logos %>
-        <p><%= t("dashboard.theme.sponsor_logos") %></p>
-        <%= f.file_field :sponsor_logos, multiple: true %>
+        </div>
       </div>
-    </div>
 
-    <div class="two-columns-right with-images-list">
-      <% if @theme.sponsor_logos.any? %>
-        <% @theme.sponsor_logos.each do |img| %>
-          <span class="media-with-hover-controls">
-            <%= image_tag(img, width: 150) %>
-            <span class="overlay"></span>
-            <%= link_to delete_sponsor_logo_theme_url(img.signed_id), class: "delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm")}, remote: true do %>
-              <svg><use href="#icon-cancel"></svg>
+      <div class="two-columns">
+        <div class="two-columns-left column-fixed-400">
+          <div class="input-group">
+            <%= c.label :sponsor_logos %>
+            <p><%= t("dashboard.theme.sponsor_logos") %></p>
+            <%= c.file_field :sponsor_logos, multiple: true %>
+          </div>
+        </div>
+
+        <div class="two-columns-right with-images-list">
+          <% if @theme.community.sponsor_logos.any? %>
+            <% @theme.community.sponsor_logos.each do |img| %>
+              <span class="media-with-hover-controls">
+                <%= image_tag(img, width: 150) %>
+                <span class="overlay"></span>
+                <%= link_to delete_sponsor_logo_community_settings_url(img.signed_id), class: "delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm")}, remote: true do %>
+                  <svg><use href="#icon-cancel"></svg>
+                <% end %>
+              </span>
             <% end %>
-          </span>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
 
   <h4><%= t("map.settings") %></h4>
   <p><%= t("map.settings_description") %></p>

@@ -5,15 +5,11 @@ class WelcomeController < ApplicationController
     if offline_community?
       if Community.none?
         redirect_to start_onboarding_path
-      else
-        @theme = current_community.theme
       end
     else
       if current_user&.super_admin
         redirect_to super_admin_root_path
-      elsif current_community
-        @theme = current_community.theme
-      else
+      elsif current_community.nil?
         redirect_to community_search_path
       end
     end

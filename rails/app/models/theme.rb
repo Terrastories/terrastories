@@ -1,13 +1,13 @@
 class Theme < ApplicationRecord
   include MapConfigurable
 
-  has_one_attached :background_img
-  has_many_attached :sponsor_logos
-  has_one :community
-  after_initialize :set_map_defaults
+  belongs_to :community, touch: true
 
-  validates :background_img, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'] }
-  validates :sponsor_logos, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'], size_range: 1..5.megabytes }
+  # TODO: Once Feature: split_settings is enabled for everyoen
+  # we can remove nested attributes.
+  accepts_nested_attributes_for :community
+
+  after_initialize :set_map_defaults
 
   validates :mapbox_access_token, presence: true, unless: -> { mapbox_style_url.blank? }
   validates :mapbox_style_url, presence: true, unless: -> { mapbox_access_token.blank? }
@@ -67,7 +67,7 @@ class Theme < ApplicationRecord
     errors.add(:ne_boundary_long, :invalid_longitude) unless (-180..180).include?(ne_boundary_long)
   end
 
-  enum map_projection: [:mercator, :albers, :equalEarth, :equirectangular, :lambertConformalConic, :naturalEarth, :winkelTripel, :globe] 
+  enum map_projection: [:mercator, :albers, :equalEarth, :equirectangular, :lambertConformalConic, :naturalEarth, :winkelTripel, :globe]
 end
 
 # == Schema Information
@@ -91,4 +91,5 @@ end
 #  zoom                :decimal(10, 6)
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
+#  community_id        :bigint           not null
 #

@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :rememberable, :trackable, :validatable
   attr_accessor :login
 
-  belongs_to :community, optional: true
+  belongs_to :community, optional: true, touch: true
   has_one_attached :photo
 
   # Username is required for logging in with Devise. Email is optional.

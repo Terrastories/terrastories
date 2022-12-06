@@ -3,7 +3,7 @@ class Place < ApplicationRecord
   MEDIA_PATH = Rails.env.test? ? 'spec/fixtures/media' : 'import/media'
 
   require 'csv'
-  belongs_to :community
+  belongs_to :community, touch: true
   has_and_belongs_to_many :stories
   has_one_attached :photo
   has_one_attached :name_audio

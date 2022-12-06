@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_11_181730) do
+ActiveRecord::Schema.define(version: 2022_11_15_194753) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,10 +49,11 @@ ActiveRecord::Schema.define(version: 2022_11_11_181730) do
     t.string "country"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "theme_id"
-    t.boolean "public", default: false, null: false
     t.boolean "beta", default: false
+    t.boolean "public", default: false, null: false
+    t.string "slug"
     t.index ["public"], name: "index_communities_on_public"
+    t.index ["slug"], name: "index_communities_on_slug"
   end
 
   create_table "curriculum_stories", force: :cascade do |t|
@@ -164,6 +165,7 @@ ActiveRecord::Schema.define(version: 2022_11_11_181730) do
     t.decimal "bearing", precision: 10, scale: 6
     t.boolean "mapbox_3d", default: false
     t.integer "map_projection", default: 0
+    t.bigint "community_id", null: false
   end
 
   create_table "users", force: :cascade do |t|

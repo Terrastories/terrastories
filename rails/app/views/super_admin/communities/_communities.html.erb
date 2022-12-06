@@ -2,9 +2,9 @@
   <div class="row">
     <div class="cell">
       <%= link_to community.name, community, class: "row-link" %>
-      <div class="italics">
-        <%= t('dashboard.communities.last_updated_on', last_updated_on: community.associated_updated_at.to_date.to_formatted_s(:long)) %>
-      </div>
+      <i class="small">
+        <%= t('dashboard.communities.last_updated_on', last_updated_on: community.updated_at.to_date.to_formatted_s(:long)) %>
+      </i>
     </div>
     <div class="cell cell--15 cell--right">
       <%= link_to t("dashboard.actions.edit"), edit_community_path(community) %>

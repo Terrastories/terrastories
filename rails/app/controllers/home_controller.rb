@@ -1,7 +1,5 @@
 # The home controller
 class HomeController < ApplicationController
-  before_action :set_theme, except: :community_search_index
-
   skip_before_action :authenticate_user!, if: :offline_community?
 
   def index
@@ -26,11 +24,5 @@ class HomeController < ApplicationController
 
   helper_method def stories
     policy_scope(current_community.stories)
-  end
-
-  private
-
-  def set_theme
-    @theme ||= current_community.theme
   end
 end

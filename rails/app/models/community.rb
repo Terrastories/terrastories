@@ -1,29 +1,20 @@
 class Community < ApplicationRecord
+  has_one_attached :background_img
+  has_many_attached :sponsor_logos
+
   has_many :users, dependent: :nullify
   has_many :places, dependent: :destroy
   has_many :stories, dependent: :destroy
   has_many :speakers, dependent: :destroy
 
-  belongs_to :theme, autosave: true, dependent: :destroy
+  has_one :theme, dependent: :destroy
 
-  after_initialize :create_theme, if: -> { theme.nil? }
+  after_create :create_theme, if: -> { theme.nil? }
 
   accepts_nested_attributes_for :users, limit: 1
 
-  def create_theme
-    build_theme
-  end
-
-  def associated_updated_at
-    [users.order(updated_at: :desc).first,
-      places.order(updated_at: :desc).first,
-      stories.order(updated_at: :desc).first,
-      speakers.order(updated_at: :desc).first,
-      theme, self]
-      .compact
-      .map { |x| x.updated_at  }
-      .max
-  end
+  validates :background_img, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'] }
+  validates :sponsor_logos, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'], size_range: 1..5.megabytes }
 
   # Flipper Feature Groups
   # See config/initializers/flipper.rb to view registered groups
@@ -49,11 +40,12 @@ end
 #  locale     :string
 #  name       :string
 #  public     :boolean          default(FALSE), not null
+#  slug       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  theme_id   :integer
 #
 # Indexes
 #
 #  index_communities_on_public  (public)
+#  index_communities_on_slug    (slug)
 #

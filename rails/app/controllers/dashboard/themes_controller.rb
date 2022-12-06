@@ -17,26 +17,10 @@ module Dashboard
       end
     end
 
-    def delete_background_img
-      @theme = community.theme
-      @theme.background_img.purge
-
-      head :ok
-    end
-
-    def delete_sponsor_logo
-      @theme = community.theme
-      logo_blob = @theme.sponsor_logos.blobs.find_signed(params[:id])
-      logo_blob.attachments.each(&:purge)
-
-      head :ok
-    end
-
     private
 
     def theme_params
       params.require(:theme).permit(
-        :background_img,
         :mapbox_style_url,
         :mapbox_access_token,
         :mapbox_3d,
@@ -50,7 +34,11 @@ module Dashboard
         :pitch,
         :bearing,
         :map_projection,
-        sponsor_logos: []
+        community_attributes: [
+          :id,
+          :background_img,
+          sponsor_logos: []
+        ]
       )
     end
   end
