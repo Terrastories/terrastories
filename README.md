@@ -1,4 +1,4 @@
-![Terrastories](https://www.amazonteam.org/wp-content/uploads/2018/09/logo-1170x164.png)
+![Terrastories](documentation/logo.png)
 
 ## About Terrastories
 

@@ -94,4 +94,4 @@ To start Terrastories with the offline profile, run
 docker compose --profile offline up
 ```
 
-For more information on running Terrastories in an offline environment, see [SETUP-OFFLINE.md](SETUP-OFFLINE.md)
+For more information on running Terrastories in an offline environment, see [SETUP.md](SETUP.md#setup-for-offline)
