@@ -122,4 +122,4 @@ The process of setting up Terrastories for offline is similar to the standard de
 
 If you run into any problems getting the application to start, please check out a list of common errors & gotchas that we have put together [here](https://docs.google.com/document/d/1uSbQl56rAh3AA8Xm7IRZ8qepAMVN55ZOkAqQ8Kh423E/edit)!
 
-Additionally, feel free to join us in Slack [here](https://t.co/kUtI3lnpW1) and find us in the channel #terrastories :) You can also post an issue and label it with `question`. We will get back to you ASAP!
+Additionally, feel free to join us in Slack [here](https://rubyforgood.slack.com/join/shared_invite/zt-1kfeimohe-KL~~~6Lkof7G94_7Ojd_Hw#/shared-invite/email) and find us in the channel #terrastories :) You can also post an issue and label it with `question`. We will get back to you ASAP!
