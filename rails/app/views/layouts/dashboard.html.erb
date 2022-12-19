@@ -85,9 +85,9 @@
               <%= image_tag asset_path("speaker.png"), class: "img img--rounded img--micro" %>
             <% end %>
             <ul class="dropdown" aria-label="submenu">
-              <% if current_user.super_admin %>
+              <% if !current_user.super_admin %>
+                <li><%= link_to t("profile"), user_profile_path %></li>
               <% end %>
-              <li><%= link_to t("profile"), user_profile_path %></a></li>
               <li><%= link_to t("logout"), destroy_user_session_path, method: :delete  %></li>
             </ul>
           </div>
