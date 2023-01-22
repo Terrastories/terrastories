@@ -17,7 +17,7 @@ RUN apk --no-cache add --update \
     libc6-compat \
     imagemagick \
     ffmpeg && \
-    gem update --system --no-document && \
+    gem install rubygems-update -v '<3' --no-document && update_rubygems && \
     gem install bundler --no-document --force
 
 WORKDIR /api
