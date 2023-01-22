@@ -18,7 +18,7 @@ RUN apk --no-cache add --update \
     imagemagick \
     ffmpeg && \
     gem install rubygems-update -v '<3' --no-document && update_rubygems && \
-    gem install bundler --no-document --force
+    gem install bundler --no-document --force -v '~> 2.3.0'
 
 WORKDIR /api
 
