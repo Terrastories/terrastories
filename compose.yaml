@@ -26,6 +26,7 @@ services:
       - 3000:3000
     expose:
       - "3000"
+    command: sh -c "bundle exec rake tmp:cache:clear && bundle exec rake assets:precompile && bundle exec rails s -b '0.0.0.0'"
     environment:
       - CHECK_BUNDLER=yes
     volumes:
@@ -64,6 +65,7 @@ services:
       - 3030:3030
     expose:
       - "3030"
+    command: sh -c "bundle exec rake tmp:cache:clear && bundle exec rake assets:precompile && bundle exec rails s -b '0.0.0.0'"
     volumes:
       - bundler:/usr/local/bundle
       - ./rails:/api
