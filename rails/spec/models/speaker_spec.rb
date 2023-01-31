@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Speaker, type: :model do
+  let(:community) { create(:community) }
   let(:speaker) { build(:speaker, name: speaker_name, birthdate: speaker_birthdate) }
 
   describe 'attributes' do
@@ -51,28 +52,115 @@ RSpec.describe Speaker, type: :model do
     end
   end
 
-  describe '.get_birthplace' do
-    let(:community) { FactoryBot.create(:community) }
-    let!(:birthplace) { create(:place, name: 'Anapolis', community: community) }
+  describe "#csv_headers" do
+    it "defines importable CSV headers" do
+      expect(described_class.csv_headers).to eq(
+        %i[
+          name
+          birthdate
+          birthplace_id
+          speaker_community
+          photo
+        ]
+      )
+    end
+  end
 
-    subject { described_class.get_birthplace(birthplace_name, community) }
+  describe "#import" do
+    let(:mapped_headers) {{
+      name: "name",
+      birthdate: "birthdate",
+      birthplace_id: "birthplace"
+    }}
 
-    context 'when found birthplace_name' do
-      let(:birthplace_name) { 'Anapolis' }
-
-      it { is_expected.to eql birthplace }
+    it "raises HeaderMismatchError when mapped headers are missing" do
+      expect {
+        described_class.import(
+          file_fixture('speaker_without_photo.csv'),
+          community.id,
+          mapped_headers.merge({media: "other"})
+        )
+      }.to raise_error(Importable::FileImporter::HeaderMismatchError)
     end
 
-    context 'when birthplace_name is nil' do
-      let(:birthplace_name) { nil }
-
-      it { is_expected.to be_nil }
+    context "when CSV defines a column that is not mapped" do
+      it "successfully imports stories" do
+        expect {
+          described_class.import(file_fixture('speaker_with_photo.csv'), community.id, mapped_headers)
+        }.to change(described_class, :count).from(0).to(1)
+      end
     end
 
-    context 'when birthplace_name is unknown' do
-      let(:birthplace_name) { 'unknown' }
+    context "with associations" do
+      it "creates associated Birthplace (place)" do
+        described_class.import(file_fixture('speaker_without_photo.csv'), community.id, mapped_headers)
 
-      it { is_expected.to be_nil }
+        expect(community.places.find(described_class.last.birthplace_id)).to be
+      end
+    end
+
+    context "with media attachments" do
+      before do
+        stub_const("Importable::IMPORT_PATH", "spec/fixtures/media/")
+      end
+
+      let(:mapped_headers) {{
+        name: "name",
+        birthdate: "birthdate",
+        birthplace_id: "birthplace",
+        photo: "photo"
+      }}
+
+      context "but media file is not found" do
+        it "still successfully imports stories" do
+          expect {
+            described_class.import(
+              file_fixture('speaker_with_missing_photo.csv'),
+              community.id,
+              mapped_headers
+          )
+          }.to change(described_class, :count).from(0).to(1)
+        end
+      end
+
+      it "successfully imports stories with media" do
+        expect {
+          described_class.import(
+            file_fixture('speaker_with_photo.csv'),
+            community.id,
+            mapped_headers
+          )
+        }.to change(described_class, :count).from(0).to(1)
+        expect(described_class.last.photo).to be_attached
+      end
+    end
+
+    context "when CSV has duplicate rows" do
+      it "imports first row, returns rest as an array rows skipped" do
+        import = described_class.import(file_fixture('duplicated_speakers.csv'), community.id, mapped_headers)
+        expect(import[:successful]).to eq(1)
+        expect(import[:skipped_rows].length).to eq(1)
+      end
+    end
+
+    context "when Community already has a Story with the same name" do
+      before do
+        FactoryBot.create(:speaker, name: "Quirino", community: community)
+      end
+      it "does not add duplicate row, returns in duplicate array" do
+        import = described_class.import(file_fixture('speaker_without_photo.csv'), community.id, mapped_headers)
+        expect(import[:successful]).to eq(0)
+        expect(import[:duplicated_rows].length).to eq(1)
+      end
+    end
+
+    context "when row is invalid" do
+      it "returns invalid rows with errors" do
+        import = described_class.import(file_fixture('invalid speakers.csv'), community.id, mapped_headers)
+        expect(import[:successful]).to eq(1)
+        expect(import[:invalid_rows].length).to eq(1)
+        expect(import[:invalid_rows].first.keys).to eq([:attributes, :errors])
+      end
     end
   end
 

@@ -1,24 +1,32 @@
 module Importable
   extend ActiveSupport::Concern
+  require 'csv'
 
   EXCLUDE_ATTRIBUTES_FROM_IMPORT = []
   IMPORT_PATH = "import/media/"
 
   class_methods do
     def csv_headers
-      self.attribute_names + associated_attribute_names + attachment_attribute_names - excluded_attributes
+      database_attribute_names +
+      associated_attribute_names +
+      attachment_attribute_names
+    end
+
+    def database_attribute_names
+      # attribute_names returns strings; so we need to convert them to symbols
+      self.attribute_names.map(&:to_sym) - excluded_attributes
     end
 
     def associated_attribute_names
-      self.reflect_on_all_associations.select! { |r| [:has_many, :has_and_belongs_to_many].include?(r.macro) }.map { |a| a.name.to_s } - excluded_attributes
+      self.reflect_on_all_associations.select! { |r| [:has_many, :has_and_belongs_to_many].include?(r.macro) }.map { |a| a.name } - excluded_attributes
     end
 
     def attachment_attribute_names
-      self.reflect_on_all_attachments.map { |a| a.name.to_s } - excluded_attributes
+      self.reflect_on_all_attachments.map { |a| a.name } - excluded_attributes
     end
 
     def excluded_attributes
-      ["id", "community_id", "created_at", "updated_at"] + self::EXCLUDE_ATTRIBUTES_FROM_IMPORT
+      %i[id community_id created_at updated_at] + self::EXCLUDE_ATTRIBUTES_FROM_IMPORT
     end
 
     def import(filename, community_id, mapped_headers)
@@ -74,8 +82,10 @@ module Importable
 
     def parse
       CSV.foreach(@file, headers: true) do |row|
-
         attrs = Hash[row.headers.map { |h| @mapped_headers.key(h) }.zip(row.fields)]
+
+        # Remove nil keys (columns with values that do not have mapped headers)
+        attrs.reject! { |k, _| k.nil? }
 
         # dupes
         if @klass.exists?(attrs.first[0] => attrs.first[1], community_id: @community_id)
@@ -98,6 +108,7 @@ module Importable
       importable_rows.each do |row|
         attributes = row.dup
 
+        # Remove media from attributes to attach later.
         media = @klass.attachment_attribute_names.each_with_object({}) do |k, hash|
           value = attributes.delete(k)
           next if value.nil?
@@ -105,20 +116,29 @@ module Importable
           hash[k] = value
         end
 
-        associations = @klass.associated_attribute_names.each do |association|
-          values = attributes[association].split(",")
+        # Find or create has_many* relationships
+        @klass.associated_attribute_names.each do |association|
+          values = attributes[association].to_s.split(",")
           attributes[association] = values.map do |name|
-            association.singularize.classify.constantize.find_or_create_by(name: name, community_id: @community_id)
+            association.to_s.singularize.classify.constantize.find_or_create_by(name: name, community_id: @community_id)
           end
         end
 
-        if attributes["permission_level"].present?
-          attributes["permission_level"] = attributes["permission_level"].strip.blank? ? "anonymous" : "user_only"
+        # Find or create belongs_to relationships
+        @klass.reflect_on_all_associations.select! { |r| [:belongs_to].include?(r.macro) }.map { |r| [r.foreign_key.to_sym, r.class_name] }.each do |belongs_to_association, klass_name|
+          next unless attributes[belongs_to_association].present?
+          attributes[belongs_to_association] = klass_name.constantize.find_or_create_by(name: attributes[belongs_to_association].strip, community_id: @community_id).id
+        end
+
+        # Convert permissions if class headers includes `permission_level`
+        # NOTE(@lauramosher): this was pulled from the old implementation; as we think about more
+        # granulated story permissions, we may want to expand this conversion
+        if @mapped_headers.keys.include?(:permission_level)
+          attributes[:permission_level] = attributes[:permission_level]&.strip.blank? ? "anonymous" : "user_only"
         end
 
         record = @klass.new(attributes.merge(community_id: @community_id))
-
-        if record.valid?
+        if record.save
           media.each do |attachment, filenames|
             filenames.split(",").each do |filename|
               path = filename.dup.insert(0, IMPORT_PATH)
@@ -127,7 +147,6 @@ module Importable
               end
             end
           end
-          record.save
         else
           invalid_rows << {
             attributes: row,

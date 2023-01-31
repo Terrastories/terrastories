@@ -1,8 +1,6 @@
 class Place < ApplicationRecord
   include Importable
-  MEDIA_PATH = Rails.env.test? ? 'spec/fixtures/media' : 'import/media'
 
-  require 'csv'
   belongs_to :community, touch: true
   has_and_belongs_to_many :stories
   has_one_attached :photo
@@ -50,9 +48,9 @@ class Place < ApplicationRecord
     ).to_json
   end
 
-  EXCLUDE_ATTRIBUTES_FROM_IMPORT = [
-    "stories",
-    "interview_stories"
+  EXCLUDE_ATTRIBUTES_FROM_IMPORT = %i[
+    stories
+    interview_stories
   ]
 
   private
