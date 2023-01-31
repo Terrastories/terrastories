@@ -16,10 +16,6 @@ class Story < ApplicationRecord
   validates :place_ids, presence: true
   validates :media, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg', 'video/mpeg', 'video/mp4', 'video/quicktime', 'video/webm', 'audio/mpeg', 'audio/wav', 'audio/mp4', 'audio/m4a', 'audio/x-m4a', 'audio/x-aac', 'audio/x-flac'] }
 
-  def self.import_csv(file_contents, community)
-    ApplicationController.helpers.csv_importer(file_contents, self, community)
-  end
-
   def self.export_sample_csv
     headers = %w{name description speakers places interview_location date_interviewed interviewer language media permission_level }
 

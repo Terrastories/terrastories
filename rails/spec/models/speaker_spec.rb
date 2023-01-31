@@ -51,67 +51,6 @@ RSpec.describe Speaker, type: :model do
     end
   end
 
-  context '.import_csv' do
-    let(:community) { FactoryBot.create(:community) }
-
-    describe 'is tested against fixture file' do
-      it { expect(file_fixture('speaker_with_photo.csv').read).not_to be_empty }
-    end
-
-    describe 'delegates all attributes to decorator' do
-      let(:speaker) { described_class.last }
-      let(:csv) { CSV.parse(@fixture_data, headers: true).first }
-
-      before do
-        @fixture_data = file_fixture('speaker_with_photo.csv').read
-        described_class.import_csv(@fixture_data, community)
-      end
-
-      it { expect(speaker.name).to eq csv[0] }
-      it { expect(speaker.birthdate).to eq Date.strptime(csv[1], '%Y') }
-      it { expect(speaker.birthplace).to eq described_class.get_birthplace(csv[2], community) }
-      it { expect(speaker.photo.filename.to_s).to eq csv[3] }
-    end
-
-    describe 'does not fail when photo is not present' do
-      let(:speaker) { described_class.last }
-      let(:csv) { CSV.parse(@fixture_data, headers: true).first }
-
-      before do
-        @fixture_data = file_fixture('speaker_without_photo.csv').read
-        described_class.import_csv(@fixture_data, community)
-      end
-
-      it { expect(speaker.photo.attached?).to be_falsey }
-      it { expect(csv[3]).not_to be_nil }
-    end
-
-    describe 'displays error messages for failed imports' do
-
-    end
-    
-    describe "displays error messages for failed imports" do
-      before do
-        @fixture_data = file_fixture('invalid speakers.csv').read
-      end
-      it "is implemented but waiting on" do
-        pending("validations on speaker model")
-        expect(described_class.import_csv(@fixture_data)).not_to be_empty
-      end
-    end
-
-    describe "does not fail when some rows in import are invalid" do
-      it "creates valid speakers when importing a csv with invalid lines" do
-        @fixture_data = file_fixture('invalid speakers.csv').read
-        pending("validations on speaker model")
-        expect {
-          described_class.import_csv(@fixture_data)
-        }.to change { Speaker.count }.by(1)
-      end
-    end
-
-  end
-
   describe '.get_birthplace' do
     let(:community) { FactoryBot.create(:community) }
     let!(:birthplace) { create(:place, name: 'Anapolis', community: community) }

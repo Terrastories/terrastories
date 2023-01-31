@@ -35,10 +35,6 @@ class SpeakerPolicy < ApplicationPolicy
     user.admin? || user.editor?
   end
 
-  def import_csv?
-    user.admin? || user.editor?
-  end
-
   def delete_photo?
     user.admin? || user.editor?
   end

@@ -19,10 +19,6 @@ class Speaker < ApplicationRecord
     end
   end
 
-  def self.import_csv(filename, community)
-    ApplicationController.helpers.csv_importer(filename, self, community)
-  end
-
   def self.get_birthplace(name, community)
     if name.nil? || name.downcase == 'unknown'
       return nil

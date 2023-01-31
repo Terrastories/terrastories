@@ -16,10 +16,6 @@ class Place < ApplicationRecord
 
   attr_reader :point_geojson
 
-  def self.import_csv(filename, community)
-    ApplicationController.helpers.csv_importer(filename, self, community)
-  end
-
   def photo_url
     if photo.attached?
       Rails.application.routes.url_helpers.rails_blob_path(photo, only_path: true)
