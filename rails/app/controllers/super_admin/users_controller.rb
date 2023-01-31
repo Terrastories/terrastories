@@ -22,6 +22,7 @@ module SuperAdmin
         :username,
         :email,
         :password,
+        :password_confirmation,
         :role,
         :photo
       )
