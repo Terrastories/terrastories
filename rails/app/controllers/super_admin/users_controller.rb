@@ -1,5 +1,4 @@
 module SuperAdmin
-
   class UsersController < ApplicationController
     def edit
       @user = User.find(params[:id])
@@ -9,7 +8,7 @@ module SuperAdmin
       @user = User.find(params[:id])
 
       if @user.update(user_params)
-        redirect_to @user
+        redirect_to edit_member_path(@user), notice: "User successfully updated"
       else
         render :edit
       end
