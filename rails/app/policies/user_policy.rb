@@ -11,9 +11,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def edit?
-    current_user.admin? || (
-      current_user == user
-    )
+    current_user.admin?
   end
 
   def update?

@@ -86,7 +86,8 @@
             <% end %>
             <ul class="dropdown" aria-label="submenu">
               <% if !current_user.super_admin %>
-                <li><%= link_to t("profile"), user_profile_path %></li>
+                <li><%= link_to t("profile"), profile_path %></li>
+                <li><%= link_to t("devise.passwords.edit.change_my_password"), change_password_path %></li>
               <% end %>
               <li><%= link_to t("logout"), destroy_user_session_path, method: :delete  %></li>
             </ul>
