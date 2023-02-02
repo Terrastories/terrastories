@@ -38,12 +38,16 @@ module Dashboard
     end
 
     def edit
-      @user = authorize current_community.users.find(params[:id])
+      @user = authorize User.find(params[:id])
+    end
+
+    def profile
+      @user = current_user
+      render :edit
     end
 
     def update
-      @user = authorize current_community.users.find(params[:id])
-
+      @user = authorize User.find(params[:id])
       if @user.update(user_params.delete_if { |k, v| k == 'password' && v.blank? })
         redirect_to @user
       else

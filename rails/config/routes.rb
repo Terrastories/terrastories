@@ -1,7 +1,7 @@
 # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
   scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do
-    scope '/member', module: 'dashboard', constraints: RoleRoutingConstraint.new { |user| !user.super_admin } do
+    scope '/member', module: 'dashboard', constraints: RoleRoutingConstraint.new do
       root to: "stories#index", as: :member_root
 
       get :search, to: "search#index"

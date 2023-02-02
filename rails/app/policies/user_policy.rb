@@ -7,11 +7,13 @@ class UserPolicy < ApplicationPolicy
   end
 
   def index?
-    current_user.admin?
+    current_user.super_admin || current_user.admin?
   end
 
   def edit?
-    current_user.admin?
+    current_user.super_admin || current_user.admin? || (
+      current_user == user
+    )
   end
 
   def update?
@@ -19,11 +21,11 @@ class UserPolicy < ApplicationPolicy
   end
 
   def show?
-    current_user.admin?
+    current_user.super_admin || current_user.admin?
   end
 
   def new?
-    current_user.admin?
+    current_user.super_admin || current_user.admin?
   end
 
   def create?
