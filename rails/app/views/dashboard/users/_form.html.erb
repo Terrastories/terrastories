@@ -1,0 +1,28 @@
+<%= form_with model: @user, multipart: true, class: "form", data: {remote: false}, id: "userForm", locale: true do |f| %>
+  <%= render partial: "shared/form_errors", locals: { resource: @user } %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :username, class: "required" %>
+  <%= f.text_field :username, required: true %>
+
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %>
+
+  <% unless !((current_user.super_admin || current_user.admin?) && @user.id != current_user.id) %>
+    <%= f.label :role %>
+    <%= f.select :role, User.roles.keys.excluding('super_admin').map { |k| [User.human_attribute_name("role.#{k}"), k] } %>
+  <% end %>
+
+  <%= f.label :photo %>
+  <%= f.file_field :photo %>
+
+  <%= f.submit %>
+<% end %>
