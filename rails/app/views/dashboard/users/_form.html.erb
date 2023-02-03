@@ -13,9 +13,6 @@
   <%= f.label :password %>
   <%= f.password_field :password %>
 
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-
   <% unless !((current_user.super_admin || current_user.admin?) && @user.id != current_user.id) %>
     <%= f.label :role %>
     <%= f.select :role, User.roles.keys.excluding('super_admin').map { |k| [User.human_attribute_name("role.#{k}"), k] } %>

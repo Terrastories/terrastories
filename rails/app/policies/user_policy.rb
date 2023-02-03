@@ -11,7 +11,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def edit?
-    current_user.super_admin || current_user.admin? || (
+    current_user.super_admin? || current_user.admin? || (
       current_user == user
     )
   end
@@ -21,7 +21,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def show?
-    current_user.super_admin || current_user.admin?
+    current_user.super_admin? || current_user.admin?
   end
 
   def new?
