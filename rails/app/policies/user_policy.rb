@@ -11,7 +11,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def edit?
-    current_user.super_admin? || (current_user.admin? && (current_user.community_id == user.community_id))
+    current_user.super_admin? || community_user_admin? || current_user == user  
   end
 
   def update?
@@ -36,6 +36,10 @@ class UserPolicy < ApplicationPolicy
 
   def delete_photo?
     edit?
+  end
+
+  def community_user_admin?
+    current_user.admin? && (current_user.community_id == user.community_id)
   end
 
   class Scope < Scope
