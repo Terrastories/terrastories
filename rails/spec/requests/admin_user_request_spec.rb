@@ -4,18 +4,65 @@ RSpec.describe "SuperAdmin user request", type: :request do
   describe "GET edit" do
     context "with a super admin privileges" do
       let(:super_admin) { FactoryBot.create(:user, role: 100, super_admin: true) }
-      let(:user) { FactoryBot.create(:user, role: 1) }
+      let(:user) { FactoryBot.create(:user, email: "user@mail.co", username: "user_name", role: 1) }
 
       before do
         login_as super_admin 
       end
 
-      it "should return the user of the specified route" do
+      it "should return success" do
         get "/admin/users/#{user.id}/edit" 
-
-        p response
-        expect(response).to have_http_status(:success)
+        expect(response).to have_http_status(200)
       end
+    end
+
+    context "without a super admin privileges" do
+      let(:other_user) { FactoryBot.create(:user, role: 1) }
+      let(:user) { FactoryBot.create(:user, email: "user@mail.co", username: "user_name", role: 1) }
+
+      before do
+        login_as other_user 
+      end
+
+      it "should raise an error when the user tries to access super admin" do
+        assert_raises ActionController::RoutingError do
+         get "/admin/users/#{user.id}/edit" 
+        end
+      end
+
+    end
+  end
+
+  describe "PUT update"  do
+    context "with a super admin privileges" do
+      let(:super_admin) { FactoryBot.create(:user, role: 100, super_admin: true) }
+      let(:user) { FactoryBot.create(:user, email: "user@mail.co", username: "user_name", role: 1) }
+
+      before do
+        login_as super_admin 
+      end
+      it "should return success" do
+        put "/admin/users/#{user.id}", :params => {:user => { password: "securePassword" } }
+
+        expect(response).to have_http_status(302)
+        expect(flash[:notice]).to match('User successfully updated')
+      end
+    end
+
+    context "without a super admin privileges" do
+      let(:other_user) { FactoryBot.create(:user, role: 1) }
+      let(:user) { FactoryBot.create(:user, email: "user@mail.co", username: "user_name", role: 1) }
+
+      before do
+        login_as other_user 
+      end
+
+      it "should raise an error when the user tries to access super admin" do
+        assert_raises ActionController::RoutingError do
+         put "/admin/users/#{user.id}/edit" 
+        end
+      end
+
     end
   end
 end
