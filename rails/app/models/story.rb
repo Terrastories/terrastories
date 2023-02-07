@@ -1,6 +1,5 @@
 class Story < ApplicationRecord
   include Importable
-  MEDIA_PATH = Rails.env.test? ? 'spec/fixtures/media' : 'import/media'
 
   has_many :speaker_stories, inverse_of: :story
   has_many :speakers, through: :speaker_stories
@@ -15,10 +14,6 @@ class Story < ApplicationRecord
   validates :speaker_ids, presence: true
   validates :place_ids, presence: true
   validates :media, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg', 'video/mpeg', 'video/mp4', 'video/quicktime', 'video/webm', 'audio/mpeg', 'audio/wav', 'audio/mp4', 'audio/m4a', 'audio/x-m4a', 'audio/x-aac', 'audio/x-flac'] }
-
-  def self.import_csv(file_contents, community)
-    ApplicationController.helpers.csv_importer(file_contents, self, community)
-  end
 
   def self.export_sample_csv
     headers = %w{name description speakers places interview_location date_interviewed interviewer language media permission_level }
@@ -48,11 +43,11 @@ class Story < ApplicationRecord
 
   enum permission_level: [:anonymous, :user_only, :editor_only]
 
-  EXCLUDE_ATTRIBUTES_FROM_IMPORT = [
-    "speaker_stories",
-    "media_attachments",
-    "media_links",
-    "media_blobs"
+  EXCLUDE_ATTRIBUTES_FROM_IMPORT = %i[
+    speaker_stories
+    media_attachments
+    media_links
+    media_blobs
   ]
 end
 

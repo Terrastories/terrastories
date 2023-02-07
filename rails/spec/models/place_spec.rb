@@ -6,148 +6,115 @@ RSpec.describe Place, type: :model do
     it { should have_many :interview_stories }
   end
 
-  describe 'import_csv' do
-    let(:community) { FactoryBot.create(:community) }
+  let(:community) { create(:community) }
+  let(:place) { described_class.new }
 
-    it 'is tested against fixture file' do
-      expect(file_fixture('place_with_media.csv').read).not_to be_empty
+  describe "#csv_headers" do
+    it "defines importable CSV headers" do
+      expect(described_class.csv_headers).to eq(
+        %i[
+          name
+          type_of_place
+          lat
+          long
+          region
+          description
+          photo
+          name_audio
+        ]
+      )
+    end
+  end
+
+  describe "#import" do
+    let(:mapped_headers) {{
+      name: "name",
+      type_of_place: "type_of_place",
+      description: "description",
+      region: "region",
+      long: "long",
+      lat: "lat"
+    }}
+
+    it "raises HeaderMismatchError when mapped headers are missing" do
+      expect {
+        described_class.import(
+          file_fixture('place_without_media.csv'),
+          community.id,
+          mapped_headers.merge({photo: "other"})
+        )
+      }.to raise_error(Importable::FileImporter::HeaderMismatchError)
     end
 
-    describe "does not create duplicated places" do
-      context "when importing the same csv twice" do
-        it "creates a single place " do
-          expect {
-            described_class.import_csv(@fixture_data, community)
-          }.to change { Place.count }.by(1)
-
-          expect {
-            described_class.import_csv(@fixture_data, community)
-          }.to change { Place.count }.by(0)
-        end
-      end
-
-      context "when importing different files with info about same place" do
-        before do
-          fixture_data = file_fixture('place_with_media.csv').read
-          described_class.import_csv(fixture_data, community)
-        end
-
-        it "updates place's info" do
-          place = Place.last
-
-          fixture_data_to_edit = file_fixture('edit_place_with_media.csv').read
-          described_class.import_csv(fixture_data_to_edit, community)
-
-          expect {
-            place.reload
-          }.to change(place, :description)
-        end
-      end
-    end
-
-    describe 'imports csv with media' do
-      before do
-        @fixture_data = file_fixture('place_with_media.csv').read
-        described_class.import_csv(@fixture_data, community)
-      end
-
-      let!(:place) { described_class.last }
-      let!(:csv) { CSV.parse(@fixture_data, headers: true).first }
-
-      it { expect(place.name).to eq csv[0] }
-      it { expect(place.type_of_place).to eq csv[1] }
-      it { expect(place.description).to eq csv[2] }
-      it { expect(place.region).to eq csv[3] }
-      it { expect(place.long).to eq csv[4].to_f }
-      it { expect(place.lat).to eq csv[5].to_f }
-      it { expect(place.photo.filename.to_s).to eq csv[6] }
-    end
-
-    describe 'displays error messages for failed imports' do
-      before do
-        @fixture_data = file_fixture('invalid places.csv').read
-      end
-      it { expect(described_class.import_csv(@fixture_data, community)).not_to be_empty }
-    end
-
-    describe "does not fail when some rows in import are invalid" do
-      it "creates valid places when importing a csv with invalid lines" do
-        @fixture_data = file_fixture('invalid places.csv').read
-
+    context "when CSV defines a column that is not mapped" do
+      it "successfully imports places" do
         expect {
-          described_class.import_csv(@fixture_data, community)
-        }.to change { Place.count }.by(1)
+          described_class.import(file_fixture('place_with_excess_headers.csv'), community.id, mapped_headers)
+        }.to change(described_class, :count).from(0).to(1)
       end
     end
 
-    describe 'does not fail when media is not present' do
+    context "with media attachments" do
       before do
-        @fixture_data = file_fixture('place_without_media.csv').read
-        described_class.import_csv(@fixture_data, community)
+        stub_const("Importable::IMPORT_PATH", "spec/fixtures/media/")
       end
-
-      let!(:place) { described_class.last }
-      let!(:csv) { CSV.parse(@fixture_data, headers: true).first }
-      it { expect(csv[6]).not_to be_nil }
-    end
-  end
-
-  describe '#photo_format' do
-    let(:community) { FactoryBot.create(:community) }
-
-    context 'when the attachment is not located in an image folder' do
-      describe 'should add an error' do
-        before do
-          @fixture_data = file_fixture('place_with_media.csv').read
-          described_class.import_csv(@fixture_data, community)
-          @place = described_class.last
-          @place.photo.blob.content_type = "file/png"
-          @place.photo_format
+      context "when CSV defines photo file, but file is not found" do
+        it "successfully imports places" do
+          expect {
+            described_class.import(
+              file_fixture('place_with_missing_media.csv'),
+              community.id,
+              mapped_headers.merge({photo: "media"})
+          )
+          }.to change(described_class, :count).from(0).to(1)
         end
+      end
 
-        it { expect(@place.photo.blob.content_type.start_with?('image/')).to be(false) }
-        it { expect(@place.errors.count).to eq(1) }
+      it "successfully imports places with photo" do
+        described_class.import(
+          file_fixture('place_with_media.csv'),
+          community.id,
+          mapped_headers.merge({photo: "media"})
+        )
+        expect(described_class.last.photo).to be_attached
+      end
+
+      it "successfully imports places with name audio" do
+        described_class.import(
+          file_fixture('place_with_media.csv'),
+          community.id,
+          mapped_headers.merge({name_audio: "audio"})
+        )
+        expect(described_class.last.name_audio).to be_attached
       end
     end
 
-    context 'when the attachment is located in an image folder' do
-      describe 'should not add an error' do
-        before do
-          @fixture_data = file_fixture('place_with_media.csv').read
-          described_class.import_csv(@fixture_data, community)
-        end
-        let!(:place) { described_class.last }
-
-        it { expect(place.photo.blob.content_type.start_with?('image/')).to be(true) }
-        it { expect(place.errors.count).to eq(0) }
+    context "when CSV has duplicate rows" do
+      it "imports first row, returns rest as an array rows skipped" do
+        import = described_class.import(file_fixture('duplicated_places.csv'), community.id, mapped_headers)
+        expect(import[:successful]).to eq(1)
+        expect(import[:skipped_rows].length).to eq(1)
       end
     end
-  end
 
-  describe 'photo_url' do
-    describe 'should return a url path' do
-      let(:community) { FactoryBot.create(:community) }
-
+    context "when Community already has a Place with the same name" do
       before do
-        @fixture_data = file_fixture('place_with_media.csv').read
-        described_class.import_csv(@fixture_data, community)
+        FactoryBot.create(:place, name: "Iacitata", community: community)
       end
-      let!(:place) { described_class.last }
-      let!(:file_name) { place.photo.filename.to_s }
-
-      it { expect(place.photo_url).to be_truthy }
-      it { expect(place.photo_url.include?(file_name)).to be(true) }
+      it "does not add duplicate row, returns in duplicate array" do
+        import = described_class.import(file_fixture('place_without_media.csv'), community.id, mapped_headers)
+        expect(import[:successful]).to eq(0)
+        expect(import[:duplicated_rows].length).to eq(1)
+      end
     end
-  end
 
-  describe 'point_geojson' do
-    let(:community) { FactoryBot.create(:community) }
-
-    it 'should return a geoJson point' do
-      fixture_data = file_fixture('place_with_media.csv').read
-      described_class.import_csv(fixture_data, community)
-      place = described_class.first
-      expect(place.point_geojson.keys).to include('properties')
+    context "when row is invalid" do
+      it "returns invalid rows with errors" do
+        import = described_class.import(file_fixture('invalid places.csv'), community.id, mapped_headers)
+        expect(import[:successful]).to eq(1)
+        expect(import[:invalid_rows].length).to eq(2)
+        expect(import[:invalid_rows].first.keys).to eq([:attributes, :errors])
+      end
     end
   end
 

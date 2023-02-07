@@ -3,6 +3,5 @@ FactoryBot.define do
     name { "Matawai "}
     locale { "mat" }
     country { "Suriname" }
-    theme
   end
 end

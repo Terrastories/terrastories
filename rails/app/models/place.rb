@@ -1,8 +1,6 @@
 class Place < ApplicationRecord
   include Importable
-  MEDIA_PATH = Rails.env.test? ? 'spec/fixtures/media' : 'import/media'
 
-  require 'csv'
   belongs_to :community, touch: true
   has_and_belongs_to_many :stories
   has_one_attached :photo
@@ -15,10 +13,6 @@ class Place < ApplicationRecord
   has_many :interview_stories, class_name: "Story", foreign_key: "interview_location_id"
 
   attr_reader :point_geojson
-
-  def self.import_csv(filename, community)
-    ApplicationController.helpers.csv_importer(filename, self, community)
-  end
 
   def photo_url
     if photo.attached?
@@ -54,9 +48,9 @@ class Place < ApplicationRecord
     ).to_json
   end
 
-  EXCLUDE_ATTRIBUTES_FROM_IMPORT = [
-    "stories",
-    "interview_stories"
+  EXCLUDE_ATTRIBUTES_FROM_IMPORT = %i[
+    stories
+    interview_stories
   ]
 
   private

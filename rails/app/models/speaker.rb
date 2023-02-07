@@ -1,6 +1,5 @@
 class Speaker < ApplicationRecord
   include Importable
-  require 'csv'
 
   has_many :speaker_stories
   has_many :stories, through: :speaker_stories
@@ -19,17 +18,6 @@ class Speaker < ApplicationRecord
     end
   end
 
-  def self.import_csv(filename, community)
-    ApplicationController.helpers.csv_importer(filename, self, community)
-  end
-
-  def self.get_birthplace(name, community)
-    if name.nil? || name.downcase == 'unknown'
-      return nil
-    end
-    Place.find_or_create_by(name: name, community: community)
-  end
-
   def self.export_sample_csv
     headers = %w{ name birthdate birthplace media }
 
@@ -38,9 +26,9 @@ class Speaker < ApplicationRecord
     end
   end
 
-  EXCLUDE_ATTRIBUTES_FROM_IMPORT = [
-    "stories",
-    "speaker_stories"
+  EXCLUDE_ATTRIBUTES_FROM_IMPORT = %i[
+    stories
+    speaker_stories
   ]
 end
 
