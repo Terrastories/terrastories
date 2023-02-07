@@ -17,12 +17,12 @@
           <%= f.file_field :background_img %>
       </div>
       <div class="two-columns-right">
-        <% if @community.background_img.attached? %>
+        <% if current_community.background_img.attached? %>
           <span class="media-with-hover-controls">
-            <% if @community.background_img.variable? %>
-            <%= image_tag(@community.background_img.variant(resize_to_limit: [nil, 300])) %>
+            <% if current_community.background_img.variable? %>
+            <%= image_tag(current_community.background_img.variant(resize_to_limit: [nil, 300])) %>
             <% else %>
-            <%= image_tag(@community.background_img, width: 300) %>
+            <%= image_tag(current_community.background_img, width: 300) %>
             <% end %>
             <span class="overlay"></span>
             <%= link_to background_img_community_settings_path, class: "delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm")}, remote: true do %>
@@ -43,8 +43,8 @@
       </div>
 
       <div class="two-columns-right with-images-list">
-        <% if @community.sponsor_logos.any? %>
-          <% @community.sponsor_logos.each do |img| %>
+        <% if current_community.sponsor_logos.any? %>
+          <% current_community.sponsor_logos.each do |img| %>
             <span class="media-with-hover-controls">
               <%= image_tag(img, width: 150) %>
               <span class="overlay"></span>
@@ -58,11 +58,11 @@
     </div>
   <% end %>
 
-  <% if Flipper.enabled?(:public_communities, @community) %>
+  <% if Flipper.enabled?(:public_communities, current_community) %>
     <%# Community Public %>
     <h4><%= t("dashboard.community.make_public") %></h4>
     <div class="input-group">
-      <%= f.check_box :public, checked: @community.public %>
+      <%= f.check_box :public, checked: current_community.public %>
       <%= f.label :public %>
     </div>
   <% end %>
@@ -70,7 +70,7 @@
   <%# Community Beta / Experimental Features %>
   <h4><%= t("dashboard.community.beta_access") %></h4>
   <div class="input-group">
-    <%= f.check_box :beta, checked: @community.beta %>
+    <%= f.check_box :beta, checked: current_community.beta %>
     <%= f.label :beta %>
   </div>
 

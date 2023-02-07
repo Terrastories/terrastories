@@ -66,7 +66,7 @@ module Dashboard
     private
 
     def community_speakers
-      policy_scope(community.speakers)
+      policy_scope(current_community.speakers)
     end
 
     def speaker_params

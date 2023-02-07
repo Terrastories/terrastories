@@ -1,9 +1,9 @@
 module Dashboard
   class UsersController < ApplicationController
     def index
-      authorize community.users
+      authorize current_community.users
 
-      @page = UsersPage.new(community, params)
+      @page = UsersPage.new(current_community, params)
       @users = @page.data
 
       respond_to do |format|
@@ -18,12 +18,12 @@ module Dashboard
     end
 
     def new
-      @user = authorize community.users.new
+      @user = authorize current_community.users.new
     end
 
     def create
       authorize User
-      @user = community.users.new(user_params)
+      @user = current_community.users.new(user_params)
 
       if @user.save
         redirect_to @user
@@ -34,20 +34,15 @@ module Dashboard
     end
 
     def show
-      @user = authorize community.users.find(params[:id])
+      @user = authorize current_community.users.find(params[:id])
     end
 
     def edit
-      @user = authorize community.users.find(params[:id])
-    end
-
-    def profile
-      @user = current_user
-      render :edit
+      @user = authorize current_community.users.find(params[:id])
     end
 
     def update
-      @user = authorize community.users.find(params[:id])
+      @user = authorize current_community.users.find(params[:id])
 
       if @user.update(user_params.delete_if { |k, v| k == 'password' && v.blank? })
         redirect_to @user
@@ -58,7 +53,7 @@ module Dashboard
     end
 
     def destroy
-      @user = authorize community.users.find(params[:id])
+      @user = authorize current_community.users.find(params[:id])
 
       @user.destroy
 
@@ -66,7 +61,7 @@ module Dashboard
     end
 
     def delete_photo
-      @user = authorize community.users.find(params[:user_id])
+      @user = authorize current_community.users.find(params[:user_id])
       @user.photo.purge
 
       head :ok

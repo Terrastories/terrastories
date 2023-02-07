@@ -73,7 +73,7 @@ module Dashboard
     private
 
     def community_places
-      policy_scope(community.places)
+      policy_scope(current_community.places)
     end
 
     def place_params
