@@ -19,19 +19,19 @@ module Dashboard
       places_file = import_params[:places_csv]
       place_result = if places_file.present?
         place_headers = import_params[:place_headers].to_h
-        Place.import(places_file, community.id, place_headers)
+        Place.import(places_file, current_community.id, place_headers)
       end
 
       speakers_file = params[:speakers_csv]
       speaker_result = if speakers_file.present?
         speaker_headers = import_params[:speaker_headers].to_h
-        Speaker.import(speakers_file, community.id, speaker_headers)
+        Speaker.import(speakers_file, current_community.id, speaker_headers)
       end
 
       stories_file = params[:stories_csv]
       story_result = if stories_file.present?
         story_headers = import_params[:story_headers].to_h
-        Story.import(stories_file, community.id, story_headers)
+        Story.import(stories_file, current_community.id, story_headers)
       end
 
       render locals: {

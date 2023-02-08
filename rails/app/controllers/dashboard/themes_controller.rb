@@ -1,7 +1,7 @@
 module Dashboard
   class ThemesController < ApplicationController
     def edit
-      @theme = community.theme
+      @theme = current_community.theme
     end
 
     def show
@@ -9,7 +9,7 @@ module Dashboard
     end
 
     def update
-      @theme = community.theme
+      @theme = current_community.theme
       if @theme.update(theme_params)
         redirect_to edit_theme_path
       else

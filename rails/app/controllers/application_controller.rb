@@ -22,6 +22,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  helper_method :current_community
   def current_community
     @community
   end

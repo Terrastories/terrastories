@@ -1,8 +1,5 @@
 module Dashboard
-  class ApplicationController < ActionController::Base
-    include Pundit::Authorization
-    include Locale
-
+  class ApplicationController < ApplicationController
     rescue_from Pundit::NotAuthorizedError, with: :not_authorized
     rescue_from ActiveRecord::RecordNotFound, with: :not_found
 
@@ -23,11 +20,6 @@ module Dashboard
     end
 
     private
-
-    helper_method :community
-    def community
-      @community ||= current_user.community
-    end
 
     def meta_params
       params.permit(

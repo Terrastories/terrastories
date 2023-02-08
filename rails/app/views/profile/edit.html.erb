@@ -1,0 +1,25 @@
+<% content_for(:title) do %>
+  <%= t("profile") %>
+<% end %>
+
+<% content_for(:main_heading) do %>
+  <h2><%= t("profile") %></h2>
+<% end %>
+
+<%= form_with model: @user, url: profile_path, multipart: true, class: "form", data: {remote: false}, id: "userForm", locale: true do |f| %>
+  <%= render partial: "shared/form_errors", locals: { resource: @user } %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :username, class: "required" %>
+  <%= f.text_field :username, required: true %>
+
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+
+  <%= f.label :photo %>
+  <%= f.file_field :photo %>
+
+  <%= f.submit %>
+<% end %>

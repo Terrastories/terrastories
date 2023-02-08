@@ -24,7 +24,7 @@
           <%= link_to t("communities"), communities_path, class: ("active-link" if params[:controller] == "super_admin/communities") %>
           <%= link_to "Features", features_path, class: ("active-link" if params[:controller] == "super_admin/features") %>
         <% else %>
-          <h1><%= community.name %></h1>
+          <h1><%= current_community.name %></h1>
           <%= link_to t("stories"), stories_path, class: ("active-link" if params[:controller] == "dashboard/stories") %>
           <%= link_to t("speakers"), speakers_path, class: ("active-link" if params[:controller] == "dashboard/speakers") %>
           <%= link_to t("places"), places_path, class: ("active-link" if params[:controller] == "dashboard/places") %>
@@ -37,7 +37,7 @@
           <%= link_to t("users"), users_path, class: ("active-link" if params[:controller] == "dashboard/users") %>
           <%= link_to t("theme"), edit_theme_path, class: ("active-link" if params[:controller] == "dashboard/theme") %>
           <%= link_to t("import"), import_path, class: ("active-link" if params[:controller] == "dashboard/import") %>
-          <% if Flipper.enabled?(:public_communities, community) || Flipper.enabled?(:split_settings, community) %>
+          <% if Flipper.enabled?(:public_communities, current_community) || Flipper.enabled?(:split_settings, current_community) %>
             <%= link_to t("community.settings"), community_settings_path, class: ("active-link" if params[:controller] == "dashboard/community") %>
           <% end %>
         <% end %>
@@ -74,7 +74,7 @@
         <% end %>
         <div class="top-nav">
           <div class="user-nav">
-            <%= current_user.username %>
+            <%= current_user.display_name %>
             <% if current_user.photo.attached? %>
               <% if current_user.photo.variable? %>
                 <%= image_tag current_user.photo.variant(resize_to_fill: [300, 300]), class: "img img--rounded img--mini" %>
@@ -85,9 +85,8 @@
               <%= image_tag asset_path("speaker.png"), class: "img img--rounded img--micro" %>
             <% end %>
             <ul class="dropdown" aria-label="submenu">
-              <% if !current_user.super_admin %>
-                <li><%= link_to t("profile"), user_profile_path %></li>
-              <% end %>
+              <li><%= link_to t("profile"), profile_path %></li>
+              <li><%= link_to t("devise.passwords.edit.change_my_password"), change_password_path %></li>
               <li><%= link_to t("logout"), destroy_user_session_path, method: :delete  %></li>
             </ul>
           </div>

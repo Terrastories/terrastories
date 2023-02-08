@@ -5,7 +5,6 @@ Rails.application.routes.draw do
       root to: "stories#index", as: :member_root
 
       get :search, to: "search#index"
-      get :profile, to: "users#profile", as: :user_profile
 
       resource :community, only: [:show, :update], as: :community_settings do
         delete :background_img, action: :delete_background_img
@@ -43,6 +42,11 @@ Rails.application.routes.draw do
     end
 
     devise_for :users, :controllers => { registrations: 'registrations' }
+    get :profile, to: "profile#edit"
+    patch :profile, to: "profile#update"
+    get :change_password, to: "passwords#edit"
+    post :change_password, to: "passwords#update"
+
     root to: 'welcome#index'
     get 'home', to: 'home#index', as: "home_map"
     get "search", to: "home#community_search_index", as: "community_search"

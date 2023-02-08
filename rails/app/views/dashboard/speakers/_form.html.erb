@@ -14,11 +14,11 @@
   <%= f.date_field :birthdate %>
 
   <%= f.label :birthplace_id %>
-  <%= f.collection_select :birthplace_id, community.places, :id, :name %>
+  <%= f.collection_select :birthplace_id, current_community.places, :id, :name %>
 
   <%= f.label :story_ids %>
   <div class="checklist">
-  <%= f.collection_check_boxes :story_ids, community.stories, :id, :title %>
+  <%= f.collection_check_boxes :story_ids, current_community.stories, :id, :title %>
   </div>
 
   <%= f.submit %>

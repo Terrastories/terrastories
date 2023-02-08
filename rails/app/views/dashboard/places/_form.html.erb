@@ -31,7 +31,7 @@
 
   <%= f.label :story_ids %>
   <div class="checklist">
-    <%= f.collection_check_boxes :story_ids, community.stories, :id, :title %>
+    <%= f.collection_check_boxes :story_ids, current_community.stories, :id, :title %>
   </div>
 
   <%= f.label :lat %>

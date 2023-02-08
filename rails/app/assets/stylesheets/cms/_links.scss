@@ -109,9 +109,11 @@ nav > a,
     // absolute positioned to container
     position: absolute;
     top: 100%;
+    right: 0; // so the right edge is aligned
 
     // make it looks nice
-    width: 100%;
+    width: max-content;
+    max-width: 200px; // but not any wider than this
     background-color: $white;
     border-top: 1px solid $blue;
   }

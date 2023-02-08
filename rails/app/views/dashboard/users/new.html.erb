@@ -6,4 +6,26 @@
 <h2><%= t("dashboard.headings.new_resource", name: t("user")) %></h2>
 <% end %>
 
-<%= render "form" %>
+<%= form_with model: @user, multipart: true, class: "form aligned", data: {remote: false}, id: "userForm", locale: true do |f| %>
+  <%= render partial: "shared/form_errors", locals: { resource: @user } %>
+
+  <%= f.label :username, class: "required" %>
+  <%= f.text_field :username, required: true %>
+
+  <%= f.label :password, class: "required" %>
+  <%= f.password_field :password, required: true %>
+
+  <%= f.label :role, class: "required" %>
+  <%= f.select :role, User.roles.keys.excluding('super_admin').map { |k| [User.human_attribute_name("role.#{k}"), k] } %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+
+  <%= f.label :photo %>
+  <%= f.file_field :photo %>
+
+  <%= f.submit %>
+<% end %>

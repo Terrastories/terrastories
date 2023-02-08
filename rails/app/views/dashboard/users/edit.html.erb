@@ -18,7 +18,39 @@
         <%= image_tag asset_path("speaker.png"), alt: @user.display_name, title: @user.display_name %>
       <% end %>
     </span>
+    <h2>
+    <div class="small">
+      <% if @user.name.present? %>
+        <%= @user.username %> //
+      <% end %>
+      <%= @user.email %>
+    </div>
+    <%= @user.display_name %>
+    <div class="small">
+      <span class="badge"><%= User.human_attribute_name("role.#{@user.role}") %></span>
+    </div>
+  </h2>
   </div>
 <% end %>
 
-<%= render "form" %>
+<%= form_with model: @user, multipart: true, class: "form aligned", data: {remote: false}, id: "userForm", locale: true do |f| %>
+  <%= render partial: "shared/form_errors", locals: { resource: @user } %>
+
+  <%= f.label :username %>
+  <%= f.text_field :username %>
+
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+
+  <% unless !((current_user.super_admin || current_user.admin?) && @user.id != current_user.id) %>
+    <%= f.label :role %>
+    <%= f.select :role, User.roles.keys.excluding('super_admin').map { |k| [User.human_attribute_name("role.#{k}"), k] } %>
+  <% end %>
+
+  <fieldset>
+    <%= f.label :reset_password, for: :user_password %>
+    <%= f.password_field :password %>
+  </fieldset>
+
+  <%= f.submit %>
+<% end %>

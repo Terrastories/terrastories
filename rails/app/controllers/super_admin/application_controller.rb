@@ -1,8 +1,5 @@
 module SuperAdmin
-  class ApplicationController < ActionController::Base
-    include Pundit::Authorization
-    include Locale
-
+  class ApplicationController < ApplicationController
     rescue_from Pundit::NotAuthorizedError, with: :not_authorized
     rescue_from ActiveRecord::RecordNotFound, with: :not_found
 

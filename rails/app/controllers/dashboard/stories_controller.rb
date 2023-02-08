@@ -68,7 +68,7 @@ module Dashboard
     private
 
     def community_stories
-      policy_scope(community.stories)
+      policy_scope(current_community.stories)
     end
 
     def story_params

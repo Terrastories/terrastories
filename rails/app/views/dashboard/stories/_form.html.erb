@@ -72,19 +72,19 @@
 
   <%= f.label :speaker_ids, class: "required" %>
   <div class="checklist">
-    <%= f.collection_check_boxes :speaker_ids, community.speakers, :id, :name, required: true %>
+    <%= f.collection_check_boxes :speaker_ids, current_community.speakers, :id, :name, required: true %>
   </div>
 
   <%= f.label :place_ids, class: "required" %>
   <div class="checklist">
-    <%= f.collection_check_boxes :place_ids, community.places, :id, :name, required: true %>
+    <%= f.collection_check_boxes :place_ids, current_community.places, :id, :name, required: true %>
   </div>
 
   <%= f.label :interview_location_id %>
-  <%= f.collection_select :interview_location_id, community.places, :id, :name, include_blank: true %>
+  <%= f.collection_select :interview_location_id, current_community.places, :id, :name, include_blank: true %>
 
   <%= f.label :interviewer_id %>
-  <%= f.collection_select :interviewer_id, community.speakers, :id, :name, include_blank: true %>
+  <%= f.collection_select :interviewer_id, current_community.speakers, :id, :name, include_blank: true %>
 
   <%= f.label :permission_level %>
   <%= f.select :permission_level, Story.permission_levels.keys.map { |k| [Story.human_attribute_name("permission_level.#{k}"), k]} %>
