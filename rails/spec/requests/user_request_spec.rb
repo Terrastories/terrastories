@@ -34,7 +34,8 @@ RSpec.describe "user request", type: :request do
 
     context "with local admin privileges not in the same community" do
       let(:community) { FactoryBot.create(:community) }
-      let(:admin) { FactoryBot.create(:user, role: 2) }
+      let(:admin_community) { FactoryBot.create(:community) }
+      let(:admin) { FactoryBot.create(:user, role: 2, community_id: admin_community.id) }
       let(:user) { FactoryBot.create(:user, email: "user@mail.co", username: "user_name", role: 1, community_id: community.id) }
 
       before do
@@ -82,7 +83,8 @@ RSpec.describe "user request", type: :request do
 
     context "with local admin privileges not in the same community" do
       let(:community) { FactoryBot.create(:community) }
-      let(:admin) { FactoryBot.create(:user, role: 2) }
+      let(:admin_community) { FactoryBot.create(:community) }
+      let(:admin) { FactoryBot.create(:user, role: 2, community_id: admin_community.id) }
       let(:user) { FactoryBot.create(:user, email: "user@mail.co", username: "user_name", role: 1, community_id: community.id) }
 
       before do
