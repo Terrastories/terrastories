@@ -49,7 +49,7 @@ module Dashboard
     def update
       @user = authorize User.find(params[:id])
       if @user.update(user_params.delete_if { |k, v| k == 'password' && v.blank? })
-        redirect_to @user
+        redirect_to @user, notice: "User successfully updated"
       else
         @user.password = nil
         render :edit

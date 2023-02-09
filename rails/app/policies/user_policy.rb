@@ -11,7 +11,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def edit?
-    current_user.super_admin? || community_user_admin? || current_user == user  
+    current_user.super_admin? || community_user_admin?
   end
 
   def update?
