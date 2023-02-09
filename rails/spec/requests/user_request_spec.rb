@@ -149,10 +149,6 @@ RSpec.describe "user request", type: :request do
         get "/member/users/#{other_user.id}/edit" 
         expect(response).to have_http_status(302)
       end
-
     end
   end
-
-
 end
-
