@@ -1,5 +1,5 @@
 module Dashboard
-  class ThemesController < ApplicationController
+  class ThemesController < BaseController
     def edit
       @theme = current_community.theme
     end

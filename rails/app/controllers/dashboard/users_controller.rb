@@ -1,5 +1,5 @@
 module Dashboard
-  class UsersController < ApplicationController
+  class UsersController < BaseController
     def index
       authorize current_community.users
 

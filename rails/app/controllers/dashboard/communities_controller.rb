@@ -1,5 +1,5 @@
 module Dashboard
-  class CommunitiesController < ApplicationController
+  class CommunitiesController < BaseController
     def show
       @community = authorize current_user.community
     end

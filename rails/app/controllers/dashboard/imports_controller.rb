@@ -1,5 +1,5 @@
 module Dashboard
-  class ImportsController < ApplicationController
+  class ImportsController < BaseController
     rescue_from Importable::FileImporter::HeaderMismatchError, with: :mapped_header_mismatch
     def show
 

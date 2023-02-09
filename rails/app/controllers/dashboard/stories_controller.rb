@@ -1,5 +1,5 @@
 module Dashboard
-  class StoriesController < ApplicationController
+  class StoriesController < BaseController
     def index
       @page = StoriesPage.new(community_stories, filter_params)
       @stories = @page.data

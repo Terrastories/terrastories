@@ -1,5 +1,5 @@
 module Dashboard
-  class PlacesController < ApplicationController
+  class PlacesController < BaseController
     def index
       @page = PlacesPage.new(community_places, meta_params)
       @places = @page.data
