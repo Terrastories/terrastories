@@ -42,6 +42,7 @@ module Dashboard
         :public,
         :background_img,
         :display_image,
+        :description,
         sponsor_logos: []
       )
     end

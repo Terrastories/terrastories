@@ -4,7 +4,7 @@ services:
       - offline
       - dev
     image: postgres:11
-    restart: always
+    restart: unless-stopped
     ports:
       - 5432:5432
     environment:
@@ -39,7 +39,7 @@ services:
     profiles:
       - offline
     image: nginxproxy/nginx-proxy:latest
-    restart: always
+    restart: unless-stopped
     ports:
       - 80:80
     depends_on:
@@ -83,7 +83,7 @@ services:
   tileserver:
     profiles:
       - offline
-    restart: always
+    restart: unless-stopped
     image: maptiler/tileserver-gl
     command: "--port 8080 --public_url http://${HOST_HOSTNAME-terrastories.local}/tileserver/"
     ports:

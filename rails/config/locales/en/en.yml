@@ -53,6 +53,7 @@ en:
   password: Password
   place_name: "Place name pronunciation"
   place_type: "Type of place"
+  type_of_place: Type of place
   region: Region
   remember_me: "Remember me"
   reversed_alphabetical: Z-A
@@ -62,6 +63,7 @@ en:
   sign_up: "Sign up"
   sort_stories: "Sort stories"
   speaker: Speaker
+  speaker_community: Speaker community
   topic: Topic
   video_unsupported: Sorry, your browser doesn't support embedded videos.
   welcome: Welcome

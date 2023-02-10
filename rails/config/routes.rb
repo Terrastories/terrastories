@@ -1,5 +1,14 @@
 # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+Rails.application.routes.default_url_options[:host] = 'localhost'
+Rails.application.routes.default_url_options[:port] = 3000
 Rails.application.routes.draw do
+  namespace :api, defaults: { format: :json } do
+    resources :communities, only: [:index, :show] do
+      resources :stories, only: [:index, :show]
+      resources :places, only: [:show]
+    end
+  end
+
   scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do
     scope '/member', module: 'dashboard', constraints: RoleRoutingConstraint.new { |user| !user.super_admin } do
       root to: "stories#index", as: :member_root

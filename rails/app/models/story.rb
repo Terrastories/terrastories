@@ -41,6 +41,10 @@ class Story < ApplicationRecord
     ).to_json
   end
 
+  def public_points
+    places.map(&:public_point_feature)
+  end
+
   enum permission_level: [:anonymous, :user_only, :editor_only]
 
   EXCLUDE_ATTRIBUTES_FROM_IMPORT = %i[

@@ -92,4 +92,5 @@ Rails.application.configure do
   end
 
   config.hosts << ENV["HOST_HOSTNAME"] if ENV["HOST_HOSTNAME"].present?
+  config.hosts << /[a-z0-9]{4}\-[0-9]{2}\-[0-9]{3}\-[0-9]{3}\-[0-9]{3}.ngrok.io/
 end

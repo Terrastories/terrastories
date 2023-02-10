@@ -9,6 +9,16 @@ RSpec.describe Community, type: :model do
       expect(community).to be_valid
     end
 
+    it "requires a slug when community is marked as public" do
+      community.slug = nil
+      community.public = true
+      expect(community).not_to be_valid
+      expect(community.errors).to include(:slug)
+
+      community.slug = "imaslug"
+      expect(community).to be_valid
+    end
+
     it "destroys associated places" do
       place = FactoryBot.create(:place, community: community)
       other_place = FactoryBot.create(:place)
