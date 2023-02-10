@@ -18,13 +18,7 @@ module SuperAdmin
 
     def user_params
       params.require(:user).permit(
-        :name,
-        :username,
-        :email,
         :password,
-        :password_confirmation,
-        :role,
-        :photo
       )
     end
   end
