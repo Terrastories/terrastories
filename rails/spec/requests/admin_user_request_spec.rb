@@ -4,13 +4,13 @@ RSpec.describe "SuperAdmin user request", type: :request do
   describe "GET edit" do
     context "with a super admin privileges" do
       let(:super_admin) { FactoryBot.create(:user, role: 100, super_admin: true) }
-      let(:user) { FactoryBot.create(:user, email: "user@mail.co", username: "user_name", role: 1) }
+      let(:user) { FactoryBot.create(:user, email: "user@mail.co", username: "user_name", role: 2) }
 
       before do
         login_as super_admin 
       end
 
-      it "should return success" do
+      it "should return success if the user is an admin" do
         get "/admin/users/#{user.id}/edit" 
         expect(response).to have_http_status(200)
       end
@@ -36,12 +36,12 @@ RSpec.describe "SuperAdmin user request", type: :request do
   describe "PUT update"  do
     context "with a super admin privileges" do
       let(:super_admin) { FactoryBot.create(:user, role: 100, super_admin: true) }
-      let(:user) { FactoryBot.create(:user, email: "user@mail.co", username: "user_name", role: 1) }
+      let(:user) { FactoryBot.create(:user, email: "user@mail.co", username: "user_name", role: 2) }
 
       before do
         login_as super_admin 
       end
-      it "should return success" do
+      it "should return success if the user is an admin" do
         put "/admin/users/#{user.id}", :params => {:user => { password: "securePassword" } }
 
         expect(response).to have_http_status(302)

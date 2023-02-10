@@ -77,7 +77,11 @@
         <tr>
           <td><%= user.username %></td>
           <td><%= User.human_attribute_name("role.#{user.role}") %></td>
-          <td><%= link_to "Edit", edit_member_path(user)%></td>
+          <td>
+            <% if user.role == "admin" %>
+              <%= link_to "Edit", edit_member_path(user)%>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>
