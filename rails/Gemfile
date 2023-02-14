@@ -46,7 +46,7 @@ gem 'aws-sdk-s3'
 gem 'activestorage-validator'
 
 # Enable Webpack for javascript application code
-gem 'webpacker', '~> 3.5'
+gem 'webpacker', '~> 5.0'
 gem 'react-rails'
 
 # plyr-rails gem is the integration of plyr.io javascript library for your Rails 4 and Rails 5 application.
