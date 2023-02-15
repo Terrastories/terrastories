@@ -33,9 +33,6 @@ gem 'pundit'
 gem 'rails-i18n'
 gem 'devise-i18n'
 
-# Internationalization in JS
-gem 'i18n-js'
-
 # Mapbox GL rendering library
 gem 'mapbox-gl-rails', '~> 2.9.0'
 

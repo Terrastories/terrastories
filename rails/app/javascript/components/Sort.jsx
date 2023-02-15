@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
 import PropTypes from 'prop-types';
+import { withTranslation } from 'react-i18next';
 
 const SORT_CRITERIA = ['most_recent', 'alphabetical', 'reversed_alphabetical'];
 
@@ -33,7 +34,7 @@ class Sort extends Component {
   }
 
   option = value => {
-    return {value: value, label: I18n.t(value)};
+    return {value: value, label: this.props.t(value)};
   }
 
   handleSort = (option) => {
@@ -98,7 +99,7 @@ class Sort extends Component {
   render() {
     return (
       <React.Fragment>
-        <span className="card--nav-sort">{I18n.t("sort_stories")}: </span>
+        <span className="card--nav-sort">{this.props.t("sort_stories")}: </span>
         <Select
           className="storiesSort"
           classNamePrefix="select"
@@ -112,4 +113,4 @@ class Sort extends Component {
   }
 }
 
-export default Sort;
+export default withTranslation()(Sort);

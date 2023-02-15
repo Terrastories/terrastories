@@ -1,0 +1,25 @@
+{
+  "alphabetical": "A-Z",
+  "reversed_alphabetical": "Z-A",
+  "most_recent": "最近",
+  "region": "地区",
+  "place_type": "地点类型",
+  "speaker": "演讲人",
+  "topic": "主题",
+  "language": "语言",
+  "speaker_community": "演讲者的社区",
+  "hello": "您好",
+  "back_to_welcome": "返回欢迎页",
+  "member_dashboard": "管理页面",
+  "select_category": "选择类别",
+  "select_option": "选择选项",
+  "filter_stories": "筛选故事",
+  "introduction": "简介",
+  "intro": {
+    "question": "Terrastory是什么?",
+    "explanation": "Terrastories是基于地点的的视听故事记录。这个可以离线使用的应用程序使当地社区能够定位和绘制对他们有重要意义或价值的地方的口头故事传统。"
+  },
+  "close": "关闭",
+  "place_name": "地名读音",
+  "sort_stories": "故事排序"
+}

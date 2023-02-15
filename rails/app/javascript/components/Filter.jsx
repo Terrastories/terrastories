@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import Select from "react-select";
 import PropTypes from "prop-types";
+import { useTranslation } from 'react-i18next';
 
 const Filter = props => {
-  let DEFAULT_CATEGORY_PLACEHOLDER = I18n.t("select_category");
-  let DEFAULT_ITEM_PLACEHOLDER = I18n.t("select_option");
+  const { t, i18n } = useTranslation();
+
+  let DEFAULT_CATEGORY_PLACEHOLDER = t("select_category");
+  let DEFAULT_ITEM_PLACEHOLDER = t("select_option");
 
   const handleCategoryChange = option => props.handleFilterCategoryChange(option);
 
@@ -18,7 +21,7 @@ const Filter = props => {
 
   return (
     <React.Fragment>
-      <span className="card--nav-filter">{I18n.t("filter_stories")}: </span>
+      <span className="card--nav-filter">{t("filter_stories")}: </span>
       <Select
         className="categoryFilter"
         classNamePrefix="select"

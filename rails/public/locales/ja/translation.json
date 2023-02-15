@@ -1,0 +1,25 @@
+{
+  "alphabetical": "A-Z",
+  "reversed_alphabetical": "Z-A",
+  "most_recent": "作成日時順",
+  "region": "リージョン",
+  "place_type": "プレースタイプ",
+  "speaker": "スピーカー",
+  "topic": "トピック",
+  "language": "言語",
+  "speaker_community": "スピーカーのコミュニティ",
+  "hello": "こんにちは",
+  "back_to_welcome": "入り口に戻る",
+  "member_dashboard": "管理ページ",
+  "select_category": "カテゴリを選択",
+  "select_option": "オプションを選択",
+  "filter_stories": "フィルタ",
+  "introduction": "イントロダクション",
+  "intro": {
+    "question": "Terrastory とは？",
+    "explanation": "Terrastories は地域に根ざした口伝を記録して保存するアプリケーションです。 地域に固有の、語り継がれてきたものごとを、場所と結びつけて地図上に表示できるのです。オフラインでも機能します。"
+  },
+  "close": "閉じる",
+  "place_name": "地名の発音",
+  "sort_stories": "並べ替え"
+}

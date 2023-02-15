@@ -1,8 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import StoryMedia from "./StoryMedia";
+import { useTranslation } from 'react-i18next';
 
 const Story = props => {
+  const { t } = useTranslation();
   const { story, storyClass } = props;
 
   const renderSpeakers = speakers => {
@@ -61,7 +63,7 @@ const Story = props => {
           {
             story.language &&
             <p>
-              <b>{I18n.t("language")}:</b> {story.language}
+              <b>{t("language")}:</b> {story.language}
             </p>
           }
         </div>

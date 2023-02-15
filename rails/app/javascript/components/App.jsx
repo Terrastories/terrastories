@@ -3,26 +3,28 @@ import PropTypes from "prop-types";
 import Map from "./Map";
 import Card from "./Card";
 import IntroPopup from "./IntroPopup";
-import FILTER_CATEGORIES from "../constants/FilterConstants";
 import bbox from "@turf/bbox";
 
-let DEFAULT_CATEGORY_PLACEHOLDER = I18n.t("select_category");
-let DEFAULT_ITEM_PLACEHOLDER = I18n.t("select_option");
+import { withTranslation } from 'react-i18next';
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.state = this.defaultState();
+  }
+
+  defaultState = () => {
+    return {
       framedView: null, // store information about how view should be laid out
       points: {},
       stories: this.props.stories,
       activePoint: null,
       activeStory: null,
-      filterCategory: DEFAULT_CATEGORY_PLACEHOLDER,
-      filterItem: DEFAULT_ITEM_PLACEHOLDER,
+      filterCategory: this.props.t("select_category"),
+      filterItem: this.props.t("select_option"),
       itemOptions: [],
     }
-  }
+  };
 
   static propTypes = {
     stories: PropTypes.array,
@@ -73,9 +75,9 @@ class App extends Component {
     // Build Filter Map for Dropdowns
     // {category name: array of items}
     let filterMap = {};
-    FILTER_CATEGORIES.map(category => {
+    [this.props.t("region"), this.props.t("place_type"), this.props.t("speaker"), this.props.t("topic"), this.props.t("language"), this.props.t("speaker_community")].sort().map(category => {
       switch (category) {
-        case I18n.t("region"): {
+        case this.props.t("region"): {
           // first category: Region
           const regionSet = new Set(
             this.props.stories
@@ -87,7 +89,7 @@ class App extends Component {
           filterMap[category] = Array.from(regionSet).filter(item => item).sort();
           break;
         }
-        case I18n.t("place_type"): {
+        case this.props.t("place_type"): {
           // second category: Type of Place
           const typeOfPlaceSet = new Set(
             this.props.stories
@@ -101,7 +103,7 @@ class App extends Component {
           filterMap[category] = Array.from(typeOfPlaceSet).filter(item => item).sort();
           break;
         }
-        case I18n.t("speaker"): {
+        case this.props.t("speaker"): {
           // third category: Speaker
           const speakerSet = new Set(
             this.props.stories
@@ -113,7 +115,7 @@ class App extends Component {
           filterMap[category] = Array.from(speakerSet).filter(item => item).sort();
           break;
         }
-        case I18n.t("topic"): {
+        case this.props.t("topic"): {
           // fourth category: Topic
           const topicSet = new Set(
             this.props.stories
@@ -123,7 +125,7 @@ class App extends Component {
           filterMap[category] = Array.from(topicSet).filter(item => item).sort();
           break;
         }
-        case I18n.t("language"): {
+        case this.props.t("language"): {
           // fifth category: Language
           const languageSet = new Set(
             this.props.stories
@@ -133,7 +135,7 @@ class App extends Component {
           filterMap[category] = Array.from(languageSet).filter(item => item).sort();
           break;
         }
-        case I18n.t("helpers.label.speaker.speaker_community"): {
+        case this.props.t("speaker_community"): {
           // sixth category: Community
           const communitySet = new Set(
             this.props.stories
@@ -153,7 +155,7 @@ class App extends Component {
   handleFilter = (category, item) => {
     let filteredStories = [];
     switch (category) {
-      case I18n.t("region"): {
+      case this.props.t("region"): {
         // first category: region
         filteredStories = this.props.stories.filter(story => {
           if (
@@ -169,7 +171,7 @@ class App extends Component {
         });
         break;
       }
-      case I18n.t("place_type"): {
+      case this.props.t("place_type"): {
         // second category: type of places
         filteredStories = this.props.stories.filter(story => {
           if (
@@ -186,7 +188,7 @@ class App extends Component {
         });
         break;
       }
-      case I18n.t("speaker"): {
+      case this.props.t("speaker"): {
         // third category: speaker name
         filteredStories = this.props.stories.filter(story => {
           if (
@@ -202,7 +204,7 @@ class App extends Component {
         });
         break;
       }
-      case I18n.t("topic"): {
+      case this.props.t("topic"): {
         // fourth category: topic
         filteredStories = this.props.stories.filter(story => {
             if (story.topic) {
@@ -214,7 +216,7 @@ class App extends Component {
         });
         break;
       }
-      case I18n.t("language"): {
+      case this.props.t("language"): {
         // fifth category: language
         filteredStories = this.props.stories.filter(story => {
             if (story.language) {
@@ -226,14 +228,14 @@ class App extends Component {
         });
         break;
       }
-      case I18n.t("helpers.label.speaker.speaker_community"): {
+      case this.props.t("speaker_community"): {
         // sixth category: community
         filteredStories = this.props.stories
           .filter((story) => story.speakers
             .some(speaker => speaker.speaker_community && speaker.speaker_community.toLowerCase() === item.toLowerCase())
           )
           .map(story => {
-            let n = Object.assign({}, story) 
+            let n = Object.assign({}, story)
             n.speakers = n.speakers
               .filter(speaker => speaker.speaker_community && speaker.speaker_community.toLowerCase() === item.toLowerCase())
               return n
@@ -309,16 +311,7 @@ class App extends Component {
 
   resetStoriesAndMap = () => {
     const points = this.getPointsFromStories(this.props.stories);
-    this.setState({
-      stories: this.props.stories,
-      points: points,
-      framedView: null,
-      activePoint: null,
-      activeStory: null,
-      filterCategory: DEFAULT_CATEGORY_PLACEHOLDER,
-      filterItem: DEFAULT_ITEM_PLACEHOLDER,
-      itemOptions: []
-    });
+    this.setState(this.defaultState());
   };
 
   handleMapPointClick = (point) => {
@@ -327,12 +320,12 @@ class App extends Component {
     this.setState({ activePoint: point, framedView });
   };
 
-  
+
   // build category list based that excludes empty category sets
   buildFilterCategories = () => {
-    const variableCategories = [I18n.t("topic"), I18n.t("language"), I18n.t("helpers.label.speaker.speaker_community"),]
+    const variableCategories = [this.props.t("topic"), this.props.t("language"), this.props.t("speaker_community"),]
     let categories = this.filterMap();
-    
+
     Object.keys(categories).map(cat => {
       if (categories[cat].length === 0 && variableCategories.includes(cat)) {
         delete categories[cat]
@@ -390,4 +383,4 @@ class App extends Component {
     );
   }
 }
-export default App;
+export default withTranslation()(App);
