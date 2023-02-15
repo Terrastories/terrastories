@@ -1,331 +1,329 @@
 // Mapbox GL Minimap Control (https://github.com/aesqe/mapboxgl-minimap) by aesque
+import mapboxgl from '!mapbox-gl';
 
-function Minimap ( options )
-{
-    Object.assign(this.options, options);
+let defaultOptions = {
+	id: "mapboxgl-minimap",
+	width: "320px",
+	height: "180px",
+	style: "mapbox://styles/mapbox/streets-v8",
+	center: [0, 0],
+	zoom: 6,
 
-    this._ticking = false;
-    this._lastMouseMoveEvent = null;
-    this._parentMap = null;
-    this._isDragging = false;
-    this._isCursorOverFeature = false;
-    this._previousPoint = [0, 0];
-    this._currentPoint = [0, 0];
-    this._trackingRectCoordinates = [[[], [], [], [], []]];
-}
+	// should be a function; will be bound to Minimap
+	zoomAdjust: null,
 
-Minimap.prototype = Object.assign({}, mapboxgl.NavigationControl.prototype, {
+	// if parent map zoom >= 18 and minimap zoom >= 14, set minimap zoom to 16
+	zoomLevels: [
+		[18, 14, 16],
+		[16, 12, 14],
+		[14, 10, 12],
+		[12, 8, 10],
+		[10, 6, 8]
+	],
 
-    options: {
-        id: "mapboxgl-minimap",
-        width: "320px",
-        height: "180px",
-        style: "mapbox://styles/mapbox/light-v10",
-        center: [0, 0],
-        zoom: 6,
+	lineColor: "#08F",
+	lineWidth: 1,
+	lineOpacity: 1,
 
-        // should be a function; will be bound to Minimap
-        zoomAdjust: null,
+	fillColor: "#F80",
+	fillOpacity: 0.25,
 
-        // if parent map zoom >= 18 and minimap zoom >= 14, set minimap zoom to 16
-        zoomLevels: [
-            [18, 14, 16],
-            [16, 12, 14],
-            [14, 10, 12],
-            [12, 8, 10],
-            [10, 6, 8],
-            [8, 4, 6],
-            [6, 2, 4],
-            [3, 0, 2],
-            [1, 0, 0]
+	dragPan: false,
+	scrollZoom: false,
+	boxZoom: false,
+	dragRotate: false,
+	keyboard: false,
+	doubleClickZoom: false,
+	touchZoomRotate: false
+};
 
-        ],
+//class Minimap extends mapboxgl.NavigationControl {
+class Minimap {
+	constructor(_options){
+		// super();
+        console.log(_options);
+		this.options = defaultOptions;
+		Object.assign(this.options, _options);
 
-        lineColor: "#136a7e",
-        lineWidth: 1,
-        lineOpacity: 1,
+		this._ticking = false;
+		this._lastMouseMoveEvent = null;
+		this._parentMap = null;
+		this._isDragging = false;
+		this._isCursorOverFeature = false;
+		this._previousPoint = [0, 0];
+		this._currentPoint = [0, 0];
+		this._trackingRectCoordinates = [[[], [], [], [], []]];
+	}
 
-        fillColor: "#d77a34",
-        fillOpacity: 0.25,
+	onAdd ( parentMap )
+	{
+		this._parentMap = parentMap;
 
-        dragPan: false,
-        scrollZoom: false,
-        boxZoom: false,
-        dragRotate: false,
-        keyboard: false,
-        doubleClickZoom: false,
-        touchZoomRotate: false
-    },
+		var opts = this.options;
+		var container = this._container = this._createContainer(parentMap);
+		var miniMap = this._miniMap = new mapboxgl.Map({
+			attributionControl: false,
+			container: container,
+			style: opts.style,
+			zoom: opts.zoom,
+			center: opts.center
+		});
 
-    onAdd: function ( parentMap )
-    {
-        this._parentMap = parentMap;
+		if (opts.maxBounds) miniMap.setMaxBounds(opts.maxBounds);
 
-        var opts = this.options;
-        var container = this._container = this._createContainer(parentMap);
-        var miniMap = this._miniMap = new mapboxgl.Map({
-            attributionControl: false,
-            container: container,
-            style: opts.style,
-            zoom: opts.zoom,
-            center: opts.center
-        });
+		miniMap.on("load", this._load.bind(this));
 
-        if (opts.maxBounds) miniMap.setMaxBounds(opts.maxBounds);
+		return this._container;
+	}
 
-        miniMap.on("load", this._load.bind(this));
+	_load ()
+	{
+		var opts = this.options;
+		var parentMap = this._parentMap;
+		var miniMap = this._miniMap;
+		var interactions = [
+			"dragPan", "scrollZoom", "boxZoom", "dragRotate",
+			"keyboard", "doubleClickZoom", "touchZoomRotate"
+		];
 
-        return this._container;
-    },
+		interactions.forEach(function(i){
+			if( opts[i] !== true ) {
+				miniMap[i].disable();
+			}
+		});
 
-    _load: function ()
-    {
-        var opts = this.options;
-        var parentMap = this._parentMap;
-        var miniMap = this._miniMap;
-        var interactions = [
-            "dragPan", "scrollZoom", "boxZoom", "dragRotate",
-            "keyboard", "doubleClickZoom", "touchZoomRotate"
-        ];
+		if( typeof opts.zoomAdjust === "function" ) {
+			this.options.zoomAdjust = opts.zoomAdjust.bind(this);
+		} else if( opts.zoomAdjust === null ) {
+			this.options.zoomAdjust = this._zoomAdjust.bind(this);
+		}
 
-        interactions.forEach(function(i){
-            if( opts[i] !== true ) {
-                miniMap[i].disable();
-            }
-        });
+		var bounds = miniMap.getBounds();
 
-        if( typeof opts.zoomAdjust === "function" ) {
-            this.options.zoomAdjust = opts.zoomAdjust.bind(this);
-        } else if( opts.zoomAdjust === null ) {
-            this.options.zoomAdjust = this._zoomAdjust.bind(this);
-        }
+		this._convertBoundsToPoints(bounds);
 
-        var bounds = miniMap.getBounds();
+		miniMap.addSource("trackingRect", {
+			"type": "geojson",
+			"data": {
+				"type": "Feature",
+				"properties": {
+					"name": "trackingRect"
+				},
+				"geometry": {
+					"type": "Polygon",
+					"coordinates": this._trackingRectCoordinates
+				}
+			}
+		});
 
-        this._convertBoundsToPoints(bounds);
+		miniMap.addLayer({
+			"id": "trackingRectOutline",
+			"type": "line",
+			"source": "trackingRect",
+			"layout": {},
+			"paint": {
+				"line-color": opts.lineColor,
+				"line-width": opts.lineWidth,
+				"line-opacity": opts.lineOpacity
+			}
+		});
 
-        miniMap.addSource("trackingRect", {
-            "type": "geojson",
-            "data": {
-                "type": "Feature",
-                "properties": {
-                    "name": "trackingRect"
-                },
-                "geometry": {
-                    "type": "Polygon",
-                    "coordinates": this._trackingRectCoordinates
-                }
-            }
-        });
+		// needed for dragging
+		miniMap.addLayer({
+			"id": "trackingRectFill",
+			"type": "fill",
+			"source": "trackingRect",
+			"layout": {},
+			"paint": {
+				"fill-color": opts.fillColor,
+				"fill-opacity": opts.fillOpacity
+			}
+		});
 
-        miniMap.addLayer({
-            "id": "trackingRectOutline",
-            "type": "line",
-            "source": "trackingRect",
-            "layout": {},
-            "paint": {
-                "line-color": opts.lineColor,
-                "line-width": opts.lineWidth,
-                "line-opacity": opts.lineOpacity
-            }
-        });
+		this._trackingRect = this._miniMap.getSource("trackingRect");
 
-        // needed for dragging
-        miniMap.addLayer({
-            "id": "trackingRectFill",
-            "type": "fill",
-            "source": "trackingRect",
-            "layout": {},
-            "paint": {
-                "fill-color": opts.fillColor,
-                "fill-opacity": opts.fillOpacity
-            }
-        });
+		this._update();
 
-        this._trackingRect = this._miniMap.getSource("trackingRect");
+		parentMap.on("move", this._update.bind(this));
 
-        this._update();
+		miniMap.on("mousemove", this._mouseMove.bind(this));
+		miniMap.on("mousedown", this._mouseDown.bind(this));
+		miniMap.on("mouseup", this._mouseUp.bind(this));
 
-        parentMap.on("move", this._update.bind(this));
+		miniMap.on("touchmove", this._mouseMove.bind(this));
+		miniMap.on("touchstart", this._mouseDown.bind(this));
+		miniMap.on("touchend", this._mouseUp.bind(this));
 
-        miniMap.on("mousemove", this._mouseMove.bind(this));
-        miniMap.on("mousedown", this._mouseDown.bind(this));
-        miniMap.on("mouseup", this._mouseUp.bind(this));
+		this._miniMapCanvas = miniMap.getCanvasContainer();
+		this._miniMapCanvas.addEventListener("wheel", this._preventDefault);
+		this._miniMapCanvas.addEventListener("mousewheel", this._preventDefault);
+	}
 
-        miniMap.on("touchmove", this._mouseMove.bind(this));
-        miniMap.on("touchstart", this._mouseDown.bind(this));
-        miniMap.on("touchend", this._mouseUp.bind(this));
+	_mouseDown( e )
+	{
+		if( this._isCursorOverFeature )
+		{
+			this._isDragging = true;
+			this._previousPoint = this._currentPoint;
+			this._currentPoint = [e.lngLat.lng, e.lngLat.lat];
+		}
+	}
 
-        this._miniMapCanvas = miniMap.getCanvasContainer();
-        this._miniMapCanvas.addEventListener("wheel", this._preventDefault);
-        this._miniMapCanvas.addEventListener("mousewheel", this._preventDefault);
-    },
+	_mouseMove (e)
+	{
+		this._ticking = false;
 
-    _mouseDown: function ( e )
-    {
-        if( this._isCursorOverFeature )
-        {
-            this._isDragging = true;
-            this._previousPoint = this._currentPoint;
-            this._currentPoint = [e.lngLat.lng, e.lngLat.lat];
-        }
-    },
+		var miniMap = this._miniMap;
+		var features = miniMap.queryRenderedFeatures(e.point, {
+			layers: ["trackingRectFill"]
+		});
 
-    _mouseMove: function (e)
-    {
-        this._ticking = false;
+		// don't update if we're still hovering the area
+		if( ! (this._isCursorOverFeature && features.length > 0) )
+		{
+			this._isCursorOverFeature = features.length > 0;
+			this._miniMapCanvas.style.cursor = this._isCursorOverFeature ? "move" : "";
+		}
 
-        var miniMap = this._miniMap;
-        var features = miniMap.queryRenderedFeatures(e.point, {
-            layers: ["trackingRectFill"]
-        });
+		if( this._isDragging )
+		{
+			this._previousPoint = this._currentPoint;
+			this._currentPoint = [e.lngLat.lng, e.lngLat.lat];
 
-        // don't update if we're still hovering the area
-        if( ! (this._isCursorOverFeature && features.length > 0) )
-        {
-            this._isCursorOverFeature = features.length > 0;
-            this._miniMapCanvas.style.cursor = this._isCursorOverFeature ? "move" : "";
-        }
+			var offset = [
+				this._previousPoint[0] - this._currentPoint[0],
+				this._previousPoint[1] - this._currentPoint[1]
+			];
 
-        if( this._isDragging )
-        {
-            this._previousPoint = this._currentPoint;
-            this._currentPoint = [e.lngLat.lng, e.lngLat.lat];
+			var newBounds = this._moveTrackingRect(offset);
 
-            var offset = [
-                this._previousPoint[0] - this._currentPoint[0],
-                this._previousPoint[1] - this._currentPoint[1]
-            ];
+			this._parentMap.fitBounds(newBounds, {
+				duration: 80,
+				noMoveStart: true
+			});
+		}
+	}
 
-            var newBounds = this._moveTrackingRect(offset);
+	_mouseUp()
+	{
+		this._isDragging = false;
+		this._ticking = false;
+	}
 
-            this._parentMap.fitBounds(newBounds, {
-                duration: 80,
-                noMoveStart: true
-            });
-        }
-    },
+	_moveTrackingRect( offset )
+	{
+		var source = this._trackingRect;
+		var data = source._data;
+		var bounds = data.properties.bounds;
 
-    _mouseUp: function ()
-    {
-        this._isDragging = false;
-        this._ticking = false;
-    },
+		bounds._ne.lat -= offset[1];
+		bounds._ne.lng -= offset[0];
+		bounds._sw.lat -= offset[1];
+		bounds._sw.lng -= offset[0];
 
-    _moveTrackingRect: function ( offset )
-    {
-        var source = this._trackingRect;
-        var data = source._data;
-        var bounds = data.properties.bounds;
+		this._convertBoundsToPoints(bounds);
+		source.setData(data);
 
-        bounds._ne.lat -= offset[1];
-        bounds._ne.lng -= offset[0];
-        bounds._sw.lat -= offset[1];
-        bounds._sw.lng -= offset[0];
+		return bounds;
+	}
 
-        this._convertBoundsToPoints(bounds);
-        source.setData(data);
+	_setTrackingRectBounds( bounds )
+	{
+		var source = this._trackingRect;
+		var data = source._data;
 
-        return bounds;
-    },
+		data.properties.bounds = bounds;
+		this._convertBoundsToPoints(bounds);
+		source.setData(data);
+	}
 
-    _setTrackingRectBounds: function ( bounds )
-    {
-        var source = this._trackingRect;
-        var data = source._data;
+	_convertBoundsToPoints( bounds )
+	{
+		var ne = bounds._ne;
+		var sw = bounds._sw;
+		var trc = this._trackingRectCoordinates;
 
-        data.properties.bounds = bounds;
-        this._convertBoundsToPoints(bounds);
-        source.setData(data);
-    },
+		trc[0][0][0] = ne.lng;
+		trc[0][0][1] = ne.lat;
+		trc[0][1][0] = sw.lng;
+		trc[0][1][1] = ne.lat;
+		trc[0][2][0] = sw.lng;
+		trc[0][2][1] = sw.lat;
+		trc[0][3][0] = ne.lng;
+		trc[0][3][1] = sw.lat;
+		trc[0][4][0] = ne.lng;
+		trc[0][4][1] = ne.lat;
+	}
 
-    _convertBoundsToPoints: function ( bounds )
-    {
-        var ne = bounds._ne;
-        var sw = bounds._sw;
-        var trc = this._trackingRectCoordinates;
+	_update()
+	{
+		if( this._isDragging  ) {
+			return;
+		}
 
-        trc[0][0][0] = ne.lng;
-        trc[0][0][1] = ne.lat;
-        trc[0][1][0] = sw.lng;
-        trc[0][1][1] = ne.lat;
-        trc[0][2][0] = sw.lng;
-        trc[0][2][1] = sw.lat;
-        trc[0][3][0] = ne.lng;
-        trc[0][3][1] = sw.lat;
-        trc[0][4][0] = ne.lng;
-        trc[0][4][1] = ne.lat;
-    },
+		var parentBounds = this._parentMap.getBounds();
 
-    _update: function ( e )
-    {
-        if( this._isDragging  ) {
-            return;
-        }
+		this._setTrackingRectBounds(parentBounds);
 
-        var parentBounds = this._parentMap.getBounds();
+		if( typeof this.options.zoomAdjust === "function" ) {
+			this.options.zoomAdjust();
+		}
+	}
 
-        this._setTrackingRectBounds(parentBounds);
+	_zoomAdjust()
+	{
+		var miniMap = this._miniMap;
+		var parentMap = this._parentMap;
+		var miniZoom = parseInt(miniMap.getZoom(), 10);
+		var parentZoom = parseInt(parentMap.getZoom(), 10);
+		var levels = this.options.zoomLevels;
+		var found = false;
 
-        if( typeof this.options.zoomAdjust === "function" ) {
-            this.options.zoomAdjust();
-        }
-    },
+		levels.forEach(function(zoom)
+		{
+			if( ! found && parentZoom >= zoom[0] )
+			{
+				if( miniZoom >= zoom[1] ) {
+					miniMap.setZoom(zoom[2]);
+				}
 
-    _zoomAdjust: function ()
-    {
-        var miniMap = this._miniMap;
-        var parentMap = this._parentMap;
-        var miniZoom = parseInt(miniMap.getZoom(), 10);
-        var parentZoom = parseInt(parentMap.getZoom(), 10);
-        var levels = this.options.zoomLevels;
-        var found = false;
+				miniMap.setCenter(parentMap.getCenter());
+				found = true;
+			}
+		});
 
-        levels.forEach(function(zoom)
-        {
-            if( ! found && parentZoom >= zoom[0] )
-            {
-                if( miniZoom >= zoom[1] ) {
-                    miniMap.setZoom(zoom[2]);
-                }
+		if( ! found && miniZoom !== this.options.zoom )
+		{
+			if( typeof this.options.bounds === "object" ) {
+				miniMap.fitBounds(this.options.bounds, {duration: 50});
+			}
 
-                miniMap.setCenter(parentMap.getCenter());
-                found = true;
-            }
-        });
+			miniMap.setZoom(this.options.zoom)
+		}
+	}
 
-        if( ! found && miniZoom !== this.options.zoom )
-        {
-            if( typeof this.options.bounds === "object" ) {
-                miniMap.fitBounds(this.options.bounds, {duration: 50});
-            }
-
-            miniMap.setZoom(this.options.zoom)
-        }
-    },
-
-    _createContainer: function ( parentMap )
-    {
-        var opts = this.options;
-        var container = document.createElement("div");
+	_createContainer ( parentMap )
+	{
+		var opts = this.options;
+		var container = document.createElement("div");
 
         container.className = "mapboxgl-ctrl-minimap mapboxgl-ctrl";
         var containerBorder = "border: 3px solid #136a7e";
         container.setAttribute('style', `width: ${opts.width}; height: ${opts.height}; ${containerBorder}`);
         container.addEventListener("contextmenu", this._preventDefault);
 
-        parentMap.getContainer().appendChild(container);
+		parentMap.getContainer().appendChild(container);
 
-        if( opts.id !== "" ) {
-            container.id = opts.id;
-        }
+		if( opts.id !== "" ) {
+			container.id = opts.id;
+		}
 
-        return container;
-    },
+		return container;
+	}
 
-    _preventDefault: function ( e ) {
-        e.preventDefault();
-    }
-});
+	_preventDefault( e ) {
+		e.preventDefault();
+	}
+}
 
-mapboxgl.Minimap = Minimap;
+export default Minimap;
