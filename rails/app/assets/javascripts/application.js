@@ -12,6 +12,5 @@
 //
 //= require activestorage
 //= require mapbox-gl
-//= require plyr
 //= require rails-ujs
 //= require_tree .

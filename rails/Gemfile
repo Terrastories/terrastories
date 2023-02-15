@@ -46,9 +46,6 @@ gem 'activestorage-validator'
 gem 'webpacker', '~> 5.0'
 gem 'react-rails'
 
-# plyr-rails gem is the integration of plyr.io javascript library for your Rails 4 and Rails 5 application.
-gem 'plyr-rails'
-
 # Use ActiveStorage variant
 gem 'image_processing'
 
