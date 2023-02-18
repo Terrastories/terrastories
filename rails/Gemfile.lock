@@ -342,39 +342,40 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activestorage-validator
+  activestorage-validator (~> 0.2.0)
   annotate
-  aws-sdk-s3
+  aws-sdk-s3 (~> 1.113.0)
   better_errors
   binding_of_caller
   bundler-audit
   byebug
   capybara (>= 2.15, < 4.0)
-  devise
-  devise-i18n
+  devise (~> 4.8.1)
+  devise-i18n (~> 1.10.2)
   factory_bot_rails
-  flipper
-  flipper-active_record
-  geocoder
+  flipper (~> 0.25.3)
+  flipper-active_record (~> 0.25.3)
+  geocoder (~> 1.7.5)
   guard-rspec
-  image_processing
+  image_processing (~> 1.12.2)
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   mapbox-gl-rails (~> 2.9.0)
   pg (>= 0.18, < 2.0)
   pry-rails
   puma (~> 4.3)
-  pundit
+  pundit (~> 2.2.0)
   rails (~> 6.1.0)
-  rails-i18n
-  react-rails
-  rgeo-geojson
+  rails-i18n (~> 7.0.3)
+  react-rails (~> 2.6.2)
+  rgeo (~> 2.4.0)
+  rgeo-geojson (~> 2.1.1)
   rspec-rails
   sass-rails (~> 5.0)
   selenium-webdriver
   shoulda-matchers
   simplecov
-  terser
+  terser (~> 1.1.8)
   tzinfo-data
   web-console (>= 3.3.0)
   webdrivers

@@ -8,13 +8,19 @@ gem 'rails', '~> 6.1.0'
 gem 'puma', '~> 4.3'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
-# Already has rgeo
-gem 'rgeo-geojson'
-gem 'geocoder'
+
+# GeoJson / rgeo
+gem 'rgeo', '~> 2.4.0'
+gem 'rgeo-geojson', '~> 2.1.1'
+
+# Geocoder for center calculation
+gem 'geocoder', '~> 1.7.5'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+
 # Use Uglifier as compressor for JavaScript assets
-gem 'terser'
+gem 'terser', '~> 1.1.8'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
@@ -24,34 +30,34 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use devise for authentication
-gem 'devise'
+gem 'devise', '~> 4.8.1'
 
 # Use pundit for policy based authorization
-gem 'pundit'
+gem 'pundit', '~> 2.2.0'
 
 # Internationalization
-gem 'rails-i18n'
-gem 'devise-i18n'
+gem 'rails-i18n', '~> 7.0.3'
+gem 'devise-i18n', '~> 1.10.2'
 
 # Mapbox GL rendering library
 gem 'mapbox-gl-rails', '~> 2.9.0'
 
 # S3 backed Active Storage
-gem 'aws-sdk-s3'
+gem 'aws-sdk-s3', '~> 1.113.0'
 
 # ActiveStorage Validation
-gem 'activestorage-validator'
+gem 'activestorage-validator', '~> 0.2.0'
 
 # Enable Webpack for javascript application code
 gem 'webpacker', '~> 5.0'
-gem 'react-rails'
+gem 'react-rails', '~> 2.6.2'
 
 # Use ActiveStorage variant
-gem 'image_processing'
+gem 'image_processing', '~> 1.12.2'
 
 # Use Flipper for feature flags
-gem 'flipper'
-gem 'flipper-active_record'
+gem 'flipper', '~> 0.25.3'
+gem 'flipper-active_record', '~> 0.25.3'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
