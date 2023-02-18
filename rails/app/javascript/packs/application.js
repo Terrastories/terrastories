@@ -7,6 +7,8 @@
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
 
+import('styles/application.scss');
+
 require("global/i18n");
 require("global/pause_all_videos");
 

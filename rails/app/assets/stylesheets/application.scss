@@ -1,2 +1,9 @@
-@import 'core/core';
-@import 'components/components';
+@import "core/reset";
+@import "core/colors";
+@import "core/media";
+@import "core/variables";
+@import "core/typography";
+
+@import "features/devise";
+@import "features/onboarding";
+@import "features/welcome";
