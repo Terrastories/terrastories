@@ -1,4 +1,4 @@
-FROM ruby:2.5.9-alpine
+FROM ruby:2.6.0-alpine
 
 RUN apk --no-cache add --update \
     build-base \
@@ -17,8 +17,8 @@ RUN apk --no-cache add --update \
     libc6-compat \
     imagemagick \
     ffmpeg && \
-    gem install rubygems-update -v '<3' --no-document && update_rubygems && \
-    gem install bundler --no-document --force -v '~> 2.3.0'
+    gem update --system --no-document && \
+    gem install bundler --no-document --force
 
 WORKDIR /api
 
