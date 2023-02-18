@@ -1,4 +1,4 @@
-FROM ruby:2.6.0-alpine as build
+FROM ruby:2.6.10-alpine as build
 
 RUN apk --no-cache add --update \
     build-base \
@@ -32,7 +32,7 @@ COPY . /tmp
 
 RUN bundle exec rake assets:precompile
 
-FROM ruby:2.6.0-alpine
+FROM ruby:2.6.10-alpine
 
 EXPOSE 3000
 

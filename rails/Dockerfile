@@ -1,4 +1,4 @@
-FROM ruby:2.6.0-alpine
+FROM ruby:2.6.10-alpine
 
 RUN apk --no-cache add --update \
     build-base \
