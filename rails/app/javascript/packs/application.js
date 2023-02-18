@@ -8,6 +8,7 @@
 // layout file, like app/views/layouts/application.html.erb
 
 require("global/i18n");
+require("global/pause_all_videos");
 
 const componentRequireContext = require.context("components", true);
 
