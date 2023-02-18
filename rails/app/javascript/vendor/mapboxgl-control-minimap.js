@@ -41,7 +41,6 @@ let defaultOptions = {
 class Minimap {
 	constructor(_options){
 		// super();
-        console.log(_options);
 		this.options = defaultOptions;
 		Object.assign(this.options, _options);
 
