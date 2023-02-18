@@ -6,14 +6,6 @@ local:
   service: Disk
   root: "/media"
 
-# Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
-amazon:
-  service: S3
-  access_key_id: <%= Rails.application.credentials.dig(:aws, :access_key_id) %>
-  secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
-  region: <%= ENV.fetch("AWS_REGION", "us-east-2") %>
-  bucket: <%= ENV.fetch("AWS_BUCKET_NAME", "terrastories-demo") %>
-
 # This is for the primary online multi-instance.
 # It does not use the shared AWS environment that is used by `amazon` in our staging/demo environments.
 production:

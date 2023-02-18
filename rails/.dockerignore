@@ -1,14 +1,36 @@
+# Don't persist git configuration to image
 .git
+.gitattributes
 .gitignore
-*.md
-.dockerignore
+
+# Ignore docker files
+*.dockerignore
+*Dockerfile
+
+# Ignore tooling
+Brewfile
 .gitlab-ci.yml
-docker-compose.*
-Dockerfile
-log/*
+.editorconfig
+.browserslistrc
+.byebug_history
+.eslintignore
+.eslintrc.json
+.postcssrc.yml
+.rspec
+
+# Ignore development
+.ruby-version
+.env.sample
+coverage
+tmp
+spec
+public/packs-test
+
+# Ignore node
 node_modules/*
-public/assets/*
-storage/*
+
 public/packs/*
 public/packs-test/*
-tmp/*
+
+!public/assets/*
+!public/packs/*
