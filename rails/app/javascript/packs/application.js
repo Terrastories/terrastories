@@ -8,8 +8,8 @@
 // layout file, like app/views/layouts/application.html.erb
 
 // Require static/global JS functions and config
-require("global/i18n");
-require("global/pause_all_videos");
+require("../global/i18n");
+require("../global/pause_all_videos");
 
 // Load App context for ReactRails
 const componentRequireContext = require.context("components", true);
