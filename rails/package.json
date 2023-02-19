@@ -4,7 +4,8 @@
   "scripts": {
     "test": "jest",
     "eslint": "eslint",
-    "lint": "eslint \"app/javascript/**\""
+    "lint": "eslint \"app/javascript/**\"",
+    "build:css": "./bin/build-css"
   },
   "husky": {
     "hooks": {
@@ -36,6 +37,7 @@
     "react-list": "^0.8.15",
     "react-select": "^2.0.0",
     "react_ujs": "^2.6.0",
+    "sass": "^1.58.3",
     "webpack": "^4.46.0",
     "webpack-cli": "^3.3.12"
   },

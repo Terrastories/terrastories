@@ -19,8 +19,8 @@ gem 'rgeo-geojson', '~> 2.1.1'
 # Geocoder for center calculation
 gem 'geocoder', '~> 1.7.5'
 
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+# Use css_bundling for stylesheets
+gem 'cssbundling-rails', '~> 1.1.2'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'terser', '~> 1.1.8'

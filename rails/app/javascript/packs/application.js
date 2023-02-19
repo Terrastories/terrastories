@@ -7,11 +7,6 @@
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
 
-// Import CSS for bundling
-// To reference styles, add <%= stylesheet_pack_tag 'application' %>to the appropriate
-// layout file, like app/views/layouts/application.html.erb
-import('styles/application.scss');
-
 // Require static/global JS functions and config
 require("global/i18n");
 require("global/pause_all_videos");

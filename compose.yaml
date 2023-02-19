@@ -28,6 +28,7 @@ services:
       - "3000"
     environment:
       - CHECK_BUNDLER=yes
+      - RAILS_ENV=development
     volumes:
       - bundler:/usr/local/bundle
       - ./rails:/api

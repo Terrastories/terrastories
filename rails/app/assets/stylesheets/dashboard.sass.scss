@@ -1,10 +1,9 @@
 // this handler function is implemented here because mapbox-gl-rails uses modern css syntax which sass can't interpet.
-@function rgb($args...) {
-  @return r#{g}#{b}(#{$args})
-}
+// @function rgb($args...) {
+//   @return r#{g}#{b}(#{$args})
+// }
 
 @import 'core/reset';
-@import 'core/variables';
 @import 'core/colors';
 @import 'core/typography';
 @import 'core/flexbox';
@@ -25,7 +24,7 @@
 @import 'cms/media';
 @import 'cms/errors';
 @import 'cms/flash';
-@import 'mapbox-gl';
+@import 'mapbox-gl/dist/mapbox-gl.css';
 
 #themeMap {
   min-height: 400px;
