@@ -175,8 +175,6 @@ GEM
     lumberjack (1.2.8)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
-    mapbox-gl-rails (2.9.0)
-      railties (>= 3.2)
     marcel (1.0.2)
     matrix (0.4.2)
     method_source (1.0.0)
@@ -356,7 +354,6 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   listen
   mail (= 2.7.1)
-  mapbox-gl-rails (~> 2.9.0)
   pg (>= 0.18, < 2.0)
   pry-rails
   puma (< 7)
