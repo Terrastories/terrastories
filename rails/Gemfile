@@ -40,7 +40,7 @@ gem 'pundit', '~> 2.2.0'
 
 # Internationalization
 gem 'rails-i18n', '~> 7.0.3'
-gem 'devise-i18n', '~> 1.10.2'
+gem 'devise-i18n', '~> 1.11.0'
 
 # Mapbox GL rendering library
 gem 'mapbox-gl-rails', '~> 2.9.0'
