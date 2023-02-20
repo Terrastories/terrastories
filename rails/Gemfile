@@ -36,7 +36,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise', '~> 4.9.0'
 
 # Use pundit for policy based authorization
-gem 'pundit', '~> 2.2.0'
+gem 'pundit', '~> 2.3.0'
 
 # Internationalization
 gem 'rails-i18n', '~> 7.0.3'

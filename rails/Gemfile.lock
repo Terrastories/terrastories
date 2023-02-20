@@ -202,7 +202,7 @@ GEM
     public_suffix (5.0.1)
     puma (6.1.0)
       nio4r (~> 2.0)
-    pundit (2.2.0)
+    pundit (2.3.0)
       activesupport (>= 3.0.0)
     racc (1.6.2)
     rack (2.2.6.2)
@@ -360,7 +360,7 @@ DEPENDENCIES
   pg (>= 0.18, < 2.0)
   pry-rails
   puma (< 7)
-  pundit (~> 2.2.0)
+  pundit (~> 2.3.0)
   rails (~> 6.1.0)
   rails-i18n (~> 7.0.3)
   react-rails (~> 2.6.2)
