@@ -1,11 +1,11 @@
-FROM ruby:2.7.0-alpine as build
+FROM ruby:2.7-alpine as build
 
 RUN apk --no-cache add --update \
     build-base \
     linux-headers \
     less \
     nodejs \
-    python2 \
+    python3 \
     yarn \
     tzdata \
     postgresql-dev \
@@ -32,7 +32,7 @@ COPY . /tmp
 
 RUN bundle exec rake assets:precompile
 
-FROM ruby:2.7.0-alpine
+FROM ruby:2.7-alpine
 
 EXPOSE 3000
 

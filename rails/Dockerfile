@@ -1,11 +1,11 @@
-FROM ruby:2.7.0-alpine
+FROM ruby:2.7-alpine
 
 RUN apk --no-cache add --update \
     build-base \
     linux-headers \
     less \
     nodejs \
-    python2 \
+    python3 \
     yarn \
     tzdata \
     postgresql-dev \
