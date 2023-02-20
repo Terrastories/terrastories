@@ -77,8 +77,8 @@ GEM
     aws-sdk-kms (1.62.0)
       aws-sdk-core (~> 3, >= 3.165.0)
       aws-sigv4 (~> 1.1)
-    aws-sdk-s3 (1.113.2)
-      aws-sdk-core (~> 3, >= 3.127.0)
+    aws-sdk-s3 (1.119.1)
+      aws-sdk-core (~> 3, >= 3.165.0)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.4)
     aws-sigv4 (1.5.2)
@@ -200,7 +200,7 @@ GEM
     pry-rails (0.3.9)
       pry (>= 0.10.4)
     public_suffix (5.0.1)
-    puma (4.3.12)
+    puma (6.1.0)
       nio4r (~> 2.0)
     pundit (2.2.0)
       activesupport (>= 3.0.0)
@@ -339,7 +339,7 @@ PLATFORMS
 DEPENDENCIES
   activestorage-validator (~> 0.2.0)
   annotate
-  aws-sdk-s3 (~> 1.113.0)
+  aws-sdk-s3 (~> 1.119.0)
   better_errors
   binding_of_caller
   bundler-audit
@@ -360,7 +360,7 @@ DEPENDENCIES
   mapbox-gl-rails (~> 2.9.0)
   pg (>= 0.18, < 2.0)
   pry-rails
-  puma (~> 4.3)
+  puma (< 7)
   pundit (~> 2.2.0)
   rails (~> 6.1.0)
   rails-i18n (~> 7.0.3)
