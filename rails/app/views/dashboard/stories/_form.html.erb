@@ -30,7 +30,7 @@
             <% else %>
               <%= image_tag(media, width: 150) %>
             <% end %>
-            <%= link_to t("dashboard.actions.destroy"), story_delete_media_path(@story, media.signed_id), class: "delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm")}, remote: true %>
+            <%= link_to t("dashboard.actions.destroy"), story_delete_media_path(@story, media.signed_id), class: "delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm"), turbo_confirm: t("dashboard.actions.confirm"), turbo_method: :delete}, remote: true %>
           </span>
         <% elsif media.video? %>
           <span class="media-with-controls">
@@ -44,7 +44,7 @@
               <source src="<%= url_for(media) %>"/>
               <%= t("video_unsupported") %>
             </video>
-            <%= link_to t("dashboard.actions.destroy"), story_delete_media_path(@story, media.signed_id), class: "delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm")}, remote: true %>
+            <%= link_to t("dashboard.actions.destroy"), story_delete_media_path(@story, media.signed_id), class: "delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm"), turbo_confirm: t("dashboard.actions.confirm"), turbo_method: :delete}, remote: true %>
           </span>
         <% elsif media.audio? %>
           <span class="media-with-controls">
@@ -55,15 +55,15 @@
             >
               <source src="<%= url_for(media) %>" type="<%= media.blob.content_type %>" />
             </audio>
-            <%= link_to t("dashboard.actions.destroy"), story_delete_media_path(@story, media.signed_id), class: "delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm")}, remote: true %>
+            <%= link_to t("dashboard.actions.destroy"), story_delete_media_path(@story, media.signed_id), class: "delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm"), turbo_confirm: t("dashboard.actions.confirm"), turbo_method: :delete}, remote: true %>
           </span>
         <% elsif media.previewable? %>
           <span class="media-with-controls">
             <%= image_tag(media.preview(resize_to_limit:[150, 150])) %>
-            <%= link_to t("dashboard.actions.destroy"), story_delete_media_path(@story, media.signed_id), class: "delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm")}, remote: true %>
+            <%= link_to t("dashboard.actions.destroy"), story_delete_media_path(@story, media.signed_id), class: "delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm"), turbo_confirm: t("dashboard.actions.confirm"), turbo_method: :delete}, remote: true %>
         <% else %>
           <%= media.filename %>
-          <%= link_to t("dashboard.actions.destroy"), story_delete_media_path(@story, media.signed_id), class: "delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm")}, remote: true %>
+          <%= link_to t("dashboard.actions.destroy"), story_delete_media_path(@story, media.signed_id), class: "delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm"), turbo_confirm: t("dashboard.actions.confirm"), turbo_method: :delete}, remote: true %>
         <% end %>
       <% end %>
     <% end %>

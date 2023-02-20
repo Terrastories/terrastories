@@ -11,7 +11,7 @@
         <% else %>
           <%= image_tag @place.photo, alt: @place.name, title: @place.name %>
         <% end %>
-        <%= link_to place_photo_path(@place), class: "overlay delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm")}, remote: true do %>
+        <%= link_to place_photo_path(@place), class: "overlay delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm"), turbo_confirm: t("dashboard.actions.confirm"), turbo_method: :delete}, remote: true do %>
           <span><%= t("dashboard.actions.destroy") %></span>
         <% end %>
       <% else %>

@@ -10,7 +10,7 @@
   <ul class="filename-list">
   <li class="file-item">
     <%= link_to @place.name_audio.filename, rails_blob_path(@place.name_audio) %>
-    <%= link_to place_name_audio_path(@place), class: "delete-link", method: "delete", data: {confirm: t("dashboard.actions.confirm")}, remote: true do %>
+    <%= link_to place_name_audio_path(@place), class: "delete-link", method: "delete", data: {confirm: t("dashboard.actions.confirm"), turbo_confirm: t("dashboard.actions.confirm"), turbo_method: :delete}, remote: true do %>
       <svg><use href="#icon-cancel"></svg>
     <% end %>
   </li>
