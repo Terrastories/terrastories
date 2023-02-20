@@ -10,21 +10,17 @@ import { withTranslation } from 'react-i18next';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = this.defaultState();
-  }
-
-  defaultState = () => {
-    return {
+    this.state = {
       framedView: null, // store information about how view should be laid out
       points: {},
       stories: this.props.stories,
       activePoint: null,
       activeStory: null,
-      filterCategory: this.props.t("select_category"),
-      filterItem: this.props.t("select_option"),
+      filterCategory: props.t("select_category"),
+      filterItem: props.t("select_option"),
       itemOptions: [],
-    }
-  };
+    };
+  }
 
   static propTypes = {
     stories: PropTypes.array,
@@ -311,7 +307,16 @@ class App extends Component {
 
   resetStoriesAndMap = () => {
     const points = this.getPointsFromStories(this.props.stories);
-    this.setState(this.defaultState());
+    this.setState({
+      stories: this.props.stories,
+      points: points,
+      framedView: null,
+      activePoint: null,
+      activeStory: null,
+      filterCategory: this.props.t("select_category"),
+      filterItem: this.props.t("select_option"),
+      itemOptions: [],
+    });
   };
 
   handleMapPointClick = (point) => {
