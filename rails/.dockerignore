@@ -18,12 +18,14 @@ Brewfile
 .postcssrc.yml
 .rspec
 
+Procfile
+
 # Ignore development
 .ruby-version
 .env.sample
-coverage
-tmp
-spec
+coverage/*
+tmp/*
+spec/*
 public/packs-test
 
 # Ignore node
