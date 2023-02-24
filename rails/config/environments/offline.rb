@@ -66,16 +66,18 @@ Rails.application.configure do
   config.public_file_server.enabled = true
 
   # Compress JS using a preproccessor
-  config.assets.js_compressor = :terser
+  # config.assets.js_compressor = :terser
 
   # Compress CSS using a preproccessor
-  config.assets.css_compressor = :sass
+  # config.assets.css_compressor = :sass
 
   # Fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = true
+  config.assets.compile = false
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.force_ssl = false
 
   config.hosts << "terrastories.local"
   config.hosts << /[a-zA-Z0-9-]*\.terrastories\.local/
