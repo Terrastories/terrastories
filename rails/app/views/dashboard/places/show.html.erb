@@ -36,7 +36,7 @@
   </div>
   <div class="actions">
     <%= link_to t("dashboard.actions.edit"), edit_place_path(@place), class: "btn" if policy(@place).edit? %>
-    <%= link_to t("dashboard.actions.destroy"), place_path(@place), method: :delete, data: {confirm: t("dashboard.actions.confirm")}, class: "btn btn-danger" if policy(@place).destroy? %>
+    <%= link_to t("dashboard.actions.destroy"), place_path(@place), method: :delete, data: {confirm: t("dashboard.actions.confirm"), turbo_confirm: t("dashboard.actions.confirm"), turbo_method: :delete}, class: "btn btn-danger" if policy(@place).destroy? %>
   </div>
 </div>
 <% end %>

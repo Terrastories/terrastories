@@ -58,7 +58,7 @@
     background-color: $darker-gray;
 
     &::after {
-      content: image-url('loading.png');
+      content: url('loading.png');
       position: absolute;
 
       @include spinner;

@@ -1,0 +1,25 @@
+{
+  "alphabetical": "A-Z",
+  "reversed_alphabetical": "Z-A",
+  "most_recent": "Moo nyu",
+  "region": "Pisiwata",
+  "place_type": "Sooti kamia",
+  "speaker": "Takima",
+  "topic": "Onderwerp",
+  "language": "Tongo",
+  "speaker_community": "Sprekersgemeenschap",
+  "hello": "Odi",
+  "back_to_welcome": "Go ko na bigi",
+  "member_dashboard": "Ledendashboard",
+  "select_category": "Kies wan sooti sondi",
+  "select_option": "Kies a sondi",
+  "filter_stories": "Luku fini",
+  "introduction": "Buta a kama",
+  "intro": {
+    "question": "Andi na wan terrastory?",
+    "explanation": "Terrastories sa de fillong naso audio dus soso jee i ta jee an de sembe ta konda aba wan soni di pasa a wan kamia. Di 'applicatie' aki so bakaa kai eng de tak hii de gemeenschap o mang fu konda de egi histori over de belangrijk kamia fu a sa kon a di kaita"
+  },
+  "close": "Tapa",
+  "place_name": "Fa u kali a kamia aki",
+  "sort_stories": "Koowa di toli"
+}

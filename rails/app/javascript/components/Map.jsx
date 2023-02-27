@@ -1,8 +1,11 @@
 import ReactDOM from "react-dom";
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import MiniMap from "../vendor/mapboxgl-control-minimap";
+import Minimap from "../vendor/mapboxgl-control-minimap.js";
 import Popup from "./Popup";
+
+import mapboxgl from '!mapbox-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 const STORY_POINTS_LAYER_ID = "ts-points-layer";
 const STORY_POINTS_DATA_SOURCE = "ts-points-data";
@@ -110,10 +113,10 @@ export default class Map extends Component {
           'tileSize': 512,
           'maxzoom': 14
         });
-    
+
         // add the DEM source as a terrain layer
         this.map.setTerrain({ 'source': 'mapbox-dem' });
-          
+
         // add a sky layer that will show when the map is highly pitched
         this.map.addLayer({
           'id': 'sky',
@@ -134,7 +137,7 @@ export default class Map extends Component {
           'high-color': '#008cff',
           'space-color': '#000000'
       });
-      } 
+      }
 
       this.addHomeButton();
 
@@ -147,7 +150,23 @@ export default class Map extends Component {
 
     // Hide minimap and nav controls for offline Terrastories
     if(!this.props.useLocalMapServer) {
-      this.map.addControl(new mapboxgl.Minimap(), "top-right");
+      this.map.addControl(new Minimap(
+        {
+          style: "mapbox://styles/mapbox/light-v10",
+          zoomLevels: [
+            [18, 14, 16],
+            [16, 12, 14],
+            [14, 10, 12],
+            [12, 8, 10],
+            [10, 6, 8],
+            [8, 4, 6],
+            [6, 2, 4],
+            [3, 0, 2],
+            [1, 0, 0]
+          ],
+          lineColor: "#136a7e",
+          fillColor: "#d77a34",
+        }), "top-right");
     }
 
     this.map.addControl(new mapboxgl.NavigationControl());

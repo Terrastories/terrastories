@@ -13,4 +13,9 @@ then
 fi
 
 echo "Starting Rails Server..."
-bundle exec rails server --binding 0.0.0.0
+if [[ "$RAILS_ENV" == "development" ]]
+then
+  ./bin/dev
+else
+  bundle exec rails server --binding 0.0.0.0
+fi

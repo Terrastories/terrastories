@@ -87,7 +87,7 @@
             <ul class="dropdown" aria-label="submenu">
               <li><%= link_to t("profile"), profile_path %></li>
               <li><%= link_to t("devise.passwords.edit.change_my_password"), change_password_path %></li>
-              <li><%= link_to t("logout"), destroy_user_session_path, method: :delete  %></li>
+              <li><%= link_to t("logout"), destroy_user_session_path, method: :delete, data: { turbo_method: :delete } %></li>
             </ul>
           </div>
           <%= link_to t("dashboard.back_to_app"), home_map_path unless current_user.super_admin %>

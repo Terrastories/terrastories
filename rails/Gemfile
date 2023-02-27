@@ -1,20 +1,30 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.9'
+ruby '2.7.7'
 
+# lock mail version (required by rails)
+# until upgrade to Ruby 3 / Rails 7
+gem 'mail', '2.7.1'
 gem 'rails', '~> 6.1.0'
+
 # Use Puma as the app server
-gem 'puma', '~> 4.3'
+gem 'puma', '< 7'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
-# Already has rgeo
-gem 'rgeo-geojson'
-gem 'geocoder'
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
-# Use Uglifier as compressor for JavaScript assets
-gem 'terser'
+
+# GeoJson / rgeo
+gem 'rgeo', '~> 2.4.0'
+gem 'rgeo-geojson', '~> 2.1.1'
+
+# Geocoder for center calculation
+gem 'geocoder', '~> 1.8.1'
+
+# Use css_bundling for stylesheets
+gem 'cssbundling-rails', '~> 1.1.2'
+
+# Use Terser as compressor for JavaScript assets
+gem 'terser', '~> 1.1.8'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
@@ -24,40 +34,31 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use devise for authentication
-gem 'devise'
+gem 'devise', '~> 4.9.0'
 
 # Use pundit for policy based authorization
-gem 'pundit'
+gem 'pundit', '~> 2.3.0'
 
 # Internationalization
-gem 'rails-i18n'
-gem 'devise-i18n'
-
-# Internationalization in JS
-gem 'i18n-js'
-
-# Mapbox GL rendering library
-gem 'mapbox-gl-rails', '~> 2.9.0'
+gem 'rails-i18n', '~> 7.0.3'
+gem 'devise-i18n', '~> 1.11.0'
 
 # S3 backed Active Storage
-gem 'aws-sdk-s3'
+gem 'aws-sdk-s3', '~> 1.119.0'
 
 # ActiveStorage Validation
-gem 'activestorage-validator'
+gem 'activestorage-validator', '~> 0.2.0'
 
 # Enable Webpack for javascript application code
-gem 'webpacker', '~> 3.5'
-gem 'react-rails'
-
-# plyr-rails gem is the integration of plyr.io javascript library for your Rails 4 and Rails 5 application.
-gem 'plyr-rails'
+gem 'webpacker', '~> 5.0'
+gem 'react-rails', '~> 2.6.2'
 
 # Use ActiveStorage variant
-gem 'image_processing'
+gem 'image_processing', '~> 1.12.2'
 
 # Use Flipper for feature flags
-gem 'flipper'
-gem 'flipper-active_record'
+gem 'flipper', '~> 0.26.0'
+gem 'flipper-active_record', '~> 0.26.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -78,7 +79,7 @@ end
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
-  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'listen'
 
   # Add better error handling to make debugging simpler
   gem "better_errors"

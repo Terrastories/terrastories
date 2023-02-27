@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Terrastories</title>
+    <%= favicon_link_tag asset_path('favicon.ico'), :rel => 'icon', :type =>  'image/png' %>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "react" %>
+    <%= javascript_pack_tag 'application' %>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+
+  <body>
+    <%- if Rails.env.test? %>
+      <div style="background-color: red; color: white; text-size: 3rem; text-align: center">I AM A TEST ENV</div>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>

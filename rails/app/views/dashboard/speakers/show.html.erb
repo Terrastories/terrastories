@@ -34,7 +34,7 @@
   </div>
   <div class="actions">
     <%= link_to t("dashboard.actions.edit"), edit_speaker_path(@speaker), class: "btn" if policy(@speaker).edit? %>
-    <%= link_to t("dashboard.actions.destroy"), speaker_path(@speaker), method: :delete, data: {confirm: t("dashboard.actions.confirm")}, class: "btn btn-danger" if policy(@speaker).destroy? %>
+    <%= link_to t("dashboard.actions.destroy"), speaker_path(@speaker), method: :delete, data: {confirm: t("dashboard.actions.confirm"), turbo_confirm: t("dashboard.actions.confirm"), turbo_method: :delete}, class: "btn btn-danger" if policy(@speaker).destroy? %>
   </div>
 </div>
 <% end %>

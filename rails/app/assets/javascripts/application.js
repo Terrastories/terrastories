@@ -10,9 +10,4 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require activestorage
-//= require mapbox-gl
-//= require plyr
 //= require rails-ujs
-//= require i18n/translations
-//= require_tree .

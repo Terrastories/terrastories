@@ -9,7 +9,7 @@
 <%= render partial: "shared/form_errors", locals: {resource: @theme} %>
 
 <%= form_with model: @theme, method: :patch, multipart: true, class: "form", data: {remote: false}, url: theme_path, id: "themeForm", locale: true do |f| %>
-  <% unless Flipper.enabled?(:split_settings, community) %>
+  <% unless Flipper.enabled?(:split_settings, current_community) %>
     <h4><%= t("dashboard.theme.welcome_screen") %></h4>
 
     <%= f.fields_for :community do |c| %>
@@ -28,7 +28,7 @@
               <%= image_tag(@theme.community.background_img, width: 300) %>
               <% end %>
               <span class="overlay"></span>
-              <%= link_to background_img_community_settings_path, class: "delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm")}, remote: true do %>
+              <%= link_to background_img_community_settings_path, class: "delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm"), turbo_confirm: t("dashboard.actions.confirm"), turbo_method: :delete}, remote: true do %>
                 <svg><use href="#icon-cancel"></svg>
               <% end %>
             </span>
@@ -51,7 +51,7 @@
               <span class="media-with-hover-controls">
                 <%= image_tag(img, width: 150) %>
                 <span class="overlay"></span>
-                <%= link_to delete_sponsor_logo_community_settings_url(img.signed_id), class: "delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm")}, remote: true do %>
+                <%= link_to delete_sponsor_logo_community_settings_url(img.signed_id), class: "delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm"), turbo_confirm: t("dashboard.actions.confirm"), turbo_method: :delete}, remote: true do %>
                   <svg><use href="#icon-cancel"></svg>
                 <% end %>
               </span>

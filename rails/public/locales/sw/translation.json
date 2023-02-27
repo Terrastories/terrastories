@@ -1,0 +1,25 @@
+{
+  "alphabetical": "A-Z",
+  "reversed_alphabetical": "Z-A",
+  "most_recent": "Hivi karibuni",
+  "region": "Eneo",
+  "place_type": "Aina ya eneo",
+  "speaker": "Mzungumzaji",
+  "topic": "Mada",
+  "language": "Lugha",
+  "speaker_community": "Jumuiya ya mzungumzaji",
+  "hello": "Hello",
+  "back_to_welcome": "Rudi kwenye Ukurasa wa Karibu",
+  "member_dashboard": "Ukurasa wa Msimamizi",
+  "select_category": "Chagua kategoria",
+  "select_option": "Chagua chaguo",
+  "filter_stories": "Chuja hadithi",
+  "introduction": "Utangulizi",
+  "intro": {
+    "question": "Terrastory ni nini?",
+    "explanation": "Terrastories ni rekodi za sauti na taswira za usimulizi wa hadithi unaotegemea mahali. Programu hii inayotumika nje ya mtandao huwezesha jamii za wenyeji kupata na kuweka ramani mila zao za kusimulia hadithi kuhusu maeneo yenye maana au thamani kubwa kwao."
+  },
+  "close": "Funga",
+  "place_name": "Matamshi ya jina la mahali",
+  "sort_stories": "Panga hadithi"
+}

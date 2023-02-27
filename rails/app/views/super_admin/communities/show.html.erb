@@ -7,7 +7,7 @@
   <h2><%= @community.name %></h2>
   <div class="actions">
     <%= link_to t("dashboard.actions.edit"), edit_community_path(@community), class: "btn" if policy(@community).edit? %>
-    <%= link_to t("dashboard.actions.destroy"), community_path(@community), method: :delete, data: {confirm: t("dashboard.actions.confirm")}, class: "btn btn-danger" if policy(@community).destroy? %>
+    <%= link_to t("dashboard.actions.destroy"), community_path(@community), method: :delete, data: {confirm: t("dashboard.actions.confirm"), turbo_confirm: t("dashboard.actions.confirm"), turbo_method: :delete}, class: "btn btn-danger" if policy(@community).destroy? %>
   </div>
 </div>
 <% end %>

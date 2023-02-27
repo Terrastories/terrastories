@@ -1,0 +1,25 @@
+{
+  "alphabetical": "A-Z",
+  "reversed_alphabetical": "Z-A",
+  "most_recent": "Meest recente",
+  "region": "Regio",
+  "place_type": "Soort plek",
+  "speaker": "Spreker",
+  "topic": "Onderwerp",
+  "language": "Taal",
+  "speaker_community": "Sprekersgemeenschap",
+  "hello": "Hallo",
+  "back_to_welcome": "Terug naar Welkom pagina",
+  "member_dashboard": "Ledendashboard",
+  "select_category": "Kies een categorie",
+  "select_option": "Selecteer optie",
+  "filter_stories": "Verhalen filteren",
+  "introduction": "Introductie",
+  "intro": {
+    "question": "Wat is een terrastory?",
+    "explanation": "Terrastories zijn audiovisuele opnames van op verhalen die te maken hebben met plaatsen. Met deze offline-compatibele applicatie kunnen lokale gemeenschappen hun eigen mondelinge verteltradities in kaart brengen over plaatsen die een belangrijke betekenis of waarde voor hen hebben."
+  },
+  "close": "Sluit",
+  "place_name": "Uitspraak van plaatsnaam",
+  "sort_stories": "Sorteer de verhalen"
+}

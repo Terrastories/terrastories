@@ -1,0 +1,25 @@
+{
+  "alphabetical": "A-Z",
+  "reversed_alphabetical": "Z-A",
+  "most_recent": "Más reciente",
+  "region": "Región",
+  "place_type": "Tipo de lugar",
+  "speaker": "Speaker",
+  "topic": "Topic",
+  "language": "Idioma",
+  "speaker_community": "Comunidad del Orador",
+  "hello": "Hola",
+  "back_to_welcome": "Volver a la página de inicio",
+  "member_dashboard": "Tablero de Miembros",
+  "select_category": "Seleccionar categoría",
+  "select_option": "Seleccionar opción",
+  "filter_stories": "Seleccionar opción",
+  "introduction": "Introducción",
+  "intro": {
+    "question": "¿Qué es una terrastory?",
+    "explanation": "Terrastories son grabaciones audiovisuales de historias autóctonas. Esta aplicación compatible offline permite a las comunidades locales ubicar en un mapa sus narraciones tradicionales sobre los lugares que representan un valor significativo para ellos."
+  },
+  "close": "Cerrar",
+  "place_name": "Pronunciación del nombre del lugar",
+  "sort_stories": "Ordenar las historias"
+}

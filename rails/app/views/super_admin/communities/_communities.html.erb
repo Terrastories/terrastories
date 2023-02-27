@@ -8,7 +8,7 @@
     </div>
     <div class="cell cell--15 cell--right">
       <%= link_to t("dashboard.actions.edit"), edit_community_path(community) %>
-      <%= link_to t("dashboard.actions.destroy"), community_path(community), method: "delete", data: {confirm: t("dashboard.actions.confirm")} %>
+      <%= link_to t("dashboard.actions.destroy"), community_path(community), method: "delete", data: {confirm: t("dashboard.actions.confirm"), turbo_confirm: t("dashboard.actions.confirm"), turbo_method: :delete} %>
     </div>
   </div>
 <% end %>

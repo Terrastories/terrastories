@@ -1,0 +1,37 @@
+@import 'mapbox-gl/dist/mapbox-gl.css';
+
+@import 'core/reset';
+@import 'core/colors';
+@import 'core/typography';
+@import 'core/flexbox';
+@import 'core/spin';
+@import 'cms/layout';
+@import 'cms/tables';
+@import 'cms/columns';
+@import 'cms/search_filters';
+@import 'cms/forms';
+@import 'cms/import';
+@import 'cms/links';
+@import 'cms/badges';
+@import 'cms/images';
+@import 'cms/cards';
+@import 'cms/flex_table';
+@import 'cms/avatars';
+@import 'cms/icons';
+@import 'cms/media';
+@import 'cms/errors';
+@import 'cms/flash';
+
+#themeMap {
+  min-height: 400px;
+  min-width: 400px;
+}
+
+#static-map {
+  min-height: 350px;
+  min-width: 350px;
+}
+
+.metric {
+  font-size: 6rem;
+}

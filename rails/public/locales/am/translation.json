@@ -1,0 +1,25 @@
+{
+  "alphabetical": "A-Z",
+  "reversed_alphabetical": "Z-A",
+  "most_recent": "የቅርብ ጊዜ",
+  "region": "ክልል",
+  "place_type": "የቦታ አይነት",
+  "speaker": "ተናጋሪ",
+  "topic": "ርዕስ",
+  "language": "ቋንቋ",
+  "speaker_community": "የተናጋሪው ማህበረሰብ",
+  "hello": "ጤና ይስጥልኝ",
+  "back_to_welcome": "ወደ የእንኳን ደህና መጡ ገጽ ተመለስ",
+  "member_dashboard": "የአስተዳዳሪ ገጽ",
+  "select_category": "ምድብ ይምረጡ",
+  "select_option": "አማራጭ ይምረጡ",
+  "filter_stories": "ታሪኮችን አጣራ",
+  "introduction": "መግቢያ",
+  "intro": {
+    "question": "ቴራስቶሪ ምንድን ነው?",
+    "explanation": "Terrastories በቦታ ላይ የተመሰረተ የድምጽና ምስል ታሪክ ቅጂዎች ናቸው። ይህ ከመስመር ውጭም የሚያገለግል መተግበሪያ የአካባቢ ማህበረሰቦች ለእነርሱ ጠቃሚ ትርጉም ወይም ዋጋ ያላቸውን ቦታዎች የራሳቸውን የቃል ታሪኮች ወጎች እንዲፈልጉ እና እንዲያዘጋጁ ያስችላቸዋል።"
+  },
+  "close": "ዝጋ",
+  "place_name": "የቦታ ስም አጠራር",
+  "sort_stories": "ታሪኮችን ደርድር"
+}

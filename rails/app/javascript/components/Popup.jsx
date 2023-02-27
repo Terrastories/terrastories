@@ -1,8 +1,10 @@
 import React from "react";
+import { useTranslation } from 'react-i18next';
 
 const Popup = (props) => {
+  const { t, i18n } = useTranslation();
   const { id, name, photo_url, name_audio_url, description, region, type_of_place } = props.feature.properties;
-  
+
   return (
     <div id={`popup-${id}`}>
       <div className="ts-markerPopup-header">
@@ -11,14 +13,14 @@ const Popup = (props) => {
       </div>
       <div className="ts-markerPopup-content">
         {photo_url && (<img src={photo_url} />)}
-        {name_audio_url && (<div><span className="ts-markerPopup-label">{I18n.t("place_name")}:</span>
+        {name_audio_url && (<div><span className="ts-markerPopup-label">{t("place_name")}:</span>
                                                       <audio className="ts-markerPopup-audio"
                                                       controls
                                                       controlsList="nodownload"
                                                       src={name_audio_url}> </audio></div>)}
         {description && (<div className="ts-markerPopup-description">{description}</div>)}
-        {region && (<div className="ts-markerPopup-tag"><span className="ts-markerPopup-label">{I18n.t("region")}:</span> {region}</div>)}
-        {type_of_place && (<div className="ts-markerPopup-tag"><span className="ts-markerPopup-label">{I18n.t("place_type")}:</span> {type_of_place}</div>)}
+        {region && (<div className="ts-markerPopup-tag"><span className="ts-markerPopup-label">{t("region")}:</span> {region}</div>)}
+        {type_of_place && (<div className="ts-markerPopup-tag"><span className="ts-markerPopup-label">{t("place_type")}:</span> {type_of_place}</div>)}
       </div>
     </div>
   );

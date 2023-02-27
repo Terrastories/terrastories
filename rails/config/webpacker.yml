@@ -3,21 +3,39 @@
 default: &default
   source_path: app/javascript
   source_entry_path: packs
+  public_root_path: public
   public_output_path: packs
   cache_path: tmp/cache/webpacker
-  check_yarn_integrity: false
   webpack_compile_output: true
 
   # Additional paths webpack should lookup modules
   # ['app/assets', 'engine/foo/app/assets']
-  resolved_paths: []
+  additional_paths: []
 
   # Reload manifest.json on all requests so we reload latest compiled packs
   cache_manifest: false
 
+  # Extract and emit a css file
+  extract_css: false
+
+  static_assets_extensions:
+    - .jpg
+    - .jpeg
+    - .png
+    - .gif
+    - .tiff
+    - .ico
+    - .svg
+    - .eot
+    - .otf
+    - .ttf
+    - .woff
+    - .woff2
+
   extensions:
-    - .js
     - .jsx
+    - .mjs
+    - .js
     - .sass
     - .scss
     - .css
@@ -48,15 +66,11 @@ development:
     disable_host_check: true
     use_local_ip: false
     quiet: false
+    pretty: false
     headers:
       'Access-Control-Allow-Origin': '*'
     watch_options:
-      ignored: /node_modules/
-
-offline:
-  <<: *default
-  compile: false
-  cache_manifest: true
+      ignored: '**/node_modules/**'
 
 test:
   <<: *default
@@ -70,6 +84,21 @@ production:
 
   # Production depends on precompilation of packs prior to booting for performance.
   compile: false
+
+  # Extract and emit a css file
+  extract_css: true
+
+  # Cache manifest.json for performance
+  cache_manifest: true
+
+offline:
+  <<: *default
+
+  # Offline mode depends on precompilation of packs prior to booting for performance.
+  compile: false
+
+  # Extract and emit a css file
+  extract_css: true
 
   # Cache manifest.json for performance
   cache_manifest: true

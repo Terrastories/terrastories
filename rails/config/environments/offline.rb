@@ -22,6 +22,10 @@ Rails.application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
+  # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
+  # or in config/master.key. This key is used to decrypt credentials (and other encrypted files).
+  config.require_master_key = false
+
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
@@ -62,23 +66,18 @@ Rails.application.configure do
   config.public_file_server.enabled = true
 
   # Compress JS using a preproccessor
-  config.assets.js_compressor = :terser
+  # config.assets.js_compressor = :terser
 
   # Compress CSS using a preproccessor
-  config.assets.css_compressor = :sass
+  # config.assets.css_compressor = :sass
 
   # Fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = true
-
-  # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
-
-  config.action_mailer.perform_caching = false
-
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.assets.compile = false
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.force_ssl = false
 
   config.hosts << "terrastories.local"
   config.hosts << /[a-zA-Z0-9-]*\.terrastories\.local/

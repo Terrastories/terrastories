@@ -1,5 +1,6 @@
 # The home controller
 class HomeController < ApplicationController
+  layout "react"
   skip_before_action :authenticate_user!, if: :offline_community?
 
   def index

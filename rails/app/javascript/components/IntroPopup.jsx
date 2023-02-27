@@ -1,4 +1,5 @@
 import React, { PureComponent } from "react";
+import { withTranslation } from 'react-i18next';
 
 class IntroPopup extends PureComponent {
 
@@ -16,12 +17,12 @@ class IntroPopup extends PureComponent {
   render(){
     return(
       <div className={this.state.isPopped ? 'intro-card isShown' : 'intro-card isHidden'}>
-        <h2>{I18n.t("introduction")}</h2>
-        <h3>{I18n.t("intro.question")}</h3>
-        <p>{I18n.t("intro.explanation")}</p>
+        <h2>{this.props.t("introduction")}</h2>
+        <h3>{this.props.t("intro.question")}</h3>
+        <p>{this.props.t("intro.explanation")}</p>
 
         <div className="intro-card--actions">
-          <span className="count" onClick={this.handleIntroPopup}>{I18n.t("close")}</span>
+          <span className="count" onClick={this.handleIntroPopup}>{this.props.t("close")}</span>
         </div>
       </div>
     );
@@ -29,4 +30,4 @@ class IntroPopup extends PureComponent {
 
 }
 
-export default IntroPopup;
+export default withTranslation()(IntroPopup);

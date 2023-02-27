@@ -1,0 +1,132 @@
+.devise {
+  background: url('welcome-bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  .flashes {
+    margin-bottom: 1rem;
+
+    .flash-alert {
+      color: $dark-red;
+    }
+
+    .flash-notice {
+      color: $dark-orange;
+    }
+  }
+
+  .logo {
+    img {
+      max-width: 120px;
+      width: 14vh;
+      height: auto;
+    }
+  }
+
+  &-card {
+    background: $card-background;
+    width: 55%;
+    padding: 2em;
+    border-radius: 5%;
+    color: $blue;
+    max-width: 25rem;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+    flex-shrink: 0;
+    @media screen and (max-width: 600px) {
+      width: 80vw;
+      margin-bottom: 10px;
+    }
+
+    img {
+      margin-bottom: 0.5rem;
+      width: 100%;
+    }
+
+    h1 {
+      border-top: 3px solid $orange;
+      padding-top: 0.3em;
+      padding-bottom: 0.2em;
+      text-align: center;
+      margin: 0;
+    }
+
+    a {
+      color: $green;
+      text-decoration: none;
+      align-self: center;
+    }
+
+    input[type=text],
+    input[type=email],
+    input[type=password] {
+      padding: 0.5rem;
+      width: 100%;
+    }
+
+    label {
+      margin-top: 1rem;
+    }
+
+    input[type=submit] {
+      background-color: $green;
+      text-transform: uppercase;
+      letter-spacing: 0.09rem;
+      border-radius: 5px;
+      border-color: transparent;
+      font-weight: 400;
+      font-size: 0.85rem;
+      cursor: pointer;
+      padding: 1rem;
+      width: 15rem;
+      margin-top: 0.5rem;
+      color: $white;
+
+      &:hover {
+        background-color: $blue;
+      }
+
+      &:focus {
+        outline-color: $white;
+      }
+    }
+  }
+  @media screen and (max-width: 370px) {
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    input[type=submit] {
+      width: 10rem;
+    }
+
+    .navbar-link {
+      margin-left: 5px;
+      margin-right: 5px;
+      font-size: 0.6em;
+    }
+  }
+  @media screen and (max-height: 550px) {
+    .built-with {
+      display: none;
+    }
+
+    .logo {
+      display: none;
+    }
+
+    .devise-card {
+      margin-bottom: 0;
+    }
+  }
+
+  &-links {
+    margin-top: 1rem;
+  }
+}

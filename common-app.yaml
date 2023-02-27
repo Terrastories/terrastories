@@ -1,11 +1,12 @@
 services:
   rails:
-    image: ${DOCKER_IMAGE_NAME-terrastories}
+    image: terrastories/devcore:latest
     build:
       context: ./rails
+      target: devcore
     env_file:
       - .env
     command: scripts/server
-    restart: always
+    restart: unless-stopped
     stdin_open: true
     tty: true

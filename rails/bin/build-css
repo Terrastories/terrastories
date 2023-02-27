@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+sass ./app/assets/stylesheets/application.sass.scss:./app/assets/builds/application.css \
+./app/assets/stylesheets/dashboard.sass.scss:./app/assets/builds/dashboard.css \
+./app/assets/stylesheets/react.sass.scss:./app/assets/builds/react.css \
+--no-source-map \
+--load-path=node_modules \
+$@

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
 import StoryList from "./StoryList";
+import { withTranslation } from 'react-i18next';
 
 class Card extends Component {
 
@@ -46,20 +47,20 @@ class Card extends Component {
     if (this.props.user && this.props.user.role === 'admin') {
       return (
         <ul>
-          <li>{I18n.t("hello")} {this.props.user.display_name} (<a href={`/${I18n.currentLocale()}`}>{I18n.t("back_to_welcome")}</a>)</li>
-          <li><a href={`/${I18n.currentLocale()}/member`}>{I18n.t("member_dashboard")}</a></li>
+          <li>{this.props.t("hello")} {this.props.user.display_name} (<a href={`/${this.props.i18n.language}`}>{this.props.t("back_to_welcome")}</a>)</li>
+          <li><a href={`/${this.props.i18n.language}/member`}>{this.props.t("member_dashboard")}</a></li>
         </ul>
       );
     } else if (this.props.user) {
       return (
         <ul>
-          <li>{I18n.t("hello")} {this.props.user.display_name} (<a href={`/${I18n.currentLocale()}`}>{I18n.t("back_to_welcome")}</a>)</li>
+          <li>{this.props.t("hello")} {this.props.user.display_name} (<a href={`/${this.props.i18n.language}`}>{this.props.t("back_to_welcome")}</a>)</li>
         </ul>
       );
     } else {
       return (
         <ul>
-          <li><a href={`/${I18n.currentLocale()}`}>{I18n.t("back_to_welcome")}</a></li>
+          <li><a href={`/${this.props.i18n.language}`}>{this.props.t("back_to_welcome")}</a></li>
         </ul>
       );
     }
@@ -104,4 +105,4 @@ class Card extends Component {
   }
 }
 
-export default Card;
+export default withTranslation()(Card);

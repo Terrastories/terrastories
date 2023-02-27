@@ -14,7 +14,7 @@
     <div class="welcome-card-user">
       <% if user_signed_in? %>
         <%= link_to t("member_dashboard"), member_root_path, :class => 'navbar-link' %> |
-        <%= link_to t("logout"), destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+        <%= link_to t("logout"), destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, :class => 'navbar-link'  %>
       <% else %>
         <%= link_to t("login"), new_user_session_path, :class => 'navbar-link'  %>
       <% end %>
