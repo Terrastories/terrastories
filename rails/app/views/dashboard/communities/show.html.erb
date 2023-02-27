@@ -20,7 +20,7 @@
         <% if current_community.background_img.attached? %>
           <span class="media-with-hover-controls">
             <% if current_community.background_img.variable? %>
-            <%= image_tag(current_community.background_img.variant(resize_to_limit: [nil, 300])) %>
+            <%= image_tag(current_community.background_img.variant(resize_to_limit: [300, 300])) %>
             <% else %>
             <%= image_tag(current_community.background_img, width: 300) %>
             <% end %>
@@ -79,7 +79,7 @@
         <% if @community.display_image.attached? %>
           <span class="media-with-hover-controls">
             <% if @community.display_image.variable? %>
-            <%= image_tag(@community.display_image.variant(resize_to_limit: [nil, 300])) %>
+            <%= image_tag(@community.display_image.variant(resize_to_limit: [300, 300])) %>
             <% else %>
             <%= image_tag(@community.display_image, width: 300) %>
             <% end %>
