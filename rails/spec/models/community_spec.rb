@@ -49,5 +49,67 @@ RSpec.describe Community, type: :model do
       expect(Speaker.all.pluck(:id)).not_to include(speaker.id)
       expect(Place.all.pluck(:id)).not_to include(place.id)
     end
+
+    context ".filters" do
+      let(:public_speaker) { FactoryBot.create(:speaker, name: "Public Speaker", community: community) }
+      let(:public_place) { FactoryBot.create(:place, name: "Public Place", region: "Around", type_of_place: "test", community: community) }
+      let!(:public_story) do
+        FactoryBot.create(
+          :story,
+          community: community,
+          speakers: [public_speaker],
+          places: [public_place],
+          topic: "Testing Public",
+          language: "Ruby",
+          permission_level: :anonymous
+        )
+      end
+
+      let(:private_speaker) { FactoryBot.create(:speaker, name: "Robot", speaker_community: "AI Friends", community: community) }
+      let(:private_place) { FactoryBot.create(:place, community: community) }
+      let!(:private_story) { FactoryBot.create(:story, community: community, speakers: [private_speaker], places: [private_place], permission_level: :user_only) }
+
+      it "returns available options for filters for a community's public stories" do
+        expect(community.filters).to contain_exactly(
+          {label: "Public Place", value: public_place.id, category: :places},
+          {label: "Testing Public", value: "Testing Public", category: :topic},
+          {label: "Around", value: "Around", category: :region},
+          {label: "test", value: "test", category: :type_of_place},
+          {label: "Ruby", value: "Ruby", category: :language},
+          {label: "Public Speaker", value: public_speaker.id, category: :speakers},
+        )
+
+        public_story.speakers << private_speaker
+        public_story.save
+
+        expect(community.filters).to contain_exactly(
+          {label: "Public Place", value: public_place.id, category: :places},
+          {label: "Testing Public", value: "Testing Public", category: :topic},
+          {label: "Around", value: "Around", category: :region},
+          {label: "test", value: "test", category: :type_of_place},
+          {label: "Ruby", value: "Ruby", category: :language},
+          {label: "Public Speaker", value: public_speaker.id, category: :speakers},
+          {label: "Robot", value: private_speaker.id, category: :speakers},
+          {label: "AI Friends", value: "AI Friends", category: :speaker_community},
+        )
+      end
+
+      it "can return all filters based on permission level passed" do
+        expect(community.filters([:anonymous, :user_only])).to contain_exactly(
+          {label: "Public Place", value: public_place.id, category: :places},
+          {label: private_place.name, value: private_place.id, category: :places},
+          {label: "Testing Public", value: "Testing Public", category: :topic},
+          {label: "Around", value: "Around", category: :region},
+          {label: private_place.region, value: private_place.region, category: :region},
+          {label: "test", value: "test", category: :type_of_place},
+          {label: private_place.type_of_place, value: private_place.type_of_place, category: :type_of_place},
+          {label: "Ruby", value: "Ruby", category: :language},
+          {label: "English", value: "English", category: :language},
+          {label: "Public Speaker", value: public_speaker.id, category: :speakers},
+          {label: "Robot", value: private_speaker.id, category: :speakers},
+          {label: "AI Friends", value: "AI Friends", category: :speaker_community},
+        )
+      end
+    end
   end
 end

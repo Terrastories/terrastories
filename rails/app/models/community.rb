@@ -21,15 +21,15 @@ class Community < ApplicationRecord
 
   FILTERABLE_ATTRIBUTES = %w(places region type_of_place speakers topic language speaker_community)
 
-  def filters
+  def filters(permission_level = :anonymous)
     [
-      places.distinct.map { |p| {label: p.name, value: p.id, category: :places } },
-      places.pluck(:region).uniq.reject(&:blank?).map { |r| {label: r, value: r, category: :region } },
-      places.pluck(:type_of_place).uniq.reject(&:blank?).map { |r| {label: r, value: r, category: :type_of_place } },
-      stories.pluck(:topic).uniq.reject(&:blank?).map { |r| {label: r, value: r, category: :topic } },
-      stories.pluck(:language).uniq.reject(&:blank?).map { |r| {label: r, value: r, category: :language } },
-      speakers.distinct.map { |s| {value: s.id, label: s.name, category: :speakers } },
-      speakers.pluck(:speaker_community).reject(&:blank?).map { |r| {label: r, value: r, category: :speaker_community } }
+      places.joins(:stories).where(stories: {permission_level: permission_level}).distinct.map { |p| {label: p.name, value: p.id, category: :places } },
+      places.joins(:stories).where(stories: {permission_level: permission_level}).pluck(:region).uniq.reject(&:blank?).map { |r| {label: r, value: r, category: :region } },
+      places.joins(:stories).where(stories: {permission_level: permission_level}).pluck(:type_of_place).uniq.reject(&:blank?).map { |r| {label: r, value: r, category: :type_of_place } },
+      stories.where(stories: {permission_level: permission_level}).pluck(:topic).uniq.reject(&:blank?).map { |r| {label: r, value: r, category: :topic } },
+      stories.where(stories: {permission_level: permission_level}).pluck(:language).uniq.reject(&:blank?).map { |r| {label: r, value: r, category: :language } },
+      speakers.joins(:stories).where(stories: {permission_level: permission_level}).distinct.map { |s| {value: s.id, label: s.name, category: :speakers } },
+      speakers.joins(:stories).where(stories: {permission_level: permission_level}).pluck(:speaker_community).reject(&:blank?).map { |r| {label: r, value: r, category: :speaker_community } }
     ].flatten
   end
 
