@@ -1,6 +1,4 @@
 # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-Rails.application.routes.default_url_options[:host] = 'localhost'
-Rails.application.routes.default_url_options[:port] = 3000
 Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     resources :communities, only: [:index, :show] do
