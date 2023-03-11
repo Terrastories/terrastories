@@ -17,7 +17,7 @@ class Place < ApplicationRecord
   def photo_url(full_url: false)
     if photo.attached?
       if full_url
-        Rails.application.routes.url_helpers.rails_blob_url(photo)
+        Rails.application.routes.url_helpers.rails_representation_url(photo.variant(resize_to_limit: [300, 300]))
       else
         Rails.application.routes.url_helpers.rails_blob_path(photo)
       end
