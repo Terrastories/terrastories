@@ -21,8 +21,4 @@ json.places @story.places do |place|
   json.typeOfPlace place.type_of_place
 end
 
-json.points RGeo::GeoJSON.encode(
-  RGeo::GeoJSON::FeatureCollection.new(
-    @story.public_points
-  )
-)
+json.points @story.public_points

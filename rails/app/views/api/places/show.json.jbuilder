@@ -10,8 +10,4 @@ json.stories @place.stories do |story|
   json.updatedAt story.updated_at
 end
 
-json.points RGeo::GeoJSON.encode(
-  RGeo::GeoJSON::FeatureCollection.new(
-    [@place.public_point_feature]
-  )
-)
+json.points [@place.public_point_feature]

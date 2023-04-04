@@ -15,11 +15,7 @@ end
 # Initial Map Configuration
 stories = @community.stories.preload(:places).where(permission_level: :anonymous)
 json.storiesCount stories.size
-json.points RGeo::GeoJSON.encode(
-  RGeo::GeoJSON::FeatureCollection.new(
-    stories.flat_map(&:public_points).uniq
-  )
-)
+json.points stories.flat_map(&:public_points).uniq
 
 # Side Panel Filter Categories (localized by Rails)
 json.categories Community::FILTERABLE_ATTRIBUTES.map { |cat|

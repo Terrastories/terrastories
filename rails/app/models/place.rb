@@ -58,15 +58,17 @@ class Place < ApplicationRecord
 
   # keys are camelCased for Public Communities React FrontEnd
   def public_point_feature
-    RGeo::GeoJSON::Feature.new(
-      RGeo::Cartesian.factory.point(long, lat),
-      id,
-      name: name,
-      description: description,
-      placenameAudio: name_audio_url(full_url: true),
-      photo: photo_url(full_url: true),
-      region: region,
-      typeOfPlace: type_of_place,
+    RGeo::GeoJSON.encode(
+      RGeo::GeoJSON::Feature.new(
+        RGeo::Cartesian.factory.point(long, lat),
+        id,
+        name: name,
+        description: description,
+        placenameAudio: name_audio_url(full_url: true),
+        photo: photo_url(full_url: true),
+        region: region,
+        typeOfPlace: type_of_place,
+      )
     )
   end
 
