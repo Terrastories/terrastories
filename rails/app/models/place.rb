@@ -14,10 +14,11 @@ class Place < ApplicationRecord
 
   attr_reader :point_geojson
 
-  def photo_url(full_url: false)
+  def photo_url(full_url: false, thumbnail: false)
     if photo.attached?
       if full_url
-        Rails.application.routes.url_helpers.rails_representation_url(photo.variant(resize_to_limit: [300, 300]))
+        resize_limit = thumbnail ? [300, 300] : [800, 800]
+        Rails.application.routes.url_helpers.rails_representation_url(photo.variant(resize_to_limit: resize_limit))
       else
         Rails.application.routes.url_helpers.rails_blob_path(photo)
       end
@@ -66,6 +67,7 @@ class Place < ApplicationRecord
         description: description,
         placenameAudio: name_audio_url(full_url: true),
         photo: photo_url(full_url: true),
+        thumbnail: photo_url(full_url: true, thumbnail: true),
         region: region,
         typeOfPlace: type_of_place,
       )
