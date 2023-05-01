@@ -96,6 +96,8 @@ Rails.application.configure do
   # Compress CSS using a preproccessor
   # config.assets.css_compressor = :sass
 
+  config.assets.prefix = "/offline-assets"
+
   # Fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
 

@@ -136,8 +136,18 @@ docker compose up -d db
 ## build app
 docker compose --profile $profile build
 
-## setup and seed database
-docker compose --profile $profile run --rm $container bin/rails db:migrate db:seed
+## setup database
+docker compose --profile $profile run --rm $container bin/rails db:migrate
+
+## Seed database with demo data
+if [[ "$profile" = "dev" ]]; then
+  docker compose --profile dev run --rm $container bin/rails db:seed
+fi
+
+## Precompile assets for offline mode
+if [[ "$profile" = "offline" ]]; then
+  docker compose --profile offline run --rm -e RAILS_ENV=offline $container bin/rails assets:precompile
+fi
 
 ## run yarn
 docker compose --profile $profile run --rm $container yarn
