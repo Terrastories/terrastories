@@ -21,11 +21,13 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
     - name: Build and push
       uses: docker/build-push-action@v4
+      env:
+        IMAGE_TAG: ${{ env.GITHUB_SHA }}
       with:
         context: "{{defaultContext}}:rails"
         target: devcore
         platforms: linux/amd64,linux/arm64,linux/arm/v7
         push: true
         tags: |
-          terrastories/devcore:${{ env.GITHUB_SHA }}
+          terrastories/devcore:$IMAGE_TAG
           terrastories/devcore:latest
