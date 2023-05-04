@@ -26,6 +26,31 @@ Rails.application.configure do
   # or in config/master.key. This key is used to decrypt credentials (and other encrypted files).
   config.require_master_key = false
 
+  # The secret_key_base is used as the input secret to the application's key
+  # generator, which in turn is used to create all MessageVerifiers/MessageEncryptors,
+  # including the ones that sign and encrypt cookies.
+  config.secret_key_base = lambda {
+    # Always use configured SECRET_KEY_BASE env var if one is configured
+    if ENV.fetch("SECRET_KEY_BASE", false)
+      secrets.secret_key_base ||= ENV["SECRET_KEY_BASE"]
+    else
+      key_file = Rails.root.join("tmp/offline_secret.txt")
+
+      # Generate and store "secret" in tmp/offline_secrets.txt
+      # This mirrors Rails automatic generation of secret in dev
+      # and test mode. We want to replicate it for seamless
+      # configuration in offline mode.
+      if !File.exists?(key_file)
+        random_key = SecureRandom.hex(64)
+        FileUtils.mkdir_p(key_file.dirname)
+        File.binwrite(key_file, random_key)
+      end
+
+      secrets.secret_key_base = File.binread(key_file)
+    end
+    secrets.secret_key_base
+  }.call
+
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
@@ -70,6 +95,8 @@ Rails.application.configure do
 
   # Compress CSS using a preproccessor
   # config.assets.css_compressor = :sass
+
+  config.assets.prefix = "/offline-assets"
 
   # Fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false

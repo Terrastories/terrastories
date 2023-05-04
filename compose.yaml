@@ -71,7 +71,7 @@ services:
       - ./data/media:/media
       - ./data/import/media:/api/import/media
     environment:
-      - RAILS_ENV=${RAILS_ENV-development}
+      - RAILS_ENV=${RAILS_ENV-offline}
       - PORT=3030
       - VIRTUAL_PORT=3030
       - VIRTUAL_HOST=terrastories.local,${HOST_HOSTNAME-terrastories.local}

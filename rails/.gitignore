@@ -52,6 +52,7 @@ node_modules/
 # Ignore coverage reports
 rails/spec/javascript/coverage/*
 
+/public/offline-assets
 /public/assets
 /public/packs
 /public/packs-test
