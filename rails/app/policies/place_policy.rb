@@ -45,7 +45,7 @@ class PlacePolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      if Rails.application.config.offline_mode || user.viewer?
+      if user.viewer?
         scope.joins(:stories).where(stories: {permission_level: :anonymous}).distinct
       elsif user.member?
         scope.joins(:stories).where(stories: {permission_level: [:anonymous, :user_only]}).distinct
