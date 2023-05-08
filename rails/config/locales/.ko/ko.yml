@@ -1,0 +1,67 @@
+ko:
+  community: 지역 사회
+  communities: 커뮤니티
+  media_link: 미디어 링크
+  media_links: 미디어 링크
+  places: 장소
+  place: 장소
+  speakers: 스피커
+  speaker: 스피커
+  stories: 이야기
+  story: 이야기
+  theme: 주제
+  users: 사용자
+  user: 사용자
+
+  languages:
+    am: 암하라어
+    en: 영어
+    es: 스페인의
+    ja: 일본어
+    mat: 스캐너
+    nl: 네덜란드 사람
+    pt: 포르투갈 인
+    sw: 스와힐리어
+    zh: 중국인
+    ko: 한국인
+
+  # Front End Translations
+  member_dashboard: "회원 대시보드"
+  alphabetical: A-Z
+  back_to_map: "지도로 돌아가기"
+  back_to_welcome: "시작 페이지로 돌아가기"
+  built_with_love: Built with ❤️ by
+  close: 닫다
+  community_search:
+    title: "탐색할 커뮤니티 검색"
+    coming_soon: "이 기능은 곧 제공될 예정입니다. 지금은 특정 커뮤니티에 대한 초대를 요청하십시오."
+  default: 기본
+  enter: "사이트 입력"
+  filter_stories: "스토리 필터링"
+  forgot_password: "비밀번호를 잊어 버렸습니까?"
+  hello: 안녕하세요
+  introduction: 소개
+  intro:
+    explanation: "Terrastories 장소 기반 스토리텔링의 시청각 기록입니다. 이 오프라인 호환 응용 프로그램을 사용하면 지역 사회에서 중요한 의미나 가치가 있는 장소에 대한 구전 스토리텔링 전통을 찾고 매핑할 수 있습니다."
+    question: "뭔가요 terrastory?"
+  language: 언어
+  login: 로그인
+  logout: 로그 아웃
+  most_recent: "가장 최근"
+  no_media: 사용 가능한 미디어 없음
+  password: 비밀번호
+  place_name: "지명 발음"
+  place_type: "장소 유형"
+  region: 지역
+  remember_me: "날 기억해"
+  reversed_alphabetical: Z-A
+  select_category: "카테고리 선택"
+  select_option: "선택 옵션"
+  selected_language: "선택된"
+  sign_up: "가입하기"
+  sort_stories: "짧은 이야기"
+  speaker: 스피커
+  topic: 주제
+  video_unsupported: 죄송합니다. 귀하의 브라우저는 포함된 비디오를 지원하지 않습니다.
+  welcome: 환영
+  welcome_back: "어서오세요"
