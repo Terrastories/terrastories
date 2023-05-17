@@ -28,20 +28,20 @@ RSpec.describe Place, type: :model do
 
   describe "#import" do
     let(:mapped_headers) {{
-      name: "name",
-      type_of_place: "type_of_place",
-      description: "description",
-      region: "region",
-      long: "long",
-      lat: "lat"
-    }}
+      "name" => "name",
+      "type_of_place" => "type_of_place",
+      "description" => "description",
+      "region" => "region",
+      "long" => "long",
+      "lat" => "lat"
+    }.to_h}
 
     it "raises HeaderMismatchError when mapped headers are missing" do
       expect {
         described_class.import(
           file_fixture('place_without_media.csv'),
           community.id,
-          mapped_headers.merge({photo: "other"})
+          mapped_headers.merge({"photo" => "other"})
         )
       }.to raise_error(Importable::FileImporter::HeaderMismatchError)
     end
@@ -64,7 +64,7 @@ RSpec.describe Place, type: :model do
             described_class.import(
               file_fixture('place_with_missing_media.csv'),
               community.id,
-              mapped_headers.merge({photo: "media"})
+              mapped_headers.merge({"photo" => "media"})
           )
           }.to change(described_class, :count).from(0).to(1)
         end
@@ -74,7 +74,7 @@ RSpec.describe Place, type: :model do
         described_class.import(
           file_fixture('place_with_media.csv'),
           community.id,
-          mapped_headers.merge({photo: "media"})
+          mapped_headers.merge({"photo" =>  "media"})
         )
         expect(described_class.last.photo).to be_attached
       end
@@ -83,7 +83,7 @@ RSpec.describe Place, type: :model do
         described_class.import(
           file_fixture('place_with_media.csv'),
           community.id,
-          mapped_headers.merge({name_audio: "audio"})
+          mapped_headers.merge({"name_audio" =>  "audio"})
         )
         expect(described_class.last.name_audio).to be_attached
       end
