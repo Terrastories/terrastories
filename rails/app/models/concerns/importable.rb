@@ -106,7 +106,9 @@ module Importable
 
     def save_importable_records
       importable_rows.each do |row|
-        attributes = row.dup
+        # with_indifferent_access to allow key access as strings or symbols
+        # since CSV uses strings and AR uses symbols.
+        attributes = row.dup.with_indifferent_access
 
         # Remove media from attributes to attach later.
         media = @klass.attachment_attribute_names.each_with_object({}) do |k, hash|
