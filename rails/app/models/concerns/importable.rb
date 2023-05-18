@@ -135,7 +135,7 @@ module Importable
         # Convert permissions if class headers includes `permission_level`
         # NOTE(@lauramosher): this was pulled from the old implementation; as we think about more
         # granulated story permissions, we may want to expand this conversion
-        if @mapped_headers.keys.include?(:permission_level)
+        if @mapped_headers.keys.include?("permission_level")
           attributes[:permission_level] = attributes[:permission_level]&.strip.blank? ? "anonymous" : "user_only"
         end
 
