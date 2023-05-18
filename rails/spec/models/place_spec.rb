@@ -34,7 +34,7 @@ RSpec.describe Place, type: :model do
       "region" => "region",
       "long" => "long",
       "lat" => "lat"
-    }.to_h}
+    }}
 
     it "raises HeaderMismatchError when mapped headers are missing" do
       expect {

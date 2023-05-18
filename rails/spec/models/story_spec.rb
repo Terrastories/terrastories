@@ -50,14 +50,14 @@ RSpec.describe Story, type: :model do
 
   describe "#import" do
     let(:mapped_headers) {{
-      title: "name",
-      desc: "description",
-      places: "places",
-      speakers: "speakers",
-      interview_location_id: "interview_location",
-      date_interviewed: "date_interviewed",
-      interviewer_id: "interviewer",
-      language: "language"
+      "title" => "name",
+      "desc" => "description",
+      "places" => "places",
+      "speakers" => "speakers",
+      "interview_location_id" => "interview_location",
+      "date_interviewed" => "date_interviewed",
+      "interviewer_id" => "interviewer",
+      "language" => "language"
     }}
 
     it "raises HeaderMismatchError when mapped headers are missing" do
@@ -110,15 +110,15 @@ RSpec.describe Story, type: :model do
       end
 
       let(:mapped_headers) {{
-        title: "name",
-        desc: "description",
-        places: "places",
-        speakers: "speakers",
-        interview_location_id: "interview_location",
-        date_interviewed: "date_interviewed",
-        interviewer_id: "interviewer",
-        language: "language",
-        media: "media"
+        "title" => "name",
+        "desc" => "description",
+        "places" => "places",
+        "speakers" => "speakers",
+        "interview_location_id" => "interview_location",
+        "date_interviewed" => "date_interviewed",
+        "interviewer_id" => "interviewer",
+        "language" => "language",
+        "media" => "media"
       }}
 
       context "but media file is not found" do
@@ -158,15 +158,15 @@ RSpec.describe Story, type: :model do
 
     context "when permission level is included in CSV" do
       let(:mapped_headers) {{
-        title: "name",
-        desc: "description",
-        places: "places",
-        speakers: "speakers",
-        interview_location_id: "interview_location",
-        date_interviewed: "date_interviewed",
-        interviewer_id: "interviewer",
-        language: "language",
-        permission_level: "permission_level"
+        "title" => "name",
+        "desc" => "description",
+        "places" => "places",
+        "speakers" => "speakers",
+        "interview_location_id" => "interview_location",
+        "date_interviewed" => "date_interviewed",
+        "interviewer_id" => "interviewer",
+        "language" => "language",
+        "permission_level" => "permission_level"
       }}
 
       it "sets permission level to nil when row is blank" do
