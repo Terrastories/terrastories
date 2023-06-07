@@ -1,6 +1,6 @@
 pt:
   profile: Perfil
-  interviewer: Entrevistador
+  interviewer: Entrevistador/a
   import: Importar
   map:
     center: Centro do mapa
@@ -15,10 +15,10 @@ pt:
     projection:
       mercator: Mercator
       albers: Albers
-      equalEarth: Equal Earth
-      equirectangular: Equirectangular
-      lambertConformalConic: Lambert Comformal Conic
-      naturalEarth: Natural Earth
+      equalEarth: Terra igual
+      equirectangular: Equiretangular
+      lambertConformalConic: Conica conforme de Lambert
+      naturalEarth: Terra natural
       winkelTripel: Winkel Tripel
       globe: Globo
   dashboard:
@@ -55,7 +55,7 @@ pt:
     no_results: Não há nenhum %{resources} disponível.
     no_nested_results: Este %{resource} não contém nenhum %{resources}.
   sort:
-    label: "Ordenar por:"
+    label: Ordenar por
     name: alfabética
     created_at: data da criação
     updated_at: data da última atualização
