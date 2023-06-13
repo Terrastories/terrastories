@@ -68,9 +68,9 @@ RSpec.describe Speaker, type: :model do
 
   describe "#import" do
     let(:mapped_headers) {{
-      name: "name",
-      birthdate: "birthdate",
-      birthplace_id: "birthplace"
+      "name" =>"name",
+      "birthdate" =>"birthdate",
+      "birthplace_id" =>"birthplace"
     }}
 
     it "raises HeaderMismatchError when mapped headers are missing" do
@@ -105,10 +105,10 @@ RSpec.describe Speaker, type: :model do
       end
 
       let(:mapped_headers) {{
-        name: "name",
-        birthdate: "birthdate",
-        birthplace_id: "birthplace",
-        photo: "photo"
+        "name" => "name",
+        "birthdate" => "birthdate",
+        "birthplace_id" => "birthplace",
+        "photo" => "photo"
       }}
 
       context "but media file is not found" do
