@@ -6,12 +6,12 @@ pt:
   places: Lugares
   place: Lugar
   speakers: Oradores
-  speaker: Orador
+  speaker: Orador/a
   stories: Histórias
   story: História
   theme: Tema
-  users: Usuários
-  user: Usuário
+  users: Usuários/as
+  user: Usuário/a
 
   languages:
     am: Amárico
@@ -59,7 +59,7 @@ pt:
   selected_language: "selecionado"
   sign_up: "Inscrever-se"
   sort_stories: "Ordenar histórias"
-  speaker: "Orador"
+  speaker: "Orador/a"
   topic: "Assunto"
   video_unsupported: Seu navegador não consegue ter vídeos inseridos.
   welcome: "Bem vinde"

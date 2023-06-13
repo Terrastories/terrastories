@@ -2,17 +2,17 @@ pt:
   errors:
     messages:
       map_bounds: Os valores das quatro caixas delimitadoras devem ser determinados, ou deixados vazios
-      invalid_latitude: valores devem ser entre -90 e 90
-      invalid_longitude: valores devem ser entre -180 e 180
-      invalid_zoom_level: valores devem ser entre 0 e 22
-      invalid_pitch: valores devem ser entre 0 e 85
-      invalid_bearing: valores devem ser entre -180 e 180
-      invalid_username_format: cannot contain spaces
+      invalid_latitude: valor deve ser entre -90 e 90
+      invalid_longitude: valor deve ser entre -180 e 180
+      invalid_zoom_level: valor deve ser entre 0 e 22
+      invalid_pitch: valor deve ser entre 0 e 85
+      invalid_bearing: valor deve ser entre -180 e 180
+      invalid_username_format: não pode conter espaços
   helpers:
     label:
       visibility: Visibilidade
       speaker:
-        one: Orador
+        one: Orador/a
         name: Nome
         speaker_community: Comunidade de palestrantes
         birthdate: Data de nascimento
@@ -20,7 +20,7 @@ pt:
         story_ids: Histórias
       story:
         desc: Descrição
-        interviewer: Entrevistador
+        interviewer: Entrevistador/a
         video_unsupported: Seu navegador não consegue ter vídeos inseridos.
         permissions:
           anonymous: "Pesquisável"
@@ -74,7 +74,7 @@ pt:
             place_ids:
               blank: Sua história deve ter um Lugar
             speaker_ids:
-              blank: Sua história deve ter um Orador
+              blank: Sua história deve ter um Orador/a
         theme:
           attributes:
             background_img:
@@ -87,9 +87,9 @@ pt:
     models:
       community: Comunidade
       curriculum: Curriculum
-      user: Usuário
+      user: Usuário/a
       place: Lugar
-      speaker: Orador
+      speaker: Orador/a
       story: História
       theme: Tema
       media_link: Link de Mídia
@@ -122,7 +122,7 @@ pt:
         speaker_ids: Oradores
         place_ids: Lugares
         interview_location_id: Local da entrevista
-        interviewer_id: Entrevistador
+        interviewer_id: Entrevistador/a
         permission_level: Nível de permissão
       story/permission_level:
         anonymous: Anônimo
@@ -145,15 +145,15 @@ pt:
         bearing: Grau de rolamento
         map_projection: Determine uma projeção para o mapa
       user:
-        login: Username or Email
-        name: Display Name
-        username: Username
+        login: Nome de usuário/a ou email
+        name: Nome de exibição
+        username: Nome de usuário/a
         email: Email
         role: Função
         password: Senha
         photo: Foto
       user/role:
-        admin: Administrador
+        admin: Administrador/a
         editor: Editor/a
-        member: Membro
+        member: Membro/a
         viewer: Espectador/a
