@@ -162,6 +162,8 @@
 
 <script>
 const themeForm = document.querySelector("#themeForm");
+const themeCenterLatInput = themeForm.querySelector("#theme_center_lat");
+const themeCenterLongInput = themeForm.querySelector("#theme_center_long");
 const zoomInput = themeForm.querySelector("#theme_zoom");
 const zoomValue = themeForm.querySelector("#zoomValue");
 const pitchInput = themeForm.querySelector("#theme_pitch");
@@ -185,8 +187,8 @@ const themeMap = new mapboxgl.Map({
 themeMap.on("moveend", (e) => {
   let themeForm = document.querySelector("#themeForm");
   let { lng, lat } = e.target.getCenter();
-  themeForm.querySelector("input#theme_center_long").value = lng.toFixed(5);
-  themeForm.querySelector("input#theme_center_lat").value = lat.toFixed(5);
+  themeCenterLongInput.value = lng.toFixed(5);
+  themeCenterLatInput.value = lat.toFixed(5);
 
   if (!themeForm.querySelector("input#unrestricted_bounds").checked) {
     let { _ne, _sw } = themeMap.getBounds();
@@ -226,6 +228,15 @@ themeForm.querySelector("input#unrestricted_bounds").addEventListener("click", (
     themeForm.querySelector("input#theme_sw_boundary_lat").value = _sw.lat.toFixed(5);
   }
 })
+
+themeCenterLongInput.addEventListener("change", (e) => {
+  let { lat } = themeMap.getCenter();
+  themeMap.setCenter({lng: e.target.value, lat: lat});
+});
+themeCenterLatInput.addEventListener("change", (e) => {
+  let { lng } = themeMap.getCenter();
+  themeMap.setCenter({lng: lng, lat: e.target.value});
+});
 
 zoomInput.addEventListener("input", (e) => {
   zoomValue.innerHTML = e.target.value;
