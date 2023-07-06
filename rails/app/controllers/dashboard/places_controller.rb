@@ -16,7 +16,7 @@ module Dashboard
     end
 
     def new
-      authorize @place = community_places.new
+      authorize @place = community_places.new(lat: 0, long: 0)
     end
 
     def create
