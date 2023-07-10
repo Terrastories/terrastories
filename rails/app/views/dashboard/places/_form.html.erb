@@ -1,4 +1,4 @@
-<%= form_with model: @place, multipart: true, data: {remote: false}, class: "form aligned" do |f| %>
+<%= form_with model: @place, multipart: true, data: {remote: false}, class: "form aligned", id: "place_form" do |f| %>
   <%= render partial: "shared/form_errors", locals: { resource: @place } %>
 
   <%= f.label :name, class: "required" %>
@@ -34,11 +34,57 @@
     <%= f.collection_check_boxes :story_ids, current_community.stories, :id, :title %>
   </div>
 
-  <%= f.label :lat %>
-  <%= f.text_field :lat %>
+  <div class="two-columns">
+    <div class="two-columns-left column-fixed-400">
+      <%= f.label :lat %>
+      <%= f.text_field :lat %>
 
-  <%= f.label :long %>
-  <%= f.text_field :long %>
+      <%= f.label :long %>
+      <%= f.text_field :long %>
+    </div>
+    <div class="two-columns-right">
+      <div id="placeMap"></div>
+    </div>
+  </div>
 
   <%= f.submit %>
 <% end %>
+
+<script>
+const placeForm = document.querySelector("#place_form");
+const placeLatInput = placeForm.querySelector("#place_lat");
+const placeLongInput = placeForm.querySelector("#place_long");
+const coordinates = [placeLongInput.value, placeLatInput.value]
+const placeMap = new mapboxgl.Map({
+  accessToken: "<%= current_community.theme.mapbox_token %>",
+  container: "placeMap", // container ID
+  center: coordinates, // starting position [lng, lat]
+  hash: false,
+  zoom: <%= current_community.theme.zoom || 5 %>, // starting zoom
+  style: "<%= current_community.theme.mapbox_style %>", // style URL or style object
+  cooperativeGestures: true
+});
+
+const marker = new mapboxgl.Marker()
+  .setLngLat(coordinates)
+  .addTo(placeMap);
+
+// sync values when the map moves
+placeMap.on('move', () => {
+  let { lng, lat } = placeMap.getCenter();
+  placeLongInput.value = lng.toFixed(5);
+  placeLatInput.value = lat.toFixed(5);
+  marker.setLngLat({lng, lat});
+});
+
+// sync values when input is edited
+placeLongInput.addEventListener("change", (e) => {
+  let { lat } = placeMap.getCenter();
+  placeMap.setCenter({lng: e.target.value, lat: lat});
+});
+
+placeLatInput.addEventListener("change", (e) => {
+  let { lng } = placeMap.getCenter();
+  placeMap.setCenter({lng: lng, lat: e.target.value});
+});
+</script>
