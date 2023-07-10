@@ -60,7 +60,7 @@ const placeMap = new mapboxgl.Map({
   container: "placeMap", // container ID
   center: coordinates, // starting position [lng, lat]
   hash: false,
-  zoom: <%= @initial_zoom %>,
+  zoom: <%= current_community.theme.zoom || 5 %>, // starting zoom
   style: "<%= current_community.theme.mapbox_style %>", // style URL or style object
   cooperativeGestures: true
 });

@@ -16,10 +16,9 @@ module Dashboard
     end
 
     def new
-      # set initial position and zoom using the current community's theme
+      # set initial position using the current community's theme
       current_theme = current_community.theme
-      @initial_zoom = current_theme.zoom
-      authorize @place = community_places.new(lat: current_theme.center_lat, long: current_theme.center_long)
+      authorize @place = community_places.new(lat: current_theme.center_lat || 0, long: current_theme.center_long || 0)
     end
 
     def create
