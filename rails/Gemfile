@@ -87,6 +87,8 @@ group :development do
 
   # annotate models
   gem "annotate"
+
+  gem "foreman"
 end
 
 group :test do
