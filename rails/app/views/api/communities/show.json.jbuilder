@@ -17,13 +17,9 @@ stories = @community.stories.preload(:places).where(permission_level: :anonymous
 json.storiesCount stories.size
 json.points stories.flat_map(&:public_points).uniq
 
-# Side Panel Filter Categories (localized by Rails)
-json.categories Community::FILTERABLE_ATTRIBUTES.map { |cat|
-  {
-    label: t(cat),
-    value: cat
-  }
-}
+# Side Panel Filter Categories
+json.categories Community::FILTERABLE_ATTRIBUTES
+
 # Side Panel Filter Options (generated from available content)
 json.filters @community.filters
 
