@@ -16,8 +16,10 @@ json.speakers @story.speakers do |speaker|
   end
 end
 json.places @story.places do |place|
-  json.(place, :id, :name, :description, :region, :type_of_place, :photo_url, :name_audio_url)
+  json.(place, :id, :name, :description, :region)
 
+  json.placenameAudio place.name_audio_url(full_url: true)
+  json.photoUrl place.photo_url(full_url: true)
   json.typeOfPlace place.type_of_place
 end
 
