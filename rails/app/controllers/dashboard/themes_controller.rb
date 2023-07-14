@@ -11,6 +11,14 @@ module Dashboard
     def update
       @theme = current_community.theme
       if @theme.update(theme_params)
+        if current_community.public
+          static_map_url = if @theme.boundaries
+            "https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/#{@theme.boundaries.flatten.to_s.gsub(' ','').sub("[", "%5B").sub("]", "%5D")}/900x600?access_token=#{@theme.mapbox_token}"
+          else
+            "https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/#{@theme.center_long},#{@theme.center_lat},#{@theme.zoom},#{@theme.bearing},#{@theme.pitch}/900x600?access_token=#{@theme.mapbox_token}"
+          end
+          @theme.static_map.attach(io: URI.parse(static_map_url).open, filename: "#{current_community.slug}-static-map.png")
+        end
         redirect_to edit_theme_path
       else
         render :edit
