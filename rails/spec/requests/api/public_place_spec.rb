@@ -13,6 +13,17 @@ RSpec.describe "Public Place Endpoint", type: :request do
       permission_level: :anonymous
     )
   end
+  let!(:restricted_story) do
+    FactoryBot.create(
+      :story_with_speakers,
+      places: [place],
+      community: community,
+      title: "Restricted Community Work",
+      desc: "Terrastories Dev working on new features that are not ready to be publicized yet!",
+      permission_level: :user_only
+    )
+  end
+
 
   def json_response
     JSON.parse(response.body)
