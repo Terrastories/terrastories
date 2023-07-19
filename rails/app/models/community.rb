@@ -21,6 +21,25 @@ class Community < ApplicationRecord
 
   FILTERABLE_ATTRIBUTES = %w(places region type_of_place speakers topic language speaker_community)
 
+  # override(slug)
+  # ensure slug is set using downcased and underscored name
+  # ensure slug value is unique by appending idx when necessary
+  def slug=(value)
+    # if not public and value is some form of unset, allow default setter
+    return super(value) if value.blank? && !self.public
+
+    value = self.name.downcase.strip.gsub(" ", "_") if value.blank?
+    if Community.where.not(id: self).exists?(slug: value)
+      index = value.split("_").last.to_i
+      loop do
+        index+=1
+        value = [value, index].join("_")
+        break unless Community.exists?(slug: value)
+      end
+    end
+    super(value)
+  end
+
   def filters(permission_level = :anonymous)
     [
       places.joins(:stories).where(stories: {permission_level: permission_level}).distinct.map { |p| {label: p.name, value: p.id, category: :places } },

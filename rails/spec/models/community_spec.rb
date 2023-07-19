@@ -49,7 +49,39 @@ RSpec.describe Community, type: :model do
       expect(Speaker.all.pluck(:id)).not_to include(speaker.id)
       expect(Place.all.pluck(:id)).not_to include(place.id)
     end
+  end
 
+  describe "slug=(value)" do
+    it "uses default setter when public is set to false & value is null or empty" do
+      community = Community.new(name: "New Community", public: false, slug: "")
+      expect(community.slug).to eq("")
+
+      community.slug = nil
+      expect(community.slug).to be_nil
+    end
+
+    it "uses Community name when value is blank and public is enabled" do
+      community = Community.new(name: "New Community", public: true, slug: "")
+      expect(community.slug).to eq("new_community")
+    end
+
+    it "sets slug as value" do
+      community = Community.new(name: "New Community", slug: "custom_slug")
+      expect(community.slug).to eq("custom_slug")
+    end
+
+    it "appends incremental number when slug already exists" do
+      FactoryBot.create(:community, slug: "custom_slug")
+      community = Community.new(name: "New Community", slug: "custom_slug")
+      expect(community.slug).to eq("custom_slug_1")
+    end
+
+    it "replaces incremental number when needed (avoids slug_1_1 problems)" do
+      community = FactoryBot.create(:community, slug: "custom_slug_1")
+      attrs = {name: "New Community", slug: "custom_slug_1"}
+      community.assign_attributes(attrs)
+      expect(community.slug).to eq("custom_slug_1")
+    end
   end
 
   context ".filters" do
