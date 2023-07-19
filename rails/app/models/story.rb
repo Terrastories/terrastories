@@ -15,6 +15,10 @@ class Story < ApplicationRecord
   validates :place_ids, presence: true
   validates :media, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg', 'video/mpeg', 'video/mp4', 'video/quicktime', 'video/webm', 'audio/mpeg', 'audio/wav', 'audio/mp4', 'audio/m4a', 'audio/x-m4a', 'audio/x-aac', 'audio/x-flac'] }
 
+  def media_types
+    media.flat_map { |media| media.content_type.split('/')[0] }.uniq
+  end
+
   def self.export_sample_csv
     headers = %w{name description speakers places interview_location date_interviewed interviewer language media permission_level }
 
