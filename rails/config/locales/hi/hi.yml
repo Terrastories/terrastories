@@ -21,10 +21,11 @@ hi:
     mat: मटावाइ
     nl: डच
     pt: पुर्तगाली
+    pu: पंजाबी
     sw: स्‍वाहि‍ली
     zh: चीनी
     hi: हिन्दी
-    pu: पंजाबी
+    way: वायना
 
   # Front End Translations
   member_dashboard: "व्यवस्थापक पृष्ठ"

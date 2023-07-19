@@ -1,0 +1,68 @@
+way:
+  community: Ëwutëno
+  communities: Ëwutënotom
+  media_link: Media Link
+  media_links: Media Links
+  places: Pata
+  place: Patatom
+  speakers: Mëlë mëlë tïkahamo
+  speaker: Mëlë mëlë tïkahamo
+  stories: Tëkalëhem
+  story: Tëkalëhem
+  theme: Pëk eitop 
+  users: Ikenanpananom
+  user: Ikenanpane
+
+  languages:
+    am: Amhaars omi
+    en: Amerekan omi
+    es: Spaans omi
+    ja: Japans omi
+    mat: Matawai omi
+    nl: Ulante omi
+    pt: Kalaiwa omi
+    pu: Punjabi omi
+    sw: Swahili omi
+    way: Wayana omi
+    zh: Sneesi omi
+
+  # Front End Translations
+  member_dashboard: "Ledendashboard"
+  alphabetical: "A-Z"
+  back_to_map: "Tïwai tïkai mëi karta pona"
+  back_to_welcome: "Tïwai tïkai mëi tïwëlën pona"
+  built_with_love: Tïnisano ailë tïpoi
+  close: "Tapulëmëi"
+  community_search:
+    title: "Ëtuwalono tupikë tuwalë ëweitop me"
+    coming_soon: "Helë oloko eitop mënmëk ja tïnëlëhapon.masike tupok tuwalëhe ëweitoptom."
+  default: "Sin katïp"
+  enter: "Tik kaikë ipata pona"
+  filter_stories: "Tïpanak mahamo tïpetukwai"
+  forgot_password: "Code pëk tïten kapamhe?"
+  hello: "Hallo"
+  introduction: "Etuwalonumatop"
+  intro:
+    question: "Ëtï mëlë terrastory?"
+    explanation: "Terrastories mëlë tëkalëhem omi apëipotpï uhpakat ëutë eitop pëk.helë ke ëutëponotom tëweitom of tïpatakom eitop pëk mënekalëja mala karta pona mënïjatot tïnipïnënkom."
+  language: "Omi"
+  login: "Ajak tëhenmai"
+  logout: "Tëkaktaimëi"
+  most_recent: "Hemalë hapon eitop"
+  no_media: "Media imna"
+  password: "Code"
+  place_name: "Pata tom eheptëtop"
+  place_type: "Talan pata"
+  region: "Ëwutë"
+  remember_me: "Kutuwalonumakë le"
+  reversed_alphabetical: "Z-A"
+  select_category: "Tupikë groep "
+  select_option: "Optie pona ïtëk"
+  selected_language: "Ënitik mat pï tom"
+  sign_up: "Ëwehet tïmilikpoi"
+  sort_stories: "Pëtuku tïpetukwai tïpanan mahamo"
+  speaker: "Mëlë mëlë kane"
+  topic: "Pëk eitop "
+  video_unsupported: "Sorry helë man video ënapuwala"
+  welcome: "Ipok talë na mumëk tëw"
+  welcome_back: "Ipok talë na mumëk tëw"

@@ -22,9 +22,10 @@ pu:
     mat: ਮਤਵੈ
     nl: ਡੱਚ
     pt: ਪੁਰਤਗਾਲੀ
-    sw: ਸਵਾਹਿਲੀ
-    zh: ਚੀਨੀ
     pu: ਪੰਜਾਬੀ
+    sw: ਸਵਾਹਿਲੀ
+    way: ਵਾਯਾਨਾ
+    zh: ਚੀਨੀ
 
   # Front End Translations
   member_dashboard: "ਪ੍ਰਬੰਧਕ ਪੰਨਾ"
