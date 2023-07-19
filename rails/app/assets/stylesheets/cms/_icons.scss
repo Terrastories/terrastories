@@ -7,6 +7,12 @@
   stroke: $light-gray;
 }
 
+.icon-group {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
 .audio {
   cursor: pointer;
 }
