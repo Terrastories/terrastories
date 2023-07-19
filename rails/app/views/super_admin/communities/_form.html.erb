@@ -10,6 +10,9 @@
   <%= f.label :locale %>
   <%= f.text_field :locale %>
 
+  <%= f.label :slug %>
+  <%= f.text_field :slug %>
+
   <% if @community.new_record? %>
     <%= f.fields_for :users, User.new do |user_fields| %>
       <%= user_fields.label :username, class: "required" %>

@@ -71,6 +71,7 @@ module SuperAdmin
         :name,
         :country,
         :locale,
+        :slug,
         users_attributes: [
           :username,
           :email,
