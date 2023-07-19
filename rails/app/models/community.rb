@@ -29,7 +29,7 @@ class Community < ApplicationRecord
       stories.where(stories: {permission_level: permission_level}).pluck(:topic).uniq.reject(&:blank?).map { |r| {label: r, value: r, category: :topic } },
       stories.where(stories: {permission_level: permission_level}).pluck(:language).uniq.reject(&:blank?).map { |r| {label: r, value: r, category: :language } },
       speakers.joins(:stories).where(stories: {permission_level: permission_level}).distinct.map { |s| {value: s.id, label: s.name, category: :speakers } },
-      speakers.joins(:stories).where(stories: {permission_level: permission_level}).pluck(:speaker_community).reject(&:blank?).map { |r| {label: r, value: r, category: :speaker_community } }
+      speakers.joins(:stories).where(stories: {permission_level: permission_level}).pluck(:speaker_community).uniq.reject(&:blank?).map { |r| {label: r, value: r, category: :speaker_community } }
     ].flatten
   end
 
