@@ -52,12 +52,9 @@ RSpec.describe Community, type: :model do
   end
 
   describe "slug=(value)" do
-    it "uses default setter when public is set to false & value is null or empty" do
-      community = Community.new(name: "New Community", public: false, slug: "")
-      expect(community.slug).to eq("")
-
-      community.slug = nil
-      expect(community.slug).to be_nil
+    it "uses Community name even if public is disabled" do
+      community = Community.new(name: "New Community", public: false, slug: nil)
+      expect(community.slug).to eq("new_community")
     end
 
     it "uses Community name when value is blank and public is enabled" do

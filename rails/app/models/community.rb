@@ -25,9 +25,6 @@ class Community < ApplicationRecord
   # ensure slug is set using downcased and underscored name
   # ensure slug value is unique by appending idx when necessary
   def slug=(value)
-    # if not public and value is some form of unset, allow default setter
-    return super(value) if value.blank? && !self.public
-
     value = self.name.downcase.strip.gsub(" ", "_") if value.blank?
     if Community.where.not(id: self).exists?(slug: value)
       index = value.split("_").last.to_i
