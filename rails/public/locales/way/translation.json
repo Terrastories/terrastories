@@ -1,0 +1,25 @@
+{
+    "alphabetical": "A-Z",
+    "reversed_alphabetical": "Z-A",
+    "most_recent": "Hemalë hapon eitop",
+    "region": "Ëwutë",
+    "place_type": "Talan pata",
+    "speaker": "Mëlë mëlë kane",
+    "topic": "Pëk eitop",
+    "language": "Omi",
+    "speaker_community": "Jumuiya ya mzungumzaji",
+    "hello": "Hallo",
+    "back_to_welcome": "Tïwai tïkai mëi tïwëlën pona",
+    "member_dashboard": "Ledendashboard",
+    "select_category": "Tupikë groep",
+    "select_option": "Optie pona ïtëk",
+    "filter_stories": "Tïpanak mahamo tïpetukwai",
+    "introduction": "Etuwalonumatop",
+    "intro": {
+      "question": "Ëtï mëlë terrastory?",
+      "explanation": "Terrastories mëlë tëkalëhem omi apëipotpï uhpakat ëutë eitop pëk.helë ke ëutëponotom tëweitom of tïpatakom eitop pëk mënekalëja mala karta pona mënïjatot tïnipïnënkom."
+    },
+    "close": "Tapulëmëi",
+    "place_name": "Pata tom eheptëtop",
+    "sort_stories": "Pëtuku tïpetukwai tïpanan mahamo"
+  }
