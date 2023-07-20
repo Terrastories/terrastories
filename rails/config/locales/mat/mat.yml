@@ -20,8 +20,10 @@ mat:
     ja: Japans
     mat: Matawai
     nl: Bakaa
+    pa: Punjabi
     pt: Potogisi
     sw: Swahili
+    way: Wayana
     zh: Snesi
 
   # Front End Translations
