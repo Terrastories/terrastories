@@ -19,7 +19,7 @@ Docker is a platform that serves to deliver software in packages called containe
 Setup instructions for Docker: https://docs.docker.com/engine/install/
 
 * On Linux, users should run all docker commands with `sudo` or check the [official documentation](https://docs.docker.com/install/linux/linux-postinstall/) to manage Docker as a non-root user.
-* On Windows, Docker should install WSL-2 (Windows Subsystem for Linux 2) through which you should set up Terrastories.
+* On Windows, Docker should install WSL-2 (Windows Subsystem for Linux 2) through which you should set up Terrastories. However, it is possible that you may need to configure some additional settings for Terrastories to properly work on Windows.
 
 ## Setup the application
 1. Create a fork of the Terrastories/terrastories repository. Now clone the repository locally to your computer. 

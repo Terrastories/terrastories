@@ -4,7 +4,7 @@
 
 **Terrastories** is a geostorytelling application built for indigenous and other local communities to locate and map their own oral storytelling traditions about places of significant meaning or value to them. 
 
-It is a dockerized Rails / React app that uses [**Mapbox GL JS**](https://mapbox.com) / [**MapLibre GL JS**](https://maplibre.com/) to help users locate content geographically on an interactive map. As a local-first application, Terrastories is designed to work entirely offline, so that remote communities can access the application entirely without needing internet connectivity.
+It is a dockerized Rails + React app that uses [**Mapbox GL JS**](https://mapbox.com) / [**MapLibre GL JS**](https://maplibre.com/) to help users locate content geographically on an interactive map. As a local-first application, Terrastories is designed to work entirely offline, so that remote communities can access the application entirely without needing internet connectivity.
 
 The Terrastories interface is principally composed of an interactive map and a sidebar with media content. Users can explore the map and click on activated points to see the stories associated with those points. Alternatively, users can interact with the sidebar and click on stories to see where in the landscape these narratives took place. 
 
@@ -12,7 +12,7 @@ By means of a content management system, users with the right level of access ca
 
 Learn more about Terrastories on [our website](https://terrastories.app/). 
 
-*The remainder of the documentation on Github is for developers. For documentation on using or installing Terrastories, please visit the Terrastories Support Materials at **[https://docs.terrastories.app/](https://docs.terrastories.app/)***
+*The remainder of the documentation on Github is **for developers**. For documentation on using or setting up Terrastories on an online, offline "Field Kit", or mesh network server, please visit the Terrastories Support Materials at **[https://docs.terrastories.app/](https://docs.terrastories.app/)***
 
 ![](documentation/terrastories.gif)
 ###### *Terrastories: Matawai Konde 1.0 (October 2018)*
@@ -28,7 +28,7 @@ Local development and offline mode both require Docker to be installed.
 
 Download and install [Docker](https://www.docker.com/products/docker-desktop/) for your platform.
 
-> NOTE: Windows requires WSL 2.0 or virtualization in order to work.
+> NOTE: Windows requires WSL 2.0 or virtualization in order to work. Additionally, it is possible that you may need to configure some additional settings for Terrastories to properly work on Windows.
 
 #### Tileserver (Offline "Field Kit" Mode)
 
