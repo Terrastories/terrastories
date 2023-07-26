@@ -58,7 +58,7 @@
     </div>
   <% end %>
 
-  <% if Flipper.enabled?(:public_communities, current_community) %>
+  <% if Flipper.enabled?(:public_communities, current_community) && current_community.slug.present? %>
     <%# Community Public %>
     <h4><%= t("dashboard.community.make_public") %></h4>
     <div class="input-group">
