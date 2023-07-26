@@ -29,6 +29,9 @@ en:
     community:
       settings: Settings
       make_public: Public exploration of your community
+      public_link_available: Your public community is available here
+      copy_to_clipboard: Copy to Clipboard
+      copied_to_clipboard: Copied
     headings:
       new_resource: New %{name}
     actions:
