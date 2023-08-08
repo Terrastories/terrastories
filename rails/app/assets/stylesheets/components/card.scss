@@ -130,6 +130,10 @@ $el-shadow: 0 1px 4px $lighter-gray;
     flex: 5 0 0;
     .container {
       padding-bottom: 3rem;
+
+      .description {
+        white-space: pre-wrap;
+      }
     }
     .speakers {
       img {
