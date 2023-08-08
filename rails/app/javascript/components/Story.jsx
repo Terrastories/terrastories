@@ -50,7 +50,7 @@ const Story = props => {
             {story.title}
             {story.permission_level === "restricted" && " 🔒"}
           </h6>
-          <p>{story.desc}</p>
+          <p className="description">{story.desc}</p>
           {
             story.media &&
             story.media.map(file => (
