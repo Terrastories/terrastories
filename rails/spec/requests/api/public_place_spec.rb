@@ -41,7 +41,7 @@ RSpec.describe "Public Place Endpoint", type: :request do
     expect(response).to have_http_status(:not_found)
   end
 
-  it "returns an array of public communities" do
+  it "returns place details" do
     get "/api/communities/atlam/places/123"
 
     expect(json_response.keys).to contain_exactly(
@@ -56,7 +56,7 @@ RSpec.describe "Public Place Endpoint", type: :request do
     )
   end
 
-  it "includes the places stories" do
+  it "includes the places public stories" do
     get "/api/communities/atlam/places/123"
 
     expect(json_response["stories"].length).to eq(1)

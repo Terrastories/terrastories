@@ -13,7 +13,7 @@ RSpec.describe "Public Community (show) Endpoint", type: :request do
     expect(response).to have_http_status(:not_found)
   end
 
-  it "returns an array of public communities" do
+  it "returns a community's public details" do
     get "/api/communities/cool_community"
 
     expect(json_response).to include(
