@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Public Place Endpoint", type: :request do
-  let!(:community) { FactoryBot.create(:community, public: true, name: "ATLAM Testing", slug: "atlam") }
+  let!(:community) { FactoryBot.create(:public_community, name: "ATLAM Testing", slug: "atlam") }
   let!(:place) { FactoryBot.create(:place_with_stories, story_count: 2, community: community, id: 123) }
   let!(:public_story) do
     FactoryBot.create(

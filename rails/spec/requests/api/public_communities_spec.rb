@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Public Communities Endpoint", type: :request do
-  let!(:public_community) { FactoryBot.create(:community, public: true, name: "Cool Community") }
+  let!(:public_community) { FactoryBot.create(:public_community, name: "Cool Community") }
   let!(:community) { FactoryBot.create(:community, name: "Private Community") }
 
   def json_response

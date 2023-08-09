@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Public Community (show) Endpoint", type: :request do
-  let!(:public_community) { FactoryBot.create(:community, public: true, name: "Cool Community") }
+  let!(:public_community) { FactoryBot.create(:public_community, name: "Cool Community") }
 
   def json_response
     JSON.parse(response.body)
@@ -44,11 +44,7 @@ RSpec.describe "Public Community (show) Endpoint", type: :request do
     it "includes community filter categories for landing panel" do
       get "/api/communities/cool_community"
 
-      expect(json_response["categories"]).to contain_exactly(
-        *Community::FILTERABLE_ATTRIBUTES.map { |cat|
-          {"label" => I18n.t(cat), "value" => cat}
-        }
-      )
+      expect(json_response["categories"]).to contain_exactly(*Community::FILTERABLE_ATTRIBUTES)
     end
 
     it "includes community map config" do

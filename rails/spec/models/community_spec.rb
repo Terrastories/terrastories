@@ -10,7 +10,6 @@ RSpec.describe Community, type: :model do
     end
 
     it "requires a slug when community is marked as public" do
-      community.slug = nil
       community.public = true
       expect(community).not_to be_valid
       expect(community.errors).to include(:slug)

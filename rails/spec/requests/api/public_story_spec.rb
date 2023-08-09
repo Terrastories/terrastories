@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "Public Story Detail Endpoint", type: :request do
-  let!(:community) { FactoryBot.create(:community, public: true, name: "Cool Community") }
+  let!(:community) { FactoryBot.create(:public_community, name: "Cool Community") }
   let!(:place_1) { create(:place, community: community, region: "the internet") }
   let!(:place_2) { create(:place, community: community, type_of_place: "online") }
   let!(:speaker_1) { create(:speaker, community: community) }
@@ -31,7 +31,7 @@ RSpec.describe "Public Story Detail Endpoint", type: :request do
   end
 
   it "returns a 404 when community is not public" do
-    private_community = FactoryBot.create(:community)
+    private_community = FactoryBot.create(:community, slug: "something")
 
     get "/api/communities/#{private_community.slug}/stories/123"
 
