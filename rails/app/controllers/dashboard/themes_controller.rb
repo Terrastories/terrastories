@@ -11,13 +11,17 @@ module Dashboard
     def update
       @theme = current_community.theme
       if @theme.update(theme_params)
-        if current_community.public?
+        if current_community.public? && @community.theme.mapbox_token.present?
           static_map_url = if @theme.boundaries
             "https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/#{@theme.boundaries.flatten.to_s.gsub(' ','').sub("[", "%5B").sub("]", "%5D")}/900x600?access_token=#{@theme.mapbox_token}"
           else
             "https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/#{@theme.center_long},#{@theme.center_lat},#{@theme.zoom},#{@theme.bearing},#{@theme.pitch}/900x600?access_token=#{@theme.mapbox_token}"
           end
-          @theme.static_map.attach(io: URI.parse(static_map_url).open, filename: "#{current_community.slug}-static-map.png")
+          begin
+            @theme.static_map.attach(io: URI.parse(static_map_url).open, filename: "#{current_community.slug}-static-map.png")
+          rescue StandardError
+            # do nothing; no worries if we can't save the map
+          end
         end
         redirect_to edit_theme_path
       else
