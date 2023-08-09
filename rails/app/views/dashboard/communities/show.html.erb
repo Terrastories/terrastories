@@ -62,11 +62,11 @@
     <%# Community Public %>
     <h4><%= t("dashboard.community.make_public") %></h4>
     <div class="input-group">
-      <%= f.check_box :public, checked: current_community.public %>
+      <%= f.check_box :public, checked: current_community.public? %>
       <%= f.label :public %>
     </div>
 
-    <% if current_community.public %>
+    <% if current_community.public? %>
       <div class="copiableText-container">
         <%= t("dashboard.community.public_link_available") %>:
         <div class="copiableText">
@@ -112,7 +112,7 @@
   <%# Community Beta / Experimental Features %>
   <h4><%= t("dashboard.community.beta_access") %></h4>
   <div class="input-group">
-    <%= f.check_box :beta, checked: current_community.beta %>
+    <%= f.check_box :beta, checked: current_community.beta? %>
     <%= f.label :beta %>
   </div>
 

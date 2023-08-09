@@ -17,7 +17,7 @@ class Community < ApplicationRecord
   validates :background_img, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'] }
   validates :sponsor_logos, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'], size_range: 1..5.megabytes }
 
-  validates :slug, presence: true, if: -> { self.public }
+  validates :slug, presence: true, if: -> { self.public? }
 
   FILTERABLE_ATTRIBUTES = %w(places region type_of_place speakers topic language speaker_community)
 

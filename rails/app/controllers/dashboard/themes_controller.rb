@@ -11,7 +11,7 @@ module Dashboard
     def update
       @theme = current_community.theme
       if @theme.update(theme_params)
-        if current_community.public
+        if current_community.public?
           static_map_url = if @theme.boundaries
             "https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/#{@theme.boundaries.flatten.to_s.gsub(' ','').sub("[", "%5B").sub("]", "%5D")}/900x600?access_token=#{@theme.mapbox_token}"
           else
