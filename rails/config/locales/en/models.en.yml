@@ -14,6 +14,10 @@ en:
       community:
         public: Enable public interface
         beta: Enable experimental beta features
+        background_img: Background Image
+        sponsor_logos: Sponsor Logos
+        display_image: Display image or logo
+        description: About your Community
       speaker:
         one: Speaker
         name: Name

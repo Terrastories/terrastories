@@ -21,6 +21,8 @@
 @import 'cms/media';
 @import 'cms/errors';
 @import 'cms/flash';
+@import 'cms/tooltips';
+@import 'cms/copyText';
 
 #themeMap, #placeMap {
   min-height: 400px;

@@ -1,6 +1,8 @@
 class Theme < ApplicationRecord
   include MapConfigurable
 
+  has_one_attached :static_map
+
   belongs_to :community, touch: true
 
   # TODO: Once Feature: split_settings is enabled for everyoen

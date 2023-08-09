@@ -1,5 +1,5 @@
 module SuperAdmin
-  class CommunitiesController < ApplicationController
+  class CommunitiesController < BaseController
     def index
       @page = CommunitiesPage.new(filter_params)
       @communities = @page.data
@@ -71,6 +71,7 @@ module SuperAdmin
         :name,
         :country,
         :locale,
+        :slug,
         users_attributes: [
           :username,
           :email,

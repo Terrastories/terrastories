@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_15_194753) do
+ActiveRecord::Schema.define(version: 2022_12_26_213911) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2022_11_15_194753) do
     t.boolean "beta", default: false
     t.boolean "public", default: false, null: false
     t.string "slug"
+    t.text "description"
     t.index ["public"], name: "index_communities_on_public"
     t.index ["slug"], name: "index_communities_on_slug"
   end

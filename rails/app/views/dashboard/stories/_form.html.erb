@@ -39,7 +39,7 @@
               disablePictureInPicture
               controlsList="nodownload"
               id="video-player-<%= media.blob.id %>"
-              poster="<%= url_for(media.preview(resize_to_limit:[nil, 150])) if media.previewable? %>"
+              poster="<%= url_for(media.preview(resize_to_limit:[150, 150])) if media.previewable? %>"
             >
               <source src="<%= url_for(media) %>"/>
               <%= t("video_unsupported") %>

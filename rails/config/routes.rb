@@ -1,5 +1,12 @@
 # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
+  namespace :api, defaults: { format: :json } do
+    resources :communities, only: [:index, :show] do
+      resources :stories, only: [:index, :show]
+      resources :places, only: [:show]
+    end
+  end
+
   scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do
     scope '/member', module: 'dashboard', constraints: RoleRoutingConstraint.new { |user| !user.super_admin } do
       root to: "stories#index", as: :member_root
@@ -8,6 +15,7 @@ Rails.application.routes.draw do
 
       resource :community, only: [:show, :update], as: :community_settings do
         delete :background_img, action: :delete_background_img
+        delete :display_image, action: :delete_display_image
         delete '/sponsor_logo/:id/delete', action: :delete_sponsor_logo, as: :delete_sponsor_logo
       end
       resources :users do

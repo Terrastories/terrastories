@@ -1,5 +1,5 @@
 module Dashboard
-  class ApplicationController < ApplicationController
+  class BaseController < ApplicationController
     rescue_from Pundit::NotAuthorizedError, with: :not_authorized
     rescue_from ActiveRecord::RecordNotFound, with: :not_found
 

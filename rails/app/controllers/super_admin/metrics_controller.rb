@@ -1,5 +1,5 @@
 module SuperAdmin
-  class MetricsController < ApplicationController
+  class MetricsController < BaseController
     def show
       render locals: {
         places_count: Place.all.size,

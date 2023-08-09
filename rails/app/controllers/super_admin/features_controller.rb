@@ -1,5 +1,5 @@
 module SuperAdmin
-  class FeaturesController < ApplicationController
+  class FeaturesController < BaseController
     include FeatureFlipper
 
     def index

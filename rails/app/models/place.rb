@@ -14,15 +14,24 @@ class Place < ApplicationRecord
 
   attr_reader :point_geojson
 
-  def photo_url
+  def photo_url(full_url: false, thumbnail: false)
     if photo.attached?
-      Rails.application.routes.url_helpers.rails_blob_path(photo, only_path: true)
+      if full_url
+        resize_limit = thumbnail ? [300, 300] : [800, 800]
+        Rails.application.routes.url_helpers.rails_representation_url(photo.variant(resize_to_limit: resize_limit))
+      else
+        Rails.application.routes.url_helpers.rails_blob_path(photo)
+      end
     end
   end
 
-  def name_audio_url
+  def name_audio_url(full_url: false)
     if name_audio.attached?
-      Rails.application.routes.url_helpers.rails_blob_path(name_audio, only_path: true)
+      if full_url
+        Rails.application.routes.url_helpers.rails_blob_url(name_audio)
+      else
+        Rails.application.routes.url_helpers.rails_blob_path(name_audio)
+      end
     end
   end
 
@@ -46,6 +55,23 @@ class Place < ApplicationRecord
         "marker-symbol": name[0]&.downcase || "P"
       )
     ).to_json
+  end
+
+  # keys are camelCased for Public Communities React FrontEnd
+  def public_point_feature
+    RGeo::GeoJSON.encode(
+      RGeo::GeoJSON::Feature.new(
+        RGeo::Cartesian.factory.point(long, lat),
+        id,
+        name: name,
+        description: description,
+        placenameAudio: name_audio_url(full_url: true),
+        photo: photo_url(full_url: true),
+        thumbnail: photo_url(full_url: true, thumbnail: true),
+        region: region,
+        typeOfPlace: type_of_place,
+      )
+    )
   end
 
   EXCLUDE_ATTRIBUTES_FROM_IMPORT = %i[

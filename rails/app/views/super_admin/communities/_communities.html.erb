@@ -1,5 +1,15 @@
 <% @communities.each do |community| %>
   <div class="row">
+    <div class="cell cell--icon">
+      <% if community.public? %>
+        <span class="tooltip">
+          <svg width="16" height="16" fill="currentColor">
+            <use href="#icon-eye" />
+          </svg>
+          <span class="tooltip-text"><%= community.slug %></span>
+        </span>
+      <% end %>
+    </div>
     <div class="cell">
       <%= link_to community.name, community, class: "row-link" %>
       <i class="small">

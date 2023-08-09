@@ -29,6 +29,9 @@ en:
     community:
       settings: Settings
       make_public: Public exploration of your community
+      public_link_available: Your public community is available here
+      copy_to_clipboard: Copy to Clipboard
+      copied_to_clipboard: Copied
     headings:
       new_resource: New %{name}
     actions:
@@ -41,6 +44,7 @@ en:
     theme:
       welcome_screen: Welcome Screen
       background_img: Customize the background image on the landing page of your community.
+      display_image: Your Community logo or another image to display as your community's public image.
       sponsor_logos: Display logos on your community page. This could be your organization's logo, or that of a project sponsor. Multiple logos can be added.
   search:
     clear: Clear search

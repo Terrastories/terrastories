@@ -23,7 +23,7 @@
           <% if @theme.community.background_img.attached? %>
             <span class="media-with-hover-controls">
               <% if @theme.community.background_img.variable? %>
-              <%= image_tag(@theme.community.background_img.variant(resize_to_limit: [nil, 300])) %>
+              <%= image_tag(@theme.community.background_img.variant(resize_to_limit: [300, 300])) %>
               <% else %>
               <%= image_tag(@theme.community.background_img, width: 300) %>
               <% end %>

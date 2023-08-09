@@ -1,5 +1,5 @@
 module Dashboard
-  class SearchController < ApplicationController
+  class SearchController < BaseController
     def index
       @page = SearchPage.new(current_community, search_params)
       @results = @page.data

@@ -1,5 +1,5 @@
 module Dashboard
-  class SpeakersController < ApplicationController
+  class SpeakersController < BaseController
     def index
       @page = SpeakersPage.new(community_speakers, meta_params)
       @speakers = @page.data

@@ -25,5 +25,15 @@ FactoryBot.define do
         story.places = FactoryBot.build_list(:place, 1)
       end
     end
+
+    factory :story_with_speakers do
+      transient do
+        speaker_count { 2 }
+      end
+
+      speakers do
+        Array.new(speaker_count) { association(:speaker, community: instance.community) }
+      end
+    end
   end
 end

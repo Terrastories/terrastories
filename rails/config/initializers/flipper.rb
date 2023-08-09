@@ -3,5 +3,5 @@ Flipper.register(:developers) do |actor|
 end
 
 Flipper.register(:beta) do |actor|
-  actor.respond_to?(:beta) && actor.beta
+  actor.respond_to?(:beta) && actor.beta?
 end
