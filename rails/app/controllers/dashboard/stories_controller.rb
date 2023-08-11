@@ -21,9 +21,12 @@ module Dashboard
 
     def create
       authorize Story
-      @story = community_stories.new(story_params)
+      @story = community_stories.new(story_params.except(:media))
 
       if @story.save
+        story_params[:media].each do |media|
+          m = @story.media.create(media: media)
+        end
         redirect_to @story
       else
         render :new
@@ -41,7 +44,11 @@ module Dashboard
     def update
       @story = authorize community_stories.find(params[:id])
 
-      if @story.update(story_params)
+      if @story.update(story_params.except(:media))
+        story_params[:media].each do |media|
+          m = @story.media.create(media: media)
+        end
+
         redirect_to @story
       else
         render :edit
@@ -59,8 +66,8 @@ module Dashboard
     def delete_media
       @story = authorize community_stories.find(params[:story_id])
 
-      media_blob = @story.media.blobs.find_signed(params[:id])
-      media_blob.attachments.each(&:purge)
+      media = @story.media.find(params[:id])
+      media.destroy
 
       head :ok
     end

@@ -16,6 +16,8 @@ class Story < ApplicationRecord
   validates :speaker_ids, presence: true
   validates :place_ids, presence: true
 
+  accepts_nested_attributes_for :media
+
   def media_types
     media.flat_map { |media| media.content_type.split('/')[0] }.uniq
   end
