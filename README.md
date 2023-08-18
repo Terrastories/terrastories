@@ -1,10 +1,29 @@
 ![Terrastories](documentation/logo.png)
 
+<p>
+<a href="https://github.com/terrastories/terrastories/graphs/contributors" alt="Contributors"> <img src="https://img.shields.io/github/contributors/terrastories/terrastories?logo=github" /></a>
+<a href="https://github.com/terrastories/terrastories/issues" alt="Contributors"> <img src="https://img.shields.io/github/issues-closed/terrastories/terrastories?logo=github" /></a>
+<a href="https://github.com/terrastories/terrastories/search" alt="Languages"><img src="https://img.shields.io/github/languages/count/terrastories/terrastories?logo=github" /></a>
+<a href="https://github.com/terrastories/terrastories/search" alt="Languages"><img src="https://img.shields.io/github/languages/top/terrastories/terrastories?logo=github" /></a>
+<a href="https://github.com/terrastories/terrastories/ alt="Size"><img src="https://img.shields.io/github/repo-size/terrastories/terrastories?logo=github" /></a>
+<a href="https://github.com/terrastories/terrastories/pulls" alt="Pull Requests"><img src="https://img.shields.io/github/issues-pr-closed-raw/terrastories/terrastories?logo=github" /></a>
+<a href="https://github.com/terrastories/terrastories/ alt="LICENSE"><img src="https://badgen.net/github/license/terrastories/terrastories?icon=github&color=green" /></a>
+<a href="https://github.com/badges/shields/pulse" alt="Activity"><img src="https://img.shields.io/github/commit-activity/m/terrastories/terrastories?logo=github" /></a>
+<a href="https://github.com/terrastories/terrastories/commits/main" alt="Last Commit"><img src="https://img.shields.io/github/last-commit/terrastories/terrastories?logo=github" /></a>
+<a href="https://github.com/terrastories/terrastories/commits/main" alt="Total Commits"><img src="https://badgen.net/github/commits/terrastories/terrastories/main?icon=github&color=green" /></a>
+</p>
+
+<p align="center">
+<a href="https://github.com/terrastories/terrastories/" alt="Stars"><img src="https://img.shields.io/github/stars/terrastories/terrastories?style=social" /></a>
+<a href="https://github.com/terrastories/terrastories/" alt="Forks"><img src="https://img.shields.io/github/forks/terrastories/terrastories?style=social" /></a>
+<a href="https://github.com/terrastories/terrastories/" alt="Watchers"><img src="https://img.shields.io/github/watchers/terrastories/terrastories?style=social" /></a>
+</p>
+
 ## About Terrastories
 
-**Terrastories** is a geostorytelling application built for indigenous and other local communities to locate and map their own oral storytelling traditions about places of significant meaning or value to them. 
+**Terrastories** is an open-source geostorytelling application for mapping, managing and sharing place-based stories. The application is being co-created with Indigenous and other local communities to collectively manage their oral histories and other cultural knowledge, but it can be used by anyone to create a map of their stories.
 
-It is a dockerized Rails + React app that uses [**Mapbox GL JS**](https://mapbox.com) / [**MapLibre GL JS**](https://maplibre.com/) to help users locate content geographically on an interactive map. As a local-first application, Terrastories is designed to work entirely offline, so that remote communities can access the application entirely without needing internet connectivity.
+Terrastories is a Dockerized Rails and React app that uses [**Mapbox GL JS**](https://mapbox.com) / [**MapLibre GL JS**](https://maplibre.com/) to help users locate place-based media content or narrative stories on an interactive map. As a local-first application, Terrastories is designed to work entirely offline, so that remote communities can access the application entirely without needing internet connectivity.
 
 The Terrastories interface is principally composed of an interactive map and a sidebar with media content. Users can explore the map and click on activated points to see the stories associated with those points. Alternatively, users can interact with the sidebar and click on stories to see where in the landscape these narratives took place. 
 
@@ -12,7 +31,7 @@ By means of a content management system, users with the right level of access ca
 
 Learn more about Terrastories on [our website](https://terrastories.app/). 
 
-*The remainder of the documentation on Github is **for developers**. For documentation on using or setting up Terrastories on an online, offline "Field Kit", or mesh network server, please visit the Terrastories Support Materials at **[https://docs.terrastories.app/](https://docs.terrastories.app/)***
+> ❗️ *The remainder of the documentation on Github is **for developers**. For documentation on using Terrastories, or setting up Terrastories on an online, offline "Field Kit", or mesh network server, please visit the Terrastories Support Materials at **[https://docs.terrastories.app/](https://docs.terrastories.app/)***
 
 ![](documentation/terrastories.gif)
 ###### *Terrastories: Matawai Konde 1.0 (October 2018)*
@@ -56,7 +75,7 @@ Review more granular setup options in the [Setup](documentation/SETUP.md) docume
 
 To find out how to develop with the Terrastories app, read our [developer guide](documentation/DEVELOPMENT.md) and check out our [Developer Community](https://terrastories.app/community/) pages on the Terrastories website.
 
-For a general overview of the application as well as a Vision statement and Roadmap, please see our [Wiki](https://github.com/Terrastories/terrastories/wiki).
+For a Vision statement and Roadmap, please see our [Wiki](https://github.com/Terrastories/terrastories/wiki).
 
 ## Contributing
 
