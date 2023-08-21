@@ -39,11 +39,11 @@ class Community < ApplicationRecord
 
   def filters(permission_level = :anonymous)
     [
-      places.joins(:stories).where(stories: {permission_level: permission_level}).distinct.map { |p| {label: p.name, value: p.id, category: :places } },
-      places.joins(:stories).where(stories: {permission_level: permission_level}).pluck(:region).uniq.reject(&:blank?).map { |r| {label: r, value: r, category: :region } },
-      places.joins(:stories).where(stories: {permission_level: permission_level}).pluck(:type_of_place).uniq.reject(&:blank?).map { |r| {label: r, value: r, category: :type_of_place } },
-      stories.where(stories: {permission_level: permission_level}).pluck(:topic).uniq.reject(&:blank?).map { |r| {label: r, value: r, category: :topic } },
-      stories.where(stories: {permission_level: permission_level}).pluck(:language).uniq.reject(&:blank?).map { |r| {label: r, value: r, category: :language } },
+      places.with_valid_coordinates.joins(:stories).where(stories: {permission_level: permission_level}).distinct.map { |p| {label: p.name, value: p.id, category: :places } },
+      places.with_valid_coordinates.joins(:stories).where(stories: {permission_level: permission_level}).pluck(:region).uniq.reject(&:blank?).map { |r| {label: r, value: r, category: :region } },
+      places.with_valid_coordinates.joins(:stories).where(stories: {permission_level: permission_level}).pluck(:type_of_place).uniq.reject(&:blank?).map { |r| {label: r, value: r, category: :type_of_place } },
+      stories.with_valid_places.where(stories: {permission_level: permission_level}).pluck(:topic).uniq.reject(&:blank?).map { |r| {label: r, value: r, category: :topic } },
+      stories.with_valid_places.where(stories: {permission_level: permission_level}).pluck(:language).uniq.reject(&:blank?).map { |r| {label: r, value: r, category: :language } },
       speakers.joins(:stories).where(stories: {permission_level: permission_level}).distinct.map { |s| {value: s.id, label: s.name, category: :speakers } },
       speakers.joins(:stories).where(stories: {permission_level: permission_level}).pluck(:speaker_community).uniq.reject(&:blank?).map { |r| {label: r, value: r, category: :speaker_community } }
     ].flatten

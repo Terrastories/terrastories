@@ -15,6 +15,10 @@ class Story < ApplicationRecord
   validates :place_ids, presence: true
   validates :media, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg', 'video/mpeg', 'video/mp4', 'video/quicktime', 'video/webm', 'audio/mpeg', 'audio/wav', 'audio/mp4', 'audio/m4a', 'audio/x-m4a', 'audio/x-aac', 'audio/x-flac'] }
 
+  scope :with_valid_places, -> do
+    joins(:places).where.not(places: { lat: nil, long: nil })
+  end
+
   def media_types
     media.flat_map { |media| media.content_type.split('/')[0] }.uniq
   end

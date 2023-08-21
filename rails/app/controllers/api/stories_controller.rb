@@ -5,6 +5,7 @@ module Api
       @stories = community.stories.joins(:places, :speakers).where(permission_level: :anonymous).preload(:places, :speakers)
 
       # Filters
+      @stories = @stories.with_valid_places
       @stories = @stories.where(places: {id: story_params[:places]}) if story_params[:places]
       @stories = @stories.where(places: {region: story_params[:region]}) if story_params[:region]
       @stories = @stories.where(places: {type_of_place: story_params[:type_of_place]}) if story_params[:type_of_place]
