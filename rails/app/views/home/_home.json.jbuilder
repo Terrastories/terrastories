@@ -1,7 +1,14 @@
-json.stories stories do |story|
+filtered_stories = stories.reject do |story|
+  places_with_valid_coords = story.places.reject { |place| place.lat.nil? || place.long.nil? }
+  places_with_valid_coords.empty?
+end
+
+json.stories filtered_stories do |story|
   json.extract! story, :title, :desc, :id, :created_at
-  json.points story.places.map(&:point_geojson)
-  json.places story.places
+  places_with_valid_coords = story.places.reject { |place| place.lat.nil? || place.long.nil? }
+  json.points places_with_valid_coords.map(&:point_geojson)
+  json.places places_with_valid_coords
+
   json.language story.language
   json.media story.media do |media|
     json.id media.id
