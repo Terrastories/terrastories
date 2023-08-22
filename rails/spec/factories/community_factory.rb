@@ -3,10 +3,6 @@ FactoryBot.define do
     name { "Matawai "}
     locale { "mat" }
     country { "Suriname" }
-
-    factory :public_community do
-      public { true }
-      slug { }
-    end
+    slug { name.gsub(/\s+/, "").underscore }
   end
 end

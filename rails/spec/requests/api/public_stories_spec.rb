@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "Public Stories Endpoint", type: :request do
-  let!(:community) { FactoryBot.create(:public_community, name: "Cool Community") }
+  let!(:community) { FactoryBot.create(:community, public: true, name: "Cool Community") }
 
   def json_response
     JSON.parse(response.body)
