@@ -39,7 +39,7 @@ class Community < ApplicationRecord
 
   def filters(permission_level = :anonymous, valid_places = Place.with_valid_coordinates, valid_stories = Story.with_valid_places)
     [
-      valid_places.joins(:stories).where(stories: {permivalid_placesssion_level: permission_level}).distinct.map { |p| {label: p.name, value: p.id, category: :places } },
+      valid_places.joins(:stories).where(stories: {permission_level: permission_level}).distinct.map { |p| {label: p.name, value: p.id, category: :places } },
       valid_places.joins(:stories).where(stories: {permission_level: permission_level}).pluck(:region).uniq.reject(&:blank?).map { |r| {label: r, value: r, category: :region } },
       valid_places.joins(:stories).where(stories: {permission_level: permission_level}).pluck(:type_of_place).uniq.reject(&:blank?).map { |r| {label: r, value: r, category: :type_of_place } },
       valid_stories.where(stories: {permission_level: permission_level}).pluck(:topic).uniq.reject(&:blank?).map { |r| {label: r, value: r, category: :topic } },
