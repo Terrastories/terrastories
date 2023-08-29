@@ -19,7 +19,11 @@ class Story < ApplicationRecord
   accepts_nested_attributes_for :media
 
   def media_types
-    media.flat_map { |media| media.content_type.split('/')[0] }.uniq
+    media.flat_map do |m|
+      registry, kind = m.content_type.split('/')
+
+      registry == "application" ? kind : registry
+    end.uniq
   end
 
   def self.export_sample_csv

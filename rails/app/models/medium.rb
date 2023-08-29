@@ -3,7 +3,11 @@ class Medium < ApplicationRecord
 
   belongs_to :story
 
-  has_one_attached :media
+  has_one_attached :media do
+    def blob_id
+      blob.id
+    end
+  end
 
   validates :media,
     attached: true,
@@ -18,6 +22,8 @@ class Medium < ApplicationRecord
       :mp3, :aac, :flac, :mp4a, :wav,
       'audio/wav', 'audio/m4a', 'audio/x-m4a', 'audio/x-aac', 'audio/x-flac',
     ]
+
+  delegate :content_type, :blob_id, :blob, to: :media
 end
 
 # == Schema Information
