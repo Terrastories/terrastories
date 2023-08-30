@@ -21,7 +21,8 @@ class Medium < ApplicationRecord
       # audio types
       :mp3, :aac, :flac, :mp4a, :wav,
       'audio/wav', 'audio/m4a', 'audio/x-m4a', 'audio/x-aac', 'audio/x-flac',
-    ]
+    ],
+    size: { less_than_or_equal_to: 200.megabytes }
 
   delegate :content_type, :blob_id, :blob, to: :media
 end

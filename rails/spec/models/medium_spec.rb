@@ -37,5 +37,9 @@ RSpec.describe Medium, type: :model do
         'video/webm',
       )
     end
+
+    it "validates file size" do
+      is_expected.to validate_size_of(:media).less_than_or_equal_to(200.megabytes)
+    end
   end
 end
