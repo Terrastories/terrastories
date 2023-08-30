@@ -14,8 +14,8 @@ class Community < ApplicationRecord
 
   accepts_nested_attributes_for :users, limit: 1
 
-  validates :background_img, content_type: ['image/png', 'image/jpg', 'image/jpeg']
-  validates :sponsor_logos, content_type: ['image/png', 'image/jpg', 'image/jpeg'], size: { between: 1..5.megabytes }
+  validates :background_img, content_type: [:png, :jpeg, 'image/jpg'], size: { less_than_or_equal_to: 5.megabytes }
+  validates :sponsor_logos, content_type: [:png, :jpeg, 'image/jpg'], size: { less_than_or_equal_to: 5.megabytes }
 
   validates :slug, presence: true, if: -> { self.public? }
 

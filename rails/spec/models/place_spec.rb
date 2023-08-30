@@ -1,6 +1,38 @@
 require 'rails_helper'
 
 RSpec.describe Place, type: :model do
+  describe "photo validations" do
+    it "validates content type size" do
+      is_expected.to validate_content_type_of(:photo).allowing(
+        'image/png',
+        'image/jpg',
+        'image/jpeg',
+      )
+    end
+
+    it "validates file size" do
+      is_expected.to validate_size_of(:photo).less_than_or_equal_to(5.megabytes)
+    end
+  end
+
+  describe "audio validations" do
+    it "validates content type size" do
+      is_expected.to validate_content_type_of(:name_audio).allowing(
+        'audio/mpeg',
+        'audio/wav',
+        'audio/mp4',
+        'audio/m4a',
+        'audio/x-m4a',
+        'audio/x-aac',
+        'audio/x-flac',
+      )
+    end
+
+    it "validates file size" do
+      is_expected.to validate_size_of(:name_audio).less_than_or_equal_to(10.megabytes)
+    end
+  end
+
   describe 'associations' do
     it { should have_and_belong_to_many :stories }
     it { should have_many :interview_stories }
