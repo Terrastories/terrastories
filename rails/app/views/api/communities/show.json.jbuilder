@@ -13,7 +13,7 @@ json.details do
 end
 
 # Initial Map Configuration
-stories = @community.stories.preload(:places).where(permission_level: :anonymous)
+stories = @community.stories.preload(:places).where(permission_level: :anonymous).with_valid_places
 json.storiesCount stories.size
 json.points stories.flat_map(&:public_points).uniq
 

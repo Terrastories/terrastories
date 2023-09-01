@@ -1,4 +1,4 @@
-json.stories stories do |story|
+json.stories stories.with_valid_places do |story|
   json.extract! story, :title, :desc, :id, :created_at
   json.points story.places.map(&:point_geojson)
   json.places story.places

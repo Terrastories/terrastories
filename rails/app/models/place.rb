@@ -19,6 +19,10 @@ class Place < ApplicationRecord
 
   attr_reader :point_geojson
 
+  scope :with_valid_coordinates, -> do
+    where.not(lat: nil, long: nil)
+  end
+
   def photo_url(full_url: false, thumbnail: false)
     if photo.attached?
       if full_url

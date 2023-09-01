@@ -18,6 +18,10 @@ class Story < ApplicationRecord
 
   accepts_nested_attributes_for :media
 
+  scope :with_valid_places, -> do
+    joins(:places).where.not(places: { lat: nil, long: nil })
+  end
+
   def media_types
     media.flat_map do |m|
       registry, kind = m.content_type.split('/')
