@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 import Minimap from "../vendor/mapboxgl-control-minimap.js";
 import Popup from "./Popup";
 
-import mapboxgl from '!mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
+import 'maplibre-gl/dist/maplibre-gl.css';
 
 const STORY_POINTS_LAYER_ID = "ts-points-layer";
 const STORY_POINTS_DATA_SOURCE = "ts-points-data";
@@ -13,9 +13,11 @@ const STORY_POINTS_DATA_SOURCE = "ts-points-data";
 export default class Map extends Component {
   constructor(props) {
     super(props);
-    mapboxgl.accessToken = this.props.mapboxAccessToken;
+    const mapGL = this.props.useLocalMapServer ? require('!maplibre-gl') : require('!mapbox-gl');
+    mapGL.accessToken = this.props.useLocalMapServer ? 'pk.ey' : this.props.mapboxAccessToken;
     this.state = {
-      activePopup: null
+      activePopup: null,
+      mapGL: mapGL
     };
   }
 
@@ -24,7 +26,7 @@ export default class Map extends Component {
     points: PropTypes.object,
     framedView: PropTypes.object,
     onMapPointClick: PropTypes.func,
-    mapboxStyle: PropTypes.string,
+    mapStyle: PropTypes.string,
     mapboxAccessToken: PropTypes.string,
     mapbox3d: PropTypes.bool,
     mapProjection: PropTypes.string,
@@ -34,9 +36,9 @@ export default class Map extends Component {
   };
 
   componentDidMount() {
-    this.map = new mapboxgl.Map({
+    this.map = new this.state.mapGL.Map({
         container: this.mapContainer,
-        style: this.props.mapboxStyle,
+        style: this.props.mapStyle,
         center: [this.props.centerLong, this.props.centerLat],
         zoom: this.props.zoom,
         maxBounds: this.checkBounds(), // check for bounding box presence
@@ -96,7 +98,6 @@ export default class Map extends Component {
         type: "symbol",
         layout: {
           'text-field': '{point_count_abbreviated}',
-          'text-font': ['Open Sans Bold'],
           'text-size': 16,
           'text-offset': [0.2, 0.1]
           },
@@ -169,7 +170,12 @@ export default class Map extends Component {
         }), "top-right");
     }
 
-    this.map.addControl(new mapboxgl.NavigationControl());
+    this.map.addControl(new this.state.mapGL.NavigationControl());
+
+    // Add Maplibre logo for offline Terrastories
+    if(this.props.useLocalMapServer) {
+      this.map.addControl(new this.state.mapGL.LogoControl(), 'bottom-right');
+    }
 
     // Change mouse pointer when hovering over ts-marker points
     this.map.on('mouseenter', STORY_POINTS_LAYER_ID, () => {
@@ -284,7 +290,7 @@ export default class Map extends Component {
       this.closeActivePopup();
     }} />, popupNode);
     // set popup on map
-    const popup = new mapboxgl.Popup({
+    const popup = new this.state.mapGL.Popup({
       offset: 15,
       className: "ts-markerPopup",
       closeButton: false, // We add our own custom close button
@@ -320,9 +326,12 @@ export default class Map extends Component {
 
   addHomeButton() {
     const homeButton = this.createHomeButton();
-    const navControl = document.getElementsByClassName(
-      "mapboxgl-ctrl-zoom-in"
-    )[0];
+    let navControl;
+    if (this.state.mapGL === require('!maplibre-gl')) {
+      navControl = document.getElementsByClassName("maplibregl-ctrl-zoom-in")[0];
+    } else {
+      navControl = document.getElementsByClassName("mapboxgl-ctrl-zoom-in")[0];
+    }
     if (navControl) {
       navControl.parentNode.insertBefore(homeButton, navControl);
     }
