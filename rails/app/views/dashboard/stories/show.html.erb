@@ -122,15 +122,26 @@
   </div>
 </div>
 
+let staticMap;
 <script>
-const staticMap = new mapboxgl.Map({
-  accessToken: "<%= current_community.theme.mapbox_token %>",
-  container: "static-map", // container ID
-  center: <%= @story.geo_center %>,
-  zoom: 8, // starting zoom
-  style: "<%= current_community.theme.mapbox_style %>", // style URL or style object
-  interactive: false // don't allow map movement
-});
+<% if Rails.env.offline? %>
+  staticMap = new maplibregl.Map({
+    container: "static-map", // container ID
+    center: <%= @story.geo_center %>,
+    zoom: 8, // starting zoom
+    style: "<%= current_community.theme.map_style %>", // style URL or style object
+    interactive: false // don't allow map movement
+  });
+<% else %>
+  staticMap = new mapboxgl.Map({
+    accessToken: "<%= current_community.theme.mapbox_token %>",
+    container: "static-map", // container ID
+    center: <%= @story.geo_center %>,
+    zoom: 8, // starting zoom
+    style: "<%= current_community.theme.map_style %>", // style URL or style object
+    interactive: false // don't allow map movement
+  });
+<% end %>
 
 staticMap.on("load", () => {
   staticMap.addSource("points", {

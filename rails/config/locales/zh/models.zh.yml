@@ -42,7 +42,7 @@ zh:
       theme:
         background_img: 背景图片（用于欢迎屏幕）
         sponsor_logos: 赞助商的标志（用于欢迎屏幕）
-        mapbox_style_url: Mapbox风格的URL（用于在线地图）
+        map_style_url: Mapbox风格的URL（用于在线地图）
         mapbox_access_token: 与风格相关的Mapbox访问令牌
         mapbox_3d: 激活在线地图的3D地形视图
         map_projection: 设置地图的投影
@@ -54,7 +54,7 @@ zh:
         ne_boundary_long: 东北界边框，经度（可选）
         background_img: 背景图片
         sponsor_logos: 赞助商图标
-        mapbox_style_url: Mapbox风格的URL
+        map_style_url: Mapbox风格的URL
         mapbox_access_token: 与风格相关的Mapbox访问令牌
         mapbox_3d: 激活在线地图的3D地形视图
         zoom: 缩放级别
@@ -86,7 +86,7 @@ zh:
               content_type: 内容类型不在列表中
             mapbox_access_token:
               blank: 在Mapbox样式URL设置后是必填的。
-            mapbox_style_url:
+            map_style_url:
               blank: 在Mapbox访问令牌设置后是必填的。
     # Used to auto-translate submit buttons
     models:
@@ -136,7 +136,7 @@ zh:
       theme:
         background_img: 背景图片
         sponsor_logos: 赞助商标志
-        mapbox_style_url: Mapbox风格URL
+        map_style_url: Mapbox风格URL
         mapbox_access_token: 与风格关联的Mapbox访问令牌
         mapbox_3d: 激活在线地图的3D地形视图
         center_lat: 纬度

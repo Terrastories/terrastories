@@ -42,7 +42,7 @@ sw:
       theme:
         background_img: Picha ya Mandharinyuma
         sponsor_logos: Nembo za wafadhili
-        mapbox_style_url: URL ya Mtindo wa Mapbox
+        map_style_url: URL ya Mtindo wa Mapbox
         mapbox_access_token: Tokeni ya ufikiaji ya kisanduku cha ramani inayohusishwa na mtindo
         mapbox_3d: Washa mwonekano wa 3D kwa ramani ya mtandaoni
         map_projection: Weka makadirio ya ramani
@@ -81,7 +81,7 @@ sw:
               content_type: aina ya maudhui haipo kwenye orodha
             mapbox_access_token:
               blank: inahitajika wakati URL ya mtindo wa Mapbox imewekwa.
-            mapbox_style_url:
+            map_style_url:
               blank: inahitajika wakati tokeni ya ufikiaji ya Mapbox imewekwa.
     # Used to auto-translate submit buttons
     models:
@@ -131,7 +131,7 @@ sw:
       theme:
         background_img: Picha ya usuli
         sponsor_logos: Nembo za wafadhili
-        mapbox_style_url: URL ya mtindo wa kisanduku cha ramani
+        map_style_url: URL ya mtindo wa kisanduku cha ramani
         mapbox_access_token: Ishara ya ufikiaji ya kisanduku cha ramani inayohusishwa na mtindo
         mapbox_3d: Wezesha mwonekano wa 3D Terrain kwa ramani ya mtandaoni
         center_lat: Latitude
