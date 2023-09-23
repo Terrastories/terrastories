@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # Super Admin user for Terrastories
-User.find_or_create_by!(email: "super@terrastories.io") do |admin|
+User.find_or_create_by!(email: "super@terrastories.app") do |admin|
   admin.username = 'terrastories-super'
   admin.password = 'terrastories'
   admin.password_confirmation = 'terrastories'
@@ -19,7 +19,7 @@ end
 example_community = Community.find_or_create_by!(name: "Ruby for Good") do |community|
   community.country = "Global"
   community.locale = "en"
-  community.sponsor_logos.attach(io: File.open('app/assets/images/rubyforgood.png'), filename: 'rubyforgood.png')
+  community.sponsor_logos.attach(io: File.open('app/assets/images/digitaldemocracy.png'), filename: 'digitaldemocracy.png')
   community.background_img.attach(io: File.open('app/assets/images/welcome-bg.jpg'), filename: 'welcome-bg.jpg')
 end
 
@@ -91,7 +91,7 @@ atalm2022_story = Story.joins(:places, :speakers).find_or_create_by(title: "ATAL
                     community: example_community)
 
 # Create an admin user for example community
-User.find_or_create_by!(email: 'admin@terrastories.io') do |admin|
+User.find_or_create_by!(email: 'admin@terrastories.app') do |admin|
   admin.username = 'terrastories-admin'
   admin.password = 'terrastories'
   admin.password_confirmation = 'terrastories'
@@ -100,7 +100,7 @@ User.find_or_create_by!(email: 'admin@terrastories.io') do |admin|
 end
 
 # Create an editor user for example community
-User.find_or_create_by!(email: 'editor@terrastories.io') do |admin|
+User.find_or_create_by!(email: 'editor@terrastories.app') do |admin|
   admin.username = 'terrastories-editor'
   admin.password = 'terrastories'
   admin.password_confirmation = 'terrastories'
@@ -109,7 +109,7 @@ User.find_or_create_by!(email: 'editor@terrastories.io') do |admin|
 end
 
 # Create a member user for example community
-User.find_or_create_by!(email: 'user@terrastories.io') do |admin|
+User.find_or_create_by!(email: 'user@terrastories.app') do |admin|
   admin.username = 'terrastories-user'
   admin.password = 'terrastories'
   admin.password_confirmation = 'terrastories'
@@ -118,7 +118,7 @@ User.find_or_create_by!(email: 'user@terrastories.io') do |admin|
 end
 
 # Create a viewer user for example community
-User.find_or_create_by!(email: 'viewer@terrastories.io') do |user|
+User.find_or_create_by!(email: 'viewer@terrastories.app') do |user|
   user.username = 'terrastories-viewer'
   user.password = 'terrastories'
   user.password_confirmation = 'terrastories'
@@ -127,7 +127,7 @@ User.find_or_create_by!(email: 'viewer@terrastories.io') do |user|
 end
 
 # Public user, not associated with Community
-User.find_or_create_by!(email: "public@terrastories.io") do |admin|
+User.find_or_create_by!(email: "public@terrastories.app") do |admin|
   admin.username = 'terrastories-public'
   admin.password = 'terrastories'
   admin.password_confirmation = 'terrastories'
