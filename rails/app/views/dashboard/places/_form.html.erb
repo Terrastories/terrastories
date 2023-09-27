@@ -31,10 +31,7 @@
 
   <%= f.label :story_ids %>
   <div class="checklist">
-    <% current_community.stories.each do |story| %>
-      <%= f.check_box :story_ids, { multiple: true }, story.id, nil %>
-      <%= label_tag "story_ids_#{story.id}", story.title, title: story.title %>
-    <% end %>
+    <%= f.collection_check_boxes :story_ids, current_community.stories, :id, :title %>
   </div>
 
   <div class="two-columns">

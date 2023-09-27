@@ -72,18 +72,12 @@
 
   <%= f.label :speaker_ids, class: "required" %>
   <div class="checklist">
-    <% current_community.speakers.each do |speaker| %>
-      <%= f.check_box :speaker_ids, { multiple: true, required: true }, speaker.id, nil %>
-      <%= label_tag "speaker_ids_#{speaker.id}", speaker.name, title: speaker.name %>
-    <% end %>
+    <%= f.collection_check_boxes :speaker_ids, current_community.speakers, :id, :name, required: true %>
   </div>
 
   <%= f.label :place_ids, class: "required" %>
   <div class="checklist">
-    <% current_community.places.each do |place| %>
-      <%= f.check_box :place_ids, { multiple: true, required: true }, place.id, nil %>
-      <%= label_tag "place_ids_#{place.id}", place.name, title: place.name %>
-    <% end %>
+    <%= f.collection_check_boxes :place_ids, current_community.places, :id, :name, required: true %>
   </div>
 
   <%= f.label :interview_location_id %>
