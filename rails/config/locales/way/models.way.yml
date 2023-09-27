@@ -42,7 +42,7 @@ way:
       theme:
         background_img: Background Image
         sponsor_logos: Sponsor Logos
-        map_style_url: Mapbox Style URL
+        mapbox_style_url: Mapbox Style URL
         mapbox_access_token: Mapbox access token associated with the style
         mapbox_3d: Activate 3D Terrain view for online map
         map_projection: Projectie instellen voor kaart
@@ -81,7 +81,7 @@ way:
               content_type: inhoudstype staat niet in lijst
             mapbox_access_token:
               blank: is vereist wanneer de URL van de Mapbox-stijl is ingesteld.
-            map_style_url:
+            mapbox_style_url:
               blank: is vereist wanneer het Mapbox-toegangstoken is ingesteld.
     # Used to auto-translate submit buttons
     models:
@@ -131,7 +131,7 @@ way:
       theme:
         background_img: Achtergrondafebeeldng
         sponsor_logos: Sponsorlogo's
-        map_style_url: Mapbox stijl URL
+        mapbox_style_url: Mapbox stijl URL
         mapbox_access_token: Mapbox toegangstoken gekoppeld aan de stijl
         mapbox_3d: Activeer 3D Terrainweergave voor de online kaart
         center_lat: Breedtegraad

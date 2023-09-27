@@ -42,7 +42,7 @@ am:
       theme:
         background_img: የጀርባ ምስል
         sponsor_logos: የስፖንሰር አርማዎች
-        map_style_url: የማፕ ቦክስ ዓይነት ዩአርኤል
+        mapbox_style_url: የማፕ ቦክስ ዓይነት ዩአርኤል
         mapbox_access_token: ከዓይነቱ ጋር የተያያዘ የማፕ ቦክስ መዳረሻ ቃል
         mapbox_3d: ለኦንላይን ካርታ የ3ዲ የመሬት አቀማመጥ እይታን ይተግብሩ
         map_projection: ለካርታ ትንበያ አዘጋጅ
@@ -81,7 +81,7 @@ am:
               content_type: የይዘት አይነት በዝርዝሩ ውስጥ የለም
             mapbox_access_token:
               blank: የማፕቦክስ ዓይነት ማስፈንጠሪያ ሲዘጋጅ ያስፈልጋል።
-            map_style_url:
+            mapbox_style_url:
               blank: የማፕቦክስ ዓይነት ማግኛ ቃል ሲዘጋጅ ያስፈልጋል።
     # Used to auto-translate submit buttons
     models:
@@ -131,7 +131,7 @@ am:
       theme:
         background_img: የጀርባ ምስል
         sponsor_logos: የስፖንሰር አርማዎች
-        map_style_url: የማፕቦክስ ዓይነት ዩአርኤል
+        mapbox_style_url: የማፕቦክስ ዓይነት ዩአርኤል
         mapbox_access_token: ከዓይነቱ ጋር የተያያዘ የማፕ ቦክስ መዳረሻ ቃል
         mapbox_3d: ለኦንላይን ካርታ የ3ዲ የመሬት አቀማመጥ እይታን ይተግብሩ
         center_lat: ኬክሮስ

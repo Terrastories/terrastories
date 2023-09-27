@@ -30,7 +30,7 @@ end
 json.logo_path image_path("logocombo.svg")
 
 json.mapbox_access_token @community.theme.mapbox_token
-json.map_style @community.theme.map_style
+json.mapbox_style @community.theme.mapbox_style
 json.mapbox_3d @community.theme.mapbox_3d
 json.map_projection @community.theme.map_projection
 json.use_local_map_server @community.theme.offline_mode?

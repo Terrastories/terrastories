@@ -49,7 +49,7 @@ en:
       theme:
         background_img: Background Image
         sponsor_logos: Sponsor Logos
-        map_style_url: Mapbox Style URL
+        mapbox_style_url: Mapbox Style URL
         mapbox_access_token: Mapbox access token associated with the style
         mapbox_3d: Activate 3D Terrain view for online map
         map_projection: Set projection for map
@@ -88,7 +88,7 @@ en:
               content_type: content type is not in list
             mapbox_access_token:
               blank: is required when the Mapbox style URL is set.
-            map_style_url:
+            mapbox_style_url:
               blank: is required when the Mapbox access token is set.
     # Used to auto-translate submit buttons
     models:
@@ -139,7 +139,7 @@ en:
       theme:
         background_img: Background image
         sponsor_logos: Sponsor logos
-        map_style_url: Mapbox style URL
+        mapbox_style_url: Mapbox style URL
         mapbox_access_token: Mapbox access token associated with the style
         mapbox_3d: Activate 3D Terrain view for online map
         center_lat: Latitude

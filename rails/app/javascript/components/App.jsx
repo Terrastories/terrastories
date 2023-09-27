@@ -26,7 +26,7 @@ class App extends Component {
     stories: PropTypes.array,
     use_local_map_server: PropTypes.bool,
     mapbox_access_token: PropTypes.string,
-    map_style: PropTypes.string,
+    mapbox_style: PropTypes.string,
     mapbox_3d: PropTypes.bool,
     map_projection: PropTypes.string,
     logo_path: PropTypes.string,
@@ -347,7 +347,7 @@ class App extends Component {
           points={this.state.points}
           mapboxAccessToken={this.props.mapbox_access_token}
           useLocalMapServer={this.props.use_local_map_server}
-          mapStyle={this.props.map_style}
+          mapboxStyle={this.props.mapbox_style}
           mapbox3d={this.props.mapbox_3d}
           mapProjection={this.props.map_projection}
           clearFilteredStories={this.resetStoriesAndMap}

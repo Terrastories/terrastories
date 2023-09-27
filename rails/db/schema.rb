@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_09_22_213458) do
+ActiveRecord::Schema.define(version: 2022_12_26_213911) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -153,7 +153,7 @@ ActiveRecord::Schema.define(version: 2023_09_22_213458) do
     t.boolean "active", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "map_style_url"
+    t.string "mapbox_style_url"
     t.string "mapbox_access_token"
     t.decimal "center_lat", precision: 10, scale: 6
     t.decimal "center_long", precision: 10, scale: 6

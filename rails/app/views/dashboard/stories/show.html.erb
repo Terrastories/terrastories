@@ -129,7 +129,7 @@ let staticMap;
     container: "static-map", // container ID
     center: <%= @story.geo_center %>,
     zoom: 8, // starting zoom
-    style: "<%= current_community.theme.map_style %>", // style URL or style object
+    style: "<%= current_community.theme.mapbox_style %>", // style URL or style object
     interactive: false // don't allow map movement
   });
 <% else %>
@@ -138,7 +138,7 @@ let staticMap;
     container: "static-map", // container ID
     center: <%= @story.geo_center %>,
     zoom: 8, // starting zoom
-    style: "<%= current_community.theme.map_style %>", // style URL or style object
+    style: "<%= current_community.theme.mapbox_style %>", // style URL or style object
     interactive: false // don't allow map movement
   });
 <% end %>

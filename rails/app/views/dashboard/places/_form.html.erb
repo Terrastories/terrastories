@@ -62,9 +62,12 @@ let placeMap;
     center: coordinates, // starting position [lng, lat]
     hash: false,
     zoom: <%= current_community.theme.zoom || 5 %>, // starting zoom
-    style: "<%= current_community.theme.map_style %>", // style URL or style object
+    style: "<%= current_community.theme.mapbox_style %>", // style URL or style object
     cooperativeGestures: true
   });
+  const marker = new maplibregl.Marker()
+  .setLngLat(coordinates)
+  .addTo(placeMap);
 <% else %>
   placeMap = new mapboxgl.Map({
       accessToken: "<%= current_community.theme.mapbox_token %>",
@@ -72,14 +75,13 @@ let placeMap;
       center: coordinates, // starting position [lng, lat]
       hash: false,
       zoom: <%= current_community.theme.zoom || 5 %>, // starting zoom
-      style: "<%= current_community.theme.map_style %>", // style URL or style object
+      style: "<%= current_community.theme.mapbox_style %>", // style URL or style object
       cooperativeGestures: true
     });
-<% end %>
-
-const marker = new maplibregl.Marker()
+  const marker = new mapboxgl.Marker()
   .setLngLat(coordinates)
   .addTo(placeMap);
+<% end %>
 
 // sync values when the map moves
 placeMap.on('move', () => {

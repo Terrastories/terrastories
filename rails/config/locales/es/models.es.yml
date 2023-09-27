@@ -45,7 +45,7 @@ es:
       theme:
         background_img: Imagen de fondo
         sponsor_logos: Logos del patrocinador
-        map_style_url: URL de estilo Mapbox
+        mapbox_style_url: URL de estilo Mapbox
         mapbox_access_token: Token de acceso a Mapbox asociado al estilo
         mapbox_3d: Activa la vista de terreno 3D para el mapa en línea
         map_projection: Establecer proyección para el mapa
@@ -84,7 +84,7 @@ es:
               content_type: tipo de contenido no incluido en la lista
             mapbox_access_token:
               blank: es requerido cuando se configura la URL de estilo Mapbox.
-            map_style_url:
+            mapbox_style_url:
               blank: es requerido cuando se configura el token de acceso Mapbox.
     # Used to auto-translate submit buttons
     models:
@@ -134,7 +134,7 @@ es:
       theme:
         background_img: Imagen de fondo
         sponsor_logos: Logotipos de patrocinadores
-        map_style_url: URL de estilo Mapbox
+        mapbox_style_url: URL de estilo Mapbox
         mapbox_access_token: Token de acceso a Mapbox asociado al estilo
         mapbox_3d: Activar la vista de terreno 3D para el mapa en línea
         center_lat: Latitud

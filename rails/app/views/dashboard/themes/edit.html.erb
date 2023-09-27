@@ -143,8 +143,8 @@
     <div>
       <h5><%= t("map.online") %></h5>
       <div class="input-group">
-      <%= f.label :map_style_url %>
-      <%= f.text_field :map_style_url %>
+      <%= f.label :mapbox_style_url %>
+      <%= f.text_field :mapbox_style_url %>
       </div>
       <div class="input-group">
       <%= f.label :mapbox_access_token %>
@@ -179,7 +179,7 @@ let themeMap;
     zoom: <%= @theme.zoom  || 0 %>, // starting zoom
     pitch: <%= @theme.pitch  || 0 %>, // starting pitch
     bearing: <%= @theme.bearing  || 0 %>, // starting bearing
-    style: "<%= @theme.map_style %>", // style URL or style object
+    style: "<%= @theme.mapbox_style %>", // style URL or style object
     hash: false,
     cooperativeGestures: true
   });
@@ -191,7 +191,7 @@ let themeMap;
     zoom: <%= @theme.zoom  || 0 %>, // starting zoom
     pitch: <%= @theme.pitch  || 0 %>, // starting pitch
     bearing: <%= @theme.bearing  || 0 %>, // starting bearing
-    style: "<%= @theme.map_style %>", // style URL or style object
+    style: "<%= @theme.mapbox_style %>", // style URL or style object
     projection: "<%= @theme.map_projection %>",
     hash: false,
     cooperativeGestures: true
@@ -224,10 +224,15 @@ themeMap.on("pitchend", (e) => {
   bearingValue.innerHTML = e.target.getBearing().toPrecision(5);
   bearingInput.value = e.target.getBearing();
 });
-
+<% if Rails.env.offline? %>
 const nav = new maplibregl.NavigationControl({
   visualizePitch: true
 });
+<% else %>
+const nav = new mapboxgl.NavigationControl({
+  visualizePitch: true
+});
+<% end %>
 themeMap.addControl(nav, "top-right");
 
 themeForm.querySelector("input#unrestricted_bounds").addEventListener("click", (e) => {

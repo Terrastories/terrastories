@@ -7,6 +7,9 @@ import Popup from "./Popup";
 import mapboxgl from '!mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
+import center from '@turf/center';
+import bboxPolygon from '@turf/bbox-polygon';
+
 const STORY_POINTS_LAYER_ID = "ts-points-layer";
 const STORY_POINTS_DATA_SOURCE = "ts-points-data";
 
@@ -209,7 +212,9 @@ export default class Map extends Component {
     ) {
       const { bounds, ...frameOptions } = this.props.framedView;
       if (bounds) {
-        this.map.fitBounds(bounds, { padding: 50, duration: 2000.0, ...frameOptions });
+        const bboxPoly = bboxPolygon(bounds);
+        const centerPoint = center(bboxPoly).geometry.coordinates;
+        this.map.fitBounds(bounds, { center: centerPoint, padding: 50, duration: 2000.0, maxZoom: 12, ...frameOptions });
       } else {
         this.map.easeTo({ duration: 2000.0, ...frameOptions });
       }
