@@ -1,4 +1,4 @@
-class Medium < ApplicationRecord
+class Media < ApplicationRecord
   self.table_name = "media"
 
   belongs_to :story

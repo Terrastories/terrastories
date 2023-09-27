@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Medium, type: :model do
+RSpec.describe Media, type: :model do
   describe "associations" do
     it { is_expected.to belong_to(:story) }
   end
