@@ -33,7 +33,7 @@ module Dashboard
 
     def theme_params
       params.require(:theme).permit(
-        :mapbox_style_url,
+        :map_style_url,
         :mapbox_access_token,
         :mapbox_3d,
         :center_lat,

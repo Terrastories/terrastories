@@ -11,8 +11,8 @@ class Theme < ApplicationRecord
 
   after_initialize :set_map_defaults
 
-  validates :mapbox_access_token, presence: true, unless: -> { mapbox_style_url.blank? }
-  validates :mapbox_style_url, presence: true, unless: -> { mapbox_access_token.blank? }
+  validates :mapbox_access_token, presence: true, unless: -> { map_style_url.blank? }
+  validates :map_style_url, presence: true, unless: -> { mapbox_access_token.blank? }
 
   validate :map_bounds
   validates :center_lat,
@@ -38,9 +38,9 @@ class Theme < ApplicationRecord
     end
   end
 
-  def mapbox_style
-    if mapbox_style_url.present? && !offline_mode?
-      mapbox_style_url
+  def map_style
+    if map_style_url.present? && !offline_mode?
+      map_style_url
     else
       Rails.application.config.default_map_style
     end
@@ -84,7 +84,7 @@ end
 #  map_projection      :integer          default("mercator")
 #  mapbox_3d           :boolean          default(FALSE)
 #  mapbox_access_token :string
-#  mapbox_style_url    :string
+#  map_style_url    :string
 #  ne_boundary_lat     :decimal(10, 6)
 #  ne_boundary_long    :decimal(10, 6)
 #  pitch               :decimal(10, 6)

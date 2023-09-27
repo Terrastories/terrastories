@@ -55,17 +55,29 @@ const placeForm = document.querySelector("#place_form");
 const placeLatInput = placeForm.querySelector("#place_lat");
 const placeLongInput = placeForm.querySelector("#place_long");
 const coordinates = [placeLongInput.value, placeLatInput.value]
-const placeMap = new mapboxgl.Map({
-  accessToken: "<%= current_community.theme.mapbox_token %>",
-  container: "placeMap", // container ID
-  center: coordinates, // starting position [lng, lat]
-  hash: false,
-  zoom: <%= current_community.theme.zoom || 5 %>, // starting zoom
-  style: "<%= current_community.theme.mapbox_style %>", // style URL or style object
-  cooperativeGestures: true
-});
+let placeMap;
+<% if Rails.env.offline? %>
+  placeMap = new maplibregl.Map({
+    container: "placeMap", // container ID
+    center: coordinates, // starting position [lng, lat]
+    hash: false,
+    zoom: <%= current_community.theme.zoom || 5 %>, // starting zoom
+    style: "<%= current_community.theme.map_style %>", // style URL or style object
+    cooperativeGestures: true
+  });
+<% else %>
+  placeMap = new mapboxgl.Map({
+      accessToken: "<%= current_community.theme.mapbox_token %>",
+      container: "placeMap", // container ID
+      center: coordinates, // starting position [lng, lat]
+      hash: false,
+      zoom: <%= current_community.theme.zoom || 5 %>, // starting zoom
+      style: "<%= current_community.theme.map_style %>", // style URL or style object
+      cooperativeGestures: true
+    });
+<% end %>
 
-const marker = new mapboxgl.Marker()
+const marker = new maplibregl.Marker()
   .setLngLat(coordinates)
   .addTo(placeMap);
 

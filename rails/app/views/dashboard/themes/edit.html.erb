@@ -143,8 +143,8 @@
     <div>
       <h5><%= t("map.online") %></h5>
       <div class="input-group">
-      <%= f.label :mapbox_style_url %>
-      <%= f.text_field :mapbox_style_url %>
+      <%= f.label :map_style_url %>
+      <%= f.text_field :map_style_url %>
       </div>
       <div class="input-group">
       <%= f.label :mapbox_access_token %>
@@ -171,18 +171,32 @@ const pitchValue = themeForm.querySelector("#pitchValue");
 const bearingInput = themeForm.querySelector("#theme_bearing");
 const bearingValue = themeForm.querySelector("#bearingValue");
 
-const themeMap = new mapboxgl.Map({
-  accessToken: "<%= @theme.mapbox_token %>",
-  container: "themeMap", // container ID
-  center: <%= [@theme.center_long, @theme.center_lat] %>, // starting position [lng, lat]
-  zoom: <%= @theme.zoom  || 0 %>, // starting zoom
-  pitch: <%= @theme.pitch  || 0 %>, // starting pitch
-  bearing: <%= @theme.bearing  || 0 %>, // starting bearing
-  style: "<%= @theme.mapbox_style %>", // style URL or style object
-  projection: "<%= @theme.map_projection %>",
-  hash: false,
-  cooperativeGestures: true
-});
+let themeMap;
+<% if Rails.env.offline? %>
+  themeMap = new maplibregl.Map({
+    container: "themeMap", // container ID
+    center: <%= [@theme.center_long, @theme.center_lat] %>, // starting position [lng, lat]
+    zoom: <%= @theme.zoom  || 0 %>, // starting zoom
+    pitch: <%= @theme.pitch  || 0 %>, // starting pitch
+    bearing: <%= @theme.bearing  || 0 %>, // starting bearing
+    style: "<%= @theme.map_style %>", // style URL or style object
+    hash: false,
+    cooperativeGestures: true
+  });
+<% else %>
+  themeMap = new mapboxgl.Map({
+    accessToken: "<%= @theme.mapbox_token %>",
+    container: "themeMap", // container ID
+    center: <%= [@theme.center_long, @theme.center_lat] %>, // starting position [lng, lat]
+    zoom: <%= @theme.zoom  || 0 %>, // starting zoom
+    pitch: <%= @theme.pitch  || 0 %>, // starting pitch
+    bearing: <%= @theme.bearing  || 0 %>, // starting bearing
+    style: "<%= @theme.map_style %>", // style URL or style object
+    projection: "<%= @theme.map_projection %>",
+    hash: false,
+    cooperativeGestures: true
+  });
+<% end %>
 
 themeMap.on("moveend", (e) => {
   let themeForm = document.querySelector("#themeForm");
@@ -211,7 +225,7 @@ themeMap.on("pitchend", (e) => {
   bearingInput.value = e.target.getBearing();
 });
 
-const nav = new mapboxgl.NavigationControl({
+const nav = new maplibregl.NavigationControl({
   visualizePitch: true
 });
 themeMap.addControl(nav, "top-right");

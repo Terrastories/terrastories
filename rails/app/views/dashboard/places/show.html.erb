@@ -103,14 +103,25 @@ if (nameAudio !== null) {
   });
 }
 
-const staticMap = new mapboxgl.Map({
-  accessToken: "<%= current_community.theme.mapbox_token %>",
-  container: "static-map", // container ID
-  center: [<%= @place.long %>, <%= @place.lat %>], // starting position [lng, lat]
-  zoom: 8, // starting zoom
-  style: "<%= current_community.theme.mapbox_style %>", // style URL or style object
-  interactive: false
-});
+let staticMap;
+<% if Rails.env.offline? %>
+  staticMap = new maplibregl.Map({
+    container: "static-map", // container ID
+    center: [<%= @place.long %>, <%= @place.lat %>], // starting position [lng, lat]
+    zoom: 8, // starting zoom
+    style: "<%= current_community.theme.map_style %>", // style URL or style object
+    interactive: false
+  });
+<% else %>
+  staticMap = new mapboxgl.Map({
+    accessToken: "<%= current_community.theme.mapbox_token %>",
+    container: "static-map", // container ID
+    center: [<%= @place.long %>, <%= @place.lat %>], // starting position [lng, lat]
+    zoom: 8, // starting zoom
+    style: "<%= current_community.theme.map_style %>", // style URL or style object
+    interactive: false
+  });
+<% end %>
 
 staticMap.on("load", () => {
   staticMap.addSource("points", {
