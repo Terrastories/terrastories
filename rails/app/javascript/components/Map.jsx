@@ -1,7 +1,6 @@
 import ReactDOM from "react-dom";
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Minimap from "../vendor/mapboxgl-control-minimap.js";
 import Popup from "./Popup";
 
 import 'mapbox-gl/dist/mapbox-gl.css';
@@ -13,11 +12,10 @@ const STORY_POINTS_DATA_SOURCE = "ts-points-data";
 export default class Map extends Component {
   constructor(props) {
     super(props);
-    const mapGL = this.props.useLocalMapServer ? require('!maplibre-gl') : require('!mapbox-gl');
-    mapGL.accessToken = this.props.useLocalMapServer ? 'pk.ey' : this.props.mapboxAccessToken;
     this.state = {
       activePopup: null,
-      mapGL: mapGL
+      mapGL: null,
+      isMapLibre: false
     };
   }
 
@@ -36,15 +34,64 @@ export default class Map extends Component {
   };
 
   componentDidMount() {
-    this.map = new this.state.mapGL.Map({
-        container: this.mapContainer,
-        style: this.props.mapStyle,
-        center: [this.props.centerLong, this.props.centerLat],
-        zoom: this.props.zoom,
-        maxBounds: this.checkBounds(), // check for bounding box presence
-        pitch: this.props.pitch,
-        bearing: this.props.bearing,
-        projection: this.props.mapProjection
+    if (this.props.useLocalMapServer) {
+      import('!maplibre-gl').then(module => {
+        this.initializeMap(module.default, true);
+      });
+    } else {
+      Promise.all([
+        import('!mapbox-gl'),
+        import('../vendor/mapboxgl-control-minimap.js')
+      ]).then(([mapboxGLModule, minimapModule]) => {
+        this.Minimap = minimapModule.default;
+        this.initializeMap(mapboxGLModule.default, false);
+      });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (!this.map) {
+      return;
+    }
+
+    if (prevProps.points !== this.props.points) {
+      this.updateMapPoints();
+    }
+
+    if (prevProps.activePoint && !this.props.activePoint) {
+      this.closeActivePopup();
+    }
+
+    // Open active popup
+    if (this.props.activePoint && prevProps.activePoint !== this.props.activePoint) {
+      this.openPopup(this.props.activePoint);
+    }
+
+    // Set map framed view
+    if (
+      this.props.framedView &&
+      this.props.framedView !== prevProps.framedView
+    ) {
+      const { bounds, ...frameOptions } = this.props.framedView;
+      if (bounds) {
+        this.map.fitBounds(bounds, { padding: 50, duration: 2000.0, ...frameOptions });
+      } else {
+        this.map.easeTo({ duration: 2000.0, ...frameOptions });
+      }
+    }
+  }
+
+  initializeMap(mapGL, isMapLibre) {
+    mapGL.accessToken = this.props.useLocalMapServer ? 'pk.ey' : this.props.mapboxAccessToken;
+    this.map = new mapGL.Map({
+      container: this.mapContainer,
+      style: this.props.mapStyle,
+      center: [this.props.centerLong, this.props.centerLat],
+      zoom: this.props.zoom,
+      maxBounds: this.checkBounds(), // check for bounding box presence
+      pitch: this.props.pitch,
+      bearing: this.props.bearing,
+      projection: this.props.mapProjection
     });
 
     this.map.on("load", () => {
@@ -150,10 +197,10 @@ export default class Map extends Component {
     });
 
     // Hide minimap and nav controls for offline Terrastories
-    if(!this.props.useLocalMapServer) {
-      this.map.addControl(new Minimap(
+    if(!isMapLibre && this.Minimap) {
+      this.map.addControl(new this.Minimap(
         {
-          style: "mapbox://styles/mapbox/light-v10",
+          style: this.props.mapStyle,
           zoomLevels: [
             [18, 14, 16],
             [16, 12, 14],
@@ -170,11 +217,11 @@ export default class Map extends Component {
         }), "top-right");
     }
 
-    this.map.addControl(new this.state.mapGL.NavigationControl());
+    this.map.addControl(new mapGL.NavigationControl());
 
     // Add Maplibre logo for offline Terrastories
-    if(this.props.useLocalMapServer) {
-      this.map.addControl(new this.state.mapGL.LogoControl(), 'bottom-right');
+    if(isMapLibre) {
+      this.map.addControl(new mapGL.LogoControl(), 'bottom-right');
     }
 
     // Change mouse pointer when hovering over ts-marker points
@@ -192,34 +239,11 @@ export default class Map extends Component {
     this.map.on('mouseleave', 'clusters', () => {
       this.map.getCanvas().style.cursor = ''
     })
-  }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.points !== this.props.points) {
-      this.updateMapPoints();
-    }
-
-    if (prevProps.activePoint && !this.props.activePoint) {
-      this.closeActivePopup();
-    }
-
-    // Open active popup
-    if (this.props.activePoint && prevProps.activePoint !== this.props.activePoint) {
-      this.openPopup(this.props.activePoint);
-    }
-
-    // Set map framed view
-    if (
-      this.props.framedView &&
-      this.props.framedView !== prevProps.framedView
-    ) {
-      const { bounds, ...frameOptions } = this.props.framedView;
-      if (bounds) {
-        this.map.fitBounds(bounds, { padding: 50, duration: 2000.0, ...frameOptions });
-      } else {
-        this.map.easeTo({ duration: 2000.0, ...frameOptions });
-      }
-    }
+    this.setState({
+      mapGL: mapGL,
+      isMapLibre: isMapLibre
+    });
   }
 
   addMapPoints() {
@@ -327,7 +351,7 @@ export default class Map extends Component {
   addHomeButton() {
     const homeButton = this.createHomeButton();
     let navControl;
-    if (this.state.mapGL === require('!maplibre-gl')) {
+    if (this.state.isMapLibre) {
       navControl = document.getElementsByClassName("maplibregl-ctrl-zoom-in")[0];
     } else {
       navControl = document.getElementsByClassName("mapboxgl-ctrl-zoom-in")[0];
