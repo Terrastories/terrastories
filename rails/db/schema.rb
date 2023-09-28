@@ -49,8 +49,8 @@ ActiveRecord::Schema.define(version: 2022_12_26_213911) do
     t.string "country"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "public", default: false, null: false
     t.boolean "beta", default: false
+    t.boolean "public", default: false, null: false
     t.string "slug"
     t.text "description"
     t.index ["public"], name: "index_communities_on_public"
