@@ -120,7 +120,7 @@ module Importable
 
         # Find or create has_many* relationships
         @klass.associated_attribute_names.each do |association|
-          values = attributes[association].to_s.split(",")
+          values = attributes[association].to_s.split(",").map(&:strip)
           attributes[association] = values.map do |name|
             association.to_s.singularize.classify.constantize.find_or_create_by(name: name, community_id: @community_id)
           end
