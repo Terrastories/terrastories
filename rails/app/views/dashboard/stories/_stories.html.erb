@@ -14,7 +14,7 @@
         <span class="badge badge-green"><%= Story.human_attribute_name("permission_level.#{story.permission_level}") %></span>
       <% end %>
 
-    <p><%= story.desc %></p>
+    <p><%= sanitize story.desc, tags: %w(strong em u) %></p>
     </div>
 
     <div>
