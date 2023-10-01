@@ -33,22 +33,22 @@ If you are working in an internet-connected environment, you will need to add a 
 
 ### ESLint
 
-We use ESLint with Airbnb community style-guide for linting JavaScript and JSX for files under app/javascript.
+We use ESLint with Airbnb community style-guide for linting JavaScript and JSX for files in `rails/app/javascript`.
 
-Please check [ESLint editor-integrations page](https://eslint.org/docs/user-guide/integrations#editors) to read about how to integrate ESLint with your IDE/editor
+Please check [ESLint editor-integrations page](https://eslint.org/docs/user-guide/integrations#editors) to read about how to integrate ESLint with your IDE/editor.
 
 ### Tests
 
 You can run RSpec tests with
 
 ```
-    docker-compose exec web rspec
+    docker compose exec web rspec
 ```
 
 We also support Javascript unit testing, with Enzyme for snapshots.
 
 ```
-    docker-compose exec web yarn test
+    docker compose exec web yarn test
 ```
 
 ## Backup and restore the Terrastories database

@@ -104,6 +104,16 @@ RSpec.describe Story, type: :model do
       end
     end
 
+    context "when has_many associations have trailing whitespaces" do
+      it "strips trailing whitespaces from Speaker_name and Place_name" do
+        described_class.import(file_fixture('story_with_trailing_whitespaces.csv'), community.id, mapped_headers)
+        story = described_class.last
+  
+        expect(story.speakers.map(&:name)).to all(satisfy { |name| name == name.strip })
+        expect(story.places.map(&:name)).to all(satisfy { |name| name == name.strip })
+      end
+    end
+
     context "with media attachments" do
       before do
         stub_const("Importable::IMPORT_PATH", "spec/fixtures/media/")
