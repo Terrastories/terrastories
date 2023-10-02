@@ -19,7 +19,7 @@ container to take advantage of this consistent environment. Use the following co
 open a bash console on the rails container (use `localweb` instead of `web` if you are developing for offline):
 
 ```
-$ docker-compose exec web /bin/bash
+$ docker compose exec web /bin/bash
 ```
 
 Now you can treat this console like any other development environment, running rails or
@@ -33,22 +33,32 @@ If you are working in an internet-connected environment, you will need to add a 
 
 ### ESLint
 
-We use ESLint with Airbnb community style-guide for linting JavaScript and JSX for files under app/javascript.
+We use ESLint with Airbnb community style-guide for linting JavaScript and JSX for files in `rails/app/javascript`.
 
-Please check [ESLint editor-integrations page](https://eslint.org/docs/user-guide/integrations#editors) to read about how to integrate ESLint with your IDE/editor
+Please check [ESLint editor-integrations page](https://eslint.org/docs/user-guide/integrations#editors) to read about how to integrate ESLint with your IDE/editor.
 
 ### Tests
 
-You can run RSpec tests with
+You can run RSpec tests in the Docker `web` container. There are different ways to do this.
+
+If you already have a container running:
 
 ```
-    docker-compose exec web rspec
+docker compose exec -e RAILS_ENV=test web bundle exec rspec
 ```
+
+(You can also run `RAILS_ENV=test bundle exec rspec` in a running container shell if you prefer.)
+
+If you want to boot a separate container for tests, and then take it down:
+
+```
+docker compose run --rm -e RAILS_ENV=test web bundle exec rspec
+``` 
 
 We also support Javascript unit testing, with Enzyme for snapshots.
 
 ```
-    docker-compose exec web yarn test
+docker compose exec web yarn test
 ```
 
 ## Backup and restore the Terrastories database
