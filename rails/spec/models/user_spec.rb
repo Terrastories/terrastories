@@ -1,6 +1,20 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  describe "validations" do
+    it "validates content type size" do
+      is_expected.to validate_content_type_of(:photo).allowing(
+        'image/png',
+        'image/jpg',
+        'image/jpeg',
+      )
+    end
+
+    it "validates file size" do
+      is_expected.to validate_size_of(:photo).less_than_or_equal_to(5.megabytes)
+    end
+  end
+
   describe 'ensuring a user always has a role set' do
     it 'has the correct default role as new user' do
       user = FactoryBot.create(:user)

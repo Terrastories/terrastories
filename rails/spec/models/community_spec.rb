@@ -3,6 +3,26 @@ require 'rails_helper'
 RSpec.describe Community, type: :model do
   let(:community) { FactoryBot.create(:community) }
 
+  describe "validations" do
+    it "validates content type size" do
+      is_expected.to validate_content_type_of(:background_img).allowing(
+        'image/png',
+        'image/jpg',
+        'image/jpeg',
+      )
+      is_expected.to validate_content_type_of(:sponsor_logos).allowing(
+        'image/png',
+        'image/jpg',
+        'image/jpeg',
+      )
+    end
+
+    it "validates file size" do
+      is_expected.to validate_size_of(:background_img).less_than_or_equal_to(5.megabytes)
+      is_expected.to validate_size_of(:sponsor_logos).less_than_or_equal_to(5.megabytes)
+    end
+  end
+
   describe "associations" do
     it "can add sponsor logo" do
       community.sponsor_logos.attach(io: File.open("./spec/fixtures/media/terrastories.png"), filename: 'file.pdf')

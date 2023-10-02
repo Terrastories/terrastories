@@ -7,6 +7,7 @@ class User < ApplicationRecord
   belongs_to :community, optional: true, touch: true
   has_one_attached :photo
 
+  validates :photo, content_type: [:png, :jpeg, "image/jpg"], size: { less_than_or_equal_to: 5.megabytes }
   # Username is required for logging in with Devise. Email is optional.
   # Remove email_required? override if username changes to optional.
   validates :username, uniqueness: true, presence: true, format: {without: /\s/, message: :invalid_username_format}

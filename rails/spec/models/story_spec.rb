@@ -30,7 +30,7 @@ RSpec.describe Story, type: :model do
 
   describe "#csv_headers" do
     it "defines importable CSV headers" do
-      expect(described_class.csv_headers).to eq(
+      expect(described_class.csv_headers).to match_array(
         %i[
           title
           desc
@@ -141,7 +141,7 @@ RSpec.describe Story, type: :model do
             mapped_headers
           )
         }.to change(described_class, :count).from(0).to(1)
-        expect(described_class.last.media).to be_attached
+        expect(described_class.last.media.size).to eq(1)
       end
 
       it "successfully imports stories with multiple medias" do

@@ -104,6 +104,13 @@ module Importable
       end
     end
 
+    def attach_files(k, attachment, filename)
+      path = filename.dup.insert(0, IMPORT_PATH)
+      if filename && File.exist?(path)
+        k.send(attachment).attach(io: File.open(path), filename: filename)
+      end
+    end
+
     def save_importable_records
       importable_rows.each do |row|
         # with_indifferent_access to allow key access as strings or symbols
@@ -118,8 +125,17 @@ module Importable
           hash[k] = value
         end
 
+        # Story Media Association
+        # This must be after attachment attributes to ensure files are correctly
+        # matched when "media" is used for attachment key.
+        if attributes["media"].present?
+          story_media = attributes.delete("media")
+        end
+
         # Find or create has_many* relationships
         @klass.associated_attribute_names.each do |association|
+          next if association == :media
+
           values = attributes[association].to_s.split(",")
           attributes[association] = values.map do |name|
             association.to_s.singularize.classify.constantize.find_or_create_by(name: name, community_id: @community_id)
@@ -143,10 +159,15 @@ module Importable
         if record.save
           media.each do |attachment, filenames|
             filenames.split(",").each do |filename|
-              path = filename.dup.insert(0, IMPORT_PATH)
-              if filename && File.exist?(path)
-                record.send(attachment).attach(io: File.open(path), filename: filename)
-              end
+              attach_files(record, attachment, filename)
+            end
+          end
+
+          if story_media
+            story_media.split(",").each do |filename|
+              sm = record.media.new
+              attach_files(sm, "media", filename)
+              sm.save if sm.media.attached?
             end
           end
         else

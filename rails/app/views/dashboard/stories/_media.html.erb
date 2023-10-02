@@ -1,0 +1,30 @@
+<% if media.image? %>
+  <% if media.variable? %>
+    <%= image_tag(media.variant(resize_to_limit: [size, size])) %>
+  <% else %>
+    <%= image_tag(media, width: size) %>
+  <% end %>
+<% elsif media.video? %>
+  <video
+    controls
+    disablePictureInPicture
+    controlsList="nodownload"
+    id="video-player-<%= media.blob.id %>"
+    poster="<%= url_for(media.preview(resize_to_limit:[nil, size])) if media.previewable? %>"
+  >
+    <source src="<%= url_for(media) %>"/>
+    <%= t("video_unsupported") %>
+  </video>
+<% elsif media.audio? %>
+  <audio id="audio-player-<%= media.blob.id %>"
+    controls
+    controlsList="nodownload"
+    ref="audio"
+  >
+    <source src="<%= url_for(media) %>" type="<%= media.blob.content_type %>" />
+  </audio>
+<% elsif media.previewable? %>
+  <%= image_tag(media.preview(resize_to_limit:[size, size])) %>
+<% else %>
+  <%= media.filename %>
+<% end %>

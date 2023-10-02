@@ -3,7 +3,9 @@ class Story < ApplicationRecord
 
   has_many :speaker_stories, inverse_of: :story
   has_many :speakers, through: :speaker_stories
-  has_many_attached :media
+
+  has_many :media, inverse_of: :story
+
   has_and_belongs_to_many :places
   belongs_to :community, touch: true
   belongs_to :interview_location, class_name: "Place", foreign_key: "interview_location_id", optional: true
@@ -13,10 +15,15 @@ class Story < ApplicationRecord
   validates :title, presence: true
   validates :speaker_ids, presence: true
   validates :place_ids, presence: true
-  validates :media, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg', 'video/mpeg', 'video/mp4', 'video/quicktime', 'video/webm', 'audio/mpeg', 'audio/wav', 'audio/mp4', 'audio/m4a', 'audio/x-m4a', 'audio/x-aac', 'audio/x-flac'] }
+
+  accepts_nested_attributes_for :media
 
   def media_types
-    media.flat_map { |media| media.content_type.split('/')[0] }.uniq
+    media.flat_map do |m|
+      registry, kind = m.content_type.split('/')
+
+      registry == "application" ? kind : registry
+    end.uniq
   end
 
   def self.export_sample_csv
@@ -53,9 +60,7 @@ class Story < ApplicationRecord
 
   EXCLUDE_ATTRIBUTES_FROM_IMPORT = %i[
     speaker_stories
-    media_attachments
     media_links
-    media_blobs
   ]
 end
 

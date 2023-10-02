@@ -4,6 +4,20 @@ RSpec.describe Speaker, type: :model do
   let(:community) { create(:community) }
   let(:speaker) { build(:speaker, name: speaker_name, birthdate: speaker_birthdate) }
 
+  describe "validations" do
+    it "validates content type size" do
+      is_expected.to validate_content_type_of(:photo).allowing(
+        'image/png',
+        'image/jpg',
+        'image/jpeg',
+      )
+    end
+
+    it "validates file size" do
+      is_expected.to validate_size_of(:photo).less_than_or_equal_to(5.megabytes)
+    end
+  end
+
   describe 'attributes' do
     let(:speaker_name) { 'Oliver Twist' }
     let(:speaker_birthdate) { DateTime.new(1992) }
