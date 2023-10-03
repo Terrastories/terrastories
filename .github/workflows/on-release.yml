@@ -25,5 +25,5 @@ jobs:
         platforms: linux/amd64,linux/arm64,linux/arm/v7
         push: true
         tags: |
-          terrastories/terrastories:${{ github.ref }}
+          terrastories/terrastories:${{ github.ref_name }}
           terrastories/terrastories:latest
