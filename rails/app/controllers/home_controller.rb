@@ -24,6 +24,9 @@ class HomeController < ApplicationController
   end
 
   helper_method def stories
-    policy_scope(current_community.stories)
+    community_stories = policy_scope(current_community.stories)
+    community_stories = community_stories.joins(:speakers).distinct
+    community_stories = community_stories.joins(:places).distinct
+    community_stories
   end
 end
