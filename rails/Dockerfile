@@ -57,9 +57,7 @@ EXPOSE 3000
 
 ENV RAILS_ENV="production" \
     AUTO_RUN_MIGRATIONS=on \
-    DATABASE_URL="" \
-    OFFLINE_MODE="no" \
-    SECRET_KEY_BASE=""
+    DATABASE_URL=""
 
 RUN apk --no-cache add \
     tzdata \
