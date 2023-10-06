@@ -12,10 +12,6 @@ class StoriesPage < Page
   def relation
     stories = @scoped_stories
 
-    # remove orphaned stories
-    stories = stories.joins(:speakers).distinct
-    stories = stories.joins(:places).distinct
-
     stories = stories.joins(:places_stories).where(places_stories: {place_id: @meta[:place]}) if @meta[:place].present?
     stories = stories.joins(:speaker_stories).where(speaker_stories: {speaker_id: @meta[:speaker]}) if @meta[:speaker].present?
     stories = stories.where(permission_level: @meta[:visibility]) if @meta[:visibility].present?
