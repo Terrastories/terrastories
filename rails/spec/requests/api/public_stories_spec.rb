@@ -2,6 +2,7 @@ require "rails_helper"
 
 RSpec.describe "Public Stories Endpoint", type: :request do
   let!(:community) { FactoryBot.create(:public_community, name: "Cool Community") }
+  let!(:orphan_community) { FactoryBot.create(:public_community, name: "Orphaned Community") }
 
   it "returns 404 when community can't be found" do
     get "/api/communities/unknown/stories"
@@ -28,8 +29,10 @@ RSpec.describe "Public Stories Endpoint", type: :request do
   context "filters and sort" do
     let!(:place_1) { create(:place, community: community, region: "the internet") }
     let!(:place_2) { create(:place, community: community, type_of_place: "online") }
+    let!(:place_3) { create(:place, community: orphan_community, type_of_place: "being deleted") }
     let!(:speaker_1) { create(:speaker, community: community) }
     let!(:speaker_2) { create(:speaker, community: community, speaker_community: "ruby for good") }
+    let!(:speaker_3) { create(:speaker, community: orphan_community) }
 
     # Story:
     # - place 2
@@ -78,6 +81,40 @@ RSpec.describe "Public Stories Endpoint", type: :request do
         topic: "nonprofit work",
         language: "Spanish",
         places: [place_1],
+        speakers: [speaker_1],
+        permission_level: :anonymous
+      )
+    end
+
+    # Story:
+    # - place 1
+    # - type of place: being deleted
+    # - speaker 3
+    # - language: English
+    let!(:story_4) do
+      create(
+        :story,
+        community: orphan_community,
+        topic: "test work",
+        language: "English",
+        places: [place_1],
+        speakers: [speaker_3],
+        permission_level: :anonymous
+      )
+    end
+
+    # Story:
+    # - place 3
+    # - type of place: being deleted
+    # - speaker 1
+    # - language: English
+    let!(:story_5) do
+      create(
+        :story,
+        community: orphan_community,
+        topic: "test work",
+        language: "English",
+        places: [place_3],
         speakers: [speaker_1],
         permission_level: :anonymous
       )
@@ -179,6 +216,15 @@ RSpec.describe "Public Stories Endpoint", type: :request do
       expect(json_meta["total"]).to eq(1)
       expect(json_response["stories"].count).to eq(1)
       expect(json_meta["hasNextPage"]).to be false
+    end
+
+    it "orphaned stories are excluded" do
+      speaker_3.destroy
+      place_3.destroy
+
+      get "/api/communities/orphaned_community/stories"
+      expect(json_response["total"]).to eq(0)
+      expect(json_response["stories"].length).to eq(0)
     end
   end
 end
