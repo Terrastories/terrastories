@@ -6,7 +6,7 @@ class Story < ApplicationRecord
 
   has_many :media, inverse_of: :story
 
-  has_and_belongs_to_many :places
+  has_and_belongs_to_many :places, -> { with_valid_coordinates }
   belongs_to :community, touch: true
   belongs_to :interview_location, class_name: "Place", foreign_key: "interview_location_id", optional: true
   belongs_to :interviewer, class_name: "Speaker", foreign_key: "interviewer_id", optional: true
@@ -17,10 +17,6 @@ class Story < ApplicationRecord
   validates :place_ids, presence: true
 
   accepts_nested_attributes_for :media
-
-  scope :with_valid_places, -> do
-    joins(:places).where.not(places: { lat: nil, long: nil })
-  end
 
   def media_types
     media.flat_map do |m|

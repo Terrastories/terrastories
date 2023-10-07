@@ -2,7 +2,7 @@ module Api
   class StoriesController < BaseController
     def index
       community = Community.where(public: true).find_by!(slug: params[:community_id])
-      @stories = community.stories.with_valid_places.joins(:places, :speakers).where(permission_level: :anonymous).preload(:places, :speakers)
+      @stories = community.stories.joins(:places, :speakers).where(permission_level: :anonymous).preload(:places, :speakers)
 
       # Filters
       @stories = @stories.where(places: {id: story_params[:places]}) if story_params[:places]
