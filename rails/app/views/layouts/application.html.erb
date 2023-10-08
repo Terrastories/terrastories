@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Welcome - Terrastories<%= @community&.name ? ": #{@community.name}": '' %></title>
+    <title><%= t("welcome") %> - Terrastories<%= @community&.name ? ": #{@community.name}": '' %></title>
     <%= favicon_link_tag asset_path('favicon.ico'), :rel => 'icon', :type =>  'image/png' %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
