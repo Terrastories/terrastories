@@ -29,10 +29,10 @@ RSpec.describe "Public Stories Endpoint", type: :request do
   context "filters and sort" do
     let!(:place_1) { create(:place, community: community, region: "the internet") }
     let!(:place_2) { create(:place, community: community, type_of_place: "online") }
-    let!(:place_3) { create(:place, community: orphan_community, type_of_place: "being deleted") }
+    let!(:place_being_deleted) { create(:place, community: orphan_community, type_of_place: "being deleted") }
     let!(:speaker_1) { create(:speaker, community: community) }
     let!(:speaker_2) { create(:speaker, community: community, speaker_community: "ruby for good") }
-    let!(:speaker_3) { create(:speaker, community: orphan_community) }
+    let!(:speaker_being_deleted) { create(:speaker, community: orphan_community) }
 
     # Story:
     # - place 2
@@ -88,33 +88,31 @@ RSpec.describe "Public Stories Endpoint", type: :request do
 
     # Story:
     # - place 1
-    # - type of place: being deleted
-    # - speaker 3
+    # - speaker - will be deleted in test
     # - language: English
-    let!(:story_4) do
+    let!(:story_with_no_speaker) do
       create(
         :story,
         community: orphan_community,
         topic: "test work",
         language: "English",
         places: [place_1],
-        speakers: [speaker_3],
+        speakers: [speaker_being_deleted],
         permission_level: :anonymous
       )
     end
 
     # Story:
-    # - place 3
-    # - type of place: being deleted
+    # - place - will be deleted in test
     # - speaker 1
     # - language: English
-    let!(:story_5) do
+    let!(:story_with_no_place) do
       create(
         :story,
         community: orphan_community,
         topic: "test work",
         language: "English",
-        places: [place_3],
+        places: [place_being_deleted],
         speakers: [speaker_1],
         permission_level: :anonymous
       )
@@ -219,8 +217,10 @@ RSpec.describe "Public Stories Endpoint", type: :request do
     end
 
     it "orphaned stories are excluded" do
-      speaker_3.destroy
-      place_3.destroy
+       # ensures that story_with_no_speaker does not show up in list:
+      speaker_being_deleted.destroy
+      # ensures that story_with_no_place does not show up in list:
+      place_being_deleted.destroy
 
       get "/api/communities/orphaned_community/stories"
       expect(json_response["total"]).to eq(0)
