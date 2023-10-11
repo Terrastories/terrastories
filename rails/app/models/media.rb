@@ -24,7 +24,7 @@ class Media < ApplicationRecord
     ],
     size: { less_than_or_equal_to: 200.megabytes }
 
-  delegate :content_type, :blob_id, :blob, to: :media
+  delegate :content_type, :blob_id, :blob, :representable?, to: :media
 end
 
 # == Schema Information

@@ -26,6 +26,16 @@ class Story < ApplicationRecord
     end.uniq
   end
 
+  def media_preview_thumbnail
+    previewable_media = media.find { |m| m.representable? }
+
+    return unless previewable_media
+
+    Rails.application.routes.url_helpers.rails_representation_url(
+      previewable_media.media.representation(resize_to_limit: [200, 200]).processed
+    )
+  end
+
   def self.export_sample_csv
     headers = %w{name description speakers places interview_location date_interviewed interviewer language media permission_level }
 
