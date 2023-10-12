@@ -11,7 +11,7 @@
       <%= @story.title %>
       <%= form_with model: @story, multipart: true, class: "form", data: {remote: false}, locale: true do |f| %>
         <% if current_user.admin? || current_user.editor? %>
-          <% if @story.story_pinned == true %>
+          <% if @story.story_pinned %>
             <%= f.hidden_field :story_pinned, value: false %>
             <div class="story-pinned">
               <%= f.button nil, class: "icon-pinned" do %>

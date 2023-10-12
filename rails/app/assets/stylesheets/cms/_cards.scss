@@ -126,11 +126,11 @@
 }
 
 .edit-icon-pinned, .view-icon-pinned {
-  color: black;
+  color: $black;
 }
 
 .edit-icon-not-pinned {
-  color: gray;
+  color: $light-gray;
 }
 
 .edit-icon-pinned, .edit-icon-not-pinned {
