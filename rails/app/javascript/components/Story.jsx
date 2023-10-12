@@ -42,6 +42,12 @@ const Story = props => {
         key={story.id}
         role="presentation"
       >
+        {
+          story.story_pinned &&
+            <div className="pinned">
+              <i class="icon-pushpin"></i>
+            </div>
+        }
         <div className="speakers">
           {renderSpeakers(story.speakers)}
         </div>

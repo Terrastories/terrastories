@@ -128,6 +128,9 @@ $el-shadow: 0 1px 4px $lighter-gray;
   .stories {
     overflow-x: hidden;
     flex: 5 0 0;
+    .pinned {
+      float: right;
+    };
     .container {
       padding-bottom: 3rem;
 

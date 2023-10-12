@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_08_135800) do
+ActiveRecord::Schema.define(version: 2023_10_09_012520) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -154,6 +154,7 @@ ActiveRecord::Schema.define(version: 2023_08_08_135800) do
     t.integer "interviewer_id"
     t.integer "community_id"
     t.string "topic"
+    t.boolean "story_pinned", default: false
   end
 
   create_table "themes", force: :cascade do |t|

@@ -3,11 +3,32 @@
 <% end %>
 
 <% content_for(:main_heading) do %>
-  <h2>
+  <h2 class="story-main-heading">
     <% if @story.topic.present? %>
       <div class="small"><%= @story.topic %></div>
     <% end %>
-    <%= @story.title %>
+    <div class="story-title">
+      <%= @story.title %>
+      <%= form_with model: @story, multipart: true, class: "form", data: {remote: false}, locale: true do |f| %>
+        <% if current_user.admin? || current_user.editor? %>
+          <% if @story.story_pinned == true %>
+            <%= f.hidden_field :story_pinned, value: false %>
+            <div class="story-pinned">
+              <%= f.button nil, class: "icon-pinned" do %>
+                <i class="icon-pushpin"></i>
+              <% end %>
+            </div>
+          <% else %>
+            <%= f.hidden_field :story_pinned, value: true %>
+            <div class="story-pinned">
+              <%= f.button nil, class: "icon-not-pinned" do %>
+                <i class="icon-pushpin"></i>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
     <div class="small">
       <% if @story.language.present? %>
         <span class="badge"><%= @story.language %></span>

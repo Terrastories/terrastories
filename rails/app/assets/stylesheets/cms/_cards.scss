@@ -117,3 +117,30 @@
     word-wrap: break-word;
   }
 }
+
+.edit-icon-pinned, .edit-icon-not-pinned, .view-icon-pinned {
+  display: none;
+  float: right;
+  height: fit-content;
+  margin-inline-start: auto;
+}
+
+.edit-icon-pinned, .view-icon-pinned {
+  color: black;
+}
+
+.edit-icon-not-pinned {
+  color: gray;
+}
+
+.edit-icon-pinned, .edit-icon-not-pinned {
+  &:hover {
+    box-shadow: 0 0 10px $lighter-gray;
+  }
+}
+
+.card:hover .edit-icon-pinned,
+.card:hover .edit-icon-not-pinned,
+.card:hover .view-icon-pinned {
+  display: flex;
+}

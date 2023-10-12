@@ -1,10 +1,40 @@
 <% @stories.each do |story| %>
   <%= link_to story, class: "card" do %>
     <div>
-      <h3>
-        <span class="card__heading--small"><%= story.topic %></span>
-        <%= story.title %>
-      </h3>
+      <div style="display:flex">
+        <div>
+          <h3 style="width:max-content">
+            <span class="card__heading--small"><%= story.topic %></span>
+            <%= story.title %>
+          </h3>
+        </div>
+        <% if story.story_pinned %>
+          <% if current_user.member? %>
+            <div class="view-icon-pinned">
+              <i class="icon-pushpin"></i>
+            </div>
+          <% elsif current_user.admin? || current_user.editor? %>
+            <div class="edit-icon-pinned">
+              <%= form_with model: @story, url: story_path(story.id), method: "patch", multipart: true, class: "form", data: {remote: false}, locale: true do |f| %>
+                <%= f.hidden_field :story_pinned, value: false %>
+                <%= f.button nil, class: "icon-pinned" do %>
+                  <i class="icon-pushpin"></i>
+                <% end %>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+        <% if story.story_pinned == false && (current_user.admin? || current_user.editor?) %>
+          <div class="edit-icon-not-pinned">
+            <%= form_with model: @story, url: story_path(story.id), method: "patch", multipart: true, class: "form", data: {remote: false}, locale: true do |f| %>
+              <%= f.hidden_field :story_pinned, value: true %>
+              <%= f.button nil, class: "icon-not-pinned" do %>
+                <i class="icon-pushpin"></i>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
 
       <% if story.language.present? %>
         <span class="badge badge-red"><%= story.language %></span>

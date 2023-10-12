@@ -172,3 +172,18 @@ svg[hidden] {
 svg:not(:root) {
   overflow: hidden;
 }
+
+.story-main-heading {
+  width: max-content;
+}
+
+.story-title {
+  display: flex;
+}
+
+.story-pinned {
+  display: flex;
+  height: 100%;
+  float: right;
+  margin-left: 15px;
+}

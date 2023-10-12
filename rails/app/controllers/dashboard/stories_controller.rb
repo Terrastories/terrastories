@@ -43,8 +43,27 @@ module Dashboard
 
     def update
       @story = authorize community_stories.find(params[:id])
+      @stories = community_stories.all
 
-      if @story.update(story_params.except(:media))
+      if params[:story_pinned].present?
+        if params[:story_pinned]
+          @stories.update_all(story_pinned: !params[:story_pinned])
+        end
+
+        @story.update(story_pinned: params[:story_pinned])
+
+        return redirect_to action: "index"
+      end
+
+      if story_params[:story_pinned].present?
+        if story_params[:story_pinned]
+          @stories.update_all(story_pinned: !story_params[:story_pinned])
+        end
+
+        @story.update(story_pinned: story_params[:story_pinned])
+
+        render :edit
+      elsif @story.update(story_params.except(:media))
         story_params[:media].each do |media|
           m = @story.media.create(media: media)
         end
@@ -88,6 +107,7 @@ module Dashboard
         :topic,
         :interview_location_id,
         :interviewer_id,
+        :story_pinned,
         media: [],
         speaker_ids: [],
         place_ids: []

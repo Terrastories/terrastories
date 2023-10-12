@@ -5,7 +5,8 @@ class StoriesPage < Page
 
     @meta[:limit] ||= 10
     @meta[:offset] ||= 0
-    @meta[:sort_by] ||= "created_at"
+    @meta[:sort_by_pinned] ||= "story_pinned"
+    @meta[:sort_by_created] ||= "created_at"
     @meta[:sort_dir] ||= "desc"
   end
 
@@ -16,6 +17,7 @@ class StoriesPage < Page
     stories = stories.joins(:speaker_stories).where(speaker_stories: {speaker_id: @meta[:speaker]}) if @meta[:speaker].present?
     stories = stories.where(permission_level: @meta[:visibility]) if @meta[:visibility].present?
 
-    stories.order(@meta[:sort_by] => @meta[:sort_dir])
+    stories = stories.order(@meta[:sort_by_pinned] => @meta[:sort_dir])
+    stories.order(@meta[:sort_by_created] => @meta[:sort_dir])
   end
 end
