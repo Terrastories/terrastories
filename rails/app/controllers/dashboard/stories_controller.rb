@@ -48,7 +48,7 @@ module Dashboard
       if params[:story_pinned].present?
         if params[:story_pinned]
           @pinned_story = @stories.find_by(story_pinned: true)
-          @pinned_story.update(story_pinned: !params[:story_pinned])
+          @pinned_story&.update(story_pinned: !params[:story_pinned])
         end
 
         @story.update(story_pinned: params[:story_pinned])
@@ -59,7 +59,7 @@ module Dashboard
       if story_params[:story_pinned].present?
         if story_params[:story_pinned]
           @pinned_story = @stories.find_by(story_pinned: true)
-          @pinned_story.update(story_pinned: !story_params[:story_pinned])
+          @pinned_story&.update(story_pinned: !story_params[:story_pinned])
         end
 
         @story.update(story_pinned: story_params[:story_pinned])
