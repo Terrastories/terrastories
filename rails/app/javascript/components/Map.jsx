@@ -350,12 +350,7 @@ export default class Map extends Component {
 
   addHomeButton() {
     const homeButton = this.createHomeButton();
-    let navControl;
-    if (this.state.isMapLibre) {
-      navControl = document.getElementsByClassName("maplibregl-ctrl-zoom-in")[0];
-    } else {
-      navControl = document.getElementsByClassName("mapboxgl-ctrl-zoom-in")[0];
-    }
+    let navControl = document.querySelectorAll('button[class$="-ctrl-zoom-in"]')[0];
     if (navControl) {
       navControl.parentNode.insertBefore(homeButton, navControl);
     }
