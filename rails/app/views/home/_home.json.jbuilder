@@ -28,6 +28,7 @@ if current_user
   end
 end
 json.logo_path image_path("logocombo.svg")
+json.thumbtack_path image_path("thumbtack-pinned.svg")
 
 json.mapbox_access_token @community.theme.mapbox_token
 json.mapbox_style @community.theme.mapbox_style

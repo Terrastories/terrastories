@@ -182,8 +182,14 @@ svg:not(:root) {
 }
 
 .story-pinned {
+  align-items: center;
   display: flex;
   height: 100%;
   float: right;
   margin-left: 15px;
+}
+
+.image-pinned {
+  height: 15px;
+  width: 9px;
 }

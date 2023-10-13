@@ -130,6 +130,11 @@ $el-shadow: 0 1px 4px $lighter-gray;
     flex: 5 0 0;
     .pinned {
       float: right;
+
+      img {
+        height: 30px;
+        width: 10px;
+      }
     };
     .container {
       padding-bottom: 3rem;

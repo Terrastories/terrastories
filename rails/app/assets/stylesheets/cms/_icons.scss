@@ -33,6 +33,8 @@
 .icon-pinned, .icon-not-pinned {
   background-color: inherit;
   border: none;
+  cursor: pointer;
+  height: fit-content;
 }
 
 .icon-not-pinned {

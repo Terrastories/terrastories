@@ -119,7 +119,6 @@
 }
 
 .edit-icon-pinned, .edit-icon-not-pinned, .view-icon-pinned {
-  display: none;
   float: right;
   height: fit-content;
   margin-inline-start: auto;
@@ -127,10 +126,12 @@
 
 .edit-icon-pinned, .view-icon-pinned {
   color: $black;
+  display: flex;
 }
 
 .edit-icon-not-pinned {
   color: $light-gray;
+  display: none;
 }
 
 .edit-icon-pinned, .edit-icon-not-pinned {
@@ -139,8 +140,6 @@
   }
 }
 
-.card:hover .edit-icon-pinned,
-.card:hover .edit-icon-not-pinned,
-.card:hover .view-icon-pinned {
+.card:hover .edit-icon-not-pinned {
   display: flex;
 }

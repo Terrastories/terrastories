@@ -15,14 +15,14 @@
             <%= f.hidden_field :story_pinned, value: false %>
             <div class="story-pinned">
               <%= f.button nil, class: "icon-pinned" do %>
-                <i class="icon-pushpin"></i>
+                <%= image_tag 'thumbtack-pinned.svg', alt: 'pinned-story', class: "image-pinned" %>
               <% end %>
             </div>
           <% else %>
             <%= f.hidden_field :story_pinned, value: true %>
             <div class="story-pinned">
               <%= f.button nil, class: "icon-not-pinned" do %>
-                <i class="icon-pushpin"></i>
+                <%= image_tag 'thumbtack-not-pinned.svg', alt: 'not-pinned-story', class: "image-pinned" %>
               <% end %>
             </div>
           <% end %>

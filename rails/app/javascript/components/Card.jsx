@@ -27,7 +27,8 @@ class Card extends Component {
     filterItem: PropTypes.string,
     handleFilterCategoryChange: PropTypes.func,
     handleFilterItemChange: PropTypes.func,
-    itemOptions: PropTypes.array
+    itemOptions: PropTypes.array,
+    thumbtack_path: PropTypes.string
   };
 
   static defaultProps = {
@@ -93,6 +94,7 @@ class Card extends Component {
               handleFilterCategoryChange={this.props.handleFilterCategoryChange}
               handleFilterItemChange={this.props.handleFilterItemChange}
               itemOptions={this.props.itemOptions}
+              thumbtack_path={this.props.thumbtack_path}
             />
 
             <div className="card--tasks">

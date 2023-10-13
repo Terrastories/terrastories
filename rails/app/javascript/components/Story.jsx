@@ -5,7 +5,7 @@ import StoryMedia from "./StoryMedia";
 
 const Story = props => {
   const { t } = useTranslation();
-  const { onStoryClick, story, storyClass } = props;
+  const { onStoryClick, story, storyClass, thumbtack_path } = props;
 
   const renderSpeakers = speakers => {
     return (
@@ -45,7 +45,7 @@ const Story = props => {
         {
           story.story_pinned && (
             <div className="pinned">
-              <i className="icon-pushpin" />
+              <img src={thumbtack_path} alt="pinned-story" />
             </div>
           )
         }
