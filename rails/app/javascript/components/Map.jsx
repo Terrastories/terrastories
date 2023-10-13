@@ -15,7 +15,9 @@ export default class Map extends Component {
     this.state = {
       activePopup: null,
       mapGL: null,
-      isMapLibre: false
+      isMapLibre: false,
+      mapModule: null,
+      minimapModule: null
     };
   }
 
@@ -35,17 +37,33 @@ export default class Map extends Component {
 
   componentDidMount() {
     if (this.props.useLocalMapServer) {
-      import('!maplibre-gl').then(module => {
-        this.initializeMap(module.default, true);
-      });
+      if (!this.state.mapModule) {
+        import('!maplibre-gl').then(module => {
+          this.setState({ mapModule: module.default }, () => {
+            this.initializeMap(this.state.mapModule, true);
+          });
+        });
+      } else {
+        this.initializeMap(this.state.mapModule, true);
+      }
     } else {
-      Promise.all([
-        import('!mapbox-gl'),
-        import('../vendor/mapboxgl-control-minimap.js')
-      ]).then(([mapboxGLModule, minimapModule]) => {
-        this.Minimap = minimapModule.default;
-        this.initializeMap(mapboxGLModule.default, false);
-      });
+      if (!this.state.mapModule || !this.state.minimapModule) {
+        Promise.all([
+          import('!mapbox-gl'),
+          import('../vendor/mapboxgl-control-minimap.js')
+        ]).then(([mapboxGLModule, minimapModule]) => {
+          this.setState({
+            mapModule: mapboxGLModule.default,
+            minimapModule: minimapModule.default
+          }, () => {
+            this.Minimap = this.state.minimapModule;
+            this.initializeMap(this.state.mapModule, false);
+          });
+        });
+      } else {
+        this.Minimap = this.state.minimapModule;
+        this.initializeMap(this.state.mapModule, false);
+      }
     }
   }
 
