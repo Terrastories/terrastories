@@ -34,6 +34,8 @@ class Story < ApplicationRecord
     Rails.application.routes.url_helpers.rails_representation_url(
       previewable_media.media.representation(resize_to_limit: [200, 200]).processed
     )
+  rescue ActiveStorage::Error
+    nil
   end
 
   def self.export_sample_csv
