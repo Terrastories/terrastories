@@ -108,7 +108,7 @@ RSpec.describe Story, type: :model do
       it "strips trailing whitespaces from Speaker_name and Place_name" do
         described_class.import(file_fixture('story_with_trailing_whitespaces.csv'), community.id, mapped_headers)
         story = described_class.last
-  
+
         expect(story.speakers.map(&:name)).to all(satisfy { |name| name == name.strip })
         expect(story.places.map(&:name)).to all(satisfy { |name| name == name.strip })
       end
@@ -240,6 +240,28 @@ RSpec.describe Story, type: :model do
   describe 'export_sample_csv' do
     it 'downloads a csv' do
       expect(described_class.export_sample_csv).to eq("name,description,speakers,places,interview_location,date_interviewed,interviewer,language,media,permission_level\n")
+    end
+  end
+
+  describe '#media_preview_thumbnail' do
+    let(:story) { create(:story, :with_places, :with_speakers) }
+
+    it 'returns nil when story has no previewable media' do
+      expect(story.media_preview_thumbnail).to be_nil
+    end
+
+    it 'returns processed URL for media' do
+      media = create(:media, story: story)
+
+      expect(story.media_preview_thumbnail).to match(/^http(.*)\/terrastories.png$/)
+    end
+
+    it 'returns nil if media processing throws an error' do
+      create(:media, story: story)
+
+      expect_any_instance_of(ActiveStorage::Variant).to receive(:processed).and_raise(ActiveStorage::InvariableError)
+
+      expect(story.media_preview_thumbnail).to be_nil
     end
   end
 end
