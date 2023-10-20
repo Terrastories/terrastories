@@ -55,6 +55,9 @@ Next, within the terminal, run:
 (If you are building for offline, run this command with `--profile offline` instead.)
 
 Enter `localhost:3000` into your internet browser to view the application.
+
+To find usernames and passwords to login to Terrastories, check [seeds.rb](https://github.com/Terrastories/terrastories/blob/master/rails/db/seeds.rb) (the admin username is probably the most useful for most dev purposes).
+
 ## Build the application step by step (option 2)
 
 Open your terminal and navigate to the terrastories repository and run:
@@ -97,6 +100,8 @@ See the script file for the details.
 
 Enter `localhost:3000` into your internet browser to view the application.
 
+To find usernames and passwords to login to Terrastories, check [seeds.rb](https://github.com/Terrastories/terrastories/blob/master/rails/db/seeds.rb) (the admin username is probably the most useful for most dev purposes).
+
 *Note: if you building Terrastories for a specific hosting environment, you may still need to take some additional steps like adding an alias to your hosts file, or downloading offline map tiles. For more information on setting up Terrastories for different hosting environments, see [this page](https://docs.terrastories.app/setting-up-a-terrastories-server/hosting-environments) on the Terrastories Support Materials website.*
 
 ## Using the application regularly
@@ -108,6 +113,8 @@ Everytime you want to open and use the application, make sure you have docker de
   ```
 
 You can view the running application at `localhost:3000`
+
+To find usernames and passwords to login to Terrastories, check [seeds.rb](https://github.com/Terrastories/terrastories/blob/master/rails/db/seeds.rb) (the admin username is probably the most useful for most dev purposes).
 
 It will take a moment to load when first opening the application.
 

@@ -6,13 +6,22 @@ class Place < ApplicationRecord
   has_one_attached :photo
   has_one_attached :name_audio
   validates :name, presence: true
-  validates :photo, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'] }
-  validates :name_audio, blob: { content_type: ['audio/mpeg', 'audio/wav', 'audio/mp4', 'audio/m4a', 'audio/x-m4a', 'audio/x-aac', 'audio/x-flac'] }
+  validates :photo, content_type: [:png, 'image/jpg', :jpeg], size: { less_than_or_equal_to: 5.megabytes }
+  validates :name_audio,
+    content_type: [
+      :mp3, :aac, :flac, :mp4a, :wav,
+      'audio/wav', 'audio/m4a', 'audio/x-m4a', 'audio/x-aac', 'audio/x-flac',
+    ],
+    size: { less_than_or_equal_to: 10.megabytes }
   validates :lat, numericality: { greater_than_or_equal_to:  -90, less_than_or_equal_to:  90, message: :invalid_latitude }, allow_blank: true
   validates :long, numericality: { greater_than_or_equal_to: -180, less_than_or_equal_to: 180, message: :invalid_longitude}, allow_blank: true
   has_many :interview_stories, class_name: "Story", foreign_key: "interview_location_id"
 
   attr_reader :point_geojson
+
+  scope :with_valid_coordinates, -> do
+    where.not(lat: nil, long: nil)
+  end
 
   def photo_url(full_url: false, thumbnail: false)
     if photo.attached?

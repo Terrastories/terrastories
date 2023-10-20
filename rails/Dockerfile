@@ -26,7 +26,8 @@ RUN apk --no-cache add --update \
     libxslt-dev \
     libc6-compat \
     imagemagick \
-    ffmpeg && \
+    ffmpeg \
+    poppler && \
     gem update --system --no-document && \
     gem install bundler --no-document --force
 
@@ -57,9 +58,7 @@ EXPOSE 3000
 
 ENV RAILS_ENV="production" \
     AUTO_RUN_MIGRATIONS=on \
-    DATABASE_URL="" \
-    OFFLINE_MODE="no" \
-    SECRET_KEY_BASE=""
+    DATABASE_URL=""
 
 RUN apk --no-cache add \
     tzdata \
@@ -70,7 +69,8 @@ RUN apk --no-cache add \
     libxslt \
     libc6-compat \
     imagemagick \
-    ffmpeg && \
+    ffmpeg \
+    poppler && \
     gem update --system --no-document && \
     gem install bundler --no-document --force
 

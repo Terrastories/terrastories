@@ -25,9 +25,11 @@
 
 Terrastories is a Dockerized Rails and React app that uses [**Mapbox GL JS**](https://mapbox.com) / [**MapLibre GL JS**](https://maplibre.com/) to help users locate place-based media content or narrative stories on an interactive map. As a local-first application, Terrastories is designed to work entirely offline, so that remote communities can access the application entirely without needing internet connectivity.
 
-The Terrastories interface is principally composed of an interactive map and a sidebar with media content. Users can explore the map and click on activated points to see the stories associated with those points. Alternatively, users can interact with the sidebar and click on stories to see where in the landscape these narratives took place. 
+The main Terrastories interface is principally composed of an interactive map and a sidebar with media content. Users can explore the map and click on activated points to see the stories associated with those points. Alternatively, users can interact with the sidebar and click on stories to see where in the landscape these narratives took place. 
 
 By means of a content management system, users with the right level of access can also explore, add, edit, remove, and import stories, or set them as restricted so that they are viewable only with a special login. Users can design and customize the content of the interactive map entirely.
+
+There is also [Explore Terrastories](https://github.com/terrastories/explore-terrastories), a separate React app that allows public exploration of unrestricted stories that communities have opted into sharing. Explore Terrastories queries the API of the main Terrastories application provided in this repository.
 
 Learn more about Terrastories on [our website](https://terrastories.app/). 
 

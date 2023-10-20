@@ -1,8 +1,8 @@
 json.(@story, :id, :title, :desc, :topic, :language)
 json.media @story.media do |media|
-  json.contentType media.blob.content_type
-  json.blob media.blob.id
-  json.url rails_blob_url(media)
+  json.contentType media.content_type
+  json.blob media.blob_id
+  json.url rails_blob_url(media.media)
 end
 json.speakers @story.speakers do |speaker|
   json.(speaker, :id, :name)

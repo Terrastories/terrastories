@@ -7,7 +7,7 @@ hi:
   place: स्थान
   speakers: वक्ताओं
   speaker: वक्ता
-  stories: कहानियों
+  stories: कहानिया
   story: कहानी
   theme: विषय
   users: उपयोगकर्ताओं
@@ -33,11 +33,11 @@ hi:
   back_to_map: "मानचित्र पर वापस जाएं"
   back_to_welcome: "स्वागत पृष्ठ पर वापस जाएं"
   built_with_love: द्वारा प्यार से निर्मित
-  close: बंद करना
+  close: बंद करे
   community_search:
     title: "एक्सप्लोर करने के लिए एक समुदाय खोजें"
     coming_soon: "यह सुविधा जल्द ही आ रही है। अभी के लिए, कृपया किसी विशिष्ट समुदाय के लिए आमंत्रण का अनुरोध करें।"
-  default: चूक
+  default: डिफाल्ट पृष्ठ
   enter: "वेबसाइट में प्रवेश करें"
   filter_stories: "कहानियों को फ़िल्टर करें"
   forgot_password: "पासवर्ड भूल गए हैं?"
@@ -52,9 +52,9 @@ hi:
   most_recent: "अभी हाल में ही"
   no_media: कोई मीडिया उपलब्ध नहीं
   password: पासवर्ड
-  place_name: "स्थान का नाम उच्चारण"
+  place_name: "स्थान का नाम"
   place_type: "स्थान का प्रकार"
-  region: क्षेत्र
+  region: क्षेत्र या स्थान
   remember_me: "मुझे याद रखें"
   reversed_alphabetical: वर्णमाला क्रम उल्टा (Z-A)
   select_category: "श्रेणी चुनना"
@@ -65,5 +65,5 @@ hi:
   speaker: वक्ता
   topic: विषय
   video_unsupported: क्षमा करें, आपका ब्राउज़र एम्बेड किए गए वीडियो का समर्थन नहीं करता है।
-  welcome: स्वागत हे
-  welcome_back: "फिर से स्वागत"
+  welcome: आपका स्वागत हे
+  welcome_back: "फिर से आपका स्वागत हे"

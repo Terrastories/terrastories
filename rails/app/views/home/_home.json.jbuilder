@@ -4,8 +4,8 @@ json.stories stories do |story|
   json.places story.places
   json.language story.language
   json.media story.media do |media|
-    json.id media.id
-    json.url url_for(media)
+    json.id media.blob_id
+    json.url url_for(media.media)
     json.blob media.blob
   end
   json.speakers story.speakers do |speaker|

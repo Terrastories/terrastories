@@ -9,6 +9,8 @@ class Speaker < ApplicationRecord
 
   validates :name, presence: true
 
+  validates :photo, content_type: [:png, :jpeg, "image/jpg"], size: { less_than_or_equal_to: 5.megabytes }
+
   # photo
   def picture_url
     if photo.attached?

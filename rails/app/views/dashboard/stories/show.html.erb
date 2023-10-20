@@ -87,36 +87,7 @@
 
     <% @story.media.each do |media| %>
       <p class="media">
-        <% if media.image? %>
-          <% if media.variable? %>
-            <%= image_tag(media.variant(resize_to_limit: [400, 400])) %>
-          <% else %>
-            <%= image_tag(media, width: 400) %>
-          <% end %>
-        <% elsif media.video? %>
-          <video
-            controls
-            disablePictureInPicture
-            controlsList="nodownload"
-            id="video-player-<%= media.blob.id %>"
-            poster="<%= url_for(media.preview(resize_to_limit:[400, 400])) if media.previewable? %>"
-          >
-            <source src="<%= url_for(media) %>"/>
-            <%= t("video_unsupported") %>
-          </video>
-        <% elsif media.audio? %>
-          <audio id="audio-player-<%= media.blob.id %>"
-            controls
-            controlsList="nodownload"
-            ref="audio"
-          >
-            <source src="<%= url_for(media) %>" type="<%= media.blob.content_type %>" />
-          </audio>
-        <% elsif media.previewable? %>
-            <%= image_tag(media.preview(resize_to_limit:[150, 150])) %>
-        <% else %>
-          <%= media.filename %>
-        <% end %>
+        <%= render partial: "media", locals: {media: media.media, size: 400} %>
       </p>
     <% end %>
   </div>

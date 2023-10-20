@@ -31,7 +31,9 @@ Rails.application.configure do
   # including the ones that sign and encrypt cookies.
   config.secret_key_base = lambda {
     # Always use configured SECRET_KEY_BASE env var if one is configured
-    if ENV.fetch("SECRET_KEY_BASE", false)
+    # Presence check is to ensure that we don't attempt to set an empty string
+    # as the secret_key_base.
+    if ENV.fetch("SECRET_KEY_BASE", false).present?
       secrets.secret_key_base ||= ENV["SECRET_KEY_BASE"]
     else
       key_file = Rails.root.join("tmp/offline_secret.txt")
@@ -95,8 +97,6 @@ Rails.application.configure do
 
   # Compress CSS using a preproccessor
   # config.assets.css_compressor = :sass
-
-  config.assets.prefix = "/offline-assets"
 
   # Fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
