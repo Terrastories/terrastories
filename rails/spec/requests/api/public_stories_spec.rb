@@ -25,10 +25,10 @@ RSpec.describe "Public Stories Endpoint", type: :request do
     get "/api/communities/cool_community/stories"
 
     expect(response).to have_http_status(:ok)
-    expect(json_response.keys).to contain_exactly("total", "points", "stories")
+    expect(json_response.keys).to contain_exactly("total", "points", "stories", "hasNextPage", "nextPageMeta")
   end
 
-  context "filters" do
+  context "filters and sort" do
     let!(:place_1) { create(:place, community: community, region: "the internet") }
     let!(:place_2) { create(:place, community: community, type_of_place: "online") }
     let!(:speaker_1) { create(:speaker, community: community) }
@@ -42,6 +42,7 @@ RSpec.describe "Public Stories Endpoint", type: :request do
     let!(:story_1) do
       create(
         :story,
+        title: "Zeta",
         community: community,
         places: [place_2],
         speakers: [speaker_1, speaker_2],
@@ -58,6 +59,7 @@ RSpec.describe "Public Stories Endpoint", type: :request do
     let!(:story_2) do
       create(
         :story,
+        title: "Omega",
         community: community,
         topic: "tech",
         places: [place_1],
@@ -74,6 +76,7 @@ RSpec.describe "Public Stories Endpoint", type: :request do
     let!(:story_3) do
       create(
         :story,
+        title: "Alpha",
         community: community,
         topic: "nonprofit work",
         language: "Spanish",
@@ -125,7 +128,60 @@ RSpec.describe "Public Stories Endpoint", type: :request do
 
       expect(json_response["total"]).to eq(2)
       expect(json_response["stories"].map { |s| s["id"] }).to contain_exactly(story_1.id, story_2.id)
+    end
 
+    it "does not include stories without at least one place" do
+      place_1.destroy!
+
+      get "/api/communities/cool_community/stories"
+
+
+      expect(json_response["total"]).to eq(1)
+      expect(json_response["stories"].map { |s| s["id"] }).to contain_exactly(story_1.id)
+    end
+
+    it "does not include stories without at least one speaker" do
+      speaker_2.destroy!
+
+      get "/api/communities/cool_community/stories"
+
+      expect(json_response["total"]).to eq(2)
+      expect(json_response["stories"].map { |s| s["id"] }).to contain_exactly(story_1.id, story_3.id)
+    end
+
+    it "correctly sorts" do
+      # alphabetical
+      get "/api/communities/cool_community/stories", params: {sort_by: "title", sort_dir: "asc"}
+      expect(json_response["stories"].map{ |s| s["title"] }).to eq(
+        ["Alpha", "Omega", "Zeta"]
+      )
+
+      # reverse alphabetical (default: desc)
+      get "/api/communities/cool_community/stories", params: {sort_by: "title"}
+      expect(json_response["stories"].map{ |s| s["title"] }).to eq(
+        ["Zeta", "Omega", "Alpha"]
+      )
+
+      # with filter
+      get "/api/communities/cool_community/stories", params: {sort_by: "title", sort_dir: "asc", region: ["the internet"]}
+      expect(json_response["stories"].map{ |s| s["title"] }).to eq(
+        ["Alpha", "Omega"]
+      )
+    end
+
+    it "correctly paginates with filters" do
+      get "/api/communities/cool_community/stories", params: {limit: 1}
+
+      expect(json_response["total"]).to eq(3)
+      expect(json_response["stories"].count).to eq(1)
+      expect(json_response["hasNextPage"]).to be true
+
+      # filter down to one place
+      get "/api/communities/cool_community/stories", params: {limit: 1, places: [place_2.id]}
+
+      expect(json_response["total"]).to eq(1)
+      expect(json_response["stories"].count).to eq(1)
+      expect(json_response["hasNextPage"]).to be false
     end
   end
 end
