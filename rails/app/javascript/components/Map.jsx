@@ -6,6 +6,9 @@ import Popup from "./Popup";
 import 'mapbox-gl/dist/mapbox-gl.css';
 import 'maplibre-gl/dist/maplibre-gl.css';
 
+import center from '@turf/center'
+import bboxPolygon from '@turf/bbox-polygon'
+
 const STORY_POINTS_LAYER_ID = "ts-points-layer";
 const STORY_POINTS_DATA_SOURCE = "ts-points-data";
 
@@ -92,7 +95,9 @@ export default class Map extends Component {
     ) {
       const { bounds, ...frameOptions } = this.props.framedView;
       if (bounds) {
-        this.map.fitBounds(bounds, { padding: 50, duration: 2000.0, ...frameOptions });
+        const bboxPoly = bboxPolygon(bounds);
+        const centerPoint = center(bboxPoly).geometry.coordinates;
+        this.map.fitBounds(bounds, { center: centerPoint, padding: 50, duration: 2000.0, maxZoom: 12, ...frameOptions });
       } else {
         this.map.easeTo({ duration: 2000.0, ...frameOptions });
       }
@@ -113,62 +118,23 @@ export default class Map extends Component {
     });
 
     this.map.on("load", () => {
-
-      // Add map point data to the map
-      this.addMapPoints();
-
-      // Add mapbox markers to the map
-      this.map.addLayer({
-        id: STORY_POINTS_LAYER_ID,
-        source: STORY_POINTS_DATA_SOURCE,
-        filter: ['!', ['has', 'point_count']], // single point, non-cluster
-        type: "symbol",
-        layout: {
-          "icon-image": "ts-marker",
-          "icon-padding": 0,
-          "icon-allow-overlap": true,
-          "icon-size": 0.75
+      // Load map marker images before adding layers
+      this.map.loadImage(this.props.markerImgUrl, (error, image) => {
+        if (error) throw "Error loading marker images: " + error;
+        if (!this.map.hasImage('ts-marker')) {
+            this.map.addImage('ts-marker', image);
         }
-      });
 
-      // Add clusters for overlapping markers
-      this.map.addLayer({
-        id: 'clusters',
-        source: STORY_POINTS_DATA_SOURCE,
-        filter: ['has', 'point_count'], // multiple points, cluster
-        type: "symbol",
-        layout: {
-          "icon-image": "ts-marker-cluster",
-          "icon-padding": 0,
-          "icon-allow-overlap": true,
-          "icon-size": [ // make cluster size reflect number of points within
-              "interpolate",
-              ["linear"],
-              ['get', 'point_count'],
-              // when number of points in cluster is 2, size will be 0.7 * single point
-              2,
-              0.7,
-              // when number of points in cluster is 10 or more, size will be 0.8 * single point
-              10,
-              0.8
-          ]
-        }
-      });
+        this.map.loadImage(this.props.markerClusterImgUrl, (error, image) => {
+            if (error) throw "Error loading marker images: " + error;
+            if (!this.map.hasImage('ts-marker-cluster')) {
+                this.map.addImage('ts-marker-cluster', image);
+            }
 
-      // Add labels for number of points clustered for overlapping markers
-      this.map.addLayer({
-        id: 'clustercount',
-        source: STORY_POINTS_DATA_SOURCE,
-        filter: ['has', 'point_count'], // multiple points, cluster
-        type: "symbol",
-        layout: {
-          'text-field': '{point_count_abbreviated}',
-          'text-size': 16,
-          'text-offset': [0.2, 0.1]
-          },
-        paint: {
-          'text-color': "#ffffff",
-        }
+            // After images are loaded, add your data and layers:
+            this.addMapPoints();
+            this.addPlaceMarkerLayers();
+        });
       });
 
       // Add 3d terrain DEM layer if activated
@@ -272,15 +238,62 @@ export default class Map extends Component {
       clusterMaxZoom: 14, // max zoom on which to cluster points, default is 14
       clusterRadius: 50 // radius of each cluster when clustering points, default is 50
     });
-    // default Terrastories marker icon
-    this.map.loadImage(this.props.markerImgUrl, (error, image) => {
-      if (error) throw "Error loading marker images: " + error;
-      this.map.addImage('ts-marker', image);
+  }
+
+  addPlaceMarkerLayers() {
+    // Add mapbox markers to the map
+    this.map.addLayer({
+      id: STORY_POINTS_LAYER_ID,
+      source: STORY_POINTS_DATA_SOURCE,
+      filter: ['!', ['has', 'point_count']], // single point, non-cluster
+      type: "symbol",
+      layout: {
+        "icon-image": "ts-marker",
+        "icon-padding": 0,
+        "icon-allow-overlap": true,
+        "icon-size": 0.75
+      }
     });
-    // default Terrastories cluster icon; in the future we will need to think of way to visualize clusters of user-submitted custom icons
-    this.map.loadImage(this.props.markerClusterImgUrl, (error, image) => {
-      if (error) throw "Error loading marker images: " + error;
-      this.map.addImage('ts-marker-cluster', image);
+
+    // Add clusters for overlapping markers
+    this.map.addLayer({
+      id: 'clusters',
+      source: STORY_POINTS_DATA_SOURCE,
+      filter: ['has', 'point_count'], // multiple points, cluster
+      type: "symbol",
+      layout: {
+        "icon-image": "ts-marker-cluster",
+        "icon-padding": 0,
+        "icon-allow-overlap": true,
+        "icon-size": [ // make cluster size reflect number of points within
+            "interpolate",
+            ["linear"],
+            ['get', 'point_count'],
+            // when number of points in cluster is 2, size will be 0.7 * single point
+            2,
+            0.7,
+            // when number of points in cluster is 10 or more, size will be 0.8 * single point
+            10,
+            0.8
+        ]
+      }
+    });
+
+    // Add labels for number of points clustered for overlapping markers
+    this.map.addLayer({
+      id: 'clustercount',
+      source: STORY_POINTS_DATA_SOURCE,
+      filter: ['has', 'point_count'], // multiple points, cluster
+      type: "symbol",
+      layout: {
+        'text-field': '{point_count_abbreviated}',
+        'text-font': ['Open Sans Bold'],
+        'text-size': 16,
+        'text-offset': [0.2, 0.1]
+        },
+      paint: {
+        'text-color': "#ffffff",
+      }
     });
   }
 
