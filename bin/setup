@@ -40,7 +40,7 @@ if [ "$offline" = "y" ] || [ "$offline" = "Y" ]; then
       cp tmp/sprites/* map/sprites
       cp tmp/styles/* map/styles
       rm -rf tmp
-      curl -fsSL "https://bit.ly/39EdYoQ" -o "map/tiles/tiles.mbtiles" --create-dirs
+      curl -fsSL "http://bit.ly/46NxckC" -o "map/tiles/tiles.pmtiles" --create-dirs
       echo -e "...${Green}done!${ColorOff}"
     fi
   fi
