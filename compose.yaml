@@ -34,8 +34,6 @@ services:
       - ./rails:/api
       - ./data/media:/media
       - ./data/import/media:/api/import/media
-      - ./map:/map
-
 
   nginx-proxy:
     profiles:
