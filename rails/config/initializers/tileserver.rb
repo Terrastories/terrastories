@@ -1,8 +1,8 @@
-### Setup for Mapbox Tileservers ###
-# This configures for both online (mapbox-gl) and offline (tileserver-gl)
+### Setup for MapGL services ###
+# This configures for both online (mapbox-gl) and offline (maplibre-gl)
 # however only one configuration is used by the app.
 
-# By default, local tileserver / offline mode is turned off.
+# By default, local map / offline mode is turned off.
 Rails.application.config.offline_mode = false
 
 #######################
@@ -26,9 +26,6 @@ Rails.application.config.default_map_style = ENV["DEFAULT_MAP_STYLE"] || ENV["MA
 
 ########################
 ## Offline Configuration
-# Running in offline mode requires a hosted tileserver
-# While an access token is not required, Mapbox does require a formatted "token"
-# in order to load the JS.
 if Rails.env.offline? || ENV["OFFLINE_MODE"]&.downcase == "yes"
   Rails.application.config.offline_mode = true
 end

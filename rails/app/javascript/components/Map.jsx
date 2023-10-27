@@ -2,9 +2,11 @@ import ReactDOM from "react-dom";
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Popup from "./Popup";
+import { Protocol } from 'pmtiles';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 import 'maplibre-gl/dist/maplibre-gl.css';
+
 
 import center from '@turf/center'
 import bboxPolygon from '@turf/bbox-polygon'
@@ -20,7 +22,8 @@ export default class Map extends Component {
       mapGL: null,
       isMapLibre: false,
       mapModule: null,
-      minimapModule: null
+      minimapModule: null,
+      style: this.props.mapStyle
     };
   }
 
@@ -38,17 +41,28 @@ export default class Map extends Component {
     markerClusterImgUrl: PropTypes.string,
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     if (this.props.useLocalMapServer) {
-      if (!this.state.mapModule) {
-        import('!maplibre-gl').then(module => {
-          this.setState({ mapModule: module.default }, () => {
-            this.initializeMap(this.state.mapModule, true);
-          });
-        });
-      } else {
-        this.initializeMap(this.state.mapModule, true);
+      let style = await fetch(this.props.mapStyle).then(res => res.json());
+
+      if (style.sprite) {
+        style.sprite = window.location.origin + "/" + style.sprite;
       }
+      if (style.glyphs) {
+        style.glyphs = window.location.origin + "/" + style.glyphs;
+      }
+  
+      this.setState({ style }, () => {
+        if (!this.state.mapModule) {
+          import('!maplibre-gl').then(module => {
+            this.setState({ mapModule: module.default }, () => {
+              this.initializeMap(this.state.mapModule, true);
+            });
+          });
+        } else {
+          this.initializeMap(this.state.mapModule, true);
+        }
+      });
     } else {
       if (!this.state.mapModule || !this.state.minimapModule) {
         Promise.all([
@@ -106,9 +120,15 @@ export default class Map extends Component {
 
   initializeMap(mapGL, isMapLibre) {
     mapGL.accessToken = this.props.useLocalMapServer ? 'pk.ey' : this.props.mapboxAccessToken;
+
+    if (isMapLibre) {
+      let protocol = new Protocol();
+      mapGL.addProtocol("pmtiles", protocol.tile);
+    }
+
     this.map = new mapGL.Map({
       container: this.mapContainer,
-      style: this.props.mapStyle,
+      style: this.state.style,
       center: [this.props.centerLong, this.props.centerLat],
       zoom: this.props.zoom,
       maxBounds: this.checkBounds(), // check for bounding box presence

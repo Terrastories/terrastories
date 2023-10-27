@@ -48,7 +48,6 @@ Rails.application.routes.draw do
         post :disable
       end
     end
-
     devise_for :users, :controllers => { registrations: 'registrations' }
     get :profile, to: "profile#edit"
     patch :profile, to: "profile#update"
@@ -65,4 +64,6 @@ Rails.application.routes.draw do
       resource :account, controller: :account, only: [:show, :create], as: :admin_account
     end
   end
+
+  get 'map/*path', to: 'map#serve', format: false
 end

@@ -64,7 +64,11 @@ yarn-debug.log*
 yarn-debug.log*
 .yarn-integrity
 
-# tileserver config
-tileserver/data/mbtiles/*.mbtiles
-tileserver/data/styles/*.json
-tileserver/data/sprites/*
+# map config
+map/tiles/*.pmtiles
+!/map/tiles/.keep
+map/*.json
+map/fonts/*
+!/map/fonts/.keep
+map/sprites/*
+!/map/sprites/.keep

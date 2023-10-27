@@ -34,6 +34,8 @@ services:
       - ./rails:/api
       - ./data/media:/media
       - ./data/import/media:/api/import/media
+      - ./map:/map
+
 
   nginx-proxy:
     profiles:
@@ -70,6 +72,7 @@ services:
       - ./rails:/api
       - ./data/media:/media
       - ./data/import/media:/api/import/media
+      - ./map:/map
     environment:
       - RAILS_ENV=${RAILS_ENV-offline}
       - PORT=3030
@@ -78,27 +81,7 @@ services:
       - VIRTUAL_PATH=/
       - CHOKIDAR_USEPOLLING=true
       - USE_LOCAL_MAP_SERVER=true
-      - OFFLINE_MAP_STYLE=/tileserver/styles/terrastories-map/style.json
-
-  tileserver:
-    profiles:
-      - offline
-    restart: unless-stopped
-    image: maptiler/tileserver-gl
-    command: "--port 8080 --public_url http://${HOST_HOSTNAME-terrastories.local}/tileserver/"
-    ports:
-      - 8080:8080
-    expose:
-      - "8080"
-    env_file:
-      - .env
-    volumes:
-      - ./tileserver/data:/data
-    environment:
-      - VIRTUAL_HOST=terrastories.local,${HOST_HOSTNAME-terrastories.local}
-      - VIRTUAL_PATH=/tileserver/
-      - VIRTUAL_DEST=/
-      - VIRTUAL_PORT=8080
+      - OFFLINE_MAP_STYLE=/map/style.json
 
 volumes:
   postgres_data:

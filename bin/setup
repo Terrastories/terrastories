@@ -22,25 +22,25 @@ if [ "$offline" = "y" ] || [ "$offline" = "Y" ]; then
   container="localweb"
   profile="offline"
 
-  if [ ! -f tileserver/data/styles/style.json ]; then
+  if [ ! -f map/style.json ]; then
     echo
-    echo -e "${Purple}==> Configure Local Tileserver${ColorOff}"
-    echo "A local Tileserver is required to run offline. You can use the"
+    echo -e "${Purple}==> Configure Local Map${ColorOff}"
+    echo "Local map assets are required to run offline. You can use the"
     echo "Terrastories default offline map tiles, or you can generate your own."
     echo
 
-    read -p "Use default offline map tiles? This will overwrite any files already in tileserver/data [y/n] " default
+    read -p "Use default offline map tiles? This will overwrite any files already in map/ [y/n] " default
     if [ "$default" = "y" ] || [ "$default" = "Y" ]; then
       echo
       printf "Downloading and configuring default offline tiles..."
       if [ ! -f tmp ]; then
         git clone --quiet "https://github.com/Terrastories/default-offline-map/" tmp
       fi
-      cp -r tmp/fonts/* tileserver/data/fonts
-      cp tmp/sprites/* tileserver/data/sprites
-      cp tmp/styles/* tileserver/data/styles
+      cp -r tmp/fonts/* map/fonts
+      cp tmp/sprites/* map/sprites
+      cp tmp/styles/* map/styles
       rm -rf tmp
-      curl -fsSL "https://bit.ly/39EdYoQ" -o "tileserver/data/mbtiles/tiles.mbtiles" --create-dirs
+      curl -fsSL "https://bit.ly/39EdYoQ" -o "map/tiles/tiles.mbtiles" --create-dirs
       echo -e "...${Green}done!${ColorOff}"
     fi
   fi
