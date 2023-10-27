@@ -29,18 +29,18 @@ if [ "$offline" = "y" ] || [ "$offline" = "Y" ]; then
     echo "Terrastories default offline map tiles, or you can generate your own."
     echo
 
-    read -p "Use default offline map tiles? This will overwrite any files already in map/ [y/n] " default
+    read -p "Use default offline map tiles? This will overwrite any files already in ./map/ [y/n] " default
     if [ "$default" = "y" ] || [ "$default" = "Y" ]; then
       echo
       printf "Downloading and configuring default offline tiles..."
       if [ ! -f tmp ]; then
-        git clone --quiet "https://github.com/Terrastories/default-offline-map/" tmp
+        git clone --quiet -b pmtiles "https://github.com/Terrastories/default-offline-map" tmp
       fi
       cp -r tmp/fonts/* map/fonts
       cp tmp/sprites/* map/sprites
-      cp tmp/styles/* map/styles
+      cp tmp/style.json map/style.json
       rm -rf tmp
-      curl -fsSL "http://bit.ly/46NxckC" -o "map/tiles/tiles.pmtiles" --create-dirs
+      curl -fsSL "https://bit.ly/45LGigh" -o "map/tiles/tiles.pmtiles" --create-dirs
       echo -e "...${Green}done!${ColorOff}"
     fi
   fi
