@@ -65,10 +65,10 @@ yarn-debug.log*
 .yarn-integrity
 
 # map config
-map/tiles/*.pmtiles
-!/map/tiles/.keep
 map/*.json
 map/fonts/*
 !/map/fonts/.keep
 map/sprites/*
 !/map/sprites/.keep
+map/tiles/*
+!/map/tiles/.keep
