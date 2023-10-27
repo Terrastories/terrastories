@@ -41,27 +41,29 @@ export default class Map extends Component {
     markerClusterImgUrl: PropTypes.string,
   };
 
-  async componentDidMount() {
+  componentDidMount() {
     if (this.props.useLocalMapServer) {
-      let style = await fetch(this.props.mapStyle).then(res => res.json());
-
-      if (style.sprite) {
-        style.sprite = window.location.origin + "/" + style.sprite;
-      }
-      if (style.glyphs) {
-        style.glyphs = window.location.origin + "/" + style.glyphs;
-      }
-  
-      this.setState({ style }, () => {
-        if (!this.state.mapModule) {
-          import('!maplibre-gl').then(module => {
-            this.setState({ mapModule: module.default }, () => {
-              this.initializeMap(this.state.mapModule, true);
-            });
-          });
-        } else {
-          this.initializeMap(this.state.mapModule, true);
+      fetch(this.props.mapStyle)
+      .then(res => res.json())
+      .then(style => {
+        if (style.sprite) {
+          style.sprite = window.location.origin + "/" + style.sprite;
         }
+        if (style.glyphs) {
+          style.glyphs = window.location.origin + "/" + style.glyphs;
+        }
+    
+        this.setState({ style }, () => {
+          if (!this.state.mapModule) {
+            import('!maplibre-gl').then(module => {
+              this.setState({ mapModule: module.default }, () => {
+                this.initializeMap(this.state.mapModule, true);
+              });
+            });
+          } else {
+            this.initializeMap(this.state.mapModule, true);
+          }
+        });
       });
     } else {
       if (!this.state.mapModule || !this.state.minimapModule) {
