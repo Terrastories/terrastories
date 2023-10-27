@@ -14,7 +14,7 @@
   <%= f.date_field :birthdate %>
 
   <%= f.label :birthplace_id %>
-  <%= f.collection_select :birthplace_id, current_community.places, :id, :name %>
+  <%= f.collection_select :birthplace_id, current_community.places, :id, :name, include_blank: true %>
 
   <%= f.label :story_ids %>
   <div class="checklist">
