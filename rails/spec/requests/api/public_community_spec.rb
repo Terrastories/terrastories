@@ -3,10 +3,6 @@ require 'rails_helper'
 RSpec.describe "Public Community (show) Endpoint", type: :request do
   let!(:public_community) { FactoryBot.create(:public_community, name: "Cool Community") }
 
-  def json_response
-    JSON.parse(response.body)
-  end
-
   it "returns 404 when community can't be found" do
     get "/api/communities/unknown"
 

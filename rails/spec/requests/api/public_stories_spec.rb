@@ -3,10 +3,6 @@ require "rails_helper"
 RSpec.describe "Public Stories Endpoint", type: :request do
   let!(:community) { FactoryBot.create(:public_community, name: "Cool Community") }
 
-  def json_response
-    JSON.parse(response.body)
-  end
-
   it "returns 404 when community can't be found" do
     get "/api/communities/unknown/stories"
 
@@ -25,7 +21,8 @@ RSpec.describe "Public Stories Endpoint", type: :request do
     get "/api/communities/cool_community/stories"
 
     expect(response).to have_http_status(:ok)
-    expect(json_response.keys).to contain_exactly("total", "points", "stories", "hasNextPage", "nextPageMeta")
+    expect(json_response.keys).to contain_exactly("points", "stories")
+    expect(json_meta.keys).to contain_exactly("total", "hasNextPage", "nextPageMeta")
   end
 
   context "filters and sort" do
@@ -90,43 +87,43 @@ RSpec.describe "Public Stories Endpoint", type: :request do
       # filter by place (id / name)
       get "/api/communities/cool_community/stories", params: {places: [place_2.id]}
 
-      expect(json_response["total"]).to eq(1)
+      expect(json_meta["total"]).to eq(1)
       expect(json_response["stories"].map { |s| s["id"] }).to contain_exactly(story_1.id)
 
       # filter by region
       get "/api/communities/cool_community/stories", params: {region: ["the internet"]}
 
-      expect(json_response["total"]).to eq(2)
+      expect(json_meta["total"]).to eq(2)
       expect(json_response["stories"].map { |s| s["id"] }).to contain_exactly(story_2.id, story_3.id)
 
       # filter by type of place
       get "/api/communities/cool_community/stories", params: {type_of_place: ["online"]}
 
-      expect(json_response["total"]).to eq(1)
+      expect(json_meta["total"]).to eq(1)
       expect(json_response["stories"].map { |s| s["id"] }).to contain_exactly(story_1.id)
 
       # filter by topic
       get "/api/communities/cool_community/stories", params: {topic: ["nonprofit work", "tech"]}
 
-      expect(json_response["total"]).to eq(2)
+      expect(json_meta["total"]).to eq(2)
       expect(json_response["stories"].map { |s| s["id"] }).to contain_exactly(story_2.id, story_3.id)
 
       # filter by language
       get "/api/communities/cool_community/stories", params: {language: ["Spanish", "Other"]}
 
-      expect(json_response["total"]).to eq(1)
+      expect(json_meta["total"]).to eq(1)
       expect(json_response["stories"].map { |s| s["id"] }).to contain_exactly(story_3.id)
 
       # filter by speaker
       get "/api/communities/cool_community/stories", params: {speakers: [speaker_1.id, speaker_2.id]}
 
-      expect(json_response["total"]).to eq(3)
+      expect(json_meta["total"]).to eq(3)
       expect(json_response["stories"].map { |s| s["id"] }).to contain_exactly(story_1.id, story_2.id, story_3.id)
 
       # filter by speaker community
       get "/api/communities/cool_community/stories", params: {speaker_community: ["ruby for good"]}
 
-      expect(json_response["total"]).to eq(2)
+      expect(json_meta["total"]).to eq(2)
       expect(json_response["stories"].map { |s| s["id"] }).to contain_exactly(story_1.id, story_2.id)
     end
 
@@ -136,7 +133,7 @@ RSpec.describe "Public Stories Endpoint", type: :request do
       get "/api/communities/cool_community/stories"
 
 
-      expect(json_response["total"]).to eq(1)
+      expect(json_meta["total"]).to eq(1)
       expect(json_response["stories"].map { |s| s["id"] }).to contain_exactly(story_1.id)
     end
 
@@ -145,7 +142,7 @@ RSpec.describe "Public Stories Endpoint", type: :request do
 
       get "/api/communities/cool_community/stories"
 
-      expect(json_response["total"]).to eq(2)
+      expect(json_meta["total"]).to eq(2)
       expect(json_response["stories"].map { |s| s["id"] }).to contain_exactly(story_1.id, story_3.id)
     end
 
@@ -172,16 +169,16 @@ RSpec.describe "Public Stories Endpoint", type: :request do
     it "correctly paginates with filters" do
       get "/api/communities/cool_community/stories", params: {limit: 1}
 
-      expect(json_response["total"]).to eq(3)
+      expect(json_meta["total"]).to eq(3)
       expect(json_response["stories"].count).to eq(1)
-      expect(json_response["hasNextPage"]).to be true
+      expect(json_meta["hasNextPage"]).to be true
 
       # filter down to one place
       get "/api/communities/cool_community/stories", params: {limit: 1, places: [place_2.id]}
 
-      expect(json_response["total"]).to eq(1)
+      expect(json_meta["total"]).to eq(1)
       expect(json_response["stories"].count).to eq(1)
-      expect(json_response["hasNextPage"]).to be false
+      expect(json_meta["hasNextPage"]).to be false
     end
   end
 end

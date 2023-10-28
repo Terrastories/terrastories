@@ -24,11 +24,6 @@ RSpec.describe "Public Place Endpoint", type: :request do
     )
   end
 
-
-  def json_response
-    JSON.parse(response.body)
-  end
-
   it "returns a 404 not found if community is not found" do
     get "/api/communities/unknown/places/123"
 
