@@ -30,7 +30,7 @@ Setup instructions for Docker: https://docs.docker.com/engine/install/
 
     Navigate back to the `.env` file you created and replace where it says `pk.set-your-key-here` (after `DEFAULT_MAPBOX_TOKEN=`) with your mapbox access token. 
 
-    *Note: if you are developing for offline (e.g. using TileServer-GL to serve tiles, you will not need to provide a Mapbox access token.*
+    *Note: if you are developing for offline (e.g. using Maplibre-GL to render a self-hosted map, you will not need to provide a Mapbox access token.*
 
 ## Build the application using our script (option 1)
 
