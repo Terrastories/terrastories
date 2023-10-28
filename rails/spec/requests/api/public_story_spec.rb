@@ -20,10 +20,6 @@ RSpec.describe "Public Story Detail Endpoint", type: :request do
     )
   end
 
-  def json_response
-    JSON.parse(response.body)
-  end
-
   it "returns 404 when community can't be found" do
     get "/api/communities/unknown/stories/123"
 

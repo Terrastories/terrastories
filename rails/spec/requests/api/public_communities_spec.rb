@@ -4,10 +4,6 @@ RSpec.describe "Public Communities Endpoint", type: :request do
   let!(:public_community) { FactoryBot.create(:public_community, name: "Cool Community") }
   let!(:community) { FactoryBot.create(:community, name: "Private Community") }
 
-  def json_response
-    JSON.parse(response.body)
-  end
-
   it "returns an array of public communities" do
     get "/api/communities"
 

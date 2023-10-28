@@ -1,3 +1,4 @@
+envelope(json) do
 json.(@story, :id, :title, :desc, :topic, :language)
 json.media @story.media do |media|
   json.contentType media.content_type
@@ -46,3 +47,4 @@ json.places @story.places do |place|
 end
 
 json.points @story.public_points
+end
