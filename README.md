@@ -55,7 +55,7 @@ Download and install [Docker](https://www.docker.com/products/docker-desktop/) f
 
 If you plan on running Terrastories offline, you'll need to configure local tiles for offline use.
 
-A default, open-license map for using offline with Terrastories is available at https://github.com/terrastories/default-offline/tiles. You will have the option of downloading these using the setup script below. Alternatively, you can manually download these files and place them in the `tileserver/data` directory, and they should work when you load Terrastories in Field Kit mode.
+A default, open-license map for using offline with Terrastories is available at https://github.com/terrastories/default-offline-tiles. You will have the option of downloading these using the setup script below. Alternatively, you can manually download these files and place them in the `tileserver/data` directory, and they should work when you load Terrastories in Field Kit mode.
 
 ### Setup
 
