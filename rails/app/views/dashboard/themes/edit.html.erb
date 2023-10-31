@@ -171,14 +171,16 @@ const pitchValue = themeForm.querySelector("#pitchValue");
 const bearingInput = themeForm.querySelector("#theme_bearing");
 const bearingValue = themeForm.querySelector("#bearingValue");
 
-const themeMap = new mapboxgl.Map({
+const mapgl = Terrastories.map_utils.mapGL(<%= @theme.offline_mode? %>, "<%= @theme.map_tiles %>")
+
+const themeMap = new mapgl.Map({
   accessToken: "<%= @theme.mapbox_token %>",
   container: "themeMap", // container ID
   center: <%= [@theme.center_long, @theme.center_lat] %>, // starting position [lng, lat]
   zoom: <%= @theme.zoom  || 0 %>, // starting zoom
   pitch: <%= @theme.pitch  || 0 %>, // starting pitch
   bearing: <%= @theme.bearing  || 0 %>, // starting bearing
-  style: "<%= @theme.mapbox_style %>", // style URL or style object
+  style: Terrastories.map_utils.mapStyleLayers("<%= @theme.map_style %>"), // style URL or style object
   projection: "<%= @theme.map_projection %>",
   hash: false,
   cooperativeGestures: true
@@ -211,7 +213,7 @@ themeMap.on("pitchend", (e) => {
   bearingInput.value = e.target.getBearing();
 });
 
-const nav = new mapboxgl.NavigationControl({
+const nav = new mapgl.NavigationControl({
   visualizePitch: true
 });
 themeMap.addControl(nav, "top-right");

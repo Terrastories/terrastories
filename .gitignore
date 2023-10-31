@@ -1,4 +1,5 @@
 .env
+.env.api
 *.rbc
 capybara-*.html
 /log
@@ -68,3 +69,7 @@ yarn-debug.log*
 tileserver/data/mbtiles/*.mbtiles
 tileserver/data/styles/*.json
 tileserver/data/sprites/*
+
+# map config
+map/**/*
+!map/README.md

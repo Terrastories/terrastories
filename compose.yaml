@@ -16,17 +16,21 @@ services:
       - postgres_data:/var/lib/postgresql/data
 
   web:
-    profiles:
-      - dev
-    extends:
-      file: common-app.yaml
-      service: rails
+    image: terrastories/devcore:latest
+    env_file:
+      - .env
+    command: scripts/server
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
     depends_on:
       - db
     ports:
-      - 3000:3000
-      - 3035:3035
+      - 80:3000   # Intended for use with HOST_HOSTNAME set
+      - 3000:3000 # Standard Rails development
+      - 3035:3035 # For Shakapacker/Webpack development server
     expose:
+      - "80"
       - "3000"
       - "3035"
     environment:

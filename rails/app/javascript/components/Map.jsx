@@ -2,6 +2,7 @@ import ReactDOM from "react-dom";
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Popup from "./Popup";
+import { Protocol, PMTiles } from 'pmtiles';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 import 'maplibre-gl/dist/maplibre-gl.css';
@@ -30,6 +31,7 @@ export default class Map extends Component {
     framedView: PropTypes.object,
     onMapPointClick: PropTypes.func,
     mapStyle: PropTypes.string,
+    mapTiles: PropTypes.string,
     mapboxAccessToken: PropTypes.string,
     mapbox3d: PropTypes.bool,
     mapProjection: PropTypes.string,
@@ -105,7 +107,18 @@ export default class Map extends Component {
   }
 
   initializeMap(mapGL, isMapLibre) {
-    mapGL.accessToken = this.props.useLocalMapServer ? 'pk.ey' : this.props.mapboxAccessToken;
+    if (!isMapLibre) {
+      mapGL.accessToken =this.props.mapboxAccessToken;
+    }
+
+    if (isMapLibre && this.props.mapTiles) {
+      let protocol = new Protocol()
+      mapGL.addProtocol("pmtiles", protocol.tile)
+
+      const p = new PMTiles(this.props.mapTiles)
+      protocol.add(p)
+    }
+
     this.map = new mapGL.Map({
       container: this.mapContainer,
       style: this.props.mapStyle,
@@ -287,7 +300,7 @@ export default class Map extends Component {
       type: "symbol",
       layout: {
         'text-field': '{point_count_abbreviated}',
-        'text-font': ['Open Sans Bold'],
+        'text-font': ['Roboto'],
         'text-size': 16,
         'text-offset': [0.2, 0.1]
         },

@@ -1,7 +1,21 @@
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
+  cors = ENV.fetch("CORS_ORIGINS", "").split(",")
+
+  # This ensures that Explore can access TS locally when running with a custom hostname
+  if ENV["HOST_HOSTNAME"]
+    cors << ENV["HOST_HOSTNAME"]
+    cors << ENV["HOST_HOSTNAME"] + ":1080"
+  end
+
   allow do
-    origins ENV.fetch("CORS_ORIGINS", "").split(",").map { |origin| origin[0] == "\\" ? Regexp.new(origin) : origin }
+    origins cors.map { |origin| origin[0] == "\\" ? Regexp.new(origin) : origin }
     resource '/api/*', headers: :any, methods: [:get]
     resource '/rails/active_storage/*', headers: :any, methods: [:get]
+  end
+
+  # Allow any origins to access our maps
+  allow do
+    origins '*'
+    resource '/map/*', headers: :any, methods: :get
   end
 end

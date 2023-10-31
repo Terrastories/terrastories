@@ -3,25 +3,36 @@ import layers from "protomaps-themes-base"
 import maplibregl from "maplibre-gl"
 import mapboxgl from "mapbox-gl"
 
-export function mapStyleLayers(mapStyle) {
-  if (mapStyle.indexOf("mapbox://") === 1) return mapStyle
+export function mapStyleLayers(mapStyle, theme = "contrast") {
+  // For custom map styles from Mapbox, Tileserver, or PMtiles that
+  // aren't supplied from Protomaps directly, return as-is.
+  if (!mapStyle.includes("api.protomaps.com")) return mapStyle
+
+  // Protomaps Free API
   const style = {
     version: 8,
     sources: {},
     layers: []
   }
-  if (mapStyle.indexOf("api.protomaps.com")) {
-    style.sources = {
-      protomaps: {
-        type: "vector",
-        attribution: "Protomaps",
-        url: mapStyle
-      }
-    }
 
-    style.layers = layers("protomaps", "contrast")
-    style.glyphs = "https://cdn.protomaps.com/fonts/pbf/{fontstack}/{range}.pbf"
+  style.sources = {
+    protomaps: {
+      type: "vector",
+      attribution: '<a href="https://protomaps.com">Protomaps</a> © <a href="https://openstreetmap.org">OpenStreetMap</a>',
+      url: mapStyle
+    }
   }
+
+  style.layers = JSON.parse(
+    JSON.stringify(layers("protomaps", theme))
+      // Protomaps fonts are in flux, and until they settle or provide a
+      // similar set of fonts as Open Map Tiles, replace with our standard.
+      .replace(/Roboto Regular/g, "Open Sans Regular")
+      .replace(/Roboto Medium/g, "Open Sans Semibold")
+      .replace(/Noto Sans/g, "Open Sans")
+    )
+  style.glyphs = "https://fonts.openmaptiles.org/{fontstack}/{range}.pbf"
+
   return style
 }
 

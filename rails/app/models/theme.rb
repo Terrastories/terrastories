@@ -34,20 +34,26 @@ class Theme < ApplicationRecord
     if mapbox_access_token.present? && !offline_mode?
       mapbox_access_token
     else
-      Rails.application.config.default_mapbox_token
+      map_config.mapbox_token
     end
   end
 
-  def mapbox_style
+  def map_tiles
+    if Rails.application.config.use_protomaps
+      map_config.tiles
+    end
+  end
+
+  def map_style
     if mapbox_style_url.present? && !offline_mode?
       mapbox_style_url
     else
-      Rails.application.config.default_map_style
+      map_config.map_style
     end
   end
 
   def offline_mode?
-    Rails.application.config.offline_mode
+    Rails.application.config.offline_mode || Rails.application.config.use_maplibre
   end
 
   def all_boundaries_nil?
@@ -55,6 +61,10 @@ class Theme < ApplicationRecord
   end
 
   private
+
+  def map_config
+    @_map_config ||= Rails.application.config.x.map_config
+  end
 
   # validate bounding box if all four values are nil OR if all four values are numeric & in the proper range
   def map_bounds

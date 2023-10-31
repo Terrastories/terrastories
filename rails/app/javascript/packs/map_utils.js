@@ -1,6 +1,6 @@
 import { mapGL, mapStyleLayers } from "../global/protomaps"
 
-export default {
+export {
   mapGL,
   mapStyleLayers,
 }

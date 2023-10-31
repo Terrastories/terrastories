@@ -26,7 +26,7 @@ envelope(json) do
 
   json.mapConfig do
     json.mapboxAccessToken @community.theme.mapbox_access_token
-    json.mapboxStyle @community.theme.mapbox_style
+    json.mapboxStyle @community.theme.map_style
     json.mapbox3dEnabled @community.theme.mapbox_3d
     json.mapProjection @community.theme.map_projection
 

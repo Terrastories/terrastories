@@ -94,12 +94,12 @@
 </div>
 
 <script>
-const staticMap = new mapboxgl.Map({
+const mapgl = Terrastories.map_utils.mapGL(<%= current_community.theme.offline_mode? %>, "<%= current_community.theme.map_tiles %>" )
+const staticMap = new mapgl.Map({
   accessToken: "<%= current_community.theme.mapbox_token %>",
   container: "static-map", // container ID
   center: <%= @story.geo_center %>,
-  zoom: 8, // starting zoom
-  style: "<%= current_community.theme.mapbox_style %>", // style URL or style object
+  style: Terrastories.map_utils.mapStyleLayers("<%= current_community.theme.map_style %>"), // style URL or style object
   interactive: false // don't allow map movement
 });
 
@@ -110,11 +110,20 @@ staticMap.on("load", () => {
   });
 
   staticMap.addLayer({
+    type: "circle",
+    id: "circle-point",
+    source: "points",
+    paint: {
+        "circle-color": "#09697e",
+        "circle-radius": 12
+    }
+  })
+
+  staticMap.addLayer({
     type: "symbol",
-    id: "points",
+    id: "circle-label",
     source: "points",
     layout: {
-      "icon-image": "rectangle-blue-2",
       "icon-text-fit": "height",
       "icon-text-fit-padding": [1,2,1,2],
       "text-field": "{marker-symbol}",
