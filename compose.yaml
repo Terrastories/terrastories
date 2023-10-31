@@ -25,8 +25,10 @@ services:
       - db
     ports:
       - 3000:3000
+      - 3035:3035
     expose:
       - "3000"
+      - "3035"
     environment:
       - CHECK_BUNDLER=yes
       - RAILS_ENV=development
@@ -52,7 +54,6 @@ services:
       - ./rails:/api
       - ./data/media:/media
       - ./data/import/media:/api/import/media
-      - ./map:/api/public/map:ro
 
   nginx-proxy:
     profiles:
