@@ -18,6 +18,7 @@ services:
   web:
     image: terrastories/devcore:latest
     env_file:
+      - .env.api
       - .env
     command: scripts/server
     restart: unless-stopped
@@ -35,7 +36,7 @@ services:
       - "3035"
     environment:
       - CHECK_BUNDLER=yes
-      - RAILS_ENV=development
+      - RAILS_ENV=${RAILS_ENV-development}
     volumes:
       - bundler:/usr/local/bundle
       - ./rails:/api
