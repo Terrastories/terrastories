@@ -300,7 +300,7 @@ export default class Map extends Component {
       type: "symbol",
       layout: {
         'text-field': '{point_count_abbreviated}',
-        'text-font': ['Roboto'],
+        'text-font': ['Open Sans Bold'],
         'text-size': 16,
         'text-offset': [0.2, 0.1]
         },
