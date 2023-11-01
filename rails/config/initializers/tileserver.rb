@@ -28,12 +28,12 @@ if ENV["USE_PROTOMAPS"] && !ENV["TILESERVER_URL"].present?
     # and appropriate glyphs and sprites.
     Rails.application.config.x.map_config.tiles =  ENV["PMTILES_URL"]
     Rails.application.config.x.map_config.map_style =  ENV["STYLE_JSON_URL"]
+  elsif Rails.env.offline?
+    protocol, host, port = Rails.application.routes.default_url_options.values_at(:protocol, :host, :port)
+    Rails.application.config.x.map_config.tiles = "#{protocol ? protocol : 'http'}://#{host}#{port ? ":#{port}" : ''}/map/#{ENV.fetch("OFFLINE_MAP_STYLE", "terrastories-map")}/tiles.pmtiles"
+    Rails.application.config.x.map_config.map_style = "#{protocol ? protocol : 'http'}://#{host}#{port ? ":#{port}" : ''}/map/#{ENV.fetch("OFFLINE_MAP_STYLE", "terrastories-map")}/style.json"
   else
-    # Non-production environments can read from OFFLINE_MAP_STYLE
-    # with configured Docker volume
-    # protocol, host, port = Rails.application.routes.default_url_options.values_at(:protocol, :host, :port)
-    # Rails.application.config.x.map_config.tiles = "#{protocol ? protocol : 'http'}://#{host}#{port ? ":#{port}" : ''}/map/#{ENV.fetch("OFFLINE_MAP_STYLE", "terrastories-default")}/tiles.pmtiles"
-    # Rails.application.config.x.map_config.map_style = "#{protocol ? protocol : 'http'}://#{host}#{port ? ":#{port}" : ''}/map/#{ENV.fetch("OFFLINE_MAP_STYLE", "terrastories-default")}/style.json"
+    # Development environments read by localhost:3000
     Rails.application.config.x.map_config.tiles = "http://localhost:3000/map/#{ENV.fetch("OFFLINE_MAP_STYLE", "terrastories-default")}/tiles.pmtiles"
     Rails.application.config.x.map_config.map_style = "http://localhost:3000/map/#{ENV.fetch("OFFLINE_MAP_STYLE", "terrastories-default")}/style.json"
   end
