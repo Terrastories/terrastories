@@ -46,7 +46,7 @@ FROM devcore as builder
 COPY . /api
 
 # So we can build assets for prod with dev dependencies
-RUN bundle exec rake assets:precompile
+RUN bin/rake assets:precompile
 
 # == Final Production Image
 #
