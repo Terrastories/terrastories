@@ -30,7 +30,7 @@ else
   echo "Oops. It looks like you've already setup Terrastories."
   echo "You can re-run setup, or run bin/update to update your instance."
   echo
-  read -p "Are you sure you want to re-reun setup? (y/n) " rerun
+  read -p "Are you sure you want to re-run setup? (y/n) " rerun
 
   if [ "$rerun" = "Y" ] || [ "$rerun" = "y" ]; then
     shouldRun=true
@@ -87,7 +87,7 @@ NETWORK
   )" addhosts
 
 hostname=$(hostname)
-if [ $addhosts -eq 2 ]; then
+if [ -z "$addhosts" ] || [ $addhosts -eq 2 ]; then
   unset hostname
 else
   echo
@@ -146,27 +146,28 @@ fi
 
 # Enable HOST_HOSTNAME
 if [ ! -z ${hostname-} ]; then
-  echo "$hostname"
   grep -v "HOST_HOSTNAME" .env > .envnew; mv .envnew .env
   echo "HOST_HOSTNAME=$hostname" >> .env
 fi
 
 # Download default .pmtiles
 if [ ! -f map/terrastories-default/tiles.pmtiles ]; then
+  ohai Downloading default map tiles…
   git clone --quiet "https://github.com/Terrastories/default-offline-map/" map/terrastories-default
   curl -fsSL "https://bit.ly/45LGigh" -o "map/terrastories-default/tiles.pmtiles" --create-dirs
 fi
 
 # Run Setup
-ohai Getting the latest Terrastories image
+ohai Getting the latest Terrastories image…
 docker compose up -d
 
-ohai Installing Dependencies
-docker compose exec web bundle check || bundle install
-docker compose exec web yarn
+ohai Installing Dependencies…
+docker compose run --rm web bundle install
+docker compose run --rm web yarn
 
 ohai Setting up your database
-docker compose exec web bin/rails db:prepare
+docker compose run --rm web bin/rails db:prepare
+docker compose run --rm web bin/rails db:seed
 
 ohai Finishing up…
 docker compose stop
