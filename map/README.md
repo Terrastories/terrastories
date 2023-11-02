@@ -13,7 +13,7 @@ For running environments that have local access to `localhost`, we provide a pre
 If you wish to utilize the local .pmtiles, update the `.env` to:
 
 1. Stop any running containers: `docker compose stop`
-1. Comment out the `TILESERVER_URL`
+1. Comment out the `TILESERVER_URL` and add a Protomaps API key (free to obtain).
 1. Uncomment `USE_PROTOMAPS`
 1. Uncomment `OFFLINE_MAPSTYLE`, leaving the default value `terrastories-default`
 1. Save the file.
