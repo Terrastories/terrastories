@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Popup from "./Popup";
 import { Protocol, PMTiles } from 'pmtiles';
+import { mapStyleLayers } from '../global/protomaps';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 import 'maplibre-gl/dist/maplibre-gl.css';
@@ -121,7 +122,7 @@ export default class Map extends Component {
 
     this.map = new mapGL.Map({
       container: this.mapContainer,
-      style: this.props.mapStyle,
+      style: mapStyleLayers(this.props.mapStyle),
       center: [this.props.centerLong, this.props.centerLat],
       zoom: this.props.zoom,
       maxBounds: this.checkBounds(), // check for bounding box presence
