@@ -26,7 +26,8 @@ RUN apk --no-cache add --update \
     libxslt-dev \
     libc6-compat \
     imagemagick \
-    ffmpeg && \
+    ffmpeg \
+    poppler && \
     gem update --system --no-document && \
     gem install bundler --no-document --force
 
@@ -68,7 +69,8 @@ RUN apk --no-cache add \
     libxslt \
     libc6-compat \
     imagemagick \
-    ffmpeg && \
+    ffmpeg \
+    poppler && \
     gem update --system --no-document && \
     gem install bundler --no-document --force
 

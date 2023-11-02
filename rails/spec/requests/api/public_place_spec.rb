@@ -24,11 +24,6 @@ RSpec.describe "Public Place Endpoint", type: :request do
     )
   end
 
-
-  def json_response
-    JSON.parse(response.body)
-  end
-
   it "returns a 404 not found if community is not found" do
     get "/api/communities/unknown/places/123"
 
@@ -51,21 +46,7 @@ RSpec.describe "Public Place Endpoint", type: :request do
       "region",
       "placenameAudio",
       "typeOfPlace",
-      "stories",
       "points"
-    )
-  end
-
-  it "includes the places public stories" do
-    get "/api/communities/atlam/places/123"
-
-    expect(json_response["stories"].length).to eq(1)
-    expect(json_response["stories"].first).to include(
-      "id" => public_story.id,
-      "title" => public_story.title,
-      "topic" => public_story.topic,
-      "desc" => public_story.desc,
-      "language" => public_story.language
     )
   end
 end

@@ -6,7 +6,7 @@ class Story < ApplicationRecord
 
   has_many :media, inverse_of: :story
 
-  has_and_belongs_to_many :places
+  has_and_belongs_to_many :places, -> { with_valid_coordinates }
   belongs_to :community, touch: true
   belongs_to :interview_location, class_name: "Place", foreign_key: "interview_location_id", optional: true
   belongs_to :interviewer, class_name: "Speaker", foreign_key: "interviewer_id", optional: true
@@ -24,6 +24,18 @@ class Story < ApplicationRecord
 
       registry == "application" ? kind : registry
     end.uniq
+  end
+
+  def media_preview_thumbnail
+    previewable_media = media.find { |m| m.representable? }
+
+    return unless previewable_media
+
+    Rails.application.routes.url_helpers.rails_representation_url(
+      previewable_media.media.representation(resize_to_limit: [200, 200]).processed
+    )
+  rescue ActiveStorage::Error
+    nil
   end
 
   def self.export_sample_csv

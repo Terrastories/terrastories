@@ -24,7 +24,7 @@ module Dashboard
       @story = community_stories.new(story_params.except(:media))
 
       if @story.save
-        story_params[:media].each do |media|
+        story_params[:media]&.each do |media|
           m = @story.media.create(media: media)
         end
         redirect_to @story
@@ -66,7 +66,7 @@ module Dashboard
 
         render :edit
       elsif @story.update(story_params.except(:media))
-        story_params[:media].each do |media|
+        story_params[:media]&.each do |media|
           m = @story.media.create(media: media)
         end
 

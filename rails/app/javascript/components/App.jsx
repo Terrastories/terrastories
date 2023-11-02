@@ -348,7 +348,7 @@ class App extends Component {
           points={this.state.points}
           mapboxAccessToken={this.props.mapbox_access_token}
           useLocalMapServer={this.props.use_local_map_server}
-          mapboxStyle={this.props.mapbox_style}
+          mapStyle={this.props.mapbox_style}
           mapbox3d={this.props.mapbox_3d}
           mapProjection={this.props.map_projection}
           clearFilteredStories={this.resetStoriesAndMap}

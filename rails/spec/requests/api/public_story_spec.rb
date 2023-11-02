@@ -20,10 +20,6 @@ RSpec.describe "Public Story Detail Endpoint", type: :request do
     )
   end
 
-  def json_response
-    JSON.parse(response.body)
-  end
-
   it "returns 404 when community can't be found" do
     get "/api/communities/unknown/stories/123"
 
@@ -66,6 +62,23 @@ RSpec.describe "Public Story Detail Endpoint", type: :request do
       "speakers",
       "places",
       "points"
+    )
+  end
+
+  it "returns optional story details when they are available" do
+    interviewer = create(:speaker, community: community)
+    interview_location = create(:place, community: community)
+    story.update!(
+      interviewer: interviewer,
+      interview_location: interview_location,
+    )
+
+    get "/api/communities/cool_community/stories/123"
+
+    expect(response).to have_http_status(:ok)
+    expect(json_response.keys).to include(
+      "interviewer",
+      "interviewLocation",
     )
   end
 end

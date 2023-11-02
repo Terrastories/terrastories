@@ -75,7 +75,7 @@ module Dashboard
         :photo,
         :speaker_community,
         :birthdate,
-        :birthplace,
+        :birthplace_id,
         story_ids: []
       )
     end
