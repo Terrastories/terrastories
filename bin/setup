@@ -150,12 +150,12 @@ if [ ! -z ${hostname-} ]; then
   echo "HOST_HOSTNAME=$hostname" >> .env
 fi
 
+ohai Configuring Terrastories default map package…
 # Download default .pmtiles
 if [ ! -f map/terrastories-map/tiles.pmtiles ]; then
-  ohai Downloading default self-hosted map assets…
-  git clone --quiet "https://github.com/Terrastories/default-offline-map/" map/terrastories-map
-  curl -fsSL "https://t.ly/OTZpR" -o "map/terrastories-map/planet.pmtiles" --create-dirs
+  curl -fsSL "https://t.ly/OTZpR" -o "map/terrastories-map/tiles.pmtiles" --create-dirs
 fi
+curl -fsSL "https://github.com/protomaps/basemaps-assets/archive/refs/heads/main.tar.gz" | tar xf - -C map/terrastories-map --strip-components=1 basemaps-assets-main/fonts basemaps-assets-main/sprites
 
 # Run Setup
 ohai Getting the latest Terrastories image…

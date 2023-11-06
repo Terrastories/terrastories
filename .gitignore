@@ -71,5 +71,14 @@ tileserver/data/styles/*.json
 tileserver/data/sprites/*
 
 # map config
+# ignore any custom map configurations
+# plus any large assets that we download at setup:
+# - fonts
+# - sprites
+# - *.pmtiles
 map/**/*
-!map/README.md
+# keep our default map package folder
+!map/terrastories-map
+# plus the README and default style.json
+!map/terrastories-map/README.md
+!map/terrastories-map/style.json

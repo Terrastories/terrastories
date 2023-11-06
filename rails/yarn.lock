@@ -8091,10 +8091,10 @@ protocol-buffers-schema@^3.3.1:
   resolved "https://registry.yarnpkg.com/protocol-buffers-schema/-/protocol-buffers-schema-3.6.0.tgz#77bc75a48b2ff142c1ad5b5b90c94cd0fa2efd03"
   integrity sha512-TdDRD+/QNdrCGCE7v8340QyuXd4kIWIgapsE2+n/SaGiSSbomYl4TjHlvIoCWRpE7wFt02EpB35VVA2ImcBVqw==
 
-protomaps-themes-base@^2.0.0-alpha.1:
-  version "2.0.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/protomaps-themes-base/-/protomaps-themes-base-2.0.0-alpha.1.tgz#4ba968edb6a72d3e165ee960a1f3a801252fd5f0"
-  integrity sha512-eGAiUpBPAohnMvEHoF7NRWp7YuTNk/JsAVJ4733jqNw+/EF6Q5TMjqCOZScG3YSri5NStJg+9Upb95M2AQ3pjw==
+protomaps-themes-base@^2.0.0-alpha.3:
+  version "2.0.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/protomaps-themes-base/-/protomaps-themes-base-2.0.0-alpha.3.tgz#c5d767465123c9f2e20109e30a6984a0cd7bc8f3"
+  integrity sha512-nVCBqr1Hzm7CHAN4YW2kjKxM8sXO/DvN2mrAGdFRPfOZgfOzjx76FXOLuWzHS1jaoaoO9A5XaTGX5M1pgQZ8eQ==
 
 proxy-addr@~2.0.7:
   version "2.0.7"

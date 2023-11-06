@@ -23,15 +23,8 @@ export function mapStyleLayers(mapStyle, theme = "contrast") {
     }
   }
 
-  style.layers = JSON.parse(
-    JSON.stringify(layers("protomaps", theme))
-      // Protomaps fonts are in flux, and until they settle or provide a
-      // similar set of fonts as Open Map Tiles, replace with our standard.
-      .replace(/Roboto Regular/g, "Open Sans Regular")
-      .replace(/Roboto Medium/g, "Open Sans Semibold")
-      .replace(/Noto Sans/g, "Open Sans")
-    )
-  style.glyphs = "https://fonts.openmaptiles.org/{fontstack}/{range}.pbf"
+  style.layers = layers("protomaps", theme)
+  style.glyphs = "https://protomaps.github.io/basemaps-assets/fonts/{fontstack}/{range}.pbf"
 
   return style
 }

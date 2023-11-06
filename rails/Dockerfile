@@ -83,7 +83,8 @@ COPY . /api
 # Copy in bundled gems from devcore
 COPY --from=devcore /usr/local/bundle /api/vendor/bundle
 # Copy in precompiled assets from build
-COPY --from=builder /api/public /api/public
+COPY --from=builder /api/public/assets /api/public/assets
+COPY --from=builder /api/public/packs /api/public/packs
 
 WORKDIR /api
 
