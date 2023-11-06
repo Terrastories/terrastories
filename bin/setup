@@ -154,7 +154,7 @@ fi
 if [ ! -f map/terrastories-default/tiles.pmtiles ]; then
   ohai Downloading default map tiles…
   git clone --quiet "https://github.com/Terrastories/default-offline-map/" map/terrastories-default
-  curl -fsSL "https://bit.ly/45LGigh" -o "map/terrastories-default/tiles.pmtiles" --create-dirs
+  curl -fsSL "https://t.ly/OTZpR" -o "map/terrastories-default/planet.pmtiles" --create-dirs
 fi
 
 # Run Setup

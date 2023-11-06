@@ -55,7 +55,9 @@ Download and install [Docker](https://www.docker.com/products/docker-desktop/) f
 
 If you plan on running Terrastories offline, you'll need to configure local tiles for offline use.
 
-A default, open-license map for using offline with Terrastories is available at https://github.com/terrastories/default-offline-tiles. You will have the option of downloading these using the setup script below. Alternatively, you can manually download these files and place them in the `map/` directory, and they should work when you load Terrastories in Field Kit mode.
+A default offline map with freely licensed, pre-generated vector tiles for the entire planet is available at https://github.com/terrastories/default-offline-tiles. You will have the option of downloading these using the setup script below. Alternatively, you can manually download these files and place them in the `map/` directory, and they should work when you load Terrastories in Field Kit mode.
+
+If you want to create your own OSM map tiles, you can do so with the Protomaps [OpenStreetMap Extracts](http://app.protomaps.com/downloads/osm) tool. Or, you can provide your own custom map tiles and style.
 
 ### Setup
 
@@ -68,7 +70,7 @@ A default, open-license map for using offline with Terrastories is available at 
 
 Once you have set up Terrastories, you can log in to the super admin console, or the sample Terrastories community, using login information found in `rails/db/seeds.rb`.
 
-If you are developing with an online (Mapbox) map, you will need to provide an access token. Copy the contents of the `.env.example` file into a newly created file called `.env` (Do not change .env.example!). In the `.env` file, replace where it says `pk.set-your-key-here` (after `DEFAULT_MAPBOX_TOKEN=`) with your mapbox access token. 
+If you are developing with an online Mapbox map, you will need to provide an access token. Copy the contents of the `.env.example` file into a newly created file called `.env` (Do not change .env.example!). In the `.env` file, replace where it says `pk.set-your-key-here` (after `DEFAULT_MAPBOX_TOKEN=`) with your mapbox access token. 
 
 ### Issues?
 
