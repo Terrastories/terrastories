@@ -155,7 +155,7 @@ ohai Configuring Terrastories default map package…
 if [ ! -f map/terrastories-map/tiles.pmtiles ]; then
   curl -fsSL "https://t.ly/OTZpR" -o "map/terrastories-map/tiles.pmtiles" --create-dirs
 fi
-curl -fsSL "https://github.com/protomaps/basemaps-assets/archive/refs/heads/main.tar.gz" | tar xf - -C map/terrastories-map --strip-components=1 basemaps-assets-main/fonts basemaps-assets-main/sprites
+curl -fsSL "https://github.com/protomaps/basemaps-assets/archive/refs/heads/main.tar.gz" | tar xzf - -C map/terrastories-map --strip-components=1 basemaps-assets-main/fonts basemaps-assets-main/sprites
 
 # Run Setup
 ohai Getting the latest Terrastories image…

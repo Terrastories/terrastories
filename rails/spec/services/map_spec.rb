@@ -98,6 +98,14 @@ RSpec.describe Map do
     end
 
     context "when tileserver is configured" do
+      it "[deprecated] returns OFFLINE_MAP_STYLE" do
+        allow(ENV).to receive(:[]).with("OFFLINE_MAP_STYLE").and_return("https://localhost:8080/terrastories-default/style.json")
+        expect(ActiveSupport::Deprecation).to receive(:warn).with(
+          "Setting OFFLINE_MAP_STYLE to configure Tileserver is deprecated. " \
+          "Use TILESERVER_URL instead."
+        )
+        expect(Map.default_style).to eq("https://localhost:8080/terrastories-default/style.json")
+      end
       it "returns TILESERVER_URL" do
         allow(ENV).to receive(:[]).with("TILESERVER_URL").and_return("https://tileserver.terrastories.app/style.json")
 
@@ -139,10 +147,10 @@ RSpec.describe Map do
     end
   end
 
-  describe "offline map pmtiles" do
+  describe "local map packages" do
     context "when offline map style is configured" do
-      it "returns OFFLINE_MAP_STYLE" do
-        allow(ENV).to receive(:fetch).with("OFFLINE_MAP_STYLE", any_args).and_return("custom-map-style")
+      it "returns DEFAULT_MAP_PACKAGE" do
+        allow(ENV).to receive(:fetch).with("DEFAULT_MAP_PACKAGE", any_args).and_return("custom-map-style")
 
         expect(Map.default_style).to eq("http://localhost:3000/map/custom-map-style/style.json")
         expect(Map.default_tiles).to eq("http://localhost:3000/map/custom-map-style/tiles.pmtiles")
@@ -161,13 +169,6 @@ RSpec.describe Map do
         expect(Map.default_style).to eq("http://localhost:3000/map/terrastories-map/style.json")
         expect(Map.default_tiles).to eq("http://localhost:3000/map/terrastories-map/tiles.pmtiles")
       end
-    end
-  end
-
-  describe "[deprecated] offline map style set to tileserver" do
-    it "returns offline map style url as-is if set as tileserver url" do
-      allow(ENV).to receive(:fetch).with("OFFLINE_MAP_STYLE", any_args).and_return("http://tileserver.local/custom-map-style/style.json")
-      expect(Map.default_style).to eq("http://tileserver.local/custom-map-style/style.json")
     end
   end
 end

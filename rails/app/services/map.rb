@@ -90,31 +90,33 @@ class Map
       ENV["DEFAULT_MAP_STYLE"] || ENV["MAPBOX_STYLE"] || "mapbox://styles/mapbox/streets-v11"
     elsif !@offline && (protomaps_api_key = ENV["PROTOMAPS_API_KEY"])
       "https://api.protomaps.com/tiles/v3.json?key=#{protomaps_api_key}"
+    elsif (ENV["OFFLINE_MAP_STYLE"])
+      ActiveSupport::Deprecation.warn(
+        "Setting OFFLINE_MAP_STYLE to configure Tileserver is deprecated. " \
+        "Use TILESERVER_URL instead."
+      )
+      ENV["OFFLINE_MAP_STYLE"]
     else
       ENV["TILESERVER_URL"]
     end
   end
 
   def map_style
-    online_pmtiles[0] || default_offline_maps[0]
+    online_pmtiles[0] || local_map_package[0]
   end
 
   def map_tiles
-    online_pmtiles[1] || default_offline_maps[1]
+    online_pmtiles[1] || local_map_package[1]
   end
 
-  def default_offline_maps
-    style = ENV.fetch("OFFLINE_MAP_STYLE", "terrastories-map")
+  def local_map_package
+    style = ENV.fetch("DEFAULT_MAP_PACKAGE", "terrastories-map")
 
-    if style.match(/^http/)
-      [style, nil]
-    else
-      protocol, host, port = Rails.application.routes.default_url_options.values_at(:protocol, :host, :port)
-      [
-        "#{protocol ? protocol : 'http'}://#{host}#{port ? ":#{port}" : ''}/map/#{style}/style.json",
-        "#{protocol ? protocol : 'http'}://#{host}#{port ? ":#{port}" : ''}/map/#{style}/tiles.pmtiles"
-      ]
-    end
+    protocol, host, port = Rails.application.routes.default_url_options.values_at(:protocol, :host, :port)
+    [
+      "#{protocol ? protocol : 'http'}://#{host}#{port ? ":#{port}" : ''}/map/#{style}/style.json",
+      "#{protocol ? protocol : 'http'}://#{host}#{port ? ":#{port}" : ''}/map/#{style}/tiles.pmtiles"
+    ]
   end
 
   def online_pmtiles
