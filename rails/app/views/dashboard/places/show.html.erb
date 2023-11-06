@@ -102,7 +102,7 @@ if (nameAudio !== null) {
     nameAudio.classList.remove("playing");
   });
 }
-const mapgl = Terrastories.map_utils.mapGL(<%= current_community.theme.offline_mode? %>, "<%= current_community.theme.map_tiles %>" )
+const mapgl = Terrastories.map_utils.mapGL(<%= current_community.theme.use_maplibre? %>, "<%= current_community.theme.map_tiles %>" )
 
 const staticMap = new mapgl.Map({
   accessToken: "<%= current_community.theme.mapbox_token %>",

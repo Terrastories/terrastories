@@ -56,7 +56,7 @@ const placeLatInput = placeForm.querySelector("#place_lat");
 const placeLongInput = placeForm.querySelector("#place_long");
 const coordinates = [placeLongInput.value, placeLatInput.value]
 
-const mapgl = Terrastories.map_utils.mapGL(<%= current_community.theme.offline_mode? %>, "<%= current_community.theme.map_tiles %>" )
+const mapgl = Terrastories.map_utils.mapGL(<%= current_community.theme.use_maplibre? %>, "<%= current_community.theme.map_tiles %>" )
 
 const placeMap = new mapgl.Map({
   accessToken: "<%= current_community.theme.mapbox_token %>",

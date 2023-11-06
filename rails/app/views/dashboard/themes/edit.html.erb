@@ -139,7 +139,7 @@
     </div>
   </div>
 
-  <% unless @theme.offline_mode? %>
+  <% unless Map.offline? %>
     <div>
       <h5><%= t("map.online") %></h5>
       <div class="input-group">
@@ -171,7 +171,7 @@ const pitchValue = themeForm.querySelector("#pitchValue");
 const bearingInput = themeForm.querySelector("#theme_bearing");
 const bearingValue = themeForm.querySelector("#bearingValue");
 
-const mapgl = Terrastories.map_utils.mapGL(<%= @theme.offline_mode? %>, "<%= @theme.map_tiles %>")
+const mapgl = Terrastories.map_utils.mapGL(<%= @theme.use_maplibre? %>, "<%= @theme.map_tiles %>")
 
 const themeMap = new mapgl.Map({
   accessToken: "<%= @theme.mapbox_token %>",
