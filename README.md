@@ -57,7 +57,7 @@ If you plan on running Terrastories offline, you'll need to configure local tile
 
 A default offline map with freely licensed, pre-generated vector tiles for the entire planet is available at https://github.com/terrastories/default-offline-tiles. You will have the option of downloading these using the setup script below. Alternatively, you can manually download these files and place them in the `map/` directory, and they should work when you load Terrastories in Field Kit mode.
 
-If you want to create your own OSM map tiles, you can do so with the Protomaps [OpenStreetMap Extracts](http://app.protomaps.com/downloads/osm) tool. Or, you can provide your own custom map tiles and style.
+If you want to create your own OSM map tiles, you can do so with the Protomaps [OpenStreetMap Extracts](http://app.protomaps.com/downloads/osm) tool or by running a `pmtiles extract` command as documented in the [go-pmtiles](https://github.com/protomaps/go-pmtiles) repository. Or, you can provide your own custom map tiles and style.
 
 ### Setup
 
