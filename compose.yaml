@@ -3,6 +3,7 @@ services:
     profiles:
       - offline
       - dev
+      - test
     image: postgres:11
     restart: unless-stopped
     ports:
@@ -34,6 +35,24 @@ services:
       - ./rails:/api
       - ./data/media:/media
       - ./data/import/media:/api/import/media
+
+  test:
+    profiles: [test]
+    image: terrastories/devcore:latest
+    entrypoint: ["bundle", "exec", "rspec"]
+    restart: no
+    stdin_open: true
+    tty: true
+    depends_on:
+      - db
+    environment:
+      - RAILS_ENV=test
+    volumes:
+      - bundler:/usr/local/bundle
+      - ./rails:/api
+      - ./data/media:/media
+      - ./data/import/media:/api/import/media
+      - ./map:/api/public/map:ro
 
   nginx-proxy:
     profiles:
