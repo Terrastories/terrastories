@@ -83,7 +83,7 @@
   </div>
 
   <div class="two-columns-left">
-    <p class="render-lines"><%= @story.desc %></p>
+    <p class="render-lines"><%= sanitize @story.desc, tags: %w(strong em u) %></p>
 
     <% @story.media.each do |media| %>
       <p class="media">
