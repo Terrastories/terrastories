@@ -45,26 +45,14 @@ Please check [ESLint editor-integrations page](https://eslint.org/docs/user-guid
 
 Terrastories uses RSpec for testing and we try to have unit tests for as many components of the application as possible. 
 
-You can run RSpec tests in the Docker `web` container. There are different ways to do this.
-
-If you already have a container running:
-
 ```
-docker compose exec -e RAILS_ENV=test web bundle exec rspec
+docker compose run --rm test
 ```
 
-(You can also run `RAILS_ENV=test bundle exec rspec` in a running container shell if you prefer.)
-
-If you want to boot a separate container for tests, and then take it down:
+If you wish to run a specific test or test file, you may pass that as the first argument:
 
 ```
-docker compose run --rm -e RAILS_ENV=test web bundle exec rspec
-``` 
-
-We also support Javascript unit testing, with Enzyme for snapshots.
-
-```
-docker compose exec web yarn test
+docker compose run --rm test spec/path/to/my_spec.rb:line
 ```
 
 ## Working with Explore Terrastories
