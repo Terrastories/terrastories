@@ -23,8 +23,10 @@ If you have prior configuration in `.env` that configures an offline tileserver 
 1. Set `DEFAULT_MAP_PACKAGE` to `terrastories-map`
 1. If your server is currently running, recreate your web container: `docker compose up --force-recreate -d web` for the changes to take effect. Otherwise, your new configuration will be loaded on your next boot.
 
-## Custom Map Package
+## Custom Map Packages
 
-If you are setting up Terrastories for self-hosting in online environments, you will need to provide your own map tiles. Instructions for how to set up your Terrastories instance can be found in [our docs](https://docs.terrastories.app/).
+> ‼️ If you're setting up your own Terrastories instance, we commend you head over to our [offline-field-kit](https://github.com/terrastories/offline-field-kit) instructions to setup and configure your server.
+
+If you want to configure a custom map package, you will need to provide your own map package. Instructions for how to set up your Terrastories instance can be found in [our docs](https://docs.terrastories.app/).
 
 Once configured, set `DEFAULT_MAP_PACKAGE` to your custom map package name (e.g. `terrastories-map`) and recreate your web container.
