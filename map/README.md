@@ -6,14 +6,14 @@ This folder is here to provide easy set-up for static Protomap .pmtiles map styl
 
 ## Default Setup
 
-By default, we utilize our default Terrastories map package using the protomaps .pmtiles single-file commpressed archive. This is setup automatically when Terrastories is setup with `bin/setup`.
+By default, we utilize our default Terrastories map package using the protomaps .pmtiles single-file compressed archive. This is setup automatically when Terrastories is setup with `bin/setup`.
 
 If you do not wish to run `bin/setup`, you can manually download and place the required files accordingly:
 
 - Download [`tiles.pmtiles`](https://t.ly/OTZpR) and place in `terrastories-map/tiles.pmtiles`.
 - Download [protomaps basemaps fonts and sprites](https://github.com/protomaps/basemaps-assets/), and place them in their respective folders `terrastories-map/fonts` and `terrastories-map/sprites`.
 
-If you have prior configuration in `.env` that configures an offline tileserver or mapbox, you'll need to remove that configuration before you can load our map package.
+If you have prior configuration in `.env` that configures an offline tileserver or Mapbox, you'll need to remove that configuration before you can load our map package.
 
 1. Ensure any Map related configuration in `.env` is commented out, including:
     - `TILESERVER_URL`
@@ -25,7 +25,7 @@ If you have prior configuration in `.env` that configures an offline tileserver 
 
 ## Custom Map Packages
 
-> ‼️ If you're setting up your own Terrastories instance, we commend you head over to our [offline-field-kit](https://github.com/terrastories/offline-field-kit) instructions to setup and configure your server.
+> ‼️ If you're setting up your own Terrastories instance for offline deployment, we commend you head over to our [offline-field-kit](https://github.com/terrastories/offline-field-kit) instructions to setup and configure your server.
 
 If you want to configure a custom map package, you will need to provide your own map package. Instructions for how to set up your Terrastories instance can be found in [our docs](https://docs.terrastories.app/).
 

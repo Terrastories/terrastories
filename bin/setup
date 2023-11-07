@@ -15,7 +15,7 @@ elif [[ "${OS}" == "Darwin" ]]
 then
   MACOS=1
 else
-  abort "Terrastories is only supported on macOS and Linux."
+  abort "Currently, Terrastories is only supported on macOS and Linux."
 fi
 
 # Fail fast if no internet cnonection is detected
