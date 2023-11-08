@@ -37,6 +37,7 @@ export default class Map extends Component {
     mapbox3d: PropTypes.bool,
     mapProjection: PropTypes.string,
     useLocalMapServer: PropTypes.bool,
+    mapFonts: PropTypes.array,
     markerImgUrl: PropTypes.string,
     markerClusterImgUrl: PropTypes.string,
   };
@@ -109,7 +110,7 @@ export default class Map extends Component {
 
   initializeMap(mapGL, isMapLibre) {
     if (!isMapLibre) {
-      mapGL.accessToken =this.props.mapboxAccessToken;
+      mapGL.accessToken = this.props.mapboxAccessToken;
     }
 
     if (isMapLibre && this.props.mapTiles) {
@@ -301,7 +302,7 @@ export default class Map extends Component {
       type: "symbol",
       layout: {
         'text-field': '{point_count_abbreviated}',
-        'text-font': ['Noto Sans Medium'],
+        'text-font': this.props.mapFonts,
         'text-size': 16,
         'text-offset': [0.2, 0.1]
         },

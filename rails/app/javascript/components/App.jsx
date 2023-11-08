@@ -28,6 +28,7 @@ class App extends Component {
     mapbox_access_token: PropTypes.string,
     map_style: PropTypes.string,
     map_tiles: PropTypes.string,
+    map_fonts: PropTypes.array,
     mapbox_3d: PropTypes.bool,
     map_projection: PropTypes.string,
     logo_path: PropTypes.string,
@@ -348,6 +349,7 @@ class App extends Component {
           points={this.state.points}
           mapboxAccessToken={this.props.mapbox_access_token}
           useLocalMapServer={this.props.use_local_map_server}
+          mapFonts={this.props.map_fonts}
           mapStyle={this.props.map_style}
           mapTiles={this.props.map_tiles}
           mapbox3d={this.props.mapbox_3d}

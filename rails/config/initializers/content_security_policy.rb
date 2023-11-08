@@ -18,7 +18,8 @@ Rails.application.config.content_security_policy do |policy|
   # - webpack-dev-server: "http://localhost:3035", "ws://localhost:3035"
   # - mapbox style urls: "mapbox:"
   # - local serve of pmtiles: "http://localhost:3000"
-  policy.connect_src :self, :https, "mapbox:", "http://localhost:3000", "http://localhost:3035", "ws://localhost:3035" if Rails.env.development?
+  # - local serve of tileserver: "http://localhost:8080"
+  policy.connect_src :self, :https, "mapbox:", "http://localhost:8080", "http://localhost:3000", "http://localhost:3035", "ws://localhost:3035" if Rails.env.development?
 
   # Specify URI for violation reports
   # policy.report_uri "/csp-violation-report-endpoint"

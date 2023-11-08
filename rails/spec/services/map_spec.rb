@@ -171,4 +171,61 @@ RSpec.describe Map do
       end
     end
   end
+
+  describe "#default_fonts" do
+    it "defaults to Noto Sans Medium" do
+      expect(Map.default_fonts).to contain_exactly("Noto Sans Medium")
+    end
+
+    context "when using Mapbox" do
+      before do
+        allow(Map).to receive(:use_mapbox?).and_return(true)
+        # ensure no outgoing calls are triggered
+        allow(Net::HTTP).to receive(:get_response)
+      end
+
+      it "correctly follows redirects if necessary" do
+        response = Net::HTTPRedirection.new(1.0, "307", "Redirect")
+        allow(response).to receive(:[]).with("location").and_return("http://follow.me")
+        expect(Net::HTTP).to receive(:get_response).with(URI("https://api.mapbox.com/fonts/v1/mapbox/Noto%20Sans%20Bold/0-255.pbf?access_token=")).and_return(response).once
+        expect(Net::HTTP).to receive(:get_response).with(URI("http://follow.me")).and_return(Net::HTTPSuccess.new(1.0, "200", "OK")).once
+
+        expect(Warning).to receive(:warn).with(/redirected to http:\/\/follow.me/)
+        expect(Map.default_fonts).to contain_exactly("Noto Sans Bold")
+      end
+
+      it "returns Noto Sans Bold if font is available on user access token" do
+        expect(Net::HTTP).to receive(:get_response).with(URI("https://api.mapbox.com/fonts/v1/mapbox/Noto%20Sans%20Bold/0-255.pbf?access_token=")).and_return(Net::HTTPSuccess.new(1.0, "200", "OK")).once
+        expect(Map.default_fonts).to contain_exactly("Noto Sans Bold")
+      end
+
+      it "returns Noto Sans Medium if font is available on user access token but not Noto Sans Bold" do
+        expect(Net::HTTP).to receive(:get_response).with(URI("https://api.mapbox.com/fonts/v1/mapbox/Noto%20Sans%20Bold/0-255.pbf?access_token=")).and_return(Net::HTTPNotFound.new(1.0, "404", "Not Found")).once
+        expect(Net::HTTP).to receive(:get_response).with(URI("https://api.mapbox.com/fonts/v1/mapbox/Noto%20Sans%20Medium/0-255.pbf?access_token=")).and_return(Net::HTTPSuccess.new(1.0, "200", "OK")).once
+        expect(Map.default_fonts).to contain_exactly("Noto Sans Medium")
+      end
+
+      it "fallsback to Open Sans Bold" do
+        expect(Net::HTTP).to receive(:get_response).with(any_args).and_return(Net::HTTPNotFound.new(1.0, "404", "Not Found")).twice
+        # correctly memoizes values
+        expect(Map.default_fonts).to contain_exactly("Open Sans Bold")
+        expect(Map.default_fonts).to contain_exactly("Open Sans Bold")
+        expect(Map.default_fonts).to contain_exactly("Open Sans Bold")
+      end
+    end
+
+    context "when offline" do
+      before { allow(Map).to receive(:offline?).and_return(true) }
+
+      it "and TILESERVER_URL is set it returns Noto Sans Bold and Noto Sans Regular" do
+        allow(ENV).to receive(:[]).with("TILESERVER_URL").and_return("offlinestyle")
+        expect(Map.default_fonts).to contain_exactly("Noto Sans Bold", "Noto Sans Regular")
+      end
+
+      it "and PROTOMAPS_API_KEY is set it returns Noto Sans Medium" do
+        allow(ENV).to receive(:[]).with("PROTOMAPS_API_KEY").and_return("0123123213")
+        expect(Map.default_fonts).to contain_exactly("Noto Sans Medium")
+      end
+    end
+  end
 end
