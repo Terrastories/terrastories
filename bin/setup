@@ -140,9 +140,6 @@ fi
 if [ ! -f .env ]; then
   cp .env.example .env
 fi
-if [ ! -f .env.api ]; then
-  cp .env.api.example .env.api
-fi
 
 # Enable HOST_HOSTNAME
 if [ ! -z ${hostname-} ]; then
