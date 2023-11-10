@@ -62,15 +62,18 @@ services:
       - ./data/import/media:/api/import/media
       - ./map:/api/public/map:ro
 
-  nginx-proxy:
+  offline:
     profiles:
       - offline
     image: nginxproxy/nginx-proxy:latest
     restart: unless-stopped
+    env_file:
+      - .env.offline
     ports:
       - 80:80
     depends_on:
       - localweb
+      - tileserver
       - db
     environment:
       - DEFAULT_HOST=terrastories.local
@@ -83,46 +86,39 @@ services:
   localweb:
     profiles:
       - offline
-    extends:
-      file: common-app.yaml
-      service: rails
+    image: terrastories-offline-test
+    env_file:
+      - .env.offline
     depends_on:
       - db
-    ports:
-      - 3030:3030
-    expose:
-      - "3030"
     volumes:
-      - bundler:/usr/local/bundle
-      - ./rails:/api
       - ./data/media:/media
       - ./data/import/media:/api/import/media
+      - ./map:/api/public/map:ro
     environment:
-      - RAILS_ENV=${RAILS_ENV-offline}
+      - RAILS_ENV=offline
       - PORT=3030
       - VIRTUAL_PORT=3030
       - VIRTUAL_HOST=terrastories.local,${HOST_HOSTNAME-terrastories.local}
       - VIRTUAL_PATH=/
-      - CHOKIDAR_USEPOLLING=true
-      - USE_LOCAL_MAP_SERVER=true
-      - OFFLINE_MAP_STYLE=/tileserver/styles/terrastories-map/style.json
+      - TILESERVER_URL=http://terrastories.local/tileserver/styles/terrastories-map/style.json
+      # DATABASE_URL is configured the same as config/database.yaml for backwards compatibility
+      # with existing servers that used to run using "development" mode, or offline with a full
+      # dev built image.
+      - DATABASE_URL=${DATABASE_URL-postgresql://postgres:postgres@db:5432/terrastories-dev}
 
   tileserver:
     profiles:
       - offline
     restart: unless-stopped
-    image: maptiler/tileserver-gl
-    command: "--port 8080 --public_url http://${HOST_HOSTNAME-terrastories.local}/tileserver/"
-    ports:
-      - 8080:8080
-    expose:
-      - "8080"
+    image: maptiler/tileserver-gl:v4.6.5
+    command: --public_url http://terrastories.local/tileserver/
     env_file:
-      - .env
+      - .env.offline
     volumes:
       - ./tileserver/data:/data
     environment:
-      - VIRTUAL_HOST=terrastories.local,${HOST_HOSTNAME-terrastories.local}
+      - VIRTUAL_HOST=terrastories.local
       - VIRTUAL_PATH=/tileserver/
       - VIRTUAL_DEST=/
       - VIRTUAL_PORT=8080
