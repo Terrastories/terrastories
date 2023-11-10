@@ -14,7 +14,9 @@
 
 ## Setting up your Development Environment
 
-If you are working in an internet-connected environment, you will need to add a valid Mapbox access token to your `.env` file in order for the Terrastories map to work (whether it is in the `dev` or `offline` profile). Alternatively, you may add an access token (and Mapbox map style) for a community via the Themes dashboard in the administrative menu, to get a map to work for that specific community only.
+If you are working in an internet-connected environment, we recommend you generate a free Protomaps API key and place it in your `.env` file.
+
+Alternatively, you may utilize our default .pmtiles Map Package to serve tiles locally. If you setup using `bin/setup`, these are already available for use. If not, you'll need to set them up using following our [map instructions](/map/README.md).
 
 ### Rails
 
@@ -22,7 +24,7 @@ Many developer contributions will be focused on the rails app. Because this proj
 docker, we already have a uniform ruby/rails development environment in our rails docker
 image. Any time you need to run a rails command you should do so from a running docker
 container to take advantage of this consistent environment. Use the following command to
-open a bash console on the rails container (use `localweb` instead of `web` if you are developing for offline):
+open a bash console on the rails container:
 
 ```
 $ docker compose exec web /bin/bash
@@ -32,8 +34,7 @@ Now you can treat this console like any other development environment, running r
 bundler commands as needed. **Please refrain from running such commands in your local
 environment. Always use the rails container instead.**
 
-Any changes to source files should be made directly in your local filesystem under the
-`/opt/terrastories` directory using your preferred editing tools.
+Any changes to source files should be made directly in your local filesystem and not in the container.
 
 ### ESLint
 
@@ -61,7 +62,8 @@ Explore Terrastories is a React application that provides an opt-in view of unre
 
 More specific instructions on working with Explore Terrastories can be found [in the repo](https://github.com/terrastories/explore-terrastories), but it is important to know that Explore Terrastories works by accessing an API orchestrated by the controllers in `/controllers/api/` and with responses provided through JBuilder. 
 
-Access to the API is controlled through CORS via an env var `CORS_ORIGINS` that should specify the address of your Explore Terrastories server in the `.env` file.
+Access to the API is controlled through CORS via an env var `CORS_ORIGINS` that should specify the address of your Explore Terrastories server in the `.env` file. Reasonable defaults are provided.
+
 ## Backup and restore the Terrastories database
 
 Terrastories stores Places, Speakers, and Stories in a database (Postgres DB). it is possible to back these data up and restore them by running lines of code in a bash terminal.
@@ -84,12 +86,6 @@ Note: the above code is assuming your build is called `terrastories`. If it is n
 
 ## Running Terrastories in Offline Mode
 
-Terrastories offline mode is generally used in the field, when there is no access to the internet. It is a heavily cached production build that should not be used for direct development work. You can switch to the `offline` profile to test changes made in the `dev` profile if you are working on features that should be tested in both environments, however.
+Terrastories offline mode is generally used in the field, when there is no access to the internet. It is a heavily cached production build that should not be used for direct development work. You can simulate offline mode for development by setting `OFFLINE_MODE` to yes in your `.env` and rebooting your container.
 
-To start Terrastories with the offline profile, run
-
-```bash
-docker compose --profile offline up
-```
-
-For more information on running Terrastories in an offline environment, see [SETUP.md](SETUP.md#setup-for-offline)
+For more information on running Terrastories in an offline environment, see [SETUP.md](./SETUP.md#setup-for-offline).

@@ -16,23 +16,15 @@
 
 Docker is a platform that serves to deliver software in packages called containers. Terrastories makes use of this to deliver the many facets included in the application in one easy package. 
 
-Setup instructions for Docker: https://docs.docker.com/engine/install/
+Setup instructions for Docker: https://docs.docker.com/get-docker/
 
-* On Linux, users should run all docker commands with `sudo` or check the [official documentation](https://docs.docker.com/install/linux/linux-postinstall/) to manage Docker as a non-root user.
-* On Windows, Docker should install WSL-2 (Windows Subsystem for Linux 2) through which you should set up Terrastories. However, it is possible that you may need to configure some additional settings for Terrastories to properly work on Windows.
+Be sure to follow the instructions for your OS carefully as the instructions vary per OS.
 
 ## Setup the application
-1. Create a fork of the Terrastories/terrastories repository. Now clone the repository locally to your computer. 
 
-2. Using the source-code editor of your choice, open the terrastories repository. There, a file can be found called `.env.example`. Copy the contents of this file into a newly created file called `.env` (Do not change .env.example!).
+1. Create a fork of the [Terrastories repository](https://github.com/Terrastories/terrastories/fork). Now clone the repository locally to your computer.
 
-    Now, create an account at [Mapbox](https://mapbox.com/signup), and copy the mapbox access token (either your default public token or a new one you create) found under your acccount. 
-
-    Navigate back to the `.env` file you created and replace where it says `pk.set-your-key-here` (after `DEFAULT_MAPBOX_TOKEN=`) with your mapbox access token. 
-
-    *Note: if you are developing for offline (e.g. using Maplibre-GL to render a self-hosted map, you will not need to provide a Mapbox access token.*
-
-## Build the application using our script (option 1)
+### Setup using our script (option 1)
 
 Run
    ```sh
@@ -49,56 +41,46 @@ Upon completion you should see output similar to:
 Next, within the terminal, run:
 
   ```sh
-  $ docker compose --profile dev up
+  $ docker compose up
   ```
-
-(If you are building for offline, run this command with `--profile offline` instead.)
 
 Enter `localhost:3000` into your internet browser to view the application.
 
 To find usernames and passwords to login to Terrastories, check [seeds.rb](https://github.com/Terrastories/terrastories/blob/master/rails/db/seeds.rb) (the admin username is probably the most useful for most dev purposes).
 
-## Build the application step by step (option 2)
+### Setup manually (option 2)
 
-Open your terminal and navigate to the terrastories repository and run:
+1. In your terminal, navigate to your cloned repository and run:
 
    ```sh
-  $ docker compose --profile dev build
-  ```
+   cp .env.example .env
+   ```
+   This copies some default configuration for Docker to read.
 
-(If you are building for offline, run this command with `--profile offline` instead.)
+1. Create a free [Protomap API key](https://app.protomaps.com/signup). It's free for non-commercial use.
+
+1. Add your API key to your `.env` file under the `PROTOMAPS_API_KEY` env var.
+
+1. Run first-time setup:
+
+   ```sh
+   # installs dependencies and runs setup
+   docker compose run --rm web bin/setup
+   # only needed the first time you setup!
+   docker compose run --rm web bin/rails db:seed
+   ```
     
-This will download and build all the docker images used in this project. Upon completion you should see output similar to:
+   This will download the development docker images required to run our project, prepare your database, and seed your database.
 
-  ```
-  Successfully tagged terrastories:latest
-  ```
+1. You should be able to run your terrastories instance:
 
-Next, within the terminal, run:
-
-  ```sh
-  $ docker compose --profile dev up
-  ```
-
-If this fails, make sure all firewalls are turned off and you have a secure connection to the internet. If it continues to fail, check 
-the [common setup errors](#having-troubles-check-our-common-errors--gotchas) section. 
-
-For the first time running Terrastories, it may download some additional dependencies. Additionally, you have to create and seed a database. To do so, enter this command in a different terminal while Terrastories is running (and is listening at port 3000):
-
-  ```sh
-  $ docker compose exec web bin/setup
-  ```
-
-This command runs a setup script that lives in bin/setup, which does:
-
-- install ruby gems
-- install javascript packages
-- setup database
-- seed sample data
-
-See the script file for the details.
+   ```sh
+   docker compose up
+   ```
 
 Enter `localhost:3000` into your internet browser to view the application.
+
+> If this fails, make sure all firewalls are turned off and you have a secure connection to the internet. If it continues to fail, check the [common setup errors](#having-troubles-check-our-common-errors--gotchas) section. 
 
 To find usernames and passwords to login to Terrastories, check [seeds.rb](https://github.com/Terrastories/terrastories/blob/master/rails/db/seeds.rb) (the admin username is probably the most useful for most dev purposes).
 
@@ -106,24 +88,67 @@ To find usernames and passwords to login to Terrastories, check [seeds.rb](https
 
 ## Using the application regularly
 
-Everytime you want to open and use the application, make sure you have docker desktop running and run the following command in the terminal: 
+Everytime you want to open and use the application, make sure you have docker desktop running and run the following command in the terminal:
 
   ```sh
-  $ docker compose --profile dev up
+  $ docker compose up
   ```
 
 You can view the running application at `localhost:3000`
 
-To find usernames and passwords to login to Terrastories, check [seeds.rb](https://github.com/Terrastories/terrastories/blob/master/rails/db/seeds.rb) (the admin username is probably the most useful for most dev purposes).
-
 It will take a moment to load when first opening the application.
+
+### Keep your dependencies up to date
+
+```sh
+docker compose run --rm web bundle install
+docker compose run --rm web yarn
+```
 
 ## Setup for offline
 
-The process of setting up Terrastories for offline is similar to the standard dev environment, with a few exceptions:
+If you're a developer, you can configure your instance of Terrastories to run fully offline by setting the forcing Terrastories to run in offline mode.
 
-* Instead of `--profile dev`, use `--profile offline` when setting up and running Terrastories.
-* You do not need to enter a Mapbox access token in your `.env` file. However, you do need to provide your own `mbtiles` map tiles and style. If you do not have your own, you can use Terrastories' [default offline map tiles](https://github.com/Terrastories/default-offline-map).
+You will also need to configure our offline .pmtiles Map Package. If you setup using our `bin/setup` script, this package is already available for use. If not, please follow the instructions in [map](/map/README.md#default-setup).
+
+1. Add these lines to your `.env` file:
+   ```
+   OFFLINE_MODE=yes
+   DEFAULT_MAP_PACKAGE=terrastories-map
+   ```
+1. Recreate your web container:
+   ```
+   docker compose create --force-recreate web
+   ```
+1. And boot up your instance:
+   ```
+   docker compose up
+   ```
+
+> Note: do NOT run in RAILS_ENV=offline as this environment does not utilize your local file changes or compile assets. It's intended to be used as a production instance. OFFLINE_MODE flag will treat your development environment the same as if it is in offline mode, but still with all of your development capabilities.
+
+## Set for Offline Field Kit
+
+<div style="background-color: #CC0000; color: white; padding: 5px 10px">
+<p><strong>Setting up offline mode using these instructions is no longer supported</strong></p>
+<p>Please follow our new <a href="https://github.com/terrastories/offline-field-kit">offline field kit setup instructions</a>.</p>
+</div>
+
+### Quick Setup (Option 1)
+
+1. Download or clone this repository.
+1. Run `bin/install`, and follow the prompts.
+1. Run `bin/serve` to launch Terrastories.
+
+### Manual Setup (Option 2)
+
+1. Download or clone this repository.
+1. In a File view of your choice, create an `.env` file at the root of the application.
+1. Configure your offline maps with following [tileserver](/tileserver/README.md#setup-for-offline-mode)
+1. Configure your default hostname (optional):
+   By default, we serve offline terrastories at terrastories.local. You can configure this by opening .env.offline in your favorite text editor, uncommenting `HOST_HOSTNAME`, and adding your custom domain.
+   You will also need to update your /etc/hosts file to point 127.0.0.1 to your custom hostname.
+1. Run `bin/serve`
 
 ## Having troubles? Check our common errors & gotchas
 
