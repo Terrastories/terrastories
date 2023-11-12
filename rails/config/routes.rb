@@ -29,6 +29,8 @@ Rails.application.routes.draw do
         delete :name_audio, action: :delete_name_audio
       end
       resources :stories do
+        patch :pin, on: :member
+        patch :unpin, on: :member
         delete '/media/:id/delete', action: :delete_media, as: :delete_media
       end
       resource :theme, only: [:update, :edit, :show]

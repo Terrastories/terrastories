@@ -31,6 +31,14 @@ class StoryPolicy < ApplicationPolicy
     edit?
   end
 
+  def pin?
+    edit?
+  end
+
+  def unpin?
+    edit?
+  end
+
   def destroy?
     user.admin? || user.editor?
   end

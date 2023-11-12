@@ -43,23 +43,10 @@ module Dashboard
 
     def update
       @story = authorize community_stories.find(params[:id])
-      @stories = community_stories.all
-
-      if params[:story_pinned].present?
-        if params[:story_pinned]
-          @pinned_story = @stories.find_by(story_pinned: true)
-          @pinned_story&.update(story_pinned: !params[:story_pinned])
-        end
-
-        @story.update(story_pinned: params[:story_pinned])
-
-        return redirect_to action: "index"
-      end
 
       if story_params[:story_pinned].present?
         if story_params[:story_pinned]
-          @pinned_story = @stories.find_by(story_pinned: true)
-          @pinned_story&.update(story_pinned: !story_params[:story_pinned])
+          community_stories.update_all(story_pinned: false)
         end
 
         @story.update(story_pinned: story_params[:story_pinned])
@@ -74,6 +61,21 @@ module Dashboard
       else
         render :edit
       end
+    end
+
+    def pin
+      @story = authorize community_stories.find(params[:id])
+      community_stories.update_all(story_pinned: false)
+      @story.update(story_pinned: true)
+
+      redirect_to stories_path
+    end
+
+    def unpin
+      @story = authorize community_stories.find(params[:id])
+      @story.update(story_pinned: false)
+
+      redirect_to stories_path
     end
 
     def destroy

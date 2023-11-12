@@ -17,8 +17,8 @@ class StoriesPage < Page
     stories = stories.where(permission_level: @meta[:visibility]) if @meta[:visibility].present?
 
     stories.order(
-      @meta[:sort_by] => @meta[:sort_dir],
-      story_pinned: :desc
+      story_pinned: :desc,
+      @meta[:sort_by] => @meta[:sort_dir]
     )
   end
 end
