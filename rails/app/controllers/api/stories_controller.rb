@@ -5,9 +5,6 @@ module Api
       @page = Api::StoriesPage.new(community, story_params)
 
       @stories = @page.data
-
-      # Ensure distinct
-      @stories = @stories.distinct
     end
 
     def show

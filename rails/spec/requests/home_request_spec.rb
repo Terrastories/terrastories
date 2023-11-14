@@ -49,10 +49,6 @@ RSpec.describe "Home request", type: :request do
         )
       end
 
-      def json_response
-        JSON.parse(response.body)
-      end
-
       before do
         login_as user
       end
