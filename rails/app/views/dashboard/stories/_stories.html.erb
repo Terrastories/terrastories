@@ -10,23 +10,23 @@
         </div>
         <% if current_user.member? && story.story_pinned %>
           <div class="view-icon-pinned">
-            <%= image_tag 'thumbtack-pinned.svg', alt: 'pinned-story', class: "image-pinned" %>
+            <svg class="image-pinned"><use href="#icon-thumbtack"></svg>
           </div>
         <% end %>
         <% if current_user.admin? || current_user.editor? %>
           <% if story.story_pinned %>
             <div class="edit-icon-pinned">
               <%= form_with model: @story, url: unpin_story_path(story), method: "patch", multipart: true, class: "form", data: {remote: false}, locale: true do |f| %>
-                <%= f.button nil, class: "icon-pinned" do %>
-                  <%= image_tag 'thumbtack-pinned.svg', alt: 'pinned-story', class: "image-pinned" %>
+                <%= f.button nil, class: "icon-button" do %>
+                  <svg class="icon-pinned"><use href="#icon-thumbtack"></svg>
                 <% end %>
               <% end %>
             </div>
           <% else %>
             <div class="edit-icon-not-pinned">
               <%= form_with model: @story, url: pin_story_path(story), method: "patch", multipart: true, class: "form", data: {remote: false}, locale: true do |f| %>
-                <%= f.button nil, class: "icon-not-pinned" do %>
-                  <%= image_tag 'thumbtack-not-pinned.svg', alt: 'pinned-story', class: "image-pinned" %>
+                <%= f.button nil, class: "icon-button" do %>
+                  <svg class="icon-unpinned"><use href="#icon-thumbtack"></svg>
                 <% end %>
               <% end %>
             </div>

@@ -31,6 +31,11 @@
     box-shadow: 0 0 10px $lighter-gray;
   }
 
+  &--header {
+    display: flex;
+    justify-content: space-between;
+  }
+
   &--narrow {
     @include flex(1 0 175px);
     max-width: 175px;
@@ -119,19 +124,12 @@
 }
 
 .edit-icon-pinned, .edit-icon-not-pinned, .view-icon-pinned {
-  float: right;
   height: fit-content;
   margin-inline-start: auto;
 }
 
-.edit-icon-pinned, .view-icon-pinned {
-  color: $black;
-  display: flex;
-}
-
 .edit-icon-not-pinned {
-  color: $light-gray;
-  display: none;
+  visibility: hidden;
 }
 
 .edit-icon-pinned, .edit-icon-not-pinned {
@@ -141,5 +139,34 @@
 }
 
 .card:hover .edit-icon-not-pinned {
-  display: flex;
+  visibility: visible;
+}
+
+.icon-button {
+  max-width: 25px;
+  max-height: 25px;
+  border: none;
+  background-color: inherit;
+}
+
+.icon-unpinned {
+  max-height: 18px;
+  fill: $light-gray;
+  width: 100%;
+
+  &:hover {
+    fill: $dark-gray;
+    cursor: pointer;
+  }
+}
+
+.icon-pinned {
+  max-height: 18px;
+  fill: $black;
+  width: 100%;
+
+  &:hover {
+    fill: $red;
+    cursor: pointer;
+  }
 }
