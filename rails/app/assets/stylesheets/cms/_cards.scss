@@ -29,6 +29,10 @@
 
   &:hover {
     box-shadow: 0 0 10px $lighter-gray;
+
+    .edit-icon-not-pinned {
+      visibility: visible;
+    }
   }
 
   &--header {
@@ -138,35 +142,38 @@
   }
 }
 
-.card:hover .edit-icon-not-pinned {
-  visibility: visible;
-}
-
 .icon-button {
   max-width: 25px;
   max-height: 25px;
   border: none;
   background-color: inherit;
+
+  &:hover {
+    cursor: pointer;
+
+    .icon-unpinned {
+      fill: $dark-gray;
+    }
+
+    .icon-pinned {
+      fill: $red;
+    }
+  }
+}
+
+.icon-unpinned, .icon-pinned {
+  max-height: 18px;
+  width: 100%;
 }
 
 .icon-unpinned {
-  max-height: 18px;
   fill: $light-gray;
-  width: 100%;
-
-  &:hover {
-    fill: $dark-gray;
-    cursor: pointer;
-  }
 }
 
 .icon-pinned {
-  max-height: 18px;
   fill: $black;
-  width: 100%;
+}
 
-  &:hover {
-    fill: $red;
-    cursor: pointer;
-  }
+.story-header {
+  display: flex;
 }

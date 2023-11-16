@@ -1,7 +1,7 @@
 <% @stories.each do |story| %>
   <%= link_to story, class: "card" do %>
     <div>
-      <div style="display:flex">
+      <div class="story-header">
         <div>
           <h3 style="width:max-content">
             <span class="card__heading--small"><%= story.topic %></span>
