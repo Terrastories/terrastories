@@ -19,8 +19,7 @@ class StoryList extends Component {
     filterItem: PropTypes.string,
     handleFilterCategoryChange: PropTypes.func,
     handleFilterItemChange: PropTypes.func,
-    itemOptions: PropTypes.array,
-    thumbtack_path: PropTypes.string
+    itemOptions: PropTypes.array
   };
 
   handleClickStory = (story, index) => {
@@ -56,7 +55,6 @@ class StoryList extends Component {
           onStoryClick={this.props.onStoryClick}
           storyClass={storyClass}
           key={key}
-          thumbtack_path={this.props.thumbtack_path}
         />
     );
   };

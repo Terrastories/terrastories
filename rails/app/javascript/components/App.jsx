@@ -39,8 +39,7 @@ class App extends Component {
     ne_boundary_lat: PropTypes.string,
     ne_boundary_long: PropTypes.string,
     pitch: PropTypes.number,
-    bearing: PropTypes.string,
-    thumbtack_path: PropTypes.string
+    bearing: PropTypes.string
   };
 
 
@@ -383,7 +382,6 @@ class App extends Component {
           handleFilterCategoryChange={this.handleFilterCategoryChange}
           handleFilterItemChange={this.handleFilterItemChange}
           itemOptions={this.state.itemOptions}
-          thumbtack_path={this.props.thumbtack_path}
         />
         <IntroPopup />
       </React.Fragment>
