@@ -21,6 +21,11 @@ module Dashboard
 
     def create
       authorize Story
+
+      if ActiveModel::Type::Boolean.new.cast(story_params[:story_pinned])
+        community_stories.update_all(story_pinned: false)
+      end
+
       @story = community_stories.new(story_params.except(:media))
 
       if @story.save
@@ -44,15 +49,11 @@ module Dashboard
     def update
       @story = authorize community_stories.find(params[:id])
 
-      if story_params[:story_pinned].present?
-        if story_params[:story_pinned]
-          community_stories.update_all(story_pinned: false)
-        end
+      if !@story.story_pinned && ActiveModel::Type::Boolean.new.cast(story_params[:story_pinned])
+        community_stories.update_all(story_pinned: false)
+      end
 
-        @story.update(story_pinned: story_params[:story_pinned])
-
-        render :edit
-      elsif @story.update(story_params.except(:media))
+      if @story.update(story_params.except(:media))
         story_params[:media]&.each do |media|
           m = @story.media.create(media: media)
         end

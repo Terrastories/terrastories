@@ -10,7 +10,7 @@
         </div>
         <% if current_user.member? && story.story_pinned %>
           <div class="view-icon-pinned">
-            <svg class="image-pinned"><use href="#icon-thumbtack"></svg>
+            <svg class="icon-pinned"><use href="#icon-thumbtack"></svg>
           </div>
         <% end %>
         <% if current_user.admin? || current_user.editor? %>
@@ -23,7 +23,7 @@
               <% end %>
             </div>
           <% else %>
-            <div class="edit-icon-not-pinned">
+            <div class="edit-icon-unpinned">
               <%= form_with model: @story, url: pin_story_path(story), method: "patch", multipart: true, class: "form", data: {remote: false}, locale: true do |f| %>
                 <%= f.button nil, class: "icon-button" do %>
                   <svg class="icon-unpinned"><use href="#icon-thumbtack"></svg>

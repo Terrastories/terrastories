@@ -30,7 +30,7 @@
   &:hover {
     box-shadow: 0 0 10px $lighter-gray;
 
-    .edit-icon-not-pinned {
+    .edit-icon-unpinned {
       visibility: visible;
     }
   }
@@ -127,24 +127,27 @@
   }
 }
 
-.edit-icon-pinned, .edit-icon-not-pinned, .view-icon-pinned {
+.edit-icon-pinned, .edit-icon-unpinned, .view-icon-pinned {
   height: fit-content;
   margin-inline-start: auto;
 }
 
-.edit-icon-not-pinned {
+.edit-icon-unpinned {
   visibility: hidden;
 }
 
-.edit-icon-pinned, .edit-icon-not-pinned {
+.edit-icon-pinned, .edit-icon-unpinned {
   &:hover {
     box-shadow: 0 0 10px $lighter-gray;
   }
 }
 
-.icon-button {
+.icon-button, .view-icon-pinned {
   max-width: 25px;
   max-height: 25px;
+}
+
+.icon-button {
   border: none;
   background-color: inherit;
 
