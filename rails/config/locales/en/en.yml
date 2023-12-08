@@ -55,9 +55,9 @@ en:
   no_media: No Media Available
   password: Password
   place_name: "Place name pronunciation"
-  place_type: "Type of place"
-  type_of_place: Type of place
-  region: Region
+  place_type: "Type of celestial body"
+  type_of_place: Type of celestial body
+  region: Constellation
   remember_me: "Remember me"
   reversed_alphabetical: Z-A
   select_category: "Select category"

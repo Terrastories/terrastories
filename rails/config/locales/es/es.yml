@@ -55,8 +55,8 @@ es:
   no_media: Sin medios disponibles
   password: "Contraseña"
   place_name: "Pronunciación del nombre del lugar"
-  place_type: "Tipo de lugar"
-  region: "Región"
+  place_type: "Tipo de cuerpo celestial"
+  region: "Constelación"
   remember_me: "Recordarme"
   reversed_alphabetical: Z-A
   select_category: "Seleccionar categoría"
