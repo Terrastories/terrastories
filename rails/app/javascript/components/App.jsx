@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Map from "./Map";
+import CelestialMap from "./CelestialMap";
 import Card from "./Card";
 import IntroPopup from "./IntroPopup";
 import bbox from "@turf/bbox";
@@ -19,6 +20,7 @@ class App extends Component {
       filterCategory: props.t("select_category"),
       filterItem: props.t("select_option"),
       itemOptions: [],
+      isStellarstories: true
     };
   }
 
@@ -241,10 +243,11 @@ class App extends Component {
     }
     if (filteredStories) {
       const filteredPoints = this.getPointsFromStories(filteredStories);
+
+      // TODO: use actual center instead of first two coords from bbox
       const bounds = bbox(filteredPoints);
       const framedView = {
-        bounds,
-        maxZoom: 12
+        center: [bounds[0], bounds[1], 0]
       };
 
       var activePoint = this.state.activePoint;
@@ -301,7 +304,7 @@ class App extends Component {
   handleStoryClick = story => {
     // set active to first point in story
     const point = story.points[0];
-    const framedView = { center: point.geometry.coordinates };
+    const framedView = { center: [point.geometry.coordinates[0], point.geometry.coordinates[1], 0] };
     this.setState({ activePoint: point, activeStory: story, framedView });
   };
 
@@ -310,7 +313,7 @@ class App extends Component {
     this.setState({
       stories: this.props.stories,
       points: points,
-      framedView: null,
+      framedView: { center: [this.props.center_long, this.props.center_lat, 0]},
       activePoint: null,
       activeStory: null,
       filterCategory: this.props.t("select_category"),
@@ -318,13 +321,6 @@ class App extends Component {
       itemOptions: [],
     });
   };
-
-  handleMapPointClick = (point) => {
-    this.showMapPointStories(JSON.parse(point.properties.stories));
-    const framedView = { center: point.geometry.coordinates };
-    this.setState({ activePoint: point, framedView });
-  };
-
 
   // build category list based that excludes empty category sets
   buildFilterCategories = () => {
@@ -343,28 +339,14 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <Map
+        <CelestialMap
           points={this.state.points}
-          mapboxAccessToken={this.props.mapbox_access_token}
-          useLocalMapServer={this.props.use_local_map_server}
-          mapStyle={this.props.mapbox_style}
-          mapbox3d={this.props.mapbox_3d}
-          mapProjection={this.props.map_projection}
           clearFilteredStories={this.resetStoriesAndMap}
-          onMapPointClick={this.handleMapPointClick}
           activePoint={this.state.activePoint}
           framedView={this.state.framedView}
-          markerImgUrl={this.props.marker_image_url}
-          markerClusterImgUrl={this.props.marker_cluster_image_url}
           centerLat={this.props.center_lat}
           centerLong={this.props.center_long}
           zoom={this.props.zoom}
-          sw_boundary_lat={this.props.sw_boundary_lat}
-          sw_boundary_long={this.props.sw_boundary_long}
-          ne_boundary_lat={this.props.ne_boundary_lat}
-          ne_boundary_long={this.props.ne_boundary_long}
-          pitch={this.props.pitch}
-          bearing={this.props.bearing}
         />
         <Card
           activeStory={this.state.activeStory}
@@ -383,7 +365,9 @@ class App extends Component {
           handleFilterItemChange={this.handleFilterItemChange}
           itemOptions={this.state.itemOptions}
         />
-        <IntroPopup />
+        <IntroPopup
+          isStellarstories={this.state.isStellarstories}
+        />
       </React.Fragment>
     );
   }

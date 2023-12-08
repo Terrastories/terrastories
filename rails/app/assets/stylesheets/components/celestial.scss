@@ -1,0 +1,17 @@
+.celestial-MainMap {
+    position: fixed!important;
+    height: 100%!important;
+    width: 100%!important;
+    left: 0!important;
+    top: 0!important;
+
+    canvas {
+        width: 100%!important;
+        // height: 100%!important;
+    }
+
+    #celestial-zoomin, #celestial-zoomout { 
+        left: unset!important;
+        right: 10px!important;
+    }
+}

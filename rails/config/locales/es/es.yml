@@ -42,6 +42,9 @@ es:
   forgot_password: "¿Olvidaste tu contraseña?"
   hello: "Hola"
   introduction: "Introducción"
+  intro_stellarstories:
+    question: "Qué es una stellarstory?"
+    explanation: "Stellarstories son grabaciones audiovisuales de historias autóctonas. Esta aplicación compatible offline permite a las comunidades locales ubicar en un mapa sus narraciones tradicionales sobre los cuerpos celestiales que representan un valor significativo para ellos."
   intro:
     question: "¿Qué es una terrastory?"
     explanation: "Terrastories son grabaciones audiovisuales de historias autóctonas. Esta aplicación compatible offline permite a las comunidades locales ubicar en un mapa sus narraciones tradicionales sobre los lugares que representan un valor significativo para ellos."
