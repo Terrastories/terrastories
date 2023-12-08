@@ -33,13 +33,13 @@ export default class CelestialMap extends Component {
 
     var config = { 
         projection: "airy", 
-        zoomlevel: this.props.zoom,
+        zoomlevel: 1,
         center: [centerLong, centerLat],
         follow: "center",
-        background: { fill: "#333", stroke: "#b3b300", opacity: 1, width: 4 },
+        background: { fill: "#333", stroke: "#b3b300", opacity: 1, width: 2 },
         container: "celestial-map", 
         datapath: "../d3-celestial/data/",
-        
+
         culture: "cn",
         constellations: {
           show: true,    //Show constellations 
