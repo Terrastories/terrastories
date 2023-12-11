@@ -132,7 +132,6 @@ RSpec.describe "Public Stories Endpoint", type: :request do
 
       get "/api/communities/cool_community/stories"
 
-
       expect(json_meta["total"]).to eq(1)
       expect(json_response["stories"].map { |s| s["id"] }).to contain_exactly(story_1.id)
     end
