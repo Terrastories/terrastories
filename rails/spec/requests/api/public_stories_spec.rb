@@ -2,7 +2,6 @@ require "rails_helper"
 
 RSpec.describe "Public Stories Endpoint", type: :request do
   let!(:community) { FactoryBot.create(:public_community, name: "Cool Community") }
-  let!(:orphan_community) { FactoryBot.create(:public_community, name: "Orphaned Community") }
 
   it "returns 404 when community can't be found" do
     get "/api/communities/unknown/stories"
