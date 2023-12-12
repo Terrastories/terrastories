@@ -35,11 +35,6 @@
     }
   }
 
-  &--header {
-    display: flex;
-    justify-content: space-between;
-  }
-
   &--narrow {
     @include flex(1 0 175px);
     max-width: 175px;
