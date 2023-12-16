@@ -15,21 +15,13 @@
         <% end %>
         <% if current_user.admin? || current_user.editor? %>
           <% if story.story_pinned %>
-            <div class="edit-icon-pinned">
-              <%= form_with model: @story, url: unpin_story_path(story), method: "patch", multipart: true, class: "form", data: {remote: false}, locale: true do |f| %>
-                <%= f.button nil, class: "icon-button" do %>
-                  <svg class="icon-pinned"><use href="#icon-thumbtack"></svg>
-                <% end %>
-              <% end %>
-            </div>
+            <%= button_to unpin_story_path(story), method: :patch, data: { remote: false }, locale: true, form_class: "edit-icon-pinned", class: "icon-button" do %>
+              <svg class="icon-pinned"><use href="#icon-thumbtack"></svg>
+            <% end %>
           <% else %>
-            <div class="edit-icon-unpinned">
-              <%= form_with model: @story, url: pin_story_path(story), method: "patch", multipart: true, class: "form", data: {remote: false}, locale: true do |f| %>
-                <%= f.button nil, class: "icon-button" do %>
-                  <svg class="icon-unpinned"><use href="#icon-thumbtack"></svg>
-                <% end %>
-              <% end %>
-            </div>
+            <%= button_to pin_story_path(story), method: :patch, data: { remote: false }, locale: true, form_class: "edit-icon-unpinned", class: "icon-button" do %>
+              <svg class="icon-unpinned"><use href="#icon-thumbtack"></svg>
+            <% end %>
           <% end %>
         <% end %>
       </div>
