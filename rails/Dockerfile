@@ -28,7 +28,6 @@ RUN apk --no-cache add --update \
     imagemagick \
     ffmpeg \
     poppler && \
-    gem update --system --no-document && \
     gem install bundler --no-document --force
 
 WORKDIR /tmp
@@ -78,7 +77,6 @@ RUN apk --no-cache add \
     imagemagick \
     ffmpeg \
     poppler && \
-    gem update --system --no-document && \
     gem install bundler --no-document --force
 
 # Set deployment to true, bundled to vendor/bundle
