@@ -18,20 +18,26 @@ services:
   web:
     profiles:
       - dev
-    extends:
-      file: common-app.yaml
-      service: rails
+    image: terrastories/devcore:latest
+    env_file:
+      - .env
+    command: scripts/server
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
     depends_on:
       - db
     ports:
-      - 3000:3000
-      - 3035:3035
+      - 80:3000   # Intended for use with HOST_HOSTNAME set
+      - 3000:3000 # Standard Rails development
+      - 3035:3035 # For Shakapacker/Webpack development server
     expose:
+      - "80"
       - "3000"
       - "3035"
     environment:
       - CHECK_BUNDLER=yes
-      - RAILS_ENV=development
+      - RAILS_ENV=${RAILS_ENV-development}
     volumes:
       - bundler:/usr/local/bundle
       - ./rails:/api
@@ -65,6 +71,7 @@ services:
     depends_on:
       - localweb
       - db
+      - tileserver
     environment:
       - DEFAULT_HOST=terrastories.local
     volumes:
@@ -76,9 +83,9 @@ services:
   localweb:
     profiles:
       - offline
-    extends:
-      file: common-app.yaml
-      service: rails
+    image: terrastories/terrastories:latest
+    env_file:
+      - .env
     depends_on:
       - db
     ports:
@@ -86,36 +93,33 @@ services:
     expose:
       - "3030"
     volumes:
-      - bundler:/usr/local/bundle
-      - ./rails:/api
       - ./data/media:/media
       - ./data/import/media:/api/import/media
     environment:
-      - RAILS_ENV=${RAILS_ENV-offline}
+      - RAILS_ENV=offline
       - PORT=3030
       - VIRTUAL_PORT=3030
       - VIRTUAL_HOST=terrastories.local,${HOST_HOSTNAME-terrastories.local}
       - VIRTUAL_PATH=/
-      - CHOKIDAR_USEPOLLING=true
       - USE_LOCAL_MAP_SERVER=true
-      - OFFLINE_MAP_STYLE=/tileserver/styles/terrastories-map/style.json
+      - OFFLINE_MAP_STYLE=http://terrastories.local/tileserver/styles/terrastories-map/style.json
+      # DATABASE_URL is configured the same as config/database.yaml for backwards compatibility
+      # with existing servers that used to run using "development" mode, or offline with a full
+      # dev built image.
+      - DATABASE_URL=${DATABASE_URL-postgresql://postgres:postgres@db:5432/terrastories-dev}
 
   tileserver:
     profiles:
       - offline
     restart: unless-stopped
-    image: maptiler/tileserver-gl
-    command: "--port 8080 --public_url http://${HOST_HOSTNAME-terrastories.local}/tileserver/"
-    ports:
-      - 8080:8080
-    expose:
-      - "8080"
+    image: maptiler/tileserver-gl:v4.6.5
+    command: --public_url http://terrastories.local/tileserver/
     env_file:
       - .env
     volumes:
       - ./tileserver/data:/data
     environment:
-      - VIRTUAL_HOST=terrastories.local,${HOST_HOSTNAME-terrastories.local}
+      - VIRTUAL_HOST=terrastories.local
       - VIRTUAL_PATH=/tileserver/
       - VIRTUAL_DEST=/
       - VIRTUAL_PORT=8080
