@@ -57,19 +57,19 @@ For all other hosting environments, please see our [docs](https://docs.terrastor
 <p>Please follow our new <a href="https://github.com/terrastories/offline-field-kit">offline field kit setup instructions</a>.</p>
 </div>
 
-#### Why are you no longer supporting offline mode here?**
+#### **Why are you no longer supporting offline mode here?**
 
 A few reasons. Namely, requiring offline communities to download and build the entire application from scratch was time-consuming, difficult on poor internet connections, and was often riddled with errors that were difficult to troubleshoot and fix without substantial support.
 
 **Faster, stabler, and more streamlined download to runtime instructions**
 
-Some of our latest efforts have been to create a more streamlined setup for communities wishing to host an offline instance out in the field, or what we like to call our "offline field kits." This includes building and hosting production ready images that have everything they need to run terrastories without needing everything to build terrastories.
+Some of our latest efforts have been to create a more streamlined setup for communities wishing to host an offline instance out in the field, or what we like to call our "offline field kits." This involves us building and hosting production ready images that have everything they need to run terrastories, so you won't need to build it yourself.
 
-We've set up a lightweight, download and install [repository](https://github.com/terrastories/offline-field-kit). It also includes advanced setup if you wish to configure it more than the run install.sh and boot with default configurations.
+We've set up a lightweight download-and-install [repository](https://github.com/terrastories/offline-field-kit). It also includes advanced setup if you wish to configure it more than the run install.sh and boot with default configurations.
 
 **Protomaps and .pmtiles by default**
 
-Our new default rendering of map tiles is using Protomaps. Online and with an API key, we utilize Protomaps API; otherwise, we support rendering using a locally installed .pmtiles Map Package.
+Our new default rendering of map tiles is using Protomaps. For online environments, we utilize the Protomaps API (with an API key); otherwise, we support rendering using a locally installed .pmtiles Map Package.
 
 Terrastories still supports running your own Tileserver; however, we are deprecating support for running the Tileserver for you.
 
