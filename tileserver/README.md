@@ -1,22 +1,16 @@
 # Terrastories Offline Tile Server
 
-For online or internet-connected instances of Terrastories, the tiles for Terrastories are provided by [Mapbox](https://www.mapbox.com) with a configurable API key and style url. For offine, however, a tile server is required to serve map tiles for Terrastories to work.
+For online or internet-connected instances of Terrastories, the tiles for Terrastories are provided by [Protomaps](https://protomaps.com/) with an API key. For offine, we are currently supporting the use of pmtiles; however, for legacy offline Terrastories projects using mbtiles, an additional tile server is required to serve the mbtiles for Terrastories to work. We are using Tileserver GL.
 
-## TileServer GL
+## Tileserver GL
 
-TileServer GL is a map tile server for Mapbox GL (and more) that will allow us to server local map tiles for offline mode consumption.
+Tileserver GL is a map tile server for Maplibre GL (and more) that will allow us to server local mbtiles for offline mode consumption.
 
-The source for TileServer GL is available at https://github.com/maptiler/tileserver-gl
+The source for Tileserver GL is available at https://github.com/maptiler/tileserver-gl
 
 ## Setup for Offline Mode
 
-We'll be using the TileServer GL docker image `maptiler/tileserver-gl`.
-
-1. Download Default Offline Tiles
-
-   A default, open-license map for using offline with Terrastories is available at https://github.com/terrastories/default-offline/tiles. Download these files and place them in the `tileserver/data` directory, and they should work when you load Terrastories in Field Kit mode.
-
-2. Follow instructions to run Terrastories in offline mode from project root.
+We'll be using the Tileserver GL docker image `maptiler/tileserver-gl`. The setup scripts located in `bin/` should take care of downloading default offline map resources for you. However, if you want to use your own map tiles and style, please refer to the [Tileserver-GL documentation](https://maptiler-tileserver.readthedocs.io/) on how to set up your files. 
 
 ## Manually run the tile server
 
