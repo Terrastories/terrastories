@@ -28,7 +28,7 @@ RUN apk --no-cache add --update \
     imagemagick \
     ffmpeg \
     poppler && \
-    gem install bundler --no-document --force
+    gem install bundler --no-document --force -v '~> 2.4.7'
 
 WORKDIR /tmp
 
