@@ -1,0 +1,190 @@
+#!/bin/bash
+set -eu
+
+# Set ANSI Codes
+Off='\033[00m'
+Bold='\033[1m'
+
+Red='\033[0;31m'
+Blue='\033[0;36m'
+Green='\033[0;32m'
+Purple='\033[0;35m'
+Blue='\033[0;36m'
+
+abort() {
+  printf "%s\n" "$@" >&2
+  exit 1
+}
+
+# Fail fast if tileserver configuration isn't found
+if [ ! -f tileserver/data/styles/style.json ]; then
+  echo -e "$(cat <<OFFLINE_CHECK
+
+It looks like you are setting up Terrastories for the first time.
+
+${Red}${Bold}Setting up Terrastories for offline use using this script is deprecated.${Off}
+
+Offline setup and installation scripts are now available over at
+
+    ${Green}https://github.com/terrastories/offline-field-kit${Off}
+OFFLINE_CHECK
+)"
+  abort
+else
+  echo -e "$(cat <<OFFLINE_CHECK
+
+${Red}${Bold}Setting up Terrastories for offline use using this script is deprecated.${Off}
+
+It is recommended to convert your mbtiles and style.json to Protomaps PMTiles format
+and switch to using our new offline field kit setup and installation instructions.
+
+The new offline setup and installation scripts are available over at
+
+    ${Green}https://github.com/terrastories/offline-field-kit${Off}
+OFFLINE_CHECK
+)"
+
+  echo
+  read -p "Press any key to quit setup or c to continue." -n 1 k
+  echo
+  if [[ "$k" != "c" ]]; then
+    exit
+  fi
+fi
+
+# Fail fast if not on Linux or Mac
+OS="$(uname)"
+if [[ "${OS}" == "Linux" ]]
+then
+  LINUX=1
+elif [[ "${OS}" == "Darwin" ]]
+then
+  MACOS=1
+else
+  abort "Currently, Terrastories is only supported on macOS and Linux."
+fi
+
+# Fail fast if no internet cnonection is detected
+ping -q -c1 google.com &>/dev/null && true || abort "Internet connection is required to complete setup."
+
+## Start Helpers
+shell_join() {
+  local arg
+  printf "%s" "$1"
+  shift
+  for arg in "$@"
+  do
+    printf " "
+    printf "%s" "${arg// /\ }"
+  done
+}
+
+ohai() {
+  printf "${Purple}==>${Bold} %s${Off}\n" "$(shell_join "$@")"
+}
+
+execute() {
+  if ! "$@"
+  then
+    abort "$(printf "Failed during: %s" "$(shell_join "$@")")"
+  fi
+}
+## End Helpers
+
+# Set Up Start
+ohai "Configure Network Access"
+
+message=$(cat <<-END
+
+    By default, Terrastories is setup with network access at terrastories.local.
+    Would you like to change your host name to access it at a custom location?
+
+        (1) Yes, please.
+        (2) No, default is fine.
+
+    Your choice: [2] 
+END
+)
+
+hostname=$(grep "^HOST_HOSTNAME=.*" .env.offline | cut -s -d= -f2 -)
+if [ ! -z $hostname ]; then
+  echo "Terrastories is currently configured with network access at $hostname."
+  echo
+else
+  read -p "$message" addhosts
+
+  hostname=$(hostname)
+  if [ "$addhosts" = "1" ]; then
+    echo
+    read -p "Specify hostname: [$hostname] " hosts
+    hostname=${hosts:-$hostname}
+  fi
+  # Enable HOST_HOSTNAME
+  if [ ! -z "$hostname" ]; then
+    grep -v "HOST_HOSTNAME" .env.offline > .envnew; mv .envnew .env.offline
+    echo "HOST_HOSTNAME=$hostname" >> .env.offline
+  fi
+
+  echo -e "...${Green}done!${Off}\n"
+fi
+
+ohai Configure Host Domain
+# Add to /etc/hosts if not already there
+if [ "$hostname" = "$(hostname)" ]; then
+  echo "Machine hostname configured by default"
+  echo
+elif ! grep -q "$hostname" /etc/hosts; then
+  read -p "$(
+    cat <<MODHOSTS
+
+In order to utilize $hostname, you must add it to your /etc/hosts file.
+This can be done manually by editing your /etc/hosts file, or you can provide your
+password when prompted to allow us to automatically configure them.
+
+  Choose one:
+    (1) Manual
+    (2) Automatic
+
+Your choice: [2] 
+MODHOSTS
+  )" modHosts
+
+  if [ "$modHosts" = "1" ]; then
+    read -p "$(
+  cat <<HOSTS
+
+In a new terminal window, open /etc/hosts with appropriate write permissions
+and add the following line:
+
+      127.0.0.1 $hostname
+
+Press any key to continue or q to quit. 
+HOSTS
+    )" -n 1 k
+    if [[ "$k" = "q" ]]; then
+      exit
+    fi
+  else
+    echo "Automatically configuring terrastories.local. You may prompted for your password."
+    sudo -- sh -c "echo '# Added by Terrastories\n127.0.0.1 $hostname\n127.0.0.1 terrastories.local\n# End of section' >> /etc/hosts"
+    echo -e "...${Green}done!${Off}"
+  fi
+fi
+
+echo
+ohai Configuring Terrastories default map package…
+# Download default .pmtiles
+if [ ! -f map/terrastories-map/tiles.pmtiles ]; then
+  curl -fsSL "https://t.ly/OTZpR" -o "map/terrastories-map/tiles.pmtiles" --create-dirs
+fi
+curl -fsSL "https://github.com/protomaps/basemaps-assets/archive/refs/heads/main.tar.gz" | tar xzf - -C map/terrastories-map --strip-components=1 basemaps-assets-main/fonts basemaps-assets-main/sprites
+
+# So Docker doesn't error
+if [ ! -f .env ]; then
+  cp .env.example .env
+fi
+
+echo -e "...${Green}done!${Off}\n"
+
+echo -e "${Purple}${Bold}Start your Terrastories instance with${Off}"
+echo "   bin/serve"

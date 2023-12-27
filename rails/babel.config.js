@@ -1,10 +1,13 @@
 module.exports = function(api) {
-  var validEnv = ['development', 'test', 'production', 'offline']
-  var currentEnv = api.env()
-  var isDevelopmentEnv = api.env('development')
-  var isProductionEnv = api.env('production')
-  var isTestEnv = api.env('test')
-  var isOfflineEnv = api.env('offline')
+  const defaultConfigFunc = require('shakapacker/package/babel/preset.js')
+  const resultConfig = defaultConfigFunc(api)
+
+  const validEnv = ['development', 'test', 'production', 'offline']
+  const currentEnv = api.env()
+  const isDevelopmentEnv = api.env('development')
+  const isProductionEnv = api.env('production')
+  const isTestEnv = api.env('test')
+  const isOfflineEnv = api.env('offline')
 
   if (!validEnv.includes(currentEnv)) {
     throw new Error(
@@ -16,28 +19,8 @@ module.exports = function(api) {
     )
   }
 
-  return {
+  const changesOnDefault = {
     presets: [
-      isTestEnv && [
-        '@babel/preset-env',
-        {
-          targets: {
-            node: 'current'
-          },
-          modules: 'commonjs'
-        },
-        '@babel/preset-react'
-      ],
-      (isProductionEnv || isDevelopmentEnv || isOfflineEnv) && [
-        '@babel/preset-env',
-        {
-          forceAllTransforms: true,
-          useBuiltIns: 'entry',
-          corejs: 3,
-          modules: false,
-          exclude: ['transform-typeof-symbol']
-        }
-      ],
       [
         '@babel/preset-react',
         {
@@ -52,35 +35,27 @@ module.exports = function(api) {
       isTestEnv && 'babel-plugin-dynamic-import-node',
       '@babel/plugin-transform-destructuring',
       [
-        '@babel/plugin-proposal-class-properties',
+        '@babel/plugin-transform-class-properties',
         {
           loose: true
         }
       ],
       [
-        '@babel/plugin-proposal-object-rest-spread',
+        '@babel/plugin-transform-object-rest-spread',
         {
           useBuiltIns: true
         }
       ],
       [
-        '@babel/plugin-proposal-private-methods',
+        '@babel/plugin-transform-private-methods',
         {
           loose: true
         }
       ],
       [
-        '@babel/plugin-proposal-private-property-in-object',
+        '@babel/plugin-transform-private-property-in-object',
         {
           loose: true
-        }
-      ],
-      [
-        '@babel/plugin-transform-runtime',
-        {
-          helpers: false,
-          regenerator: true,
-          corejs: false
         }
       ],
       [
@@ -97,4 +72,9 @@ module.exports = function(api) {
       ]
     ].filter(Boolean)
   }
+
+  resultConfig.presets = [...resultConfig.presets, ...changesOnDefault.presets]
+  resultConfig.plugins = [...resultConfig.plugins, ...changesOnDefault.plugins ]
+
+  return resultConfig
 }

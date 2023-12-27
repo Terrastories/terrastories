@@ -28,12 +28,11 @@ RUN apk --no-cache add --update \
     imagemagick \
     ffmpeg \
     poppler && \
-    gem update --system --no-document && \
-    gem install bundler --no-document --force
+    gem install bundler --no-document --force -v '~> 2.4.7'
 
 WORKDIR /tmp
 
-COPY Gemfile* /tmp/
+COPY rails/Gemfile* /tmp/
 RUN bundle config set --local path /usr/local/bundle && \
     bundle config build.nokogiri --use-system-libraries && \
     bundle install
@@ -43,10 +42,17 @@ WORKDIR /api
 # == Transient step for building assets
 FROM devcore as builder
 
-COPY . /api
+RUN apk add curl tar
+
+COPY ./rails /api
 
 # So we can build assets for prod with dev dependencies
-RUN bundle exec rake assets:precompile
+RUN bin/rake assets:precompile
+
+# Configure Map Package
+COPY ./map /api/public/map
+RUN curl -fsSL "https://t.ly/OTZpR" -o "/api/public/map/terrastories-map/tiles.pmtiles"
+RUN curl -fsSL "https://github.com/protomaps/basemaps-assets/archive/refs/heads/main.tar.gz" | tar xzf - -C /api/public/map/terrastories-map --strip-components=1 basemaps-assets-main/fonts basemaps-assets-main/sprites
 
 # == Final Production Image
 #
@@ -71,19 +77,22 @@ RUN apk --no-cache add \
     imagemagick \
     ffmpeg \
     poppler && \
-    gem update --system --no-document && \
     gem install bundler --no-document --force
 
 # Set deployment to true, bundled to vendor/bundle
 RUN bundle config set deployment 'true'
 
 # Copy sourcecode
-COPY . /api
+COPY ./rails /api
+
+# Download Default Assets
 
 # Copy in bundled gems from devcore
 COPY --from=devcore /usr/local/bundle /api/vendor/bundle
 # Copy in precompiled assets from build
-COPY --from=builder /api/public /api/public
+COPY --from=builder /api/public/assets /api/public/assets
+COPY --from=builder /api/public/packs /api/public/packs
+COPY --from=builder /api/public/map /api/public/map
 
 WORKDIR /api
 

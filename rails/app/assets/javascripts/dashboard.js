@@ -1,5 +1,4 @@
 //= require rails-ujs
-//= require mapbox-gl
 
 function exportTableToCSV(target, filename) {
   var table = document.querySelector(target);

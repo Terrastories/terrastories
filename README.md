@@ -23,7 +23,7 @@
 
 **Terrastories** is an open-source geostorytelling application for mapping, managing and sharing place-based stories. The application is being co-created with Indigenous and other local communities to collectively manage their oral histories and other cultural knowledge, but it can be used by anyone to create a map of their stories.
 
-Terrastories is a Dockerized Rails and React app that uses [**Mapbox GL JS**](https://mapbox.com) / [**MapLibre GL JS**](https://maplibre.com/) to help users locate place-based media content or narrative stories on an interactive map. As a local-first application, Terrastories is designed to work entirely offline, so that remote communities can access the application entirely without needing internet connectivity.
+Terrastories is a Dockerized Rails and React app that uses [**MapLibre GL JS**](https://maplibre.com/) or [**Mapbox GL JS**](https://mapbox.com) to help users locate place-based media content or narrative stories on an interactive map. As a local-first application, Terrastories is designed to work entirely offline, so that remote communities can access the application entirely without needing internet connectivity.
 
 The main Terrastories interface is principally composed of an interactive map and a sidebar with media content. Users can explore the map and click on activated points to see the stories associated with those points. Alternatively, users can interact with the sidebar and click on stories to see where in the landscape these narratives took place. 
 
@@ -40,35 +40,74 @@ Learn more about Terrastories on [our website](https://terrastories.app/).
 
 ## Install Terrastories
 
-Terrastories can be set up for different hosting environments, including online, local (development), mesh network, or offline "field kit". For local or offline hosting, there is a convenience script that walks you through all of the steps, or you can choose to follow the more granular guides for the various environments and operating systems.
+Terrastories can be set up for different hosting environments, including online, local (development), mesh network, or offline "field kit".
+
+For local development, follow the [development](#development) setup.
+For offline hosting, there is a convenient script that walks you through all of the steps.
+For all other hosting environments, please see our [docs](https://docs.terrastories.app).
 
 ### Prerequisites
 
-#### Docker
-Local development and offline mode both require Docker to be installed.
+1. Download and install [Docker](https://docs.docker.com/get-docker/) for your platform.
 
-Download and install [Docker](https://www.docker.com/products/docker-desktop/) for your platform.
+### Offline "Field Kit" Mode
 
-> NOTE: Windows requires WSL 2.0 or virtualization in order to work. Additionally, it is possible that you may need to configure some additional settings for Terrastories to properly work on Windows.
+<div style="background-color: #CC0000; color: white; padding: 5px 10px">
+<p><strong>Setting up offline mode using these instructions is no longer supported</strong></p>
+<p>Please follow our new <a href="https://github.com/terrastories/offline-field-kit">offline field kit setup instructions</a>.</p>
+</div>
 
-#### Tileserver (Offline "Field Kit" Mode)
+#### **Why are you no longer supporting offline mode here?**
 
-If you plan on running Terrastories offline, you'll need to configure local tiles for offline use.
+A few reasons. Namely, requiring offline communities to download and build the entire application from scratch was time-consuming, difficult on poor internet connections, and was often riddled with errors that were difficult to troubleshoot and fix without substantial support.
 
-A default, open-license map for using offline with Terrastories is available at https://github.com/terrastories/default-offline/tiles. You will have the option of downloading these using the setup script below. Alternatively, you can manually download these files and place them in the `tileserver/data` directory, and they should work when you load Terrastories in Field Kit mode.
+**Faster, stabler, and more streamlined download to runtime instructions**
 
-### Setup
+Some of our latest efforts have been to create a more streamlined setup for communities wishing to host an offline instance out in the field, or what we like to call our "offline field kits." This involves us building and hosting production ready images that have everything they need to run terrastories, so you won't need to build it yourself.
 
-1. Clone this repository
-1. Run
-   ```sh
-   $ ./bin/setup
-   ```
-   and follow the prompts.
+We've set up a lightweight download-and-install [repository](https://github.com/terrastories/offline-field-kit). It also includes advanced setup if you wish to configure it more than the run install.sh and boot with default configurations.
 
-Once you have set up Terrastories, you can log in to the super admin console, or the sample Terrastories community, using login information found in `rails/db/seeds.rb`.
+**Protomaps and .pmtiles by default**
 
-If you are developing with an online (Mapbox) map, you will need to provide an access token. Copy the contents of the `.env.example` file into a newly created file called `.env` (Do not change .env.example!). In the `.env` file, replace where it says `pk.set-your-key-here` (after `DEFAULT_MAPBOX_TOKEN=`) with your mapbox access token. 
+Our new default rendering of map tiles is using Protomaps. For online environments, we utilize the Protomaps API (with an API key); otherwise, we support rendering using a locally installed .pmtiles Map Package.
+
+Terrastories still supports running your own Tileserver; however, we are deprecating support for running the Tileserver for you.
+
+> If you previously set up Terrastories with Tileserver, your style data is safe and you can still run your instance using these instructions.
+
+We recommend you convert your .mbtiles to .pmtiles and switch to using our offline field kit when you are able.
+
+#### Setup
+
+1. Clone repository
+1. Run `bin/install`, and follow the prompts
+1. After it completes, run `bin/serve`
+
+If you are installing on a field kit with a hotspot, there are additional instructions for configuring those settings available in our [docs](https://docs.terrastories.app).
+
+## Development
+
+### Quick Start
+
+1. [Fork & Clone](https://github.com/Terrastories/terrastories/fork)
+1. Run `bin/setup`, and follow the prompts
+1. When complete, boot with `docker compose up`
+
+### Tests
+
+We use rspec for running our Rails specs. You can run the entire suite using:
+
+```
+docker compose run --rm test
+```
+
+Additionally, all RSpec runtime flags, including running a specific test, are available:
+
+```
+docker compose run --rm test spec/models/user_spec.rb:15
+```
+
+The `--rm` flag tells Docker to clean up the container after it's done running the test suite.
 
 ### Issues?
 

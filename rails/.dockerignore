@@ -30,9 +30,3 @@ public/packs-test
 
 # Ignore node
 node_modules/*
-
-public/packs/*
-public/packs-test/*
-
-!public/assets/*
-!public/packs/*
