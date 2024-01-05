@@ -139,7 +139,7 @@
     </div>
   </div>
 
-  <% unless @theme.offline_mode? %>
+  <% unless Map.offline? %>
     <div>
       <h5><%= t("map.online") %></h5>
       <div class="input-group">

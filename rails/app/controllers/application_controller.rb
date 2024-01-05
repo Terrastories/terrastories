@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
   end
 
   def offline_community?
-    Rails.application.config.offline_mode
+    Map.offline?
   end
 
   def user_not_authorized

@@ -33,7 +33,7 @@ json.mapbox_access_token @community.theme.mapbox_token
 json.mapbox_style @community.theme.mapbox_style
 json.mapbox_3d @community.theme.mapbox_3d
 json.map_projection @community.theme.map_projection
-json.use_local_map_server @community.theme.offline_mode?
+json.use_local_map_server @community.theme.use_maplibre?
 json.center_lat @community.theme.center_lat
 json.center_long @community.theme.center_long
 json.sw_boundary_lat @community.theme.sw_boundary_lat

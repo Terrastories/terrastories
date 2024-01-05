@@ -31,23 +31,23 @@ class Theme < ApplicationRecord
   end
 
   def mapbox_token
-    if mapbox_access_token.present? && !offline_mode?
+    if mapbox_access_token.present? && !Map.offline?
       mapbox_access_token
     else
-      Rails.application.config.default_mapbox_token
+      Map.mapbox_access_token
     end
   end
 
   def mapbox_style
-    if mapbox_style_url.present? && !offline_mode?
+    if mapbox_style_url.present? && !Map.offline?
       mapbox_style_url
     else
-      Rails.application.config.default_map_style
+      Map.default_style
     end
   end
 
-  def offline_mode?
-    Rails.application.config.offline_mode
+  def use_maplibre?
+    Map.offline? || !(Map.use_mapbox? || mapbox_access_token.present?)
   end
 
   def all_boundaries_nil?
