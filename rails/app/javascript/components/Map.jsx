@@ -1,7 +1,9 @@
 import ReactDOM from "react-dom";
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import Minimap from "../vendor/mapgl-minimap.js";
 import Popup from "./Popup";
+import { mapStyleLayers } from '../global/protomaps';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 import 'maplibre-gl/dist/maplibre-gl.css';
@@ -18,9 +20,7 @@ export default class Map extends Component {
     this.state = {
       activePopup: null,
       mapGL: null,
-      isMapLibre: false,
       mapModule: null,
-      minimapModule: null
     };
   }
 
@@ -39,34 +39,23 @@ export default class Map extends Component {
   };
 
   componentDidMount() {
+    if (this.state.mapModule) {
+      this.initializeMap(this.state.mapModule);
+      return;
+    }
+
     if (this.props.useLocalMapServer) {
-      if (!this.state.mapModule) {
-        import('!maplibre-gl').then(module => {
-          this.setState({ mapModule: module.default }, () => {
-            this.initializeMap(this.state.mapModule, true);
-          });
+      import('!maplibre-gl').then(module => {
+        this.setState({ mapModule: module.default }, () => {
+          this.initializeMap(this.state.mapModule);
         });
-      } else {
-        this.initializeMap(this.state.mapModule, true);
-      }
+      });
     } else {
-      if (!this.state.mapModule || !this.state.minimapModule) {
-        Promise.all([
-          import('!mapbox-gl'),
-          import('../vendor/mapboxgl-control-minimap.js')
-        ]).then(([mapboxGLModule, minimapModule]) => {
-          this.setState({
-            mapModule: mapboxGLModule.default,
-            minimapModule: minimapModule.default
-          }, () => {
-            this.Minimap = this.state.minimapModule;
-            this.initializeMap(this.state.mapModule, false);
-          });
+      import('!mapbox-gl').then(module => {
+        this.setState({ mapModule: module.default }, () => {
+          this.initializeMap(this.state.mapModule);
         });
-      } else {
-        this.Minimap = this.state.minimapModule;
-        this.initializeMap(this.state.mapModule, false);
-      }
+      });
     }
   }
 
@@ -104,11 +93,14 @@ export default class Map extends Component {
     }
   }
 
-  initializeMap(mapGL, isMapLibre) {
-    mapGL.accessToken = this.props.useLocalMapServer ? 'pk.ey' : this.props.mapboxAccessToken;
+  initializeMap(mapGL) {
+    if (!this.props.useLocalMapServer) {
+      mapGL.accessToken = this.props.mapboxAccessToken;
+    }
+
     this.map = new mapGL.Map({
       container: this.mapContainer,
-      style: this.props.mapStyle,
+      style: mapStyleLayers(this.props.mapStyle),
       center: [this.props.centerLong, this.props.centerLat],
       zoom: this.props.zoom,
       maxBounds: this.checkBounds(), // check for bounding box presence
@@ -180,31 +172,21 @@ export default class Map extends Component {
       this.addClusterClickHandler();
     });
 
-    // Hide minimap and nav controls for offline Terrastories
-    if(!isMapLibre && this.Minimap) {
-      this.map.addControl(new this.Minimap(
-        {
-          style: this.props.mapStyle,
-          zoomLevels: [
-            [18, 14, 16],
-            [16, 12, 14],
-            [14, 10, 12],
-            [12, 8, 10],
-            [10, 6, 8],
-            [8, 4, 6],
-            [6, 2, 4],
-            [3, 0, 2],
-            [1, 0, 0]
-          ],
-          lineColor: "#136a7e",
-          fillColor: "#d77a34",
-        }), "top-right");
-    }
+    // Add MiniMap
+    this.map.addControl(new Minimap(
+      mapGL,
+      {
+        center: [this.props.centerLong, this.props.centerLat],
+        maxBounds: this.checkBounds(),
+        style: mapStyleLayers(this.props.mapStyle, "light"),
+        lineColor: "#136a7e",
+        fillColor: "#d77a34",
+      }), "top-right");
 
     this.map.addControl(new mapGL.NavigationControl());
 
     // Add Maplibre logo for offline Terrastories
-    if(isMapLibre) {
+    if(this.props.useLocalMapServer) {
       this.map.addControl(new mapGL.LogoControl(), 'bottom-right');
     }
 
@@ -225,8 +207,7 @@ export default class Map extends Component {
     })
 
     this.setState({
-      mapGL: mapGL,
-      isMapLibre: isMapLibre
+      mapGL: mapGL
     });
   }
 
@@ -287,7 +268,7 @@ export default class Map extends Component {
       type: "symbol",
       layout: {
         'text-field': '{point_count_abbreviated}',
-        'text-font': ['Open Sans Bold'],
+        'text-font': this.props.useLocalMapServer ? ['Noto Sans Medium'] : ['Open Sans Bold'],
         'text-size': 16,
         'text-offset': [0.2, 0.1]
         },
