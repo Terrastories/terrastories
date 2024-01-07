@@ -58,7 +58,7 @@ if [ "$offline" = "y" ] || [ "$offline" = "Y" ]; then
     echo "Choose one:"
     echo "  (1) Manual"
     echo "  (2) Automatic"
-    echo "  (3) Skip configuration"
+    echo "  (3) Skip configuration "
     echo
     read -p "Your choice: " choice
 
@@ -133,24 +133,25 @@ docker compose run --rm db postgres --version
 ## start db
 docker compose up -d db
 
-## build app
-docker compose --profile $profile build
+## pull images
+docker compose --profile $profile up -d --pull always --quiet-pull
 
 ## setup database
 docker compose --profile $profile run --rm $container bin/rails db:migrate
 
 ## Seed database with demo data
 if [[ "$profile" = "dev" ]]; then
-  docker compose --profile dev run --rm $container bin/rails db:seed
+  echo "seeding database"
+  docker compose run -rm $container bin/rails db:seed
+
+  ## Install dependencies
+  echo "installing dependencies"
+  docker compose run --rm $container yarn
+  docker compose run --rm $container bundle
 fi
 
-## Precompile assets for offline mode
-if [[ "$profile" = "offline" ]]; then
-  docker compose --profile offline run --rm -e RAILS_ENV=offline $container bin/rails assets:precompile
-fi
-
-## run yarn
-docker compose --profile $profile run --rm $container yarn
+echo finishing up
+docker compose --profile $container stop
 
 echo
 echo -e "${BoldGreen}Welcome to Terrastories!$ColorOff"
