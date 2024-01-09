@@ -3,7 +3,8 @@
     "paths": {
       "fonts": "fonts",
 	  "sprites": "sprites"
-    }
+    },
+    "serveAllFonts": true
   },
   "data": {
     "terrastories-map": {
