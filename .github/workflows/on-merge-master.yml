@@ -20,9 +20,10 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
     - name: Build and push
-      uses: docker/build-push-action@v4
+      uses: docker/build-push-action@v5
       with:
-        context: "{{defaultContext}}:rails"
+        context: .
+        file: "{context}/rails/Dockerfile"
         target: devcore
         platforms: linux/amd64,linux/arm64,linux/arm/v7
         push: true

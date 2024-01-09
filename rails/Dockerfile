@@ -29,11 +29,11 @@ RUN apk --no-cache add --update \
     ffmpeg \
     poppler && \
     gem update --system --no-document && \
-    gem install bundler --no-document --force
+    gem install bundler --no-document --force -v '~> 2.4.7'
 
 WORKDIR /tmp
 
-COPY Gemfile* /tmp/
+COPY rails/Gemfile* /tmp/
 RUN bundle config set --local path /usr/local/bundle && \
     bundle config build.nokogiri --use-system-libraries && \
     bundle install
@@ -43,10 +43,10 @@ WORKDIR /api
 # == Transient step for building assets
 FROM devcore as builder
 
-COPY . /api
+COPY ./rails /api
 
 # So we can build assets for prod with dev dependencies
-RUN bundle exec rake assets:precompile
+RUN bin/rake assets:precompile
 
 # == Final Production Image
 #
@@ -71,19 +71,19 @@ RUN apk --no-cache add \
     imagemagick \
     ffmpeg \
     poppler && \
-    gem update --system --no-document && \
     gem install bundler --no-document --force
 
 # Set deployment to true, bundled to vendor/bundle
 RUN bundle config set deployment 'true'
 
 # Copy sourcecode
-COPY . /api
+COPY ./rails /api
 
 # Copy in bundled gems from devcore
 COPY --from=devcore /usr/local/bundle /api/vendor/bundle
 # Copy in precompiled assets from build
-COPY --from=builder /api/public /api/public
+COPY --from=builder /api/public/assets /api/public/assets
+COPY --from=builder /api/public/packs /api/public/packs
 
 WORKDIR /api
 

@@ -52,7 +52,7 @@ gem 'aws-sdk-s3', '~> 1.119.0'
 gem 'active_storage_validations', '~> 1.0'
 
 # Enable Webpack for javascript application code
-gem 'webpacker', '~> 5.0'
+gem 'shakapacker', '~> 7.1'
 gem 'react-rails', '~> 2.6.2'
 
 # Use ActiveStorage variant
