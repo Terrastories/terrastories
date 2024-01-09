@@ -46,10 +46,6 @@ class Story < ApplicationRecord
     end
   end
 
-  def geo_center
-    Geocoder::Calculations.geographic_center(places.map { |p| [p.lat, p.long] }).reverse
-  end
-
   def static_map_markers
     RGeo::GeoJSON.encode(
       RGeo::GeoJSON::FeatureCollection.new(
