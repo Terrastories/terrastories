@@ -5,6 +5,7 @@ on:
     branches:
       - master
       - main
+  workflow_dispatch:
 
 jobs:
   docker-buildx:
@@ -23,7 +24,7 @@ jobs:
       uses: docker/build-push-action@v5
       with:
         context: .
-        file: "{context}/rails/Dockerfile"
+        file: "{{defaultContext}}/rails/Dockerfile"
         target: devcore
         platforms: linux/amd64,linux/arm64,linux/arm/v7
         push: true
