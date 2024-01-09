@@ -55,36 +55,56 @@ const placeForm = document.querySelector("#place_form");
 const placeLatInput = placeForm.querySelector("#place_lat");
 const placeLongInput = placeForm.querySelector("#place_long");
 const coordinates = [placeLongInput.value, placeLatInput.value]
-const placeMap = new mapboxgl.Map({
-  accessToken: "<%= current_community.theme.mapbox_token %>",
-  container: "placeMap", // container ID
-  center: coordinates, // starting position [lng, lat]
-  hash: false,
-  zoom: <%= current_community.theme.zoom || 5 %>, // starting zoom
-  style: "<%= current_community.theme.mapbox_style %>", // style URL or style object
-  cooperativeGestures: true
-});
 
-const marker = new mapboxgl.Marker()
-  .setLngLat(coordinates)
-  .addTo(placeMap);
+Terrastories.map_utils.mapgl(<%= current_community.theme.use_maplibre? %>).then(lib => {
+  const placeMap = Terrastories.map_utils.interactiveMap(
+    lib,
+    {
+      accessToken: "<%= current_community.theme.mapbox_token %>",
+      container: "placeMap", // container ID
+      center: coordinates, // starting position [lng, lat]
+      hash: false,
+      zoom: <%= current_community.theme.zoom || 5 %>, // starting zoom
+      style: "<%= current_community.theme.mapbox_style %>", // style URL or style object
+      cooperativeGestures: true,
+      dragRotate: false,
+      pitchWithRotation: false,
+      boxZoom: false,
+      touchPitch: false,
+      touchZoomRotate: false,
+    }
+  );
 
-// sync values when the map moves
-placeMap.on('move', () => {
-  let { lng, lat } = placeMap.getCenter();
-  placeLongInput.value = lng.toFixed(5);
-  placeLatInput.value = lat.toFixed(5);
-  marker.setLngLat({lng, lat});
-});
+  const marker = new lib.Marker({draggable: true}).setLngLat(coordinates)
 
-// sync values when input is edited
-placeLongInput.addEventListener("change", (e) => {
-  let { lat } = placeMap.getCenter();
-  placeMap.setCenter({lng: e.target.value, lat: lat});
-});
+  placeMap.on("load", () => {
+    marker.addTo(placeMap);
+  })
 
-placeLatInput.addEventListener("change", (e) => {
-  let { lng } = placeMap.getCenter();
-  placeMap.setCenter({lng: lng, lat: e.target.value});
-});
+  marker.on("dragend", (e) => {
+    const { lng, lat } = marker.getLngLat()
+
+    placeMap.setCenter([lng, lat])
+  })
+
+  // sync values when the map moves
+  placeMap.on('move', () => {
+    let { lng, lat } = placeMap.getCenter();
+    placeLongInput.value = lng.toFixed(5);
+    placeLatInput.value = lat.toFixed(5);
+    marker.setLngLat({lng, lat});
+  });
+
+  // sync values when input is edited
+  placeLongInput.addEventListener("change", (e) => {
+    let { lat } = placeMap.getCenter();
+    placeMap.setCenter({lng: e.target.value, lat: lat});
+  });
+
+  placeLatInput.addEventListener("change", (e) => {
+    let { lng } = placeMap.getCenter();
+    placeMap.setCenter({lng: lng, lat: e.target.value});
+  });
+
+})
 </script>
