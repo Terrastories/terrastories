@@ -39,7 +39,9 @@ class Theme < ApplicationRecord
   end
 
   def basemap_style
-    if protomaps_api_key.present? && protomaps_basemap_style.present?
+    return "default" if Map.offline? || !use_maplibre?
+
+    if protomaps_basemap_style.present?
       protomaps_basemap_style
     else
       "contrast"

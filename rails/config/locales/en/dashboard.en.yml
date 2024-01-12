@@ -10,6 +10,7 @@ en:
     grayscale: Grayscale
     black: Black
   protomaps_basemap_markers:
+    default: "#3FB1CE"
     contrast: "#B5C481"
     light: "#3FB1CE"
     dark: "#555"
