@@ -36,6 +36,8 @@ module Dashboard
         :mapbox_style_url,
         :mapbox_access_token,
         :mapbox_3d,
+        :protomaps_api_key,
+        :protomaps_basemap_style,
         :center_lat,
         :center_long,
         :sw_boundary_lat,

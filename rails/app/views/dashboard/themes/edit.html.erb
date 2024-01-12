@@ -140,19 +140,37 @@
   </div>
 
   <% unless Map.offline? %>
-    <div>
-      <h5><%= t("map.online") %></h5>
-      <div class="input-group">
-      <%= f.label :mapbox_style_url %>
-      <%= f.text_field :mapbox_style_url %>
+    <h5><%= t("map.online") %></h5>
+    <div class="two-columns">
+      <div class="two-columns-left">
+        <fieldset class="small-labels">
+        <legend><%= t("map.protomaps_configuration") %></legend>
+          <div class="input-group">
+          <%= f.label :protomaps_api_key %>
+          <%= f.text_field :protomaps_api_key %>
+          </div>
+          <div class="input-group">
+          <%= f.label :protomaps_basemap_style %>
+          <%= f.select :protomaps_basemap_style, t("protomaps_basemap_styles").map { |k, v| [v, k] }, include_blank: "Default" %>
+          </div>
+        </fieldset>
       </div>
-      <div class="input-group">
-      <%= f.label :mapbox_access_token %>
-      <%= f.text_field :mapbox_access_token %>
-      </div>
-      <div class="input-group">
-      <%= f.check_box :mapbox_3d %>
-      <%= f.label :mapbox_3d %>
+      <div class="two-columns-right">
+        <fieldset class="small-labels">
+          <legend><%= t("map.mapbox_configuration") %></legend>
+          <div class="input-group">
+          <%= f.label :mapbox_style_url %>
+          <%= f.text_field :mapbox_style_url %>
+          </div>
+          <div class="input-group">
+          <%= f.label :mapbox_access_token %>
+          <%= f.text_field :mapbox_access_token %>
+          </div>
+          <div class="input-group">
+          <%= f.check_box :mapbox_3d %>
+          <%= f.label :mapbox_3d %>
+          </div>
+        </fieldset>
       </div>
     </div>
   <% end %>
