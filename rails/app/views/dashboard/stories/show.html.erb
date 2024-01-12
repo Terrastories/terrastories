@@ -100,7 +100,8 @@ Terrastories.map_utils.staticMap(
     accessToken: "<%= current_community.theme.mapbox_token %>",
     container: "static-map", // container ID
     zoom: <%= current_community.theme.zoom %>,
-    style: "<%= current_community.theme.mapbox_style %>", // style URL or style object
+    style: "<%= current_community.theme.map_style_url %>", // style URL or style object
+    basemapStyle: "<%= current_community.theme.basemap_style %>",
   },
   <%= raw @story.static_map_markers %>
 )

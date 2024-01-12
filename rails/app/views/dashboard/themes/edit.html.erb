@@ -199,14 +199,15 @@ Terrastories.map_utils.mapgl(<%= @theme.use_maplibre? %>).then((lib) => {
       zoom: <%= @theme.zoom  || 0 %>, // starting zoom
       pitch: <%= @theme.pitch  || 0 %>, // starting pitch
       bearing: <%= @theme.bearing  || 0 %>, // starting bearing
-      style: "<%= @theme.mapbox_style %>", // style URL or style object
+      style: "<%= @theme.map_style_url %>", // style URL or style object
       projection: "<%= @theme.map_projection %>",
       hash: false,
-      cooperativeGestures: true
+      cooperativeGestures: true,
+      basemapStyle: "<%= @theme.basemap_style %>",
     }
   );
 
-  const marker = new lib.Marker({draggable: true}).setLngLat(<%= [@theme.center_long, @theme.center_lat] %>)
+  const marker = new lib.Marker({draggable: true, color: "<%= t("protomaps_basemap_markers.#{@theme.basemap_style}") %>"}).setLngLat(<%= [@theme.center_long, @theme.center_lat] %>)
 
   themeMap.on("load", () => {
     marker.addTo(themeMap)

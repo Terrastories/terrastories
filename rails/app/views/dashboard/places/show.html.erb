@@ -110,7 +110,8 @@ Terrastories.map_utils.staticMap(
     container: "static-map", // container ID
     center: [<%= @place.long %>, <%= @place.lat %>], // starting position [lng, lat]
     zoom: <%= current_community.theme.zoom %>, // starting zoom
-    style: "<%= current_community.theme.mapbox_style %>", // style URL or style object
+    style: "<%= current_community.theme.map_style_url %>", // style URL or style object
+    basemapStyle: "<%= current_community.theme.basemap_style %>",
   },
   <%= raw @place.static_map_markers %>
 )

@@ -100,7 +100,7 @@ export default class Map extends Component {
 
     this.map = new mapGL.Map({
       container: this.mapContainer,
-      style: mapStyleLayers(this.props.mapStyle),
+      style: mapStyleLayers(this.props.mapStyle, this.props.basemapStyle),
       center: [this.props.centerLong, this.props.centerLat],
       zoom: this.props.zoom,
       maxBounds: this.checkBounds(), // check for bounding box presence

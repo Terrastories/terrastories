@@ -38,6 +38,24 @@ class Theme < ApplicationRecord
     end
   end
 
+  def basemap_style
+    if protomaps_api_key.present? && protomaps_basemap_style.present?
+      protomaps_basemap_style
+    else
+      "contrast"
+    end
+  end
+
+  def map_style_url
+    return Map.default_style if Map.offline?
+
+    if protomaps_api_key.present?
+      "https://api.protomaps.com/tiles/v3.json?key=#{protomaps_api_key}"
+    else
+      mapbox_style
+    end
+  end
+
   def mapbox_style
     if mapbox_style_url.present? && !Map.offline?
       mapbox_style_url
@@ -47,7 +65,7 @@ class Theme < ApplicationRecord
   end
 
   def use_maplibre?
-    Map.offline? || !(Map.use_mapbox? || mapbox_access_token.present?)
+    Map.offline? || protomaps_api_key.present? || !(Map.use_mapbox? || mapbox_access_token.present?)
   end
 
   def all_boundaries_nil?

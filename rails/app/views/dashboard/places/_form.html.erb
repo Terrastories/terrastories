@@ -65,7 +65,8 @@ Terrastories.map_utils.mapgl(<%= current_community.theme.use_maplibre? %>).then(
       center: coordinates, // starting position [lng, lat]
       hash: false,
       zoom: <%= current_community.theme.zoom || 5 %>, // starting zoom
-      style: "<%= current_community.theme.mapbox_style %>", // style URL or style object
+      style: "<%= current_community.theme.map_style_url %>", // style URL or style object
+      basemapStyle: "<%= current_community.theme.basemap_style %>",
       cooperativeGestures: true,
       dragRotate: false,
       pitchWithRotation: false,

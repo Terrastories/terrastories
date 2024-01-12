@@ -51,7 +51,7 @@ export async function mapgl(useMaplibre) {
 export function interactiveMap(lib, config) {
   const map = new lib.Map({
     ...config,
-    style: mapStyleLayers(config.style),
+    style: mapStyleLayers(config.style, config.basemapStyle),
   })
   return map
 }
@@ -66,8 +66,8 @@ export async function staticMap(useMaplibre, config, pointFeatures) {
 
   const map = new maplib.Map({
     ...config,
-    style: mapStyleLayers(config.style),
-    bounds: pointFeatures !== undefined ? bbox(pointFeatures) : undefined,
+    style: mapStyleLayers(config.style, config.basemapStyle),
+    bounds: isFeatureCollection ? bbox(pointFeatures) : undefined,
     fitBoundsOptions: {
       padding: isFeatureCollection ? 50 : undefined,
       maxZoom: config.zoom || 8,
