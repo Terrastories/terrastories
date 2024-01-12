@@ -72,6 +72,7 @@ export async function staticMap(useMaplibre, config, pointFeatures) {
       padding: isFeatureCollection ? 50 : undefined,
       maxZoom: config.zoom || 8,
     },
+    scrollZoom: config.allowDrag || false,
     dragPan: config.allowDrag || false,
     dragRotate: false,
     pitchWithRotation: false,
@@ -79,10 +80,9 @@ export async function staticMap(useMaplibre, config, pointFeatures) {
     touchPitch: false,
     touchZoomRotate: false,
   })
-  map.on("zoom", () => {
-    if (config.center)
-      map.setCenter(config.center)
-  })
+
+  map.addControl(new maplib.NavigationControl({showCompass: false}))
+
   map.on("load", () => {
     if (pointFeatures) {
       map.addSource("points", {
