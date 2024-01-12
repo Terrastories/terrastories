@@ -80,7 +80,8 @@ export async function staticMap(useMaplibre, config, pointFeatures) {
     touchZoomRotate: false,
   })
   map.on("zoom", () => {
-    map.setCenter(config.center)
+    if (config.center)
+      map.setCenter(config.center)
   })
   map.on("load", () => {
     if (pointFeatures) {

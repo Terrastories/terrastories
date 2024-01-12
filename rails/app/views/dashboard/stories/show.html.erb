@@ -102,6 +102,7 @@ Terrastories.map_utils.staticMap(
     zoom: <%= current_community.theme.zoom %>,
     style: "<%= current_community.theme.map_style_url %>", // style URL or style object
     basemapStyle: "<%= current_community.theme.basemap_style %>",
+    allowDrag: true,
   },
   <%= raw @story.static_map_markers %>
 )
