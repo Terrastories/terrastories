@@ -26,10 +26,6 @@ class Theme < ApplicationRecord
   validates :pitch,
     numericality: true, allow_nil: true, inclusion: {in: 0..85, message: :invalid_pitch}
 
-  def static_map_pitch
-    pitch.to_i > 60 ? 60 : pitch.to_i
-  end
-
   def mapbox_token
     if mapbox_access_token.present? && !Map.offline?
       mapbox_access_token
