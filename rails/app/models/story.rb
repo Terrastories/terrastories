@@ -85,6 +85,7 @@ end
 #  desc                  :text
 #  language              :string
 #  permission_level      :integer
+#  story_pinned          :boolean          default(FALSE)
 #  title                 :string
 #  topic                 :string
 #  created_at            :datetime         not null

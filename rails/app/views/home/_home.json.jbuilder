@@ -1,5 +1,5 @@
 json.stories stories do |story|
-  json.extract! story, :title, :desc, :id, :created_at
+  json.extract! story, :title, :desc, :id, :created_at, :story_pinned
   json.points story.places.map(&:point_geojson)
   json.places story.places
   json.language story.language

@@ -1,10 +1,30 @@
 <% @stories.each do |story| %>
   <%= link_to story, class: "card" do %>
     <div>
-      <h3>
-        <span class="card__heading--small"><%= story.topic %></span>
-        <%= story.title %>
-      </h3>
+      <div class="story-header">
+        <div>
+          <h3 style="width:max-content">
+            <span class="card__heading--small"><%= story.topic %></span>
+            <%= story.title %>
+          </h3>
+        </div>
+        <% if current_user.member? && story.story_pinned %>
+          <div class="view-icon-pinned">
+            <svg class="icon-pinned"><use href="#icon-thumbtack"></svg>
+          </div>
+        <% end %>
+        <% if current_user.admin? || current_user.editor? %>
+          <% if story.story_pinned %>
+            <%= button_to unpin_story_path(story), method: :patch, data: { remote: false }, locale: true, form_class: "edit-icon-pinned", class: "icon-button" do %>
+              <svg class="icon-pinned"><use href="#icon-thumbtack"></svg>
+            <% end %>
+          <% else %>
+            <%= button_to pin_story_path(story), method: :patch, data: { remote: false }, locale: true, form_class: "edit-icon-unpinned", class: "icon-button" do %>
+              <svg class="icon-unpinned"><use href="#icon-thumbtack"></svg>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
 
       <% if story.language.present? %>
         <span class="badge badge-red"><%= story.language %></span>

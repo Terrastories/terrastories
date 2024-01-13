@@ -29,6 +29,10 @@
 
   &:hover {
     box-shadow: 0 0 10px $lighter-gray;
+
+    .edit-icon-unpinned {
+      visibility: visible;
+    }
   }
 
   &--narrow {
@@ -116,4 +120,8 @@
     margin-bottom: 0;
     word-wrap: break-word;
   }
+}
+
+.story-header {
+  display: flex;
 }

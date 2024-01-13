@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import StoryMedia from "./StoryMedia";
 import { useTranslation } from 'react-i18next';
+import StoryMedia from "./StoryMedia";
 
 const Story = props => {
   const { t } = useTranslation();
-  const { story, storyClass } = props;
+  const { onStoryClick, story, storyClass } = props;
 
   const renderSpeakers = speakers => {
     return (
@@ -34,14 +34,23 @@ const Story = props => {
   }
 
   return (
-    <React.Fragment>
+    <>
       <li
         className={storyClass}
-        onClick={() => props.onStoryClick(story)}
-        onKeyDown={() => props.onStoryClick(story)}
+        onClick={() => onStoryClick(story)}
+        onKeyDown={() => onStoryClick(story)}
         key={story.id}
         role="presentation"
       >
+        {
+          story.story_pinned && (
+            <div className="pinned">
+              <svg viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg">
+                <path d="m634-448 86 77v60H510v241l-30 30-30-30v-241H240v-60l80-77v-333h-50v-60h414v60h-50v333Z"/>
+              </svg>
+            </div>
+          )
+        }
         <div className="speakers">
           {renderSpeakers(story.speakers)}
         </div>
@@ -61,14 +70,20 @@ const Story = props => {
             ))
           }
           {
-            story.language &&
-            <p>
-              <b>{t("language")}:</b> {story.language}
-            </p>
+            story.language && (
+              <p>
+                <b>
+                  {t("language")}
+                  :
+                </b>
+                {' '}
+                {story.language}
+              </p>
+            )
           }
         </div>
       </li>
-    </React.Fragment>
+    </>
   );
 }
 

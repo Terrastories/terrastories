@@ -16,6 +16,9 @@ class StoriesPage < Page
     stories = stories.joins(:speaker_stories).where(speaker_stories: {speaker_id: @meta[:speaker]}) if @meta[:speaker].present?
     stories = stories.where(permission_level: @meta[:visibility]) if @meta[:visibility].present?
 
-    stories.order(@meta[:sort_by] => @meta[:sort_dir])
+    stories.order(
+      story_pinned: :desc,
+      @meta[:sort_by] => @meta[:sort_dir]
+    )
   end
 end

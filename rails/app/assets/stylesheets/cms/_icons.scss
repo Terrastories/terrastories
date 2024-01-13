@@ -29,3 +29,54 @@
     content: "\1F4CD";
   }
 }
+
+.edit-icon-pinned, .edit-icon-unpinned, .view-icon-pinned {
+  height: fit-content;
+  margin-inline-start: auto;
+}
+
+.edit-icon-unpinned {
+  visibility: hidden;
+}
+
+.edit-icon-pinned, .edit-icon-unpinned {
+  &:hover {
+    box-shadow: 0 0 10px $lighter-gray;
+  }
+}
+
+.icon-button, .view-icon-pinned {
+  max-width: 25px;
+  max-height: 25px;
+  padding: 0;
+}
+
+.icon-button {
+  border: none;
+  background-color: inherit;
+
+  &:hover {
+    cursor: pointer;
+
+    .icon-unpinned {
+      fill: $dark-gray;
+    }
+
+    .icon-pinned {
+      fill: $red;
+    }
+  }
+}
+
+.icon-unpinned, .icon-pinned {
+  max-height: 18px;
+  width: 100%;
+}
+
+.icon-unpinned {
+  fill: $light-gray;
+}
+
+.icon-pinned {
+  fill: $black;
+}

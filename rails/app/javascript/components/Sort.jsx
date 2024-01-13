@@ -37,6 +37,10 @@ class Sort extends Component {
     return {value: value, label: this.props.t(value)};
   }
 
+  storyPinnedSort = (sortedStories) => (
+    sortedStories.sort(story => story.story_pinned ? -1 : 1)
+  )
+
   handleSort = (option) => {
     this.setState({
       sortSelectValue: option.value
@@ -92,6 +96,8 @@ class Sort extends Component {
         break;
       }
     }
+
+    sortedStories = this.storyPinnedSort(sortedStories)
 
     this.props.handleStoriesChanged(sortedStories);
   }

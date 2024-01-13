@@ -41,6 +41,7 @@ RSpec.describe Story, type: :model do
           interviewer_id
           topic
           speakers
+          story_pinned
           places
           media
         ]

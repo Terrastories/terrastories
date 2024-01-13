@@ -5,6 +5,7 @@ FactoryBot.define do
     language { 'English' }
     permission_level { 0 }
     community
+    story_pinned { false }
 
     trait :with_interviewer do
       after(:build) do |story|

@@ -49,7 +49,8 @@ rfg2019_story = Story.joins(:places, :speakers).find_or_create_by(title: "Ruby f
                     interview_location_id: rfg2018.id,
                     interviewer_id: corinne.id,
                     speakers: [miranda, jason],
-                    community: example_community)
+                    community: example_community,
+                    story_pinned: true)
 
 
 matawai_story = Story.joins(:places, :speakers).find_or_create_by(title: "Terrastories for the Matawai",
@@ -60,7 +61,8 @@ matawai_story = Story.joins(:places, :speakers).find_or_create_by(title: "Terras
                     interviewer_id: jason.id,
                     interview_location_id: pusugrunu.id,
                     speakers: [rudo, kalimar],
-                    community: example_community)
+                    community: example_community,
+                    story_pinned: false)
 
 rbtb2019_story = Story.joins(:places, :speakers).find_or_create_by(title: "Ruby by the Bay 2019",
                     desc: "Corinne Henk, Ruby by the Bay 2019 team lead, describes some of the challenges her team faced and what they managed to accomplish, in conversation with Rudo Kemper and Kalimar Maia.",
@@ -70,7 +72,8 @@ rbtb2019_story = Story.joins(:places, :speakers).find_or_create_by(title: "Ruby 
                     interviewer_id: rudo.id,
                     interview_location_id: rbtb2019.id,
                     speakers: [corinne, rudo, kalimar],
-                    community: example_community)
+                    community: example_community,
+                    story_pinned: false)
 
 rbtb2020_story = Story.joins(:places, :speakers).find_or_create_by(title: "Ruby by the Bay 2020",
                     desc: "Ruby by the Bay 2020 team leads Ian Norris and Mae Beale on remotely stewarding a volunteer team from Ruby for Good, during the Covid-19 pandemic.",
@@ -79,7 +82,8 @@ rbtb2020_story = Story.joins(:places, :speakers).find_or_create_by(title: "Ruby 
                     permission_level: 0,
                     interview_location_id: null_island.id,
                     speakers: [ian, mae],
-                    community: example_community)
+                    community: example_community,
+                    story_pinned: false)
 
 atalm2022_story = Story.joins(:places, :speakers).find_or_create_by(title: "ATALM 2022",
                     desc: "Terrastories stewards Laura Mosher and Rudo Kemper on developing Terrastories for a project funded by the Association of Tribal Archives, Libraries, and Museums",
@@ -88,7 +92,8 @@ atalm2022_story = Story.joins(:places, :speakers).find_or_create_by(title: "ATAL
                     permission_level: 1,
                     interview_location_id: null_island.id,
                     speakers: [laura, rudo],
-                    community: example_community)
+                    community: example_community,
+                    story_pinned: false)
 
 # Create an admin user for example community
 User.find_or_create_by!(email: 'admin@terrastories.app') do |admin|
