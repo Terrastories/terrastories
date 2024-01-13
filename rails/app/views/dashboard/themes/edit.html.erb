@@ -11,7 +11,25 @@
 <%= form_with model: @theme, method: :patch, multipart: true, class: "form", data: {remote: false}, url: theme_path, id: "themeForm", locale: true do |f| %>
   <% unless Flipper.enabled?(:split_settings, current_community) %>
     <h4><%= t("dashboard.theme.welcome_screen") %></h4>
+    <h4><%= t("map.settings") %></h4>
+    <p><%= t("map.settings_description") %></p>
 
+    <div class="two-columns">
+      <div class="two-columns-left column-fixed-400">
+        <%= f.label :custom_home_button %>
+        <p><%= t("map.custom_home_button") %></p>
+        <%= f.file_field :custom_home_button, accept: "image/svg+xml" %>
+      </div>
+
+      <div class="two-columns-right">
+        <% if @theme.community.custom_home_button.attached? %>
+          <%= image_tag(@theme.community.custom_home_button, width: 300) %>
+          <%= link_to delete_custom_home_button_path, class: "delete-link", method: :delete, data: {confirm: t("dashboard.actions.confirm"), turbo_confirm: t("dashboard.actions.confirm"), turbo_method: :delete}, remote: true do %>
+            <svg><use href="#icon-cancel"></svg>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
     <%= f.fields_for :community do |c| %>
       <div class="two-columns">
         <div class="two-columns-left column-fixed-400">
