@@ -17,9 +17,6 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'rgeo', '~> 2.4.0'
 gem 'rgeo-geojson', '~> 2.1.1'
 
-# Geocoder for center calculation
-gem 'geocoder', '~> 1.8.1'
-
 # Use css_bundling for stylesheets
 gem 'cssbundling-rails', '~> 1.1.2'
 

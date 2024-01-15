@@ -143,7 +143,6 @@ GEM
       activerecord (>= 4.2, < 8)
       flipper (~> 0.26.2)
     formatador (1.1.0)
-    geocoder (1.8.2)
     globalid (1.1.0)
       activesupport (>= 5.0)
     guard (2.18.0)
@@ -356,7 +355,6 @@ DEPENDENCIES
   factory_bot_rails
   flipper (~> 0.26.0)
   flipper-active_record (~> 0.26.0)
-  geocoder (~> 1.8.1)
   guard-rspec
   image_processing (~> 1.12.2)
   jbuilder (~> 2.5)

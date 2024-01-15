@@ -94,36 +94,16 @@
 </div>
 
 <script>
-const staticMap = new mapboxgl.Map({
-  accessToken: "<%= current_community.theme.mapbox_token %>",
-  container: "static-map", // container ID
-  center: <%= @story.geo_center %>,
-  zoom: 8, // starting zoom
-  style: "<%= current_community.theme.mapbox_style %>", // style URL or style object
-  interactive: false // don't allow map movement
-});
-
-staticMap.on("load", () => {
-  staticMap.addSource("points", {
-    "type": "geojson",
-    "data": <%= raw @story.static_map_markers %>
-  });
-
-  staticMap.addLayer({
-    type: "symbol",
-    id: "points",
-    source: "points",
-    layout: {
-      "icon-image": "rectangle-blue-2",
-      "icon-text-fit": "height",
-      "icon-text-fit-padding": [1,2,1,2],
-      "text-field": "{marker-symbol}",
-      "text-transform": "uppercase",
-      "text-font": ["Open Sans Bold"]
-    },
-    paint: {
-      "text-color": "#FFFFFF"
-    }
-  })
-});
+Terrastories.map_utils.staticMap(
+  <%= current_community.theme.use_maplibre? %>,
+  {
+    accessToken: "<%= current_community.theme.mapbox_token %>",
+    container: "static-map", // container ID
+    zoom: <%= current_community.theme.zoom %>,
+    style: "<%= current_community.theme.map_style_url %>", // style URL or style object
+    basemapStyle: "<%= current_community.theme.basemap_style %>",
+    allowDrag: true,
+  },
+  <%= raw @story.static_map_markers %>
+)
 </script>

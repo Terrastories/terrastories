@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_08_135800) do
+ActiveRecord::Schema.define(version: 2024_01_12_163116) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -174,6 +174,8 @@ ActiveRecord::Schema.define(version: 2023_08_08_135800) do
     t.boolean "mapbox_3d", default: false
     t.integer "map_projection", default: 0
     t.bigint "community_id", null: false
+    t.text "protomaps_api_key"
+    t.text "protomaps_basemap_style"
   end
 
   create_table "users", force: :cascade do |t|

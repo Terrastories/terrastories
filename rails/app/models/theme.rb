@@ -26,28 +26,44 @@ class Theme < ApplicationRecord
   validates :pitch,
     numericality: true, allow_nil: true, inclusion: {in: 0..85, message: :invalid_pitch}
 
-  def static_map_pitch
-    pitch.to_i > 60 ? 60 : pitch.to_i
-  end
-
   def mapbox_token
-    if mapbox_access_token.present? && !offline_mode?
+    if mapbox_access_token.present? && !Map.offline?
       mapbox_access_token
     else
-      Rails.application.config.default_mapbox_token
+      Map.mapbox_access_token
+    end
+  end
+
+  def basemap_style
+    return "default" if Map.offline? || !use_maplibre?
+
+    if protomaps_basemap_style.present?
+      protomaps_basemap_style
+    else
+      "contrast"
+    end
+  end
+
+  def map_style_url
+    return Map.default_style if Map.offline?
+
+    if protomaps_api_key.present?
+      "https://api.protomaps.com/tiles/v3.json?key=#{protomaps_api_key}"
+    else
+      mapbox_style
     end
   end
 
   def mapbox_style
-    if mapbox_style_url.present? && !offline_mode?
+    if mapbox_style_url.present? && !Map.offline?
       mapbox_style_url
     else
-      Rails.application.config.default_map_style
+      Map.default_style
     end
   end
 
-  def offline_mode?
-    Rails.application.config.offline_mode
+  def use_maplibre?
+    Map.offline? || protomaps_api_key.present? || !(Map.use_mapbox? || mapbox_access_token.present?)
   end
 
   def all_boundaries_nil?
@@ -76,22 +92,24 @@ end
 #
 # Table name: themes
 #
-#  id                  :bigint           not null, primary key
-#  active              :boolean          default(FALSE), not null
-#  bearing             :decimal(10, 6)
-#  center_lat          :decimal(10, 6)
-#  center_long         :decimal(10, 6)
-#  map_projection      :integer          default("mercator")
-#  mapbox_3d           :boolean          default(FALSE)
-#  mapbox_access_token :string
-#  mapbox_style_url    :string
-#  ne_boundary_lat     :decimal(10, 6)
-#  ne_boundary_long    :decimal(10, 6)
-#  pitch               :decimal(10, 6)
-#  sw_boundary_lat     :decimal(10, 6)
-#  sw_boundary_long    :decimal(10, 6)
-#  zoom                :decimal(10, 6)
-#  created_at          :datetime         not null
-#  updated_at          :datetime         not null
-#  community_id        :bigint           not null
+#  id                      :bigint           not null, primary key
+#  active                  :boolean          default(FALSE), not null
+#  bearing                 :decimal(10, 6)
+#  center_lat              :decimal(10, 6)
+#  center_long             :decimal(10, 6)
+#  map_projection          :integer          default("mercator")
+#  mapbox_3d               :boolean          default(FALSE)
+#  mapbox_access_token     :string
+#  mapbox_style_url        :string
+#  ne_boundary_lat         :decimal(10, 6)
+#  ne_boundary_long        :decimal(10, 6)
+#  pitch                   :decimal(10, 6)
+#  protomaps_api_key       :text
+#  protomaps_basemap_style :text
+#  sw_boundary_lat         :decimal(10, 6)
+#  sw_boundary_long        :decimal(10, 6)
+#  zoom                    :decimal(10, 6)
+#  created_at              :datetime         not null
+#  updated_at              :datetime         not null
+#  community_id            :bigint           not null
 #

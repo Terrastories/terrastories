@@ -139,20 +139,38 @@
     </div>
   </div>
 
-  <% unless @theme.offline_mode? %>
-    <div>
-      <h5><%= t("map.online") %></h5>
-      <div class="input-group">
-      <%= f.label :mapbox_style_url %>
-      <%= f.text_field :mapbox_style_url %>
+  <% unless Map.offline? %>
+    <h5><%= t("map.online") %></h5>
+    <div class="two-columns">
+      <div class="two-columns-left">
+        <fieldset class="small-labels">
+        <legend><%= t("map.protomaps_configuration") %></legend>
+          <div class="input-group">
+          <%= f.label :protomaps_api_key %>
+          <%= f.text_field :protomaps_api_key %>
+          </div>
+          <div class="input-group">
+          <%= f.label :protomaps_basemap_style %>
+          <%= f.select :protomaps_basemap_style, t("protomaps_basemap_styles").map { |k, v| [v, k] }, include_blank: "Default" %>
+          </div>
+        </fieldset>
       </div>
-      <div class="input-group">
-      <%= f.label :mapbox_access_token %>
-      <%= f.text_field :mapbox_access_token %>
-      </div>
-      <div class="input-group">
-      <%= f.check_box :mapbox_3d %>
-      <%= f.label :mapbox_3d %>
+      <div class="two-columns-right">
+        <fieldset class="small-labels">
+          <legend><%= t("map.mapbox_configuration") %></legend>
+          <div class="input-group">
+          <%= f.label :mapbox_style_url %>
+          <%= f.text_field :mapbox_style_url %>
+          </div>
+          <div class="input-group">
+          <%= f.label :mapbox_access_token %>
+          <%= f.text_field :mapbox_access_token %>
+          </div>
+          <div class="input-group">
+          <%= f.check_box :mapbox_3d %>
+          <%= f.label :mapbox_3d %>
+          </div>
+        </fieldset>
       </div>
     </div>
   <% end %>
@@ -171,84 +189,104 @@ const pitchValue = themeForm.querySelector("#pitchValue");
 const bearingInput = themeForm.querySelector("#theme_bearing");
 const bearingValue = themeForm.querySelector("#bearingValue");
 
-const themeMap = new mapboxgl.Map({
-  accessToken: "<%= @theme.mapbox_token %>",
-  container: "themeMap", // container ID
-  center: <%= [@theme.center_long, @theme.center_lat] %>, // starting position [lng, lat]
-  zoom: <%= @theme.zoom  || 0 %>, // starting zoom
-  pitch: <%= @theme.pitch  || 0 %>, // starting pitch
-  bearing: <%= @theme.bearing  || 0 %>, // starting bearing
-  style: "<%= @theme.mapbox_style %>", // style URL or style object
-  projection: "<%= @theme.map_projection %>",
-  hash: false,
-  cooperativeGestures: true
-});
+Terrastories.map_utils.mapgl(<%= @theme.use_maplibre? %>).then((lib) => {
+  const themeMap = Terrastories.map_utils.interactiveMap(
+    lib,
+    {
+      accessToken: "<%= @theme.mapbox_token %>",
+      container: "themeMap", // container ID
+      center: <%= [@theme.center_long, @theme.center_lat] %>, // starting position [lng, lat]
+      zoom: <%= @theme.zoom  || 0 %>, // starting zoom
+      pitch: <%= @theme.pitch  || 0 %>, // starting pitch
+      bearing: <%= @theme.bearing  || 0 %>, // starting bearing
+      style: "<%= @theme.map_style_url %>", // style URL or style object
+      projection: "<%= @theme.map_projection %>",
+      hash: false,
+      cooperativeGestures: true,
+      basemapStyle: "<%= @theme.basemap_style %>",
+    }
+  );
 
-themeMap.on("moveend", (e) => {
-  let themeForm = document.querySelector("#themeForm");
-  let { lng, lat } = e.target.getCenter();
-  themeCenterLongInput.value = lng.toFixed(5);
-  themeCenterLatInput.value = lat.toFixed(5);
+  const marker = new lib.Marker({draggable: true, color: "<%= t("protomaps_basemap_markers.#{@theme.basemap_style}") %>"}).setLngLat(<%= [@theme.center_long, @theme.center_lat] %>)
 
-  if (!themeForm.querySelector("input#unrestricted_bounds").checked) {
-    let { _ne, _sw } = themeMap.getBounds();
-    themeForm.querySelector("input#theme_ne_boundary_long").value = _ne.lng.toFixed(5);
-    themeForm.querySelector("input#theme_ne_boundary_lat").value = _ne.lat.toFixed(5);
-    themeForm.querySelector("input#theme_sw_boundary_long").value = _sw.lng.toFixed(5);
-    themeForm.querySelector("input#theme_sw_boundary_lat").value = _sw.lat.toFixed(5);
-  }
-});
+  themeMap.on("load", () => {
+    marker.addTo(themeMap)
+  })
 
-themeMap.on("zoomend", (e) => {
-  zoomValue.innerHTML = e.target.getZoom().toPrecision(5);
-  zoomInput.value = e.target.getZoom();
-});
+  marker.on("dragend", (e) => {
+    const { lng, lat } = marker.getLngLat()
 
-themeMap.on("pitchend", (e) => {
-  pitchValue.innerHTML = e.target.getPitch().toPrecision(5);
-  pitchInput.value = e.target.getPitch();
-  bearingValue.innerHTML = e.target.getBearing().toPrecision(5);
-  bearingInput.value = e.target.getBearing();
-});
+    themeMap.setCenter([lng, lat])
+  })
 
-const nav = new mapboxgl.NavigationControl({
-  visualizePitch: true
-});
-themeMap.addControl(nav, "top-right");
+  themeMap.on("moveend", (e) => {
+    let themeForm = document.querySelector("#themeForm");
+    let { lng, lat } = e.target.getCenter();
 
-themeForm.querySelector("input#unrestricted_bounds").addEventListener("click", (e) => {
-  themeForm.querySelector(".unrestricted_bounds").classList.toggle("hidden", e.target.checked)
-  if (e.target.checked) {
-    themeForm.querySelectorAll(".unrestricted_bounds input").forEach((item)=>{item.removeAttribute("value")})
-  } else {
-    var { _ne, _sw } = themeMap.getBounds();
-    themeForm.querySelector("input#theme_ne_boundary_long").value = _ne.lng.toFixed(5);
-    themeForm.querySelector("input#theme_ne_boundary_lat").value = _ne.lat.toFixed(5);
-    themeForm.querySelector("input#theme_sw_boundary_long").value = _sw.lng.toFixed(5);
-    themeForm.querySelector("input#theme_sw_boundary_lat").value = _sw.lat.toFixed(5);
-  }
-})
+    marker.setLngLat({ lng, lat })
 
-themeCenterLongInput.addEventListener("change", (e) => {
-  let { lat } = themeMap.getCenter();
-  themeMap.setCenter({lng: e.target.value, lat: lat});
-});
-themeCenterLatInput.addEventListener("change", (e) => {
-  let { lng } = themeMap.getCenter();
-  themeMap.setCenter({lng: lng, lat: e.target.value});
-});
+    themeCenterLongInput.value = lng.toFixed(5);
+    themeCenterLatInput.value = lat.toFixed(5);
 
-zoomInput.addEventListener("input", (e) => {
-  zoomValue.innerHTML = e.target.value;
-  themeMap.setZoom(e.target.value);
-});
-pitchInput.addEventListener("input", (e) => {
-  pitchValue.innerHTML = e.target.value;
-  themeMap.setPitch(e.target.value);
-});
-bearingInput.addEventListener("input", (e) => {
-  bearingValue.innerHTML = e.target.value;
-  themeMap.setBearing(e.target.value);
-});
+    if (!themeForm.querySelector("input#unrestricted_bounds").checked) {
+      let { _ne, _sw } = themeMap.getBounds();
+      themeForm.querySelector("input#theme_ne_boundary_long").value = _ne.lng.toFixed(5);
+      themeForm.querySelector("input#theme_ne_boundary_lat").value = _ne.lat.toFixed(5);
+      themeForm.querySelector("input#theme_sw_boundary_long").value = _sw.lng.toFixed(5);
+      themeForm.querySelector("input#theme_sw_boundary_lat").value = _sw.lat.toFixed(5);
+    }
+  });
 
+  themeMap.on("zoomend", (e) => {
+    zoomValue.innerHTML = e.target.getZoom().toPrecision(5);
+    zoomInput.value = e.target.getZoom();
+  });
+
+  themeMap.on("pitchend", (e) => {
+    pitchValue.innerHTML = e.target.getPitch().toPrecision(5);
+    pitchInput.value = e.target.getPitch();
+    bearingValue.innerHTML = e.target.getBearing().toPrecision(5);
+    bearingInput.value = e.target.getBearing();
+  });
+
+  const nav = new lib.NavigationControl({
+    visualizePitch: true
+  });
+  themeMap.addControl(nav, "top-right");
+
+  themeForm.querySelector("input#unrestricted_bounds").addEventListener("click", (e) => {
+    themeForm.querySelector(".unrestricted_bounds").classList.toggle("hidden", e.target.checked)
+    if (e.target.checked) {
+      themeForm.querySelectorAll(".unrestricted_bounds input").forEach((item)=>{item.removeAttribute("value")})
+    } else {
+      var { _ne, _sw } = themeMap.getBounds();
+      themeForm.querySelector("input#theme_ne_boundary_long").value = _ne.lng.toFixed(5);
+      themeForm.querySelector("input#theme_ne_boundary_lat").value = _ne.lat.toFixed(5);
+      themeForm.querySelector("input#theme_sw_boundary_long").value = _sw.lng.toFixed(5);
+      themeForm.querySelector("input#theme_sw_boundary_lat").value = _sw.lat.toFixed(5);
+    }
+  })
+
+  themeCenterLongInput.addEventListener("change", (e) => {
+    let { lat } = themeMap.getCenter();
+    themeMap.setCenter({lng: e.target.value, lat: lat});
+  });
+  themeCenterLatInput.addEventListener("change", (e) => {
+    let { lng } = themeMap.getCenter();
+    themeMap.setCenter({lng: lng, lat: e.target.value});
+  });
+
+  zoomInput.addEventListener("input", (e) => {
+    zoomValue.innerHTML = e.target.value;
+    themeMap.setZoom(e.target.value);
+  });
+  pitchInput.addEventListener("input", (e) => {
+    pitchValue.innerHTML = e.target.value;
+    themeMap.setPitch(e.target.value);
+  });
+  bearingInput.addEventListener("input", (e) => {
+    bearingValue.innerHTML = e.target.value;
+    themeMap.setBearing(e.target.value);
+  });
+});
 </script>

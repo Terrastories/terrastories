@@ -2,6 +2,21 @@ en:
   profile: Profile
   interviewer: Interviewer
   import: Import
+  protomaps_basemap_styles:
+    contrast: Contrast
+    light: Light
+    dark: Dark
+    white: White
+    grayscale: Grayscale
+    black: Black
+  protomaps_basemap_markers:
+    default: "#3FB1CE"
+    contrast: "#B5C481"
+    light: "#3FB1CE"
+    dark: "#555"
+    white: "#bbb"
+    grayscale: "#999"
+    black: "#666"
   map:
     center: Map Center
     bounds: Map Bounds
@@ -10,6 +25,8 @@ en:
     ne_corner: Northeast Corner
     unrestricted_bounds: Allow unrestricted bounds
     online: Online Map Configuration
+    mapbox_configuration: Mapbox Map Configuration (Optional)
+    protomaps_configuration: Protomaps API Configuration (Optional)
     settings: Map Settings
     settings_description: Customize your community's map settings.
     projection:
