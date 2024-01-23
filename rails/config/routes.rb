@@ -43,6 +43,7 @@ Rails.application.routes.draw do
 
       resource :metrics, only: :show
       resources :communities
+      resources :users, only: [:edit, :update], as: :member
       resources :features do
         post :enable
         post :disable
