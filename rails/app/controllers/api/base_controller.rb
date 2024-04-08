@@ -1,7 +1,5 @@
 module Api
   class BaseController < ActionController::Base
-    respond_to :json
-
     rescue_from ActiveRecord::RecordNotFound, with: :not_found
 
 

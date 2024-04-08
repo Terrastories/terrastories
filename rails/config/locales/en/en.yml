@@ -34,8 +34,9 @@ en:
   built_with_love: Built with ❤️ by
   close: Close
   community_search:
-    title: "Search for a Community to Explore"
-    coming_soon: "This feature is coming soon. For now, please request an invite to a specific community."
+    title: "Explore Terrastories"
+    description: "You can now search and explore publicly available community stories."
+    button_label: "Start Exploring"
   default: default
   enter: "Enter Site"
   filter_stories: "Filter stories"

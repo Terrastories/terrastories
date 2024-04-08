@@ -13,11 +13,12 @@ RSpec.describe "Home request", type: :request do
         expect(response).to have_http_status(:success)
       end
     end
+
     context "an unauthenticated user" do
       it "forwards to the login page" do
         get "/home"
 
-        expect(response).to redirect_to("/users/sign_in")
+        expect(response).to redirect_to("/en/login")
       end
     end
 
