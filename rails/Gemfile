@@ -30,17 +30,13 @@ gem 'rack-cors'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use devise for authentication
-gem 'devise', '~> 4.9.0'
+gem 'bcrypt', '~> 3.1.7'
 
 # Use pundit for policy based authorization
 gem 'pundit', '~> 2.3.0'
 
 # Internationalization
 gem 'rails-i18n', '~> 7.0.3'
-gem 'devise-i18n', '~> 1.11.0'
 
 # S3 backed Active Storage
 gem 'aws-sdk-s3', '~> 1.119.0'
