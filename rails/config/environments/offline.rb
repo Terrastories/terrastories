@@ -56,15 +56,8 @@ Rails.application.configure do
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
-  # Print deprecation notices to the Rails logger.
-  # :notify in production; offline we want to log locally.
-  config.active_support.deprecation = :log
-
-  # Log disallowed deprecations.
-  config.active_support.disallowed_deprecation = :log
-
-  # Tell Active Support which deprecation messages to disallow.
-  config.active_support.disallowed_deprecation_warnings = []
+  # Don't log any deprecations.
+  config.active_support.report_deprecations = false
 
   # Include generic and useful information about system operation, but avoid logging too much
   # information to avoid inadvertent exposure of personally identifiable information (PII).
@@ -81,22 +74,8 @@ Rails.application.configure do
   logger.formatter = config.log_formatter
   config.logger    = ActiveSupport::TaggedLogging.new(logger)
 
-  # Debug mode disables concatenation and preprocessing of assets.
-  # This option may cause significant delays in view rendering with a large
-  # number of complex assets.
-  # config.assets.debug = true
-
-  # Suppress logger output for asset requests.
-  # config.assets.quiet = true
-
   # Serve static assets from /public folder
   config.public_file_server.enabled = true
-
-  # Compress JS using a preproccessor
-  # config.assets.js_compressor = :terser
-
-  # Compress CSS using a preproccessor
-  # config.assets.css_compressor = :sass
 
   # Fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
@@ -104,6 +83,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+  # Do not force SSL on offline mode (no way to get cert offline)
   config.force_ssl = false
 
   config.hosts << "terrastories.local"
