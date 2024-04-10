@@ -11,7 +11,6 @@ RSpec.describe Media, type: :model do
     it "validates image types" do
       is_expected.to validate_content_type_of(:media).allowing(
         'image/png',
-        'image/jpg',
         'image/jpeg',
         'image/svg+xml',
       )
