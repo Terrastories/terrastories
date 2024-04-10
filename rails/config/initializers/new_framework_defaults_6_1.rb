@@ -45,7 +45,7 @@ Rails.application.config.action_dispatch.ssl_default_redirect_status = 308
 Rails.application.config.active_record.legacy_connection_handling = false
 
 # Make `form_with` generate non-remote forms by default.
-# Rails.application.config.action_view.form_with_generates_remote_forms = false
+Rails.application.config.action_view.form_with_generates_remote_forms = false
 
 # Set the default queue name for the analysis job to the queue adapter default.
 Rails.application.config.active_storage.queues.analysis = nil
@@ -64,4 +64,4 @@ Rails.application.config.active_storage.queues.purge = nil
 
 # Generate a `Link` header that gives a hint to modern browsers about
 # preloading assets when using `javascript_include_tag` and `stylesheet_link_tag`.
-# Rails.application.config.action_view.preload_links_header = true
+Rails.application.config.action_view.preload_links_header = true

@@ -33,7 +33,7 @@
   </div>
 <% end %>
 
-<%= form_with model: @user, multipart: true, class: "form aligned", data: {remote: false}, id: "userForm", locale: true do |f| %>
+<%= form_with model: @user, multipart: true, class: "form aligned", id: "userForm", locale: true do |f| %>
   <%= render partial: "shared/form_errors", locals: { resource: @user } %>
 
   <%= f.label :username %>

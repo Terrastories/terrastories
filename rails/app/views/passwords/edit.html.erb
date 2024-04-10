@@ -5,7 +5,7 @@
 <% content_for(:main_heading) do %>
   <h2><%= t("devise.passwords.edit.change_my_password") %></h2>
 <% end %>
-<%= form_with url: change_password_path, class: "form", data: {remote: false}, id: "passwordForm", locale: true do |f| %>
+<%= form_with url: change_password_path, class: "form", id: "passwordForm", locale: true do |f| %>
   <%= render partial: "shared/form_errors", locals: { resource: @user } %>
 
   <%= f.label :password %>

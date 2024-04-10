@@ -24,7 +24,7 @@ will not be processed. You will need to manually add your media once import is
 completed.
 </p>
 
-<%= form_with url: import_path, method: :post, multipart: true, data: {remote: false}, class: "import" do |f| %>
+<%= form_with url: import_path, method: :post, multipart: true, class: "import" do |f| %>
 <div id="place">
   <h4><%= t("places") %></h4>
   <button class="csv-download" data-target="#places" data-filename="places.csv">Download Sample CSV</button>

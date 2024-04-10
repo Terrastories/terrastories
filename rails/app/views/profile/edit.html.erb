@@ -6,7 +6,7 @@
   <h2><%= t("profile") %></h2>
 <% end %>
 
-<%= form_with model: @user, url: profile_path, multipart: true, class: "form", data: {remote: false}, id: "userForm", locale: true do |f| %>
+<%= form_with model: @user, url: profile_path, multipart: true, class: "form", id: "userForm", locale: true do |f| %>
   <%= render partial: "shared/form_errors", locals: { resource: @user } %>
 
   <%= f.label :name %>
