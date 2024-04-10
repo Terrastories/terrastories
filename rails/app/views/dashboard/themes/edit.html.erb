@@ -230,10 +230,10 @@ Terrastories.map_utils.mapgl(<%= @theme.use_maplibre? %>).then((lib) => {
 
     if (!themeForm.querySelector("input#unrestricted_bounds").checked) {
       let { _ne, _sw } = themeMap.getBounds();
-      themeForm.querySelector("input#theme_ne_boundary_long").value = _ne.lng.toFixed(5);
-      themeForm.querySelector("input#theme_ne_boundary_lat").value = _ne.lat.toFixed(5);
-      themeForm.querySelector("input#theme_sw_boundary_long").value = _sw.lng.toFixed(5);
-      themeForm.querySelector("input#theme_sw_boundary_lat").value = _sw.lat.toFixed(5);
+      themeForm.querySelector("input#theme_ne_boundary_long").value = Math.min(Math.max(_ne.lng, -180), 180).toFixed(5);
+      themeForm.querySelector("input#theme_ne_boundary_lat").value = Math.min(Math.max(_ne.lat, -90), 90).toFixed(5);
+      themeForm.querySelector("input#theme_sw_boundary_long").value = Math.min(Math.max(_sw.lng, -180), 180).toFixed(5);
+      themeForm.querySelector("input#theme_sw_boundary_lat").value = Math.min(Math.max(_sw.lat, -90), 90).toFixed(5);
     }
   });
 
@@ -260,31 +260,34 @@ Terrastories.map_utils.mapgl(<%= @theme.use_maplibre? %>).then((lib) => {
       themeForm.querySelectorAll(".unrestricted_bounds input").forEach((item)=>{item.removeAttribute("value")})
     } else {
       var { _ne, _sw } = themeMap.getBounds();
-      themeForm.querySelector("input#theme_ne_boundary_long").value = _ne.lng.toFixed(5);
-      themeForm.querySelector("input#theme_ne_boundary_lat").value = _ne.lat.toFixed(5);
-      themeForm.querySelector("input#theme_sw_boundary_long").value = _sw.lng.toFixed(5);
-      themeForm.querySelector("input#theme_sw_boundary_lat").value = _sw.lat.toFixed(5);
+      themeForm.querySelector("input#theme_ne_boundary_long").value = Math.min(Math.max(_ne.lng, -180), 180).toFixed(5);
+      themeForm.querySelector("input#theme_ne_boundary_lat").value = Math.min(Math.max(_ne.lat, -90), 90).toFixed(5);
+      themeForm.querySelector("input#theme_sw_boundary_long").value = Math.min(Math.max(_sw.lng, -180), 180).toFixed(5);
+      themeForm.querySelector("input#theme_sw_boundary_lat").value = Math.min(Math.max(_sw.lat, -90), 90).toFixed(5);
     }
   })
 
   themeCenterLongInput.addEventListener("change", (e) => {
     let { lat } = themeMap.getCenter();
-    themeMap.setCenter({lng: e.target.value, lat: lat});
+    themeMap.setCenter({lng: Math.min(Math.max(e.target.value, -90), 90), lat: lat});
   });
   themeCenterLatInput.addEventListener("change", (e) => {
     let { lng } = themeMap.getCenter();
-    themeMap.setCenter({lng: lng, lat: e.target.value});
+    themeMap.setCenter({lng: lng, lat: Math.min(Math.max(e.target.value, -90), 90)});
   });
 
   zoomInput.addEventListener("input", (e) => {
-    zoomValue.innerHTML = e.target.value;
-    themeMap.setZoom(e.target.value);
+    let zoomTarget = Math.min(Math.max(e.target.value, 0), 22)
+    zoomValue.innerHTML = zoomTarget;
+    themeMap.setZoom(zoomTarget);
   });
   pitchInput.addEventListener("input", (e) => {
-    pitchValue.innerHTML = e.target.value;
-    themeMap.setPitch(e.target.value);
+    let pitchTarget = Math.min(Math.max(e.target.value, 0), 85)
+    pitchValue.innerHTML = pitchTarget;
+    themeMap.setPitch(pitchTarget);
   });
   bearingInput.addEventListener("input", (e) => {
+    let bearingTarget = Math.min(Math.max(e.target.value, -180), 180)
     bearingValue.innerHTML = e.target.value;
     themeMap.setBearing(e.target.value);
   });
