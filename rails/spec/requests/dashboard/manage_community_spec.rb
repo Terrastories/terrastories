@@ -55,12 +55,12 @@ RSpec.describe "Manage Community", type: :request do
     before do
       login_as user
       allow(Flipper).to receive(:enabled?).with(:split_settings, community) { true }
-      community.sponsor_logos.attach(io: file_fixture("media/terrastories.png").open, filename: "sponsor.png", content_type: "image/png")
+      community.sponsor_logos.attach(io: file_fixture("../media/terrastories.png").open, filename: "sponsor.png", content_type: "image/png")
     end
 
     it "new sponsor logo is added to community record" do
       expect {
-        patch "/en/member/community", params: {community: {sponsor_logos: [fixture_file_upload("media/speaker.png")]}}
+        patch "/en/member/community", params: {community: {sponsor_logos: [fixture_file_upload("../media/speaker.png")]}}
         expect(response).to have_http_status(:redirect)
       }.to change(community.sponsor_logos, :count).by(1)
     end

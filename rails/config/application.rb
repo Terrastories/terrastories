@@ -41,8 +41,5 @@ module App
     config.i18n.fallbacks.defaults = [:en]
     # and configure language-specific fallbacks when needed
     config.i18n.fallbacks.map = {mat: [:nl, :en]}
-
-    # Don't replace existing images on upload for has_many_attached
-    config.active_storage.replace_on_assign_to_many = false
   end
 end
