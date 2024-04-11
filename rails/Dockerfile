@@ -25,7 +25,7 @@ RUN apk --no-cache add --update \
     libxml2-dev \
     libxslt-dev \
     libc6-compat \
-    imagemagick \
+    vips \
     ffmpeg \
     poppler && \
     gem install bundler --no-document --force -v '~> 2.4.7'
@@ -67,7 +67,7 @@ RUN apk --no-cache add \
     libxml2 \
     libxslt \
     libc6-compat \
-    imagemagick \
+    vips \
     ffmpeg \
     poppler && \
     gem install bundler --no-document --force
