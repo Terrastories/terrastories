@@ -71,7 +71,7 @@ Rails.application.configure do
   # Check if we use Docker to allow docker ip through web-console
   if File.file?('/.dockerenv') == true
     host_ip = `/sbin/ip route|awk '/default/ { print $3 }'`.strip
-    config.web_console.whitelisted_ips = host_ip
+    config.web_console.allowed_ips = host_ip
   end
 
   # Lets BetterErrors run properly in Docker
