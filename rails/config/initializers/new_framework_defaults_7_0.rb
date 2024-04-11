@@ -53,7 +53,7 @@ Rails.application.config.active_support.executor_around_test_case = true
 Rails.application.config.active_support.isolation_level = :thread
 
 # Set both the `:open_timeout` and `:read_timeout` values for `:smtp` delivery method.
-# Rails.application.config.action_mailer.smtp_timeout = 5
+Rails.application.config.action_mailer.smtp_timeout = 5
 
 # The ActiveStorage video previewer will now use scene change detection to generate
 # better preview images (rather than the previous default of using the first frame
