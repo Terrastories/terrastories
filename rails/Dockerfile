@@ -8,7 +8,7 @@
 # == Development Image
 #
 # Also used as the base for building assets for prod images.
-FROM ruby:2.7.8-alpine as devcore
+FROM ruby:3.0-alpine3.16 as devcore
 
 RUN apk --no-cache add --update \
     build-base \
@@ -25,7 +25,7 @@ RUN apk --no-cache add --update \
     libxml2-dev \
     libxslt-dev \
     libc6-compat \
-    imagemagick \
+    vips \
     ffmpeg \
     poppler && \
     gem install bundler --no-document --force -v '~> 2.4.7'
@@ -51,7 +51,7 @@ RUN bin/rake assets:precompile
 #
 # Start from base Ruby image so we can keep image size slim
 # Final image can be used for online or offline mode.
-FROM ruby:2.7.8-alpine as prod
+FROM ruby:3.0-alpine3.16 as prod
 
 EXPOSE 3000
 
@@ -67,7 +67,7 @@ RUN apk --no-cache add \
     libxml2 \
     libxslt \
     libc6-compat \
-    imagemagick \
+    vips \
     ffmpeg \
     poppler && \
     gem install bundler --no-document --force

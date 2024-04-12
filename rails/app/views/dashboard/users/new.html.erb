@@ -6,7 +6,7 @@
 <h2><%= t("dashboard.headings.new_resource", name: t("user")) %></h2>
 <% end %>
 
-<%= form_with model: @user, multipart: true, class: "form aligned", data: {remote: false}, id: "userForm", locale: true do |f| %>
+<%= form_with model: @user, multipart: true, class: "form aligned", id: "userForm", locale: true do |f| %>
   <%= render partial: "shared/form_errors", locals: { resource: @user } %>
 
   <%= f.label :username, class: "required" %>

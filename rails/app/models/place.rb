@@ -6,7 +6,7 @@ class Place < ApplicationRecord
   has_one_attached :photo
   has_one_attached :name_audio
   validates :name, presence: true
-  validates :photo, content_type: [:png, 'image/jpg', :jpeg], size: { less_than_or_equal_to: 5.megabytes }
+  validates :photo, content_type: [:png, :jpeg], size: { less_than_or_equal_to: 5.megabytes }
   validates :name_audio,
     content_type: [
       :mp3, :aac, :flac, :mp4a, :wav,

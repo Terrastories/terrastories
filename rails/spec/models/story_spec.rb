@@ -259,7 +259,7 @@ RSpec.describe Story, type: :model do
     it 'returns nil if media processing throws an error' do
       create(:media, story: story)
 
-      expect_any_instance_of(ActiveStorage::Variant).to receive(:processed).and_raise(ActiveStorage::InvariableError)
+      expect_any_instance_of(ActiveStorage::VariantWithRecord).to receive(:processed).and_raise(ActiveStorage::InvariableError)
 
       expect(story.media_preview_thumbnail).to be_nil
     end

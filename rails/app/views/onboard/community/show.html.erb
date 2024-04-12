@@ -4,7 +4,7 @@
 
     <h2><%= t(".create") %></h2>
 
-    <%= form_with model: @community, url: onboard_community_path, multipart: true, data: {remote: false}, locale: true, class: "form" do |f| %>
+    <%= form_with model: @community, url: onboard_community_path, multipart: true, locale: true, class: "form" do |f| %>
       <%= render partial: "shared/form_errors", locals: { resource: @community } %>
 
       <%= f.label :name, t(".name"), class: "required" %>

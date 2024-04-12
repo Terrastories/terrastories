@@ -1,15 +1,18 @@
 require_relative "boot"
 
+require "rails"
+# Pick the frameworks you want:
+require "active_model/railtie"
+# require "active_job/railtie"
 require "active_record/railtie"
 require "active_storage/engine"
 require "action_controller/railtie"
-require "action_view/railtie"
 # required for devise
 require "action_mailer/railtie"
-# require "active_job/railtie"
-# require "action_cable/engine"
 # require "action_mailbox/engine"
 # require "action_text/engine"
+require "action_view/railtie"
+# require "action_cable/engine"
 # require "rails/test_unit/railtie"
 require "sprockets/railtie"
 
@@ -20,7 +23,7 @@ Bundler.require(*Rails.groups)
 module App
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 6.0
+    config.load_defaults 6.1
 
     # Configuration for the application, engines, and railties goes here.
     #
@@ -38,8 +41,5 @@ module App
     config.i18n.fallbacks.defaults = [:en]
     # and configure language-specific fallbacks when needed
     config.i18n.fallbacks.map = {mat: [:nl, :en]}
-
-    # Don't replace existing images on upload for has_many_attached
-    config.active_storage.replace_on_assign_to_many = false
   end
 end

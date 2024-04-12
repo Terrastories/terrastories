@@ -7,12 +7,10 @@ RSpec.describe Community, type: :model do
     it "validates content type size" do
       is_expected.to validate_content_type_of(:background_img).allowing(
         'image/png',
-        'image/jpg',
         'image/jpeg',
       )
       is_expected.to validate_content_type_of(:sponsor_logos).allowing(
         'image/png',
-        'image/jpg',
         'image/jpeg',
       )
     end

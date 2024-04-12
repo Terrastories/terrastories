@@ -5,7 +5,6 @@ RSpec.describe Place, type: :model do
     it "validates content type size" do
       is_expected.to validate_content_type_of(:photo).allowing(
         'image/png',
-        'image/jpg',
         'image/jpeg',
       )
     end

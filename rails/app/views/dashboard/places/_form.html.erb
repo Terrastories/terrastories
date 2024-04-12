@@ -1,4 +1,4 @@
-<%= form_with model: @place, multipart: true, data: {remote: false}, class: "form aligned", id: "place_form" do |f| %>
+<%= form_with model: @place, multipart: true, class: "form aligned", id: "place_form" do |f| %>
   <%= render partial: "shared/form_errors", locals: { resource: @place } %>
 
   <%= f.label :name, class: "required" %>

@@ -8,7 +8,7 @@
 
 <%= render partial: "shared/form_errors", locals: {resource: @theme} %>
 
-<%= form_with model: @theme, method: :patch, multipart: true, class: "form", data: {remote: false}, url: theme_path, id: "themeForm", locale: true do |f| %>
+<%= form_with model: @theme, method: :patch, multipart: true, class: "form", url: theme_path, id: "themeForm", locale: true do |f| %>
   <% unless Flipper.enabled?(:split_settings, current_community) %>
     <h4><%= t("dashboard.theme.welcome_screen") %></h4>
 

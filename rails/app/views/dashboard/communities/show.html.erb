@@ -6,7 +6,7 @@
   <h2><%= t("dashboard.community.settings") %></h2>
 <% end %>
 
-<%= form_with model: @community, url: community_settings_path, data: {remote: false}, class: "form aligned" do |f| %>
+<%= form_with model: @community, url: community_settings_path, class: "form aligned" do |f| %>
   <% if Flipper.enabled?(:split_settings, @community) %>
     <h4><%= t("dashboard.theme.welcome_screen") %></h4>
 

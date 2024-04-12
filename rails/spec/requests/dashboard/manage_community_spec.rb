@@ -45,4 +45,24 @@ RSpec.describe "Manage Community", type: :request do
       end
     end
   end
+
+  # Spec for testing removal of config.active_storage.replace_on_assign_to_many = false
+  # default is true; so we want to make sure we don't screw this up.
+  describe "Sponsor Logos Assigns Appends" do
+    let(:community) { FactoryBot.create(:community) }
+    let(:user) { FactoryBot.create(:user, community: community, role: :admin) }
+
+    before do
+      login_as user
+      allow(Flipper).to receive(:enabled?).with(:split_settings, community) { true }
+      community.sponsor_logos.attach(io: file_fixture("../media/terrastories.png").open, filename: "sponsor.png", content_type: "image/png")
+    end
+
+    it "new sponsor logo is added to community record" do
+      expect {
+        patch "/en/member/community", params: {community: {sponsor_logos: [fixture_file_upload("../media/speaker.png")]}}
+        expect(response).to have_http_status(:redirect)
+      }.to change(community.sponsor_logos, :count).by(1)
+    end
+  end
 end

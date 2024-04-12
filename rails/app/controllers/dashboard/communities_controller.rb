@@ -8,6 +8,14 @@ module Dashboard
       @community = authorize current_user.community
 
       @community.update(community_params)
+
+      # Append new sponsor logos
+      if file_uploads.present?
+        file_uploads[:sponsor_logos].each do |logo|
+          @community.sponsor_logos.attach(io: logo, filename: logo.original_filename)
+        end
+      end
+
       if @community.public? && @community.theme.mapbox_token.present?
         static_map_url = if @community.theme.boundaries
           "https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/#{@community.theme.boundaries.flatten.to_s.gsub(' ','').sub("[", "%5B").sub("]", "%5D")}/900x600?access_token=#{@community.theme.mapbox_token}"
@@ -54,9 +62,12 @@ module Dashboard
         :public,
         :background_img,
         :display_image,
-        :description,
-        sponsor_logos: []
+        :description
       )
+    end
+
+    def file_uploads
+      params.require(:community).permit(sponsor_logos: [])
     end
   end
 end

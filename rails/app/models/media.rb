@@ -15,7 +15,7 @@ class Media < ApplicationRecord
     # otherwise, use string for full mime type.
     content_type: [
       # image types
-      :png, :jpeg, :svg, 'image/jpg',
+      :png, :jpeg, :svg,
       # video types
       :mpeg, :mp4, :mov, :webm,
       # audio types
