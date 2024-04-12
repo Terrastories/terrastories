@@ -51,6 +51,8 @@ RSpec.describe "Public Community (show) Endpoint", type: :request do
         "mapboxStyle",
         "mapbox3dEnabled",
         "mapProjection",
+        "pmApiKey",
+        "pmBasemapStyle",
         "centerLat",
         "centerLong",
         "swBoundaryLat",
