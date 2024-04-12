@@ -8,9 +8,14 @@ class PasswordsController < ApplicationController
   def update
     @user = current_user
     if @user.update(password_params)
-      bypass_sign_in(@user)
       flash.notice = t("devise.passwords.updated_not_active")
-      redirect_to root_path
+      if @user.super_admin
+        redirect_to super_admin_root_path
+      elsif @user.community.present?
+        redirect_to member_root_path
+      else
+        redirect_to root_path
+      end
     else
       @user.password = nil
       @user.password_confirmation = nil

@@ -4,7 +4,7 @@ RSpec.describe "Manage Community", type: :request do
 
   describe "PATCH update community" do
     context "community is public" do
-      let(:community) { FactoryBot.create(:community, public: false) }
+      let(:community) { FactoryBot.create(:community, public: false, slug: "slug") }
       let(:user) { FactoryBot.create(:user, community: community, role: :admin) }
 
       before do

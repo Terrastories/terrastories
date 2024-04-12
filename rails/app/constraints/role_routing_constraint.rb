@@ -9,6 +9,6 @@ class RoleRoutingConstraint
   end
 
   def current_user(request)
-    User.find_by(id: request.session["warden.user.user.key"][0][0])
+    User.find_by(id: request.session["user_id"])
   end
 end

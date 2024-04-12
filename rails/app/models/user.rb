@@ -1,15 +1,12 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are: :registerable,
-  # :recoverable, :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :rememberable, :trackable, :validatable
+  has_secure_password
+
   attr_accessor :login
 
   belongs_to :community, optional: true, touch: true
   has_one_attached :photo
 
   validates :photo, content_type: [:png, :jpeg], size: { less_than_or_equal_to: 5.megabytes }
-  # Username is required for logging in with Devise. Email is optional.
-  # Remove email_required? override if username changes to optional.
   validates :username, uniqueness: true, presence: true, format: {without: /\s/, message: :invalid_username_format}
 
   enum role: {
@@ -30,21 +27,24 @@ class User < ApplicationRecord
     name.presence || username
   end
 
-  # Override Devise authentication to allow lookup via username or email
-  def self.find_first_by_auth_conditions(tainted_conditions)
-    if (login = tainted_conditions.delete(:login))
-      where(username: login).or(where(email: login)).first
-    else
-      super
-    end
+  def update_tracked_fields(request)
+    old_current, new_current = self.current_sign_in_at, Time.now.utc
+    self.last_sign_in_at     = old_current || new_current
+    self.current_sign_in_at  = new_current
+
+    old_current, new_current = self.current_sign_in_ip, request.remote_ip
+    self.last_sign_in_ip     = old_current || new_current
+    self.current_sign_in_ip  = new_current
+
+    self.sign_in_count ||= 0
+    self.sign_in_count += 1
   end
 
   protected
 
-  # Override Devise Validatable: email is not required (username is)
-  def email_required?
-    false
-  end
+  # :password_digest is required for has_secure_password;
+  # mapped to :encrypted_password since that's what Devise used previously.
+  alias_attribute :password_digest, :encrypted_password
 end
 
 # == Schema Information

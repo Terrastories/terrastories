@@ -49,7 +49,10 @@ Rails.application.routes.draw do
       end
     end
 
-    devise_for :users, :controllers => { registrations: 'registrations' }
+    get :login, to: "sessions#new"
+    post :login, to: "sessions#create"
+    delete :logout, to: "sessions#destroy"
+
     get :profile, to: "profile#edit"
     patch :profile, to: "profile#update"
     get :change_password, to: "passwords#edit"

@@ -12,6 +12,7 @@ class HomeController < ApplicationController
   def community_search_index
     # This will eventually be a searchable action for the public maps and stories of
     # communities within this app. For now, it's just a placeholder.
+    render layout: "application"
   end
 
   def show

@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include Sessions::Helpers
   include Pundit::Authorization
   include Locale
 
