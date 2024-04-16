@@ -24,6 +24,34 @@ RSpec.describe "Public Communities Endpoint", type: :request do
     expect(json_response.first.keys).to include("displayImage")
   end
 
+  context "static map image" do
+    context "when mapbox is configured" do
+      before { allow(Map).to receive(:use_mapbox?).and_return(true) }
+
+      it "returns static map image url" do
+        public_community.theme.static_map.attach(io: file_fixture("../media/terrastories.png").open, filename: "static_map.png")
+
+        get "/api/communities"
+        expect(json_response.first.keys).to include("staticMapUrl")
+        expect(json_response.first["staticMapUrl"]).to eq(blob_url(public_community.theme.static_map))
+      end
+
+      it "returns nil if no static map" do
+        get "/api/communities"
+        expect(json_response.first.keys).not_to include("staticMapUrl")
+      end
+    end
+
+    context "when maplibre is configured" do
+      it "returns nil, even if static map had previously been attached" do
+        public_community.theme.static_map.attach(io: file_fixture("../media/terrastories.png").open, filename: "static_map.png")
+
+        get "/api/communities"
+        expect(json_response.first.keys).not_to include("staticMapUrl")
+      end
+    end
+  end
+
   context "with search" do
     it "can be filtered with case insensitive query" do
       get "/api/communities", params: {search: "cool"}

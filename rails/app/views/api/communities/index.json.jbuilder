@@ -9,7 +9,8 @@ envelope(json) do
       json.displayImage rails_blob_url(community.display_image)
     end
 
-    if community.theme.static_map.attached?
+    # only send static map image if mapbox is configured
+    if !community.theme.use_maplibre? && community.theme.static_map.attached?
       json.staticMapUrl rails_blob_url(community.theme.static_map)
     end
 
@@ -18,6 +19,9 @@ envelope(json) do
       json.mapboxStyle community.theme.mapbox_style
       json.mapbox3dEnabled community.theme.mapbox_3d
       json.mapProjection community.theme.map_projection
+
+      json.pmApiKey community.theme.protomaps_api_key
+      json.pmBasemapStyle community.theme.basemap_style
 
       json.center community.theme.center
 

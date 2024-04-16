@@ -30,6 +30,9 @@ envelope(json) do
     json.mapbox3dEnabled @community.theme.mapbox_3d
     json.mapProjection @community.theme.map_projection
 
+    json.pmApiKey @community.theme.protomaps_api_key
+    json.pmBasemapStyle @community.theme.basemap_style
+
     json.centerLat @community.theme.center_lat
     json.centerLong @community.theme.center_long
     json.swBoundaryLat @community.theme.sw_boundary_lat
