@@ -12,8 +12,12 @@ es:
     label:
       visibility: Visibilidad
       community:
+        public: Activar la interfaz pública
+        beta: Activar funciones beta experimentales
         background_img: Imagen de fondo
         sponsor_logos: Logos del patrocinador
+        display_image: Imagen o logo para mostrar
+        description: Sobre tu comunidad
       speaker:
         one: Orador
         name: Nombre
@@ -49,6 +53,8 @@ es:
         mapbox_access_token: Token de acceso a Mapbox asociado al estilo
         mapbox_3d: Activa la vista de terreno 3D para el mapa en línea
         map_projection: Establecer proyección para el mapa
+        protomaps_api_key: Clave de API (gratis en protomaps.com)
+        protomaps_basemap_style: Estilo del mapa base
         center_lat: Centro del mapa, latitud
         center_long: Centro del mapa, longitud
         sw_boundary_lat: SW cuadro delimitador, latitud (opcional)
@@ -96,6 +102,7 @@ es:
       story: Historia
       theme: Tema
       media_link: Enlace De Medios
+      flipper_feature: Funcionalidad
     # Used for model-based form labels and other attribute displays
     attributes:
       place:

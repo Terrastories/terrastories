@@ -1,0 +1,21 @@
+es:
+  onboard:
+    start:
+      welcome: ¡Te damos la bienvenida a Terrastories!
+      introduction:
+        Parece que estás configurando Terrastories por primera vez para usarlo sin conexión.
+        Este asistente te guiará para configurar tu comunidad.
+      begin: Comenzar
+    community:
+      show:
+        create: Crea tu comunidad
+        name: Nombre de la comunidad
+        finish: Terminar la configuración
+    account:
+      show:
+        create: Crea tu cuenta de administración
+        username: Nombre de usuario
+        email: Correo electrónico
+        password: Contraseña
+        name: Tu nombre
+        next: Siguiente

@@ -35,6 +35,8 @@ es:
   close: "Cerrar"
   community_search:
     title: "Busca una comunidad para explorar"
+    description: "Ahora puedes buscar y explorar las historias que las comunidades comparten públicamente."
+    button_label: "Comenzar a explorar"
     coming_soon: "Esta característica estará disponible pronto. Por ahora, solicita por favor una invitación a una comunidad en específico."
   default: "Predeterminado"
   enter: "Ingresar"
@@ -53,6 +55,7 @@ es:
   password: "Contraseña"
   place_name: "Pronunciación del nombre del lugar"
   place_type: "Tipo de lugar"
+  type_of_place: "Tipo de lugar"
   region: "Región"
   remember_me: "Recordarme"
   reversed_alphabetical: Z-A
@@ -62,6 +65,7 @@ es:
   sign_up: "Registrarse"
   sort_stories: "Ordenar las historias"
   speaker: "Orador"
+  speaker_community: "Comunidad del Orador"
   topic: "Tema"
   video_unsupported: Lo sentimos, su navegador no admite videos incrustados.
   welcome: "Bienvenido/a"
